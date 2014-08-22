@@ -45,6 +45,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		743E6F9E19A802E20074EDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5DAB552199EBFF6008E4A8E;
+			remoteInfo = APCAppleCore;
+		};
+		743E6FA019A802E20074EDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5DAB55D199EBFF6008E4A8E;
+			remoteInfo = APCAppleCoreTests;
+		};
+		743E6FA219A802F60074EDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5DAB551199EBFF6008E4A8E;
+			remoteInfo = APCAppleCore;
+		};
 		CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFC2D2CF19A5417D00170E69 /* Project object */;
@@ -52,30 +73,10 @@
 			remoteGlobalIDString = CFC2D2D619A5417D00170E69;
 			remoteInfo = Parkinson;
 		};
-		F54E1FA319A7F85A00E30837 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F5DAB552199EBFF6008E4A8E;
-			remoteInfo = APCAppleCore;
-		};
-		F54E1FA519A7F85A00E30837 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F5DAB55D199EBFF6008E4A8E;
-			remoteInfo = APCAppleCoreTests;
-		};
-		F54E1FA719A7F8DB00E30837 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F5DAB551199EBFF6008E4A8E;
-			remoteInfo = APCAppleCore;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		CF1BA8F219A56C6600AA27B1 /* YMLWalkingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLWalkingOverviewViewController.h; sourceTree = "<group>"; };
 		CF1BA8F319A56C6600AA27B1 /* YMLWalkingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLWalkingOverviewViewController.m; sourceTree = "<group>"; };
 		CF1BA8F419A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLWalkingOverviewViewController.xib; sourceTree = "<group>"; };
@@ -127,7 +128,6 @@
 		CFC2D30319A5509700170E69 /* YMLConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLConfirmationView.m; sourceTree = "<group>"; };
 		CFC2D30619A55B8000170E69 /* NSString+CustomMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustomMethods.h"; sourceTree = "<group>"; };
 		CFC2D30719A55B8000170E69 /* NSString+CustomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomMethods.m"; sourceTree = "<group>"; };
-		F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = ../../AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = "<group>"; };
 		F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F54E1FAD19A7FAC600E30837 /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = ../../AppleCore/StudyDemo/ResearchKit/ResearchKit.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		743E6F9A19A802E20074EDB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */,
+				743E6FA119A802E20074EDB4 /* APCAppleCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CF1BA8F019A56BB000AA27B1 /* Timed Walking Activities */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +244,7 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */,
+				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
 				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
 				CFA2ABC119A7C431000DB961 /* libz.dylib */,
 				F54E1FAD19A7FAC600E30837 /* ResearchKit.bundle */,
@@ -330,15 +339,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		F54E1F9F19A7F85A00E30837 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F54E1FA419A7F85A00E30837 /* libAPCAppleCore.a */,
-				F54E1FA619A7F85A00E30837 /* APCAppleCoreTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,7 +353,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F54E1FA819A7F8DB00E30837 /* PBXTargetDependency */,
+				743E6FA319A802F60074EDB4 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
 			productName = Parkinson;
@@ -409,8 +409,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F54E1F9F19A7F85A00E30837 /* Products */;
-					ProjectRef = F54E1F9E19A7F85A00E30837 /* APCAppleCore.xcodeproj */;
+					ProductGroup = 743E6F9A19A802E20074EDB4 /* Products */;
+					ProjectRef = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -422,18 +422,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F54E1FA419A7F85A00E30837 /* libAPCAppleCore.a */ = {
+		743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libAPCAppleCore.a;
-			remoteRef = F54E1FA319A7F85A00E30837 /* PBXContainerItemProxy */;
+			remoteRef = 743E6F9E19A802E20074EDB4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F54E1FA619A7F85A00E30837 /* APCAppleCoreTests.xctest */ = {
+		743E6FA119A802E20074EDB4 /* APCAppleCoreTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = APCAppleCoreTests.xctest;
-			remoteRef = F54E1FA519A7F85A00E30837 /* PBXContainerItemProxy */;
+			remoteRef = 743E6FA019A802E20074EDB4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -501,15 +501,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		743E6FA319A802F60074EDB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppleCore;
+			targetProxy = 743E6FA219A802F60074EDB4 /* PBXContainerItemProxy */;
+		};
 		CFC2D2EF19A5417D00170E69 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFC2D2D619A5417D00170E69 /* Parkinson */;
 			targetProxy = CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */;
-		};
-		F54E1FA819A7F8DB00E30837 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = APCAppleCore;
-			targetProxy = F54E1FA719A7F8DB00E30837 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
