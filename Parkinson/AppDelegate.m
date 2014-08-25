@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:@"http://localhost:4567/api/v1"];
     return YES;
 }
 
