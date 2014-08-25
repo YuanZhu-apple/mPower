@@ -43,6 +43,7 @@
 		F54E1FAC19A7FA6C00E30837 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
 		F5E4871B19ABB72D00C86FC6 /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */; };
+		F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CFC2D2D619A5417D00170E69;
 			remoteInfo = Parkinson;
+		};
+		F5E4874619ABE1E700C86FC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5E4873C19ABE18000C86FC6;
+			remoteInfo = APCAppleCoreBundle;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -164,6 +172,7 @@
 			children = (
 				743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */,
 				743E6FA119A802E20074EDB4 /* APCAppleCoreTests.xctest */,
+				F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +447,13 @@
 			remoteRef = 743E6FA019A802E20074EDB4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = APCAppleCoreBundle.bundle;
+			remoteRef = F5E4874619ABE1E700C86FC6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -445,6 +461,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CF97C51719A6B25200EBECCB /* YMLIntervalOverviewViewController.xib in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				CF97C51119A689CB00EBECCB /* YMLWalkingStepsViewController.xib in Resources */,
