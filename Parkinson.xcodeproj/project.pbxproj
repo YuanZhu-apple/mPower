@@ -40,8 +40,8 @@
 		CFC2D30119A54F6100170E69 /* YMLActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2FF19A54F6100170E69 /* YMLActivitiesTableViewCell.xib */; };
 		CFC2D30419A5509700170E69 /* YMLConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D30319A5509700170E69 /* YMLConfirmationView.m */; };
 		CFC2D30819A55B8000170E69 /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D30719A55B8000170E69 /* NSString+CustomMethods.m */; };
+		CFF32DEC19ABABE100DBEDBD /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFF32DEB19ABABE100DBEDBD /* ResearchKit.bundle */; };
 		F54E1FAC19A7FA6C00E30837 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */; };
-		F54E1FAE19A7FAC600E30837 /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F54E1FAD19A7FAC600E30837 /* ResearchKit.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +128,8 @@
 		CFC2D30319A5509700170E69 /* YMLConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLConfirmationView.m; sourceTree = "<group>"; };
 		CFC2D30619A55B8000170E69 /* NSString+CustomMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustomMethods.h"; sourceTree = "<group>"; };
 		CFC2D30719A55B8000170E69 /* NSString+CustomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomMethods.m"; sourceTree = "<group>"; };
+		CFF32DEB19ABABE100DBEDBD /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ResearchKit.bundle; sourceTree = "<group>"; };
 		F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
-		F54E1FAD19A7FAC600E30837 /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = ../../AppleCore/StudyDemo/ResearchKit/ResearchKit.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +247,7 @@
 				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
 				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
 				CFA2ABC119A7C431000DB961 /* libz.dylib */,
-				F54E1FAD19A7FAC600E30837 /* ResearchKit.bundle */,
+				CFF32DEB19ABABE100DBEDBD /* ResearchKit.bundle */,
 				F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
@@ -446,7 +446,7 @@
 				CF97C51719A6B25200EBECCB /* YMLIntervalOverviewViewController.xib in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				CF97C51119A689CB00EBECCB /* YMLWalkingStepsViewController.xib in Resources */,
-				F54E1FAE19A7FAC600E30837 /* ResearchKit.bundle in Resources */,
+				CFF32DEC19ABABE100DBEDBD /* ResearchKit.bundle in Resources */,
 				CF97C52519A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib in Resources */,
 				CF97C52A19A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib in Resources */,
 				CFC2D30119A54F6100170E69 /* YMLActivitiesTableViewCell.xib in Resources */,
