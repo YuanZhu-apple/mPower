@@ -75,6 +75,13 @@
 			remoteGlobalIDString = CFC2D2D619A5417D00170E69;
 			remoteInfo = Parkinson;
 		};
+		F5241C4519ABF24D0098A4DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5E4873B19ABE18000C86FC6;
+			remoteInfo = APCAppleCoreBundle;
+		};
 		F5E4874619ABE1E700C86FC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */;
@@ -364,6 +371,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F5241C4619ABF24D0098A4DF /* PBXTargetDependency */,
 				743E6FA319A802F60074EDB4 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
@@ -529,6 +537,11 @@
 			isa = PBXTargetDependency;
 			target = CFC2D2D619A5417D00170E69 /* Parkinson */;
 			targetProxy = CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */;
+		};
+		F5241C4619ABF24D0098A4DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppleCoreBundle;
+			targetProxy = F5241C4519ABF24D0098A4DF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
