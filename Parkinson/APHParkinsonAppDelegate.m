@@ -9,18 +9,18 @@
 #import "APHParkinsonAppDelegate.h"
 
 static NSString * databaseName = @"db.sqlite";
+NSString *const ParkinsonStudyIdentifier = @"com.ymedialabs.parkinsons";
 
 @interface APHParkinsonAppDelegate ()
 
 @end
 
 @implementation APHParkinsonAppDelegate
-            
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:@"http://localhost:4567/api/v1"];
-    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:databaseName] additionalModels: nil studyIdentifier:nil];
+    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:databaseName] additionalModels: nil studyIdentifier:ParkinsonStudyIdentifier];
     return YES;
 }
 

@@ -40,9 +40,9 @@
 		CFF32E2419ACF64500DBEDBD /* APHTracingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E2219ACF64500DBEDBD /* APHTracingOverviewViewController.m */; };
 		CFF32E2519ACF64500DBEDBD /* APHTracingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E2319ACF64500DBEDBD /* APHTracingOverviewViewController.xib */; };
 		CFF32E2819ACF65A00DBEDBD /* APHConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */; };
-		F54E1FAC19A7FA6C00E30837 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */; };
+		F5241C6519AD2FF90098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C6419AD2FF90098A4DF /* ResearchKit.framework */; };
+		F5241C6719AD30580098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C6619AD30580098A4DF /* ResearchKit.bundle */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
-		F5E4871B19ABB72D00C86FC6 /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */; };
 		F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */; };
 /* End PBXBuildFile section */
 
@@ -144,8 +144,8 @@
 		CFF32E2319ACF64500DBEDBD /* APHTracingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHTracingOverviewViewController.xib; sourceTree = "<group>"; };
 		CFF32E2619ACF65A00DBEDBD /* APHConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHConfirmationView.h; sourceTree = "<group>"; };
 		CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHConfirmationView.m; sourceTree = "<group>"; };
-		F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
-		F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
+		F5241C6419AD2FF90098A4DF /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
+		F5241C6619AD30580098A4DF /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = ../AppleCore/StudyDemo/ResearchKit/ResearchKit.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5241C6519AD2FF90098A4DF /* ResearchKit.framework in Frameworks */,
 				F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */,
-				F54E1FAC19A7FA6C00E30837 /* ResearchKit.framework in Frameworks */,
 				CFA2ABC419A7C446000DB961 /* libarchive.dylib in Frameworks */,
 				CFA2ABC219A7C431000DB961 /* libz.dylib in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
@@ -262,15 +262,15 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
-				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
-				CFA2ABC119A7C431000DB961 /* libz.dylib */,
-				F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */,
-				F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */,
+				F5241C6619AD30580098A4DF /* ResearchKit.bundle */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
+				F5241C6419AD2FF90098A4DF /* ResearchKit.framework */,
+				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
+				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
+				CFA2ABC119A7C431000DB961 /* libz.dylib */,
 			);
 			name = Frameworks;
 			path = Parkinson;
@@ -469,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5241C6719AD30580098A4DF /* ResearchKit.bundle in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CFF32E1119ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
@@ -478,7 +479,6 @@
 				CFF32E2019ACF63400DBEDBD /* APHIntervalOverviewViewController.xib in Resources */,
 				CFF32E1B19ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CFF32DFB19ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib in Resources */,
-				F5E4871B19ABB72D00C86FC6 /* ResearchKit.bundle in Resources */,
 				CFF32E0819ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				CFF32E2519ACF64500DBEDBD /* APHTracingOverviewViewController.xib in Resources */,
