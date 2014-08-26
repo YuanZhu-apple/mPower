@@ -262,15 +262,15 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5241C6619AD30580098A4DF /* ResearchKit.bundle */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
 				F5241C6419AD2FF90098A4DF /* ResearchKit.framework */,
-				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
 				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
 				CFA2ABC119A7C431000DB961 /* libz.dylib */,
+				F5241C6619AD30580098A4DF /* ResearchKit.bundle */,
+				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
 			);
 			name = Frameworks;
 			path = Parkinson;
