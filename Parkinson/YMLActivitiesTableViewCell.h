@@ -11,9 +11,6 @@
 @class  YMLConfirmationView;
 
 @interface YMLActivitiesTableViewCell : UITableViewCell
-{
-    BOOL  completed;
-}
 
 @property  (nonatomic, weak)  IBOutlet  UILabel              *title;
 @property  (nonatomic, weak)  IBOutlet  UILabel              *subTitle;

@@ -11,7 +11,7 @@
 
 @implementation YMLActivitiesTableViewCell
 
-@dynamic  completed;
+@synthesize completed = _completed;
 
 - (void)awakeFromNib
 {
@@ -24,12 +24,15 @@
 
 - (BOOL)isCompleted
 {
-    return  completed;
+    return  _completed;
 }
 
 - (void)setCompleted:(BOOL)aCompleted
 {
-    self.confirmation.completed = aCompleted;
+    if (_completed != aCompleted) {
+        _completed = aCompleted;
+        self.confirmation.completed = aCompleted;
+    }
 }
 
 @end
