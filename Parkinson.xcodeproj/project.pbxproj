@@ -7,23 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF1BA8F519A56C6600AA27B1 /* YMLWalkingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BA8F319A56C6600AA27B1 /* YMLWalkingOverviewViewController.m */; };
-		CF1BA8F619A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1BA8F419A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib */; };
-		CF97C50B19A6751C00EBECCB /* YMLWalkingResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C50919A6751C00EBECCB /* YMLWalkingResultsViewController.m */; };
-		CF97C50C19A6751C00EBECCB /* YMLWalkingResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C50A19A6751C00EBECCB /* YMLWalkingResultsViewController.xib */; };
-		CF97C51019A689CB00EBECCB /* YMLWalkingStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C50E19A689CB00EBECCB /* YMLWalkingStepsViewController.m */; };
-		CF97C51119A689CB00EBECCB /* YMLWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C50F19A689CB00EBECCB /* YMLWalkingStepsViewController.xib */; };
-		CF97C51619A6B25200EBECCB /* YMLIntervalOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C51419A6B25200EBECCB /* YMLIntervalOverviewViewController.m */; };
-		CF97C51719A6B25200EBECCB /* YMLIntervalOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C51519A6B25200EBECCB /* YMLIntervalOverviewViewController.xib */; };
-		CF97C51F19A7AD0200EBECCB /* YMLPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C51D19A7AD0200EBECCB /* YMLPhonationOverviewViewController.m */; };
-		CF97C52019A7AD0200EBECCB /* YMLPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C51E19A7AD0200EBECCB /* YMLPhonationOverviewViewController.xib */; };
-		CF97C52419A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C52219A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.m */; };
-		CF97C52519A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C52319A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib */; };
-		CF97C52919A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C52719A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.m */; };
-		CF97C52A19A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C52819A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib */; };
-		CF97C52E19A7AD4000EBECCB /* YMLTracingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C52C19A7AD4000EBECCB /* YMLTracingOverviewViewController.m */; };
-		CF97C52F19A7AD4000EBECCB /* YMLTracingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF97C52D19A7AD4000EBECCB /* YMLTracingOverviewViewController.xib */; };
-		CF97C53219A7B26300EBECCB /* YMLStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF97C53119A7B26300EBECCB /* YMLStepViewController.m */; };
 		CFA2ABB619A7C229000DB961 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
@@ -31,15 +14,32 @@
 		CFA2ABC219A7C431000DB961 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC119A7C431000DB961 /* libz.dylib */; };
 		CFA2ABC419A7C446000DB961 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC319A7C446000DB961 /* libarchive.dylib */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
-		CFC2D2E019A5417D00170E69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DF19A5417D00170E69 /* AppDelegate.m */; };
-		CFC2D2E319A5417D00170E69 /* YMLActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2E219A5417D00170E69 /* YMLActivitiesViewController.m */; };
+		CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DF19A5417D00170E69 /* APHParkinsonAppDelegate.m */; };
 		CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E419A5417D00170E69 /* Main.storyboard */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
 		CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */; };
-		CFC2D30019A54F6100170E69 /* YMLActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2FE19A54F6100170E69 /* YMLActivitiesTableViewCell.m */; };
-		CFC2D30119A54F6100170E69 /* YMLActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2FF19A54F6100170E69 /* YMLActivitiesTableViewCell.xib */; };
-		CFC2D30419A5509700170E69 /* YMLConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D30319A5509700170E69 /* YMLConfirmationView.m */; };
 		CFC2D30819A55B8000170E69 /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D30719A55B8000170E69 /* NSString+CustomMethods.m */; };
+		CFF32DFA19ACF59D00DBEDBD /* APHActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32DF419ACF59D00DBEDBD /* APHActivitiesTableViewCell.m */; };
+		CFF32DFB19ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32DF519ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib */; };
+		CFF32DFC19ACF59D00DBEDBD /* APHActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32DF719ACF59D00DBEDBD /* APHActivitiesViewController.m */; };
+		CFF32DFD19ACF59D00DBEDBD /* APHStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32DF919ACF59D00DBEDBD /* APHStepViewController.m */; };
+		CFF32E0719ACF5BF00DBEDBD /* APHWalkingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32DFF19ACF5BF00DBEDBD /* APHWalkingOverviewViewController.m */; };
+		CFF32E0819ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E0019ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib */; };
+		CFF32E0919ACF5BF00DBEDBD /* APHWalkingResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E0219ACF5BF00DBEDBD /* APHWalkingResultsViewController.m */; };
+		CFF32E0A19ACF5BF00DBEDBD /* APHWalkingResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E0319ACF5BF00DBEDBD /* APHWalkingResultsViewController.xib */; };
+		CFF32E0B19ACF5BF00DBEDBD /* APHWalkingStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E0519ACF5BF00DBEDBD /* APHWalkingStepsViewController.m */; };
+		CFF32E0C19ACF5BF00DBEDBD /* APHWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E0619ACF5BF00DBEDBD /* APHWalkingStepsViewController.xib */; };
+		CFF32E1019ACF5DE00DBEDBD /* APHPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E0E19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.m */; };
+		CFF32E1119ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E0F19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib */; };
+		CFF32E1519ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E1319ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.m */; };
+		CFF32E1619ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E1419ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.xib */; };
+		CFF32E1A19ACF62400DBEDBD /* APHChangedMedsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E1819ACF62400DBEDBD /* APHChangedMedsOverviewViewController.m */; };
+		CFF32E1B19ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E1919ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib */; };
+		CFF32E1F19ACF63400DBEDBD /* APHIntervalOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E1D19ACF63400DBEDBD /* APHIntervalOverviewViewController.m */; };
+		CFF32E2019ACF63400DBEDBD /* APHIntervalOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E1E19ACF63400DBEDBD /* APHIntervalOverviewViewController.xib */; };
+		CFF32E2419ACF64500DBEDBD /* APHTracingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E2219ACF64500DBEDBD /* APHTracingOverviewViewController.m */; };
+		CFF32E2519ACF64500DBEDBD /* APHTracingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF32E2319ACF64500DBEDBD /* APHTracingOverviewViewController.xib */; };
+		CFF32E2819ACF65A00DBEDBD /* APHConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */; };
 		F54E1FAC19A7FA6C00E30837 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
 		F5E4871B19ABB72D00C86FC6 /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */; };
@@ -93,32 +93,6 @@
 
 /* Begin PBXFileReference section */
 		743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
-		CF1BA8F219A56C6600AA27B1 /* YMLWalkingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLWalkingOverviewViewController.h; sourceTree = "<group>"; };
-		CF1BA8F319A56C6600AA27B1 /* YMLWalkingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLWalkingOverviewViewController.m; sourceTree = "<group>"; };
-		CF1BA8F419A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLWalkingOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C50819A6751C00EBECCB /* YMLWalkingResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLWalkingResultsViewController.h; sourceTree = "<group>"; };
-		CF97C50919A6751C00EBECCB /* YMLWalkingResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLWalkingResultsViewController.m; sourceTree = "<group>"; };
-		CF97C50A19A6751C00EBECCB /* YMLWalkingResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLWalkingResultsViewController.xib; sourceTree = "<group>"; };
-		CF97C50D19A689CB00EBECCB /* YMLWalkingStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLWalkingStepsViewController.h; sourceTree = "<group>"; };
-		CF97C50E19A689CB00EBECCB /* YMLWalkingStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLWalkingStepsViewController.m; sourceTree = "<group>"; };
-		CF97C50F19A689CB00EBECCB /* YMLWalkingStepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLWalkingStepsViewController.xib; sourceTree = "<group>"; };
-		CF97C51319A6B25200EBECCB /* YMLIntervalOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLIntervalOverviewViewController.h; sourceTree = "<group>"; };
-		CF97C51419A6B25200EBECCB /* YMLIntervalOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLIntervalOverviewViewController.m; sourceTree = "<group>"; };
-		CF97C51519A6B25200EBECCB /* YMLIntervalOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLIntervalOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C51C19A7AD0200EBECCB /* YMLPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLPhonationOverviewViewController.h; sourceTree = "<group>"; };
-		CF97C51D19A7AD0200EBECCB /* YMLPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLPhonationOverviewViewController.m; sourceTree = "<group>"; };
-		CF97C51E19A7AD0200EBECCB /* YMLPhonationOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLPhonationOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C52119A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLSleepQualityOverviewViewController.h; sourceTree = "<group>"; };
-		CF97C52219A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLSleepQualityOverviewViewController.m; sourceTree = "<group>"; };
-		CF97C52319A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLSleepQualityOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C52619A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLChangedMedsOverviewViewController.h; sourceTree = "<group>"; };
-		CF97C52719A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLChangedMedsOverviewViewController.m; sourceTree = "<group>"; };
-		CF97C52819A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLChangedMedsOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C52B19A7AD4000EBECCB /* YMLTracingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLTracingOverviewViewController.h; sourceTree = "<group>"; };
-		CF97C52C19A7AD4000EBECCB /* YMLTracingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLTracingOverviewViewController.m; sourceTree = "<group>"; };
-		CF97C52D19A7AD4000EBECCB /* YMLTracingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLTracingOverviewViewController.xib; sourceTree = "<group>"; };
-		CF97C53019A7B26300EBECCB /* YMLStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLStepViewController.h; sourceTree = "<group>"; };
-		CF97C53119A7B26300EBECCB /* YMLStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLStepViewController.m; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -128,22 +102,48 @@
 		CFC2D2D719A5417D00170E69 /* Parkinson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFC2D2DE19A5417D00170E69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CFC2D2DF19A5417D00170E69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CFC2D2E119A5417D00170E69 /* YMLActivitiesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMLActivitiesViewController.h; sourceTree = "<group>"; };
-		CFC2D2E219A5417D00170E69 /* YMLActivitiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMLActivitiesViewController.m; sourceTree = "<group>"; };
+		CFC2D2DE19A5417D00170E69 /* APHParkinsonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APHParkinsonAppDelegate.h; sourceTree = "<group>"; };
+		CFC2D2DF19A5417D00170E69 /* APHParkinsonAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APHParkinsonAppDelegate.m; sourceTree = "<group>"; };
 		CFC2D2E519A5417D00170E69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
 		CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinsonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2F219A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkinsonTests.m; sourceTree = "<group>"; };
-		CFC2D2FD19A54F6100170E69 /* YMLActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLActivitiesTableViewCell.h; sourceTree = "<group>"; };
-		CFC2D2FE19A54F6100170E69 /* YMLActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLActivitiesTableViewCell.m; sourceTree = "<group>"; };
-		CFC2D2FF19A54F6100170E69 /* YMLActivitiesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMLActivitiesTableViewCell.xib; sourceTree = "<group>"; };
-		CFC2D30219A5509700170E69 /* YMLConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMLConfirmationView.h; sourceTree = "<group>"; };
-		CFC2D30319A5509700170E69 /* YMLConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMLConfirmationView.m; sourceTree = "<group>"; };
 		CFC2D30619A55B8000170E69 /* NSString+CustomMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustomMethods.h"; sourceTree = "<group>"; };
 		CFC2D30719A55B8000170E69 /* NSString+CustomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomMethods.m"; sourceTree = "<group>"; };
+		CFF32DF319ACF59D00DBEDBD /* APHActivitiesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHActivitiesTableViewCell.h; sourceTree = "<group>"; };
+		CFF32DF419ACF59D00DBEDBD /* APHActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHActivitiesTableViewCell.m; sourceTree = "<group>"; };
+		CFF32DF519ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHActivitiesTableViewCell.xib; sourceTree = "<group>"; };
+		CFF32DF619ACF59D00DBEDBD /* APHActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHActivitiesViewController.h; sourceTree = "<group>"; };
+		CFF32DF719ACF59D00DBEDBD /* APHActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHActivitiesViewController.m; sourceTree = "<group>"; };
+		CFF32DF819ACF59D00DBEDBD /* APHStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHStepViewController.h; sourceTree = "<group>"; };
+		CFF32DF919ACF59D00DBEDBD /* APHStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHStepViewController.m; sourceTree = "<group>"; };
+		CFF32DFE19ACF5BF00DBEDBD /* APHWalkingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32DFF19ACF5BF00DBEDBD /* APHWalkingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E0019ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHWalkingOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E0119ACF5BF00DBEDBD /* APHWalkingResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingResultsViewController.h; sourceTree = "<group>"; };
+		CFF32E0219ACF5BF00DBEDBD /* APHWalkingResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingResultsViewController.m; sourceTree = "<group>"; };
+		CFF32E0319ACF5BF00DBEDBD /* APHWalkingResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHWalkingResultsViewController.xib; sourceTree = "<group>"; };
+		CFF32E0419ACF5BF00DBEDBD /* APHWalkingStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingStepsViewController.h; sourceTree = "<group>"; };
+		CFF32E0519ACF5BF00DBEDBD /* APHWalkingStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingStepsViewController.m; sourceTree = "<group>"; };
+		CFF32E0619ACF5BF00DBEDBD /* APHWalkingStepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHWalkingStepsViewController.xib; sourceTree = "<group>"; };
+		CFF32E0D19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHPhonationOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32E0E19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHPhonationOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E0F19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHPhonationOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E1219ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSleepQualityOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32E1319ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSleepQualityOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E1419ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSleepQualityOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E1719ACF62400DBEDBD /* APHChangedMedsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHChangedMedsOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32E1819ACF62400DBEDBD /* APHChangedMedsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHChangedMedsOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E1919ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHChangedMedsOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E1C19ACF63400DBEDBD /* APHIntervalOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32E1D19ACF63400DBEDBD /* APHIntervalOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E1E19ACF63400DBEDBD /* APHIntervalOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHIntervalOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E2119ACF64500DBEDBD /* APHTracingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHTracingOverviewViewController.h; sourceTree = "<group>"; };
+		CFF32E2219ACF64500DBEDBD /* APHTracingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHTracingOverviewViewController.m; sourceTree = "<group>"; };
+		CFF32E2319ACF64500DBEDBD /* APHTracingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHTracingOverviewViewController.xib; sourceTree = "<group>"; };
+		CFF32E2619ACF65A00DBEDBD /* APHConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHConfirmationView.h; sourceTree = "<group>"; };
+		CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHConfirmationView.m; sourceTree = "<group>"; };
 		F54E1FAB19A7FA6C00E30837 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5E4871A19ABB72D00C86FC6 /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/StudyDemo/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -187,15 +187,15 @@
 		CF1BA8F019A56BB000AA27B1 /* Timed Walking Activities */ = {
 			isa = PBXGroup;
 			children = (
-				CF1BA8F219A56C6600AA27B1 /* YMLWalkingOverviewViewController.h */,
-				CF1BA8F319A56C6600AA27B1 /* YMLWalkingOverviewViewController.m */,
-				CF1BA8F419A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib */,
-				CF97C50D19A689CB00EBECCB /* YMLWalkingStepsViewController.h */,
-				CF97C50E19A689CB00EBECCB /* YMLWalkingStepsViewController.m */,
-				CF97C50F19A689CB00EBECCB /* YMLWalkingStepsViewController.xib */,
-				CF97C50819A6751C00EBECCB /* YMLWalkingResultsViewController.h */,
-				CF97C50919A6751C00EBECCB /* YMLWalkingResultsViewController.m */,
-				CF97C50A19A6751C00EBECCB /* YMLWalkingResultsViewController.xib */,
+				CFF32DFE19ACF5BF00DBEDBD /* APHWalkingOverviewViewController.h */,
+				CFF32DFF19ACF5BF00DBEDBD /* APHWalkingOverviewViewController.m */,
+				CFF32E0019ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib */,
+				CFF32E0119ACF5BF00DBEDBD /* APHWalkingResultsViewController.h */,
+				CFF32E0219ACF5BF00DBEDBD /* APHWalkingResultsViewController.m */,
+				CFF32E0319ACF5BF00DBEDBD /* APHWalkingResultsViewController.xib */,
+				CFF32E0419ACF5BF00DBEDBD /* APHWalkingStepsViewController.h */,
+				CFF32E0519ACF5BF00DBEDBD /* APHWalkingStepsViewController.m */,
+				CFF32E0619ACF5BF00DBEDBD /* APHWalkingStepsViewController.xib */,
 			);
 			name = "Timed Walking Activities";
 			sourceTree = "<group>";
@@ -203,8 +203,8 @@
 		CF1BA8F119A56C0500AA27B1 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				CFC2D30219A5509700170E69 /* YMLConfirmationView.h */,
-				CFC2D30319A5509700170E69 /* YMLConfirmationView.m */,
+				CFF32E2619ACF65A00DBEDBD /* APHConfirmationView.h */,
+				CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -212,9 +212,9 @@
 		CF97C51219A6B1FD00EBECCB /* Interval Tapping */ = {
 			isa = PBXGroup;
 			children = (
-				CF97C51319A6B25200EBECCB /* YMLIntervalOverviewViewController.h */,
-				CF97C51419A6B25200EBECCB /* YMLIntervalOverviewViewController.m */,
-				CF97C51519A6B25200EBECCB /* YMLIntervalOverviewViewController.xib */,
+				CFF32E1C19ACF63400DBEDBD /* APHIntervalOverviewViewController.h */,
+				CFF32E1D19ACF63400DBEDBD /* APHIntervalOverviewViewController.m */,
+				CFF32E1E19ACF63400DBEDBD /* APHIntervalOverviewViewController.xib */,
 			);
 			name = "Interval Tapping";
 			sourceTree = "<group>";
@@ -222,9 +222,9 @@
 		CF97C51819A7A1BF00EBECCB /* Sustained Phonation */ = {
 			isa = PBXGroup;
 			children = (
-				CF97C51C19A7AD0200EBECCB /* YMLPhonationOverviewViewController.h */,
-				CF97C51D19A7AD0200EBECCB /* YMLPhonationOverviewViewController.m */,
-				CF97C51E19A7AD0200EBECCB /* YMLPhonationOverviewViewController.xib */,
+				CFF32E0D19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.h */,
+				CFF32E0E19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.m */,
+				CFF32E0F19ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib */,
 			);
 			name = "Sustained Phonation";
 			sourceTree = "<group>";
@@ -232,9 +232,9 @@
 		CF97C51919A7A1CF00EBECCB /* Sleep Quality */ = {
 			isa = PBXGroup;
 			children = (
-				CF97C52119A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.h */,
-				CF97C52219A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.m */,
-				CF97C52319A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib */,
+				CFF32E1219ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.h */,
+				CFF32E1319ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.m */,
+				CFF32E1419ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.xib */,
 			);
 			name = "Sleep Quality";
 			sourceTree = "<group>";
@@ -242,9 +242,9 @@
 		CF97C51A19A7A20500EBECCB /* Medication Changes */ = {
 			isa = PBXGroup;
 			children = (
-				CF97C52619A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.h */,
-				CF97C52719A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.m */,
-				CF97C52819A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib */,
+				CFF32E1719ACF62400DBEDBD /* APHChangedMedsOverviewViewController.h */,
+				CFF32E1819ACF62400DBEDBD /* APHChangedMedsOverviewViewController.m */,
+				CFF32E1919ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib */,
 			);
 			name = "Medication Changes";
 			sourceTree = "<group>";
@@ -252,9 +252,9 @@
 		CF97C51B19A7A21300EBECCB /* Tracing Objects */ = {
 			isa = PBXGroup;
 			children = (
-				CF97C52B19A7AD4000EBECCB /* YMLTracingOverviewViewController.h */,
-				CF97C52C19A7AD4000EBECCB /* YMLTracingOverviewViewController.m */,
-				CF97C52D19A7AD4000EBECCB /* YMLTracingOverviewViewController.xib */,
+				CFF32E2119ACF64500DBEDBD /* APHTracingOverviewViewController.h */,
+				CFF32E2219ACF64500DBEDBD /* APHTracingOverviewViewController.m */,
+				CFF32E2319ACF64500DBEDBD /* APHTracingOverviewViewController.xib */,
 			);
 			name = "Tracing Objects";
 			sourceTree = "<group>";
@@ -300,15 +300,15 @@
 			isa = PBXGroup;
 			children = (
 				CFC2D2E419A5417D00170E69 /* Main.storyboard */,
-				CFC2D2DE19A5417D00170E69 /* AppDelegate.h */,
-				CFC2D2DF19A5417D00170E69 /* AppDelegate.m */,
-				CFC2D2E119A5417D00170E69 /* YMLActivitiesViewController.h */,
-				CFC2D2E219A5417D00170E69 /* YMLActivitiesViewController.m */,
-				CFC2D2FD19A54F6100170E69 /* YMLActivitiesTableViewCell.h */,
-				CFC2D2FE19A54F6100170E69 /* YMLActivitiesTableViewCell.m */,
-				CFC2D2FF19A54F6100170E69 /* YMLActivitiesTableViewCell.xib */,
-				CF97C53019A7B26300EBECCB /* YMLStepViewController.h */,
-				CF97C53119A7B26300EBECCB /* YMLStepViewController.m */,
+				CFC2D2DE19A5417D00170E69 /* APHParkinsonAppDelegate.h */,
+				CFC2D2DF19A5417D00170E69 /* APHParkinsonAppDelegate.m */,
+				CFF32DF319ACF59D00DBEDBD /* APHActivitiesTableViewCell.h */,
+				CFF32DF419ACF59D00DBEDBD /* APHActivitiesTableViewCell.m */,
+				CFF32DF519ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib */,
+				CFF32DF619ACF59D00DBEDBD /* APHActivitiesViewController.h */,
+				CFF32DF719ACF59D00DBEDBD /* APHActivitiesViewController.m */,
+				CFF32DF819ACF59D00DBEDBD /* APHStepViewController.h */,
+				CFF32DF919ACF59D00DBEDBD /* APHStepViewController.m */,
 				CF1BA8F019A56BB000AA27B1 /* Timed Walking Activities */,
 				CF97C51819A7A1BF00EBECCB /* Sustained Phonation */,
 				CF97C51919A7A1CF00EBECCB /* Sleep Quality */,
@@ -470,18 +470,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
-				CF97C51719A6B25200EBECCB /* YMLIntervalOverviewViewController.xib in Resources */,
+				CFF32E1119ACF5DE00DBEDBD /* APHPhonationOverviewViewController.xib in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
-				CF97C51119A689CB00EBECCB /* YMLWalkingStepsViewController.xib in Resources */,
+				CFF32E1619ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.xib in Resources */,
+				CFF32E0A19ACF5BF00DBEDBD /* APHWalkingResultsViewController.xib in Resources */,
+				CFF32E0C19ACF5BF00DBEDBD /* APHWalkingStepsViewController.xib in Resources */,
+				CFF32E2019ACF63400DBEDBD /* APHIntervalOverviewViewController.xib in Resources */,
+				CFF32E1B19ACF62400DBEDBD /* APHChangedMedsOverviewViewController.xib in Resources */,
+				CFF32DFB19ACF59D00DBEDBD /* APHActivitiesTableViewCell.xib in Resources */,
 				F5E4871B19ABB72D00C86FC6 /* ResearchKit.bundle in Resources */,
-				CF97C52519A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.xib in Resources */,
-				CF97C52A19A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.xib in Resources */,
-				CFC2D30119A54F6100170E69 /* YMLActivitiesTableViewCell.xib in Resources */,
-				CF97C50C19A6751C00EBECCB /* YMLWalkingResultsViewController.xib in Resources */,
-				CF1BA8F619A56C6600AA27B1 /* YMLWalkingOverviewViewController.xib in Resources */,
+				CFF32E0819ACF5BF00DBEDBD /* APHWalkingOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
-				CF97C52019A7AD0200EBECCB /* YMLPhonationOverviewViewController.xib in Resources */,
-				CF97C52F19A7AD4000EBECCB /* YMLTracingOverviewViewController.xib in Resources */,
+				CFF32E2519ACF64500DBEDBD /* APHTracingOverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,21 +499,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF97C50B19A6751C00EBECCB /* YMLWalkingResultsViewController.m in Sources */,
-				CF97C51F19A7AD0200EBECCB /* YMLPhonationOverviewViewController.m in Sources */,
-				CF1BA8F519A56C6600AA27B1 /* YMLWalkingOverviewViewController.m in Sources */,
-				CFC2D2E319A5417D00170E69 /* YMLActivitiesViewController.m in Sources */,
-				CF97C52419A7AD1700EBECCB /* YMLSleepQualityOverviewViewController.m in Sources */,
+				CFF32E1019ACF5DE00DBEDBD /* APHPhonationOverviewViewController.m in Sources */,
+				CFF32DFC19ACF59D00DBEDBD /* APHActivitiesViewController.m in Sources */,
+				CFF32E1519ACF5F200DBEDBD /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFC2D30819A55B8000170E69 /* NSString+CustomMethods.m in Sources */,
-				CFC2D30019A54F6100170E69 /* YMLActivitiesTableViewCell.m in Sources */,
-				CF97C52E19A7AD4000EBECCB /* YMLTracingOverviewViewController.m in Sources */,
-				CF97C53219A7B26300EBECCB /* YMLStepViewController.m in Sources */,
-				CFC2D2E019A5417D00170E69 /* AppDelegate.m in Sources */,
+				CFF32E1A19ACF62400DBEDBD /* APHChangedMedsOverviewViewController.m in Sources */,
+				CFF32DFA19ACF59D00DBEDBD /* APHActivitiesTableViewCell.m in Sources */,
+				CFF32E1F19ACF63400DBEDBD /* APHIntervalOverviewViewController.m in Sources */,
+				CFF32E0B19ACF5BF00DBEDBD /* APHWalkingStepsViewController.m in Sources */,
+				CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */,
+				CFF32E0719ACF5BF00DBEDBD /* APHWalkingOverviewViewController.m in Sources */,
+				CFF32E2419ACF64500DBEDBD /* APHTracingOverviewViewController.m in Sources */,
+				CFF32E0919ACF5BF00DBEDBD /* APHWalkingResultsViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
-				CF97C51619A6B25200EBECCB /* YMLIntervalOverviewViewController.m in Sources */,
-				CFC2D30419A5509700170E69 /* YMLConfirmationView.m in Sources */,
-				CF97C51019A689CB00EBECCB /* YMLWalkingStepsViewController.m in Sources */,
-				CF97C52919A7AD2C00EBECCB /* YMLChangedMedsOverviewViewController.m in Sources */,
+				CFF32E2819ACF65A00DBEDBD /* APHConfirmationView.m in Sources */,
+				CFF32DFD19ACF59D00DBEDBD /* APHStepViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
