@@ -42,6 +42,7 @@
 		CFF32E2819ACF65A00DBEDBD /* APHConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */; };
 		F5241C9519AD4CD20098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9319AD4CD20098A4DF /* ResearchKit.framework */; };
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
+		F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9B19AD56B90098A4DF /* libbz2.dylib */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
 		F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,7 @@
 		CFF32E2719ACF65A00DBEDBD /* APHConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHConfirmationView.m; sourceTree = "<group>"; };
 		F5241C9319AD4CD20098A4DF /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
+		F5241C9B19AD56B90098A4DF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */,
 				F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */,
 				CFA2ABC419A7C446000DB961 /* libarchive.dylib in Frameworks */,
 				CFA2ABC219A7C431000DB961 /* libz.dylib in Frameworks */,
@@ -269,6 +272,7 @@
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
 				CFA2ABC319A7C446000DB961 /* libarchive.dylib */,
+				F5241C9B19AD56B90098A4DF /* libbz2.dylib */,
 				CFA2ABC119A7C431000DB961 /* libz.dylib */,
 				743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */,
 			);
