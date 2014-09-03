@@ -84,9 +84,14 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
     if (self.counter == 0) {
         [self.timer invalidate];
         self.timer = nil;
+        NSError  *error = nil;
+        BOOL  success = [self.recorder stop:&error];
+        if (success == YES) {
+            NSLog(@"Recorder Stopped Okay");
+        } else {
+            NSLog(@"Recorder Failed to Stop with Error = %@", error);
+        }
     }
-    NSError  *error = nil;
-    BOOL  success = [self.recorder stop:&error];
 }
 
 #pragma  mark  -  View Controller Methods
@@ -127,8 +132,14 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
     self.recorder = [[RKAccelerometerRecorder alloc] initWithFrequency:frequency
                                             step:self.step
                                             taskInstanceUUID:self.taskViewController.taskInstanceUUID];
+    [self.recorder viewController:self willStartStepWithView:self.view];
     NSError  *error = nil;
     BOOL  success = [self.recorder start:&error];
+    if (success == YES) {
+        NSLog(@"Recorder Started Okay");
+    } else {
+        NSLog(@"Recorder Failed to Start with Error = %@", error);
+    }
 }
 
 - (void)didReceiveMemoryWarning {
