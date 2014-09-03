@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHActivitiesViewController (Walking)
+@interface APHActivitiesViewController (WalkingTask)
 
 - (void)createWalkingTask;
 

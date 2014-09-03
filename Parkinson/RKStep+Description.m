@@ -10,15 +10,37 @@
 
 @implementation RKStep (Description)
 
-- (BOOL)description
+- (NSMutableString *)doStep
 {
     NSMutableString  *desc = [NSMutableString string];
-    if (self.identifier != nil) {
-        [desc appendWithFormat:@""];
+    if (self.identifier == nil) {
+        [desc appendFormat:@"identifier = nil, "];
+    } else {
+        [desc appendFormat:@"identifier = %@, ", self.identifier];
+    }
+    if (self.name == nil) {
+        [desc appendFormat:@"name = nil"];
+    } else {
+        [desc appendFormat:@"name = %@", self.name];
     }
     return  desc;
 }
 
+- (NSString *)description
+{
+    NSMutableString  *desc = [self doStep];
+    return  desc;
+}
+
 @end
-//  identifier;
-//  @property (nonatomic, copy, readonly) NSString *name
+
+@implementation RKActiveStep (Description)
+
+- (NSString *)description
+{
+    NSMutableString  *desc = [self doStep];
+    [desc appendFormat:@", countDown = %f, ", self.countDown];
+    return  desc;
+}
+
+@end

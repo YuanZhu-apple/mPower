@@ -7,40 +7,40 @@
 //
 
 #import "APHWalkingStepsViewController.h"
-#import "APHWalkingResultsViewController.h"
+#include <math.h>
 
-typedef  enum  _WalkingStepsPhase
-{
-    WalkingStepsPhaseWalkSomeDistance,
-    WalkingStepsPhaseWalkBackToBase,
-    WalkingStepsPhaseStandStill
-}  WalkingStepsPhase;
+static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 
-@interface APHWalkingStepsViewController ()
+@interface APHWalkingStepsViewController  ( ) <RKRecorderDelegate>
 
-@property  (nonatomic, assign)  WalkingStepsPhase   walkingPhase;
 @property  (nonatomic, strong)  IBOutlet  UIView   *phaseEgressView;
+@property  (nonatomic, strong)  IBOutlet  UILabel  *phaseEgressViewCounterDisplay;
+
 @property  (nonatomic, strong)  IBOutlet  UIView   *phaseIngressView;
+@property  (nonatomic, strong)  IBOutlet  UILabel  *phaseIngressViewCounterDisplay;
+
 @property  (nonatomic, strong)  IBOutlet  UIView   *phaseStandingView;
+@property  (nonatomic, strong)  IBOutlet  UILabel  *phaseStandingViewCounterDisplay;
+
+@property  (nonatomic, strong)            NSTimer  *timer;
+@property  (nonatomic, assign)            NSUInteger  counter;
+
+@property  (nonatomic, strong)            RKAccelerometerRecorder  *recorder;
 
 @end
 
 @implementation APHWalkingStepsViewController
 
-- (IBAction)switchPhaseDisplay:(id)sender
+#pragma  mark  -  Recorder Delegate Methods
+
+- (void)recorder:(RKRecorder *)recorder didCompleteWithResult:(RKResult *)result
 {
-    NSInteger  selected = [sender selectedSegmentIndex];
-    
-    if (selected == 0) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkSomeDistance];
-    } else if (selected == 1) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkBackToBase];
-    } else if (selected == 2) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseStandStill];
-    } else if (selected == 3) {
-        APHWalkingResultsViewController  *controller = [[APHWalkingResultsViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
+    NSLog(@"recorder didCompleteWithResult = %@", result);
+}
+
+- (void)recorder:(RKRecorder *)recorder didFailWithError:(NSError *)error
+{
+    NSLog(@"recorder didFailWithError = %@", error);
 }
 
 #pragma  mark  -  Helper Methods
@@ -63,12 +63,72 @@ typedef  enum  _WalkingStepsPhase
     self.walkingPhase = phase;
 }
 
+#pragma  mark  -  Timer Fired Methods
+
+- (void)formatCounterValue:(NSUInteger)value forPhase:(WalkingStepsPhase)phase
+{
+    NSString  *formatted = [NSString stringWithFormat:@"%02lu", (unsigned long)value];
+    if (phase == WalkingStepsPhaseWalkSomeDistance) {
+        self.phaseEgressViewCounterDisplay.text = formatted;
+    } else if (phase == WalkingStepsPhaseWalkBackToBase) {
+        self.phaseIngressViewCounterDisplay.text = formatted;
+    } else if (phase == WalkingStepsPhaseStandStill) {
+        self.phaseStandingViewCounterDisplay.text = formatted;
+    }
+}
+
+- (void)countdownTimerFired:(NSTimer *)timer
+{
+    self.counter = self.counter - 1;
+    [self formatCounterValue:self.counter forPhase:self.walkingPhase];
+    if (self.counter == 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    NSError  *error = nil;
+    BOOL  success = [self.recorder stop:&error];
+}
+
 #pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = self.taskViewController;
     
-    [self switchToWalkingPhaseView:WalkingStepsPhaseWalkSomeDistance];
+    if ([self.step.identifier isEqualToString:@"Walking 102"] == YES) {
+        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkSomeDistance];
+    } else if ([self.step.identifier isEqualToString:@"Walking 103"] == YES) {
+        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkBackToBase];
+    } else if ([self.step.identifier isEqualToString:@"Walking 104"] == YES) {
+        [self switchToWalkingPhaseView:WalkingStepsPhaseStandStill];
+    }
+    
+    NSArray  *recorderConfigurations = nil;
+    NSTimeInterval  countDownValue = kDefaultTimeInterval;
+    if ([self.step isKindOfClass:[RKActiveStep class]] == YES) {
+        countDownValue = [(RKActiveStep *)[self step] countDown];
+        recorderConfigurations = [(RKActiveStep *)[self step] recorderConfigurations];
+    }
+    if (isfinite(countDownValue) == 0) {
+        countDownValue = kDefaultTimeInterval;
+    }
+    countDownValue = fabs(countDownValue);
+    self.counter = countDownValue;
+    
+    [self formatCounterValue:self.counter forPhase:self.walkingPhase];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                    target:self  selector:@selector(countdownTimerFired:)
+                                                  userInfo:nil repeats:YES];
+
+    RKAccelerometerRecorderConfiguration  *configuration = (RKAccelerometerRecorderConfiguration *)(recorderConfigurations[0]);
+    
+    double  frequency = configuration.frequency;
+    self.recorder = [[RKAccelerometerRecorder alloc] initWithFrequency:frequency
+                                            step:self.step
+                                            taskInstanceUUID:self.taskViewController.taskInstanceUUID];
+    NSError  *error = nil;
+    BOOL  success = [self.recorder start:&error];
 }
 
 - (void)didReceiveMemoryWarning {

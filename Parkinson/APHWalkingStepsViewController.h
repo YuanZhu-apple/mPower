@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ResearchKit/ResearchKit.h>
 
-#import "APHStepViewController.h"
+typedef  enum  _WalkingStepsPhase
+{
+    WalkingStepsPhaseWalkSomeDistance,
+    WalkingStepsPhaseWalkBackToBase,
+    WalkingStepsPhaseStandStill
+}  WalkingStepsPhase;
 
-@interface APHWalkingStepsViewController : APHStepViewController
+@interface APHWalkingStepsViewController : RKStepViewController
+
+@property  (nonatomic, assign)  WalkingStepsPhase   walkingPhase;
 
 @end

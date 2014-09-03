@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ResearchKit/ResearchKit.h>
 
 @interface RKStep (Description)
+
+- (NSString *)description;
+
+@end
+
+@interface RKActiveStep (Description)
 
 - (NSString *)description;
 
