@@ -1,5 +1,5 @@
 //
-//  APHWalkingResultsViewController.h
+//  RKStep+Description.h
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <ResearchKit/ResearchKit.h>
 
-@interface APHWalkingResultsViewController : RKStepViewController
+@interface RKStep (Description)
+
+- (NSString *)description;
+
+@end
+
+@interface RKActiveStep (Description)
+
+- (NSString *)description;
 
 @end

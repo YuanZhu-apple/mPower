@@ -16,6 +16,8 @@ static  const  CGFloat  insetForBorder = 0.5;
 {
     CGRect  bounds = self.bounds;
     
+    self.backgroundColor = [UIColor clearColor];
+    
     UIEdgeInsets  insets = UIEdgeInsetsMake(insetForBorder, insetForBorder, insetForBorder, insetForBorder);
     bounds = UIEdgeInsetsInsetRect(bounds, insets);
     
