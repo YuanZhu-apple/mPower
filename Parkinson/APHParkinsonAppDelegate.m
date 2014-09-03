@@ -8,9 +8,9 @@
 
 #import "APHParkinsonAppDelegate.h"
 
-NSString *const databaseName = @"db.sqlite";
-NSString *const ParkinsonStudyIdentifier = @"com.ymedialabs.aph.parkinsons";
-NSString *const BaseURL = @"http://localhost:4567/api/v1";
+NSString *const kDatabaseName = @"db.sqlite";
+NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
+NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -36,8 +36,8 @@ NSString *const BaseURL = @"http://localhost:4567/api/v1";
 
 - (void) initializeAppleCoreStack
 {
-    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:BaseURL];
-    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:databaseName] additionalModels: nil studyIdentifier:ParkinsonStudyIdentifier];
+    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
+    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
 }
 
 - (NSString *) applicationDocumentsDirectory
