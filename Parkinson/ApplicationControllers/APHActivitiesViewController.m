@@ -16,10 +16,10 @@
 #import "APHWalkingTaskViewController.h"
 
 #import "APHPhonationOverviewViewController.h"
-#import "APHSleepQualityOverviewViewController.h"
-#import "APHChangedMedsOverviewViewController.h"
-#import "APHIntervalOverviewViewController.h"
-#import "APHTracingOverviewViewController.h"
+#import "APHSleepQualityTaskViewController.h"
+#import "APHChangedMedsTaskViewController.h"
+#import "APHIntervalTappingTaskViewController.h"
+#import "APHSetupTaskViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
@@ -86,12 +86,12 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.selectedIndexPath = indexPath;
     
     NSArray  *controllerClasses = @[
-                                    [APHWalkingTaskViewController      class],
-                                    [APHPhonationOverviewViewController    class],
-                                    [APHSleepQualityOverviewViewController class],
-                                    [APHChangedMedsOverviewViewController  class],
-                                    [APHIntervalOverviewViewController     class],
-                                    [APHTracingOverviewViewController      class]
+                                    [APHWalkingTaskViewController         class],
+                                    [APHPhonationOverviewViewController   class],
+                                    [APHSleepQualityTaskViewController    class],
+                                    [APHChangedMedsTaskViewController     class],
+                                    [APHIntervalTappingTaskViewController class],
+                                    [APHSetupTaskViewController           class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];

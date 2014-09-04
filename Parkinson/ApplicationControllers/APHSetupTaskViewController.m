@@ -8,8 +8,6 @@
 
 #import "APHSetupTaskViewController.h"
 
-#import "APHStepDictionaryKeys.h"
-
 static  NSDictionary  *keysToPropertiesMap = nil;
 
 @implementation APHSetupTaskViewController
@@ -55,6 +53,29 @@ static  NSDictionary  *keysToPropertiesMap = nil;
 + (instancetype)customTaskViewController
 {
     return  nil;
+}
+
++ (RKTask *)mapConfigurationsToTask:(NSArray *)configurations
+{
+    NSMutableArray  *steps = [[NSMutableArray alloc] initWithCapacity:[configurations count]];
+    
+    for (NSDictionary  *dictionary  in  configurations) {
+        NSString  *className = dictionary[APHStepStepTypeKey];
+        Class  class = NSClassFromString(className);
+        RKStep  *step = [[class alloc] initWithIdentifier:dictionary[APHStepIdentiferKey] name:dictionary[APHStepNameKey]];
+        
+//        NSDictionary  *keysToPropertiesMap = [super keysToPropertiesMap];
+        for (NSString  *key  in  keysToPropertiesMap) {
+            id  object = [dictionary objectForKey: key];
+            if (object != nil) {
+                NSString  *propertyName = [self.keysToPropertiesMap objectForKey:key];
+                [step setValue:object forKey:propertyName];
+            }
+        }
+        [steps addObject:step];
+    }
+    RKTask  *task = [[RKTask alloc] initWithName:@"Measures Gait and Balance" identifier:@"Walking Task" steps:steps];
+    return  task;
 }
 
 + (RKTask *)createTask
