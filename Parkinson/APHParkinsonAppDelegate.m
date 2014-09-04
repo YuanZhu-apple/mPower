@@ -8,8 +8,9 @@
 
 #import "APHParkinsonAppDelegate.h"
 
-static NSString * databaseName = @"db.sqlite";
-NSString *const ParkinsonStudyIdentifier = @"com.ymedialabs.parkinsons";
+NSString *const kDatabaseName = @"db.sqlite";
+NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
+NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -19,9 +20,24 @@ NSString *const ParkinsonStudyIdentifier = @"com.ymedialabs.parkinsons";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:@"http://localhost:4567/api/v1"];
-    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:databaseName] additionalModels: nil studyIdentifier:ParkinsonStudyIdentifier];
-    return YES;
+    [self initializeAppleCoreStack];
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [super applicationDidBecomeActive:application];
+}
+
+
+/*********************************************************************************/
+#pragma mark - Helpers
+/*********************************************************************************/
+
+- (void) initializeAppleCoreStack
+{
+    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
+    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
 }
 
 - (NSString *) applicationDocumentsDirectory
@@ -29,26 +45,6 @@ NSString *const ParkinsonStudyIdentifier = @"com.ymedialabs.parkinsons";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
 }
 
 @end
