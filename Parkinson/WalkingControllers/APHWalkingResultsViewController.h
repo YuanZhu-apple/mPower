@@ -1,5 +1,5 @@
 //
-//  APHActivitiesViewControllerWalking
+//  APHWalkingResultsViewController.h
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHActivitiesViewController (WalkingTask)
+#import <ResearchKit/ResearchKit.h>
 
-- (void)createWalkingTask;
+@interface APHWalkingResultsViewController : RKStepViewController
 
 @end
-

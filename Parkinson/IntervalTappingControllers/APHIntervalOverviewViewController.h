@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+#import <ResearchKit/ResearchKit.h>
 
-@interface APHIntervalOverviewViewController : APHStepViewController
+@interface APHIntervalOverviewViewController : RKStepViewController
 
 @end
