@@ -8,9 +8,7 @@
 
 #import "APHChangedMedsTaskViewController.h"
 
-@interface APHChangedMedsTaskViewController  ( )
-
-@end
+static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 @implementation APHChangedMedsTaskViewController
 
@@ -26,7 +24,18 @@
 
 + (RKTask *)createTask
 {
-    return  nil;
+    NSArray  *configurations = @[
+                                 @{
+                                     APHStepStepTypeKey  : APHActiveStepType,
+                                     APHStepIdentiferKey : kQuestionStep101Key,
+                                     APHStepNameKey : @"question step",
+                                     APHActiveTextKey : @"Have your changed yor medications recently?",
+                                     }
+                                 ];
+    
+    RKTask  *task = [self mapConfigurationsToTask:configurations];
+    
+    return  task;
 }
 
 @end
