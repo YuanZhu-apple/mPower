@@ -10,6 +10,12 @@
 
 @interface APHConfirmationView : UIView
 
+@property  (nonatomic, strong)  UIColor  *enabledTickColor;
+@property  (nonatomic, strong)  UIColor  *enabledBackgroundColor;
+
+@property  (nonatomic, strong)  UIColor  *disabledTickColor;
+@property  (nonatomic, strong)  UIColor  *disabledBackgroundColor;
+
 @property  (nonatomic, assign, getter = isCompleted)  BOOL  completed;
 
 @end
