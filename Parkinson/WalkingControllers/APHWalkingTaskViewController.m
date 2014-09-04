@@ -12,7 +12,7 @@
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
 
-#import "APHStepDictionaryKeys.h"
+//#import "APHStepDictionaryKeys.h"
 
 static  const  NSString  *kWalkingStep101Key = @"Walking Step 101";
 static  const  NSString  *kWalkingStep102Key = @"Walking Step 102";
@@ -102,24 +102,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      },
                                  ];
     
-    NSMutableArray  *steps = [[NSMutableArray alloc] initWithCapacity:[configurations count]];
-    
-    for (NSDictionary  *dictionary  in  configurations) {
-        NSString  *className = dictionary[APHStepStepTypeKey];
-        Class  class = NSClassFromString(className);
-        RKStep  *step = [[class alloc] initWithIdentifier:dictionary[APHStepIdentiferKey] name:dictionary[APHStepNameKey]];
-        
-        NSDictionary  *keysToPropertiesMap = [super keysToPropertiesMap];
-        for (NSString  *key  in  keysToPropertiesMap) {
-            id  object = [dictionary objectForKey: key];
-            if (object != nil) {
-                NSString  *propertyName = [self.keysToPropertiesMap objectForKey:key];
-                [step setValue:object forKey:propertyName];
-            }
-        }
-        [steps addObject:step];
-    }
-    RKTask  *task = [[RKTask alloc] initWithName:@"Measures Gait and Balance" identifier:@"Walking Task" steps:steps];
+    RKTask  *task = [self mapConfigurationsToTask:configurations];
     
     return  task;
 }
@@ -128,14 +111,17 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
 {
+    [taskViewController suspend];
 }
 
 - (void)taskViewController: (RKTaskViewController *)taskViewController didFailWithError:(NSError*)error
 {
+    [taskViewController suspend];
 }
 
 - (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
 {
+    [taskViewController suspend];
 }
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step

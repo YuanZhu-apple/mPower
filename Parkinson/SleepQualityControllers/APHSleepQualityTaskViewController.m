@@ -10,6 +10,8 @@
 
 @implementation APHSleepQualityTaskViewController
 
+static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
+
 #pragma  mark  -  Initialisation
 
 + (instancetype)customTaskViewController
@@ -22,7 +24,18 @@
 
 + (RKTask *)createTask
 {
-    return  nil;
+    NSArray  *configurations = @[
+                                 @{
+                                     APHStepStepTypeKey  : APHActiveStepType,
+                                     APHStepIdentiferKey : kQuestionStep101Key,
+                                     APHStepNameKey : @"question step",
+                                     APHActiveTextKey : @"How long do  you need to get to sleep?",
+                                     }
+                                 ];
+    
+    RKTask  *task = [self mapConfigurationsToTask:configurations];
+    
+    return  task;
 }
 
 @end
