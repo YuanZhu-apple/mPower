@@ -15,7 +15,7 @@
 
 #import "APHWalkingTaskViewController.h"
 
-#import "APHPhonationOverviewViewController.h"
+#import "APHPhonationTaskViewController.h"
 #import "APHSleepQualityOverviewViewController.h"
 #import "APHChangedMedsOverviewViewController.h"
 #import "APHIntervalOverviewViewController.h"
@@ -87,7 +87,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
-                                    [APHPhonationOverviewViewController    class],
+                                    [APHPhonationTaskViewController    class],
                                     [APHSleepQualityOverviewViewController class],
                                     [APHChangedMedsOverviewViewController  class],
                                     [APHIntervalOverviewViewController     class],
