@@ -100,13 +100,7 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
     [super viewDidLoad];
     self.delegate = self.taskViewController;
     
-    if ([self.step.identifier isEqualToString:@"Walking 102"] == YES) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkSomeDistance];
-    } else if ([self.step.identifier isEqualToString:@"Walking 103"] == YES) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseWalkBackToBase];
-    } else if ([self.step.identifier isEqualToString:@"Walking 104"] == YES) {
-        [self switchToWalkingPhaseView:WalkingStepsPhaseStandStill];
-    }
+    [self switchToWalkingPhaseView:self.walkingPhase];
     
     NSArray  *recorderConfigurations = nil;
     NSTimeInterval  countDownValue = kDefaultTimeInterval;
