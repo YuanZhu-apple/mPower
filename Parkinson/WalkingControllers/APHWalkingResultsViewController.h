@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+#import <ResearchKit/ResearchKit.h>
 
-@interface APHWalkingResultsViewController : APHStepViewController
+@interface APHWalkingResultsViewController : RKStepViewController
 
 @end

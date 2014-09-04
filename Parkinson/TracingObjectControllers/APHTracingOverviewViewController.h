@@ -1,5 +1,5 @@
 //
-//  APHPhonationOverviewViewController.h
+//  APHTracingOverviewViewController.h
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/21/14.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+#import <ResearchKit/ResearchKit.h>
 
-@interface APHPhonationOverviewViewController : APHStepViewController
+@interface APHTracingOverviewViewController : RKStepViewController
 
 @end

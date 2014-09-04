@@ -9,6 +9,12 @@
 #import "APHActivitiesViewController.h"
 
 #import "APHWalkingOverviewViewController.h"
+
+#import "APHWalkingStepsViewController.h"
+#import "APHWalkingResultsViewController.h"
+
+#import "APHWalkingTaskViewController.h"
+
 #import "APHPhonationOverviewViewController.h"
 #import "APHSleepQualityOverviewViewController.h"
 #import "APHChangedMedsOverviewViewController.h"
@@ -17,12 +23,16 @@
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
+#import "APHStepDictionaryKeys.h"
+
+#import <ResearchKit/ResearchKit.h>
 
 static  NSInteger  kNumberOfSectionsInTableView = 1;
+
 static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
 static  NSString   *kViewControllerTitle      = @"Activities";
 
-@interface APHActivitiesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface APHActivitiesViewController () <UITableViewDataSource, UITableViewDelegate, RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
 @property  (nonatomic, strong)  IBOutlet  UITableView            *tabulator;
 
@@ -76,18 +86,21 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.selectedIndexPath = indexPath;
     
     NSArray  *controllerClasses = @[
-                                    [APHWalkingOverviewViewController class],
-                                    [APHPhonationOverviewViewController class],
+                                    [APHWalkingTaskViewController      class],
+                                    [APHPhonationOverviewViewController    class],
                                     [APHSleepQualityOverviewViewController class],
-                                    [APHChangedMedsOverviewViewController class],
-                                    [APHIntervalOverviewViewController class],
-                                    [APHTracingOverviewViewController class]
+                                    [APHChangedMedsOverviewViewController  class],
+                                    [APHIntervalOverviewViewController     class],
+                                    [APHTracingOverviewViewController      class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
         if (class != [NSNull class]) {
-            UIViewController  *controller = [[class alloc] initWithNibName:nil bundle:nil];
-            [self.navigationController pushViewController:controller animated:YES];
+            RKTaskViewController  *controller = [class customTaskViewController];
+            
+            [self presentViewController:controller animated:YES completion:^{
+                NSLog(@"task Presented");
+            }];
         }
     }
 }
@@ -99,6 +112,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     [super viewDidLoad];
     
     self.navigationItem.title = @"Activities";
+    
     self.rowTitles = @[
                        @"Timed Walking",
                        @"Sustained Phonation",
@@ -107,6 +121,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
                        @"Interval Tapping",
                        @"Tracing Objects"
                        ];
+    
     self.rowSubTitles = @[
                        @"Afternoon and Evening Remaining",
                        @"Evening Remaining",
@@ -115,6 +130,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
                        @"Morning, Evening and Night Completed",
                        @"Completed"
                        ];
+    
     UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
     [self.tabulator registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier ];
 }

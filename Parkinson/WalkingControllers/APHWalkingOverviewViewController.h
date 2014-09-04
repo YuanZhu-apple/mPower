@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Henry McGilton. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+#import <ResearchKit/ResearchKit.h>
 
-@interface APHWalkingOverviewViewController : APHStepViewController
+@interface APHWalkingOverviewViewController : RKStepViewController
 
 @end
