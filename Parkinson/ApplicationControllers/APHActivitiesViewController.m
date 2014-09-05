@@ -18,7 +18,7 @@
 #import "APHPhonationTaskViewController.h"
 #import "APHSleepQualityOverviewViewController.h"
 #import "APHChangedMedsOverviewViewController.h"
-#import "APHIntervalOverviewViewController.h"
+#import "APHIntervalTappingTaskViewController.h"
 #import "APHTracingOverviewViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
@@ -91,7 +91,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
                                     [APHPhonationTaskViewController    class],
 //                                    [APHSleepQualityOverviewViewController class],
 //                                    [APHChangedMedsOverviewViewController  class],
-//                                    [APHIntervalOverviewViewController     class],
+                                    [APHIntervalTappingTaskViewController     class],
 //                                    [APHTracingOverviewViewController      class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
