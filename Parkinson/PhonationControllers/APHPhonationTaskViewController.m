@@ -36,33 +36,16 @@
                                      APHStepStepTypeKey  : APHActiveStepType,
                                      APHStepIdentiferKey : kPhonationStep102Key,
                                      APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Please say Aaaahhh for 20 seconds",
-                                     APHActiveCountDownKey : @(20.0),
+                                     APHActiveTextKey : @"Please say Aaaahhh for 10 seconds",
+                                     APHActiveCountDownKey : @(10.0),
                                      APHActiveBuzzKey : @(YES),
                                      APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : APHActiveTextKey,
+                                     APHActiveVoicePromptKey : @"Please say Aaaahhh for 10 seconds",
                                      APHActiveRecorderConfigurationsKey : @[[RKAudioRecorderConfiguration configuration]],
                                      }
                                  ];
     
-    NSMutableArray  *steps = [[NSMutableArray alloc] initWithCapacity:[configurations count]];
-    
-    for (NSDictionary  *dictionary  in  configurations) {
-        NSString  *className = dictionary[APHStepStepTypeKey];
-        Class  class = NSClassFromString(className);
-        RKStep  *step = [[class alloc] initWithIdentifier:dictionary[APHStepIdentiferKey] name:dictionary[APHStepNameKey]];
-        
-        NSDictionary  *keysToPropertiesMap = [super keysToPropertiesMap];
-        for (NSString  *key  in  keysToPropertiesMap) {
-            id  object = [dictionary objectForKey: key];
-            if (object != nil) {
-                NSString  *propertyName = [self.keysToPropertiesMap objectForKey:key];
-                [step setValue:object forKey:propertyName];
-            }
-        }
-        [steps addObject:step];
-    }
-    RKTask  *task = [[RKTask alloc] initWithName:@"Measures Phonation" identifier:@"Phonation Task" steps:steps];
+    RKTask  *task = [self mapConfigurationsToTask:configurations];
     
     return  task;
 }

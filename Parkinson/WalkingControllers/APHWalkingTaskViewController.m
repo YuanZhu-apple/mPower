@@ -12,6 +12,8 @@
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
 
+#define INTERVAL 2.0
+
 //#import "APHStepDictionaryKeys.h"
 
 static  const  NSString  *kWalkingStep101Key = @"Walking Step 101";
@@ -21,6 +23,9 @@ static  const  NSString  *kWalkingStep104Key = @"Walking Step 104";
 static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 @interface APHWalkingTaskViewController  ( )
+{
+    NSInteger _count;
+}
 
 @property  (nonatomic, strong)  NSArray  *stepsConfigurations;
 
@@ -57,8 +62,12 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      APHStepStepTypeKey  : APHActiveStepType,
                                      APHStepIdentiferKey : kWalkingStep101Key,
                                      APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Please put the phone in a pocket or armband. Then wait for voice instruction.",
-                                     APHActiveCountDownKey : @(2.0),
+                                     APHIntroductionTitleTextKey: @"Measures Gait and Balance",
+                                     APHActiveTextKey : @"You have 10 seconds to put this device in your pocket. After the phone vibrates, follow the instructions to begin.",
+                                     APHActiveCountDownKey : @(10.0),
+                                     APHActiveBuzzKey : @(YES),
+                                     APHActiveVibrationKey : @(YES),
+                                     APHActiveVoicePromptKey : @"You have 10 seconds to put this device in your pocket. After the phone vibrates, follow the instructions to begin.",
                                      },
                                  @{
                                      APHStepStepTypeKey  : APHActiveStepType,
@@ -96,9 +105,9 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                  @{
                                      APHStepStepTypeKey  : APHActiveStepType,
                                      APHStepIdentiferKey : kWalkingStep105Key,
-                                     APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"",
-                                     APHActiveVoicePromptKey : @"",
+                                     APHIntroductionTitleTextKey: @"Great Job!",
+                                     APHActiveTextKey : @"Your gait symptoms seem to appear mild. Insert easy to understand meaning of this interpretation here.",
+                                     APHActiveCountDownKey : @(5.0),
                                      },
                                  ];
     
@@ -107,21 +116,31 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
     return  task;
 }
 
+- (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
+{
+    self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
+    if (self) {
+        _count = 0;
+    }
+    return self;
+}
+
 #pragma  mark  -  Task View Controller Delegate Methods
 
 - (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
 {
     [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)taskViewController: (RKTaskViewController *)taskViewController didFailWithError:(NSError*)error
 {
-    [taskViewController suspend];
+//    [taskViewController suspend];
 }
 
 - (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
 {
-    [taskViewController suspend];
+//    [taskViewController suspend];
     [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -163,7 +182,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-//    stepViewController.continueButtonOnToolbar = NO;
+    stepViewController.continueButtonOnToolbar = NO;
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
@@ -173,7 +192,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 - (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
 {
     NSLog(@"Result: %@", result);
-//    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
+
 }
 
 
