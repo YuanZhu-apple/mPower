@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */; };
+		7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
 		CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */; };
 		CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */; };
 		CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */; };
@@ -102,6 +104,9 @@
 
 /* Begin PBXFileReference section */
 		743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
+		7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TappingTaskStoryboard.storyboard; sourceTree = "<group>"; };
+		7B1B04A219BA3A9100C5E91B /* APHCustomRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHCustomRecorder.h; path = IntervalTappingControllers/APHCustomRecorder.h; sourceTree = "<group>"; };
+		7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHCustomRecorder.m; path = IntervalTappingControllers/APHCustomRecorder.m; sourceTree = "<group>"; };
 		CF1B26F219B8BF4100D7F809 /* APHPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationOverviewViewController.h; path = PhonationControllers/APHPhonationOverviewViewController.h; sourceTree = "<group>"; };
 		CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationOverviewViewController.m; path = PhonationControllers/APHPhonationOverviewViewController.m; sourceTree = "<group>"; };
 		CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHPhonationOverviewViewController.xib; path = PhonationControllers/APHPhonationOverviewViewController.xib; sourceTree = "<group>"; };
@@ -269,6 +274,9 @@
 		CF97C51219A6B1FD00EBECCB /* Interval Tapping */ = {
 			isa = PBXGroup;
 			children = (
+				7B1B04A219BA3A9100C5E91B /* APHCustomRecorder.h */,
+				7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */,
+				7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */,
 				CF1B272719B8FBF200D7F809 /* APHIntervalTappingTaskViewController.h */,
 				CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */,
 				CF1B270219B8C01400D7F809 /* APHIntervalOverviewViewController.h */,
@@ -561,6 +569,7 @@
 				CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */,
 				CF1B270119B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
+				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
 				CF1B26FC19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */,
@@ -585,6 +594,7 @@
 				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
 				CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */,
 				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
+				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
 				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
 				CF1B272019B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
