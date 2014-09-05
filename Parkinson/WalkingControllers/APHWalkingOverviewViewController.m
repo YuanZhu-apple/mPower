@@ -58,7 +58,7 @@ static  CGFloat  kCornerRadius = 8.0;
     [self makeRoundCorners:self.afternoonView];
     [self makeRoundCorners:self.eveningView];
     
-    self.delegate = self.taskViewController;
+//    self.delegate = self.taskViewController;
 }
 
 - (void)didReceiveMemoryWarning

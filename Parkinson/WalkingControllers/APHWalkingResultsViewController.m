@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.delegate = self.taskViewController;
+//    self.delegate = self.taskViewController;
 }
 
 - (void)didReceiveMemoryWarning
