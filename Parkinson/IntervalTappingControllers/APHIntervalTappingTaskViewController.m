@@ -15,6 +15,7 @@
 
 @implementation APHIntervalTappingTaskViewController
 
+
 #pragma  mark  -  Initialisation
 
 
@@ -29,22 +30,19 @@
 + (RKTask *)createTask
 {
     NSMutableArray *steps = [[NSMutableArray alloc] init];
+    
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001a" name:@"active step"];
-        step.caption = @"Touch";
-        step.text = @"An active test, touch collection";
-        step.clickButtonToStartTimer = YES;
-        step.countDown = 20.0;
-        step.voicePrompt = @"An active test, touch collection";
-
-        step.recorderConfigurations = @[[RKTouchRecorderConfiguration configuration]];
+        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:@"aid_000a" name:@"Tap intro"];
+        step.caption = @"Tests Bradykinesia";
+        step.explanation = @"";
+        step.instruction = @"Interval tapping will give you a set of intervals in which you will need to tap the screen.";
         [steps addObject:step];
     }
     
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001b" name:@"active step"];
         step.caption = @"Button Tap";
-        step.text = @"Please tap the green button above when it appears.";
+        step.text = @"Please tap the blue box below when it appears.";
         step.countDown = 10.0;
         step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
         [steps addObject:step];
@@ -55,5 +53,23 @@
     return  task;
 }
 
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
+{
+    NSLog(@"%@", result);
+}
 
 @end

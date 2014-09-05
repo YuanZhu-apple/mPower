@@ -36,7 +36,7 @@
     [_button setTitle:@"Tap here" forState:UIControlStateNormal];
     _button.frame = CGRectInset(_containerView.bounds, 10, 10);
     _button.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleHeight;
-    _button.backgroundColor = [UIColor greenColor];
+    _button.backgroundColor = [UIColor blueColor];
     _button.hidden = YES;
     //[_button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchDown];
     [_containerView addSubview:_button];
