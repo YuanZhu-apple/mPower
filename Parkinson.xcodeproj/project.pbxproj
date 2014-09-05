@@ -9,27 +9,14 @@
 /* Begin PBXBuildFile section */
 		7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */; };
 		7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
-		CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */; };
-		CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */; };
-		CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */; };
-		CF1B26FC19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26FA19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib */; };
-		CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26FE19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m */; };
-		CF1B270119B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26FF19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib */; };
-		CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B270319B8C01400D7F809 /* APHIntervalOverviewViewController.m */; };
-		CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B270419B8C01400D7F809 /* APHIntervalOverviewViewController.xib */; };
-		CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B270819B8C05700D7F809 /* APHTracingOverviewViewController.m */; };
-		CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B270919B8C05700D7F809 /* APHTracingOverviewViewController.xib */; };
 		CF1B271519B8C0C800D7F809 /* APHWalkingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B270D19B8C0C800D7F809 /* APHWalkingOverviewViewController.m */; };
 		CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B270E19B8C0C800D7F809 /* APHWalkingOverviewViewController.xib */; };
 		CF1B271719B8C0C800D7F809 /* APHWalkingResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B271019B8C0C800D7F809 /* APHWalkingResultsViewController.m */; };
 		CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B271119B8C0C800D7F809 /* APHWalkingResultsViewController.xib */; };
 		CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B271319B8C0C800D7F809 /* APHWalkingStepsViewController.m */; };
 		CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B271419B8C0C800D7F809 /* APHWalkingStepsViewController.xib */; };
-		CF1B272019B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B271F19B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m */; };
 		CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272219B8FB6500D7F809 /* APHWalkingTaskViewController.m */; };
-		CF1B272619B8FBA800D7F809 /* APHSleepQualityTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272519B8FBA800D7F809 /* APHSleepQualityTaskViewController.m */; };
 		CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */; };
-		CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */; };
 		CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */; };
 		CFA2ABB619A7C229000DB961 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
@@ -107,21 +94,6 @@
 		7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TappingTaskStoryboard.storyboard; sourceTree = "<group>"; };
 		7B1B04A219BA3A9100C5E91B /* APHCustomRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHCustomRecorder.h; path = IntervalTappingControllers/APHCustomRecorder.h; sourceTree = "<group>"; };
 		7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHCustomRecorder.m; path = IntervalTappingControllers/APHCustomRecorder.m; sourceTree = "<group>"; };
-		CF1B26F219B8BF4100D7F809 /* APHPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationOverviewViewController.h; path = PhonationControllers/APHPhonationOverviewViewController.h; sourceTree = "<group>"; };
-		CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationOverviewViewController.m; path = PhonationControllers/APHPhonationOverviewViewController.m; sourceTree = "<group>"; };
-		CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHPhonationOverviewViewController.xib; path = PhonationControllers/APHPhonationOverviewViewController.xib; sourceTree = "<group>"; };
-		CF1B26F819B8BF9400D7F809 /* APHSleepQualityOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSleepQualityOverviewViewController.h; path = SleepQualityControllers/APHSleepQualityOverviewViewController.h; sourceTree = "<group>"; };
-		CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSleepQualityOverviewViewController.m; path = SleepQualityControllers/APHSleepQualityOverviewViewController.m; sourceTree = "<group>"; };
-		CF1B26FA19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHSleepQualityOverviewViewController.xib; path = SleepQualityControllers/APHSleepQualityOverviewViewController.xib; sourceTree = "<group>"; };
-		CF1B26FD19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHChangedMedsOverviewViewController.h; path = MedicationChangesControllers/APHChangedMedsOverviewViewController.h; sourceTree = "<group>"; };
-		CF1B26FE19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHChangedMedsOverviewViewController.m; path = MedicationChangesControllers/APHChangedMedsOverviewViewController.m; sourceTree = "<group>"; };
-		CF1B26FF19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHChangedMedsOverviewViewController.xib; path = MedicationChangesControllers/APHChangedMedsOverviewViewController.xib; sourceTree = "<group>"; };
-		CF1B270219B8C01400D7F809 /* APHIntervalOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHIntervalOverviewViewController.h; path = IntervalTappingControllers/APHIntervalOverviewViewController.h; sourceTree = "<group>"; };
-		CF1B270319B8C01400D7F809 /* APHIntervalOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHIntervalOverviewViewController.m; path = IntervalTappingControllers/APHIntervalOverviewViewController.m; sourceTree = "<group>"; };
-		CF1B270419B8C01400D7F809 /* APHIntervalOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHIntervalOverviewViewController.xib; path = IntervalTappingControllers/APHIntervalOverviewViewController.xib; sourceTree = "<group>"; };
-		CF1B270719B8C05700D7F809 /* APHTracingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHTracingOverviewViewController.h; path = TracingObjectControllers/APHTracingOverviewViewController.h; sourceTree = "<group>"; };
-		CF1B270819B8C05700D7F809 /* APHTracingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHTracingOverviewViewController.m; path = TracingObjectControllers/APHTracingOverviewViewController.m; sourceTree = "<group>"; };
-		CF1B270919B8C05700D7F809 /* APHTracingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHTracingOverviewViewController.xib; path = TracingObjectControllers/APHTracingOverviewViewController.xib; sourceTree = "<group>"; };
 		CF1B270C19B8C0C800D7F809 /* APHWalkingOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHWalkingOverviewViewController.h; path = WalkingControllers/APHWalkingOverviewViewController.h; sourceTree = "<group>"; };
 		CF1B270D19B8C0C800D7F809 /* APHWalkingOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHWalkingOverviewViewController.m; path = WalkingControllers/APHWalkingOverviewViewController.m; sourceTree = "<group>"; };
 		CF1B270E19B8C0C800D7F809 /* APHWalkingOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHWalkingOverviewViewController.xib; path = WalkingControllers/APHWalkingOverviewViewController.xib; sourceTree = "<group>"; };
@@ -131,16 +103,10 @@
 		CF1B271219B8C0C800D7F809 /* APHWalkingStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHWalkingStepsViewController.h; path = WalkingControllers/APHWalkingStepsViewController.h; sourceTree = "<group>"; };
 		CF1B271319B8C0C800D7F809 /* APHWalkingStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHWalkingStepsViewController.m; path = WalkingControllers/APHWalkingStepsViewController.m; sourceTree = "<group>"; };
 		CF1B271419B8C0C800D7F809 /* APHWalkingStepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHWalkingStepsViewController.xib; path = WalkingControllers/APHWalkingStepsViewController.xib; sourceTree = "<group>"; };
-		CF1B271E19B8FB2F00D7F809 /* APHChangedMedsTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHChangedMedsTaskViewController.h; path = MedicationChangesControllers/APHChangedMedsTaskViewController.h; sourceTree = "<group>"; };
-		CF1B271F19B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHChangedMedsTaskViewController.m; path = MedicationChangesControllers/APHChangedMedsTaskViewController.m; sourceTree = "<group>"; };
 		CF1B272119B8FB6500D7F809 /* APHWalkingTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHWalkingTaskViewController.h; path = WalkingControllers/APHWalkingTaskViewController.h; sourceTree = "<group>"; };
 		CF1B272219B8FB6500D7F809 /* APHWalkingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHWalkingTaskViewController.m; path = WalkingControllers/APHWalkingTaskViewController.m; sourceTree = "<group>"; };
-		CF1B272419B8FBA800D7F809 /* APHSleepQualityTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSleepQualityTaskViewController.h; path = SleepQualityControllers/APHSleepQualityTaskViewController.h; sourceTree = "<group>"; };
-		CF1B272519B8FBA800D7F809 /* APHSleepQualityTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSleepQualityTaskViewController.m; path = SleepQualityControllers/APHSleepQualityTaskViewController.m; sourceTree = "<group>"; };
 		CF1B272719B8FBF200D7F809 /* APHIntervalTappingTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHIntervalTappingTaskViewController.h; path = IntervalTappingControllers/APHIntervalTappingTaskViewController.h; sourceTree = "<group>"; };
 		CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHIntervalTappingTaskViewController.m; path = IntervalTappingControllers/APHIntervalTappingTaskViewController.m; sourceTree = "<group>"; };
-		CF1B272A19B8FC1900D7F809 /* APHObjectTracingTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHObjectTracingTaskViewController.h; path = TracingObjectControllers/APHObjectTracingTaskViewController.h; sourceTree = "<group>"; };
-		CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHObjectTracingTaskViewController.m; path = TracingObjectControllers/APHObjectTracingTaskViewController.m; sourceTree = "<group>"; };
 		CF1B272D19B8FC3D00D7F809 /* APHPhonationTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationTaskViewController.h; path = PhonationControllers/APHPhonationTaskViewController.h; sourceTree = "<group>"; };
 		CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationTaskViewController.m; path = PhonationControllers/APHPhonationTaskViewController.m; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -236,10 +202,7 @@
 				CFEE9A3F19B7B1A200D1E858 /* APHSetupTaskViewController.m */,
 				CF1BA8F019A56BB000AA27B1 /* Timed Walking Activities */,
 				CF97C51819A7A1BF00EBECCB /* Sustained Phonation */,
-				CF97C51919A7A1CF00EBECCB /* Sleep Quality */,
-				CF97C51A19A7A20500EBECCB /* Medication Changes */,
 				CF97C51219A6B1FD00EBECCB /* Interval Tapping */,
-				CF97C51B19A7A21300EBECCB /* Tracing Objects */,
 			);
 			name = "Tasks and Steps View Controllers";
 			sourceTree = "<group>";
@@ -279,9 +242,6 @@
 				7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */,
 				CF1B272719B8FBF200D7F809 /* APHIntervalTappingTaskViewController.h */,
 				CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */,
-				CF1B270219B8C01400D7F809 /* APHIntervalOverviewViewController.h */,
-				CF1B270319B8C01400D7F809 /* APHIntervalOverviewViewController.m */,
-				CF1B270419B8C01400D7F809 /* APHIntervalOverviewViewController.xib */,
 			);
 			name = "Interval Tapping";
 			sourceTree = "<group>";
@@ -291,47 +251,8 @@
 			children = (
 				CF1B272D19B8FC3D00D7F809 /* APHPhonationTaskViewController.h */,
 				CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */,
-				CF1B26F219B8BF4100D7F809 /* APHPhonationOverviewViewController.h */,
-				CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */,
-				CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */,
 			);
 			name = "Sustained Phonation";
-			sourceTree = "<group>";
-		};
-		CF97C51919A7A1CF00EBECCB /* Sleep Quality */ = {
-			isa = PBXGroup;
-			children = (
-				CF1B272419B8FBA800D7F809 /* APHSleepQualityTaskViewController.h */,
-				CF1B272519B8FBA800D7F809 /* APHSleepQualityTaskViewController.m */,
-				CF1B26F819B8BF9400D7F809 /* APHSleepQualityOverviewViewController.h */,
-				CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */,
-				CF1B26FA19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib */,
-			);
-			name = "Sleep Quality";
-			sourceTree = "<group>";
-		};
-		CF97C51A19A7A20500EBECCB /* Medication Changes */ = {
-			isa = PBXGroup;
-			children = (
-				CF1B271E19B8FB2F00D7F809 /* APHChangedMedsTaskViewController.h */,
-				CF1B271F19B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m */,
-				CF1B26FD19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.h */,
-				CF1B26FE19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m */,
-				CF1B26FF19B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib */,
-			);
-			name = "Medication Changes";
-			sourceTree = "<group>";
-		};
-		CF97C51B19A7A21300EBECCB /* Tracing Objects */ = {
-			isa = PBXGroup;
-			children = (
-				CF1B272A19B8FC1900D7F809 /* APHObjectTracingTaskViewController.h */,
-				CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */,
-				CF1B270719B8C05700D7F809 /* APHTracingOverviewViewController.h */,
-				CF1B270819B8C05700D7F809 /* APHTracingOverviewViewController.m */,
-				CF1B270919B8C05700D7F809 /* APHTracingOverviewViewController.xib */,
-			);
-			name = "Tracing Objects";
 			sourceTree = "<group>";
 		};
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
@@ -559,20 +480,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */,
-				CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
 				CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */,
-				CF1B270119B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
 				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
-				CF1B26FC19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
-				CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,22 +506,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */,
 				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
-				CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */,
 				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
 				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
 				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
-				CF1B272019B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
 				CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */,
-				CF1B272619B8FBA800D7F809 /* APHSleepQualityTaskViewController.m in Sources */,
 				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
-				CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */,
-				CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
-				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
-				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
 				CFEE9A4319B7C01800D1E858 /* APHStepDictionaryKeys.m in Sources */,

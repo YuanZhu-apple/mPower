@@ -16,10 +16,7 @@
 #import "APHWalkingTaskViewController.h"
 
 #import "APHPhonationTaskViewController.h"
-#import "APHSleepQualityOverviewViewController.h"
-#import "APHChangedMedsOverviewViewController.h"
 #import "APHIntervalTappingTaskViewController.h"
-#import "APHTracingOverviewViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
@@ -89,10 +86,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
                                     [APHPhonationTaskViewController    class],
-//                                    [APHSleepQualityOverviewViewController class],
-//                                    [APHChangedMedsOverviewViewController  class],
                                     [APHIntervalTappingTaskViewController     class],
-//                                    [APHTracingOverviewViewController      class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
@@ -117,19 +111,13 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.rowTitles = @[
                        @"Timed Walking",
                        @"Sustained Phonation",
-//                       @"Did you sleep well last night?",
-//                       @"Have you recently changed medications?",
                        @"Interval Tapping",
-//                       @"Tracing Objects"
                        ];
     
     self.rowSubTitles = @[
                        @"",
                        @"",
                        @"",
-                       @"",
-                       @"Morning, Evening and Night Completed",
-                       @"Completed"
                        ];
     
     UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
