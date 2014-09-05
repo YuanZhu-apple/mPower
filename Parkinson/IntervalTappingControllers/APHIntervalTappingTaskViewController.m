@@ -43,7 +43,7 @@
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001b" name:@"active step"];
         step.caption = @"Button Tap";
         step.text = @"Please tap the blue box below when it appears.";
-        step.countDown = 10.0;
+        step.countDown = 20.0;
         step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
         [steps addObject:step];
     }

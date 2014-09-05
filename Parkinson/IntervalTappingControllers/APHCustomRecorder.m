@@ -21,7 +21,9 @@
 - (void)viewController:(UIViewController*)viewController willStartStepWithView:(UIView*)view{
     [super viewController:viewController willStartStepWithView:view];
     self.containerView = view;
+
 }
+
 
 - (BOOL)start:(NSError *__autoreleasing *)error{
     BOOL ret = [super start:error];
@@ -37,8 +39,6 @@
     _button.frame = CGRectInset(_containerView.bounds, 10, 10);
     _button.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleHeight;
     _button.backgroundColor = [UIColor blueColor];
-    _button.hidden = YES;
-    //[_button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchDown];
     [_containerView addSubview:_button];
     
     
@@ -49,14 +49,6 @@
     
     _records = [NSMutableArray array];
     
-    [self.timer invalidate];
-    
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
-    });
-    
     return ret;
 }
 
@@ -65,8 +57,6 @@
     CGPoint tappedPoint = [recognizer locationInView:_button];
     CGFloat xCoordinate = tappedPoint.x;
     CGFloat yCoordinate = tappedPoint.y;
-    
-    NSLog(@"Touch Using UITapGestureRecognizer x : %f y : %f", xCoordinate, yCoordinate);
     
     NSString *xStr = [NSString stringWithFormat:@"%f", xCoordinate];
     NSString *yStr = [NSString stringWithFormat:@"%f", yCoordinate];
@@ -89,14 +79,6 @@
     [_records addObject:dictionary];
     
 }
-
-//- (IBAction)buttonTapped:(id)sender{
-//    NSDictionary* dictionary = @{@"event": @"userTouchDown",
-//                                 @"time": @([[NSDate date] timeIntervalSinceReferenceDate])};
-//    
-//    [_records addObject:dictionary];
-//    
-//}
 
 - (BOOL)stop:(NSError *__autoreleasing *)error{
     BOOL ret = [super stop:error];
