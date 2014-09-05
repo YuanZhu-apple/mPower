@@ -68,7 +68,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      APHActiveCountDownKey : @(20.0),
                                      APHActiveBuzzKey : @(YES),
                                      APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : APHActiveTextKey,
+                                     APHActiveVoicePromptKey : @"Now please walk out 20 steps.",
                                      APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
                                      },
                                  @{
@@ -79,7 +79,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      APHActiveCountDownKey : @(20.0),
                                      APHActiveBuzzKey : @(YES),
                                      APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : APHActiveTextKey,
+                                     APHActiveVoicePromptKey : @"Now please turn 180 degrees, and walk back.",
                                      APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
                                      },
                                  @{
@@ -90,7 +90,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      APHActiveCountDownKey : @(30.0),
                                      APHActiveBuzzKey : @(YES),
                                      APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : APHActiveTextKey,
+                                     APHActiveVoicePromptKey : @"Now please stand still for 30 seconds.",
                                      APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
                                      },
                                  @{
@@ -98,7 +98,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
                                      APHStepIdentiferKey : kWalkingStep105Key,
                                      APHStepNameKey : @"active step",
                                      APHActiveTextKey : @"",
-                                     APHActiveVoicePromptKey : APHActiveTextKey,
+                                     APHActiveVoicePromptKey : @"",
                                      },
                                  ];
     
@@ -122,6 +122,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 - (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
 {
     [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
@@ -129,44 +130,51 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
     return  YES;
 }
 
-- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
-{
-    NSLog(@"taskViewController viewControllerForStep = %@", step);
-    
-    NSDictionary  *stepsToControllersMap = @{
-                                             kWalkingStep101Key : @[ [APHWalkingOverviewViewController class], @(0) ],
-                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
-                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
-                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
-                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
-                                           };
-    
-    RKStepViewController  *controller = nil;
-    
-    NSArray  *descriptor = stepsToControllersMap[step.identifier];
-    
-    Class  classToCreate = descriptor[0];
-    NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
-    controller = [[classToCreate alloc] initWithStep:step];
-    if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
-        ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
-    }
-    controller.delegate = self;
-    return  controller;
-}
+//- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+//{
+//    NSLog(@"taskViewController viewControllerForStep = %@", step);
+//    
+//    NSDictionary  *stepsToControllersMap = @{
+//                                             kWalkingStep101Key : @[ [APHWalkingOverviewViewController class], @(0) ],
+//                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
+//                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
+//                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
+//                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
+//                                           };
+//    
+//    RKStepViewController  *controller = nil;
+//    
+//    NSArray  *descriptor = stepsToControllersMap[step.identifier];
+//    
+//    Class  classToCreate = descriptor[0];
+//    NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
+//    controller = [[classToCreate alloc] initWithStep:step];
+//    if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
+//        ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
+//    }
+//    controller.delegate = self;
+//    return  controller;
+//}
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
 {
     return  YES;
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController
-willPresentStepViewController:(RKStepViewController *)stepViewController
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
+//    stepViewController.continueButtonOnToolbar = NO;
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
 {
 }
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
+{
+    NSLog(@"Result: %@", result);
+//    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 @end
