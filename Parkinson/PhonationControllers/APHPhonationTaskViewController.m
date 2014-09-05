@@ -29,19 +29,24 @@
                                      APHStepStepTypeKey  : APHIntroductionStepType,
                                      APHStepIdentiferKey : kPhonationStep101Key,
                                      APHStepNameKey : @"Intro step",
-                                     APHIntroductionTitleTextKey : @"Introduction To Phonation",
-                                     APHIntroductionDescriptionTextKey : @"In the next screen you will be asked to say \"Aaaahhh\" for 20 seconds.",
+                                     APHIntroductionTitleTextKey : @"Tests Speech Difficulties",
+                                     APHIntroductionDescriptionTextKey : @"In the next screen you will be asked to say \"Aaaahhh\" for 10 seconds.",
                                      },
                                  @{
                                      APHStepStepTypeKey  : APHActiveStepType,
                                      APHStepIdentiferKey : kPhonationStep102Key,
                                      APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Please say Aaaahhh for 10 seconds",
+                                     APHActiveTextKey : @"Please say \"Aaaahhh\" for 10 seconds",
                                      APHActiveCountDownKey : @(10.0),
                                      APHActiveBuzzKey : @(YES),
                                      APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : @"Please say Aaaahhh for 10 seconds",
                                      APHActiveRecorderConfigurationsKey : @[[RKAudioRecorderConfiguration configuration]],
+                                     },
+                                 @{
+                                     APHStepStepTypeKey  : APHActiveStepType,
+                                     APHStepIdentiferKey : kPhonationStep103Key,
+                                     APHIntroductionTitleTextKey: @"Great Job!",
+                                     APHActiveCountDownKey : @(5.0),
                                      }
                                  ];
     
@@ -50,19 +55,28 @@
     return  task;
 }
 
--(void)taskViewControllerDidComplete:(RKTaskViewController *)taskViewController
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
 {
     [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
 {
     [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+{
+//    if (![stepViewController.step isKindOfClass:[RKIntroductionStep class]]) {
+//            stepViewController.continueButtonOnToolbar = NO;
+//    }
+
 }
 
 -(void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
 {
-    NSLog(@"%@", [self descriptionForObject:result]);
     NSError * error;
     if ([[NSFileManager defaultManager] fileExistsAtPath:[self filePath]]) {
         [[NSFileManager defaultManager] removeItemAtPath:[self filePath] error:&error];
@@ -74,7 +88,6 @@
     if (error) {
         NSLog(@"%@",[self descriptionForObject:error]);
     }
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (NSString *)filePath

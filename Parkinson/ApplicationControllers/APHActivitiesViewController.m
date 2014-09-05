@@ -84,14 +84,15 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
                                     [APHPhonationTaskViewController    class],
-                                    [APHSleepQualityOverviewViewController class],
-                                    [APHChangedMedsOverviewViewController  class],
-                                    [APHIntervalOverviewViewController     class],
-                                    [APHTracingOverviewViewController      class]
+//                                    [APHSleepQualityOverviewViewController class],
+//                                    [APHChangedMedsOverviewViewController  class],
+//                                    [APHIntervalOverviewViewController     class],
+//                                    [APHTracingOverviewViewController      class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
@@ -116,15 +117,15 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.rowTitles = @[
                        @"Timed Walking",
                        @"Sustained Phonation",
-                       @"Did you sleep well last night?",
-                       @"Have you recently changed medications?",
+//                       @"Did you sleep well last night?",
+//                       @"Have you recently changed medications?",
                        @"Interval Tapping",
-                       @"Tracing Objects"
+//                       @"Tracing Objects"
                        ];
     
     self.rowSubTitles = @[
-                       @"Afternoon and Evening Remaining",
-                       @"Evening Remaining",
+                       @"",
+                       @"",
                        @"",
                        @"",
                        @"Morning, Evening and Night Completed",
