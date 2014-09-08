@@ -140,7 +140,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
-    return  YES;
+    return  NO;
 }
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
@@ -150,7 +150,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.continueButtonOnToolbar = NO;
+//    stepViewController.continueButtonOnToolbar = NO;
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController

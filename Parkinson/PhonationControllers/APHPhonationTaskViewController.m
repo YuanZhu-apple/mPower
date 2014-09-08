@@ -10,6 +10,12 @@
 #import "APHStepDictionaryKeys.h"
 #import <objc/message.h>
 
+static NSString * kPhonationStep101Key = @"Phonation_Step_101";
+static NSString * kPhonationStep102Key = @"Phonation_Step_102";
+static NSString * kPhonationStep103Key = @"Phonation_Step_103";
+static NSString * kPhonationStep104Key = @"Phonation_Step_104";
+static NSString * kPhonationStep105Key = @"Phonation_Step_105";
+
 @implementation APHPhonationTaskViewController
 
 #pragma  mark  -  Initialisation
@@ -24,33 +30,33 @@
 
 + (RKTask *)createTask
 {
-    NSArray  *configurations = @[
-                                 @{
-                                     APHStepStepTypeKey  : APHIntroductionStepType,
-                                     APHStepIdentiferKey : kPhonationStep101Key,
-                                     APHStepNameKey : @"Intro step",
-                                     APHIntroductionTitleTextKey : @"Tests Speech Difficulties",
-                                     APHIntroductionDescriptionTextKey : @"In the next screen you will be asked to say \"Aaaahhh\" for 10 seconds.",
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kPhonationStep102Key,
-                                     APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Please say \"Aaaahhh\" for 10 seconds",
-                                     APHActiveCountDownKey : @(10.0),
-                                     APHActiveBuzzKey : @(YES),
-                                     APHActiveVibrationKey : @(YES),
-                                     APHActiveRecorderConfigurationsKey : @[[RKAudioRecorderConfiguration configuration]],
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kPhonationStep103Key,
-                                     APHIntroductionTitleTextKey: @"Great Job!",
-                                     APHActiveCountDownKey : @(5.0),
-                                     }
-                                 ];
     
-    RKTask  *task = [self mapConfigurationsToTask:configurations];
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    {
+        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kPhonationStep101Key name:@"Introduction Step"];
+        step.caption = @"Tests Speech Difficulties";
+        step.explanation = @"";
+        step.instruction = @"In the next screen you will be asked to say \"Aaaahhh\" for 10 seconds.";
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep102Key name:@"active step"];
+        step.text = @"Please say \"Aaaahhh\" for 10 seconds";
+        step.countDown = 10.0;
+        step.buzz = YES;
+        step.vibration = YES;
+        step.recorderConfigurations = @[[RKAudioRecorderConfiguration configuration]];
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep103Key name:@"active step"];
+        step.caption = @"Great Job!";
+        step.countDown = 5.0;
+        [steps addObject:step];
+    }
+    
+    RKTask  *task = [[RKTask alloc] initWithName:@"Sustained Phonation" identifier:@"Phonation Task" steps:steps];
     
     return  task;
 }
@@ -65,14 +71,6 @@
 {
     [taskViewController suspend];
     [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
-{
-//    if (![stepViewController.step isKindOfClass:[RKIntroductionStep class]]) {
-//            stepViewController.continueButtonOnToolbar = NO;
-//    }
-
 }
 
 -(void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
