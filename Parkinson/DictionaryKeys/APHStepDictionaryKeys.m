@@ -48,8 +48,8 @@ NSString  *APHActiveRecorderConfigurationsPropKey = @"recorderConfigurations";
 
 NSString  *APHConsentConsentPdfFilePropKey        = @"consentPdfFile";
 
-NSString  *APHIntroductionTitleTextPropKey        = @"titleText";
-NSString  *APHIntroductionDescriptionTextPropKey  = @"descriptionText";
+NSString  *APHIntroductionTitleTextPropKey        = @"caption";
+NSString  *APHIntroductionDescriptionTextPropKey  = @"explanation";
 
 NSString  *APHMediaRequestPropKey                 = @"request";
 NSString  *APHMediaMediaTypePropKey               = @"mediaType";

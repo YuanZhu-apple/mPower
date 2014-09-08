@@ -31,6 +31,17 @@
 		CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */; };
 		CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */; };
 		CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */; };
+		CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */; };
+		CF1ECBC319BE135F003F29DE /* APHOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBC119BE135F003F29DE /* APHOverviewViewController.m */; };
+		CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */; };
+		CF1ECBCC19BE1372003F29DE /* APHLearnDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */; };
+		CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */; };
+		CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */; };
+		CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */; };
+		CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015D19BE19DE006470D7 /* tab.item.activites.png */; };
+		CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */; };
+		CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015F19BE19DE006470D7 /* tab.item.learning.png */; };
+		CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29016019BE19DE006470D7 /* tab.item.overview.png */; };
 		CFA2ABB619A7C229000DB961 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
@@ -143,6 +154,22 @@
 		CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHObjectTracingTaskViewController.m; path = TracingObjectControllers/APHObjectTracingTaskViewController.m; sourceTree = "<group>"; };
 		CF1B272D19B8FC3D00D7F809 /* APHPhonationTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationTaskViewController.h; path = PhonationControllers/APHPhonationTaskViewController.h; sourceTree = "<group>"; };
 		CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationTaskViewController.m; path = PhonationControllers/APHPhonationTaskViewController.m; sourceTree = "<group>"; };
+		CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnMasterViewController.m; path = ApplicationControllers/APHLearnMasterViewController.m; sourceTree = "<group>"; };
+		CF1ECBC019BE135F003F29DE /* APHOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHOverviewViewController.h; path = ApplicationControllers/APHOverviewViewController.h; sourceTree = "<group>"; };
+		CF1ECBC119BE135F003F29DE /* APHOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHOverviewViewController.m; path = ApplicationControllers/APHOverviewViewController.m; sourceTree = "<group>"; };
+		CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnDetailViewController.h; path = ApplicationControllers/APHLearnDetailViewController.h; sourceTree = "<group>"; };
+		CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnDetailViewController.m; path = ApplicationControllers/APHLearnDetailViewController.m; sourceTree = "<group>"; };
+		CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHLearnDetailViewController.xib; path = ApplicationControllers/APHLearnDetailViewController.xib; sourceTree = "<group>"; };
+		CF1ECBC719BE1372003F29DE /* APHLearnMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnMasterTableViewCell.h; path = ApplicationControllers/APHLearnMasterTableViewCell.h; sourceTree = "<group>"; };
+		CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnMasterTableViewCell.m; path = ApplicationControllers/APHLearnMasterTableViewCell.m; sourceTree = "<group>"; };
+		CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHLearnMasterTableViewCell.xib; path = ApplicationControllers/APHLearnMasterTableViewCell.xib; sourceTree = "<group>"; };
+		CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnMasterViewController.h; path = ApplicationControllers/APHLearnMasterViewController.h; sourceTree = "<group>"; };
+		CF1ECBCF19BE1385003F29DE /* APHHealthProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHHealthProfileViewController.h; path = ApplicationControllers/APHHealthProfileViewController.h; sourceTree = "<group>"; };
+		CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHHealthProfileViewController.m; path = ApplicationControllers/APHHealthProfileViewController.m; sourceTree = "<group>"; };
+		CF29015D19BE19DE006470D7 /* tab.item.activites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.activites.png; path = TabBarImages/tab.item.activites.png; sourceTree = "<group>"; };
+		CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.health.profile.png; path = TabBarImages/tab.item.health.profile.png; sourceTree = "<group>"; };
+		CF29015F19BE19DE006470D7 /* tab.item.learning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.learning.png; path = TabBarImages/tab.item.learning.png; sourceTree = "<group>"; };
+		CF29016019BE19DE006470D7 /* tab.item.overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.overview.png; path = TabBarImages/tab.item.overview.png; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -217,16 +244,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CF14862719AFE2E1001EBB29 /* Application Controller */ = {
+		CF14862719AFE2E1001EBB29 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CFEE9A0719B791D000D1E858 /* APHActivitiesViewController.h */,
-				CFEE9A0819B791D000D1E858 /* APHActivitiesViewController.m */,
-				CFEE9A0419B791D000D1E858 /* APHActivitiesTableViewCell.h */,
-				CFEE9A0519B791D000D1E858 /* APHActivitiesTableViewCell.m */,
-				CFEE9A0619B791D000D1E858 /* APHActivitiesTableViewCell.xib */,
+				CF1ECBBB19BE1288003F29DE /* Overview Controllers */,
+				CF1ECBBC19BE129E003F29DE /* Learning Controllers */,
+				CF1ECBBD19BE12AE003F29DE /* Activities Controllers */,
+				CF1ECBBE19BE12BF003F29DE /* Health Profile Controllers */,
 			);
-			name = "Application Controller";
+			name = "Application Controllers";
 			sourceTree = "<group>";
 		};
 		CF14862819AFE30C001EBB29 /* Tasks and Steps View Controllers */ = {
@@ -269,6 +295,62 @@
 				CFEE9A2219B7961D00D1E858 /* APHConfirmationView.m */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		CF1ECBBB19BE1288003F29DE /* Overview Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF1ECBC019BE135F003F29DE /* APHOverviewViewController.h */,
+				CF1ECBC119BE135F003F29DE /* APHOverviewViewController.m */,
+			);
+			name = "Overview Controllers";
+			sourceTree = "<group>";
+		};
+		CF1ECBBC19BE129E003F29DE /* Learning Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */,
+				CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */,
+				CF1ECBC719BE1372003F29DE /* APHLearnMasterTableViewCell.h */,
+				CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */,
+				CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */,
+				CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */,
+				CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */,
+				CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */,
+			);
+			name = "Learning Controllers";
+			sourceTree = "<group>";
+		};
+		CF1ECBBD19BE12AE003F29DE /* Activities Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFEE9A0719B791D000D1E858 /* APHActivitiesViewController.h */,
+				CFEE9A0819B791D000D1E858 /* APHActivitiesViewController.m */,
+				CFEE9A0419B791D000D1E858 /* APHActivitiesTableViewCell.h */,
+				CFEE9A0519B791D000D1E858 /* APHActivitiesTableViewCell.m */,
+				CFEE9A0619B791D000D1E858 /* APHActivitiesTableViewCell.xib */,
+			);
+			name = "Activities Controllers";
+			sourceTree = "<group>";
+		};
+		CF1ECBBE19BE12BF003F29DE /* Health Profile Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF1ECBCF19BE1385003F29DE /* APHHealthProfileViewController.h */,
+				CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */,
+			);
+			name = "Health Profile Controllers";
+			sourceTree = "<group>";
+		};
+		CF29015B19BE19C3006470D7 /* Tab Bar Images */ = {
+			isa = PBXGroup;
+			children = (
+				CF29015D19BE19DE006470D7 /* tab.item.activites.png */,
+				CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */,
+				CF29015F19BE19DE006470D7 /* tab.item.learning.png */,
+				CF29016019BE19DE006470D7 /* tab.item.overview.png */,
+			);
+			name = "Tab Bar Images";
 			sourceTree = "<group>";
 		};
 		CF97C51219A6B1FD00EBECCB /* Interval Tapping */ = {
@@ -387,7 +469,7 @@
 				CFC2D2E419A5417D00170E69 /* Main.storyboard */,
 				CFC2D2DE19A5417D00170E69 /* APHParkinsonAppDelegate.h */,
 				CFC2D2DF19A5417D00170E69 /* APHParkinsonAppDelegate.m */,
-				CF14862719AFE2E1001EBB29 /* Application Controller */,
+				CF14862719AFE2E1001EBB29 /* Application Controllers */,
 				CF14862819AFE30C001EBB29 /* Tasks and Steps View Controllers */,
 				CF1BA8F119A56C0500AA27B1 /* Custom Views */,
 				CFC2D30519A55B0600170E69 /* Categories */,
@@ -400,6 +482,7 @@
 		CFC2D2DA19A5417D00170E69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF29015B19BE19C3006470D7 /* Tab Bar Images */,
 				F5241CA819AEA5110098A4DF /* Parkinson.entitlements */,
 				CFC2D2DB19A5417D00170E69 /* Info.plist */,
 				CFC2D2DC19A5417D00170E69 /* main.m */,
@@ -559,19 +642,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */,
 				CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */,
+				CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */,
 				CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
+				CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */,
+				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
+				CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */,
 				CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */,
 				CF1B270119B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
 				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
 				CF1B26FC19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
+				CF1ECBCC19BE1372003F29DE /* APHLearnDetailViewController.xib in Resources */,
 				CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,9 +679,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */,
+				CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */,
 				CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */,
 				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
 				CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */,
+				CF1ECBC319BE135F003F29DE /* APHOverviewViewController.m in Sources */,
 				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
 				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
 				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
@@ -604,6 +696,7 @@
 				CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */,
 				CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
+				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
 				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
 				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
@@ -614,6 +707,7 @@
 				CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */,
 				CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */,
 				CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */,
+				CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
