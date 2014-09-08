@@ -1,61 +1,276 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r4U-a5-hZ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
-        <!--Activities View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="APHActivitiesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xxU-Gh-UBD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="T1f-Dt-ekQ"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="61v-lW-OEw"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="7Yz-4b-qMO"/>
-                    <connections>
-                        <outlet property="tabulator" destination="xxU-Gh-UBD" id="kVg-75-shA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="848" y="100"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="BzA-3S-JdL">
-            <objects>
-                <navigationController id="r4U-a5-hZ9" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
                         <size key="portraitSize" width="320" height="568"/>
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lY6-3g-elw">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qzj-Fp-qDP" kind="relationship" relationship="viewControllers" id="SZM-lV-IwZ"/>
+                        <segue destination="bzG-IA-Wtr" kind="relationship" relationship="viewControllers" id="jKj-4l-NZW"/>
+                        <segue destination="yJz-wc-ll8" kind="relationship" relationship="viewControllers" id="6zN-dO-Etw"/>
+                        <segue destination="MDE-Fz-b8z" kind="relationship" relationship="viewControllers" id="nvr-vd-B6f"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-118" y="4"/>
+        </scene>
+        <!--Overview-->
+        <scene sceneID="qBn-LH-jOq">
+            <objects>
+                <navigationController id="qzj-Fp-qDP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Overview" image="tab.item.overview.png" id="vBV-Mz-HtV"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xu-Pu-Bdl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="9ba-Vu-BTV"/>
+                        <segue destination="tte-yE-FP3" kind="relationship" relationship="rootViewController" id="faW-3L-mj5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fhh-NV-ScW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RcH-JA-tbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="100"/>
+            <point key="canvasLocation" x="315" y="-430"/>
+        </scene>
+        <!--Overview View Controller-->
+        <scene sceneID="FiS-Pe-hB9">
+            <objects>
+                <viewController id="tte-yE-FP3" customClass="APHOverviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cKV-oF-Tai"/>
+                        <viewControllerLayoutGuide type="bottom" id="H2u-CV-Mgg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Ug-IJ-rsb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-B5-gDh">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tte-yE-FP3" id="J0P-BT-8AN"/>
+                                    <outlet property="delegate" destination="tte-yE-FP3" id="vNV-RS-wFo"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zbc-iA-Qpu"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <connections>
+                        <outlet property="tabulator" destination="ZFw-B5-gDh" id="TU9-0Y-C5E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zdj-1c-DNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="-430"/>
+        </scene>
+        <!--Learn-->
+        <scene sceneID="bfv-iG-sSv">
+            <objects>
+                <navigationController id="bzG-IA-Wtr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Learn" image="tab.item.learning.png" id="D3r-ue-2xU"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Idr-1T-joW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7Eq-sa-cU0" kind="relationship" relationship="rootViewController" id="SGA-Ap-7XE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLY-Li-fxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="471" y="-68"/>
+        </scene>
+        <!--Learn Master View Controller-->
+        <scene sceneID="3QZ-O5-uFF">
+            <objects>
+                <viewController id="7Eq-sa-cU0" customClass="APHLearnMasterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cXE-Dg-8A0"/>
+                        <viewControllerLayoutGuide type="bottom" id="hI2-ad-vbb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r7a-8w-gSF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RIO-UV-mE2">
+                                <rect key="frame" x="0.0" y="63" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Eq-sa-cU0" id="CLO-8U-fuW"/>
+                                    <outlet property="delegate" destination="7Eq-sa-cU0" id="O2e-QD-qs0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zqn-7a-DzE"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <connections>
+                        <outlet property="tabulator" destination="RIO-UV-mE2" id="XKI-HI-UDN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWG-eU-c67" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="-68"/>
+        </scene>
+        <!--Activities-->
+        <scene sceneID="2be-aK-449">
+            <objects>
+                <navigationController id="yJz-wc-ll8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Activities" image="tab.item.activites.png" id="ctU-6s-0IL"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PMS-DP-SCQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6nB-Nx-Cdr" kind="relationship" relationship="rootViewController" id="bCa-Zt-JUv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkD-bx-oPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="248"/>
+        </scene>
+        <!--Activities View Controller-->
+        <scene sceneID="aKk-xb-fVT">
+            <objects>
+                <viewController id="6nB-Nx-Cdr" customClass="APHActivitiesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JfO-q7-EEj"/>
+                        <viewControllerLayoutGuide type="bottom" id="d9n-eq-dcB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZLJ-LC-gfO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AS5-2T-agB">
+                                <rect key="frame" x="0.0" y="65" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6nB-Nx-Cdr" id="x15-Hs-6Ex"/>
+                                    <outlet property="delegate" destination="6nB-Nx-Cdr" id="5Av-cL-16c"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DKD-iu-E04"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <connections>
+                        <outlet property="tabulator" destination="AS5-2T-agB" id="8Nz-DH-Ubi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DxB-FS-Elh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="248"/>
+        </scene>
+        <!--Health Profile-->
+        <scene sceneID="DNb-9C-5BE">
+            <objects>
+                <navigationController id="MDE-Fz-b8z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Health Profile" image="tab.item.health.profile.png" id="O3G-fI-aD5"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NFL-3x-poZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aTy-RD-egT" kind="relationship" relationship="rootViewController" id="9Vb-RP-GIp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRU-ol-p79" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="879"/>
+        </scene>
+        <!--Health Profile View Controller-->
+        <scene sceneID="Clq-Us-iuW">
+            <objects>
+                <viewController id="aTy-RD-egT" customClass="APHHealthProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Igz-Cg-70r"/>
+                        <viewControllerLayoutGuide type="bottom" id="SEi-Nr-xoh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AVd-G5-PdA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-68-Uz4">
+                                <rect key="frame" x="0.0" y="63" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aTy-RD-egT" id="0Aa-gl-aCt"/>
+                                    <outlet property="delegate" destination="aTy-RD-egT" id="EvE-t2-V0e"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tfv-qN-Yjz"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
+                        <size key="portraitSize" width="320" height="568"/>
+                        <size key="landscapeSize" width="568" height="320"/>
+                    </simulatedScreenMetrics>
+                    <connections>
+                        <outlet property="tabulator" destination="shQ-68-Uz4" id="PnS-Qa-dWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-OO-1Zf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="879"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab.item.activites.png" width="32" height="32"/>
+        <image name="tab.item.health.profile.png" width="32" height="32"/>
+        <image name="tab.item.learning.png" width="32" height="29"/>
+        <image name="tab.item.overview.png" width="32" height="32"/>
+    </resources>
 </document>
