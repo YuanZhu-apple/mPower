@@ -9,6 +9,8 @@
 #import "APHIntervalTappingTaskViewController.h"
 #import "CustomRecorder.h"
 
+static float tapInterval = 20.0;
+
 @interface APHIntervalTappingTaskViewController  ( )
 
 @end
@@ -43,7 +45,7 @@
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001b" name:@"active step"];
         step.caption = @"Button Tap";
         step.text = @"Please tap the blue box below when it appears.";
-        step.countDown = 20.0;
+        step.countDown = tapInterval;
         step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
         [steps addObject:step];
     }

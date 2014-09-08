@@ -1,8 +1,9 @@
 //
-//  PurpleRecorder.m
-//  StudyDemo
+//  APHCustomRecorder.h
+//  Parkinson
 //
-//  Copyright (c) 2014 Apple. All rights reserved.
+//  Created by Justin Warmkessel on 8/27/14.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHCustomRecorder.h"
@@ -10,7 +11,7 @@
 @interface APHCustomRecorder ()
 
 @property (nonatomic, strong) UIView* containerView;
-@property (nonatomic, strong) UIButton* button;
+@property (nonatomic, strong) UIButton* tapTestButton;
 @property (nonatomic, strong) NSTimer* timer;
 @property (nonatomic, strong) NSMutableArray* records;
 
@@ -24,100 +25,111 @@
 
 }
 
+- (instancetype)initWithStep:(RKStep *)step taskInstanceUUID:(NSUUID *)taskInstanceUUID {
+    self = [super initWithStep:step taskInstanceUUID:taskInstanceUUID];
+    
+    if (self) {
+        _records = [NSMutableArray new];
+    }
+    
+    return self;
+}
 
 - (BOOL)start:(NSError *__autoreleasing *)error{
     BOOL ret = [super start:error];
     
-    NSAssert(self.containerView != nil, @"No container view attached.");
+    if (!ret) {
+        
+        NSLog(@"Error %@", *error);
+        
+    } else {
     
-    if (_button) {
-        [_button removeFromSuperview];
+        NSAssert(self.containerView != nil, @"No container view attached.");
+        
+        if (self.tapTestButton) {
+            [self.tapTestButton removeFromSuperview];
+        }
+        
+        self.tapTestButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.tapTestButton setTitle:@"Tap here" forState:UIControlStateNormal];
+        self.tapTestButton.frame = CGRectInset(self.containerView.bounds, 10, 10);
+        self.tapTestButton.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleHeight;
+        self.tapTestButton.backgroundColor = [UIColor blueColor];
+        [self.containerView addSubview:self.tapTestButton];
+        
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
+        [self.tapTestButton setUserInteractionEnabled:YES];
+        [self.tapTestButton addGestureRecognizer:tapGesture];
     }
-    
-    _button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_button setTitle:@"Tap here" forState:UIControlStateNormal];
-    _button.frame = CGRectInset(_containerView.bounds, 10, 10);
-    _button.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleHeight;
-    _button.backgroundColor = [UIColor blueColor];
-    [_containerView addSubview:_button];
-    
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer:)];
-    [_button setUserInteractionEnabled:YES];
-    [_button addGestureRecognizer:tapGesture];
-    
-    
-    _records = [NSMutableArray array];
     
     return ret;
 }
 
+
 // Tap GestureRecognizer function
 - (void)tapGestureRecognizer:(UIGestureRecognizer *)recognizer {
-    CGPoint tappedPoint = [recognizer locationInView:_button];
+    CGPoint tappedPoint = [recognizer locationInView:self.tapTestButton];
     CGFloat xCoordinate = tappedPoint.x;
     CGFloat yCoordinate = tappedPoint.y;
     
-    NSString *xStr = [NSString stringWithFormat:@"%f", xCoordinate];
-    NSString *yStr = [NSString stringWithFormat:@"%f", yCoordinate];
-    
     NSDictionary* dictionary = @{@"event": @"userTouchDown",
-                                 @"x" : xStr,
-                                 @"y" : yStr,
+                                 @"x" : @(xCoordinate),
+                                 @"y" : @(yCoordinate),
                                  @"time": @([[NSDate date] timeIntervalSinceReferenceDate])};
     
     [_records addObject:dictionary];
     
 }
 
-- (IBAction)timerFired:(id)sender{
-    _button.hidden = !_button.hidden;
-    
-    NSDictionary* dictionary = @{@"event": _button.hidden? @"buttonHide": @"buttonShow",
-                                 @"time": @([[NSDate date] timeIntervalSinceReferenceDate])};
-    
-    [_records addObject:dictionary];
-    
-}
 
 - (BOOL)stop:(NSError *__autoreleasing *)error{
     BOOL ret = [super stop:error];
     
-    [self.timer invalidate];
-    [_button removeFromSuperview];
-    _button = nil;
-    
-    if (self.records) {
+    if (!ret) {
         
-        NSLog(@"%@", self.records);
+        NSLog(@"Error %@", *error);
         
-        id<RKRecorderDelegate> localDelegate = self.delegate;
-        if (localDelegate && [localDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
-            RKDataResult* result = [[RKDataResult alloc] initWithStep:self.step];
-            result.contentType = [self mimeType];
-            NSError* err;
-            result.data = [NSJSONSerialization dataWithJSONObject:self.records options:(NSJSONWritingOptions)0 error:&err];
+    } else {
+        
+        [self.timer invalidate];
+        [self.tapTestButton removeFromSuperview];
+        self.tapTestButton = nil;
+        
+        if (self.records) {
             
-            if (err) {
-                if (error) {
-                    *error = err;
+            NSLog(@"%@", self.records);
+            
+            id<RKRecorderDelegate> localDelegate = self.delegate;
+            if (localDelegate && [localDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
+                RKDataResult* result = [[RKDataResult alloc] initWithStep:self.step];
+                result.contentType = [self mimeType];
+                NSError* serializationError;
+                result.data = [NSJSONSerialization dataWithJSONObject:self.records options:(NSJSONWritingOptions)0 error:&serializationError];
+                
+                if (serializationError) {
+                    if (error) {
+                        *error = serializationError;
+                        NSLog(@"Error %@", *error);
+                    }
+                    ret = NO;
+                } else {
+                    result.filename = self.fileName;
+                    [localDelegate recorder:self didCompleteWithResult:result];
+                    self.records = nil;
                 }
-                return NO;
             }
-            
-            result.filename = self.fileName;
-            [localDelegate recorder:self didCompleteWithResult:result];
-            self.records = nil;
+        }else{
+            if (error) {
+                *error = [NSError errorWithDomain:RKErrorDomain
+                                             code:RKErrorObjectNotFound
+                                         userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Records object is nil.", nil)}];
+
+                NSLog(@"Error %@", *error);
+            }
+            ret = NO;
         }
-    }else{
-        if (error) {
-            *error = [NSError errorWithDomain:RKErrorDomain
-                                         code:RKErrorObjectNotFound
-                                     userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Records object is nil.", nil)}];
-        }
-        ret = NO;
     }
-    
     
     return ret;
 }
