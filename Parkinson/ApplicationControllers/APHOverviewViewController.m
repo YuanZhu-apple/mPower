@@ -20,11 +20,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    //
+    //    place holder return value for future use
+    //
     return  1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //
+    //    place holder return value for future use
+    //
     return  5;
 }
 
@@ -49,12 +55,18 @@
 }
 
 #pragma  mark  -  View Controller Methods
-            
+
+//
+//    place holder methods
+//
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
 
+//
+//    place holder methods
+//
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

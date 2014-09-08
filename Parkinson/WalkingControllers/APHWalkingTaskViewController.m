@@ -12,8 +12,6 @@
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
 
-#define INTERVAL 2.0
-
 //#import "APHStepDictionaryKeys.h"
 
 static  const  NSString  *kWalkingStep101Key = @"Walking Step 101";

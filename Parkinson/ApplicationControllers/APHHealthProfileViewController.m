@@ -20,11 +20,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    //
+    //    place holder return value for future use
+    //
     return  1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //
+    //    place holder return value for future use
+    //
     return  1;
 }
 
@@ -44,6 +50,9 @@
 
 #pragma  mark  -  Table View Delegate Methods
 
+//
+//    place holder return value for future use
+//
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }

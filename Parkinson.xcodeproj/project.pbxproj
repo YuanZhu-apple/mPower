@@ -295,7 +295,6 @@
 		CF1ECBBB19BE1288003F29DE /* Overview Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */,
 				CF1ECBC019BE135F003F29DE /* APHOverviewViewController.h */,
 				CF1ECBC119BE135F003F29DE /* APHOverviewViewController.m */,
 			);
@@ -305,13 +304,14 @@
 		CF1ECBBC19BE129E003F29DE /* Learning Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */,
-				CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */,
-				CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */,
+				CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */,
+				CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */,
 				CF1ECBC719BE1372003F29DE /* APHLearnMasterTableViewCell.h */,
 				CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */,
 				CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */,
-				CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */,
+				CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */,
+				CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */,
+				CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */,
 			);
 			name = "Learning Controllers";
 			sourceTree = "<group>";

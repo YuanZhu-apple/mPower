@@ -25,11 +25,17 @@ static  CGFloat  kHeightOfMasterTableViewCell = 166.0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    //
+    //    place holder return value for future use
+    //
     return  1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //
+    //    place holder return value for future use
+    //
     return  2;
 }
 
@@ -46,6 +52,9 @@ static  CGFloat  kHeightOfMasterTableViewCell = 166.0;
 
 #pragma  mark  -  Table View Delegate Methods
 
+//
+//    place holder return value for future use
+//
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
@@ -60,6 +69,9 @@ static  CGFloat  kHeightOfMasterTableViewCell = 166.0;
     [self.tabulator registerNib:masterTableCellNib forCellReuseIdentifier:kMasterTableCellName];
 }
 
+//
+//    place holder methods
+//
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
