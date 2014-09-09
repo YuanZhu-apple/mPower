@@ -21,6 +21,24 @@ static  CGFloat  kHeightOfMasterTableViewCell = 166.0;
 
 @implementation APHLearnMasterViewController
 
+#pragma mark - Init
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        self.title = NSLocalizedString(@"Learn", nil);
+    }
+    
+    return self;
+}
+
+- (UIRectEdge)edgesForExtendedLayout
+{
+    return UIRectEdgeNone;
+}
+
+
 #pragma  mark  -  Table View Data Source Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
