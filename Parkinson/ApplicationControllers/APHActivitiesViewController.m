@@ -16,8 +16,8 @@
 #import "APHWalkingTaskViewController.h"
 
 #import "APHPhonationTaskViewController.h"
-#import "APHSleepQualityOverviewViewController.h"
-#import "APHChangedMedsOverviewViewController.h"
+#import "APHSleepQualityTaskViewController.h"
+#import "APHChangedMedsTaskViewController.h"
 #import "APHIntervalOverviewViewController.h"
 #import "APHTracingOverviewViewController.h"
 
@@ -88,10 +88,10 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
                                     [APHPhonationTaskViewController    class],
-                                    [APHSleepQualityOverviewViewController class],
-                                    [APHChangedMedsOverviewViewController  class],
-                                    [APHIntervalOverviewViewController     class],
-                                    [APHTracingOverviewViewController      class]
+                                    [APHSleepQualityTaskViewController class],
+                                    [APHChangedMedsTaskViewController  class],
+                                    [APHIntervalOverviewViewController class],
+                                    [APHTracingOverviewViewController  class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
