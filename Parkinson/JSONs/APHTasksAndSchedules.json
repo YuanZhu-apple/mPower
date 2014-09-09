@@ -1,24 +1,30 @@
 {
+
+    "tasks": [
+    {
+     "taskType": "APHCust",
+            "fileName":"sampleSurvey.json"
+    }
+    ],
     "schedules": [
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:2,4,6",
-                  "taskType": "walking"
+                  "taskType": "APHTimedWalking"
                   },
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:5",
-                  "taskType": "phonation",
+                  "taskType": "APHPhonation",
                   "reminder": "1"
                   },
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:7",
-                  "taskType": "tapping"
+                  "taskType": "APHIntervalTapping"
                   }
-                  ],
-    "tasks": []
+                  ]
 }

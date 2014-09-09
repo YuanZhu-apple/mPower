@@ -52,6 +52,8 @@
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
 		F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9B19AD56B90098A4DF /* libbz2.dylib */; };
 		F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */; };
+		F5785DEF19BF939A004B4A01 /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5785DEE19BF939A004B4A01 /* JSON_READ_ME */; };
+		F5B39FC719BFBBE200CA7B8C /* sampleSurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
 		F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */; };
 /* End PBXBuildFile section */
@@ -173,6 +175,8 @@
 		F5241C9B19AD56B90098A4DF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
 		F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
+		F5785DEE19BF939A004B4A01 /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
+		F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleSurvey.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,7 +449,9 @@
 		F5785DE919BF5CA1004B4A01 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				F5785DEE19BF939A004B4A01 /* JSON_READ_ME */,
 				F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */,
+				F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -574,10 +580,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5785DEF19BF939A004B4A01 /* JSON_READ_ME in Resources */,
 				CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */,
 				CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
+				F5B39FC719BFBBE200CA7B8C /* sampleSurvey.json in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
 				F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */,

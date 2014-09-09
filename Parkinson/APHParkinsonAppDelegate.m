@@ -11,6 +11,7 @@
 NSString *const kDatabaseName = @"db.sqlite";
 NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
 NSString *const kBaseURL = @"http://localhost:4567/api/v1";
+NSString *const firstInstallKey = @"YMLFirstInstall";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -21,15 +22,19 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
-    [self.dataMonitor performFirstUserSetup:@"APHTasksAndSchedules"];
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+
     [super applicationDidBecomeActive:application];
 }
 
+- (BOOL) isFirstInstall
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName]];
+}
 
 /*********************************************************************************/
 #pragma mark - Helpers
