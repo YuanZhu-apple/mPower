@@ -21,6 +21,7 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
+    [self.dataMonitor performFirstUserSetup:@"APHTasksAndSchedules"];
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
@@ -38,6 +39,8 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 {
     self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
     self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
+    self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
+    self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
 }
 
 - (NSString *) applicationDocumentsDirectory

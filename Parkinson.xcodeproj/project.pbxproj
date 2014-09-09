@@ -51,6 +51,7 @@
 		F5241C9519AD4CD20098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9319AD4CD20098A4DF /* ResearchKit.framework */; };
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
 		F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9B19AD56B90098A4DF /* libbz2.dylib */; };
+		F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */; };
 		F5E4871919ABB69D00C86FC6 /* libAPCAppleCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 743E6F9F19A802E20074EDB4 /* libAPCAppleCore.a */; };
 		F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5E4874719ABE1E700C86FC6 /* APCAppleCoreBundle.bundle */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 		F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
 		F5241C9B19AD56B90098A4DF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
+		F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +405,7 @@
 		CFC2D2DA19A5417D00170E69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5785DE919BF5CA1004B4A01 /* JSONs */,
 				CF29015B19BE19C3006470D7 /* Tab Bar Images */,
 				F5241CA819AEA5110098A4DF /* Parkinson.entitlements */,
 				CFC2D2DB19A5417D00170E69 /* Info.plist */,
@@ -437,6 +440,14 @@
 				CFEE9A2719B7968C00D1E858 /* RKStep+Description.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		F5785DE919BF5CA1004B4A01 /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */,
+			);
+			path = JSONs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,13 +575,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */,
-				CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */,
 				CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */,
-				CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
+				F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */,
 				CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */,
 				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
@@ -580,7 +590,6 @@
 				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				CF1ECBCC19BE1372003F29DE /* APHLearnDetailViewController.xib in Resources */,
-				CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,9 +609,7 @@
 			files = (
 				CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */,
 				CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */,
-				CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */,
 				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
-				CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */,
 				CF1ECBC319BE135F003F29DE /* APHOverviewViewController.m in Sources */,
 				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
 				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
@@ -612,8 +619,6 @@
 				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
 				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
-				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
-				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
 				CFEE9A4319B7C01800D1E858 /* APHStepDictionaryKeys.m in Sources */,
