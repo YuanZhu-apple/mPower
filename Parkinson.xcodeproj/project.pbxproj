@@ -12,6 +12,7 @@
 		5B08808719BE78FC0083A398 /* APHOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08808019BE78FC0083A398 /* APHOverviewViewController.m */; };
 		5B08808819BE78FC0083A398 /* APHDashboardGraphViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08808319BE78FC0083A398 /* APHDashboardGraphViewCell.m */; };
 		5B08808919BE78FC0083A398 /* APHDashboardGraphViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B08808419BE78FC0083A398 /* APHDashboardGraphViewCell.xib */; };
+		5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */; };
 		CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */; };
 		CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */; };
 		CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */; };
@@ -124,6 +125,8 @@
 		5B08808219BE78FC0083A398 /* APHDashboardGraphViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardGraphViewCell.h; sourceTree = "<group>"; };
 		5B08808319BE78FC0083A398 /* APHDashboardGraphViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDashboardGraphViewCell.m; sourceTree = "<group>"; };
 		5B08808419BE78FC0083A398 /* APHDashboardGraphViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHDashboardGraphViewCell.xib; sourceTree = "<group>"; };
+		5B40E57919BFB89B00D9CA49 /* APCCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APCCircularProgressView.h; path = CustomViews/APCCircularProgressView.h; sourceTree = "<group>"; };
+		5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APCCircularProgressView.m; path = CustomViews/APCCircularProgressView.m; sourceTree = "<group>"; };
 		743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		CF1B26F219B8BF4100D7F809 /* APHPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationOverviewViewController.h; path = PhonationControllers/APHPhonationOverviewViewController.h; sourceTree = "<group>"; };
 		CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationOverviewViewController.m; path = PhonationControllers/APHPhonationOverviewViewController.m; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 		CF1BA8F119A56C0500AA27B1 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				5B40E57919BFB89B00D9CA49 /* APCCircularProgressView.h */,
+				5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */,
 				CFEE9A2119B7961D00D1E858 /* APHConfirmationView.h */,
 				CFEE9A2219B7961D00D1E858 /* APHConfirmationView.m */,
 			);
@@ -716,6 +721,7 @@
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
 				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
 				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
+				5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */,
 				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
