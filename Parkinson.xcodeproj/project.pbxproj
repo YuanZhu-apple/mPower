@@ -565,7 +565,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Henry McGilton";
+				ORGANIZATIONNAME = "Y Media Labs";
 				TargetAttributes = {
 					CFC2D2D619A5417D00170E69 = {
 						CreatedOnToolsVersion = 6.0;
