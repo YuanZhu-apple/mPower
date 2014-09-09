@@ -11,6 +11,7 @@
 #import "APHWalkingOverviewViewController.h"
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
+#import <objc/message.h>
 
 //#import "APHStepDictionaryKeys.h"
 
@@ -131,20 +132,52 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
     [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)taskViewController: (RKTaskViewController *)taskViewController didFailWithError:(NSError*)error
-{
-//    [taskViewController suspend];
-}
-
 - (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
 {
-//    [taskViewController suspend];
+    [taskViewController suspend];
     [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
+    return  NO;
+}
+
+- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
+{
     return  YES;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+{
+//    stepViewController.continueButtonOnToolbar = NO;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
+{
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
+{
+    NSLog(@"Result: %@", result);
+    NSError * error;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self filePath]]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[self filePath] error:&error];
+        if (error) {
+            NSLog(@"%@",[self descriptionForObject:error]);
+        }
+    }
+    [[NSFileManager defaultManager] moveItemAtPath:[(RKFileResult*)result fileUrl].path toPath:[self filePath] error:&error];
+    if (error) {
+        NSLog(@"%@",[self descriptionForObject:error]);
+    }
+}
+
+
+- (NSString *)filePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [[paths lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", [NSUUID UUID].UUIDString]];
 }
 
 //- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
@@ -173,24 +206,28 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 //    return  controller;
 //}
 
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
+/*********************************************************************************/
+#pragma mark - Misc
+/*********************************************************************************/
+-(NSString *)descriptionForObject:(id)objct
 {
-    return  YES;
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
-{
-    stepViewController.continueButtonOnToolbar = NO;
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
-{
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
-{
-    NSLog(@"Result: %@", result);
-
+    unsigned int varCount;
+    NSMutableString *descriptionString = [[NSMutableString alloc]init];
+    
+    
+    objc_property_t *vars = class_copyPropertyList(object_getClass(objct), &varCount);
+    
+    for (int i = 0; i < varCount; i++)
+    {
+        objc_property_t var = vars[i];
+        const char* name = property_getName (var);
+        
+        NSString *keyValueString = [NSString stringWithFormat:@"\n%@ = %@",[NSString stringWithUTF8String:name],[objct valueForKey:[NSString stringWithUTF8String:name]]];
+        [descriptionString appendString:keyValueString];
+    }
+    
+    free(vars);
+    return descriptionString;
 }
 
 
