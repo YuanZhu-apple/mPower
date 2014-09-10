@@ -7,11 +7,14 @@
 //
 
 #import "APHLearnResourceViewCell.h"
+#import "UIColor+Parkinson.h"
 
 @implementation APHLearnResourceViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    [self.titleLabel setTextColor:[UIColor parkinsonBlackColor]];
+    [self.descriptionLabel setTextColor:[UIColor parkinsonLightGrayColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

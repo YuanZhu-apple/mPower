@@ -8,11 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@class APHLearnMasterTableViewCell;
+
+@protocol APHLearnMasterTableViewCellDelegate <NSObject>
+
+@required
+
+- (void)learnMasterTableViewCellDidTapReadMoreForCell:(APHLearnMasterTableViewCell *)cell;
+
+@end
+
+
 @interface APHLearnMasterTableViewCell : UITableViewCell
 
 @property  (nonatomic, weak)  IBOutlet  UIView    *confirmationView;
 @property  (nonatomic, weak)  IBOutlet  UILabel   *titleLabel;
 @property  (nonatomic, weak)  IBOutlet  UILabel   *descriptionLabel;
-@property  (nonatomic, weak)  IBOutlet  UIButton  *readMoreButton;
+
+@property (nonatomic, weak) id <APHLearnMasterTableViewCellDelegate> delegate;
 
 @end

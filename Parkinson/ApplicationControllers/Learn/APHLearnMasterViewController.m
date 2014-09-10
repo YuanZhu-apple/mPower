@@ -8,6 +8,7 @@
 
 /* ViewControllers */
 #import "APHLearnMasterViewController.h"
+#import "APHLearnDetailViewController.h"
 
 /* Views */
 #import "APHLearnMasterTableViewCell.h"
@@ -19,7 +20,7 @@ static  NSString  *LearnResourceViewCellIdentifier = @"LearnResourceTableViewCel
 static  CGFloat  kMasterTableViewCellHeight = 166.0;
 static  CGFloat  kResourceTableViewCellHeight = 120.0;
 
-@interface APHLearnMasterViewController ()  <UITableViewDataSource, UITableViewDelegate>
+@interface APHLearnMasterViewController ()  <APHLearnMasterTableViewCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *learnTableView;
 
@@ -77,12 +78,15 @@ static  CGFloat  kResourceTableViewCellHeight = 120.0;
         case 0:
         {
             APHLearnMasterTableViewCell  *cell = (APHLearnMasterTableViewCell *)[tableView dequeueReusableCellWithIdentifier:LearnMasterViewCellIdentifier];
+            cell.delegate = self;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return  cell;
         }
             break;
         case 1:
         {
             APHLearnResourceViewCell  *cell = (APHLearnResourceViewCell *)[tableView dequeueReusableCellWithIdentifier:LearnResourceViewCellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return  cell;
         }
             break;
@@ -92,6 +96,8 @@ static  CGFloat  kResourceTableViewCellHeight = 120.0;
     
     return nil;
 }
+
+#pragma mark - UITableViewDelegate Methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -108,40 +114,40 @@ static  CGFloat  kResourceTableViewCellHeight = 120.0;
             height = kResourceTableViewCellHeight;
         }
             break;
-        default:
+        default://TODO:NSAssert
             break;
     }
     
     return  height;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = @"";
-    
-    switch (section) {
+    switch (indexPath.section) {
         case 0:
         {
-            title = @"";
+            
         }
             break;
         case 1:
         {
-            title = @"Resources";
+            
         }
             break;
-        default:
+        default://TODO:NSAssert
             break;
     }
-    
-    return  title;
 }
 
-#pragma mark - UITableViewDelegate Methods
+#pragma mark - APHLearnMasterTableViewCellDelegate methods
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)learnMasterTableViewCellDidTapReadMoreForCell:(APHLearnMasterTableViewCell *)cell
 {
+    APHLearnDetailViewController *learnDetailViewController = [[APHLearnDetailViewController alloc] initWithNibName:@"APHLearnDetailViewController" bundle:nil];
+    learnDetailViewController.title = cell.titleLabel.text;
     
+    [self.navigationController pushViewController:learnDetailViewController animated:YES];
 }
+
 
 @end

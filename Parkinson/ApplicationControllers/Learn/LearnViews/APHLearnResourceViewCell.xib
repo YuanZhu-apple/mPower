@@ -16,7 +16,7 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-xy-60k">
                         <rect key="frame" x="20" y="15" width="30" height="30"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.80193770559210531" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="9x1-oT-2Vo"/>
                         </constraints>
@@ -56,6 +56,10 @@
                     <constraint firstItem="J7B-xy-60k" firstAttribute="leading" secondItem="knS-k2-Pty" secondAttribute="leading" id="qAO-Ox-zAE"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="knS-k2-Pty" id="gL1-Xf-H32"/>
+                <outlet property="titleLabel" destination="sae-wJ-Ute" id="FuS-RX-egj"/>
+            </connections>
             <point key="canvasLocation" x="722" y="381"/>
         </tableViewCell>
     </objects>

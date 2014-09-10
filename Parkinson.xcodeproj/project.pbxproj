@@ -19,6 +19,9 @@
 		5B2A676819BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A676319BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib */; };
 		5B2A676C19BFD41C0097E99E /* APHLearnResourceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */; };
 		5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */; };
+		5B2A6C0B19C0BCDF0097E99E /* APHLearnDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A6C0919C0BCDF0097E99E /* APHLearnDetailViewCell.m */; };
+		5B2A6C0C19C0BCDF0097E99E /* APHLearnDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A6C0A19C0BCDF0097E99E /* APHLearnDetailViewCell.xib */; };
+		5B2A6C1019C0C2CC0097E99E /* UIColor+Parkinson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A6C0F19C0C2CC0097E99E /* UIColor+Parkinson.m */; };
 		5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */; };
 		5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E57E19BFC24600D9CA49 /* APHDashboardProgressViewCell.m */; };
 		5B40E58119BFC24600D9CA49 /* APHDashboardProgressViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B40E57F19BFC24600D9CA49 /* APHDashboardProgressViewCell.xib */; };
@@ -142,6 +145,11 @@
 		5B2A676919BFD41C0097E99E /* APHLearnResourceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnResourceViewCell.h; sourceTree = "<group>"; };
 		5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnResourceViewCell.m; sourceTree = "<group>"; };
 		5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnResourceViewCell.xib; sourceTree = "<group>"; };
+		5B2A6C0819C0BCDF0097E99E /* APHLearnDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnDetailViewCell.h; sourceTree = "<group>"; };
+		5B2A6C0919C0BCDF0097E99E /* APHLearnDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnDetailViewCell.m; sourceTree = "<group>"; };
+		5B2A6C0A19C0BCDF0097E99E /* APHLearnDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnDetailViewCell.xib; sourceTree = "<group>"; };
+		5B2A6C0E19C0C2CC0097E99E /* UIColor+Parkinson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Parkinson.h"; path = "Categories/UIColor+Parkinson.h"; sourceTree = "<group>"; };
+		5B2A6C0F19C0C2CC0097E99E /* UIColor+Parkinson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Parkinson.m"; path = "Categories/UIColor+Parkinson.m"; sourceTree = "<group>"; };
 		5B40E57919BFB89B00D9CA49 /* APCCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APCCircularProgressView.h; path = CustomViews/APCCircularProgressView.h; sourceTree = "<group>"; };
 		5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APCCircularProgressView.m; path = CustomViews/APCCircularProgressView.m; sourceTree = "<group>"; };
 		5B40E57D19BFC24600D9CA49 /* APHDashboardProgressViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardProgressViewCell.h; sourceTree = "<group>"; };
@@ -310,6 +318,9 @@
 				5B2A676919BFD41C0097E99E /* APHLearnResourceViewCell.h */,
 				5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */,
 				5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */,
+				5B2A6C0819C0BCDF0097E99E /* APHLearnDetailViewCell.h */,
+				5B2A6C0919C0BCDF0097E99E /* APHLearnDetailViewCell.m */,
+				5B2A6C0A19C0BCDF0097E99E /* APHLearnDetailViewCell.xib */,
 			);
 			path = LearnViews;
 			sourceTree = "<group>";
@@ -569,6 +580,8 @@
 				CFEE9A2519B7968C00D1E858 /* NSString+CustomMethods.m */,
 				CFEE9A2619B7968C00D1E858 /* RKStep+Description.h */,
 				CFEE9A2719B7968C00D1E858 /* RKStep+Description.m */,
+				5B2A6C0E19C0C2CC0097E99E /* UIColor+Parkinson.h */,
+				5B2A6C0F19C0C2CC0097E99E /* UIColor+Parkinson.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -701,6 +714,7 @@
 				CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */,
 				CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */,
 				5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */,
+				5B2A6C0C19C0BCDF0097E99E /* APHLearnDetailViewCell.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				5B2A676519BFD3DA0097E99E /* APHLearnDetailViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
@@ -753,6 +767,7 @@
 				5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */,
 				5B08808819BE78FC0083A398 /* APHDashboardGraphViewCell.m in Sources */,
 				CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */,
+				5B2A6C0B19C0BCDF0097E99E /* APHLearnDetailViewCell.m in Sources */,
 				CF1B272619B8FBA800D7F809 /* APHSleepQualityTaskViewController.m in Sources */,
 				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
 				5B2A676619BFD3DA0097E99E /* APHLearnMasterViewController.m in Sources */,
@@ -760,6 +775,7 @@
 				CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */,
 				CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
+				5B2A6C1019C0C2CC0097E99E /* UIColor+Parkinson.m in Sources */,
 				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
 				5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */,
 				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
