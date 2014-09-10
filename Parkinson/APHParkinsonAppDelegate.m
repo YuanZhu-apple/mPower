@@ -11,7 +11,7 @@
 NSString *const kDatabaseName = @"db.sqlite";
 NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
 NSString *const kBaseURL = @"http://localhost:4567/api/v1";
-NSString *const firstInstallKey = @"YMLFirstInstall";
+NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -22,18 +22,22 @@ NSString *const firstInstallKey = @"YMLFirstInstall";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
+    if (![APCDBStatus isSeedLoadedWithContext:self.dataSubstrate.persistentContext]) {
+        [APCDBStatus setSeedLoadedWithContext:self.dataSubstrate.persistentContext];
+        NSString *resource = [[NSBundle mainBundle] pathForResource:kTasksAndSchedulesJSONFileName ofType:@"json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:resource];
+        NSError * error;
+        NSDictionary * dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        [error handle];
+        [self.dataSubstrate loadStaticTasksAndSchedulesIfNecessary:dictionary];
+    }
+
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-
     [super applicationDidBecomeActive:application];
-}
-
-- (BOOL) isFirstInstall
-{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName]];
 }
 
 /*********************************************************************************/
