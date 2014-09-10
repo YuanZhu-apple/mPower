@@ -39,8 +39,6 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 @interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *activitiesTableView;
-
 @property  (nonatomic, strong)            NSArray                *rowTitles;
 @property  (nonatomic, strong)            NSArray                *rowSubTitles;
 
@@ -114,14 +112,14 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  [self.controllerClasses count];
+    return  self.rowTitles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     APHActivitiesTableViewCell  *cell = (APHActivitiesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier];
     
-    APCScheduledTask *scheduledTask = self.tasksArray[indexPath.row];
+//    APCScheduledTask *scheduledTask = self.tasksArray[indexPath.row];
     
     cell.titleLabel.text = self.rowTitles[indexPath.row];
     
