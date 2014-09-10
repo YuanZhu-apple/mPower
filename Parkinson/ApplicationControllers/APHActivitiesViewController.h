@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHActivitiesViewController : UIViewController
+@interface APHActivitiesViewController : UITableViewController
 
 //
 //    Property Declaration for Category (Split Implementation) Files

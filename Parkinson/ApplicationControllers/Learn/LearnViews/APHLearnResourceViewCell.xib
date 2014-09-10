@@ -14,21 +14,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-xy-60k">
-                        <rect key="frame" x="20" y="15" width="30" height="30"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-xy-60k">
+                        <rect key="frame" x="20" y="16" width="30" height="30"/>
                         <color key="backgroundColor" white="0.80193770559210531" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="9x1-oT-2Vo"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resource Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-wJ-Ute">
-                        <rect key="frame" x="62" y="21" width="250" height="21"/>
+                        <rect key="frame" x="62" y="22" width="250" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at posuere ante." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knS-k2-Pty">
-                        <rect key="frame" x="20" y="61" width="292" height="52"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at posuere ante." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knS-k2-Pty">
+                        <rect key="frame" x="20" y="64" width="267" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="52" id="ySy-I1-Sp8"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -37,19 +40,19 @@
                 <constraints>
                     <constraint firstItem="sae-wJ-Ute" firstAttribute="leading" secondItem="J7B-xy-60k" secondAttribute="trailing" constant="12" id="8jX-QZ-PBe"/>
                     <constraint firstItem="sae-wJ-Ute" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9vh-dY-7qJ"/>
-                    <constraint firstItem="knS-k2-Pty" firstAttribute="top" secondItem="sae-wJ-Ute" secondAttribute="bottom" constant="19" id="ENi-dz-YeI"/>
+                    <constraint firstItem="knS-k2-Pty" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="Mvx-Z9-9qV"/>
                     <constraint firstItem="J7B-xy-60k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="cFY-yL-W7O"/>
                     <constraint firstItem="J7B-xy-60k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="cHv-GL-51t"/>
-                    <constraint firstItem="knS-k2-Pty" firstAttribute="top" secondItem="J7B-xy-60k" secondAttribute="bottom" constant="16" id="ekU-bw-kHd"/>
+                    <constraint firstItem="knS-k2-Pty" firstAttribute="top" secondItem="sae-wJ-Ute" secondAttribute="top" constant="42" id="dFe-T3-WHq"/>
                     <constraint firstItem="sae-wJ-Ute" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="hB9-K8-yxY"/>
-                    <constraint firstItem="J7B-xy-60k" firstAttribute="leading" secondItem="knS-k2-Pty" secondAttribute="leading" id="qAO-Ox-zAE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="knS-k2-Pty" secondAttribute="trailing" constant="-8" id="py9-mV-kNu"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="knS-k2-Pty" id="gL1-Xf-H32"/>
                 <outlet property="titleLabel" destination="sae-wJ-Ute" id="FuS-RX-egj"/>
             </connections>
-            <point key="canvasLocation" x="722" y="381"/>
+            <point key="canvasLocation" x="722" y="378"/>
         </tableViewCell>
     </objects>
 </document>

@@ -6,13 +6,11 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+/* ViewControllers */
 #import "APHActivitiesViewController.h"
-
 #import "APHWalkingOverviewViewController.h"
-
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
-
 #import "APHWalkingTaskViewController.h"
 #import "APHPhonationTaskViewController.h"
 #import "APHSleepQualityTaskViewController.h"
@@ -20,10 +18,18 @@
 #import "APHIntervalTappingTaskViewController.h"
 #import "APHTracingObjectsTaskViewController.h"
 
+/* Views */
 #import "APHActivitiesTableViewCell.h"
-#import "NSString+CustomMethods.h"
-#import "APHStepDictionaryKeys.h"
 
+/* Model */
+#import "APCScheduledTask.h"
+
+/* Other Classes */
+#import "NSString+CustomMethods.h"
+#import "NSManagedObject+APCHelper.h"
+#import "APHStepDictionaryKeys.h"
+#import "UIColor+Parkinson.h"
+#import "APHParkinsonAppDelegate.h"
 #import <ResearchKit/ResearchKit.h>
 
 static  NSInteger  kNumberOfSectionsInTableView = 1;
@@ -35,12 +41,11 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 @property (weak, nonatomic) IBOutlet UITableView *activitiesTableView;
 
-@property  (nonatomic, strong)            NSArray                *controllerClasses;
 @property  (nonatomic, strong)            NSArray                *rowTitles;
 @property  (nonatomic, strong)            NSArray                *rowSubTitles;
 
 @property  (nonatomic, strong)            NSIndexPath            *selectedIndexPath;
-
+@property (nonatomic, strong) NSMutableArray *tasksArray;
 @end
 
 @implementation APHActivitiesViewController
@@ -50,7 +55,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        
+        _tasksArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -74,23 +79,23 @@ static  NSString   *kViewControllerTitle      = @"Activities";
                        ];
     
     self.rowSubTitles = @[
-                          @"Afternoon and Evening Remaining",
-                          @"Evening Remaining",
+                          @"1/3 Tasks Complete",
+                          @"1 Task Remaining",
                           @"",
                           @"",
-                          @"Morning, Evening and Night Completed",
-                          @"Completed"
+                          @"Complete",
+                          @"Complete"
                           ];
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
     
-    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
-    [self.activitiesTableView registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     if (self.selectedIndexPath != nil) {
-        [self.activitiesTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+        [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
         self.selectedIndexPath = nil;
     }
 }
@@ -100,8 +105,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     [super didReceiveMemoryWarning];
 }
 
-
-#pragma  mark  -  Table View Data Source Methods
+#pragma mark - UITableViewDataSource Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -116,6 +120,8 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     APHActivitiesTableViewCell  *cell = (APHActivitiesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier];
+    
+    APCScheduledTask *scheduledTask = self.tasksArray[indexPath.row];
     
     cell.titleLabel.text = self.rowTitles[indexPath.row];
     
@@ -133,12 +139,34 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     return  cell;
 }
 
+#pragma mark - UITableViewDelegate Methods
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return  70.0;
 }
 
-#pragma  mark  -  Table View Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 30)];
+    [headerView.contentView setBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1.0]];
+    
+    switch (section) {
+        case 0:
+            headerView.textLabel.text = @"Today";
+            break;
+        
+        default://TODO: Assert
+            break;
+    }
+    
+    return headerView;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -165,57 +193,17 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     }
 }
 
-#pragma  mark  -  View Controller Methods
-
-- (void)viewDidLoad
+- (IBAction)updateActivities:(id)sender
 {
-    [super viewDidLoad];
+    NSFetchRequest * request = [APCScheduledTask request];
+    request.predicate = [NSPredicate predicateWithFormat:@"dueOn == %@",[NSDate date]];
+    NSError * error;
+    NSManagedObjectContext *context = ((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext;
     
-    self.navigationItem.title = @"Activities";
+    NSArray *tasks = [context executeFetchRequest:request error:&error];
+    self.tasksArray = [NSMutableArray arrayWithArray:tasks];
     
-    self.controllerClasses = @[
-                                [APHWalkingTaskViewController         class],
-                                [APHPhonationTaskViewController       class],
-                                [APHSleepQualityTaskViewController    class],
-                                [APHChangedMedsTaskViewController     class],
-                                [APHIntervalTappingTaskViewController class],
-                                [APHTracingObjectsTaskViewController  class]
-                            ];
-    
-    self.rowTitles = @[
-                       @"Timed Walking",
-                       @"Sustained Phonation",
-                       @"Did You Sleep Well Last Night?",
-                       @"Have You Recently Changed Medications?",
-                       @"Interval Tapping",
-                       @"Tracing Objects",
-                       ];
-    
-    self.rowSubTitles = @[
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       ];
-    
-    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
-    [self.tabulator registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier ];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if (self.selectedIndexPath != nil) {
-        [self.tabulator deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
-        self.selectedIndexPath = nil;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    [self.refreshControl endRefreshing];
 }
 
 @end

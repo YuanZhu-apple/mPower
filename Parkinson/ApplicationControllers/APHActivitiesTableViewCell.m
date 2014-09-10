@@ -8,6 +8,7 @@
 
 #import "APHActivitiesTableViewCell.h"
 #import "APHConfirmationView.h"
+#import "UIColor+Parkinson.h"
 
 @interface APHActivitiesTableViewCell()
 
@@ -22,6 +23,9 @@
 
 - (void)awakeFromNib
 {
+    [self.titleLabel setTextColor:[UIColor parkinsonBlackColor]];
+    [self.subTitleLabel setTextColor:[UIColor parkinsonBlackColor]];
+    [self.durationLabel setTextColor:[UIColor parkinsonBlackColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
