@@ -1,0 +1,174 @@
+{
+    "steps": [
+              {
+              "instruction": "This 12-step walkthrough will explain the study and the impact it will have on your life.",
+              "explanation": "You must complete the walkthough to participate in the study.",
+              "_class": "RKIntroductionStep",
+              "name": "intro step",
+              "identifier": "iid_001",
+              "caption": "Demo Study"
+              },
+              {
+              "question": "How old are you?",
+              "answerFormat": {
+              "roundingMode": 4,
+              "style": "integer",
+              "_class": "RKNumericAnswerFormat",
+              "minimum": 0,
+              "unit": "years",
+              "maximum": 199
+              },
+              "_class": "RKQuestionStep",
+              "name": "HowOld",
+              "identifier": "qid_001",
+              "optional": true
+              },
+              {
+              "question": "Do you consent to a background check?",
+              "answerFormat": {
+              "_class": "RKBooleanAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "Boolean",
+              "identifier": "qid_001b",
+              "optional": true
+              },
+              {
+              "question": "What is your annual salary?",
+              "answerFormat": {
+              "_class": "RKNumericAnswerFormat",
+              "style": "decimal",
+              "minimum": 0,
+              "roundingIncrement": 100,
+              "roundingMode": 1,
+              "minimumFractionDigits": 2,
+              "maximumFractionDigits": 2
+              },
+              "_class": "RKQuestionStep",
+              "name": "HowMuch",
+              "identifier": "qid_002",
+              "optional": true
+              },
+              {
+              "question": "How many hours did you sleep last night?",
+              "answerFormat": {
+              "options": [
+                          {
+                          "_class": "RKAnswerOption",
+                          "shortText": "Less than seven"
+                          },
+                          {
+                          "_class": "RKAnswerOption",
+                          "shortText": "Between seven and eight"
+                          },
+                          {
+                          "_class": "RKAnswerOption",
+                          "shortText": "More than eight"
+                          }
+                          ],
+              "_class": "RKChoiceAnswerFormat",
+              "style": "singleChoice"
+              },
+              "_class": "RKQuestionStep",
+              "name": "Choices ONE",
+              "identifier": "qid_003",
+              "optional": true
+              },
+              {
+              "question": "Which symptoms do you have?",
+              "answerFormat": {
+              "options": [
+                          {
+                          "longText": "A cough and/or sore throat",
+                          "_class": "RKAnswerOption",
+                          "shortText": "Cough"
+                          },
+                          {
+                          "longText": "A 100F or higher fever or feeling feverish",
+                          "_class": "RKAnswerOption",
+                          "shortText": "Fever"
+                          },
+                          {
+                          "longText": "Headaches and/or body aches",
+                          "_class": "RKAnswerOption",
+                          "shortText": "Headaches"
+                          }
+                          ],
+              "_class": "RKChoiceAnswerFormat",
+              "style": "multipleChoice"
+              },
+              "_class": "RKQuestionStep",
+              "name": "Choices Muti",
+              "identifier": "qid_004",
+              "optional": true
+              },
+              {
+              "question": "How did you feel last night?",
+              "answerFormat": {
+              "_class": "RKTextAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "Text",
+              "identifier": "qid_005",
+              "optional": true
+              },
+              {
+              "question": "How long did it take to fall asleep last night?",
+              "answerFormat": {
+              "_class": "RKTimeIntervalAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "Time Interval",
+              "identifier": "qid_006",
+              "optional": true
+              },
+              {
+              "question": "When is your birthday?",
+              "answerFormat": {
+              "style": "date",
+              "_class": "RKDateAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "date",
+              "identifier": "qid_007",
+              "optional": true
+              },
+              {
+              "question": "What time do you get up?",
+              "answerFormat": {
+              "style": "time",
+              "_class": "RKDateAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "time",
+              "identifier": "qid_008",
+              "optional": true
+              },
+              {
+              "question": "When is your next meeting?",
+              "answerFormat": {
+              "style": "dateTime",
+              "_class": "RKDateAnswerFormat"
+              },
+              "_class": "RKQuestionStep",
+              "name": "date & time",
+              "identifier": "qid_009",
+              "optional": true
+              },
+              {
+              "question": "On a scale of 1 to 10, how much pain do you feel?",
+              "answerFormat": {
+              "scaleMin": 1,
+              "_class": "RKScaleAnswerFormat",
+              "scaleMax": 10
+              },
+              "_class": "RKQuestionStep",
+              "name": "scale ",
+              "identifier": "qid_010",
+              "optional": true
+              }
+              ],
+    "name": "Demo",
+    "identifier": "tid_001",
+    "_class": "RKTask"
+}
