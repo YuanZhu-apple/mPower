@@ -12,7 +12,18 @@
 		5B08808719BE78FC0083A398 /* APHOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08808019BE78FC0083A398 /* APHOverviewViewController.m */; };
 		5B08808819BE78FC0083A398 /* APHDashboardGraphViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08808319BE78FC0083A398 /* APHDashboardGraphViewCell.m */; };
 		5B08808919BE78FC0083A398 /* APHDashboardGraphViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B08808419BE78FC0083A398 /* APHDashboardGraphViewCell.xib */; };
+		5B2A676419BFD3DA0097E99E /* APHLearnDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A675C19BFD3DA0097E99E /* APHLearnDetailViewController.m */; };
+		5B2A676519BFD3DA0097E99E /* APHLearnDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A675D19BFD3DA0097E99E /* APHLearnDetailViewController.xib */; };
+		5B2A676619BFD3DA0097E99E /* APHLearnMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A675F19BFD3DA0097E99E /* APHLearnMasterViewController.m */; };
+		5B2A676719BFD3DA0097E99E /* APHLearnMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A676219BFD3DA0097E99E /* APHLearnMasterTableViewCell.m */; };
+		5B2A676819BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A676319BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib */; };
+		5B2A676C19BFD41C0097E99E /* APHLearnResourceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */; };
+		5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */; };
 		5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */; };
+		5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E57E19BFC24600D9CA49 /* APHDashboardProgressViewCell.m */; };
+		5B40E58119BFC24600D9CA49 /* APHDashboardProgressViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B40E57F19BFC24600D9CA49 /* APHDashboardProgressViewCell.xib */; };
+		5B40E58519BFC67D00D9CA49 /* APHDashboardMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B40E58319BFC67D00D9CA49 /* APHDashboardMessageViewCell.m */; };
+		5B40E58619BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B40E58419BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib */; };
 		CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */; };
 		CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B26F419B8BF4100D7F809 /* APHPhonationOverviewViewController.xib */; };
 		CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B26F919B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m */; };
@@ -35,11 +46,6 @@
 		CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */; };
 		CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */; };
 		CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */; };
-		CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */; };
-		CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */; };
-		CF1ECBCC19BE1372003F29DE /* APHLearnDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */; };
-		CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */; };
-		CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */; };
 		CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */; };
 		CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015D19BE19DE006470D7 /* tab.item.activites.png */; };
 		CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */; };
@@ -125,8 +131,25 @@
 		5B08808219BE78FC0083A398 /* APHDashboardGraphViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardGraphViewCell.h; sourceTree = "<group>"; };
 		5B08808319BE78FC0083A398 /* APHDashboardGraphViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDashboardGraphViewCell.m; sourceTree = "<group>"; };
 		5B08808419BE78FC0083A398 /* APHDashboardGraphViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHDashboardGraphViewCell.xib; sourceTree = "<group>"; };
+		5B2A675B19BFD3DA0097E99E /* APHLearnDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnDetailViewController.h; sourceTree = "<group>"; };
+		5B2A675C19BFD3DA0097E99E /* APHLearnDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnDetailViewController.m; sourceTree = "<group>"; };
+		5B2A675D19BFD3DA0097E99E /* APHLearnDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnDetailViewController.xib; sourceTree = "<group>"; };
+		5B2A675E19BFD3DA0097E99E /* APHLearnMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnMasterViewController.h; sourceTree = "<group>"; };
+		5B2A675F19BFD3DA0097E99E /* APHLearnMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnMasterViewController.m; sourceTree = "<group>"; };
+		5B2A676119BFD3DA0097E99E /* APHLearnMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnMasterTableViewCell.h; sourceTree = "<group>"; };
+		5B2A676219BFD3DA0097E99E /* APHLearnMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnMasterTableViewCell.m; sourceTree = "<group>"; };
+		5B2A676319BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnMasterTableViewCell.xib; sourceTree = "<group>"; };
+		5B2A676919BFD41C0097E99E /* APHLearnResourceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnResourceViewCell.h; sourceTree = "<group>"; };
+		5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnResourceViewCell.m; sourceTree = "<group>"; };
+		5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnResourceViewCell.xib; sourceTree = "<group>"; };
 		5B40E57919BFB89B00D9CA49 /* APCCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APCCircularProgressView.h; path = CustomViews/APCCircularProgressView.h; sourceTree = "<group>"; };
 		5B40E57A19BFB89B00D9CA49 /* APCCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APCCircularProgressView.m; path = CustomViews/APCCircularProgressView.m; sourceTree = "<group>"; };
+		5B40E57D19BFC24600D9CA49 /* APHDashboardProgressViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardProgressViewCell.h; sourceTree = "<group>"; };
+		5B40E57E19BFC24600D9CA49 /* APHDashboardProgressViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDashboardProgressViewCell.m; sourceTree = "<group>"; };
+		5B40E57F19BFC24600D9CA49 /* APHDashboardProgressViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHDashboardProgressViewCell.xib; sourceTree = "<group>"; };
+		5B40E58219BFC67D00D9CA49 /* APHDashboardMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardMessageViewCell.h; sourceTree = "<group>"; };
+		5B40E58319BFC67D00D9CA49 /* APHDashboardMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDashboardMessageViewCell.m; sourceTree = "<group>"; };
+		5B40E58419BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHDashboardMessageViewCell.xib; sourceTree = "<group>"; };
 		743E6F9919A802E20074EDB4 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		CF1B26F219B8BF4100D7F809 /* APHPhonationOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationOverviewViewController.h; path = PhonationControllers/APHPhonationOverviewViewController.h; sourceTree = "<group>"; };
 		CF1B26F319B8BF4100D7F809 /* APHPhonationOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationOverviewViewController.m; path = PhonationControllers/APHPhonationOverviewViewController.m; sourceTree = "<group>"; };
@@ -164,14 +187,6 @@
 		CF1B272B19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHObjectTracingTaskViewController.m; path = TracingObjectControllers/APHObjectTracingTaskViewController.m; sourceTree = "<group>"; };
 		CF1B272D19B8FC3D00D7F809 /* APHPhonationTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHPhonationTaskViewController.h; path = PhonationControllers/APHPhonationTaskViewController.h; sourceTree = "<group>"; };
 		CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationTaskViewController.m; path = PhonationControllers/APHPhonationTaskViewController.m; sourceTree = "<group>"; };
-		CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnMasterViewController.m; path = ApplicationControllers/APHLearnMasterViewController.m; sourceTree = "<group>"; };
-		CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnDetailViewController.h; path = ApplicationControllers/APHLearnDetailViewController.h; sourceTree = "<group>"; };
-		CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnDetailViewController.m; path = ApplicationControllers/APHLearnDetailViewController.m; sourceTree = "<group>"; };
-		CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHLearnDetailViewController.xib; path = ApplicationControllers/APHLearnDetailViewController.xib; sourceTree = "<group>"; };
-		CF1ECBC719BE1372003F29DE /* APHLearnMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnMasterTableViewCell.h; path = ApplicationControllers/APHLearnMasterTableViewCell.h; sourceTree = "<group>"; };
-		CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHLearnMasterTableViewCell.m; path = ApplicationControllers/APHLearnMasterTableViewCell.m; sourceTree = "<group>"; };
-		CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHLearnMasterTableViewCell.xib; path = ApplicationControllers/APHLearnMasterTableViewCell.xib; sourceTree = "<group>"; };
-		CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHLearnMasterViewController.h; path = ApplicationControllers/APHLearnMasterViewController.h; sourceTree = "<group>"; };
 		CF1ECBCF19BE1385003F29DE /* APHHealthProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHHealthProfileViewController.h; path = ApplicationControllers/APHHealthProfileViewController.h; sourceTree = "<group>"; };
 		CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHHealthProfileViewController.m; path = ApplicationControllers/APHHealthProfileViewController.m; sourceTree = "<group>"; };
 		CF29015D19BE19DE006470D7 /* tab.item.activites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.activites.png; path = TabBarImages/tab.item.activites.png; sourceTree = "<group>"; };
@@ -262,8 +277,41 @@
 				5B08808219BE78FC0083A398 /* APHDashboardGraphViewCell.h */,
 				5B08808319BE78FC0083A398 /* APHDashboardGraphViewCell.m */,
 				5B08808419BE78FC0083A398 /* APHDashboardGraphViewCell.xib */,
+				5B40E57D19BFC24600D9CA49 /* APHDashboardProgressViewCell.h */,
+				5B40E57E19BFC24600D9CA49 /* APHDashboardProgressViewCell.m */,
+				5B40E57F19BFC24600D9CA49 /* APHDashboardProgressViewCell.xib */,
+				5B40E58219BFC67D00D9CA49 /* APHDashboardMessageViewCell.h */,
+				5B40E58319BFC67D00D9CA49 /* APHDashboardMessageViewCell.m */,
+				5B40E58419BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib */,
 			);
 			path = DashboardViews;
+			sourceTree = "<group>";
+		};
+		5B2A675A19BFD3DA0097E99E /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				5B2A675B19BFD3DA0097E99E /* APHLearnDetailViewController.h */,
+				5B2A675C19BFD3DA0097E99E /* APHLearnDetailViewController.m */,
+				5B2A675D19BFD3DA0097E99E /* APHLearnDetailViewController.xib */,
+				5B2A675E19BFD3DA0097E99E /* APHLearnMasterViewController.h */,
+				5B2A675F19BFD3DA0097E99E /* APHLearnMasterViewController.m */,
+				5B2A676019BFD3DA0097E99E /* LearnViews */,
+			);
+			name = Learn;
+			path = ApplicationControllers/Learn;
+			sourceTree = "<group>";
+		};
+		5B2A676019BFD3DA0097E99E /* LearnViews */ = {
+			isa = PBXGroup;
+			children = (
+				5B2A676119BFD3DA0097E99E /* APHLearnMasterTableViewCell.h */,
+				5B2A676219BFD3DA0097E99E /* APHLearnMasterTableViewCell.m */,
+				5B2A676319BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib */,
+				5B2A676919BFD41C0097E99E /* APHLearnResourceViewCell.h */,
+				5B2A676A19BFD41C0097E99E /* APHLearnResourceViewCell.m */,
+				5B2A676B19BFD41C0097E99E /* APHLearnResourceViewCell.xib */,
+			);
+			path = LearnViews;
 			sourceTree = "<group>";
 		};
 		743E6F9A19A802E20074EDB4 /* Products */ = {
@@ -279,10 +327,10 @@
 		CF14862719AFE2E1001EBB29 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B08807B19BE78FC0083A398 /* Dashboard */,
-				CF1ECBBC19BE129E003F29DE /* Learning Controllers */,
 				CF1ECBBD19BE12AE003F29DE /* Activities Controllers */,
+				5B08807B19BE78FC0083A398 /* Dashboard */,
 				CF1ECBBE19BE12BF003F29DE /* Health Profile Controllers */,
+				5B2A675A19BFD3DA0097E99E /* Learn */,
 			);
 			name = "Application Controllers";
 			sourceTree = "<group>";
@@ -329,21 +377,6 @@
 				CFEE9A2219B7961D00D1E858 /* APHConfirmationView.m */,
 			);
 			name = "Custom Views";
-			sourceTree = "<group>";
-		};
-		CF1ECBBC19BE129E003F29DE /* Learning Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				CF1ECBC419BE1372003F29DE /* APHLearnDetailViewController.h */,
-				CF1ECBC519BE1372003F29DE /* APHLearnDetailViewController.m */,
-				CF1ECBC619BE1372003F29DE /* APHLearnDetailViewController.xib */,
-				CF1ECBC719BE1372003F29DE /* APHLearnMasterTableViewCell.h */,
-				CF1ECBC819BE1372003F29DE /* APHLearnMasterTableViewCell.m */,
-				CF1ECBC919BE1372003F29DE /* APHLearnMasterTableViewCell.xib */,
-				CF1ECBCA19BE1372003F29DE /* APHLearnMasterViewController.h */,
-				CF1ECBBF19BE135F003F29DE /* APHLearnMasterViewController.m */,
-			);
-			name = "Learning Controllers";
 			sourceTree = "<group>";
 		};
 		CF1ECBBD19BE12AE003F29DE /* Activities Controllers */ = {
@@ -666,14 +699,16 @@
 			files = (
 				CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */,
 				CF1B270619B8C01400D7F809 /* APHIntervalOverviewViewController.xib in Resources */,
-				CF1ECBCE19BE1372003F29DE /* APHLearnMasterTableViewCell.xib in Resources */,
 				CF1B26F619B8BF4100D7F809 /* APHPhonationOverviewViewController.xib in Resources */,
+				5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
+				5B2A676519BFD3DA0097E99E /* APHLearnDetailViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
 				CFC2D2E619A5417D00170E69 /* Main.storyboard in Resources */,
 				5B08808919BE78FC0083A398 /* APHDashboardGraphViewCell.xib in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
 				5B08808619BE78FC0083A398 /* APHEditSectionsViewController.xib in Resources */,
+				5B2A676819BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib in Resources */,
 				CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */,
 				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
@@ -683,7 +718,8 @@
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
 				CF1B26FC19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
-				CF1ECBCC19BE1372003F29DE /* APHLearnDetailViewController.xib in Resources */,
+				5B40E58619BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib in Resources */,
+				5B40E58119BFC24600D9CA49 /* APHDashboardProgressViewCell.xib in Resources */,
 				CF1B270B19B8C05700D7F809 /* APHTracingOverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,23 +739,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */,
-				CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */,
 				CF1B26F519B8BF4100D7F809 /* APHPhonationOverviewViewController.m in Sources */,
 				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
 				CF1B270019B8BFDD00D7F809 /* APHChangedMedsOverviewViewController.m in Sources */,
 				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
+				5B2A676C19BFD41C0097E99E /* APHLearnResourceViewCell.m in Sources */,
 				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
+				5B2A676719BFD3DA0097E99E /* APHLearnMasterTableViewCell.m in Sources */,
+				5B2A676419BFD3DA0097E99E /* APHLearnDetailViewController.m in Sources */,
 				CF1B272019B8FB2F00D7F809 /* APHChangedMedsTaskViewController.m in Sources */,
 				5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
+				5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */,
 				5B08808819BE78FC0083A398 /* APHDashboardGraphViewCell.m in Sources */,
 				CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */,
 				CF1B272619B8FBA800D7F809 /* APHSleepQualityTaskViewController.m in Sources */,
 				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
+				5B2A676619BFD3DA0097E99E /* APHLearnMasterViewController.m in Sources */,
+				5B40E58519BFC67D00D9CA49 /* APHDashboardMessageViewCell.m in Sources */,
 				CF1B272C19B8FC1900D7F809 /* APHObjectTracingTaskViewController.m in Sources */,
 				CF1B26FB19B8BF9400D7F809 /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
-				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
 				CF1B270A19B8C05700D7F809 /* APHTracingOverviewViewController.m in Sources */,
 				5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */,
 				CF1B270519B8C01400D7F809 /* APHIntervalOverviewViewController.m in Sources */,
@@ -732,7 +772,6 @@
 				CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */,
 				CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */,
 				CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */,
-				CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

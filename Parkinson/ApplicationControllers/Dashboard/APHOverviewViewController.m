@@ -11,9 +11,14 @@
 #import "APHEditSectionsViewController.h"
 
 /* Views */
-#import "APHDashboardGraphViewCell.h"
 
-static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCell";
+#import "APHDashboardGraphViewCell.h"
+#import "APHDashboardMessageViewCell.h"
+#import "APHDashboardProgressViewCell.h"
+
+static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCellIdentifier";
+static NSString * const DashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
+static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
 @interface APHOverviewViewController ()
 
@@ -58,7 +63,10 @@ static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCell";
     [super viewDidLoad];
     
     //Setup table
+    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardProgressViewCell" bundle:nil] forCellReuseIdentifier:DashboardProgressCellIdentifier];
     [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardGraphViewCell" bundle:nil] forCellReuseIdentifier:DashboardGraphCellIdentifier];
+    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardMessageViewCell" bundle:nil] forCellReuseIdentifier:DashboardMessagesCellIdentifier];
+    
     [self.dashboardTableView setSeparatorInset:UIEdgeInsetsZero];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(editTapped)];
     [self.navigationItem setLeftBarButtonItem:editButton];
@@ -99,47 +107,55 @@ static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier];
-
     NSInteger cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.section]).integerValue;
     
     switch (cellType) {
         case APHDashboardSectionStudyOverView:
         {
-            cell.titleLabel.text = @"Study Overview";
+            APHDashboardProgressViewCell *cell = (APHDashboardProgressViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardProgressCellIdentifier forIndexPath:indexPath];
+            return  cell;
         }
             break;
         case APHDashboardSectionActivity:
         {
+            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = @"Activity";
+            return  cell;
         }
             break;
         case APHDashboardSectionBloodCount:
         {
+            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = @"Blood Count";
+            return  cell;
         }
             break;
         case APHDashboardSectionMedications:
         {
+            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
             cell.titleLabel.text = @"Medications";
+            return  cell;
         }
             break;
         case APHDashboardSectionInsights:
         {
-            cell.titleLabel.text = @"Insights";
+            APHDashboardMessageViewCell *cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardMessagesCellIdentifier forIndexPath:indexPath];
+            cell.type = APHDashboardMessageViewCellTypeInsight;
+            return  cell;
         }
             break;
         case APHDashboardSectionAlerts:
         {
-            cell.titleLabel.text = @"Alerts";
+            APHDashboardMessageViewCell *cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardMessagesCellIdentifier forIndexPath:indexPath];
+            cell.type = APHDashboardMessageViewCellTypeAlert;
+            return  cell;
         }
             break;
-        default:
+        default:  //TODO:NSAssert
             break;
     }
     
-    return  cell;
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -151,7 +167,7 @@ static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 125.f;
+    return 150.f;
 }
 
 #pragma mark - Selection Actions

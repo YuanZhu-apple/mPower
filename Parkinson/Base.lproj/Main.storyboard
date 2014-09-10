@@ -141,7 +141,7 @@
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
                     <connections>
-                        <outlet property="tabulator" destination="RIO-UV-mE2" id="XKI-HI-UDN"/>
+                        <outlet property="learnTableView" destination="RIO-UV-mE2" id="gT5-xg-5Nt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWG-eU-c67" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,7 +158,7 @@
                         <size key="portraitSize" width="320" height="568"/>
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PMS-DP-SCQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PMS-DP-SCQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -179,11 +179,11 @@
                         <viewControllerLayoutGuide type="bottom" id="d9n-eq-dcB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZLJ-LC-gfO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AS5-2T-agB">
-                                <rect key="frame" x="0.0" y="65" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6nB-Nx-Cdr" id="x15-Hs-6Ex"/>
@@ -217,7 +217,7 @@
                         <size key="portraitSize" width="320" height="568"/>
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NFL-3x-poZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="NFL-3x-poZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -238,11 +238,11 @@
                         <viewControllerLayoutGuide type="bottom" id="SEi-Nr-xoh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AVd-G5-PdA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-68-Uz4">
-                                <rect key="frame" x="0.0" y="63" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aTy-RD-egT" id="0Aa-gl-aCt"/>
