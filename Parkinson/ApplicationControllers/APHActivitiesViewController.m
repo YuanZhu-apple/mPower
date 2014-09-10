@@ -3,7 +3,7 @@
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
-//  Copyright (c) 2014 Henry McGilton. All rights reserved.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHActivitiesViewController.h"
@@ -20,6 +20,7 @@
 #import "APHChangedMedsTaskViewController.h"
 #import "APHIntervalOverviewViewController.h"
 #import "APHTracingOverviewViewController.h"
+#import "APHIntervalTappingTaskViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
@@ -84,13 +85,14 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
                                     [APHPhonationTaskViewController    class],
                                     [APHSleepQualityTaskViewController class],
                                     [APHChangedMedsTaskViewController  class],
-                                    [APHIntervalOverviewViewController class],
+                                    [APHIntervalTappingTaskViewController     class],
                                     [APHTracingOverviewViewController  class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
@@ -116,19 +118,13 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.rowTitles = @[
                        @"Timed Walking",
                        @"Sustained Phonation",
-                       @"Did you sleep well last night?",
-                       @"Have you recently changed medications?",
                        @"Interval Tapping",
-                       @"Tracing Objects"
                        ];
     
     self.rowSubTitles = @[
-                       @"Afternoon and Evening Remaining",
-                       @"Evening Remaining",
                        @"",
                        @"",
-                       @"Morning, Evening and Night Completed",
-                       @"Completed"
+                       @"",
                        ];
     
     UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
