@@ -3,7 +3,7 @@
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
-//  Copyright (c) 2014 Henry McGilton. All rights reserved.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHParkinsonAppDelegate.h"
@@ -11,6 +11,7 @@
 NSString *const kDatabaseName = @"db.sqlite";
 NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
 NSString *const kBaseURL = @"http://localhost:4567/api/v1";
+NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -21,6 +22,8 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
+    [self loadStaticTasksAndSchedulesIfNecessary];
+
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
@@ -28,7 +31,6 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 {
     [super applicationDidBecomeActive:application];
 }
-
 
 /*********************************************************************************/
 #pragma mark - Helpers
@@ -38,6 +40,21 @@ NSString *const kBaseURL = @"http://localhost:4567/api/v1";
 {
     self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
     self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
+    self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
+    self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
+}
+
+- (void)loadStaticTasksAndSchedulesIfNecessary
+{
+    if (![APCDBStatus isSeedLoadedWithContext:self.dataSubstrate.persistentContext]) {
+        [APCDBStatus setSeedLoadedWithContext:self.dataSubstrate.persistentContext];
+        NSString *resource = [[NSBundle mainBundle] pathForResource:kTasksAndSchedulesJSONFileName ofType:@"json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:resource];
+        NSError * error;
+        NSDictionary * dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        [error handle];
+        [self.dataSubstrate loadStaticTasksAndSchedules:dictionary];
+    }
 }
 
 - (NSString *) applicationDocumentsDirectory

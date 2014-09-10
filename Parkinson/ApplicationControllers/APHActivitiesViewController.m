@@ -3,7 +3,7 @@
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
-//  Copyright (c) 2014 Henry McGilton. All rights reserved.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHActivitiesViewController.h"
@@ -16,10 +16,7 @@
 #import "APHWalkingTaskViewController.h"
 
 #import "APHPhonationTaskViewController.h"
-#import "APHSleepQualityOverviewViewController.h"
-#import "APHChangedMedsOverviewViewController.h"
-#import "APHIntervalOverviewViewController.h"
-#import "APHTracingOverviewViewController.h"
+#import "APHIntervalTappingTaskViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
@@ -143,14 +140,12 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray  *controllerClasses = @[
                                     [APHWalkingTaskViewController      class],
                                     [APHPhonationTaskViewController    class],
-                                    [APHSleepQualityOverviewViewController class],
-                                    [APHChangedMedsOverviewViewController  class],
-                                    [APHIntervalOverviewViewController     class],
-                                    [APHTracingOverviewViewController      class]
+                                    [APHIntervalTappingTaskViewController     class],
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
@@ -162,6 +157,44 @@ static  NSString   *kViewControllerTitle      = @"Activities";
             }];
         }
     }
+}
+
+#pragma  mark  -  View Controller Methods
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"Activities";
+    
+    self.rowTitles = @[
+                       @"Timed Walking",
+                       @"Sustained Phonation",
+                       @"Interval Tapping",
+                       ];
+    
+    self.rowSubTitles = @[
+                       @"",
+                       @"",
+                       @"",
+                       ];
+    
+    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
+    [self.tabulator registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier ];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.selectedIndexPath != nil) {
+        [self.tabulator deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+        self.selectedIndexPath = nil;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 @end

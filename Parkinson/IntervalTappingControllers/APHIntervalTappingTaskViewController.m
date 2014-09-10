@@ -3,10 +3,13 @@
 //  Parkinson
 //
 //  Created by Henry McGilton on 9/3/14.
-//  Copyright (c) 2014 Henry McGilton. All rights reserved.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHIntervalTappingTaskViewController.h"
+#import "CustomRecorder.h"
+
+static float tapInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( )
 
@@ -14,7 +17,9 @@
 
 @implementation APHIntervalTappingTaskViewController
 
+
 #pragma  mark  -  Initialisation
+
 
 + (instancetype)customTaskViewController
 {
@@ -26,7 +31,47 @@
 
 + (RKTask *)createTask
 {
-    return  nil;
+    NSMutableArray *steps = [[NSMutableArray alloc] init];
+    
+    {
+        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:@"aid_000a" name:@"Tap intro"];
+        step.caption = @"Tests Bradykinesia";
+        step.explanation = @"";
+        step.instruction = @"Interval tapping will give you a set of intervals in which you will need to tap the screen.";
+        [steps addObject:step];
+    }
+    
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001b" name:@"active step"];
+        step.caption = @"Button Tap";
+        step.text = @"Please tap the blue box below when it appears.";
+        step.countDown = tapInterval;
+        step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
+        [steps addObject:step];
+    }
+    
+    
+    RKTask  *task = [[RKTask alloc] initWithName:@"Interval Touches" identifier:@"Tapping Task" steps:steps];
+    return  task;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
+{
+    NSLog(@"%@", result);
 }
 
 @end

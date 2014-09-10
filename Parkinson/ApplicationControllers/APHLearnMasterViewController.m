@@ -1,19 +1,25 @@
 //
-//  APHHealthProfileViewController.m
+//  APHLearnMasterViewController.m
 //  BasicTabBar
 //
 //  Created by Henry McGilton on 9/7/14.
 //  Copyright (c) 2014 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APHHealthProfileViewController.h"
+#import "APHLearnMasterViewController.h"
+#import "APHLearnMasterTableViewCell.h"
 
-@interface APHHealthProfileViewController ()  <UITableViewDataSource, UITableViewDelegate>
+static  NSString  *kMasterTableCellName = @"APHLearnMasterTableViewCell";
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+static  CGFloat  kHeightOfMasterTableViewCell = 166.0;
+
+@interface APHLearnMasterViewController ()  <UITableViewDataSource, UITableViewDelegate>
+
+@property  (nonatomic, weak)  IBOutlet  UITableView  *tabulator;
+
 @end
 
-@implementation APHHealthProfileViewController
+@implementation APHLearnMasterViewController
 
 #pragma  mark  -  Table View Data Source Methods
 
@@ -30,21 +36,18 @@
     //
     //    place holder return value for future use
     //
-    return  1;
+    return  2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString  *identifier = @"PlaceHolder";
-    
-    UITableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.textLabel.text = @"Place Holder";
-    
+    APHLearnMasterTableViewCell  *cell = (APHLearnMasterTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kMasterTableCellName];
     return  cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  kHeightOfMasterTableViewCell;
 }
 
 #pragma  mark  -  Table View Delegate Methods
@@ -61,11 +64,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UINib  *masterTableCellNib = [UINib nibWithNibName:kMasterTableCellName bundle:[NSBundle mainBundle]];
+    [self.tabulator registerNib:masterTableCellNib forCellReuseIdentifier:kMasterTableCellName];
 }
 
+//
+//    place holder methods
+//
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
+
 
 @end
