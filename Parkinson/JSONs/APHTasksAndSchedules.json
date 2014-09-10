@@ -1,30 +1,48 @@
 {
-
     "tasks": [
-    {
-     "taskType": "APHCust",
-            "fileName":"sampleSurvey.json"
-    }
-    ],
+              {
+              "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9",
+              "taskType": "APHTimedWalking"
+              },
+              {
+              "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
+              "taskType": "APHTimedWalking"
+              },
+              {
+              "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF",
+              "taskType": "APHIntervalTapping"
+              },
+              {
+              "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995",
+              "taskType": "APHCustomizableSurvey",
+              "fileName": "sampleSurvey"
+              }
+              ],
     "schedules": [
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:2,4,6",
-                  "taskType": "APHTimedWalking"
+                  "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                   },
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:5",
-                  "taskType": "APHPhonation",
+                  "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
                   "reminder": "1"
                   },
                   {
                   "type": "REPEATING",
                   "href": "appleparkinson:",
                   "schedule": "1:7",
-                  "taskType": "APHIntervalTapping"
+                  "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
+                  },
+                  {
+                  "type": "REPEATING",
+                  "href": "appleparkinson:",
+                  "schedule": "1:1",
+                  "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995"
                   }
                   ]
 }

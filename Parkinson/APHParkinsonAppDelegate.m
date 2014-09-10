@@ -22,15 +22,7 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
-    if (![APCDBStatus isSeedLoadedWithContext:self.dataSubstrate.persistentContext]) {
-        [APCDBStatus setSeedLoadedWithContext:self.dataSubstrate.persistentContext];
-        NSString *resource = [[NSBundle mainBundle] pathForResource:kTasksAndSchedulesJSONFileName ofType:@"json"];
-        NSData *jsonData = [NSData dataWithContentsOfFile:resource];
-        NSError * error;
-        NSDictionary * dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        [error handle];
-        [self.dataSubstrate loadStaticTasksAndSchedulesIfNecessary:dictionary];
-    }
+    [self loadStaticTasksAndSchedulesIfNecessary];
 
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -50,6 +42,19 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
     self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
     self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
+}
+
+- (void)loadStaticTasksAndSchedulesIfNecessary
+{
+    if (![APCDBStatus isSeedLoadedWithContext:self.dataSubstrate.persistentContext]) {
+        [APCDBStatus setSeedLoadedWithContext:self.dataSubstrate.persistentContext];
+        NSString *resource = [[NSBundle mainBundle] pathForResource:kTasksAndSchedulesJSONFileName ofType:@"json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:resource];
+        NSError * error;
+        NSDictionary * dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        [error handle];
+        [self.dataSubstrate loadStaticTasksAndSchedules:dictionary];
+    }
 }
 
 - (NSString *) applicationDocumentsDirectory
