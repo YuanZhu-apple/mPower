@@ -14,9 +14,11 @@
 #import "APHWalkingResultsViewController.h"
 
 #import "APHWalkingTaskViewController.h"
-
 #import "APHPhonationTaskViewController.h"
+#import "APHSleepQualityTaskViewController.h"
+#import "APHChangedMedsTaskViewController.h"
 #import "APHIntervalTappingTaskViewController.h"
+#import "APHTracingObjectsTaskViewController.h"
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
@@ -33,6 +35,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 @property (weak, nonatomic) IBOutlet UITableView *activitiesTableView;
 
+@property  (nonatomic, strong)            NSArray                *controllerClasses;
 @property  (nonatomic, strong)            NSArray                *rowTitles;
 @property  (nonatomic, strong)            NSArray                *rowSubTitles;
 
@@ -107,7 +110,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  [self.rowTitles count];
+    return  [self.controllerClasses count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,9 +146,12 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSArray  *controllerClasses = @[
-                                    [APHWalkingTaskViewController      class],
-                                    [APHPhonationTaskViewController    class],
-                                    [APHIntervalTappingTaskViewController     class],
+                                    [APHWalkingTaskViewController         class],
+                                    [APHPhonationTaskViewController       class],
+                                    [APHSleepQualityTaskViewController    class],
+                                    [APHChangedMedsTaskViewController     class],
+                                    [APHIntervalTappingTaskViewController class],
+                                    [APHTracingObjectsTaskViewController  class]
                                 ];
     if (indexPath.row < [controllerClasses count]) {
         Class  class = controllerClasses[indexPath.row];
@@ -167,13 +173,28 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     
     self.navigationItem.title = @"Activities";
     
+    self.controllerClasses = @[
+                                [APHWalkingTaskViewController         class],
+                                [APHPhonationTaskViewController       class],
+                                [APHSleepQualityTaskViewController    class],
+                                [APHChangedMedsTaskViewController     class],
+                                [APHIntervalTappingTaskViewController class],
+                                [APHTracingObjectsTaskViewController  class]
+                            ];
+    
     self.rowTitles = @[
                        @"Timed Walking",
                        @"Sustained Phonation",
+                       @"Did You Sleep Well Last Night?",
+                       @"Have You Recently Changed Medications?",
                        @"Interval Tapping",
+                       @"Tracing Objects",
                        ];
     
     self.rowSubTitles = @[
+                       @"",
+                       @"",
+                       @"",
                        @"",
                        @"",
                        @"",
