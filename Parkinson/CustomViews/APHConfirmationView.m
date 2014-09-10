@@ -7,6 +7,7 @@
 //
 
 #import "APHConfirmationView.h"
+#import "UIColor+Parkinson.h"
 
 static  const  CGFloat  insetForBorder = 0.5;
 static  const  CGFloat  kDesignSpace   = 1000.0;
@@ -66,7 +67,7 @@ static  short  coordinates[] = {
         [[UIColor grayColor] set];
         [path stroke];
     } else {
-        [[UIColor greenColor] set];
+        [[UIColor parkinsonGreenColor] set];
         [path fill];
         [path stroke];
         [self createPath:path withDimension:CGRectGetWidth(bounds)];

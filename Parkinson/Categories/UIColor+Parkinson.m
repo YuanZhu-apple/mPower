@@ -30,4 +30,10 @@
     return [UIColor colorWithRed:40/255.f green:40/255.f blue:40/255.f alpha:1.0];
 }
 
++ (UIColor *)parkinsonGreenColor
+{
+    return [UIColor colorWithRed:48/255.f green:181/255.f blue:95/255.f alpha:1.0];
+}
+
+
 @end

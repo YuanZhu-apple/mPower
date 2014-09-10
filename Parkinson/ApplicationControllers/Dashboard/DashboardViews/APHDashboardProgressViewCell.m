@@ -7,6 +7,7 @@
 //
 
 #import "APHDashboardProgressViewCell.h"
+#import "APCCircularProgressView.h"
 
 @implementation APHDashboardProgressViewCell
 

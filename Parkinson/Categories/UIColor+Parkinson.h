@@ -18,4 +18,6 @@
 
 + (UIColor *)parkinsonBlackColor;
 
++ (UIColor *)parkinsonGreenColor;
+
 @end

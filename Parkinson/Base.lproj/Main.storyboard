@@ -200,7 +200,7 @@
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
                     <connections>
-                        <outlet property="tabulator" destination="AS5-2T-agB" id="8Nz-DH-Ubi"/>
+                        <outlet property="activitiesTableView" destination="AS5-2T-agB" id="Z1X-gN-Kl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxB-FS-Elh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -227,7 +227,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRU-ol-p79" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="879"/>
+            <point key="canvasLocation" x="430" y="943"/>
         </scene>
         <!--Health Profile View Controller-->
         <scene sceneID="Clq-Us-iuW">
@@ -259,7 +259,7 @@
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
                     <connections>
-                        <outlet property="tabulator" destination="shQ-68-Uz4" id="PnS-Qa-dWo"/>
+                        <outlet property="tableView" destination="shQ-68-Uz4" id="MQM-bg-1ue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-OO-1Zf" userLabel="First Responder" sceneMemberID="firstResponder"/>

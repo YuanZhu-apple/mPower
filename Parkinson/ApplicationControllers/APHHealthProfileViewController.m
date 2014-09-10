@@ -10,8 +10,7 @@
 
 @interface APHHealthProfileViewController ()  <UITableViewDataSource, UITableViewDelegate>
 
-@property  (nonatomic, weak)  IBOutlet  UITableView  *tabulator;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation APHHealthProfileViewController

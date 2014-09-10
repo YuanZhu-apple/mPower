@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "APCCircularProgressView.h"
+@class APCCircularProgressView;
 
 @interface APHDashboardProgressViewCell : UITableViewCell
 

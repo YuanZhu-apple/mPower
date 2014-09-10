@@ -32,9 +32,9 @@ static  NSInteger  kNumberOfSectionsInTableView = 1;
 static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
 static  NSString   *kViewControllerTitle      = @"Activities";
 
-@interface APHActivitiesViewController () <UITableViewDataSource, UITableViewDelegate, RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
+@interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
-@property  (nonatomic, strong)  IBOutlet  UITableView            *tabulator;
+@property (weak, nonatomic) IBOutlet UITableView *activitiesTableView;
 
 @property  (nonatomic, strong)            NSArray                *rowTitles;
 @property  (nonatomic, strong)            NSArray                *rowSubTitles;
@@ -44,6 +44,62 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 @end
 
 @implementation APHActivitiesViewController
+
+#pragma mark - Init
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        
+    }
+    
+    return self;
+}
+
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"Activities";
+    
+    self.rowTitles = @[
+                       @"Timed Walking",
+                       @"Sustained Phonation",
+                       @"Did you sleep well last night?",
+                       @"Have you recently changed medications?",
+                       @"Interval Tapping",
+                       @"Tracing Objects"
+                       ];
+    
+    self.rowSubTitles = @[
+                          @"Afternoon and Evening Remaining",
+                          @"Evening Remaining",
+                          @"",
+                          @"",
+                          @"Morning, Evening and Night Completed",
+                          @"Completed"
+                          ];
+    
+    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
+    [self.activitiesTableView registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.selectedIndexPath != nil) {
+        [self.activitiesTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+        self.selectedIndexPath = nil;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 
 #pragma  mark  -  Table View Data Source Methods
 
@@ -61,12 +117,15 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 {
     APHActivitiesTableViewCell  *cell = (APHActivitiesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier];
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.titleLabel.text = self.rowTitles[indexPath.row];
     
-    cell.title.text = self.rowTitles[indexPath.row];
-    if ([self.rowTitles[indexPath.row] hasContent] == YES) {
-        cell.subTitle.text = self.rowSubTitles[indexPath.row];
+    if ([self.rowSubTitles[indexPath.row] hasContent] == YES) {
+        cell.type = APHActivitiesTableViewCellTypeSubtitle;
+        cell.subTitleLabel.text = self.rowSubTitles[indexPath.row];
+    } else {
+        cell.type = APHActivitiesTableViewCellTypeDefault;
     }
+    
     if (indexPath.row == 4) {
         cell.completed = YES;
     }
@@ -76,7 +135,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  44.0;
+    return  70.0;
 }
 
 #pragma  mark  -  Table View Delegate Methods
@@ -103,50 +162,6 @@ static  NSString   *kViewControllerTitle      = @"Activities";
             }];
         }
     }
-}
-
-#pragma  mark  -  View Controller Methods
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.navigationItem.title = @"Activities";
-    
-    self.rowTitles = @[
-                       @"Timed Walking",
-                       @"Sustained Phonation",
-                       @"Did you sleep well last night?",
-                       @"Have you recently changed medications?",
-                       @"Interval Tapping",
-                       @"Tracing Objects"
-                       ];
-    
-    self.rowSubTitles = @[
-                       @"Afternoon and Evening Remaining",
-                       @"Evening Remaining",
-                       @"",
-                       @"",
-                       @"Morning, Evening and Night Completed",
-                       @"Completed"
-                       ];
-    
-    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
-    [self.tabulator registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier ];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if (self.selectedIndexPath != nil) {
-        [self.tabulator deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
-        self.selectedIndexPath = nil;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 @end
