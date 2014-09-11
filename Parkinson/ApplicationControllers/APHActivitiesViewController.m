@@ -227,6 +227,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     NSManagedObjectContext *context = ((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext;
     
     NSArray *unsortedScheduledTasks = [context executeFetchRequest:request error:&error];
+     //((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate  scheduledTasksDueFrom:<#(NSDate *)#> toDate:<#(NSDate *)#> sortDescriptors:<#(NSArray *)#>
     
 //    self.scheduledTasksArray = [NSMutableArray arrayWithArray:unsortedScheduledTasks];
     [self groupSimilarTasks:unsortedScheduledTasks];
