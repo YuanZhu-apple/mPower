@@ -39,9 +39,6 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 @interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
-@property  (nonatomic, strong)            NSArray                *rowTitles;
-@property  (nonatomic, strong)            NSArray                *rowSubTitles;
-
 @property  (nonatomic, strong)            NSIndexPath            *selectedIndexPath;
 @property (nonatomic, strong) NSMutableArray *scheduledTasksArray;
 @end
@@ -68,16 +65,17 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     self.navigationItem.title = @"Activities";
 
     [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
-    
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     if (self.selectedIndexPath != nil) {
         [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
         self.selectedIndexPath = nil;
     }
+    
+    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,16 +101,9 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     
     APCScheduledTask *scheduledTask = self.scheduledTasksArray[indexPath.row];
     
-    cell.titleLabel.text = scheduledTask.task.taskType;
+    cell.titleLabel.text = scheduledTask.task.taskTitle;
     
-    if ([self.rowSubTitles[indexPath.row] hasContent] == YES) {
-        cell.type = APHActivitiesTableViewCellTypeSubtitle;
-        cell.subTitleLabel.text = self.rowSubTitles[indexPath.row];
-    } else {
-        cell.type = APHActivitiesTableViewCellTypeDefault;
-    }
-    
-    if (indexPath.row == 4) {
+    if (scheduledTask.completed.boolValue) {
         cell.completed = YES;
     }
     
@@ -173,7 +164,15 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     }
 }
 
+#pragma mark - Update
+
 - (IBAction)updateActivities:(id)sender
+{
+    [self reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)reloadData
 {
     NSFetchRequest * request = [APCScheduledTask request];
 //    request.predicate = [NSPredicate predicateWithFormat:@"dueOn == %@",[NSDate date]];
@@ -181,10 +180,13 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     NSManagedObjectContext *context = ((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext;
     
     NSArray *scheduledTasks = [context executeFetchRequest:request error:&error];
-    self.scheduledTasksArray = [NSMutableArray arrayWithArray:scheduledTasks];
     
     [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
+}
+
+- (void)groupSimilarTasks
+{
+    
 }
 
 @end
