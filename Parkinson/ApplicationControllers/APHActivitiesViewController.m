@@ -43,7 +43,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 @property  (nonatomic, strong)            NSArray                *rowSubTitles;
 
 @property  (nonatomic, strong)            NSIndexPath            *selectedIndexPath;
-@property (nonatomic, strong) NSMutableArray *tasksArray;
+@property (nonatomic, strong) NSMutableArray *scheduledTasksArray;
 @end
 
 @implementation APHActivitiesViewController
@@ -53,7 +53,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        _tasksArray = [[NSMutableArray alloc] init];
+        _scheduledTasksArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -66,24 +66,6 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     [super viewDidLoad];
     
     self.navigationItem.title = @"Activities";
-    
-    self.rowTitles = @[
-                       @"Timed Walking",
-                       @"Sustained Phonation",
-                       @"Did you sleep well last night?",
-                       @"Have you recently changed medications?",
-                       @"Interval Tapping",
-                       @"Tracing Objects"
-                       ];
-    
-    self.rowSubTitles = @[
-                          @"1/3 Tasks Complete",
-                          @"1 Task Remaining",
-                          @"",
-                          @"",
-                          @"Complete",
-                          @"Complete"
-                          ];
 
     [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
     
@@ -112,16 +94,16 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  self.rowTitles.count;
+    return  self.scheduledTasksArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     APHActivitiesTableViewCell  *cell = (APHActivitiesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier];
     
-//    APCScheduledTask *scheduledTask = self.tasksArray[indexPath.row];
+    APCScheduledTask *scheduledTask = self.scheduledTasksArray[indexPath.row];
     
-    cell.titleLabel.text = self.rowTitles[indexPath.row];
+    cell.titleLabel.text = scheduledTask.task.taskType;
     
     if ([self.rowSubTitles[indexPath.row] hasContent] == YES) {
         cell.type = APHActivitiesTableViewCellTypeSubtitle;
@@ -194,13 +176,14 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (IBAction)updateActivities:(id)sender
 {
     NSFetchRequest * request = [APCScheduledTask request];
-    request.predicate = [NSPredicate predicateWithFormat:@"dueOn == %@",[NSDate date]];
+//    request.predicate = [NSPredicate predicateWithFormat:@"dueOn == %@",[NSDate date]];
     NSError * error;
     NSManagedObjectContext *context = ((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext;
     
-    NSArray *tasks = [context executeFetchRequest:request error:&error];
-    self.tasksArray = [NSMutableArray arrayWithArray:tasks];
+    NSArray *scheduledTasks = [context executeFetchRequest:request error:&error];
+    self.scheduledTasksArray = [NSMutableArray arrayWithArray:scheduledTasks];
     
+    [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
