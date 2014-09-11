@@ -12,7 +12,7 @@
 
 #import "APHStepDictionaryKeys.h"
 
-@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
+@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, UINavigationControllerDelegate>
 
 + (instancetype)customTaskViewController;
 
