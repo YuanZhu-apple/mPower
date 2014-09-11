@@ -12,9 +12,11 @@
 
 #import "APHStepDictionaryKeys.h"
 
+#import "APCAppleCore.h"
+
 @interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
 
-@property  (nonatomic, strong)  RKTask  *task;
+@property  (nonatomic, strong)  APCScheduledTask  *scheduledTask;
 
 + (instancetype)customTaskViewController;
 

@@ -32,20 +32,23 @@
 #import "APHParkinsonAppDelegate.h"
 #import <ResearchKit/ResearchKit.h>
 
-static  NSInteger  kNumberOfSectionsInTableView = 1;
-
-static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
-static  NSString   *kViewControllerTitle      = @"Activities";
-
 @interface APCGroupedScheduledTask : NSObject
 
 @property (nonatomic, strong) NSMutableArray *scheduledTasks;
 @property (nonatomic, strong) NSString *taskType;
 @property (nonatomic, strong) NSString *taskTitle;
+@property (nonatomic, strong) NSString *taskClassName;
 @property (nonatomic, assign, readonly) NSUInteger completedTasksCount;
 @property (nonatomic, assign, readonly, getter=isComplete) BOOL complete;
 
 @end
+
+/* ************************************** */
+
+static  NSInteger  kNumberOfSectionsInTableView = 1;
+
+static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
+static  NSString   *kViewControllerTitle      = @"Activities";
 
 @interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
@@ -129,10 +132,10 @@ static  NSString   *kViewControllerTitle      = @"Activities";
         APCScheduledTask *scheduledTask = (APCScheduledTask *)task;
         
         cell.titleLabel.text = scheduledTask.task.taskTitle;
-        cell.completed = scheduledTask.completed;
+        cell.completed = scheduledTask.completed.boolValue;
         
     } else{
-        
+        //Handle all cases in ifElse statements. May handle NSAssert here.
     }
     
     return  cell;
@@ -172,38 +175,47 @@ static  NSString   *kViewControllerTitle      = @"Activities";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     id task = self.scheduledTasksArray[indexPath.row];
+    NSString *taskType;
     
     if ([task isKindOfClass:[APCGroupedScheduledTask class]]) {
         
         APCGroupedScheduledTask *groupedScheduledTask = (APCGroupedScheduledTask *)task;
-        NSString *taskType = groupedScheduledTask.taskType;
+        taskType = groupedScheduledTask.taskType;
         
-        if ([taskType isEqualToString:@"APHTimedWalking"]) {
-            
-            APHWalkingTaskViewController *walkingTaskViewController = [APHWalkingTaskViewController customTaskViewController];
-            
-            [self presentViewController:walkingTaskViewController animated:YES completion:nil];
-            
-        } else if ([taskType isEqualToString:@"APHPhonation"]){
-            
-            APHPhonationTaskViewController *phonationTaskViewController = [APHPhonationTaskViewController customTaskViewController];
-            
-            [self presentViewController:phonationTaskViewController animated:YES completion:nil];
-            
-        } else if ([taskType isEqualToString:@"APHIntervalTapping"]){
-            
-            APHIntervalTappingTaskViewController *intervalTappingTaskViewController = [APHIntervalTappingTaskViewController customTaskViewController];
-            
-            [self presentViewController:intervalTappingTaskViewController animated:YES completion:nil];
-            
-        } else if ([taskType isEqualToString:@"APHCustomizableSurvey"]){
-            
-            APHSleepQualityTaskViewController *sleepQualityTaskViewController = [APHSleepQualityTaskViewController customTaskViewController];
-            [self presentViewController:sleepQualityTaskViewController animated:YES completion:nil];
-            
-        } else {
-            
-        }
+        NSString *taskClass = groupedScheduledTask.taskClassName;
+
+    } else {
+        APCScheduledTask *scheduledTask = (APCScheduledTask *)task;
+        taskType = scheduledTask.task.taskType;
+    }
+    
+    /* Load ViewControllers according to task types */
+    
+    if ([taskType isEqualToString:@"APHTimedWalking"]) {
+        
+        APHWalkingTaskViewController *walkingTaskViewController = [APHWalkingTaskViewController customTaskViewController];
+        walkingTaskViewController.task = task;
+        [self presentViewController:walkingTaskViewController animated:YES completion:nil];
+        
+    } else if ([taskType isEqualToString:@"APHPhonation"]){
+        
+        APHPhonationTaskViewController *phonationTaskViewController = [APHPhonationTaskViewController customTaskViewController];
+        
+        [self presentViewController:phonationTaskViewController animated:YES completion:nil];
+        
+    } else if ([taskType isEqualToString:@"APHIntervalTapping"]){
+        
+        APHIntervalTappingTaskViewController *intervalTappingTaskViewController = [APHIntervalTappingTaskViewController customTaskViewController];
+        
+        [self presentViewController:intervalTappingTaskViewController animated:YES completion:nil];
+        
+    } else if ([taskType isEqualToString:@"APHCustomizableSurvey"]){
+        
+        APHSleepQualityTaskViewController *sleepQualityTaskViewController = [APHSleepQualityTaskViewController customTaskViewController];
+        [self presentViewController:sleepQualityTaskViewController animated:YES completion:nil];
+        
+    } else {
+        
     }
 }
 
@@ -218,18 +230,8 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 - (void)reloadData
 {
     [self.scheduledTasksArray removeAllObjects];
+    NSArray *unsortedScheduledTasks = [((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate  scheduledTasksForPredicate:nil sortDescriptors:nil];
     
-    NSFetchRequest * request = [APCScheduledTask request];
-//    request.predicate = [NSPredicate predicateWithFormat:@"dueOn == %@",[NSDate date]];
-//    request.predicate = [NSPredicate predicateWithFormat:@"(dueOn >= %@) AND (dueOn <= %@)", startDate, endDate];
-    
-    NSError * error;
-    NSManagedObjectContext *context = ((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext;
-    
-    NSArray *unsortedScheduledTasks = [context executeFetchRequest:request error:&error];
-     //((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate  scheduledTasksDueFrom:<#(NSDate *)#> toDate:<#(NSDate *)#> sortDescriptors:<#(NSArray *)#>
-    
-//    self.scheduledTasksArray = [NSMutableArray arrayWithArray:unsortedScheduledTasks];
     [self groupSimilarTasks:unsortedScheduledTasks];
     
     [self.tableView reloadData];
@@ -263,6 +265,7 @@ static  NSString   *kViewControllerTitle      = @"Activities";
             groupedTask.scheduledTasks = [NSMutableArray arrayWithArray:filteredTasksArray];
             groupedTask.taskType = taskType;
             groupedTask.taskTitle = scheduledTask.task.taskTitle;
+            groupedTask.taskClassName = scheduledTask.task.taskClassName;
             
             [self.scheduledTasksArray addObject:groupedTask];
         } else{
