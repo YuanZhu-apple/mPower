@@ -14,6 +14,8 @@
 
 @interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
 
+@property  (nonatomic, strong)  RKTask  *task;
+
 + (instancetype)customTaskViewController;
 
 + (NSDictionary *)keysToPropertiesMap;
