@@ -25,7 +25,7 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 {
     RKTask  *task = [self createTask];
     APHPhonationTaskViewController  *controller = [[APHPhonationTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 

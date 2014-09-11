@@ -10,7 +10,7 @@
 
 NSString *const kDatabaseName = @"db.sqlite";
 NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
-NSString *const kBaseURL = @"http://localhost:4567/api/v1";
+NSString *const kBaseURL = @"http://pd-staging.sagebridge.org/api/v1";
 NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 
 @interface APHParkinsonAppDelegate ()

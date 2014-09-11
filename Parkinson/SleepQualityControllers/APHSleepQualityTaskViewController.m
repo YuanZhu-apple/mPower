@@ -22,7 +22,7 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 {
     RKTask  *task = [self createTask];
     APHSleepQualityTaskViewController  *controller = [[APHSleepQualityTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 

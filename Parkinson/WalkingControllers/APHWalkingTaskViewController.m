@@ -38,7 +38,7 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 {
     RKTask  *task = [self createTask];
     APHWalkingTaskViewController  *controller = [[APHWalkingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 

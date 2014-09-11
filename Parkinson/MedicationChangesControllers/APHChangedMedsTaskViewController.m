@@ -20,7 +20,7 @@ static  NSString  *kMedicationsStep101Key = @"Medications Step 101";
 {
     RKTask  *task = [self createTask];
     APHChangedMedsTaskViewController  *controller = [[APHChangedMedsTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 
