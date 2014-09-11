@@ -9,6 +9,7 @@
 #import "APHPhonationTaskViewController.h"
 #import "APHStepDictionaryKeys.h"
 #import <objc/message.h>
+#import <AVFoundation/AVFoundation.h>
 
 static NSString * kPhonationStep101Key = @"Phonation_Step_101";
 static NSString * kPhonationStep102Key = @"Phonation_Step_102";
@@ -24,7 +25,7 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 {
     RKTask  *task = [self createTask];
     APHPhonationTaskViewController  *controller = [[APHPhonationTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 
@@ -46,7 +47,10 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
         step.countDown = 10.0;
         step.buzz = YES;
         step.vibration = YES;
-        step.recorderConfigurations = @[[RKAudioRecorderConfiguration configuration]];
+        step.recorderConfigurations = @[[[RKAudioRecorderConfiguration alloc] initWithRecorderSettings:@{AVFormatIDKey : @(kAudioFormatAppleLossless),
+                                                                                                         AVNumberOfChannelsKey : @(2),
+                                                                                                         AVSampleRateKey: @(44100.0)
+                                                                                                         }]];
         [steps addObject:step];
     }
     {

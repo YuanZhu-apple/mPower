@@ -24,7 +24,7 @@ static  NSString  *kTracingObjectsStep101Key = @"Tracing Objects Step 101";
 {
     RKTask  *task = [self createTask];
     APHTracingObjectsTaskViewController  *controller = [[APHTracingObjectsTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 

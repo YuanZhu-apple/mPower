@@ -25,7 +25,7 @@ static float tapInterval = 20.0;
 {
     RKTask  *task = [self createTask];
     APHIntervalTappingTaskViewController  *controller = [[APHIntervalTappingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    controller.taskDelegate = controller;
     return  controller;
 }
 
