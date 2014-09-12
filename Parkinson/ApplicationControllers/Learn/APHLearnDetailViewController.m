@@ -14,6 +14,8 @@
 
 static  NSString  *LearnDetailViewCellIdentifier = @"LearnDetailTableViewCell";
 
+static CGFloat const kTableViewRowHeight = 80;
+
 @interface APHLearnDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,7 +71,7 @@ static  NSString  *LearnDetailViewCellIdentifier = @"LearnDetailTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return kTableViewRowHeight;
 }
 
 

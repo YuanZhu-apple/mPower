@@ -167,6 +167,7 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Placeholder Value. Have to change when contents are present.
     return 150.f;
 }
 

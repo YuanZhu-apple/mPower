@@ -50,6 +50,9 @@ static  NSInteger  kNumberOfSectionsInTableView = 1;
 static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
 static  NSString   *kViewControllerTitle      = @"Activities";
 
+static CGFloat const kTableViewRowHeight = 70;
+static CGFloat const kTableViewSectionHeaderHeight = 70;
+
 @interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *scheduledTasksArray;
@@ -145,12 +148,12 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  70.0;
+    return  kTableViewRowHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return kTableViewSectionHeaderHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
