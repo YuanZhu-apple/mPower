@@ -49,29 +49,10 @@ static float tapInterval = 20.0;
         step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
         [steps addObject:step];
     }
-    
-    
+        
     RKTask  *task = [[RKTask alloc] initWithName:@"Interval Touches" identifier:@"Tapping Task" steps:steps];
     return  task;
 }
 
-#pragma  mark  -  Task View Controller Delegate Methods
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
-{
-    NSLog(@"%@", result);
-}
 
 @end

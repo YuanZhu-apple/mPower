@@ -64,16 +64,4 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     return  task;
 }
 
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
 @end

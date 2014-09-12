@@ -50,6 +50,17 @@
 /*********************************************************************************/
 #pragma mark - RKTaskDelegate
 /*********************************************************************************/
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
+{
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 //Universal Did Produce Result
 - (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
 {

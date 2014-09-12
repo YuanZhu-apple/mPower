@@ -110,19 +110,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
     return  NO;

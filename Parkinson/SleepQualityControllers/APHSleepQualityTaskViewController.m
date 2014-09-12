@@ -46,17 +46,6 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
     [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)taskViewController: (RKTaskViewController *)taskViewController didFailWithError:(NSError*)error
-{
-    //    [taskViewController suspend];
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
-{
-    //    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
     return  YES;
@@ -89,12 +78,6 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
 {
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
-{
-    NSLog(@"Result: %@", result);
-    
 }
 
 @end
