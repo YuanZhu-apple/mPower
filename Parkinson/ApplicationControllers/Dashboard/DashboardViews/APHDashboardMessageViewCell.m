@@ -23,17 +23,19 @@
 - (void)setType:(APHDashboardMessageViewCellType)type
 {
     switch (type) {
-        case APHDashboardMessageViewCellTypeAlert:
+        case kDashboardMessageViewCellTypeAlert:
         {
-            self.titleLabel.text = @"Alert:";
+            self.titleLabel.text = NSLocalizedString(@"Alert:", @"Alert:");
         }
             break;
-        case APHDashboardMessageViewCellTypeInsight:
+        case kDashboardMessageViewCellTypeInsight:
         {
-            self.titleLabel.text = @"Insight:";
+            self.titleLabel.text = NSLocalizedString(@"Insight:", @"Insight:");
         }
             break;
-        default://TODO:NSAssert
+        default:{
+            NSAssert(0, @"Invalid Cell Type");
+        }
             break;
     }
 }

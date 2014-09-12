@@ -12,9 +12,10 @@
 /* Views */
 #import "APHLearnDetailViewCell.h"
 
-static  NSString  *LearnDetailViewCellIdentifier = @"LearnDetailTableViewCell";
+static  NSString  *kLearnDetailViewCellIdentifier = @"LearnDetailTableViewCell";
 
-static CGFloat kTableViewRowHeight = 80;
+static CGFloat kTableViewRowHeight        = 80;
+static NSInteger kNumberOfRowsInTableView = 5;
 
 @interface APHLearnDetailViewController ()
 
@@ -39,7 +40,7 @@ static CGFloat kTableViewRowHeight = 80;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"APHLearnDetailViewCell" bundle:nil] forCellReuseIdentifier:LearnDetailViewCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"APHLearnDetailViewCell" bundle:nil] forCellReuseIdentifier:kLearnDetailViewCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,12 +52,12 @@ static CGFloat kTableViewRowHeight = 80;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return kNumberOfRowsInTableView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    APHLearnDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LearnDetailViewCellIdentifier forIndexPath:indexPath];
+    APHLearnDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLearnDetailViewCellIdentifier forIndexPath:indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

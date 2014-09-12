@@ -15,12 +15,12 @@
 #import "APHLearnMasterTableViewCell.h"
 #import "APHLearnResourceViewCell.h"
 
-static  NSString  *LearnMasterViewCellIdentifier = @"LearnMasterTableViewCell";
+static  NSString  *LearnMasterViewCellIdentifier   = @"LearnMasterTableViewCell";
 static  NSString  *LearnResourceViewCellIdentifier = @"LearnResourceTableViewCell";
 
-static NSInteger kNumberOfSections = 2;
-static CGFloat kMasterTableViewCellHeight = 166.0;
-static CGFloat kResourceTableViewCellHeight = 120.0;
+static NSInteger kNumberOfSectionsinTableView = 2;
+static CGFloat kMasterTableViewCellHeight     = 166.0;
+static CGFloat kResourceTableViewCellHeight   = 120.0;
 
 @interface APHLearnMasterViewController ()  <APHLearnMasterTableViewCellDelegate>
 
@@ -66,11 +66,12 @@ static CGFloat kResourceTableViewCellHeight = 120.0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  kNumberOfSections;
+    return  kNumberOfSectionsinTableView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //Not a constant. Varies according to content.
     return  3;
 }
 
@@ -92,7 +93,9 @@ static CGFloat kResourceTableViewCellHeight = 120.0;
             return  cell;
         }
             break;
-        default:
+        default:{
+            NSAssert(0, @"Invalid section");
+        }
             break;
     }
     
@@ -116,7 +119,9 @@ static CGFloat kResourceTableViewCellHeight = 120.0;
             height = kResourceTableViewCellHeight;
         }
             break;
-        default://TODO:NSAssert
+        default:{
+            height = 0;
+        }
             break;
     }
     
@@ -136,7 +141,9 @@ static CGFloat kResourceTableViewCellHeight = 120.0;
             
         }
             break;
-        default://TODO:NSAssert
+        default:{
+            NSAssert(0, @"Invalid Section");
+        }
             break;
     }
 }
