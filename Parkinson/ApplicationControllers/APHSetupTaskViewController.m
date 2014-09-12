@@ -7,6 +7,8 @@
 //
 
 #import "APHSetupTaskViewController.h"
+#import "APCAppleCore.h"
+#import "APHParkinsonAppDelegate.h"
 #import <objc/message.h>
 
 static  NSDictionary  *keysToPropertiesMap = nil;
@@ -90,18 +92,30 @@ static  NSDictionary  *keysToPropertiesMap = nil;
 //Universal Did Produce Result
 - (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
 {
-//    NSLog(@"Result: %@", result);
-//    NSError * error;
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:[self filePath]]) {
-//        [[NSFileManager defaultManager] removeItemAtPath:[self filePath] error:&error];
-//        if (error) {
-//            NSLog(@"%@",[self descriptionForObject:error]);
-//        }
-//    }
-//    [[NSFileManager defaultManager] moveItemAtPath:[(RKFileResult*)result fileUrl].path toPath:[self filePath] error:&error];
-//    if (error) {
-//        NSLog(@"%@",[self descriptionForObject:error]);
-//    }
+    APCResult * apcResult = [APCResult storeRKResult:result inContext:((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext];
+    apcResult.scheduledTask = self.scheduledTask;
+    NSLog(@"RKResult: %@ APCResult: %@", result,apcResult);
+
+    
+    if ([result isKindOfClass:[RKFileResult class]]) {
+        NSError * error;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self filePath]]) {
+            [[NSFileManager defaultManager] removeItemAtPath:[self filePath] error:&error];
+            if (error) {
+                NSLog(@"%@",[self descriptionForObject:error]);
+            }
+        }
+        [[NSFileManager defaultManager] moveItemAtPath:[(RKFileResult*)result fileUrl].path toPath:[self filePath] error:&error];
+        if (error) {
+            NSLog(@"%@",[self descriptionForObject:error]);
+        }
+    }
+}
+
+- (NSString *)filePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [[paths lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", [NSUUID UUID].UUIDString]];
 }
 
 /*********************************************************************************/
