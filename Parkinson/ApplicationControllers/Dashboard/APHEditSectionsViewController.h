@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString * const DashboardSectionsOrder = @"DashboardSectionsOrderKey";
+static NSString * const kDashboardSectionsOrder = @"DashboardSectionsOrderKey";
 
 typedef NS_ENUM(NSUInteger, APHDashboardSection) {
-    APHDashboardSectionStudyOverView = 0,
-    APHDashboardSectionActivity,
-    APHDashboardSectionBloodCount,
-    APHDashboardSectionMedications,
-    APHDashboardSectionInsights,
-    APHDashboardSectionAlerts
+    kDashboardSectionStudyOverView = 0,
+    kDashboardSectionActivity,
+    kDashboardSectionBloodCount,
+    kDashboardSectionMedications,
+    kDashboardSectionInsights,
+    kDashboardSectionAlerts
 };
 
 @interface APHEditSectionsViewController : UIViewController

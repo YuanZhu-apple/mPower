@@ -51,7 +51,7 @@
     _type = type;
     
     switch (type) {
-        case APHActivitiesTableViewCellTypeDefault:
+        case kActivitiesTableViewCellTypeDefault:
         {
             self.titleLabel.numberOfLines = 2;
             self.titleLabelHeightConstraint.constant = 36.f;
@@ -59,7 +59,7 @@
             self.subTitleLabel.hidden = YES;
         }
             break;
-        case APHActivitiesTableViewCellTypeSubtitle:
+        case kActivitiesTableViewCellTypeSubtitle:
         {
             self.titleLabel.numberOfLines = 1;
             self.titleLabelHeightConstraint.constant = 18.f;

@@ -34,28 +34,29 @@
 
 @interface APCGroupedScheduledTask : NSObject
 
-@property (nonatomic, strong) NSMutableArray *scheduledTasks;
-@property (nonatomic, strong) NSString *taskType;
-@property (nonatomic, strong) NSString *taskTitle;
-@property (nonatomic, strong) NSString *taskClassName;
-@property (nonatomic, assign, readonly) NSUInteger completedTasksCount;
-@property (nonatomic, assign, readonly, getter=isComplete) BOOL complete;
+@property (strong, nonatomic) NSMutableArray *scheduledTasks;
+@property (strong, nonatomic) NSString *taskType;
+@property (strong, nonatomic) NSString *taskTitle;
+@property (strong, nonatomic) NSString *taskClassName;
+@property (nonatomic, readonly) NSUInteger completedTasksCount;
+@property (nonatomic, readonly, getter=isComplete) BOOL complete;
 
 @end
 
 /* ************************************** */
 
-static  NSInteger  kNumberOfSectionsInTableView = 1;
 
-static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
-static  NSString   *kViewControllerTitle      = @"Activities";
 
-static CGFloat const kTableViewRowHeight = 70;
-static CGFloat const kTableViewSectionHeaderHeight = 70;
+static NSString *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
+static NSString *kViewControllerTitle      = @"Activities";
+
+static CGFloat kTableViewRowHeight = 70;
+static CGFloat kTableViewSectionHeaderHeight = 30;
+static NSInteger kNumberOfSectionsInTableView = 1;
 
 @interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
-@property (nonatomic, strong) NSMutableArray *scheduledTasksArray;
+@property (strong, nonatomic) NSMutableArray *scheduledTasksArray;
 
 @end
 
@@ -115,7 +116,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 70;
     
     if ([task isKindOfClass:[APCGroupedScheduledTask class]]) {
         
-        cell.type = APHActivitiesTableViewCellTypeSubtitle;
+        cell.type = kActivitiesTableViewCellTypeSubtitle;
         
         APCGroupedScheduledTask *groupedScheduledTask = (APCGroupedScheduledTask *)task;
         
@@ -124,13 +125,13 @@ static CGFloat const kTableViewSectionHeaderHeight = 70;
         NSUInteger tasksCount = groupedScheduledTask.scheduledTasks.count;
         NSUInteger completedTasksCount = groupedScheduledTask.completedTasksCount;
         
-        cell.subTitleLabel.text = [NSString stringWithFormat:@"%lu/%lu Tasks Completed", (unsigned long)completedTasksCount, (unsigned long)tasksCount];
+        cell.subTitleLabel.text = [NSString stringWithFormat:@"%lu/%lu %@", (unsigned long)completedTasksCount, (unsigned long)tasksCount, NSLocalizedString(@"Tasks Completed", nil)];
         
         cell.completed = groupedScheduledTask.complete;
         
     } else if ([task isKindOfClass:[APCScheduledTask class]]){
         
-        cell.type = APHActivitiesTableViewCellTypeDefault;
+        cell.type = kActivitiesTableViewCellTypeDefault;
         
         APCScheduledTask *scheduledTask = (APCScheduledTask *)task;
         
@@ -158,8 +159,8 @@ static CGFloat const kTableViewSectionHeaderHeight = 70;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 30)];
-    [headerView.contentView setBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1.0]];
+    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), kTableViewSectionHeaderHeight)];
+    [headerView.contentView setBackgroundColor:[UIColor parkinsonLightGrayColor]];
     
     switch (section) {
         case 0:

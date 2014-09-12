@@ -1,10 +1,11 @@
 //
 //  APHLearnMasterViewController.m
-//  BasicTabBar
+//  Parkinson
 //
-//  Created by Henry McGilton on 9/7/14.
-//  Copyright (c) 2014 Trilithon Software. All rights reserved.
+//  Created by Henry McGilton on 8/20/14.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
+
 
 /* ViewControllers */
 #import "APHLearnMasterViewController.h"
@@ -17,8 +18,9 @@
 static  NSString  *LearnMasterViewCellIdentifier = @"LearnMasterTableViewCell";
 static  NSString  *LearnResourceViewCellIdentifier = @"LearnResourceTableViewCell";
 
-static  CGFloat  kMasterTableViewCellHeight = 166.0;
-static  CGFloat  kResourceTableViewCellHeight = 120.0;
+static NSInteger kNumberOfSections = 2;
+static CGFloat kMasterTableViewCellHeight = 166.0;
+static CGFloat kResourceTableViewCellHeight = 120.0;
 
 @interface APHLearnMasterViewController ()  <APHLearnMasterTableViewCellDelegate>
 
@@ -64,7 +66,7 @@ static  CGFloat  kResourceTableViewCellHeight = 120.0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  2;
+    return  kNumberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

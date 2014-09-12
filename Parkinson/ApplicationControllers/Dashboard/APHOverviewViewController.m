@@ -16,9 +16,9 @@
 #import "APHDashboardMessageViewCell.h"
 #import "APHDashboardProgressViewCell.h"
 
-static NSString * const DashboardGraphCellIdentifier = @"DashboardGraphCellIdentifier";
-static NSString * const DashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
-static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
+static NSString * const kDashboardGraphCellIdentifier = @"DashboardGraphCellIdentifier";
+static NSString * const kDashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
+static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
 @interface APHOverviewViewController ()
 
@@ -36,17 +36,17 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
     if (self = [super initWithCoder:aDecoder]) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:DashboardSectionsOrder]];
+        _sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:kDashboardSectionsOrder]];
         
         if (!_sectionsOrder.count) {
-            _sectionsOrder = [[NSMutableArray alloc] initWithArray:@[@(APHDashboardSectionStudyOverView),
-                                                                     @(APHDashboardSectionActivity),
-                                                                     @(APHDashboardSectionBloodCount),
-                                                                     @(APHDashboardSectionMedications),
-                                                                     @(APHDashboardSectionInsights),
-                                                                     @(APHDashboardSectionAlerts)]];
+            _sectionsOrder = [[NSMutableArray alloc] initWithArray:@[@(kDashboardSectionStudyOverView),
+                                                                     @(kDashboardSectionActivity),
+                                                                     @(kDashboardSectionBloodCount),
+                                                                     @(kDashboardSectionMedications),
+                                                                     @(kDashboardSectionInsights),
+                                                                     @(kDashboardSectionAlerts)]];
             
-            [defaults setObject:[NSArray arrayWithArray:_sectionsOrder] forKey:DashboardSectionsOrder];
+            [defaults setObject:[NSArray arrayWithArray:_sectionsOrder] forKey:kDashboardSectionsOrder];
             [defaults synchronize];
         }
         
@@ -63,9 +63,9 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
     [super viewDidLoad];
     
     //Setup table
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardProgressViewCell" bundle:nil] forCellReuseIdentifier:DashboardProgressCellIdentifier];
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardGraphViewCell" bundle:nil] forCellReuseIdentifier:DashboardGraphCellIdentifier];
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardMessageViewCell" bundle:nil] forCellReuseIdentifier:DashboardMessagesCellIdentifier];
+    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardProgressViewCell" bundle:nil] forCellReuseIdentifier:kDashboardProgressCellIdentifier];
+    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardGraphViewCell" bundle:nil] forCellReuseIdentifier:kDashboardGraphCellIdentifier];
+    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardMessageViewCell" bundle:nil] forCellReuseIdentifier:kDashboardMessagesCellIdentifier];
     
     [self.dashboardTableView setSeparatorInset:UIEdgeInsetsZero];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(editTapped)];
@@ -78,7 +78,7 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
     [super viewWillAppear:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:DashboardSectionsOrder]];
+    self.sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:kDashboardSectionsOrder]];
     
     [self.dashboardTableView reloadData];
 }
@@ -109,45 +109,47 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
 {
     NSInteger cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.section]).integerValue;
     
+    UITableViewCell *cell = nil;
+    
     switch (cellType) {
-        case APHDashboardSectionStudyOverView:
+        case kDashboardSectionStudyOverView:
         {
-            APHDashboardProgressViewCell *cell = (APHDashboardProgressViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardProgressCellIdentifier forIndexPath:indexPath];
+            cell = (APHDashboardProgressViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardProgressCellIdentifier forIndexPath:indexPath];
             return  cell;
         }
             break;
-        case APHDashboardSectionActivity:
+        case kDashboardSectionActivity:
         {
-            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
-            cell.titleLabel.text = @"Activity";
+            cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Activity";
             return  cell;
         }
             break;
-        case APHDashboardSectionBloodCount:
+        case kDashboardSectionBloodCount:
         {
-            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
-            cell.titleLabel.text = @"Blood Count";
+            cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Blood Count";
             return  cell;
         }
             break;
-        case APHDashboardSectionMedications:
+        case kDashboardSectionMedications:
         {
-            APHDashboardGraphViewCell *cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardGraphCellIdentifier forIndexPath:indexPath];
-            cell.titleLabel.text = @"Medications";
+            cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Medications";
             return  cell;
         }
             break;
-        case APHDashboardSectionInsights:
+        case kDashboardSectionInsights:
         {
-            APHDashboardMessageViewCell *cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardMessagesCellIdentifier forIndexPath:indexPath];
-            cell.type = APHDashboardMessageViewCellTypeInsight;
+            cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardMessagesCellIdentifier forIndexPath:indexPath];
+            ((APHDashboardMessageViewCell *)cell).type = APHDashboardMessageViewCellTypeInsight;
             return  cell;
         }
             break;
-        case APHDashboardSectionAlerts:
+        case kDashboardSectionAlerts:
         {
-            APHDashboardMessageViewCell *cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:DashboardMessagesCellIdentifier forIndexPath:indexPath];
-            cell.type = APHDashboardMessageViewCellTypeAlert;
+            cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardMessagesCellIdentifier forIndexPath:indexPath];
+            ((APHDashboardMessageViewCell *)cell).type = APHDashboardMessageViewCellTypeAlert;
             return  cell;
         }
             break;
@@ -155,7 +157,7 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
             break;
     }
     
-    return nil;
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -167,7 +169,7 @@ static NSString * const DashboardMessagesCellIdentifier = @"DashboardMessageCell
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Placeholder Value. Have to change when contents are present.
+    //Placeholder Value. Have to change when contents are present. Esp. for Alerts and Insights.
     return 150.f;
 }
 

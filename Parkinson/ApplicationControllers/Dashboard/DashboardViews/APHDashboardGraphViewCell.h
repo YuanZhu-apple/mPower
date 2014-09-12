@@ -20,6 +20,6 @@
 @interface APHDashboardGraphViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) id <APHDashboardGraphViewCellDelegate> delegate;
+@property (weak, nonatomic) id <APHDashboardGraphViewCellDelegate> delegate;
 
 @end

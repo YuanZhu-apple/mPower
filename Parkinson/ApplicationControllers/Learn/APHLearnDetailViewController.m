@@ -1,9 +1,9 @@
 //
 //  APHLearnDetailViewController.m
-//  BasicTabBar
+//  Parkinson
 //
-//  Created by Henry McGilton on 9/7/14.
-//  Copyright (c) 2014 Trilithon Software. All rights reserved.
+//  Created by Henry McGilton on 8/20/14.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 /* ViewControllers */
@@ -14,7 +14,7 @@
 
 static  NSString  *LearnDetailViewCellIdentifier = @"LearnDetailTableViewCell";
 
-static CGFloat const kTableViewRowHeight = 80;
+static CGFloat kTableViewRowHeight = 80;
 
 @interface APHLearnDetailViewController ()
 
@@ -48,11 +48,6 @@ static CGFloat const kTableViewRowHeight = 80;
 }
 
 #pragma mark - UITableViewDataSource methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

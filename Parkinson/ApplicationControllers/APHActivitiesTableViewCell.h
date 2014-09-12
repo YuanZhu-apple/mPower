@@ -11,16 +11,16 @@
 @class  APHConfirmationView;
 
 typedef NS_ENUM(NSUInteger, APHActivitiesTableViewCellType) {
-    APHActivitiesTableViewCellTypeDefault,
-    APHActivitiesTableViewCellTypeSubtitle,
+    kActivitiesTableViewCellTypeDefault,
+    kActivitiesTableViewCellTypeSubtitle,
 };
 
 @interface APHActivitiesTableViewCell : UITableViewCell
 
-@property (nonatomic, weak)  IBOutlet  UILabel              *titleLabel;
-@property (nonatomic, weak)  IBOutlet  UILabel              *subTitleLabel;
+@property (weak, nonatomic)  IBOutlet  UILabel              *titleLabel;
+@property (weak, nonatomic)  IBOutlet  UILabel              *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
-@property (nonatomic, weak)  IBOutlet  APHConfirmationView  *confirmationView;
+@property (weak, nonatomic)  IBOutlet  APHConfirmationView  *confirmationView;
 @property (nonatomic, assign, getter = isCompleted)   BOOL   completed;
 @property (nonatomic, assign) APHActivitiesTableViewCellType type;
 

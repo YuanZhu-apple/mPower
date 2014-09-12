@@ -27,7 +27,7 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:DashboardSectionsOrder]];
+        _sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:kDashboardSectionsOrder]];
         
         self.title = NSLocalizedString(@"Edit Dashboard", nil);
     }
@@ -61,10 +61,6 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.sectionsOrder.count;
@@ -77,32 +73,32 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
     NSInteger cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.row]).integerValue;
     
     switch (cellType) {
-        case APHDashboardSectionStudyOverView:
+        case kDashboardSectionStudyOverView:
         {
             cell.textLabel.text = @"Study Overview";
         }
             break;
-        case APHDashboardSectionActivity:
+        case kDashboardSectionActivity:
         {
             cell.textLabel.text = @"Activity";
         }
             break;
-        case APHDashboardSectionBloodCount:
+        case kDashboardSectionBloodCount:
         {
             cell.textLabel.text = @"Blood Count";
         }
             break;
-        case APHDashboardSectionMedications:
+        case kDashboardSectionMedications:
         {
             cell.textLabel.text = @"Medications";
         }
             break;
-        case APHDashboardSectionInsights:
+        case kDashboardSectionInsights:
         {
             cell.textLabel.text = @"Insights";
         }
             break;
-        case APHDashboardSectionAlerts:
+        case kDashboardSectionAlerts:
         {
             cell.textLabel.text = @"Alerts";
         }
@@ -128,7 +124,7 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
     [self.sectionsOrder insertObject:sectionData atIndex:destinationIndexPath.row];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.sectionsOrder forKey:DashboardSectionsOrder];
+    [defaults setObject:self.sectionsOrder forKey:kDashboardSectionsOrder];
     [defaults synchronize];
 }
 
