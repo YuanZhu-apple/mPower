@@ -27,7 +27,6 @@
 /* Other Classes */
 #import "NSString+CustomMethods.h"
 #import "NSManagedObject+APCHelper.h"
-#import "APHStepDictionaryKeys.h"
 #import "UIColor+Parkinson.h"
 #import "APHParkinsonAppDelegate.h"
 #import <ResearchKit/ResearchKit.h>
