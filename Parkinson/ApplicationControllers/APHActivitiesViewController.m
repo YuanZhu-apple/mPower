@@ -6,13 +6,11 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+/* ViewControllers */
 #import "APHActivitiesViewController.h"
-
 #import "APHWalkingOverviewViewController.h"
-
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
-
 #import "APHWalkingTaskViewController.h"
 #import "APHPhonationTaskViewController.h"
 #import "APHSleepQualityTaskViewController.h"
@@ -20,31 +18,83 @@
 #import "APHIntervalTappingTaskViewController.h"
 #import "APHTracingObjectsTaskViewController.h"
 
+/* Views */
 #import "APHActivitiesTableViewCell.h"
-#import "NSString+CustomMethods.h"
 
+/* Model */
+#import "APCScheduledTask.h"
+
+/* Other Classes */
+#import "NSString+CustomMethods.h"
+#import "NSManagedObject+APCHelper.h"
+#import "UIColor+Parkinson.h"
+#import "APHParkinsonAppDelegate.h"
 #import <ResearchKit/ResearchKit.h>
 
-static  NSInteger  kNumberOfSectionsInTableView = 1;
+@interface APCGroupedScheduledTask : NSObject
 
-static  NSString   *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
-static  NSString   *kViewControllerTitle      = @"Activities";
+@property (strong, nonatomic) NSMutableArray *scheduledTasks;
+@property (strong, nonatomic) NSString *taskType;
+@property (strong, nonatomic) NSString *taskTitle;
+@property (strong, nonatomic) NSString *taskClassName;
+@property (nonatomic, readonly) NSUInteger completedTasksCount;
+@property (nonatomic, readonly, getter=isComplete) BOOL complete;
 
-@interface APHActivitiesViewController () <UITableViewDataSource, UITableViewDelegate, RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
+@end
 
-@property  (nonatomic, strong)  IBOutlet  UITableView            *tabulator;
+/* ************************************** */
 
-@property  (nonatomic, strong)            NSArray                *controllerClasses;
-@property  (nonatomic, strong)            NSArray                *rowTitles;
-@property  (nonatomic, strong)            NSArray                *rowSubTitles;
 
-@property  (nonatomic, strong)            NSIndexPath            *selectedIndexPath;
+
+static NSString *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
+
+static CGFloat kTableViewRowHeight = 70;
+static CGFloat kTableViewSectionHeaderHeight = 30;
+static NSInteger kNumberOfSectionsInTableView = 1;
+
+@interface APHActivitiesViewController () <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
+
+@property (strong, nonatomic) NSMutableArray *scheduledTasksArray;
 
 @end
 
 @implementation APHActivitiesViewController
 
-#pragma  mark  -  Table View Data Source Methods
+#pragma mark - Init
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        _scheduledTasksArray = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.navigationItem.title = NSLocalizedString(@"Activities", @"Activities");
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self reloadData];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - UITableViewDataSource Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -53,109 +103,232 @@ static  NSString   *kViewControllerTitle      = @"Activities";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  [self.controllerClasses count];
+    return  self.scheduledTasksArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     APHActivitiesTableViewCell  *cell = (APHActivitiesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTableCellReuseIdentifier];
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    id task = self.scheduledTasksArray[indexPath.row];
     
-    cell.title.text = self.rowTitles[indexPath.row];
-    if ([self.rowTitles[indexPath.row] hasContent] == YES) {
-        cell.subTitle.text = self.rowSubTitles[indexPath.row];
-    }
-    if (indexPath.row == 4) {
-        cell.completed = YES;
+    if ([task isKindOfClass:[APCGroupedScheduledTask class]]) {
+        
+        cell.type = kActivitiesTableViewCellTypeSubtitle;
+        
+        APCGroupedScheduledTask *groupedScheduledTask = (APCGroupedScheduledTask *)task;
+        
+        cell.titleLabel.text = groupedScheduledTask.taskTitle;
+        
+        NSUInteger tasksCount = groupedScheduledTask.scheduledTasks.count;
+        NSUInteger completedTasksCount = groupedScheduledTask.completedTasksCount;
+        
+        cell.subTitleLabel.text = [NSString stringWithFormat:@"%lu/%lu %@", (unsigned long)completedTasksCount, (unsigned long)tasksCount, NSLocalizedString(@"Tasks Completed", nil)];
+        
+        cell.completed = groupedScheduledTask.complete;
+        
+    } else if ([task isKindOfClass:[APCScheduledTask class]]){
+        
+        cell.type = kActivitiesTableViewCellTypeDefault;
+        
+        APCScheduledTask *scheduledTask = (APCScheduledTask *)task;
+        
+        cell.titleLabel.text = scheduledTask.task.taskTitle;
+        cell.completed = scheduledTask.completed.boolValue;
+        
+    } else{
+        //Handle all cases in ifElse statements. May handle NSAssert here.
     }
     
     return  cell;
 }
 
+#pragma mark - UITableViewDelegate Methods
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  44.0;
+    return  kTableViewRowHeight;
 }
 
-#pragma  mark  -  Table View Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return kTableViewSectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), kTableViewSectionHeaderHeight)];
+    [headerView.contentView setBackgroundColor:[UIColor parkinsonLightGrayColor]];
+    
+    switch (section) {
+        case 0:
+            headerView.textLabel.text = NSLocalizedString(@"Today", @"Today");
+            break;
+        
+        default:{
+            NSAssert(0, @"Invalid Section");
+        }
+            break;
+    }
+    
+    return headerView;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedIndexPath = indexPath;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSArray  *controllerClasses = @[
-                                    [APHWalkingTaskViewController         class],
-                                    [APHPhonationTaskViewController       class],
-                                    [APHSleepQualityTaskViewController    class],
-                                    [APHChangedMedsTaskViewController     class],
-                                    [APHIntervalTappingTaskViewController class],
-                                    [APHTracingObjectsTaskViewController  class]
-                                ];
-    if (indexPath.row < [controllerClasses count]) {
-        Class  class = controllerClasses[indexPath.row];
+    id task = self.scheduledTasksArray[indexPath.row];
+    NSString *taskType;
+    
+    if ([task isKindOfClass:[APCGroupedScheduledTask class]]) {
+        
+        APCGroupedScheduledTask *groupedScheduledTask = (APCGroupedScheduledTask *)task;
+        taskType = groupedScheduledTask.taskType;
+        
+        NSString *taskClass = groupedScheduledTask.taskClassName;
+        
+        Class  class = [NSClassFromString(taskClass) class];
+        
         if (class != [NSNull class]) {
-            RKTaskViewController  *controller = [class customTaskViewController];
+
             
-            [self presentViewController:controller animated:YES completion:^{
-                NSLog(@"task Presented");
-            }];
+            NSDate *currentDate = [NSDate date];
+            NSInteger taskIndex = -1;
+            
+            for (int i =0; i<groupedScheduledTask.scheduledTasks.count; i++) {
+                APCScheduledTask *scheduledTask = groupedScheduledTask.scheduledTasks[i];
+                
+                if ([currentDate compare:scheduledTask.dueOn] == NSOrderedAscending) {
+                    taskIndex = i;
+                    break;
+                }else {
+                    NSLog(@"The dueOn date for this task is older than the current time. Ignore this task.");
+                }
+            }
+            
+            if (taskIndex != -1) {
+                APHSetupTaskViewController *controller = [class customTaskViewController:groupedScheduledTask.scheduledTasks[taskIndex]];
+                [self presentViewController:controller animated:YES completion:nil];
+            } else {
+                //TODO: The user has tapped on an old task for the day (dueOn date is earlier than current time). May present alert.
+            }
+        }
+        
+    } else {
+        APCScheduledTask *scheduledTask = (APCScheduledTask *)task;
+        taskType = scheduledTask.task.taskType;
+        
+        NSString *taskClass = scheduledTask.task.taskClassName;
+        
+        Class  class = [NSClassFromString(taskClass) class];
+        
+        if (class != [NSNull class]) {
+            APHSetupTaskViewController *controller = [class customTaskViewController:scheduledTask];
+            [self presentViewController:controller animated:YES completion:nil];
         }
     }
 }
 
-#pragma  mark  -  View Controller Methods
+#pragma mark - Update methods
 
-- (void)viewDidLoad
+- (IBAction)updateActivities:(id)sender
 {
-    [super viewDidLoad];
-    
-    self.navigationItem.title = @"Activities";
-    
-    self.controllerClasses = @[
-                                [APHWalkingTaskViewController         class],
-                                [APHPhonationTaskViewController       class],
-                                [APHSleepQualityTaskViewController    class],
-                                [APHChangedMedsTaskViewController     class],
-                                [APHIntervalTappingTaskViewController class],
-                                [APHTracingObjectsTaskViewController  class]
-                            ];
-    
-    self.rowTitles = @[
-                       @"Timed Walking",
-                       @"Sustained Phonation",
-                       @"Did You Sleep Well Last Night?",
-                       @"Have You Recently Changed Medications?",
-                       @"Interval Tapping",
-                       @"Tracing Objects",
-                       ];
-    
-    self.rowSubTitles = @[
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       @"",
-                       ];
-    
-    UINib  *tableCellNib = [UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:[NSBundle mainBundle]];
-    [self.tabulator registerNib:tableCellNib forCellReuseIdentifier:kTableCellReuseIdentifier ];
+    [self reloadData];
+    [self.refreshControl endRefreshing];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)reloadData
 {
-    [super viewDidAppear:animated];
-    if (self.selectedIndexPath != nil) {
-        [self.tabulator deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
-        self.selectedIndexPath = nil;
+    [self.scheduledTasksArray removeAllObjects];
+    
+    NSSortDescriptor *dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dueOn" ascending:YES];
+    NSArray *unsortedScheduledTasks = [((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate  scheduledTasksForPredicate:nil sortDescriptors:@[dateSortDescriptor]];
+    
+    [self groupSimilarTasks:unsortedScheduledTasks];
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - Sort and Group Task
+
+- (void)groupSimilarTasks:(NSArray *)unsortedScheduledTasks
+{
+    NSMutableArray *taskTypesArray = [[NSMutableArray alloc] init];
+    
+    /* Get the list of task Ids to group */
+    
+    for (APCScheduledTask *scheduledTask in unsortedScheduledTasks) {
+        NSString *taskId = scheduledTask.task.uid;
+        
+        if (![taskTypesArray containsObject:taskId]) {
+            [taskTypesArray addObject:taskId];
+        }
+    }
+    
+    /* group tasks by task Id */
+    for (NSString *taskId in taskTypesArray) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"task.uid == %@", taskId];
+        
+        NSArray *filteredTasksArray = [unsortedScheduledTasks filteredArrayUsingPredicate:predicate];
+        
+        if (filteredTasksArray.count > 1) {
+            APCScheduledTask *scheduledTask = filteredTasksArray.firstObject;
+            APCGroupedScheduledTask *groupedTask = [[APCGroupedScheduledTask alloc] init];
+            groupedTask.scheduledTasks = [NSMutableArray arrayWithArray:filteredTasksArray];
+            groupedTask.taskType = scheduledTask.task.taskType;
+            groupedTask.taskTitle = scheduledTask.task.taskTitle;
+            groupedTask.taskClassName = scheduledTask.task.taskClassName;
+            
+            [self.scheduledTasksArray addObject:groupedTask];
+        } else{
+            
+            [self.scheduledTasksArray addObject:filteredTasksArray.firstObject];
+        }
     }
 }
 
-- (void)didReceiveMemoryWarning
+@end
+
+/*
+ --------------------------------------------------
+ APCGroupedSCheduledTask
+ --------------------------------------------------
+ */
+
+@implementation APCGroupedScheduledTask
+
+- (instancetype)init
 {
-    [super didReceiveMemoryWarning];
+    if (self = [super init]) {
+        _scheduledTasks = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
+- (NSString *)debugDescription
+{
+    return [NSString stringWithFormat:@"Task Title : %@\nTask Type : %@\nTasks : %@", self.taskTitle, self.taskType, self.scheduledTasks];
+}
+
+- (NSUInteger)completedTasksCount
+{
+    NSUInteger count = 0;
+    
+    for (APCScheduledTask *scheduledTask in self.scheduledTasks) {
+        if (scheduledTask.completed.boolValue) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+- (BOOL)isComplete
+{
+    return ([self completedTasksCount]/self.scheduledTasks.count);
 }
 
 @end
