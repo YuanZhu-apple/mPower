@@ -190,7 +190,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
         Class  class = [NSClassFromString(taskClass) class];
         
         if (class != [NSNull class]) {
-            APHSetupTaskViewController *controller = [class customTaskViewController];
+
             
             NSDate *currentDate = [NSDate date];
             NSInteger taskIndex = -1;
@@ -207,7 +207,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
             }
             
             if (taskIndex != -1) {
-                controller.scheduledTask = groupedScheduledTask.scheduledTasks[taskIndex];
+                APHSetupTaskViewController *controller = [class customTaskViewController: groupedScheduledTask.scheduledTasks[taskIndex]];
                 [self presentViewController:controller animated:YES completion:nil];
             } else {
                 //TODO: The user has tapped on an old task for the day (dueOn date is earlier than current time). May present alert.
@@ -223,10 +223,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
         Class  class = [NSClassFromString(taskClass) class];
         
         if (class != [NSNull class]) {
-            APHSetupTaskViewController *controller = [class customTaskViewController];
-            
-            controller.scheduledTask = scheduledTask;
-            
+            APHSetupTaskViewController *controller = [class customTaskViewController:scheduledTask];
             [self presentViewController:controller animated:YES completion:nil];
         }
     }

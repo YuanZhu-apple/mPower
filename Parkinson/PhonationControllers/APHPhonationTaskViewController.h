@@ -14,6 +14,4 @@
 
 @interface APHPhonationTaskViewController : APHSetupTaskViewController
 
-+ (instancetype)customTaskViewController;
-
 @end

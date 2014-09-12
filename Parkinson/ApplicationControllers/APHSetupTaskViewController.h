@@ -14,11 +14,11 @@
 
 #import "APCAppleCore.h"
 
-@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
+@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 
-@property  (nonatomic, strong)  APCScheduledTask  *scheduledTask;
+@property  (nonatomic, strong)  APCScheduledTask  * scheduledTask;
 
-+ (instancetype)customTaskViewController;
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
 
 + (NSDictionary *)keysToPropertiesMap;
 
