@@ -18,29 +18,17 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
-    RKTask  *task = [self createTask];
+    RKTask  *task = [self createTask: scheduledTask];
     APHSleepQualityTaskViewController  *controller = [[APHSleepQualityTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
     controller.taskDelegate = controller;
     return  controller;
 }
 
-+ (RKTask *)createTask
++ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
-    
-    NSMutableArray  *steps = [NSMutableArray array];
-    
-    {
-        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kSleepQualityStep101Key name:@"Introduction Step"];
-        step.caption = @"Sleep Quality Test";
-        step.explanation = @"";
-        step.instruction = @"";
-        [steps addObject:step];
-    }
-    
-    RKTask  *task = [[RKTask alloc] initWithName:@"Sleep Quality Survey" identifier:@"Sleep Quality Task" steps:steps];
-    
+    RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
     return  task;
 }
 
