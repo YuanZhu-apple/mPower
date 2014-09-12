@@ -51,7 +51,7 @@ static  NSDictionary  *keysToPropertiesMap = nil;
     return  keysToPropertiesMap;
 }
 
-+ (instancetype)customTaskViewController
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
     return  nil;
 }
