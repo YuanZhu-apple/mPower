@@ -44,8 +44,6 @@ static  NSString  *kMedicationsStep101Key = @"Medications Step 101";
 - (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
 {
     self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
-    if (self != nil) {
-    }
     return self;
 }
 

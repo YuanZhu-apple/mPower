@@ -46,9 +46,9 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep101Key name:@"active step"];
-        step.caption = @"Measures Gait and Balance";
-        step.text = @"You have 10 seconds to put this device in your pocket."
-        @"After the phone vibrates, follow the instructions to begin.";
+        step.caption = NSLocalizedString(@"Measures Gait and Balance", @"");
+        step.text = NSLocalizedString(@"You have 10 seconds to put this device in your pocket."
+        @"After the phone vibrates, follow the instructions to begin.", @"");
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 10.0;
@@ -56,8 +56,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     }
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep102Key name:@"active step"];
-        step.caption = @"Walk out 20 Steps";
-        step.text = @"Now please walk out 20 steps.";
+        step.caption = NSLocalizedString(@"Walk out 20 Steps", @"");
+        step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 20.0;
@@ -66,8 +66,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     }
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep103Key name:@"active step"];
-        step.caption = @"Turn around and walk back";
-        step.text = @"Now please turn 180 degrees, and walk back to your starting point.";
+        step.caption = NSLocalizedString(@"Turn around and walk back", @"");
+        step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 20.0;
@@ -76,8 +76,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     }
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep104Key name:@"active step"];
-        step.caption = @"Standing Still";
-        step.text = @"Now please stand still for 30 seconds.";
+        step.caption = NSLocalizedString(@"Standing Still", @"");
+        step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 30.0;
@@ -86,9 +86,9 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     }
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep105Key name:@"active step"];
-        step.caption = @"Great Job!";
-        step.text = @"Your gait symptoms seem to appear mild."
-                    @"Insert easy to understand meaning of this interpretation here.";
+        step.caption = NSLocalizedString(@"Great Job!", @"");
+        step.text = NSLocalizedString(@"Your gait symptoms seem to appear mild."
+                    @"Insert easy to understand meaning of this interpretation here.", @"");
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 0.0;
