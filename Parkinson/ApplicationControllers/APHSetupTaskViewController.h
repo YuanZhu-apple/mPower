@@ -10,18 +10,10 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHStepDictionaryKeys.h"
+@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
 
-#import "APCAppleCore.h"
+@property  (nonatomic, strong)  RKTask  *task;
 
-@interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
-
-@property  (nonatomic, strong)  APCScheduledTask  * scheduledTask;
-
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
-
-+ (NSDictionary *)keysToPropertiesMap;
-
-+ (RKTask *)mapConfigurationsToTask:(NSArray *)configurations;
++ (instancetype)customTaskViewController;
 
 @end
