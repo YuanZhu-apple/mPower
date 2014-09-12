@@ -11,48 +11,9 @@
 #import "APHParkinsonAppDelegate.h"
 #import <objc/message.h>
 
-static  NSDictionary  *keysToPropertiesMap = nil;
-
 @implementation APHSetupTaskViewController
 
-#pragma  mark  -  Class Initialisation
-
-+ (void)initialize
-{
-    if (keysToPropertiesMap == nil) {
-        keysToPropertiesMap = @{
-                         APHActiveCountDownKey              : APHActiveCountDownPropKey,
-                         APHActiveBuzzKey                   : APHActiveBuzzPropKey,
-                         APHActiveVibrationKey              : APHActiveVibrationPropKey,
-                         APHActiveTextKey                   : APHActiveTextPropKey,
-                         APHActiveVoicePromptKey            : APHActiveVoicePromptPropKey,
-                         APHActiveRecorderConfigurationsKey : APHActiveRecorderConfigurationsPropKey,
-                         
-                         APHConsentConsentPdfFileKey        : APHConsentConsentPdfFilePropKey,
-                         
-                         APHIntroductionTitleTextKey        : APHIntroductionTitleTextPropKey,
-                         APHIntroductionDescriptionTextKey  : APHIntroductionDescriptionTextPropKey,
-                         
-                         APHMediaRequestKey                 : APHMediaRequestPropKey,
-                         APHMediaMediaTypeKey               : APHMediaMediaTypePropKey,
-                         APHMediaAllowsEditingKey           : APHMediaAllowsEditingPropKey,
-                         
-                         APHQuestionOptionalKey             : APHQuestionOptionalPropKey,
-                         APHQuestionQuestionKey             : APHQuestionQuestionPropKey,
-                         APHQuestionPromptKey               : APHQuestionPromptPropKey,
-                         APHQuestionAnswerFormatKey         : APHQuestionAnswerFormatPropKey,
-                    };
-    }
-}
-
-
 #pragma  mark  -  Instance Initialisation
-
-+ (NSDictionary *)keysToPropertiesMap
-{
-    return  keysToPropertiesMap;
-}
-
 + (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
     return  nil;

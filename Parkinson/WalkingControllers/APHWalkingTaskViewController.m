@@ -13,13 +13,11 @@
 #import "APHWalkingResultsViewController.h"
 #import <objc/message.h>
 
-//#import "APHStepDictionaryKeys.h"
-
-static  const  NSString  *kWalkingStep101Key = @"Walking Step 101";
-static  const  NSString  *kWalkingStep102Key = @"Walking Step 102";
-static  const  NSString  *kWalkingStep103Key = @"Walking Step 103";
-static  const  NSString  *kWalkingStep104Key = @"Walking Step 104";
-static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
+static  NSString  *kWalkingStep101Key = @"Walking Step 101";
+static  NSString  *kWalkingStep102Key = @"Walking Step 102";
+static  NSString  *kWalkingStep103Key = @"Walking Step 103";
+static  NSString  *kWalkingStep104Key = @"Walking Step 104";
+static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 @interface APHWalkingTaskViewController  ( )
 {
@@ -44,73 +42,60 @@ static  const  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
-    //
-    //    configurations are an array of dictionaries that describe the parameters for a step
-    //
-    //    The Keys in the dictionary are defined in  APHStepDictionaryKeys.h
-    //
-    //    The Keys in the  dictionary are more or less self-explanatory,
-    //        except for the very first, which is the string representation
-    //        of the type of step, if you need to perform dynamic instantiation of that class
-    //
-    //     In the inner loop below, Key-Value Coding is used to set the properties in
-    //        the  Step object, and the names of  the Step properties are also defined in  APHStepDictionaryKeys.h
-    //
-    NSArray  *configurations = @[
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kWalkingStep101Key,
-                                     APHStepNameKey : @"active step",
-                                     APHIntroductionTitleTextKey: @"Measures Gait and Balance",
-                                     APHActiveTextKey : @"You have 10 seconds to put this device in your pocket. After the phone vibrates, follow the instructions to begin.",
-                                     APHActiveCountDownKey : @(10.0),
-                                     APHActiveBuzzKey : @(YES),
-                                     APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : @"You have 10 seconds to put this device in your pocket. After the phone vibrates, follow the instructions to begin.",
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kWalkingStep102Key,
-                                     APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Now please walk out 20 steps.",
-                                     APHActiveCountDownKey : @(20.0),
-                                     APHActiveBuzzKey : @(YES),
-                                     APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : @"Now please walk out 20 steps.",
-                                     APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kWalkingStep103Key,
-                                     APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Now please turn 180 degrees, and walk back.",
-                                     APHActiveCountDownKey : @(20.0),
-                                     APHActiveBuzzKey : @(YES),
-                                     APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : @"Now please turn 180 degrees, and walk back.",
-                                     APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kWalkingStep104Key,
-                                     APHStepNameKey : @"active step",
-                                     APHActiveTextKey : @"Now please stand still for 30 seconds.",
-                                     APHActiveCountDownKey : @(30.0),
-                                     APHActiveBuzzKey : @(YES),
-                                     APHActiveVibrationKey : @(YES),
-                                     APHActiveVoicePromptKey : @"Now please stand still for 30 seconds.",
-                                     APHActiveRecorderConfigurationsKey : @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]],
-                                     },
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kWalkingStep105Key,
-                                     APHIntroductionTitleTextKey: @"Great Job!",
-                                     APHActiveTextKey : @"Your gait symptoms seem to appear mild. Insert easy to understand meaning of this interpretation here.",
-                                     APHActiveCountDownKey : @(5.0),
-                                     },
-                                 ];
+    NSMutableArray  *steps = [NSMutableArray array];
     
-    RKTask  *task = [self mapConfigurationsToTask:configurations];
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep101Key name:@"active step"];
+        step.caption = NSLocalizedString(@"Measures Gait and Balance", @"");
+        step.text = NSLocalizedString(@"You have 10 seconds to put this device in your pocket."
+        @"After the phone vibrates, follow the instructions to begin.", @"");
+        step.buzz = YES;
+        step.vibration = YES;
+        step.countDown = 10.0;
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep102Key name:@"active step"];
+        step.caption = NSLocalizedString(@"Walk out 20 Steps", @"");
+        step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
+        step.buzz = YES;
+        step.vibration = YES;
+        step.countDown = 20.0;
+        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep103Key name:@"active step"];
+        step.caption = NSLocalizedString(@"Turn around and walk back", @"");
+        step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
+        step.buzz = YES;
+        step.vibration = YES;
+        step.countDown = 20.0;
+        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep104Key name:@"active step"];
+        step.caption = NSLocalizedString(@"Standing Still", @"");
+        step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
+        step.buzz = YES;
+        step.vibration = YES;
+        step.countDown = 30.0;
+        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        [steps addObject:step];
+    }
+    {
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep105Key name:@"active step"];
+        step.caption = NSLocalizedString(@"Great Job!", @"");
+        step.text = NSLocalizedString(@"Your gait symptoms seem to appear mild."
+                    @"Insert easy to understand meaning of this interpretation here.", @"");
+        step.buzz = YES;
+        step.vibration = YES;
+        step.countDown = 0.0;
+        [steps addObject:step];
+    }
+    
+    RKTask  *task = [[RKTask alloc] initWithName:@"Timed Walking Task" identifier:@"Timed Walking Task" steps:steps];
     
     return  task;
 }

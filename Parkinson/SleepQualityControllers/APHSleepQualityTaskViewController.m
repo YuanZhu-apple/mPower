@@ -35,8 +35,6 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 - (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
 {
     self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
-    if (self != nil) {
-    }
     return self;
 }
 
