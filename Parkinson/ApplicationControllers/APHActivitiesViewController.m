@@ -166,7 +166,9 @@ static NSInteger kNumberOfSectionsInTableView = 1;
             headerView.textLabel.text = NSLocalizedString(@"Today", @"Today");
             break;
         
-        default://TODO: Assert
+        default:{
+            NSAssert(0, @"Invalid Section");
+        }
             break;
     }
     
@@ -207,7 +209,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
             }
             
             if (taskIndex != -1) {
-                APHSetupTaskViewController *controller = [class customTaskViewController: groupedScheduledTask.scheduledTasks[taskIndex]];
+                APHSetupTaskViewController *controller = [class customTaskViewController:groupedScheduledTask.scheduledTasks[taskIndex]];
                 [self presentViewController:controller animated:YES completion:nil];
             } else {
                 //TODO: The user has tapped on an old task for the day (dueOn date is earlier than current time). May present alert.

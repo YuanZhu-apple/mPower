@@ -21,15 +21,15 @@ static float tapInterval = 20.0;
 #pragma  mark  -  Initialisation
 
 
-+ (instancetype)customTaskViewController
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
-    RKTask  *task = [self createTask];
+    RKTask  *task = [self createTask: scheduledTask];
     APHIntervalTappingTaskViewController  *controller = [[APHIntervalTappingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
     controller.taskDelegate = controller;
     return  controller;
 }
 
-+ (RKTask *)createTask
++ (RKTask *)createTask:(APCScheduledTask*) scheduledTask
 {
     NSMutableArray *steps = [[NSMutableArray alloc] init];
     

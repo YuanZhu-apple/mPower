@@ -14,4 +14,6 @@
 
 @interface APHPhonationTaskViewController : APHSetupTaskViewController
 
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
+
 @end
