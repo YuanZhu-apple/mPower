@@ -94,6 +94,9 @@ static  NSDictionary  *keysToPropertiesMap = nil;
 {
     APCResult * apcResult = [APCResult storeRKResult:result inContext:((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext];
     apcResult.scheduledTask = self.scheduledTask;
+    NSError * saveError;
+    [apcResult saveToPersistentStore:&saveError];
+    [saveError handle];
     NSLog(@"RKResult: %@ APCResult: %@", result,apcResult);
 
     
