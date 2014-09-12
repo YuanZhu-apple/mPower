@@ -14,7 +14,7 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    //TODO: Remove later.
+    //TODO: Sammple Value. Remove later.
     self.progressView.progress = 0.74;
 }
 
