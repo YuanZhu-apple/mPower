@@ -8,7 +8,6 @@
 
 #import "APHWalkingOverviewViewController.h"
 #import "APHConfirmationView.h"
-//#import "APHWalkingStepsViewController.h"
 
 static  NSString  *kControllerTitle = @"Timed Walking";
 
