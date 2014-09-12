@@ -12,7 +12,7 @@
 
 #pragma  mark  -  Instance Initialisation
 
-+ (instancetype)customTaskViewController
++ (instancetype)customTaskViewController:(id)scheduledTask
 {
     return  nil;
 }
