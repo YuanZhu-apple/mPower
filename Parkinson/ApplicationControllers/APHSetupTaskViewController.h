@@ -10,16 +10,10 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHStepDictionaryKeys.h"
-
 @interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
 
 @property  (nonatomic, strong)  RKTask  *task;
 
 + (instancetype)customTaskViewController;
-
-+ (NSDictionary *)keysToPropertiesMap;
-
-+ (RKTask *)mapConfigurationsToTask:(NSArray *)configurations;
 
 @end

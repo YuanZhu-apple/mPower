@@ -22,7 +22,6 @@
 
 #import "APHActivitiesTableViewCell.h"
 #import "NSString+CustomMethods.h"
-#import "APHStepDictionaryKeys.h"
 
 #import <ResearchKit/ResearchKit.h>
 
