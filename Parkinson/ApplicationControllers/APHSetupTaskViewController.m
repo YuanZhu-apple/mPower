@@ -47,21 +47,6 @@
     [apcResult saveToPersistentStore:&saveError];
     [saveError handle];
     NSLog(@"RKResult: %@ APCResult: %@", result,apcResult);
-
-    
-    if ([result isKindOfClass:[RKFileResult class]]) {
-        NSError * error;
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[self filePath]]) {
-            [[NSFileManager defaultManager] removeItemAtPath:[self filePath] error:&error];
-            if (error) {
-                NSLog(@"%@",[self descriptionForObject:error]);
-            }
-        }
-        [[NSFileManager defaultManager] moveItemAtPath:[(RKFileResult*)result fileUrl].path toPath:[self filePath] error:&error];
-        if (error) {
-            NSLog(@"%@",[self descriptionForObject:error]);
-        }
-    }
 }
 
 - (NSString *)filePath
