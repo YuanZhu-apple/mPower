@@ -14,6 +14,4 @@
 
 @interface APHWalkingTaskViewController : APHSetupTaskViewController
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
-
 @end
