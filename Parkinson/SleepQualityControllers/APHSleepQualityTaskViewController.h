@@ -14,4 +14,6 @@
 
 @interface APHSleepQualityTaskViewController : APHSetupTaskViewController
 
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
+
 @end

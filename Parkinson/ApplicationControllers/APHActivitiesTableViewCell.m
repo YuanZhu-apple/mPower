@@ -10,6 +10,15 @@
 #import "APHConfirmationView.h"
 #import "UIColor+Parkinson.h"
 
+static NSInteger kNumberOfLinesForTypeDefault  = 2;
+static NSInteger kNumberOfLinesForTypeSubtitle = 1;
+
+static CGFloat kTitleLabelHeightContraintConstantDefault  = 36.0f;
+static CGFloat kTitleLabelHeightContraintConstantSubtitle = 36.0f;
+
+static CGFloat kTitleLabelCenterYContraintConstantDefault  = 0.0f;
+static CGFloat kTitleLabelCenterYContraintConstantSubtitle = 10.0f;
+
 @interface APHActivitiesTableViewCell()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeightConstraint;
@@ -53,17 +62,17 @@
     switch (type) {
         case kActivitiesTableViewCellTypeDefault:
         {
-            self.titleLabel.numberOfLines = 2;
-            self.titleLabelHeightConstraint.constant = 36.f;
-            self.titleLabelCenterYConstraint.constant = 0;
+            self.titleLabel.numberOfLines = kNumberOfLinesForTypeDefault;
+            self.titleLabelHeightConstraint.constant = kTitleLabelHeightContraintConstantDefault;
+            self.titleLabelCenterYConstraint.constant = kTitleLabelCenterYContraintConstantDefault;
             self.subTitleLabel.hidden = YES;
         }
             break;
         case kActivitiesTableViewCellTypeSubtitle:
         {
-            self.titleLabel.numberOfLines = 1;
-            self.titleLabelHeightConstraint.constant = 18.f;
-            self.titleLabelCenterYConstraint.constant = 10;
+            self.titleLabel.numberOfLines = kNumberOfLinesForTypeSubtitle;
+            self.titleLabelHeightConstraint.constant = kTitleLabelHeightContraintConstantSubtitle;
+            self.titleLabelCenterYConstraint.constant = kTitleLabelCenterYContraintConstantSubtitle;
             self.subTitleLabel.hidden = NO;
         }
             break;

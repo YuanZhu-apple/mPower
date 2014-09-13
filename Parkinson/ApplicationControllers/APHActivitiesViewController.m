@@ -47,7 +47,6 @@
 
 
 static NSString *kTableCellReuseIdentifier = @"ActivitiesTableViewCell";
-static NSString *kViewControllerTitle      = @"Activities";
 
 static CGFloat kTableViewRowHeight = 70;
 static CGFloat kTableViewSectionHeaderHeight = 30;
@@ -78,7 +77,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Activities";
+    self.navigationItem.title = NSLocalizedString(@"Activities", @"Activities");
 
     [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
 }
@@ -163,10 +162,12 @@ static NSInteger kNumberOfSectionsInTableView = 1;
     
     switch (section) {
         case 0:
-            headerView.textLabel.text = @"Today";
+            headerView.textLabel.text = NSLocalizedString(@"Today", @"Today");
             break;
         
-        default://TODO: Assert
+        default:{
+            NSAssert(0, @"Invalid Section");
+        }
             break;
     }
     
@@ -193,7 +194,7 @@ static NSInteger kNumberOfSectionsInTableView = 1;
 
             
             NSDate *currentDate = [NSDate date];
-            NSInteger taskIndex = -1 ;
+            NSInteger taskIndex = -1;
             
             for (int i =0; i<groupedScheduledTask.scheduledTasks.count; i++) {
                 APCScheduledTask *scheduledTask = groupedScheduledTask.scheduledTasks[i];
@@ -202,15 +203,15 @@ static NSInteger kNumberOfSectionsInTableView = 1;
                     taskIndex = i;
                     break;
                 }else {
-                    NSLog(@"Older Task");
+                    NSLog(@"The dueOn date for this task is older than the current time. Ignore this task.");
                 }
             }
             
             if (taskIndex != -1) {
-                APHSetupTaskViewController *controller = [class customTaskViewController: groupedScheduledTask.scheduledTasks[taskIndex]];
+                APHSetupTaskViewController *controller = [class customTaskViewController:groupedScheduledTask.scheduledTasks[taskIndex]];
                 [self presentViewController:controller animated:YES completion:nil];
             } else {
-                NSLog(@"Old task. Not valid");
+                //TODO: The user has tapped on an old task for the day (dueOn date is earlier than current time). May present alert.
             }
         }
         

@@ -12,7 +12,7 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
 
 @interface APHEditSectionsViewController ()
 
-@property (nonatomic, strong) NSMutableArray *sectionsOrder;
+@property (strong, nonatomic) NSMutableArray *sectionsOrder;
 @property (weak, nonatomic) IBOutlet UITableView *sectionNamesTableView;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 
@@ -29,7 +29,7 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         _sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:kDashboardSectionsOrder]];
         
-        self.title = NSLocalizedString(@"Edit Dashboard", nil);
+        self.title = NSLocalizedString(@"Edit Dashboard", @"Edit Dashboard");
     }
     
     return self;
@@ -45,7 +45,7 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
     self.sectionNamesTableView.editing = YES;
     self.sectionNamesTableView.tableHeaderView = self.headerView;
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneTapped)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") style:UIBarButtonItemStyleDone target:self action:@selector(doneTapped)];
     [self.navigationItem setRightBarButtonItem:doneButton];
 }
 
@@ -75,35 +75,37 @@ static NSString * const SectionNamesCellIdentifier = @"SectionNamesCell";
     switch (cellType) {
         case kDashboardSectionStudyOverView:
         {
-            cell.textLabel.text = @"Study Overview";
+            cell.textLabel.text = NSLocalizedString(@"Study Overview", @"Study Overview");
         }
             break;
         case kDashboardSectionActivity:
         {
-            cell.textLabel.text = @"Activity";
+            cell.textLabel.text = NSLocalizedString(@"Activity", @"Activity");
         }
             break;
         case kDashboardSectionBloodCount:
         {
-            cell.textLabel.text = @"Blood Count";
+            cell.textLabel.text = NSLocalizedString(@"Blood Count", @"Blood Count");
         }
             break;
         case kDashboardSectionMedications:
         {
-            cell.textLabel.text = @"Medications";
+            cell.textLabel.text = NSLocalizedString(@"Medications", @"Medications");
         }
             break;
         case kDashboardSectionInsights:
         {
-            cell.textLabel.text = @"Insights";
+            cell.textLabel.text = NSLocalizedString(@"Insights", @"Insights");
         }
             break;
         case kDashboardSectionAlerts:
         {
-            cell.textLabel.text = @"Alerts";
+            cell.textLabel.text = NSLocalizedString(@"Alerts", @"Alerts");
         }
             break;
-        default:
+        default:{
+            NSAssert(0, @"Invalid cell type");
+        }
             break;
     }
     

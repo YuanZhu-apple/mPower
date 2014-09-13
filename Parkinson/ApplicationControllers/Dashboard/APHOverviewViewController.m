@@ -16,13 +16,13 @@
 #import "APHDashboardMessageViewCell.h"
 #import "APHDashboardProgressViewCell.h"
 
-static NSString * const kDashboardGraphCellIdentifier = @"DashboardGraphCellIdentifier";
+static NSString * const kDashboardGraphCellIdentifier    = @"DashboardGraphCellIdentifier";
 static NSString * const kDashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
 static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
 @interface APHOverviewViewController ()
 
-@property  (nonatomic, weak)  IBOutlet  UITableView  *dashboardTableView;
+@property (nonatomic, weak) IBOutlet UITableView *dashboardTableView;
 @property (nonatomic, strong) NSMutableArray *sectionsOrder;
 
 @end
@@ -50,7 +50,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
             [defaults synchronize];
         }
         
-        self.title = NSLocalizedString(@"Dashboard", nil);
+        self.title = NSLocalizedString(@"Dashboard", @"Dashboard");
     }
     
     return self;
@@ -115,45 +115,43 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
         case kDashboardSectionStudyOverView:
         {
             cell = (APHDashboardProgressViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardProgressCellIdentifier forIndexPath:indexPath];
-            return  cell;
+            
         }
             break;
         case kDashboardSectionActivity:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Activity";
-            return  cell;
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Activity", @"Activity");
         }
             break;
         case kDashboardSectionBloodCount:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Blood Count";
-            return  cell;
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Blood Count", @"Blood Count");
+            
         }
             break;
         case kDashboardSectionMedications:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = @"Medications";
-            return  cell;
+            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Medications", @"Medications");
+            
         }
             break;
         case kDashboardSectionInsights:
         {
             cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardMessagesCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardMessageViewCell *)cell).type = APHDashboardMessageViewCellTypeInsight;
-            return  cell;
+            ((APHDashboardMessageViewCell *)cell).type = kDashboardMessageViewCellTypeInsight;
+            
         }
             break;
         case kDashboardSectionAlerts:
         {
             cell = (APHDashboardMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardMessagesCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardMessageViewCell *)cell).type = APHDashboardMessageViewCellTypeAlert;
-            return  cell;
+            ((APHDashboardMessageViewCell *)cell).type = kDashboardMessageViewCellTypeAlert;
         }
             break;
-        default:  //TODO:NSAssert
+        default:  NSAssert(0, @"Invalid Cell Type");
             break;
     }
     

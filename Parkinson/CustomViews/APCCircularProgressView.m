@@ -53,6 +53,7 @@ static NSString * const APCCircularProgressViewAnimationKey = @"APCCircularProgr
 
 - (void)defaultValues
 {
+    /* ivars are used since the method is called from Init method. */
     _progress = 0.0f;
     
     _animationDuration = 0.3f;
@@ -64,6 +65,8 @@ static NSString * const APCCircularProgressViewAnimationKey = @"APCCircularProgr
 
 - (void)setupProgressLayers
 {
+    /* ivars are used since the method is called from Init method. */
+    
     _circularTrackLayer = [CAShapeLayer layer];
     [_circularTrackLayer setFrame:self.bounds];
     [_circularTrackLayer setFillColor:[UIColor clearColor].CGColor];
@@ -78,6 +81,8 @@ static NSString * const APCCircularProgressViewAnimationKey = @"APCCircularProgr
 
 - (void)setupProgresslabel
 {
+    /* iVars are used since the method is called from Init method. */
+    
     //Calc. frame of the largest square that fits inside the circle
     CGFloat circleDiameter = CGRectGetWidth(self.bounds) - self.lineWidth;;
     CGFloat labelFrameWidth = circleDiameter/sqrt(2.0);
@@ -101,12 +106,12 @@ static NSString * const APCCircularProgressViewAnimationKey = @"APCCircularProgr
     self.circularTrackLayer.frame = self.bounds;
     self.circularTrackLayer.cornerRadius = MIN(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
     self.circularTrackLayer.path = [self circularArcPath].CGPath;
-    self.circularTrackLayer.lineWidth = _lineWidth;
+    self.circularTrackLayer.lineWidth = self.lineWidth;
     
     self.circularProgressLayer.frame = self.bounds;
     self.circularProgressLayer.cornerRadius = MIN(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
     self.circularProgressLayer.path = [self circularArcPath].CGPath;
-    self.circularProgressLayer.lineWidth = _lineWidth;
+    self.circularProgressLayer.lineWidth = self.lineWidth;
     
     self.progressLabel.center = CGPointMake(CGRectGetWidth(self.bounds)/2, CGRectGetHeight(self.bounds)/2);
 }
@@ -167,19 +172,18 @@ static NSString * const APCCircularProgressViewAnimationKey = @"APCCircularProgr
 {
     progress = MAX(0.0, MIN(1.0, progress));
     
-    if (progress == _progress) {
-        return;
-    }
-    
-    if (animated) {
-        [self animateLayerForProgress:progress];
-        _progress = progress;
-    } else {
-        [self updateStrokeEndForProgress:progress];
-        _progress = progress;
+    if (progress != _progress) {
         
-        NSUInteger progressPercent = progress * 100;
-        self.progressLabel.text = [NSString stringWithFormat:@"%lu%%", (unsigned long)progressPercent];
+        if (animated) {
+            [self animateLayerForProgress:progress];
+            _progress = progress;
+        } else {
+            [self updateStrokeEndForProgress:progress];
+            _progress = progress;
+            
+            NSUInteger progressPercent = progress * 100;
+            self.progressLabel.text = [NSString stringWithFormat:@"%lu%%", (unsigned long)progressPercent];
+        }
     }
 }
 

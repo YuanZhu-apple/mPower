@@ -795,8 +795,8 @@
 				CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */,
 				CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */,
 				CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */,
-				CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */,
 				CFC1BA9319C0F98A0098DAF2 /* APHSleepQualityOverviewViewController.m in Sources */,
+				CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

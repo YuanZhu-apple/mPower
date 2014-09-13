@@ -29,7 +29,7 @@ static float tapInterval = 20.0;
     return  controller;
 }
 
-+ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
++ (RKTask *)createTask:(APCScheduledTask*) scheduledTask
 {
     NSMutableArray *steps = [[NSMutableArray alloc] init];
     

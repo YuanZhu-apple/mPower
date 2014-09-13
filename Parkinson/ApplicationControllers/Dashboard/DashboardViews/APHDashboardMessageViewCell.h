@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, APHDashboardMessageViewCellType) {
-    APHDashboardMessageViewCellTypeAlert,
-    APHDashboardMessageViewCellTypeInsight,
+    kDashboardMessageViewCellTypeAlert,
+    kDashboardMessageViewCellTypeInsight,
 };
 
 @interface APHDashboardMessageViewCell : UITableViewCell
