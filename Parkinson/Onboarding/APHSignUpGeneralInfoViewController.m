@@ -10,24 +10,24 @@
 #import "APHUserInfoCell.h"
 #import "UIView+Category.h"
 #import "APCTableViewItem.h"
+#import "NSString+Category.h"
 #import "NSBundle+Category.h"
 #import "APCHealthKitProxy.h"
 #import "APCStepProgressBar.h"
+#import "UIAlertView+Category.h"
 #import "UITableView+Appearance.h"
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
 
 // Regular Expressions
-static NSString * const kAPCUserInfoFieldUserNameRegEx          = @"[A-Za-z0-9_.]+";
-static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+static NSString * const kAPHGeneralInfoItemUserNameRegEx          = @"[A-Za-z0-9_.]+";
+static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 
 
 @interface APHSignUpGeneralInfoViewController ()
 
 @property (nonatomic, strong) APCHealthKitProxy *healthKitProxy;
-
-@property (nonatomic, readwrite) NSMutableArray *itemsOrder;
 
 @end
 
@@ -50,19 +50,20 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
 
 - (void) prepareFields {
     NSMutableArray *items = [NSMutableArray new];
+    NSMutableArray *itemsOrder = [NSMutableArray new];
     
     {
         APCTableViewTextFieldItem *field = [APCTableViewTextFieldItem new];
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Username", @"");
         field.placeholder = NSLocalizedString(@"Add Username", @"");
-        field.value = nil;
+        field.value = self.profile.userName;
         field.keyboardType = UIKeyboardTypeDefault;
-        field.regularExpression = kAPCUserInfoFieldUserNameRegEx;
+        field.regularExpression = kAPHGeneralInfoItemUserNameRegEx;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
-        [self.itemsOrder addObject:@(APCSignUpUserInfoItemUserName)];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemUserName)];
     }
     
     {
@@ -70,14 +71,14 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Password", @"");
         field.placeholder = NSLocalizedString(@"Add Password", @"");
-        field.value = nil;
+        field.value = self.profile.password;
         field.secure = YES;
         field.keyboardType = UIKeyboardTypeDefault;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
         
-        [self.itemsOrder addObject:@(APCSignUpUserInfoItemPassword)];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemPassword)];
     }
     
     {
@@ -85,41 +86,44 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Email", @"");
         field.placeholder = NSLocalizedString(@"Add Email Address", @"");
-        field.value = nil;
+        field.value = self.profile.email;
         field.keyboardType = UIKeyboardTypeEmailAddress;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
         
-        [self.itemsOrder addObject:@(APCSignUpUserInfoItemEmail)];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemEmail)];
     }
     
     {
         APCTableViewDatePickerItem *field = [APCTableViewDatePickerItem new];
         field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Birthdate", @"");
         field.placeholder = NSLocalizedString(@"MMMM DD, YYYY", @"");
-        field.date = nil;
+        field.date = self.profile.dateOfBirth;
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         
         [items addObject:field];
         
-        [self.itemsOrder addObject:@(APCSignUpUserInfoItemDateOfBirth)];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemDateOfBirth)];
     }
     
     {
         APCTableViewSegmentItem *field = [APCTableViewSegmentItem new];
         field.style = UITableViewCellStyleValue1;
-        field.segments = @[ NSLocalizedString(@"Male", @""), NSLocalizedString(@"Female", @""), NSLocalizedString(@"Other", @"") ];
-        field.selectedIndex = 0;
+        field.segments = [APCProfile sexTypesInStringValue];
+        field.selectedIndex = [APCProfile stringIndexFromSexType:self.profile.gender];
         field.identifier = NSStringFromClass([APCTableViewSegmentItem class]);
         
         [items addObject:field];
         
-        [self.itemsOrder addObject:@(APCSignUpUserInfoItemGender)];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemGender)];
     }
     
+    
     self.items = items;
+    self.itemsOrder = itemsOrder;
 }
 
 
@@ -160,6 +164,7 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
     self.headerTextFieldSeparatorView.frame = frame;
     self.headerTextFieldSeparatorView.backgroundColor = self.tableView.separatorColor;
     
+    [self.profileImageButton setImage:[UIImage imageNamed:@"img_user_placeholder"] forState:UIControlStateNormal];
     self.profileImageButton.layer.cornerRadius = self.profileImageButton.frame.size.width/2;
     
     self.firstNameTextField.font = [UITableView textFieldFont];
@@ -227,13 +232,105 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
 }
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
-    return YES;
+    BOOL isContentValid = [super isContentValid:errorMessage];
+    
+    // If super returned false then we dont need to check any content further unnecessary,
+    // because if any one of the content is invalid then we are immediatly returing false
+    if (isContentValid) {
+        for (int i = 0; i < self.itemsOrder.count; i++) {
+            NSNumber *order = self.itemsOrder[i];
+            
+            APCTableViewItem *item = self.items[i];
+            
+            switch (order.integerValue) {
+                case APCSignUpUserInfoItemUserName:
+                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPHGeneralInfoItemUserNameRegEx];
+                    *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
+                    break;
+                    
+                case APCSignUpUserInfoItemPassword:
+                    if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
+                        *errorMessage = NSLocalizedString(@"Please give a valid Password", @"");
+                        isContentValid = NO;
+                    }
+                    else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
+                        *errorMessage = NSLocalizedString(@"Password should be at least 6 characters", @"");
+                        isContentValid = NO;
+                    }
+                    break;
+                    
+                case APCSignUpUserInfoItemEmail:
+                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPHGeneralInfoItemEmailRegEx];
+                    *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
+                    break;
+                    
+                case APCSignUpUserInfoItemDateOfBirth:
+                    isContentValid = ([(APCTableViewDatePickerItem *)item date] != nil);
+                    *errorMessage = NSLocalizedString(@"Please give your Date of Birth", @"");
+                    break;
+                    
+                default:
+#warning ASSERT_MESSAGE Require
+                    NSAssert(order.integerValue <= APCSignUpUserInfoItemWakeUpTime, @"ASSER_MESSAGE");
+                    break;
+            }
+            
+            // If any of the content is not valid the break the for loop
+            // We doing this 'break' here because we cannot break a for loop inside switch-statements (switch already have break statement)
+            if (!isContentValid) {
+                break;
+            }
+        }
+    }
+    
+    return isContentValid;
+}
+
+- (void) loadProfileValuesInModel {
+    for (int i = 0; i < self.itemsOrder.count; i++) {
+        NSNumber *order = self.itemsOrder[i];
+        
+        APCTableViewItem *item = self.items[i];
+        
+        switch (order.integerValue) {
+            case APCSignUpUserInfoItemUserName:
+                self.profile.userName = [(APCTableViewTextFieldItem *)item value];
+                break;
+                
+            case APCSignUpUserInfoItemPassword:
+                self.profile.password = [(APCTableViewTextFieldItem *)item value];
+                break;
+                
+            case APCSignUpUserInfoItemEmail:
+                self.profile.email = [(APCTableViewTextFieldItem *)item value];
+                break;
+                
+            case APCSignUpUserInfoItemDateOfBirth:
+                self.profile.dateOfBirth = [(APCTableViewDatePickerItem *)item date];
+                break;
+                
+            case APCSignUpUserInfoItemGender:
+                self.profile.gender = [APCProfile sexTypeFromStringValue:[APCProfile sexTypesInStringValue][[(APCTableViewSegmentItem *)item selectedIndex]]];
+                break;
+                
+            default:
+#warning ASSERT_MESSAGE Require
+                NSAssert(NO, @"ASSER_MESSAGE");
+                break;
+        }
+    }
 }
 
 - (void) validateContent {
+    [self.tableView endEditing:YES];
+    
     NSString *message;
     if ([self isContentValid:&message]) {
+        [self loadProfileValuesInModel];
         [self next];
+    }
+    else {
+        [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:message];
     }
 }
 

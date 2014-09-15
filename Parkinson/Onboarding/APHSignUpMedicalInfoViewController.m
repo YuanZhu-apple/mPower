@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+#import "APCProfile.h"
 #import "UIView+Category.h"
 #import "APCTableViewItem.h"
 #import "NSBundle+Category.h"
@@ -15,7 +16,7 @@
 #import "APHSignUpMedicalInfoViewController.h"
 
 // Regular Expression
-static NSString * const kAPCUserInfoFieldWeightRegEx            = @"[0-9]{1,3}";
+static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}";
 
 
 @interface APHSignUpMedicalInfoViewController ()
@@ -37,67 +38,94 @@ static NSString * const kAPCUserInfoFieldWeightRegEx            = @"[0-9]{1,3}";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self loadValues];
+        [self initProperties];
         [self prepareFields];
     }
     return self;
 }
 
-- (void) loadValues {
+- (void) initProperties {
     self.medicalConditions = @[ @[@"Not listed", @"Condition 1" , @"Condition 2"] ];
     
     self.medications = @[ @[@"Not listed", @"Medication 1" , @"Medication 2"] ];
     
-    self.bloodTypes = @[ @[@" ", @"A+", @"A-", @"B+", @"B-", @"AB+", @"AB-", @"O+", @"O-"] ];
+    self.bloodTypes = @[ [APCProfile bloodTypeInStringValues] ];
     
-    self.heightValues = @[ @[@"3'", @"4'", @"5'", @"6'", @"7'"], @[@"0''", @"1''", @"2''", @"3''", @"4''", @"5''", @"6''", @"7''", @"8''", @"9''"] ];
+    self.heightValues = @[ @[@"3'", @"4'", @"5'", @"6'", @"7'", @"8'", @"9'", @"10'", @"11'", @"12'"], @[@"0''", @"1''", @"2''", @"3''", @"4''", @"5''", @"6''", @"7''", @"8''", @"9''"] ];
 }
 
 - (void) prepareFields {
-    NSMutableArray *fields = [NSMutableArray array];
+    NSMutableArray *items = [NSMutableArray array];
+    NSMutableArray *itemsOrder = [NSMutableArray new];
     
     {
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Medical Conditions", @"");
         field.detailDiscloserStyle = YES;
-        field.selectedRowIndices = @[ @(0) ];
         field.pickerData = self.medicalConditions;
         
-        [fields addObject:field];
+        if (self.profile.medicalCondition) {
+            field.selectedRowIndices = @[ @([self.medicalConditions[0] indexOfObject:self.profile.medicalCondition]) ];
+        }
+        else {
+            field.selectedRowIndices = @[ @(0) ];
+        }
+        
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemMedicalCondition)];
     }
     
     {
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Medication", @"");
         field.detailDiscloserStyle = YES;
-        field.selectedRowIndices = @[ @(0) ];
         field.pickerData = self.medications;
         
-        [fields addObject:field];
+        if (self.profile.medication) {
+            field.selectedRowIndices = @[ @([self.medications[0] indexOfObject:self.profile.medication]) ];
+        }
+        else {
+            field.selectedRowIndices = @[ @(0) ];
+        }
+        
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemMedication)];
     }
     
     {
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Blood Type", @"");
         field.detailDiscloserStyle = YES;
-        field.selectedRowIndices = @[ @(0) ];
+        field.selectedRowIndices = @[ @(self.profile.bloodType) ];
         field.pickerData = self.bloodTypes;
         
-        [fields addObject:field];
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemBloodType)];
     }
     
     {
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Height", @"");
         field.detailDiscloserStyle = YES;
-        field.selectedRowIndices = @[ @(2), @(5) ];
         field.pickerData = self.heightValues;
+        if (self.profile.height) {
+            NSArray *split = [self.profile.height componentsSeparatedByString:@" "];
+            field.selectedRowIndices = @[ @([self.heightValues[0] indexOfObject:split[0]]), @([self.heightValues[1] indexOfObject:split[1]]) ];
+        }
+        else {
+            field.selectedRowIndices = @[ @(2), @(5) ];
+        }
         
-        [fields addObject:field];
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemHeight)];
     }
     
     {
@@ -105,15 +133,55 @@ static NSString * const kAPCUserInfoFieldWeightRegEx            = @"[0-9]{1,3}";
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Weight", @"");
         field.placeholder = NSLocalizedString(@"lb", @"");
-        field.regularExpression = kAPCUserInfoFieldWeightRegEx;
-        field.value = nil;
+        field.regularExpression = kAPHMedicalInfoItemWeightRegEx;
+        field.value = self.profile.weight.stringValue;
         field.keyboardType = UIKeyboardTypeNumberPad;
         field.textAlignnment = NSTextAlignmentRight;
         
-        [fields addObject:field];
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemWeight)];
     }
     
-    self.items = fields;
+    {
+        APCTableViewDatePickerItem *field = [APCTableViewDatePickerItem new];
+        field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
+        field.caption = NSLocalizedString(@"What time do you wake up?", @"");
+        field.placeholder = NSLocalizedString(@"7:00 AM", @"");
+        field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
+        field.datePickerMode = UIDatePickerModeTime;
+        field.dateFormat = @"HH:mm a";
+        field.detailDiscloserStyle = YES;
+        
+        if (self.profile.sleepTime) {
+            field.date = self.profile.sleepTime;
+        }
+        
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemSleepTime)];
+    }
+    
+    {
+        APCTableViewDatePickerItem *field = [APCTableViewDatePickerItem new];
+        field.style = UITableViewCellStyleValue1;
+        field.selectionStyle = UITableViewCellSelectionStyleGray;
+        field.caption = NSLocalizedString(@"What time do you go to sleep?", @"");
+        field.placeholder = NSLocalizedString(@"9:30 PM", @"");
+        field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
+        field.datePickerMode = UIDatePickerModeTime;
+        field.dateFormat = @"HH:mm a";
+        field.detailDiscloserStyle = YES;
+        
+        if (self.profile.wakeUpTime) {
+            field.date = self.profile.wakeUpTime;
+        }
+        
+        [items addObject:field];
+        [itemsOrder addObject:@(APCSignUpUserInfoItemWakeUpTime)];
+    }
+    
+    self.items = items;
+    self.itemsOrder = itemsOrder;
 }
 
 
@@ -159,8 +227,54 @@ static NSString * const kAPCUserInfoFieldWeightRegEx            = @"[0-9]{1,3}";
 
 #pragma mark - Private Methods
 
+- (void) loadProfileValuesInModel {
+    for (int i = 0; i < self.itemsOrder.count; i++) {
+        NSNumber *order = self.itemsOrder[i];
+        
+        APCTableViewItem *item = self.items[i];
+        
+        switch (order.integerValue) {
+            case APCSignUpUserInfoItemMedicalCondition:
+                self.profile.medicalCondition = [(APCTableViewCustomPickerItem *)item stringValue];
+                break;
+                
+            case APCSignUpUserInfoItemMedication:
+                self.profile.medication = [(APCTableViewCustomPickerItem *)item stringValue];
+                break;
+                
+            case APCSignUpUserInfoItemBloodType:
+                self.profile.bloodType = [APCProfile bloodTypeFromStringValue:[(APCTableViewCustomPickerItem *)item stringValue]];
+                break;
+                
+            case APCSignUpUserInfoItemHeight:
+                self.profile.height = [(APCTableViewCustomPickerItem *)item stringValue];
+                break;
+                
+            case APCSignUpUserInfoItemWeight:
+                self.profile.weight = @([[(APCTableViewTextFieldItem *)item value] floatValue]);
+                break;
+                
+            case APCSignUpUserInfoItemSleepTime:
+                self.profile.sleepTime = [(APCTableViewDatePickerItem *)item date];
+                break;
+                
+            case APCSignUpUserInfoItemWakeUpTime:
+                self.profile.wakeUpTime = [(APCTableViewDatePickerItem *)item date];
+                break;
+                
+            default:
+#warning ASSERT_MESSAGE Require
+                NSAssert(order.integerValue <= APCSignUpUserInfoItemWakeUpTime, @"ASSER_MESSAGE");
+                break;
+        }
+    }
+}
+
 - (void) next {
+    [self loadProfileValuesInModel];
+    
     APCSignupTouchIDViewController *touchIDViewController = [[APCSignupTouchIDViewController alloc] initWithNibName:@"APCSignupTouchIDViewController" bundle:[NSBundle appleCoreBundle]];
+    touchIDViewController.profile = self.profile;
     [self.navigationController pushViewController:touchIDViewController animated:YES];
 }
 
