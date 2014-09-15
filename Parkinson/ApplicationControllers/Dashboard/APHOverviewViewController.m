@@ -191,7 +191,9 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
 #pragma mark - Private Methods
 
 - (void) login {
-    APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]]];
+    NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
+    
+    APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
     [self presentViewController:navController animated:YES completion:nil];
