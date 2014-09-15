@@ -48,22 +48,9 @@ static  NSString  *kMedicationsStep101Key = @"Medications Step 101";
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
-{
-    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
 - (void)taskViewController: (RKTaskViewController *)taskViewController didFailWithError:(NSError*)error
 {
     //    [taskViewController suspend];
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
-{
-    //    [taskViewController suspend];
-    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step

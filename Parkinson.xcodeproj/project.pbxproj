@@ -33,10 +33,7 @@
 		7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B049C19BA24B600C5E91B /* TappingTaskStoryboard.storyboard */; };
 		7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
 		CF1B26F619B8BF4100D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		CF1B26FB19B8BF9400D7F809 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		CF1B270519B8C01400D7F809 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CF1B270619B8C01400D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		CF1B270A19B8C05700D7F809 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CF1B270B19B8C05700D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		CF1B271519B8C0C800D7F809 /* APHWalkingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B270D19B8C0C800D7F809 /* APHWalkingOverviewViewController.m */; };
 		CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B270E19B8C0C800D7F809 /* APHWalkingOverviewViewController.xib */; };
@@ -73,7 +70,6 @@
 		CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEE9A0619B791D000D1E858 /* APHActivitiesTableViewCell.xib */; };
 		CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A2219B7961D00D1E858 /* APHConfirmationView.m */; };
 		CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A2519B7968C00D1E858 /* NSString+CustomMethods.m */; };
-		CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A2719B7968C00D1E858 /* RKStep+Description.m */; };
 		CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A3F19B7B1A200D1E858 /* APHSetupTaskViewController.m */; };
 		F5241C9519AD4CD20098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9319AD4CD20098A4DF /* ResearchKit.framework */; };
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
@@ -762,7 +758,6 @@
 				CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */,
 				5B2A676C19BFD41C0097E99E /* APHLearnResourceViewCell.m in Sources */,
 				5BB1E39519C1194300300F9D /* APHActivitiesTableViewCell.m in Sources */,
-				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
 				5B2A676719BFD3DA0097E99E /* APHLearnMasterTableViewCell.m in Sources */,
 				5B2A676419BFD3DA0097E99E /* APHLearnDetailViewController.m in Sources */,
 				5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */,
@@ -784,12 +779,12 @@
 				5B2A6C0B19C0BCDF0097E99E /* APHLearnDetailViewCell.m in Sources */,
 				5B2A676619BFD3DA0097E99E /* APHLearnMasterViewController.m in Sources */,
 				5B40E58519BFC67D00D9CA49 /* APHDashboardMessageViewCell.m in Sources */,
-				CF1B26FB19B8BF9400D7F809 /* (null) in Sources */,
 				5B2A6C1019C0C2CC0097E99E /* UIColor+Parkinson.m in Sources */,
-				CF1B270A19B8C05700D7F809 /* (null) in Sources */,
 				5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */,
-				CF1B270519B8C01400D7F809 /* (null) in Sources */,
 				CFC1BA8919C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m in Sources */,
+				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
+				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
+				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
 				CF9BB42819C376FB009A5BDB /* APHTracingObjectsTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
