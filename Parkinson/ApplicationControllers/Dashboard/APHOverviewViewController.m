@@ -8,6 +8,7 @@
 
 /* Controllers */
 #import "APHOverviewViewController.h"
+#import "APHIntroVideoViewController.h"
 #import "APHEditSectionsViewController.h"
 
 /* Views */
@@ -70,6 +71,10 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     [self.dashboardTableView setSeparatorInset:UIEdgeInsetsZero];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(editTapped)];
     [self.navigationItem setLeftBarButtonItem:editButton];
+    
+    
+    UIBarButtonItem *loginBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Login", @"") style:UIBarButtonItemStylePlain target:self action:@selector(login)];
+    [self.navigationItem setRightBarButtonItem:loginBarButton];
     
 }
 
@@ -181,7 +186,16 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     editSectionsNavigationController.navigationBar.translucent = NO;
     
     [self presentViewController:editSectionsNavigationController animated:YES completion:nil];
-    
 }
+
+#pragma mark - Private Methods
+
+- (void) login {
+    APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]]];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 
 @end
