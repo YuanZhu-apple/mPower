@@ -14,6 +14,6 @@
 
 @property  (nonatomic, strong)  APCScheduledTask  *scheduledTask;
 
-+ (instancetype)customTaskViewController;
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
 
 @end
