@@ -10,6 +10,7 @@
 #import "APHUserInfoCell.h"
 #import "UIView+Category.h"
 #import "APCTableViewItem.h"
+#import "NSBundle+Category.h"
 #import "APCHealthKitProxy.h"
 #import "APCStepProgressBar.h"
 #import "UITableView+Appearance.h"
@@ -149,7 +150,7 @@ static NSString * const kAPCUserInfoFieldEmailRegEx             = @"[A-Z0-9a-z._
 }
 
 - (void) addHeaderView {
-    UIView *headerView = [[UINib nibWithNibName:@"APCUserInfoTableHeaderView" bundle:nil] instantiateWithOwner:self options:nil][0];
+    UIView *headerView = [[UINib nibWithNibName:@"APCUserInfoTableHeaderView" bundle:[NSBundle appleCoreBundle]] instantiateWithOwner:self options:nil][0];
     self.tableView.tableHeaderView = headerView;
     
     CGRect frame = self.headerTextFieldSeparatorView.frame;

@@ -8,6 +8,7 @@
 
 #import "UIView+Category.h"
 #import "APCTableViewItem.h"
+#import "NSBundle+Category.h"
 #import "APCStepProgressBar.h"
 #import "UITableView+Appearance.h"
 #import "APCSignupTouchIDViewController.h"
@@ -159,10 +160,7 @@ static NSString * const kAPCUserInfoFieldWeightRegEx            = @"[0-9]{1,3}";
 #pragma mark - Private Methods
 
 - (void) next {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"APCAppleCoreBundle" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
-    
-    APCSignupTouchIDViewController *touchIDViewController = [[APCSignupTouchIDViewController alloc] initWithNibName:@"APCSignupTouchIDViewController" bundle:bundle];
+    APCSignupTouchIDViewController *touchIDViewController = [[APCSignupTouchIDViewController alloc] initWithNibName:@"APCSignupTouchIDViewController" bundle:[NSBundle appleCoreBundle]];
     [self.navigationController pushViewController:touchIDViewController animated:YES];
 }
 

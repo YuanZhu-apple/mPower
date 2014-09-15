@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+#import "NSBundle+Category.h"
 #import "APCSignInViewController.h"
 #import "APHSignupOptionsViewController.h"
 #import "APHSignUpGeneralInfoViewController.h"
@@ -36,10 +37,7 @@
 }
 
 - (IBAction) signIn {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"APCAppleCoreBundle" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
-    
-    APCSignInViewController *signInViewController = [[APCSignInViewController alloc] initWithNibName:@"APCSignInViewController" bundle:bundle];
+    APCSignInViewController *signInViewController = [[APCSignInViewController alloc] initWithNibName:@"APCSignInViewController" bundle:[NSBundle appleCoreBundle]];
     [self.navigationController pushViewController:signInViewController animated:YES];
 }
 
