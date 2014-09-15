@@ -60,6 +60,8 @@
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
 		CFA2ABC219A7C431000DB961 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC119A7C431000DB961 /* libz.dylib */; };
 		CFA2ABC419A7C446000DB961 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC319A7C446000DB961 /* libarchive.dylib */; };
+		CFA8839619C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */; };
+		CFA8839719C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */; };
 		CFC1BA8919C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC1BA8819C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m */; };
 		CFC1BA8C19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC1BA8B19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.m */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
@@ -201,6 +203,9 @@
 		CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CFA2ABC119A7C431000DB961 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CFA2ABC319A7C446000DB961 /* libarchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.dylib; path = usr/lib/libarchive.dylib; sourceTree = SDKROOT; };
+		CFA8839319C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSpecialSurveyTaskViewController.h; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.h; sourceTree = "<group>"; };
+		CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSpecialSurveyTaskViewController.m; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.m; sourceTree = "<group>"; };
+		CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHSpecialSurveyTaskViewController.xib; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.xib; sourceTree = "<group>"; };
 		CFC1BA8719C0F66C0098DAF2 /* APHSleepQualityTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSleepQualityTaskViewController.h; path = SleepQualityControllers/APHSleepQualityTaskViewController.h; sourceTree = "<group>"; };
 		CFC1BA8819C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSleepQualityTaskViewController.m; path = SleepQualityControllers/APHSleepQualityTaskViewController.m; sourceTree = "<group>"; };
 		CFC1BA8A19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHChangedMedsTaskViewController.h; path = MedicationChangesControllers/APHChangedMedsTaskViewController.h; sourceTree = "<group>"; };
@@ -356,6 +361,7 @@
 				CFC1BA8519C0F59D0098DAF2 /* Medication Changes Survey */,
 				CF97C51219A6B1FD00EBECCB /* Interval Tapping */,
 				CFC1BA8619C0F5C50098DAF2 /* Tracing Objects */,
+				CFA8838E19C7844100FC82C7 /* Special Survey View Controller */,
 			);
 			name = "Tasks and Steps View Controllers";
 			sourceTree = "<group>";
@@ -458,6 +464,16 @@
 			);
 			name = Frameworks;
 			path = Parkinson;
+			sourceTree = "<group>";
+		};
+		CFA8838E19C7844100FC82C7 /* Special Survey View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFA8839319C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.h */,
+				CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */,
+				CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */,
+			);
+			name = "Special Survey View Controller";
 			sourceTree = "<group>";
 		};
 		CFC1BA8319C0F57F0098DAF2 /* Sleep Quality Survey */ = {
@@ -712,6 +728,7 @@
 				CF1B270619B8C01400D7F809 /* (null) in Resources */,
 				CF1B26F619B8BF4100D7F809 /* (null) in Resources */,
 				5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */,
+				CFA8839719C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib in Resources */,
 				5B2A6C0C19C0BCDF0097E99E /* APHLearnDetailViewCell.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
 				5B2A676519BFD3DA0097E99E /* APHLearnDetailViewController.xib in Resources */,
@@ -761,14 +778,8 @@
 				5B2A676719BFD3DA0097E99E /* APHLearnMasterTableViewCell.m in Sources */,
 				5B2A676419BFD3DA0097E99E /* APHLearnDetailViewController.m in Sources */,
 				5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */,
-				CFC1BA9D19C0FB1C0098DAF2 /* APHChangedMedsOverviewViewController.m in Sources */,
-				CF1ECBCB19BE1372003F29DE /* APHLearnDetailViewController.m in Sources */,
-				CF1B272919B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m in Sources */,
 				CF9BB42C19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m in Sources */,
-				CF1ECBC319BE135F003F29DE /* APHOverviewViewController.m in Sources */,
-				CFEE9A0B19B791D000D1E858 /* APHActivitiesViewController.m in Sources */,
 				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
-				CFEE9A2919B7968C00D1E858 /* RKStep+Description.m in Sources */,
 				CFC1BA8C19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.m in Sources */,
 				CF9BB42419C37695009A5BDB /* APHTracingObjectsOverviewViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
@@ -782,9 +793,6 @@
 				5B2A6C1019C0C2CC0097E99E /* UIColor+Parkinson.m in Sources */,
 				5B40E57B19BFB89B00D9CA49 /* APCCircularProgressView.m in Sources */,
 				CFC1BA8919C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m in Sources */,
-				CF1B271919B8C0C800D7F809 /* APHWalkingStepsViewController.m in Sources */,
-				CFEE9A0919B791D000D1E858 /* APHActivitiesTableViewCell.m in Sources */,
-				CF1ECBCD19BE1372003F29DE /* APHLearnMasterTableViewCell.m in Sources */,
 				CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */,
 				CF9BB42819C376FB009A5BDB /* APHTracingObjectsTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
@@ -793,10 +801,9 @@
 				5BB1E39419C1194000300F9D /* APHActivitiesViewController.m in Sources */,
 				CF1B271719B8C0C800D7F809 /* APHWalkingResultsViewController.m in Sources */,
 				CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */,
+				CFA8839619C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m in Sources */,
 				CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */,
 				CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */,
-				CFC1BA9319C0F98A0098DAF2 /* APHSleepQualityOverviewViewController.m in Sources */,
-				CF1ECBC219BE135F003F29DE /* APHLearnMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
