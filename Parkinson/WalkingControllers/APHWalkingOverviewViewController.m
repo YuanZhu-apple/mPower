@@ -8,7 +8,6 @@
 
 #import "APHWalkingOverviewViewController.h"
 #import "APHConfirmationView.h"
-//#import "APHWalkingStepsViewController.h"
 
 static  NSString  *kControllerTitle = @"Timed Walking";
 
@@ -40,7 +39,7 @@ static  CGFloat  kCornerRadius = 8.0;
 {
     [super viewDidAppear:animated];
     
-    self.navigationItem.title = kControllerTitle;
+    self.navigationItem.title = NSLocalizedString(kControllerTitle, @"");
 }
 
 - (void)makeRoundCorners:(UIView *)view
