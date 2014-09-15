@@ -7,19 +7,76 @@
 //
 
 #import "APHSetupTaskViewController.h"
+#import "APCAppleCore.h"
+#import "APHParkinsonAppDelegate.h"
+#import <objc/message.h>
 
 @implementation APHSetupTaskViewController
 
 #pragma  mark  -  Instance Initialisation
-
-+ (instancetype)customTaskViewController:(id)scheduledTask
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
     return  nil;
 }
 
-+ (RKTask *)createTask
++ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
     return  nil;
+}
+
+/*********************************************************************************/
+#pragma mark - RKTaskDelegate
+/*********************************************************************************/
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
+{
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+//Universal Did Produce Result
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result
+{
+    APCResult * apcResult = [APCResult storeRKResult:result inContext:((APHParkinsonAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.mainContext];
+    apcResult.scheduledTask = self.scheduledTask;
+    NSError * saveError;
+    [apcResult saveToPersistentStore:&saveError];
+    [saveError handle];
+    NSLog(@"RKResult: %@ APCResult: %@", result,apcResult);
+}
+
+- (NSString *)filePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [[paths lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", [NSUUID UUID].UUIDString]];
+}
+
+/*********************************************************************************/
+#pragma mark - Misc
+/*********************************************************************************/
+-(NSString *)descriptionForObject:(id)objct
+{
+    unsigned int varCount;
+    NSMutableString *descriptionString = [[NSMutableString alloc]init];
+    
+    
+    objc_property_t *vars = class_copyPropertyList(object_getClass(objct), &varCount);
+    
+    for (int i = 0; i < varCount; i++)
+    {
+        objc_property_t var = vars[i];
+        const char* name = property_getName (var);
+        
+        NSString *keyValueString = [NSString stringWithFormat:@"\n%@ = %@",[NSString stringWithUTF8String:name],[objct valueForKey:[NSString stringWithUTF8String:name]]];
+        [descriptionString appendString:keyValueString];
+    }
+    
+    free(vars);
+    return descriptionString;
 }
 
 @end

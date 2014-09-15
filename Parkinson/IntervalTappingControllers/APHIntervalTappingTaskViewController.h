@@ -14,6 +14,4 @@
 
 @interface APHIntervalTappingTaskViewController : APHSetupTaskViewController
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
-
 @end

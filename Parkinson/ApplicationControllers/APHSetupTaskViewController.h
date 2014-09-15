@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <ResearchKit/ResearchKit.h>
 #import "APCAppleCore.h"
 
 @interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate, RKResultCollector>
 
-@property  (nonatomic, strong)  RKTask  *task;
+@property  (nonatomic, strong)  APCScheduledTask  *scheduledTask;
 
-+ (instancetype)customTaskViewController:(APCScheduledTask *)scheduledTask;
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask;
 
 @end
