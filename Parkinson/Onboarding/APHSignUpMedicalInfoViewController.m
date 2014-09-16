@@ -18,6 +18,7 @@
 #import "UITableView+Appearance.h"
 #import "APHParkinsonAppDelegate.h"
 #import "APCSpinnerViewController.h"
+#import "NSError+APCNetworkManager.h"
 #import "APCSignupTouchIDViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
@@ -263,13 +264,15 @@
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
     [self presentViewController:spinnerController animated:YES completion:nil];
     
-//    typeof(self) __weak weakSelf = self;
+    typeof(self) __weak weakSelf = self;
     
     APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
     [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
         [NSObject performInMainThread:^{
             [spinnerController dismissViewControllerAnimated:YES completion:nil];
             [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User created successfully", @"")];
+            
+            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [NSObject performInMainThread:^{
@@ -279,8 +282,10 @@
                 [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User account successfully created waiting for consent.", @"")];
             }
             else {
-                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.userInfo[APC_ORIGINAL_ERROR_KEY][@"message"]];
+                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.message];
             }
+            
+            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }];
     }];
 }
