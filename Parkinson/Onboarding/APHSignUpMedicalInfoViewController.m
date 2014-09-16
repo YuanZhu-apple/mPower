@@ -11,7 +11,12 @@
 #import "APCTableViewItem.h"
 #import "NSBundle+Category.h"
 #import "APCStepProgressBar.h"
+#import "NSObject+Extension.h"
+#import "UIAlertView+Category.h"
+#import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"
+#import "APHParkinsonAppDelegate.h"
+#import "APCSpinnerViewController.h"
 #import "APCSignupTouchIDViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
@@ -206,7 +211,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
 - (void) addNavigationItems {
     self.title = NSLocalizedString(@"Medical Information", @"");
     
-    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(next)];
+    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(signup)];
     self.navigationItem.rightBarButtonItem = nextBarButton;
 }
 
@@ -270,9 +275,29 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
     }
 }
 
-- (void) next {
+- (void) signup {
     [self loadProfileValuesInModel];
     
+    APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
+    [self presentViewController:spinnerController animated:YES completion:nil];
+    
+    typeof(self) __weak weakSelf = self;
+    
+    APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
+    [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
+        [NSObject performInMainThread:^{
+            [spinnerController dismissViewControllerAnimated:YES completion:nil];
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User created successfully", @"")];
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [NSObject performInMainThread:^{
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.localizedDescription];
+            [spinnerController dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }];
+}
+
+- (void) next {
     APCSignupTouchIDViewController *touchIDViewController = [[APCSignupTouchIDViewController alloc] initWithNibName:@"APCSignupTouchIDViewController" bundle:[NSBundle appleCoreBundle]];
     touchIDViewController.profile = self.profile;
     [self.navigationController pushViewController:touchIDViewController animated:YES];

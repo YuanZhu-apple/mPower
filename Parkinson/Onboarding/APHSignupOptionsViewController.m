@@ -7,7 +7,7 @@
 //
 
 #import "NSBundle+Category.h"
-#import "APCSignInViewController.h"
+#import "APHSignInViewController.h"
 #import "APHSignupOptionsViewController.h"
 #import "APHSignUpGeneralInfoViewController.h"
 
@@ -38,7 +38,7 @@
 }
 
 - (IBAction) signIn {
-    APCSignInViewController *signInViewController = [[APCSignInViewController alloc] initWithNibName:@"APCSignInViewController" bundle:[NSBundle appleCoreBundle]];
+    APCSignInViewController *signInViewController = [[APHSignInViewController alloc] initWithNibName:@"APCSignInViewController" bundle:[NSBundle appleCoreBundle]];
     [self.navigationController pushViewController:signInViewController animated:YES];
 }
 

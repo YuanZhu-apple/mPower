@@ -154,24 +154,9 @@ static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z
 }
 
 - (void) addHeaderView {
-    UIView *headerView = [[UINib nibWithNibName:@"APCUserInfoTableHeaderView" bundle:[NSBundle appleCoreBundle]] instantiateWithOwner:self options:nil][0];
-    self.tableView.tableHeaderView = headerView;
-    
-    CGRect frame = self.headerTextFieldSeparatorView.frame;
-    frame.size.height = 1;
-    
-    self.headerTextFieldSeparatorView.clipsToBounds = YES;
-    self.headerTextFieldSeparatorView.frame = frame;
-    self.headerTextFieldSeparatorView.backgroundColor = self.tableView.separatorColor;
+    [super addHeaderView];
     
     [self.profileImageButton setImage:[UIImage imageNamed:@"img_user_placeholder"] forState:UIControlStateNormal];
-    self.profileImageButton.layer.cornerRadius = self.profileImageButton.frame.size.width/2;
-    
-    self.firstNameTextField.font = [UITableView textFieldFont];
-    self.firstNameTextField.textColor = [UITableView textFieldTextColor];
-    
-    self.lastNameTextField.font = [UITableView textFieldFont];
-    self.lastNameTextField.textColor = [UITableView textFieldTextColor];
 }
 
 - (void) addFooterView {
