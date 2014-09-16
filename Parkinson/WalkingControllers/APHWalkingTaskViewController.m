@@ -24,7 +24,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     NSInteger _count;
 }
 
-@property  (nonatomic, strong)  NSArray  *stepsConfigurations;
+//@property  (nonatomic, strong)  NSArray  *stepsConfigurations;
 
 @end
 

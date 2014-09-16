@@ -56,7 +56,7 @@
         APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
         [self presentViewController:spinnerController animated:YES completion:nil];
         
-        typeof(self) __weak weakSelf = self;
+//        typeof(self) __weak weakSelf = self;
         
         APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
         [networkManager signIn:self.userHandleTextField.text password:self.passwordTextField.text success:^(NSURLSessionDataTask *task, id responseObject) {

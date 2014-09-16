@@ -16,6 +16,28 @@
 
 #pragma  mark  -  View Controller Methods
 
+#pragma  mark  -  Initialisation
+
++ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
+{
+    RKTask  *task = [self createTask: scheduledTask];
+    APHSpecialSurveyTaskViewController  *controller = [[self alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
+    controller.taskDelegate = controller;
+    return  controller;
+}
+
++ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
+{
+    RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
+    return  task;
+}
+
+- (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
+{
+    self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,27 +46,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-#pragma  mark  -  Task View Controller Delegate Methods
-
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
-{
-    return  NO;
-}
-
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
-{
-    return  YES;
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
-{
-    //    stepViewController.continueButtonOnToolbar = NO;
-}
-
-- (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
-{
 }
 
 

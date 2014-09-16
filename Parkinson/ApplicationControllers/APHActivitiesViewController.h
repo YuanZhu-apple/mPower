@@ -10,11 +10,11 @@
 
 @interface APHActivitiesViewController : UITableViewController
 
-//
-//    Property Declaration for Category (Split Implementation) Files
-//
-@property  (nonatomic, strong)  NSArray       *stepsConfigurations;
-@property  (nonatomic, strong)  NSDictionary  *keysToPropertiesMap;
+////
+////    Property Declaration for Category (Split Implementation) Files
+////
+//@property  (nonatomic, strong)  NSArray       *stepsConfigurations;
+//@property  (nonatomic, strong)  NSDictionary  *keysToPropertiesMap;
 
 @end
 

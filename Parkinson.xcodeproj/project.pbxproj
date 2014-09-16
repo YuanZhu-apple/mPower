@@ -60,7 +60,6 @@
 		CF9BB42419C37695009A5BDB /* APHTracingObjectsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BB42119C37695009A5BDB /* APHTracingObjectsOverviewViewController.m */; };
 		CF9BB42519C37695009A5BDB /* APHTracingObjectsOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB42219C37695009A5BDB /* APHTracingObjectsOverviewViewController.xib */; };
 		CF9BB42819C376FB009A5BDB /* APHTracingObjectsTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BB42719C376FB009A5BDB /* APHTracingObjectsTaskViewController.m */; };
-		CF9BB42C19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BB42A19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m */; };
 		CF9BB42D19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB42B19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib */; };
 		CF9BB43119C37761009A5BDB /* APHSleepQualityOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BB42F19C37761009A5BDB /* APHSleepQualityOverviewViewController.m */; };
 		CF9BB43219C37761009A5BDB /* APHSleepQualityOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB43019C37761009A5BDB /* APHSleepQualityOverviewViewController.xib */; };
@@ -71,7 +70,6 @@
 		CFA2ABC219A7C431000DB961 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC119A7C431000DB961 /* libz.dylib */; };
 		CFA2ABC419A7C446000DB961 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABC319A7C446000DB961 /* libarchive.dylib */; };
 		CFA8839619C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */; };
-		CFA8839719C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */; };
 		CFC1BA8919C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC1BA8819C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DF19A5417D00170E69 /* APHParkinsonAppDelegate.m */; };
@@ -85,6 +83,7 @@
 		F5241C9519AD4CD20098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9319AD4CD20098A4DF /* ResearchKit.framework */; };
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
 		F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9B19AD56B90098A4DF /* libbz2.dylib */; };
+		F547EFD619C8B427003C6C9F /* randomSurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = F547EFD419C8B427003C6C9F /* randomSurvey.json */; };
 		F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */; };
 		F5785DEF19BF939A004B4A01 /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5785DEE19BF939A004B4A01 /* JSON_READ_ME */; };
 		F5B39FC719BFBBE200CA7B8C /* sampleSurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */; };
@@ -231,7 +230,6 @@
 		CFA2ABC319A7C446000DB961 /* libarchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.dylib; path = usr/lib/libarchive.dylib; sourceTree = SDKROOT; };
 		CFA8839319C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSpecialSurveyTaskViewController.h; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.h; sourceTree = "<group>"; };
 		CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSpecialSurveyTaskViewController.m; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.m; sourceTree = "<group>"; };
-		CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHSpecialSurveyTaskViewController.xib; path = SpecialSurveyControllers/APHSpecialSurveyTaskViewController.xib; sourceTree = "<group>"; };
 		CFC1BA8719C0F66C0098DAF2 /* APHSleepQualityTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSleepQualityTaskViewController.h; path = SleepQualityControllers/APHSleepQualityTaskViewController.h; sourceTree = "<group>"; };
 		CFC1BA8819C0F66C0098DAF2 /* APHSleepQualityTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSleepQualityTaskViewController.m; path = SleepQualityControllers/APHSleepQualityTaskViewController.m; sourceTree = "<group>"; };
 		CFC1BA8A19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHChangedMedsTaskViewController.h; path = MedicationChangesControllers/APHChangedMedsTaskViewController.h; sourceTree = "<group>"; };
@@ -263,6 +261,7 @@
 		F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
 		F5241C9B19AD56B90098A4DF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
+		F547EFD419C8B427003C6C9F /* randomSurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = randomSurvey.json; sourceTree = "<group>"; };
 		F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 		F5785DEE19BF939A004B4A01 /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
 		F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleSurvey.json; sourceTree = "<group>"; };
@@ -553,7 +552,6 @@
 			children = (
 				CFA8839319C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.h */,
 				CFA8839419C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m */,
-				CFA8839519C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib */,
 			);
 			name = "Special Survey View Controller";
 			sourceTree = "<group>";
@@ -678,6 +676,7 @@
 				F5785DEE19BF939A004B4A01 /* JSON_READ_ME */,
 				F5785DEA19BF5CA1004B4A01 /* APHTasksAndSchedules.json */,
 				F5B39FC619BFBBE200CA7B8C /* sampleSurvey.json */,
+				F547EFD419C8B427003C6C9F /* randomSurvey.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -811,9 +810,9 @@
 				CF1B270619B8C01400D7F809 /* (null) in Resources */,
 				CF1B26F619B8BF4100D7F809 /* (null) in Resources */,
 				5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */,
-				CFA8839719C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.xib in Resources */,
 				5B2A6C0C19C0BCDF0097E99E /* APHLearnDetailViewCell.xib in Resources */,
 				CF1B271A19B8C0C800D7F809 /* APHWalkingStepsViewController.xib in Resources */,
+				F547EFD619C8B427003C6C9F /* randomSurvey.json in Resources */,
 				5B2A676519BFD3DA0097E99E /* APHLearnDetailViewController.xib in Resources */,
 				255D2F5A19C41352002137F1 /* APHSignupOptionsViewController.xib in Resources */,
 				F5E4874819ABE1E700C86FC6 /* APCAppleCoreBundle.bundle in Resources */,
@@ -869,10 +868,6 @@
 				5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */,
 				255D2F4519C409D2002137F1 /* APHIntroVideoViewController.m in Sources */,
 				255D2F1C19C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m in Sources */,
-				CF9BB42C19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m in Sources */,
-				CF9BB42C19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m in Sources */,
-				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
-				CFC1BA8C19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.m in Sources */,
 				CF9BB42419C37695009A5BDB /* APHTracingObjectsOverviewViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
 				5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */,

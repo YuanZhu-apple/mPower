@@ -13,6 +13,7 @@
 #import "APCStepProgressBar.h"
 #import "NSObject+Extension.h"
 #import "UIAlertView+Category.h"
+#import "APCUserInfoConstants.h"
 #import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"
 #import "APHParkinsonAppDelegate.h"
@@ -20,19 +21,8 @@
 #import "APCSignupTouchIDViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
-// Regular Expression
-static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}";
-
 
 @interface APHSignUpMedicalInfoViewController ()
-
-@property (nonatomic, strong) NSArray *medicalConditions;
-
-@property (nonatomic, strong) NSArray *medications;
-
-@property (nonatomic, strong) NSArray *bloodTypes;
-
-@property (nonatomic, strong) NSArray *heightValues;
 
 @end
 
@@ -43,20 +33,9 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self initProperties];
         [self prepareFields];
     }
     return self;
-}
-
-- (void) initProperties {
-    self.medicalConditions = @[ @[@"Not listed", @"Condition 1" , @"Condition 2"] ];
-    
-    self.medications = @[ @[@"Not listed", @"Medication 1" , @"Medication 2"] ];
-    
-    self.bloodTypes = @[ [APCProfile bloodTypeInStringValues] ];
-    
-    self.heightValues = @[ @[@"3'", @"4'", @"5'", @"6'", @"7'", @"8'", @"9'", @"10'", @"11'", @"12'"], @[@"0''", @"1''", @"2''", @"3''", @"4''", @"5''", @"6''", @"7''", @"8''", @"9''"] ];
 }
 
 - (void) prepareFields {
@@ -69,10 +48,10 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Medical Conditions", @"");
         field.detailDiscloserStyle = YES;
-        field.pickerData = self.medicalConditions;
+        field.pickerData = @[ [APCProfile medicalConditions] ];
         
         if (self.profile.medicalCondition) {
-            field.selectedRowIndices = @[ @([self.medicalConditions[0] indexOfObject:self.profile.medicalCondition]) ];
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:self.profile.medicalCondition]) ];
         }
         else {
             field.selectedRowIndices = @[ @(0) ];
@@ -88,10 +67,10 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Medication", @"");
         field.detailDiscloserStyle = YES;
-        field.pickerData = self.medications;
+        field.pickerData = @[ [APCProfile medications] ];
         
         if (self.profile.medication) {
-            field.selectedRowIndices = @[ @([self.medications[0] indexOfObject:self.profile.medication]) ];
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:self.profile.medication]) ];
         }
         else {
             field.selectedRowIndices = @[ @(0) ];
@@ -108,7 +87,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.caption = NSLocalizedString(@"Blood Type", @"");
         field.detailDiscloserStyle = YES;
         field.selectedRowIndices = @[ @(self.profile.bloodType) ];
-        field.pickerData = self.bloodTypes;
+        field.pickerData = @[ [APCProfile bloodTypeInStringValues] ];
         
         [items addObject:field];
         [itemsOrder addObject:@(APCSignUpUserInfoItemBloodType)];
@@ -120,10 +99,10 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Height", @"");
         field.detailDiscloserStyle = YES;
-        field.pickerData = self.heightValues;
+        field.pickerData = [APCProfile heights];
         if (self.profile.height) {
             NSArray *split = [self.profile.height componentsSeparatedByString:@" "];
-            field.selectedRowIndices = @[ @([self.heightValues[0] indexOfObject:split[0]]), @([self.heightValues[1] indexOfObject:split[1]]) ];
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:split[0]]), @([field.pickerData[1] indexOfObject:split[1]]) ];
         }
         else {
             field.selectedRowIndices = @[ @(2), @(5) ];
@@ -138,7 +117,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Weight", @"");
         field.placeholder = NSLocalizedString(@"lb", @"");
-        field.regularExpression = kAPHMedicalInfoItemWeightRegEx;
+        field.regularExpression = kAPCMedicalInfoItemWeightRegEx;
         field.value = self.profile.weight.stringValue;
         field.keyboardType = UIKeyboardTypeNumberPad;
         field.textAlignnment = NSTextAlignmentRight;
@@ -155,7 +134,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.placeholder = NSLocalizedString(@"7:00 AM", @"");
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         field.datePickerMode = UIDatePickerModeTime;
-        field.dateFormat = @"HH:mm a";
+        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormate;
         field.detailDiscloserStyle = YES;
         
         if (self.profile.sleepTime) {
@@ -174,7 +153,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         field.placeholder = NSLocalizedString(@"9:30 PM", @"");
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         field.datePickerMode = UIDatePickerModeTime;
-        field.dateFormat = @"HH:mm a";
+        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormate;
         field.detailDiscloserStyle = YES;
         
         if (self.profile.wakeUpTime) {
@@ -207,6 +186,9 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
     
     [self.stepProgressBar setCompletedSteps:1 animation:YES];
 }
+
+
+#pragma mark - UIMethods
 
 - (void) addNavigationItems {
     self.title = NSLocalizedString(@"Medical Information", @"");
@@ -281,7 +263,7 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
     [self presentViewController:spinnerController animated:YES completion:nil];
     
-    typeof(self) __weak weakSelf = self;
+//    typeof(self) __weak weakSelf = self;
     
     APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
     [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -291,8 +273,14 @@ static NSString * const kAPHMedicalInfoItemWeightRegEx            = @"[0-9]{1,3}
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [NSObject performInMainThread:^{
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.localizedDescription];
             [spinnerController dismissViewControllerAnimated:YES completion:nil];
+            
+            if (error.code == kAPCServerPreconditionNotMet) {
+                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User account successfully created waiting for consent.", @"")];
+            }
+            else {
+                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.userInfo[APC_ORIGINAL_ERROR_KEY][@"message"]];
+            }
         }];
     }];
 }

@@ -14,15 +14,11 @@
 #import "NSBundle+Category.h"
 #import "APCHealthKitProxy.h"
 #import "APCStepProgressBar.h"
+#import "APCUserInfoConstants.h"
 #import "UIAlertView+Category.h"
 #import "UITableView+Appearance.h"
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
-
-
-// Regular Expressions
-static NSString * const kAPHGeneralInfoItemUserNameRegEx          = @"[A-Za-z0-9_.]+";
-static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 
 
 @interface APHSignUpGeneralInfoViewController ()
@@ -59,7 +55,7 @@ static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z
         field.placeholder = NSLocalizedString(@"Add Username", @"");
         field.value = self.profile.userName;
         field.keyboardType = UIKeyboardTypeDefault;
-        field.regularExpression = kAPHGeneralInfoItemUserNameRegEx;
+        field.regularExpression = kAPCGeneralInfoItemUserNameRegEx;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
@@ -229,7 +225,7 @@ static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z
             
             switch (order.integerValue) {
                 case APCSignUpUserInfoItemUserName:
-                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPHGeneralInfoItemUserNameRegEx];
+                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemUserNameRegEx];
                     *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
                     break;
                     
@@ -245,7 +241,7 @@ static NSString * const kAPHGeneralInfoItemEmailRegEx             = @"[A-Z0-9a-z
                     break;
                     
                 case APCSignUpUserInfoItemEmail:
-                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPHGeneralInfoItemEmailRegEx];
+                    isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemEmailRegEx];
                     *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
                     break;
                     
