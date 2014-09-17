@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "NSObject+Extension.h"
+#import "NSObject+Category.h"
 #import "UIAlertView+Category.h"
 #import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"

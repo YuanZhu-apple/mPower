@@ -10,8 +10,6 @@
 		255D2F1C19C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1719C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m */; };
 		255D2F1D19C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1919C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m */; };
 		255D2F1E19C3B64F002137F1 /* APHUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1B19C3B64F002137F1 /* APHUserInfoCell.m */; };
-		255D2F2419C3B658002137F1 /* APCSettingsTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F2119C3B658002137F1 /* APCSettingsTableFooterView.xib */; };
-		255D2F2519C3B658002137F1 /* APCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F2319C3B658002137F1 /* APCSettingsViewController.m */; };
 		255D2F4519C409D2002137F1 /* APHIntroVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F4419C409D2002137F1 /* APHIntroVideoViewController.m */; };
 		255D2F4E19C40F25002137F1 /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F4B19C40F25002137F1 /* intro.m4v */; };
 		255D2F5919C41352002137F1 /* APHSignupOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F5619C41352002137F1 /* APHSignupOptionsViewController.m */; };
@@ -143,9 +141,6 @@
 		255D2F1919C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpMedicalInfoViewController.m; sourceTree = "<group>"; };
 		255D2F1A19C3B64F002137F1 /* APHUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoCell.h; sourceTree = "<group>"; };
 		255D2F1B19C3B64F002137F1 /* APHUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHUserInfoCell.m; sourceTree = "<group>"; };
-		255D2F2119C3B658002137F1 /* APCSettingsTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCSettingsTableFooterView.xib; sourceTree = "<group>"; };
-		255D2F2219C3B658002137F1 /* APCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCSettingsViewController.h; sourceTree = "<group>"; };
-		255D2F2319C3B658002137F1 /* APCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCSettingsViewController.m; sourceTree = "<group>"; };
 		255D2F4319C409D2002137F1 /* APHIntroVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntroVideoViewController.h; sourceTree = "<group>"; };
 		255D2F4419C409D2002137F1 /* APHIntroVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntroVideoViewController.m; sourceTree = "<group>"; };
 		255D2F4B19C40F25002137F1 /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
@@ -317,9 +312,6 @@
 		255D2F2019C3B658002137F1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				255D2F2119C3B658002137F1 /* APCSettingsTableFooterView.xib */,
-				255D2F2219C3B658002137F1 /* APCSettingsViewController.h */,
-				255D2F2319C3B658002137F1 /* APCSettingsViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -831,7 +823,6 @@
 				CF9BB42519C37695009A5BDB /* APHTracingObjectsOverviewViewController.xib in Resources */,
 				CF9BB43219C37761009A5BDB /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */,
-				255D2F2419C3B658002137F1 /* APCSettingsTableFooterView.xib in Resources */,
 				255D2F4E19C40F25002137F1 /* intro.m4v in Resources */,
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
 				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
@@ -871,7 +862,6 @@
 				CF9BB42419C37695009A5BDB /* APHTracingObjectsOverviewViewController.m in Sources */,
 				CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */,
 				5B40E58019BFC24600D9CA49 /* APHDashboardProgressViewCell.m in Sources */,
-				255D2F2519C3B658002137F1 /* APCSettingsViewController.m in Sources */,
 				5B08808819BE78FC0083A398 /* APHDashboardGraphViewCell.m in Sources */,
 				CF9BB43119C37761009A5BDB /* APHSleepQualityOverviewViewController.m in Sources */,
 				CFC2D2E019A5417D00170E69 /* APHParkinsonAppDelegate.m in Sources */,
