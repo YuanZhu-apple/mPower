@@ -38,7 +38,7 @@
 }
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
-    BOOL isContentValid = YES;
+    BOOL isContentValid = NO;
     
     if (self.userHandleTextField.text.length == 0) {
         *errorMessage = NSLocalizedString(@"Please enter your user name or email", @"");
@@ -47,6 +47,9 @@
     else if (self.passwordTextField.text.length == 0) {
         *errorMessage = NSLocalizedString(@"Please enter your password", @"");
         isContentValid = NO;
+    }
+    else {
+        isContentValid = YES;
     }
     
     return isContentValid;
