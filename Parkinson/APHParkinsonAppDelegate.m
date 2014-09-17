@@ -25,7 +25,7 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     [self initializeAppleCoreStack];
     [self loadStaticTasksAndSchedulesIfNecessary];
     
-//    [self startOnBoardingProcess];
+    [self startOnBoardingProcess];
 
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
