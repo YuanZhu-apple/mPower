@@ -21,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = NSLocalizedString(@"Sign In", @"");
+    self.title = NSLocalizedString(@"Welcome", @"");
 }
 
 - (void) viewWillAppear:(BOOL)animated {

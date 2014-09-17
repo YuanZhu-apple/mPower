@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+#import "APCAppleCore.h"
 #import "APHParkinsonAppDelegate.h"
 #import "APHIntroVideoViewController.h"
 
@@ -24,6 +25,7 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 {
     [self initializeAppleCoreStack];
     [self loadStaticTasksAndSchedulesIfNecessary];
+    [self registerNotifications];
     
     [self startOnBoardingProcess];
 
@@ -70,6 +72,11 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 
 #pragma mark - Private Methods
 
+- (void) registerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginNotification:) name:(NSString *)APCUserLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logOutNotification:) name:(NSString *)APCUserLogOutNotification object:nil];
+}
+
 - (void) startOnBoardingProcess {
     NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
     
@@ -79,5 +86,18 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     [self.window setRootViewController:navController];
 }
 
+
+#pragma mark - Notifications
+
+- (void) loginNotification:(NSNotification *)notification {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    UITabBarController *tabBarController = (UITabBarController *)[storyBoard instantiateInitialViewController];
+    self.window.rootViewController = tabBarController;
+}
+
+- (void) logOutNotification:(NSNotification *)notification {
+    [self startOnBoardingProcess];
+}
 
 @end

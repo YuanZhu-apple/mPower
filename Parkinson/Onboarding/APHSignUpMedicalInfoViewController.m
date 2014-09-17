@@ -271,7 +271,7 @@
     [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
         [NSObject performInMainThread:^{
             [spinnerController dismissViewControllerAnimated:YES completion:nil];
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User created successfully", @"")];
+            [self next];
             
             [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }];
@@ -286,8 +286,6 @@
             else {
                 [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.message];
             }
-            
-            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
         }];
     }];
 }

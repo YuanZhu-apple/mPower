@@ -95,6 +95,7 @@
         field.caption = NSLocalizedString(@"Birthdate", @"");
         field.placeholder = NSLocalizedString(@"MMMM DD, YYYY", @"");
         field.date = self.profile.dateOfBirth;
+        field.datePickerMode = UIDatePickerModeDate;
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         
         [items addObject:field];
