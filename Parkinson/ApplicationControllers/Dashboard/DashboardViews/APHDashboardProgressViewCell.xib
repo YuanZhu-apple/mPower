@@ -14,25 +14,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAJ-vu-mKP">
+                        <rect key="frame" x="8" y="8" width="304" height="135"/>
+                        <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participation Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTm-g3-Nrp">
-                        <rect key="frame" x="8" y="15" width="304" height="21"/>
+                        <rect key="frame" x="8" y="16" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="jBG-yf-jxX"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jBG-yf-jxX"/>
+                            </mask>
+                        </variation>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkv-T5-twu" customClass="APCCircularProgressView">
-                        <rect key="frame" x="120" y="53" width="80" height="80"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="hfQ-ek-0gm"/>
-                            <constraint firstAttribute="height" constant="80" id="ofV-ml-xi3"/>
-                        </constraints>
+                        <rect key="frame" x="120" y="54" width="80" height="80"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvn-GU-mHk">
-                        <rect key="frame" x="63" y="75" width="35" height="35"/>
+                        <rect key="frame" x="63" y="76" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="FqL-mk-Nnb"/>
                             <constraint firstAttribute="width" constant="35" id="zaD-5W-B5C"/>
@@ -40,20 +44,32 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pkv-T5-twu" firstAttribute="trailing" secondItem="Gvn-GU-mHk" secondAttribute="trailing" constant="102" id="Bz8-fg-LUw"/>
-                    <constraint firstAttribute="centerX" secondItem="pkv-T5-twu" secondAttribute="centerX" id="Gt7-gk-SyO"/>
-                    <constraint firstItem="eTm-g3-Nrp" firstAttribute="top" secondItem="pkv-T5-twu" secondAttribute="top" constant="-38" id="QUM-Te-f7j"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="centerX" secondItem="EAJ-vu-mKP" secondAttribute="centerX" id="7ZP-VS-vlu"/>
+                    <constraint firstItem="EAJ-vu-mKP" firstAttribute="leading" secondItem="eTm-g3-Nrp" secondAttribute="leading" id="Cre-e9-yOb"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="centerX" secondItem="eTm-g3-Nrp" secondAttribute="centerX" id="FHL-pY-ohh"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="120" id="JQB-Qk-6jg"/>
+                    <constraint firstItem="Gvn-GU-mHk" firstAttribute="top" secondItem="eTm-g3-Nrp" secondAttribute="bottom" constant="39" id="MzV-d8-UMI"/>
                     <constraint firstItem="eTm-g3-Nrp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="WSC-9c-7kW"/>
                     <constraint firstItem="eTm-g3-Nrp" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="X1V-Tx-Qcm"/>
                     <constraint firstItem="eTm-g3-Nrp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZTo-Aq-9kZ"/>
-                    <constraint firstItem="pkv-T5-twu" firstAttribute="centerY" secondItem="Gvn-GU-mHk" secondAttribute="centerY" constant="0.5" id="q83-si-6iL"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="leading" secondItem="Gvn-GU-mHk" secondAttribute="trailing" constant="22" id="bzJ-9L-Lbm"/>
+                    <constraint firstItem="EAJ-vu-mKP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="d5l-iW-HkA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="pkv-T5-twu" secondAttribute="bottom" constant="7" id="eHA-cs-9Sm"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="54" id="gv1-ef-T5X"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="EAJ-vu-mKP" secondAttribute="bottom" constant="-2" id="oYa-tD-bnB"/>
+                    <constraint firstItem="pkv-T5-twu" firstAttribute="top" secondItem="eTm-g3-Nrp" secondAttribute="bottom" constant="17" id="wth-T7-UDu"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="WSC-9c-7kW"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="progressView" destination="pkv-T5-twu" id="Qd4-Ui-5x4"/>
                 <outlet property="titleLabel" destination="eTm-g3-Nrp" id="NeW-iu-5Qr"/>
             </connections>
-            <point key="canvasLocation" x="722" y="392"/>
+            <point key="canvasLocation" x="722" y="390"/>
         </tableViewCell>
     </objects>
 </document>

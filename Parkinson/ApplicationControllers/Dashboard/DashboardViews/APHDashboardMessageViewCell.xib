@@ -14,6 +14,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVi-Ye-iVX">
+                        <rect key="frame" x="8" y="8" width="304" height="85"/>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yd-7K-G27">
                         <rect key="frame" x="8" y="8" width="35" height="35"/>
                         <constraints>
@@ -30,7 +34,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People like you tend do do better if they exercise in the morning rather than in the evening." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuS-gA-d8D">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuS-gA-d8D">
                         <rect key="frame" x="51" y="36" width="253" height="56"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,11 +43,15 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="VFP-3m-C5m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="43" id="JMc-3E-iB6"/>
+                    <constraint firstItem="jVi-Ye-iVX" firstAttribute="leading" secondItem="4yd-7K-G27" secondAttribute="leading" id="L65-qx-3T0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wuS-gA-d8D" secondAttribute="trailing" constant="8" id="OWC-Oq-fH7"/>
                     <constraint firstItem="4yd-7K-G27" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Oly-mA-nN5"/>
+                    <constraint firstAttribute="centerY" secondItem="jVi-Ye-iVX" secondAttribute="centerY" constant="-0.5" id="VZG-kZ-NrJ"/>
                     <constraint firstItem="VFP-3m-C5m" firstAttribute="top" secondItem="wuS-gA-d8D" secondAttribute="top" constant="-25" id="YFn-0I-nSe"/>
                     <constraint firstAttribute="bottomMargin" secondItem="wuS-gA-d8D" secondAttribute="bottom" constant="-1" id="aKG-Z2-s3z"/>
                     <constraint firstItem="wuS-gA-d8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="43" id="dko-V9-ZKV"/>
+                    <constraint firstItem="jVi-Ye-iVX" firstAttribute="top" secondItem="4yd-7K-G27" secondAttribute="top" id="h5y-lL-35G"/>
+                    <constraint firstItem="jVi-Ye-iVX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="iuS-uW-F9I"/>
                     <constraint firstItem="4yd-7K-G27" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jbi-RH-3DN"/>
                     <constraint firstItem="VFP-3m-C5m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="lIo-Nz-zcy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="VFP-3m-C5m" secondAttribute="trailing" constant="8" id="sKp-TO-ppc"/>
@@ -54,7 +62,7 @@
                 <outlet property="messageLabel" destination="wuS-gA-d8D" id="gKd-2Q-WuM"/>
                 <outlet property="titleLabel" destination="VFP-3m-C5m" id="cRO-HZ-9Uw"/>
             </connections>
-            <point key="canvasLocation" x="722" y="388"/>
+            <point key="canvasLocation" x="722" y="384"/>
         </tableViewCell>
     </objects>
 </document>
