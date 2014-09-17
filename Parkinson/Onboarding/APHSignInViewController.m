@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "NSObject+Category.h"
-#import "UIAlertView+Category.h"
+#import "NSObject+Helper.h"
+#import "UIAlertView+Helper.h"
 #import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"
 #import "APHParkinsonAppDelegate.h"

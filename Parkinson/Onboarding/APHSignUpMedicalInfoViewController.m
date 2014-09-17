@@ -1,5 +1,5 @@
 //
-//  SignUpMedicalInfoViewController.m
+//  APHSignUpMedicalInfoViewController.m
 //  APCAppleCore
 //
 //  Created by Karthik Keyan on 9/2/14.
@@ -7,13 +7,13 @@
 //
 
 #import "APCProfile.h"
-#import "UIView+Category.h"
+#import "UIView+Helper.h"
 #import "APCTableViewItem.h"
-#import "NSObject+Category.h"
-#import "NSBundle+Category.h"
+#import "NSObject+Helper.h"
+#import "NSBundle+Helper.h"
 #import "APCStepProgressBar.h"
-#import "NSObject+Category.h"
-#import "UIAlertView+Category.h"
+#import "NSObject+Helper.h"
+#import "UIAlertView+Helper.h"
 #import "APCUserInfoConstants.h"
 #import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"

@@ -1,5 +1,5 @@
 //
-//  SignUpMedicalInfoViewController.h
+//  APHSignUpMedicalInfoViewController.h
 //  APCAppleCore
 //
 //  Created by Karthik Keyan on 9/2/14.
