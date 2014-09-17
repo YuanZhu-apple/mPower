@@ -12,7 +12,6 @@
 #import "APCTableViewItem.h"
 #import "NSString+Category.h"
 #import "NSBundle+Category.h"
-#import "APCHealthKitProxy.h"
 #import "APCStepProgressBar.h"
 #import "APCUserInfoConstants.h"
 #import "UIAlertView+Category.h"
@@ -22,8 +21,6 @@
 
 
 @interface APHSignUpGeneralInfoViewController ()
-
-@property (nonatomic, strong) APCHealthKitProxy *healthKitProxy;
 
 @end
 
@@ -132,7 +129,7 @@
     [self addHeaderView];
     [self addFooterView];
     [self setupProgressBar];
-    [self loadHealthKitValues];
+//    [self loadHealthKitValues];
 }
 
 
@@ -175,42 +172,42 @@
 
 #pragma mark - Private Methods
 
-- (void) loadHealthKitValues {
-    typeof(self) __weak weakSelf = self;
-    [self.healthKitProxy authenticate:^(BOOL granted, NSError *error) {
-        if (granted) {
-            [weakSelf loadBiologicalInfo];
-            [weakSelf loadHeight];
-            [weakSelf loadWidth];
-        }
-    }];
-}
-
-- (void) loadHeight {
-    typeof(self) __weak weakSelf = self;
-    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
-        if (!error) {
-            weakSelf.profile.height = [NSString stringWithFormat:@"%f", [quantity doubleValueForUnit:[HKUnit unitFromLengthFormatterUnit:NSLengthFormatterUnitInch]]];
-            [weakSelf.tableView reloadData];
-        }
-    }];
-}
-
-- (void) loadWidth {
-    typeof(self) __weak weakSelf = self;
-    
-    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
-        if (!error) {
-            weakSelf.profile.weight = @([quantity doubleValueForUnit:[HKUnit unitFromMassFormatterUnit:NSMassFormatterUnitKilogram]]);
-            [weakSelf.tableView reloadData];
-        }
-    }];
-}
-
-- (void) loadBiologicalInfo {
-    [self.healthKitProxy fillBiologicalInfo:self.profile];
-    [self.tableView reloadData];
-}
+//- (void) loadHealthKitValues {
+//    typeof(self) __weak weakSelf = self;
+//    [self.healthKitProxy authenticate:^(BOOL granted, NSError *error) {
+//        if (granted) {
+//            [weakSelf loadBiologicalInfo];
+//            [weakSelf loadHeight];
+//            [weakSelf loadWidth];
+//        }
+//    }];
+//}
+//
+//- (void) loadHeight {
+//    typeof(self) __weak weakSelf = self;
+//    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
+//        if (!error) {
+//            weakSelf.profile.height = [NSString stringWithFormat:@"%f", [quantity doubleValueForUnit:[HKUnit unitFromLengthFormatterUnit:NSLengthFormatterUnitInch]]];
+//            [weakSelf.tableView reloadData];
+//        }
+//    }];
+//}
+//
+//- (void) loadWidth {
+//    typeof(self) __weak weakSelf = self;
+//    
+//    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
+//        if (!error) {
+//            weakSelf.profile.weight = @([quantity doubleValueForUnit:[HKUnit unitFromMassFormatterUnit:NSMassFormatterUnitKilogram]]);
+//            [weakSelf.tableView reloadData];
+//        }
+//    }];
+//}
+//
+//- (void) loadBiologicalInfo {
+//    [self.healthKitProxy fillBiologicalInfo:self.profile];
+//    [self.tableView reloadData];
+//}
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
     BOOL isContentValid = [super isContentValid:errorMessage];

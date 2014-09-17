@@ -12,6 +12,7 @@
 #import "NSObject+Category.h"
 #import "NSBundle+Category.h"
 #import "APCStepProgressBar.h"
+#import "NSObject+Category.h"
 #import "UIAlertView+Category.h"
 #import "APCUserInfoConstants.h"
 #import "APCSageNetworkManager.h"

@@ -7,6 +7,7 @@
 //
 
 #import "APHParkinsonAppDelegate.h"
+#import "APHIntroVideoViewController.h"
 
 NSString *const kDatabaseName = @"db.sqlite";
 NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
@@ -23,6 +24,8 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 {
     [self initializeAppleCoreStack];
     [self loadStaticTasksAndSchedulesIfNecessary];
+    
+    [self startOnBoardingProcess];
 
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -63,5 +66,18 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
 }
+
+
+#pragma mark - Private Methods
+
+- (void) startOnBoardingProcess {
+    NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
+    
+    APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
+    [self.window setRootViewController:navController];
+}
+
 
 @end

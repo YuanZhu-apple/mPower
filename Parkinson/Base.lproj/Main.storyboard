@@ -211,7 +211,7 @@
         <!--Settings View Controller-->
         <scene sceneID="Clq-Us-iuW">
             <objects>
-                <viewController id="aTy-RD-egT" customClass="APCSettingsViewController" sceneMemberID="viewController">
+                <viewController id="aTy-RD-egT" customClass="APHSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Igz-Cg-70r"/>
                         <viewControllerLayoutGuide type="bottom" id="SEi-Nr-xoh"/>
