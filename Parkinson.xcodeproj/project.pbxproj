@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25146E6819C9014D00EF24C6 /* img_caretaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25146E6419C9014D00EF24C6 /* img_caretaker@2x.png */; };
+		25146E6919C9014D00EF24C6 /* img_caretaker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25146E6519C9014D00EF24C6 /* img_caretaker@3x.png */; };
+		25146E6A19C9014D00EF24C6 /* img_patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25146E6619C9014D00EF24C6 /* img_patient@2x.png */; };
+		25146E6B19C9014D00EF24C6 /* img_patient@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25146E6719C9014D00EF24C6 /* img_patient@3x.png */; };
 		255D2F1C19C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1719C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m */; };
 		255D2F1D19C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1919C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m */; };
 		255D2F1E19C3B64F002137F1 /* APHUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F1B19C3B64F002137F1 /* APHUserInfoCell.m */; };
@@ -14,6 +18,8 @@
 		255D2F4E19C40F25002137F1 /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F4B19C40F25002137F1 /* intro.m4v */; };
 		255D2F5919C41352002137F1 /* APHSignupOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F5619C41352002137F1 /* APHSignupOptionsViewController.m */; };
 		255D2F5A19C41352002137F1 /* APHSignupOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F5819C41352002137F1 /* APHSignupOptionsViewController.xib */; };
+		25D1D86D19CA04B100C6C596 /* APHSettingsTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D1D86A19CA04B100C6C596 /* APHSettingsTableFooterView.xib */; };
+		25D1D86E19CA04B100C6C596 /* APHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25D1D86C19CA04B100C6C596 /* APHSettingsViewController.m */; };
 		25E6827C19C75BE400597734 /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
 		25E682B619C7B72400597734 /* APHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E682B519C7B72400597734 /* APHSignInViewController.m */; };
 		5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08807D19BE78FC0083A398 /* APHEditSectionsViewController.m */; };
@@ -135,6 +141,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25146E6419C9014D00EF24C6 /* img_caretaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_caretaker@2x.png"; sourceTree = "<group>"; };
+		25146E6519C9014D00EF24C6 /* img_caretaker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_caretaker@3x.png"; sourceTree = "<group>"; };
+		25146E6619C9014D00EF24C6 /* img_patient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_patient@2x.png"; sourceTree = "<group>"; };
+		25146E6719C9014D00EF24C6 /* img_patient@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_patient@3x.png"; sourceTree = "<group>"; };
 		255D2F1619C3B64F002137F1 /* APHSignUpGeneralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpGeneralInfoViewController.h; sourceTree = "<group>"; };
 		255D2F1719C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpGeneralInfoViewController.m; sourceTree = "<group>"; };
 		255D2F1819C3B64F002137F1 /* APHSignUpMedicalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpMedicalInfoViewController.h; sourceTree = "<group>"; };
@@ -147,6 +157,9 @@
 		255D2F5619C41352002137F1 /* APHSignupOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignupOptionsViewController.m; sourceTree = "<group>"; };
 		255D2F5719C41352002137F1 /* APHSignupOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignupOptionsViewController.h; sourceTree = "<group>"; };
 		255D2F5819C41352002137F1 /* APHSignupOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSignupOptionsViewController.xib; sourceTree = "<group>"; };
+		25D1D86A19CA04B100C6C596 /* APHSettingsTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSettingsTableFooterView.xib; sourceTree = "<group>"; };
+		25D1D86B19CA04B100C6C596 /* APHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSettingsViewController.h; sourceTree = "<group>"; };
+		25D1D86C19CA04B100C6C596 /* APHSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSettingsViewController.m; sourceTree = "<group>"; };
 		25E682B419C7B72400597734 /* APHSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignInViewController.h; sourceTree = "<group>"; };
 		25E682B519C7B72400597734 /* APHSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignInViewController.m; sourceTree = "<group>"; };
 		5B08807C19BE78FC0083A398 /* APHEditSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHEditSectionsViewController.h; sourceTree = "<group>"; };
@@ -289,6 +302,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25146E6319C9014D00EF24C6 /* inclusionCriteria */ = {
+			isa = PBXGroup;
+			children = (
+				25146E6419C9014D00EF24C6 /* img_caretaker@2x.png */,
+				25146E6519C9014D00EF24C6 /* img_caretaker@3x.png */,
+				25146E6619C9014D00EF24C6 /* img_patient@2x.png */,
+				25146E6719C9014D00EF24C6 /* img_patient@3x.png */,
+			);
+			path = inclusionCriteria;
+			sourceTree = "<group>";
+		};
 		255D2F1519C3B64F002137F1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,13 +333,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		255D2F2019C3B658002137F1 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +345,7 @@
 		255D2F4719C40F25002137F1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				25146E6319C9014D00EF24C6 /* inclusionCriteria */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -338,6 +356,16 @@
 				255D2F4B19C40F25002137F1 /* intro.m4v */,
 			);
 			path = Videos;
+			sourceTree = "<group>";
+		};
+		25D1D86919CA04B100C6C596 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				25D1D86A19CA04B100C6C596 /* APHSettingsTableFooterView.xib */,
+				25D1D86B19CA04B100C6C596 /* APHSettingsViewController.h */,
+				25D1D86C19CA04B100C6C596 /* APHSettingsViewController.m */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		5B08807B19BE78FC0083A398 /* Dashboard */ = {
@@ -413,7 +441,7 @@
 		CF14862719AFE2E1001EBB29 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				255D2F2019C3B658002137F1 /* Profile */,
+				25D1D86919CA04B100C6C596 /* Profile */,
 				255D2F1519C3B64F002137F1 /* Onboarding */,
 				CF1ECBBD19BE12AE003F29DE /* Activities Controllers */,
 				5B08807B19BE78FC0083A398 /* Dashboard */,
@@ -819,16 +847,21 @@
 				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
 				CF9BB42D19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
+				25D1D86D19CA04B100C6C596 /* APHSettingsTableFooterView.xib in Resources */,
 				CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */,
+				25146E6B19C9014D00EF24C6 /* img_patient@3x.png in Resources */,
 				CF9BB42519C37695009A5BDB /* APHTracingObjectsOverviewViewController.xib in Resources */,
+				25146E6919C9014D00EF24C6 /* img_caretaker@3x.png in Resources */,
 				CF9BB43219C37761009A5BDB /* APHSleepQualityOverviewViewController.xib in Resources */,
 				CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */,
+				25146E6A19C9014D00EF24C6 /* img_patient@2x.png in Resources */,
 				255D2F4E19C40F25002137F1 /* intro.m4v in Resources */,
 				CF1B271819B8C0C800D7F809 /* APHWalkingResultsViewController.xib in Resources */,
 				7B1B049D19BA24B600C5E91B /* TappingTaskStoryboard.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				5B40E58619BFC67D00D9CA49 /* APHDashboardMessageViewCell.xib in Resources */,
 				5B40E58119BFC24600D9CA49 /* APHDashboardProgressViewCell.xib in Resources */,
+				25146E6819C9014D00EF24C6 /* img_caretaker@2x.png in Resources */,
 				CF1B270B19B8C05700D7F809 /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,6 +914,7 @@
 				5BB1E39419C1194000300F9D /* APHActivitiesViewController.m in Sources */,
 				CF1B271719B8C0C800D7F809 /* APHWalkingResultsViewController.m in Sources */,
 				CFEE9A2319B7961D00D1E858 /* APHConfirmationView.m in Sources */,
+				25D1D86E19CA04B100C6C596 /* APHSettingsViewController.m in Sources */,
 				CFA8839619C7853F00FC82C7 /* APHSpecialSurveyTaskViewController.m in Sources */,
 				CFEE9A4019B7B1A200D1E858 /* APHSetupTaskViewController.m in Sources */,
 				CFEE9A2819B7968C00D1E858 /* NSString+CustomMethods.m in Sources */,
