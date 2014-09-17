@@ -7,7 +7,17 @@
 //
 
 #import "APHIntervalTappingTaskViewController.h"
+#import "APHStepViewController.h"
+
+#import "APHIntervalTappingIntroViewController.h"
+#import "APHIntervalTappingStepsViewController.h"
+#import "APHIntervalTappingResultsViewController.h"
+
 #import "CustomRecorder.h"
+
+static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
+static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
+static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
 static float tapInterval = 20.0;
 
@@ -26,7 +36,15 @@ static float tapInterval = 20.0;
     RKTask  *task = [self createTask: scheduledTask];
     APHIntervalTappingTaskViewController  *controller = [[APHIntervalTappingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
     controller.taskDelegate = controller;
+    controller.title = @"Interval Tapping";
     return  controller;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = @"Interval Tapping";
+    self.navigationController.title = @"Interval Tapping";
 }
 
 + (RKTask *)createTask:(APCScheduledTask*) scheduledTask
@@ -34,24 +52,51 @@ static float tapInterval = 20.0;
     NSMutableArray *steps = [[NSMutableArray alloc] init];
     
     {
-        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:@"aid_000a" name:@"Tap intro"];
+        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kIntervalTappingStep101 name:@"Tap intro"];
         step.caption = @"Tests Bradykinesia";
         step.explanation = @"";
-        step.instruction = @"Interval tapping will give you a set of intervals in which you will need to tap the screen.";
+        step.instruction = @"";
         [steps addObject:step];
     }
     
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:@"aid_001b" name:@"active step"];
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kIntervalTappingStep102 name:@"active step"];
         step.caption = @"Button Tap";
-        step.text = @"Please tap the blue box below when it appears.";
+        step.text = @"";
         step.countDown = tapInterval;
         step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
         [steps addObject:step];
     }
         
     RKTask  *task = [[RKTask alloc] initWithName:@"Interval Touches" identifier:@"Tapping Task" steps:steps];
+    
     return  task;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStepViewController:(RKStepViewController *)stepViewController
+{
+    return  YES;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+{
+    stepViewController.continueButtonOnToolbar = NO;
+}
+
+- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+{
+    NSDictionary  *controllers = @{
+                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
+                                   kIntervalTappingStep102 : [APHIntervalTappingStepsViewController   class],
+                                   kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
+                                  };
+    Class  aClass = [controllers objectForKey:step.identifier];
+    APHStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    controller.continueButtonOnToolbar = NO;
+    controller.step = step;
+    return  controller;
 }
 
 
