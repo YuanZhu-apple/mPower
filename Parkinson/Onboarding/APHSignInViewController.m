@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "NSObject+Extension.h"
+#import "NSObject+Category.h"
 #import "UIAlertView+Category.h"
 #import "APCSageNetworkManager.h"
 #import "UITableView+Appearance.h"
@@ -38,7 +38,7 @@
 }
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
-    BOOL isContentValid = YES;
+    BOOL isContentValid = NO;
     
     if (self.userHandleTextField.text.length == 0) {
         *errorMessage = NSLocalizedString(@"Please enter your user name or email", @"");
@@ -47,6 +47,9 @@
     else if (self.passwordTextField.text.length == 0) {
         *errorMessage = NSLocalizedString(@"Please enter your password", @"");
         isContentValid = NO;
+    }
+    else {
+        isContentValid = YES;
     }
     
     return isContentValid;

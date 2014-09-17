@@ -1,6 +1,6 @@
 //
 //  SignUpMedicalInfoViewController.m
-//  UI
+//  APCAppleCore
 //
 //  Created by Karthik Keyan on 9/2/14.
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
@@ -9,9 +9,9 @@
 #import "APCProfile.h"
 #import "UIView+Category.h"
 #import "APCTableViewItem.h"
+#import "NSObject+Category.h"
 #import "NSBundle+Category.h"
 #import "APCStepProgressBar.h"
-#import "NSObject+Extension.h"
 #import "UIAlertView+Category.h"
 #import "APCUserInfoConstants.h"
 #import "APCSageNetworkManager.h"
@@ -280,6 +280,7 @@
             
             if (error.code == kAPCServerPreconditionNotMet) {
                 [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User account successfully created waiting for consent.", @"")];
+                [weakSelf next];
             }
             else {
                 [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.message];
