@@ -70,6 +70,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     [self.dashboardTableView setSeparatorInset:UIEdgeInsetsZero];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(editTapped)];
     [self.navigationItem setLeftBarButtonItem:editButton];
+    self.dashboardTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated

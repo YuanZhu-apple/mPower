@@ -31,7 +31,7 @@
         <scene sceneID="qBn-LH-jOq">
             <objects>
                 <navigationController id="qzj-Fp-qDP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Overview" image="tab.item.overview.png" id="vBV-Mz-HtV"/>
+                    <tabBarItem key="tabBarItem" title="Overview" image="ico_home" id="vBV-Mz-HtV"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="5xu-Pu-Bdl">
@@ -84,7 +84,7 @@
         <scene sceneID="bfv-iG-sSv">
             <objects>
                 <navigationController id="bzG-IA-Wtr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Learn" image="tab.item.learning.png" id="D3r-ue-2xU"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="ico_dummy" id="D3r-ue-2xU"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Idr-1T-joW">
@@ -140,7 +140,7 @@
         <scene sceneID="2be-aK-449">
             <objects>
                 <navigationController id="yJz-wc-ll8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activities" image="tab.item.activites.png" id="ctU-6s-0IL"/>
+                    <tabBarItem key="tabBarItem" title="Activities" image="ico_dummy" id="ctU-6s-0IL"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PMS-DP-SCQ">
@@ -193,7 +193,7 @@
         <scene sceneID="DNb-9C-5BE">
             <objects>
                 <navigationController id="MDE-Fz-b8z" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Health Profile" image="tab.item.health.profile.png" id="O3G-fI-aD5"/>
+                    <tabBarItem key="tabBarItem" title="Health Profile" image="ico_profile" id="O3G-fI-aD5"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="NFL-3x-poZ">
@@ -232,9 +232,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab.item.activites.png" width="32" height="32"/>
-        <image name="tab.item.health.profile.png" width="32" height="32"/>
-        <image name="tab.item.learning.png" width="32" height="29"/>
-        <image name="tab.item.overview.png" width="32" height="32"/>
+        <image name="ico_dummy" width="21" height="21"/>
+        <image name="ico_home" width="21" height="21"/>
+        <image name="ico_profile" width="21" height="21"/>
     </resources>
 </document>
