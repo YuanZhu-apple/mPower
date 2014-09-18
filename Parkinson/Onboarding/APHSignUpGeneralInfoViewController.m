@@ -201,19 +201,31 @@
 - (void) configurableCell:(APCUserInfoCell *)cell switchValueChanged:(BOOL)isOn {
     [super configurableCell:cell switchValueChanged:isOn];
     
+#ifdef DEMO
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+#else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+#endif
 }
 
 - (void) configurableCell:(APCUserInfoCell *)cell segmentIndexChanged:(NSUInteger)index {
     [super configurableCell:cell segmentIndexChanged:index];
     
+#ifdef DEMO
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+#else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+#endif
 }
 
 - (void) configurableCell:(APCUserInfoCell *)cell dateValueChanged:(NSDate *)date {
     [super configurableCell:cell dateValueChanged:date];
     
+#ifdef DEMO
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+#else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+#endif
 }
 
 - (void) configurableCell:(APCUserInfoCell *)cell customPickerValueChanged:(NSArray *)selectedRowIndices {
