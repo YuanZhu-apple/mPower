@@ -18,6 +18,7 @@
 		255D2F4E19C40F25002137F1 /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F4B19C40F25002137F1 /* intro.m4v */; };
 		255D2F5919C41352002137F1 /* APHSignupOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D2F5619C41352002137F1 /* APHSignupOptionsViewController.m */; };
 		255D2F5A19C41352002137F1 /* APHSignupOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255D2F5819C41352002137F1 /* APHSignupOptionsViewController.xib */; };
+		25AC61D519CB5A5F00DF0272 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25AC61D419CB5A5F00DF0272 /* LaunchScreen.xib */; };
 		25E6827C19C75BE400597734 /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
 		25E682B619C7B72400597734 /* APHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E682B519C7B72400597734 /* APHSignInViewController.m */; };
 		5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08807D19BE78FC0083A398 /* APHEditSectionsViewController.m */; };
@@ -149,6 +150,7 @@
 		255D2F5619C41352002137F1 /* APHSignupOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignupOptionsViewController.m; sourceTree = "<group>"; };
 		255D2F5719C41352002137F1 /* APHSignupOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignupOptionsViewController.h; sourceTree = "<group>"; };
 		255D2F5819C41352002137F1 /* APHSignupOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSignupOptionsViewController.xib; sourceTree = "<group>"; };
+		25AC61D419CB5A5F00DF0272 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		25E682B419C7B72400597734 /* APHSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignInViewController.h; sourceTree = "<group>"; };
 		25E682B519C7B72400597734 /* APHSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignInViewController.m; sourceTree = "<group>"; };
 		5B08807C19BE78FC0083A398 /* APHEditSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHEditSectionsViewController.h; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				255D2F1919C3B64F002137F1 /* APHSignUpMedicalInfoViewController.m */,
 				25E682B419C7B72400597734 /* APHSignInViewController.h */,
 				25E682B519C7B72400597734 /* APHSignInViewController.m */,
+				25AC61D419CB5A5F00DF0272 /* LaunchScreen.xib */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -814,6 +817,9 @@
 				5B08808619BE78FC0083A398 /* APHEditSectionsViewController.xib in Resources */,
 				5B2A676819BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib in Resources */,
 				F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */,
+				CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */,
+				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
+				25AC61D519CB5A5F00DF0272 /* LaunchScreen.xib in Resources */,
 				CF9BB42D19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
 				F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */,

@@ -7,19 +7,19 @@
 //
 
 #import "APCProfile.h"
-#import "APHUserInfoCell.h"
 #import "UIView+Helper.h"
-#import "APCTableViewItem.h"
 #import "NSString+Helper.h"
 #import "NSBundle+Helper.h"
+#import "APHUserInfoCell.h"
+#import "APCTableViewItem.h"
 #import "APCStepProgressBar.h"
-#import "APCUserInfoConstants.h"
 #import "UIAlertView+Helper.h"
+#import "APCUserInfoConstants.h"
 #import "UITableView+Appearance.h"
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
-#define DEMO 1
+//#define DEMO 1
 
 
 @interface APHSignUpGeneralInfoViewController ()
@@ -54,6 +54,8 @@
         field.placeholder = NSLocalizedString(@"Add Username", @"");
         field.value = self.profile.userName;
         field.keyboardType = UIKeyboardTypeDefault;
+        field.returnKeyType = UIReturnKeyNext;
+        field.clearButtonMode = UITextFieldViewModeWhileEditing;
         field.regularExpression = kAPCGeneralInfoItemUserNameRegEx;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
@@ -69,6 +71,8 @@
         field.value = self.profile.password;
         field.secure = YES;
         field.keyboardType = UIKeyboardTypeDefault;
+        field.returnKeyType = UIReturnKeyNext;
+        field.clearButtonMode = UITextFieldViewModeWhileEditing;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
@@ -83,6 +87,8 @@
         field.placeholder = NSLocalizedString(@"Add Email Address", @"");
         field.value = self.profile.email;
         field.keyboardType = UIKeyboardTypeEmailAddress;
+        field.returnKeyType = UIReturnKeyNext;
+        field.clearButtonMode = UITextFieldViewModeWhileEditing;
         field.identifier = NSStringFromClass([APCTableViewTextFieldItem class]);
         
         [items addObject:field];
@@ -132,7 +138,6 @@
     [self addHeaderView];
     [self addFooterView];
     [self setupProgressBar];
-//    [self loadHealthKitValues];
 }
 
 
@@ -142,6 +147,7 @@
     self.title = NSLocalizedString(@"General Information", @"");
     
     UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(validateContent)];
+    nextBarButton.enabled = [self isContentValid:nil];
     self.navigationItem.rightBarButtonItem = nextBarButton;
 }
 
@@ -166,6 +172,58 @@
 }
 
 
+#pragma mark - APCConfigurableCell
+
+- (void) configurableCell:(APCUserInfoCell *)cell textValueChanged:(NSString *)text {
+    [super configurableCell:cell textValueChanged:text];
+    
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    APCTableViewTextFieldItem *item = self.items[indexPath.row];
+    if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemPassword) {
+        if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid Password", @"")];
+        }
+        else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Password should be at least 6 characters", @"")];
+        }
+    }
+    else if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemEmail) {
+        if (![item.value isValidForRegex:kAPCGeneralInfoItemEmailRegEx]) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address, otherwise i will kick your ass.", @"")];
+        }
+        
+    }
+}
+
+- (void) configurableCell:(APCUserInfoCell *)cell switchValueChanged:(BOOL)isOn {
+    [super configurableCell:cell switchValueChanged:isOn];
+    
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+}
+
+- (void) configurableCell:(APCUserInfoCell *)cell segmentIndexChanged:(NSUInteger)index {
+    [super configurableCell:cell segmentIndexChanged:index];
+    
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+}
+
+- (void) configurableCell:(APCUserInfoCell *)cell dateValueChanged:(NSDate *)date {
+    [super configurableCell:cell dateValueChanged:date];
+    
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+}
+
+- (void) configurableCell:(APCUserInfoCell *)cell customPickerValueChanged:(NSArray *)selectedRowIndices {
+    [super configurableCell:cell customPickerValueChanged:selectedRowIndices];
+    
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+}
+
+
+
 #pragma mark - Public Methods
 
 - (Class) cellClass {
@@ -174,43 +232,6 @@
 
 
 #pragma mark - Private Methods
-
-//- (void) loadHealthKitValues {
-//    typeof(self) __weak weakSelf = self;
-//    [self.healthKitProxy authenticate:^(BOOL granted, NSError *error) {
-//        if (granted) {
-//            [weakSelf loadBiologicalInfo];
-//            [weakSelf loadHeight];
-//            [weakSelf loadWidth];
-//        }
-//    }];
-//}
-//
-//- (void) loadHeight {
-//    typeof(self) __weak weakSelf = self;
-//    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
-//        if (!error) {
-//            weakSelf.profile.height = [NSString stringWithFormat:@"%f", [quantity doubleValueForUnit:[HKUnit unitFromLengthFormatterUnit:NSLengthFormatterUnitInch]]];
-//            [weakSelf.tableView reloadData];
-//        }
-//    }];
-//}
-//
-//- (void) loadWidth {
-//    typeof(self) __weak weakSelf = self;
-//    
-//    [self.healthKitProxy latestHeight:^(HKQuantity *quantity, NSError *error) {
-//        if (!error) {
-//            weakSelf.profile.weight = @([quantity doubleValueForUnit:[HKUnit unitFromMassFormatterUnit:NSMassFormatterUnitKilogram]]);
-//            [weakSelf.tableView reloadData];
-//        }
-//    }];
-//}
-//
-//- (void) loadBiologicalInfo {
-//    [self.healthKitProxy fillBiologicalInfo:self.profile];
-//    [self.tableView reloadData];
-//}
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
 
@@ -229,28 +250,42 @@
             switch (order.integerValue) {
                 case APCSignUpUserInfoItemUserName:
                     isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemUserNameRegEx];
-                    *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
+                    if (errorMessage) {
+                        *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
+                    }
                     break;
                     
                 case APCSignUpUserInfoItemPassword:
                     if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
-                        *errorMessage = NSLocalizedString(@"Please give a valid Password", @"");
                         isContentValid = NO;
+                        
+                        if (errorMessage) {
+                            *errorMessage = NSLocalizedString(@"Please give a valid Password", @"");
+                        }
                     }
                     else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
-                        *errorMessage = NSLocalizedString(@"Password should be at least 6 characters", @"");
                         isContentValid = NO;
+                        
+                        if (errorMessage) {
+                            *errorMessage = NSLocalizedString(@"Password should be at least 6 characters", @"");
+                        }
                     }
                     break;
                     
                 case APCSignUpUserInfoItemEmail:
                     isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemEmailRegEx];
-                    *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
+                    
+                    if (errorMessage) {
+                        *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
+                    }
                     break;
                     
                 case APCSignUpUserInfoItemDateOfBirth:
                     isContentValid = ([(APCTableViewDatePickerItem *)item date] != nil);
-                    *errorMessage = NSLocalizedString(@"Please give your Date of Birth", @"");
+                    
+                    if (errorMessage) {
+                        *errorMessage = NSLocalizedString(@"Please give your Date of Birth", @"");
+                    }
                     break;
                     
                 default:
