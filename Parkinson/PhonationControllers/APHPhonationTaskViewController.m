@@ -20,14 +20,6 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
-{
-    RKTask  *task = [self createTask: scheduledTask];
-    APHPhonationTaskViewController  *controller = [[APHPhonationTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
-
 + (RKTask *)createTask:(APCScheduledTask*) scheduledTask
 {
     

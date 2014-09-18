@@ -32,13 +32,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
-{
-    RKTask  *task = [self createTask: scheduledTask];
-    APHWalkingTaskViewController  *controller = [[APHWalkingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {

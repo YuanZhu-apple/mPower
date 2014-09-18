@@ -10,10 +10,11 @@
 #import "APHParkinsonAppDelegate.h"
 #import "APHIntroVideoViewController.h"
 
-NSString *const kDatabaseName = @"db.sqlite";
-NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
-NSString *const kBaseURL = @"http://pd-staging.sagebridge.org/api/v1/";
-NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
+static NSString *const kDatabaseName = @"db.sqlite";
+static NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
+static NSString *const kBaseURL = @"http://pd-staging.sagebridge.org/api/v1/";
+static NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
+static NSString *const kLoggedInKey = @"LoggedIn";
 
 @interface APHParkinsonAppDelegate ()
 
@@ -27,7 +28,9 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     [self loadStaticTasksAndSchedulesIfNecessary];
     [self registerNotifications];
     
-    [self startOnBoardingProcess];
+    if (![self isLoggedIn]) {
+        [self startOnBoardingProcess];
+    }
 
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -86,9 +89,13 @@ NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
     [self.window setRootViewController:navController];
 }
 
+- (BOOL) isLoggedIn
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kLoggedInKey];
+}
+
 
 #pragma mark - Notifications
-
 - (void) loginNotification:(NSNotification *)notification {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     

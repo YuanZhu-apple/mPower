@@ -15,6 +15,8 @@
 #import "APCSpinnerViewController.h"
 #import "NSError+APCNetworkManager.h"
 
+static NSString *const kLoggedInKey = @"LoggedIn";
+
 @interface APHSignInViewController ()
 
 @end
@@ -66,7 +68,7 @@
         [networkManager signIn:self.userHandleTextField.text password:self.passwordTextField.text success:^(NSURLSessionDataTask *task, id responseObject) {
             [NSObject performInMainThread:^{
                 [spinnerController dismissViewControllerAnimated:YES completion:nil];
-                
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLoggedInKey];
                 [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
             }];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -16,7 +16,11 @@
 #pragma  mark  -  Instance Initialisation
 + (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
 {
-    return  nil;
+    RKTask  *task = [self createTask: scheduledTask];
+    APHSetupTaskViewController * controller = [[self alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
+    controller.scheduledTask = scheduledTask;
+    controller.taskDelegate = controller;
+    return  controller;
 }
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
@@ -29,6 +33,10 @@
 /*********************************************************************************/
 - (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
 {
+    self.scheduledTask.completed = @YES;
+    NSError * saveError;
+    [self.scheduledTask saveToPersistentStore:&saveError];
+    [saveError handle];
     [taskViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
