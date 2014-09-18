@@ -252,7 +252,7 @@
                 break;
                 
             default:
-#warning ASSERT_MESSAGE Require
+//#warning ASSERT_MESSAGE Require
                 NSAssert(order.integerValue <= APCSignUpUserInfoItemWakeUpTime, @"ASSER_MESSAGE");
                 break;
         }

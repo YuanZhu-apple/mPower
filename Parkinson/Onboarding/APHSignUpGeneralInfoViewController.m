@@ -299,7 +299,7 @@
                 break;
                 
             default:
-#warning ASSERT_MESSAGE Require
+//#warning ASSERT_MESSAGE Require
                 NSAssert(NO, @"ASSER_MESSAGE");
                 break;
         }

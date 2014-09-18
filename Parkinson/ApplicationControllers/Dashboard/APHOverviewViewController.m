@@ -23,6 +23,12 @@ static NSString * const kDashboardGraphCellIdentifier    = @"DashboardGraphCellI
 static NSString * const kDashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
 static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
+//Tab Bar Selected Images
+static NSString * const kTabBarDashboardSelectedImage = @"tab_dashboard_selected";
+static NSString * const kTabBarLearnSelectedImage = @"tab_learn_selected";
+static NSString * const kTabBarActivitiesSelectedImage = @"tab_activities_selected";
+static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
+
 @interface APHOverviewViewController () <YMLTimeLineChartViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UITableView *dashboardTableView;
@@ -64,6 +70,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self customizeTabBar];
     
     //Setup table
     [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardProgressViewCell" bundle:nil] forCellReuseIdentifier:kDashboardProgressCellIdentifier];
@@ -146,9 +153,6 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
                                     ];
 
             lineChartView.lineLayer.strokeColor = [UIColor parkinsonBlueColor].CGColor;
-//            lineChartView.lineLayer.shadowOpacity = 0.5;
-//            lineChartView.lineLayer.shadowOffset = CGSizeMake(0, 1);
-//            lineChartView.lineLayer.shadowRadius = 2;
             lineChartView.lineLayer.lineWidth = 1.5;
             lineChartView.markerColor = [UIColor parkinsonBlueColor];
             lineChartView.markerRadius = 3;
@@ -245,6 +249,19 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     }
     
     return title;
+}
+
+/*********************************************************************************/
+#pragma mark - Misc
+/*********************************************************************************/
+- (void) customizeTabBar
+{
+//    {
+//        UIImage* selectedImage = [[UIImage imageNamed:kTabBarDashboardSelectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        UITabBarItem * tabBar =(UITabBarItem*)(self.tabBarController.tabBar.items[0]);
+//        [tabBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:(45/255.0) green:(180/255.0) blue:(250/255.0) alpha:1.000]} forState:UIControlStateHighlighted];
+//        tabBar.selectedImage = selectedImage;
+//    }
 }
 
 @end
