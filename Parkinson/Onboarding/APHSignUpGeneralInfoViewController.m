@@ -19,7 +19,7 @@
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
-//#define DEMO 1
+#define DEMO 1
 
 
 @interface APHSignUpGeneralInfoViewController ()
@@ -218,8 +218,11 @@
 
 - (void) configurableCell:(APCUserInfoCell *)cell customPickerValueChanged:(NSArray *)selectedRowIndices {
     [super configurableCell:cell customPickerValueChanged:selectedRowIndices];
-    
+#ifdef DEMO
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+#else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+#endif
 }
 
 
@@ -289,7 +292,7 @@
                     break;
                     
                 default:
-#warning ASSERT_MESSAGE Require
+//#warning ASSERT_MESSAGE Require
                     NSAssert(order.integerValue <= APCSignUpUserInfoItemWakeUpTime, @"ASSER_MESSAGE");
                     break;
             }

@@ -817,8 +817,6 @@
 				5B08808619BE78FC0083A398 /* APHEditSectionsViewController.xib in Resources */,
 				5B2A676819BFD3DA0097E99E /* APHLearnMasterTableViewCell.xib in Resources */,
 				F5785DEB19BF5CA1004B4A01 /* APHTasksAndSchedules.json in Resources */,
-				CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */,
-				CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */,
 				25AC61D519CB5A5F00DF0272 /* LaunchScreen.xib in Resources */,
 				CF9BB42D19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
