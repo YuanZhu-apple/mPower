@@ -31,17 +31,31 @@ static  NSString  *kTapGetStarted = @"Tap “Get Started” to Begin";
 + (void)initialize
 {
     kIntroHeadingCaption = NSLocalizedString(@"Tests Bradykinesia", nil);
-    kInstructionalParagraph = NSLocalizedString(@"Once you tap get started, you will have 5 seconds before the first interval set appears.", nil);
+    kInstructionalParagraph = NSLocalizedString(@"Once you tap “Get Started”, you will have 5 seconds before the first interval set appears.", nil);
     kIntroHeadingCaption = NSLocalizedString(@"Tap “Get Started” to Begin", nil);
 }
 
-#pragma  mark  -  View Controller Methods
+#pragma  mark  -  Button Action Methods
 
 - (IBAction)getStartedWasTapped:(id)sender
 {
+    if (self.delegate != nil) {
+        if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
+            [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
+        }
+    }
 }
 
 #pragma  mark  -  View Controller Methods
+
+- (void)cancelButtonTapped:(id)sender
+{
+    if (self.delegate != nil) {
+        if ([self.delegate respondsToSelector:@selector(stepViewControllerDidCancel:)] == YES) {
+            [self.delegate stepViewControllerDidCancel:self];
+        }
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -51,6 +65,22 @@ static  NSString  *kTapGetStarted = @"Tap “Get Started” to Begin";
     self.introHeadingCaption.text = kIntroHeadingCaption;
     self.instructionalParagraph.text = kInstructionalParagraph;
     self.tapGetStarted.text = kIntroHeadingCaption;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.title = kViewControllerTitle;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.title = kViewControllerTitle;
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
 }
 
 - (void)didReceiveMemoryWarning

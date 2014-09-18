@@ -78,7 +78,8 @@ static  NSDictionary  *disabledAttributes = nil;
     } else {
         UIEdgeInsets  insets = UIEdgeInsetsMake(kPathHalfLineWidth, kPathHalfLineWidth, kPathHalfLineWidth, kPathHalfLineWidth);
         bounds = UIEdgeInsetsInsetRect(bounds, insets);
-        UIBezierPath  *path = [UIBezierPath bezierPathWithOvalInRect:self.bounds];
+        UIBezierPath  *path = [UIBezierPath bezierPathWithOvalInRect:bounds];
+        path.lineWidth = kPathLineWidth;
         [[UIColor grayColor] set];
         [path stroke];
     }

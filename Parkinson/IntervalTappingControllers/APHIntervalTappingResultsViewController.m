@@ -7,31 +7,51 @@
 //
 
 #import "APHIntervalTappingResultsViewController.h"
+#import "APCCircularProgressView.h"
+#import "APHConfirmationView.h"
 
 @interface APHIntervalTappingResultsViewController ()
+
+@property  (nonatomic, weak)  IBOutlet  APCCircularProgressView  *progressor;
+@property  (nonatomic, weak)  IBOutlet  APHConfirmationView      *confirmer;
 
 @end
 
 @implementation APHIntervalTappingResultsViewController
 
-- (void)viewDidLoad {
+#pragma  mark  -  View Controller Methods
+
+- (void)doneButtonTapped:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.progressor.progress = 0.25;
+    self.confirmer.completed = YES;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.backBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationItem.backBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

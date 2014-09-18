@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHIntervalTappingResultsViewController : UIViewController
+#import "APHStepViewController.h"
+
+@interface APHIntervalTappingResultsViewController : APHStepViewController
 
 @end
