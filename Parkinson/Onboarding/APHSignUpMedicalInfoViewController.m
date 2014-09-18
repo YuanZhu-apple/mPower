@@ -270,10 +270,9 @@
     APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
     [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
         [NSObject performInMainThread:^{
-            [spinnerController dismissViewControllerAnimated:YES completion:nil];
-            [self next];
-            
-            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [spinnerController dismissViewControllerAnimated:NO completion:^{
+                [self next];
+            }];
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [NSObject performInMainThread:^{

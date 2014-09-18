@@ -19,6 +19,8 @@
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
 
+#define DEMO 1
+
 
 @interface APHSignUpGeneralInfoViewController ()
 
@@ -211,8 +213,11 @@
 //}
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
+
+#ifdef DEMO
+    return YES;
+#else
     BOOL isContentValid = [super isContentValid:errorMessage];
-    
     // If super returned false then we dont need to check any content further unnecessary,
     // because if any one of the content is invalid then we are immediatly returing false
     if (isContentValid) {
@@ -263,6 +268,7 @@
     }
     
     return isContentValid;
+#endif
 }
 
 - (void) loadProfileValuesInModel {
