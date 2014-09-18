@@ -18,14 +18,6 @@
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
-{
-    RKTask  *task = [self createTask: scheduledTask];
-    APHSpecialSurveyTaskViewController  *controller = [[self alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
-
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
     RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
