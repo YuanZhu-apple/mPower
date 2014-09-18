@@ -15,12 +15,15 @@
 #import "APHDashboardGraphViewCell.h"
 #import "APHDashboardMessageViewCell.h"
 #import "APHDashboardProgressViewCell.h"
+#import "YMLTimeLineChartView.h"
+#import "YMLLineChartView.h"
+#import "UIColor+Parkinson.h"
 
 static NSString * const kDashboardGraphCellIdentifier    = @"DashboardGraphCellIdentifier";
 static NSString * const kDashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
 static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
-@interface APHOverviewViewController ()
+@interface APHOverviewViewController () <YMLTimeLineChartViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UITableView *dashboardTableView;
 @property (nonatomic, strong) NSMutableArray *sectionsOrder;
@@ -41,7 +44,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
         if (!_sectionsOrder.count) {
             _sectionsOrder = [[NSMutableArray alloc] initWithArray:@[@(kDashboardSectionStudyOverView),
                                                                      @(kDashboardSectionActivity),
-                                                                     @(kDashboardSectionBloodCount),
+//                                                                     @(kDashboardSectionBloodCount),
                                                                      @(kDashboardSectionMedications),
                                                                      @(kDashboardSectionInsights),
                                                                      @(kDashboardSectionAlerts)]];
@@ -121,20 +124,64 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
         case kDashboardSectionActivity:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Activity", @"Activity");
+            APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
+            graphCell.titleLabel.text = NSLocalizedString(@"Activity", @"Activity");
+            YMLLineChartView * lineChartView = [[YMLLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height)];
+            lineChartView.layer.borderColor = [UIColor grayColor].CGColor;
+            lineChartView.layer.borderWidth = 1.0;
+            lineChartView.layer.cornerRadius = 5;
+            lineChartView.layer.masksToBounds = YES;
+            
+            
+            lineChartView.xUnits = @[@(15), @(16), @(17), @(18), @(19)];
+            
+            lineChartView.yUnits = @[@(70), @(75), @(80), @(85), @(90)];
+  
+            lineChartView.values = @[
+                                    [NSValue valueWithCGPoint:CGPointMake(15, 75)],
+                                    [NSValue valueWithCGPoint:CGPointMake(16, 85)],
+                                    [NSValue valueWithCGPoint:CGPointMake(17, 75)],
+                                    [NSValue valueWithCGPoint:CGPointMake(18, 90)],
+                                    [NSValue valueWithCGPoint:CGPointMake(19, 80)]
+                                    ];
+
+            lineChartView.lineLayer.strokeColor = [UIColor parkinsonBlueColor].CGColor;
+//            lineChartView.lineLayer.shadowOpacity = 0.5;
+//            lineChartView.lineLayer.shadowOffset = CGSizeMake(0, 1);
+//            lineChartView.lineLayer.shadowRadius = 2;
+            lineChartView.lineLayer.lineWidth = 1.5;
+            lineChartView.markerColor = [UIColor parkinsonBlueColor];
+            lineChartView.markerRadius = 3;
+            [graphCell.graphView addSubview:lineChartView];
+            
+            [lineChartView draw];
         }
             break;
         case kDashboardSectionBloodCount:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Blood Count", @"Blood Count");
+            APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
+            graphCell.titleLabel.text = NSLocalizedString(@"Blood Count", @"Blood Count");
             
         }
             break;
         case kDashboardSectionMedications:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            ((APHDashboardGraphViewCell *)cell).titleLabel.text = NSLocalizedString(@"Medications", @"Medications");
+            APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
+            graphCell.titleLabel.text = NSLocalizedString(@"Medications", @"Medications");
+            YMLTimeLineChartView *timeLineChartView = [[YMLTimeLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height) orientation:YMLChartOrientationHorizontal];
+            timeLineChartView.datasource = self;
+            timeLineChartView.layer.borderColor = [UIColor grayColor].CGColor;
+            timeLineChartView.layer.borderWidth = 1.0;
+            timeLineChartView.layer.cornerRadius = 5;
+            timeLineChartView.layer.masksToBounds = YES;
+            [graphCell.graphView addSubview:timeLineChartView];
+            
+            [timeLineChartView redrawCanvas];
+            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:10 toUnit:12 animation:YES];
+            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:9.5 toUnit:10.5 animation:YES];
+            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:8 toUnit:10 animation:YES];
             
         }
             break;
@@ -181,6 +228,23 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     editSectionsNavigationController.navigationBar.translucent = NO;
     
     [self presentViewController:editSectionsNavigationController animated:YES completion:nil];
+}
+
+#pragma mark - YMLTimeLineChartViewDataSource
+
+- (NSArray *) timeLineChartViewUnits:(YMLTimeLineChartView *)chartView {
+    return @[@(8), @(9), @(10), @(11), @(12)];
+}
+
+- (NSString *) timeLineChartView:(YMLTimeLineChartView *)chartView titleAtIndex:(NSInteger)index {
+    NSArray *titles = @[@"Sep 15", @"16", @"17", @"18", @"19"];
+    
+    NSString *title;
+    if (index < titles.count) {
+        title = titles[index];
+    }
+    
+    return title;
 }
 
 @end

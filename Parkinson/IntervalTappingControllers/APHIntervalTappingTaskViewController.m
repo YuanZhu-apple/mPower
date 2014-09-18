@@ -7,7 +7,7 @@
 //
 
 #import "APHIntervalTappingTaskViewController.h"
-#import "CustomRecorder.h"
+#import "APHCustomRecorder.h"
 
 static float tapInterval = 20.0;
 
