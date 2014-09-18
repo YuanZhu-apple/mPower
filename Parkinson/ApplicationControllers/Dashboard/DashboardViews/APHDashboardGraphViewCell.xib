@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpW-ab-K3f">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpW-ab-K3f">
                         <rect key="frame" x="8" y="8" width="304" height="134"/>
                         <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -47,14 +47,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="JgF-zj-mW0" secondAttribute="bottom" constant="8" id="46T-LO-jCc"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="EpW-ab-K3f" secondAttribute="bottom" constant="-1" id="Gb1-hQ-zHD"/>
                     <constraint firstItem="4JR-HY-WNN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="IfI-iN-ar4"/>
                     <constraint firstItem="4JR-HY-WNN" firstAttribute="leading" secondItem="AIe-v8-YQz" secondAttribute="leading" id="TgO-Ah-7b8"/>
+                    <constraint firstItem="EpW-ab-K3f" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Uzc-RS-Dj0"/>
+                    <constraint firstItem="EpW-ab-K3f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Vi8-pG-whK"/>
                     <constraint firstItem="JgF-zj-mW0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="34" id="ksi-Jb-0y1"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AIe-v8-YQz" secondAttribute="trailing" constant="8" id="ljM-UW-wqn"/>
                     <constraint firstItem="4JR-HY-WNN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="lsp-Y6-PCh"/>
                     <constraint firstItem="AIe-v8-YQz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="ng1-8r-zK9"/>
                     <constraint firstItem="JgF-zj-mW0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="odc-pA-psU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="JgF-zj-mW0" secondAttribute="trailing" constant="8" id="wQP-yu-2wd"/>
+                    <constraint firstItem="EpW-ab-K3f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="zvq-HM-gY8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
