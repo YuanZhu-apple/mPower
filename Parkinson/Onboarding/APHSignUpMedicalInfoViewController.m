@@ -24,6 +24,9 @@
 #import "APHSignUpMedicalInfoViewController.h"
 
 
+#define DEMO    1
+
+
 @interface APHSignUpMedicalInfoViewController ()
 
 @end
@@ -260,6 +263,9 @@
 }
 
 - (void) signup {
+#ifdef DEMO
+    [self next];
+#else
     [self loadProfileValuesInModel];
     
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
@@ -287,6 +293,7 @@
             }
         }];
     }];
+#endif
 }
 
 - (void) next {
