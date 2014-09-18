@@ -133,32 +133,34 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
             APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
             graphCell.titleLabel.text = NSLocalizedString(@"Activity", @"Activity");
-            YMLLineChartView * lineChartView = [[YMLLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height)];
-            lineChartView.layer.borderColor = [UIColor grayColor].CGColor;
-            lineChartView.layer.borderWidth = 1.0;
-            lineChartView.layer.cornerRadius = 5;
-            lineChartView.layer.masksToBounds = YES;
-            
-            
-            lineChartView.xUnits = @[@(15), @(16), @(17), @(18), @(19)];
-            
-            lineChartView.yUnits = @[@(70), @(75), @(80), @(85), @(90)];
-  
-            lineChartView.values = @[
-                                    [NSValue valueWithCGPoint:CGPointMake(15, 75)],
-                                    [NSValue valueWithCGPoint:CGPointMake(16, 85)],
-                                    [NSValue valueWithCGPoint:CGPointMake(17, 75)],
-                                    [NSValue valueWithCGPoint:CGPointMake(18, 90)],
-                                    [NSValue valueWithCGPoint:CGPointMake(19, 80)]
-                                    ];
-
-            lineChartView.lineLayer.strokeColor = [UIColor parkinsonBlueColor].CGColor;
-            lineChartView.lineLayer.lineWidth = 1.5;
-            lineChartView.markerColor = [UIColor parkinsonBlueColor];
-            lineChartView.markerRadius = 3;
-            [graphCell.graphView addSubview:lineChartView];
-            
-            [lineChartView draw];
+            if (graphCell.graphView.subviews.count == 0) {
+                YMLLineChartView * lineChartView = [[YMLLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height)];
+                lineChartView.layer.borderColor = [UIColor grayColor].CGColor;
+                lineChartView.layer.borderWidth = 1.0;
+                lineChartView.layer.cornerRadius = 5;
+                lineChartView.layer.masksToBounds = YES;
+                
+                
+                lineChartView.xUnits = @[@(15), @(16), @(17), @(18), @(19)];
+                
+                lineChartView.yUnits = @[@(70), @(75), @(80), @(85), @(90)];
+                
+                lineChartView.values = @[
+                                         [NSValue valueWithCGPoint:CGPointMake(15, 75)],
+                                         [NSValue valueWithCGPoint:CGPointMake(16, 85)],
+                                         [NSValue valueWithCGPoint:CGPointMake(17, 75)],
+                                         [NSValue valueWithCGPoint:CGPointMake(18, 90)],
+                                         [NSValue valueWithCGPoint:CGPointMake(19, 80)]
+                                         ];
+                
+                lineChartView.lineLayer.strokeColor = [UIColor parkinsonBlueColor].CGColor;
+                lineChartView.lineLayer.lineWidth = 1.5;
+                lineChartView.markerColor = [UIColor parkinsonBlueColor];
+                lineChartView.markerRadius = 3;
+                [graphCell.graphView addSubview:lineChartView];
+                
+                [lineChartView draw];
+            }
         }
             break;
         case kDashboardSectionBloodCount:
@@ -174,18 +176,21 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
             APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
             graphCell.titleLabel.text = NSLocalizedString(@"Medications", @"Medications");
-            YMLTimeLineChartView *timeLineChartView = [[YMLTimeLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height) orientation:YMLChartOrientationHorizontal];
-            timeLineChartView.datasource = self;
-            timeLineChartView.layer.borderColor = [UIColor grayColor].CGColor;
-            timeLineChartView.layer.borderWidth = 1.0;
-            timeLineChartView.layer.cornerRadius = 5;
-            timeLineChartView.layer.masksToBounds = YES;
-            [graphCell.graphView addSubview:timeLineChartView];
-            
-            [timeLineChartView redrawCanvas];
-            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:10 toUnit:12 animation:YES];
-            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:9.5 toUnit:10.5 animation:YES];
-            [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:8 toUnit:10 animation:YES];
+            if (graphCell.graphView.subviews.count == 0) {
+                YMLTimeLineChartView *timeLineChartView = [[YMLTimeLineChartView alloc] initWithFrame:CGRectMake(0, 0, graphCell.graphView.frame.size.width, graphCell.graphView.frame.size.height) orientation:YMLChartOrientationHorizontal];
+                timeLineChartView.datasource = self;
+                timeLineChartView.layer.borderColor = [UIColor grayColor].CGColor;
+                timeLineChartView.layer.borderWidth = 1.0;
+                timeLineChartView.layer.cornerRadius = 5;
+                timeLineChartView.layer.masksToBounds = YES;
+                [graphCell.graphView addSubview:timeLineChartView];
+                
+                [timeLineChartView redrawCanvas];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:10 toUnit:12 animation:YES];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:9.5 toUnit:10.5 animation:YES];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:8 toUnit:10 animation:YES];
+            }
+
             
         }
             break;
