@@ -69,6 +69,7 @@ static NSString *const kLoggedInKey = @"LoggedIn";
             [NSObject performInMainThread:^{
                 [spinnerController dismissViewControllerAnimated:YES completion:nil];
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLoggedInKey];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
             }];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {

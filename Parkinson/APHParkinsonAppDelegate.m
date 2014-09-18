@@ -62,6 +62,10 @@ static NSString *const kLoggedInKey = @"LoggedIn";
         NSDictionary * dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
         [error handle];
         [self.dataSubstrate loadStaticTasksAndSchedules:dictionary];
+#ifdef TARGET_IPHONE_SIMULATOR
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+#endif
     }
 }
 

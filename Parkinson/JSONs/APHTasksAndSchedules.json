@@ -22,14 +22,7 @@
               "taskTitle" : "Sleep Survey",              
               "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995",
               "taskType": "APHCustomizableSurvey",
-              "fileName": "sampleSurvey",
-              "taskClassName" : "APHSleepQualityTaskViewController"
-              },
-              {
-              "taskTitle" : "Random Survey",
-              "taskID": "APHCustomizableSurvey-22f8dd09-2f2d-41e1-86ac-3305d078c281",
-              "taskType": "APHCustomizableSurvey",
-              "fileName": "randomSurvey",
+              "fileName": "sleepSurvey",
               "taskClassName" : "APHSpecialSurveyTaskViewController"
               }
               ],
@@ -58,12 +51,6 @@
                   "href": "appleparkinson:",
                   "schedule": "1:1",
                   "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995"
-                  },
-                  {
-                  "type": "REPEATING",
-                  "href": "appleparkinson:",
-                  "schedule": "1:1",
-                  "taskID": "APHCustomizableSurvey-22f8dd09-2f2d-41e1-86ac-3305d078c281"
                   }
                   ]
 }
