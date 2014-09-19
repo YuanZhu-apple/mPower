@@ -13,7 +13,7 @@
 #import "APHIntervalTappingStepsViewController.h"
 #import "APHIntervalTappingResultsViewController.h"
 
-#import "CustomRecorder.h"
+#import "APHCustomRecorder.h"
 
 static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
@@ -28,14 +28,6 @@ static float tapInterval = 20.0;
 @implementation APHIntervalTappingTaskViewController
 
 #pragma  mark  -  Initialisation
-
-+ (instancetype)customTaskViewController:(APCScheduledTask *)scheduledTask
-{
-    RKTask  *task = [self createTask: scheduledTask];
-    APHIntervalTappingTaskViewController  *controller = [[APHIntervalTappingTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {

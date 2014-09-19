@@ -44,13 +44,9 @@
 		5BB1E39419C1194000300F9D /* APHActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A0819B791D000D1E858 /* APHActivitiesViewController.m */; };
 		5BB1E39519C1194300300F9D /* APHActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE9A0519B791D000D1E858 /* APHActivitiesTableViewCell.m */; };
 		5BB1E39619C119DC00300F9D /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272819B8FBF200D7F809 /* APHIntervalTappingTaskViewController.m */; };
-		7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B04A319BA3A9100C5E91B /* APHCustomRecorder.m */; };
 		CF0B089719C8E6B300BD2F9E /* APHStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0B089619C8E6B300BD2F9E /* APHStepViewController.m */; };
 		CF0B089E19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0B089C19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.m */; };
 		CF0B089F19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0B089D19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.xib */; };
-		CF1B26F619B8BF4100D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		CF1B270619B8C01400D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		CF1B270B19B8C05700D7F809 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		CF1B271519B8C0C800D7F809 /* APHWalkingOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B270D19B8C0C800D7F809 /* APHWalkingOverviewViewController.m */; };
 		CF1B271619B8C0C800D7F809 /* APHWalkingOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B270E19B8C0C800D7F809 /* APHWalkingOverviewViewController.xib */; };
 		CF1B271719B8C0C800D7F809 /* APHWalkingResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B271019B8C0C800D7F809 /* APHWalkingResultsViewController.m */; };
@@ -59,10 +55,6 @@
 		CF1B272319B8FB6500D7F809 /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272219B8FB6500D7F809 /* APHWalkingTaskViewController.m */; };
 		CF1B272F19B8FC3D00D7F809 /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */; };
 		CF1ECBD119BE1385003F29DE /* APHHealthProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */; };
-		CF29016119BE19DE006470D7 /* tab.item.activites.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015D19BE19DE006470D7 /* tab.item.activites.png */; };
-		CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */; };
-		CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29015F19BE19DE006470D7 /* tab.item.learning.png */; };
-		CF29016419BE19DE006470D7 /* tab.item.overview.png in Resources */ = {isa = PBXBuildFile; fileRef = CF29016019BE19DE006470D7 /* tab.item.overview.png */; };
 		CF2B3A4A19C9E55700C7AF46 /* APHIntervalTappingResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2B3A4819C9E55700C7AF46 /* APHIntervalTappingResultsViewController.m */; };
 		CF2B3A4B19C9E55700C7AF46 /* APHIntervalTappingResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2B3A4919C9E55700C7AF46 /* APHIntervalTappingResultsViewController.xib */; };
 		CF5F59CC19C8FCFF000D0DB1 /* APHIntervalTappingStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F59CA19C8FCFF000D0DB1 /* APHIntervalTappingStepsViewController.m */; };
@@ -225,10 +217,6 @@
 		CF1B272E19B8FC3D00D7F809 /* APHPhonationTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHPhonationTaskViewController.m; path = PhonationControllers/APHPhonationTaskViewController.m; sourceTree = "<group>"; };
 		CF1ECBCF19BE1385003F29DE /* APHHealthProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHHealthProfileViewController.h; path = ApplicationControllers/APHHealthProfileViewController.h; sourceTree = "<group>"; };
 		CF1ECBD019BE1385003F29DE /* APHHealthProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHHealthProfileViewController.m; path = ApplicationControllers/APHHealthProfileViewController.m; sourceTree = "<group>"; };
-		CF29015D19BE19DE006470D7 /* tab.item.activites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.activites.png; path = TabBarImages/tab.item.activites.png; sourceTree = "<group>"; };
-		CF29015E19BE19DE006470D7 /* tab.item.health.profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.health.profile.png; path = TabBarImages/tab.item.health.profile.png; sourceTree = "<group>"; };
-		CF29015F19BE19DE006470D7 /* tab.item.learning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.learning.png; path = TabBarImages/tab.item.learning.png; sourceTree = "<group>"; };
-		CF29016019BE19DE006470D7 /* tab.item.overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab.item.overview.png; path = TabBarImages/tab.item.overview.png; sourceTree = "<group>"; };
 		CF2B3A4719C9E55700C7AF46 /* APHIntervalTappingResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHIntervalTappingResultsViewController.h; path = IntervalTappingControllers/APHIntervalTappingResultsViewController.h; sourceTree = "<group>"; };
 		CF2B3A4819C9E55700C7AF46 /* APHIntervalTappingResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHIntervalTappingResultsViewController.m; path = IntervalTappingControllers/APHIntervalTappingResultsViewController.m; sourceTree = "<group>"; };
 		CF2B3A4919C9E55700C7AF46 /* APHIntervalTappingResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APHIntervalTappingResultsViewController.xib; path = IntervalTappingControllers/APHIntervalTappingResultsViewController.xib; sourceTree = "<group>"; };
@@ -847,9 +835,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5785DEF19BF939A004B4A01 /* JSON_READ_ME in Resources */,
-				CF29016319BE19DE006470D7 /* tab.item.learning.png in Resources */,
-				CF1B270619B8C01400D7F809 /* (null) in Resources */,
-				CF1B26F619B8BF4100D7F809 /* (null) in Resources */,
 				CF2B3A4B19C9E55700C7AF46 /* APHIntervalTappingResultsViewController.xib in Resources */,
 				F56E23AE19CA0AB200300BFB /* APHSettingsTableFooterView.xib in Resources */,
 				5B2A676D19BFD41C0097E99E /* APHLearnResourceViewCell.xib in Resources */,
@@ -867,7 +852,6 @@
 				25AC61D519CB5A5F00DF0272 /* LaunchScreen.xib in Resources */,
 				CF9BB42D19C3771C009A5BDB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				CFEE9A0A19B791D000D1E858 /* APHActivitiesTableViewCell.xib in Resources */,
-				CF29016219BE19DE006470D7 /* tab.item.health.profile.png in Resources */,
 				CF0B089F19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.xib in Resources */,
 				F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */,
 				25146E6B19C9014D00EF24C6 /* img_patient@3x.png in Resources */,
@@ -910,10 +894,7 @@
 				5B2A676719BFD3DA0097E99E /* APHLearnMasterTableViewCell.m in Sources */,
 				5B2A676419BFD3DA0097E99E /* APHLearnDetailViewController.m in Sources */,
 				5B08808519BE78FC0083A398 /* APHEditSectionsViewController.m in Sources */,
-				CF9BB42C19C3771C009A5BDB /* APHChangedMedsOverviewViewController.m in Sources */,
-				7B1B04A419BA3A9100C5E91B /* APHCustomRecorder.m in Sources */,
 				CF0B089E19C8F0E500BD2F9E /* APHIntervalTappingIntroViewController.m in Sources */,
-				CFC1BA8C19C0F68E0098DAF2 /* APHChangedMedsTaskViewController.m in Sources */,
 				CF0B089719C8E6B300BD2F9E /* APHStepViewController.m in Sources */,
 				255D2F4519C409D2002137F1 /* APHIntroVideoViewController.m in Sources */,
 				255D2F1C19C3B64F002137F1 /* APHSignUpGeneralInfoViewController.m in Sources */,
