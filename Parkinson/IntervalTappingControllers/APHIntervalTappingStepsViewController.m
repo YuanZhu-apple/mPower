@@ -10,8 +10,8 @@
 #import "APHIntervalTappingTapView.h"
 
 static  NSUInteger      kInitialCountDownValue =  5;
-//static  NSTimeInterval  kTappingTestDuration   = 20.0;
-static  NSTimeInterval  kTappingTestDuration   =  5.0;
+static  NSTimeInterval  kTappingTestDuration   = 20.0;
+//static  NSTimeInterval  kTappingTestDuration   =  5.0;
 static  NSTimeInterval  kCountDownInterval     =  1.0;
 
 @interface APHIntervalTappingStepsViewController ()
