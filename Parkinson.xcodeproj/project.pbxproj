@@ -46,9 +46,7 @@
 		F5D14EC919CC9B9100650FBB /* APHLearnDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EAE19CC9B9100650FBB /* APHLearnDetailViewCell.m */; };
 		F5D14ECA19CC9B9100650FBB /* APHLearnDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EAF19CC9B9100650FBB /* APHLearnDetailViewCell.xib */; };
 		F5D14ECB19CC9B9100650FBB /* APHLearnMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EB119CC9B9100650FBB /* APHLearnMasterTableViewCell.m */; };
-		F5D14ECC19CC9B9100650FBB /* APHLearnMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EB219CC9B9100650FBB /* APHLearnMasterTableViewCell.xib */; };
 		F5D14ECD19CC9B9100650FBB /* APHLearnResourceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EB419CC9B9100650FBB /* APHLearnResourceViewCell.m */; };
-		F5D14ECE19CC9B9100650FBB /* APHLearnResourceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EB519CC9B9100650FBB /* APHLearnResourceViewCell.xib */; };
 		F5D14ECF19CC9B9100650FBB /* APHSettingsTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EB719CC9B9100650FBB /* APHSettingsTableFooterView.xib */; };
 		F5D14ED019CC9B9100650FBB /* APHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EB919CC9B9100650FBB /* APHSettingsViewController.m */; };
 		F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
@@ -197,10 +195,8 @@
 		F5D14EAF19CC9B9100650FBB /* APHLearnDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnDetailViewCell.xib; sourceTree = "<group>"; };
 		F5D14EB019CC9B9100650FBB /* APHLearnMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnMasterTableViewCell.h; sourceTree = "<group>"; };
 		F5D14EB119CC9B9100650FBB /* APHLearnMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnMasterTableViewCell.m; sourceTree = "<group>"; };
-		F5D14EB219CC9B9100650FBB /* APHLearnMasterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnMasterTableViewCell.xib; sourceTree = "<group>"; };
 		F5D14EB319CC9B9100650FBB /* APHLearnResourceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHLearnResourceViewCell.h; sourceTree = "<group>"; };
 		F5D14EB419CC9B9100650FBB /* APHLearnResourceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnResourceViewCell.m; sourceTree = "<group>"; };
-		F5D14EB519CC9B9100650FBB /* APHLearnResourceViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHLearnResourceViewCell.xib; sourceTree = "<group>"; };
 		F5D14EB719CC9B9100650FBB /* APHSettingsTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSettingsTableFooterView.xib; sourceTree = "<group>"; };
 		F5D14EB819CC9B9100650FBB /* APHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSettingsViewController.h; sourceTree = "<group>"; };
 		F5D14EB919CC9B9100650FBB /* APHSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSettingsViewController.m; sourceTree = "<group>"; };
@@ -498,10 +494,8 @@
 				F5D14EAF19CC9B9100650FBB /* APHLearnDetailViewCell.xib */,
 				F5D14EB019CC9B9100650FBB /* APHLearnMasterTableViewCell.h */,
 				F5D14EB119CC9B9100650FBB /* APHLearnMasterTableViewCell.m */,
-				F5D14EB219CC9B9100650FBB /* APHLearnMasterTableViewCell.xib */,
 				F5D14EB319CC9B9100650FBB /* APHLearnResourceViewCell.h */,
 				F5D14EB419CC9B9100650FBB /* APHLearnResourceViewCell.m */,
-				F5D14EB519CC9B9100650FBB /* APHLearnResourceViewCell.xib */,
 			);
 			path = LearnViews;
 			sourceTree = "<group>";
@@ -794,10 +788,8 @@
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
 				F5D14F3019CC9BC900650FBB /* APHWalkingOverviewViewController.xib in Resources */,
 				F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */,
-				F5D14ECE19CC9B9100650FBB /* APHLearnResourceViewCell.xib in Resources */,
 				F5D14F2119CC9BC900650FBB /* APHIntervalTappingStepsViewController.xib in Resources */,
 				F5D14F2D19CC9BC900650FBB /* APHTracingObjectsOverviewViewController.xib in Resources */,
-				F5D14ECC19CC9B9100650FBB /* APHLearnMasterTableViewCell.xib in Resources */,
 				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5D14ECF19CC9B9100650FBB /* APHSettingsTableFooterView.xib in Resources */,
