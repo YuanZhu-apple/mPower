@@ -13,6 +13,7 @@
 #import "APCUserInfoConstants.h"
 #import "UITableView+Appearance.h"
 #import "APHSettingsViewController.h"
+#import "APCAppleCore.h"
 
 static NSString * const kAPHGeneralInfoItemUserNameRegEx            = @"[A-Za-z0-9_.]+";
 
@@ -322,6 +323,7 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
 }
 
 - (IBAction) logout {
+    [[NSNotificationCenter defaultCenter] postNotificationName:APCUserLogOutNotification object:self];
     
 }
 

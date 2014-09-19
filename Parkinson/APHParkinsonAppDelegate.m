@@ -108,6 +108,8 @@ static NSString *const kLoggedInKey = @"LoggedIn";
 }
 
 - (void) logOutNotification:(NSNotification *)notification {
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     [self startOnBoardingProcess];
 }
 
