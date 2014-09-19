@@ -15,7 +15,8 @@
     // Initialization code
     
     //TODO: Sammple Value. Remove later.
-    self.progressView.progress = 0.74;
+    self.progressView.progress = 0.75;
+    self.progressView.progressLabel.textColor = [UIColor blackColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

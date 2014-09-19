@@ -16,14 +16,6 @@ static  NSString  *kMedicationsStep101Key = @"Medications Step 101";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController
-{
-    RKTask  *task = [self createTask];
-    APHChangedMedsTaskViewController  *controller = [[APHChangedMedsTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
-
 + (RKTask *)createTask
 {
     NSMutableArray  *steps = [NSMutableArray array];

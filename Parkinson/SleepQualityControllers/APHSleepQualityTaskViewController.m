@@ -18,14 +18,6 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController: (APCScheduledTask*) scheduledTask
-{
-    RKTask  *task = [self createTask: scheduledTask];
-    APHSleepQualityTaskViewController  *controller = [[APHSleepQualityTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.taskDelegate = controller;
-    return  controller;
-}
-
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
     RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];

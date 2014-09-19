@@ -76,4 +76,10 @@ static  short  coordinates[] = {
     }
 }
 
+- (void)setCompleted:(BOOL)completed
+{
+    _completed = completed;
+    [self setNeedsDisplay];
+}
+
 @end

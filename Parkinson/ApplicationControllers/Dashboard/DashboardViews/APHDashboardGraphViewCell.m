@@ -7,11 +7,14 @@
 //
 
 #import "APHDashboardGraphViewCell.h"
+#import "YMLLineChartView.h"
+#import "YMLTimeLineChartView.h"
 
 @implementation APHDashboardGraphViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    self.graphView.layer.cornerRadius = 3.0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,6 +27,22 @@
 {
     if([self.delegate respondsToSelector:@selector(dashboardGraphViewCellDidTapExpandForCell:)]){
         [self.delegate dashboardGraphViewCellDidTapExpandForCell:self];
+    }
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    for (UIView *subview in self.graphView.subviews) {
+        subview.frame = self.graphView.bounds;
+//        if ([subview isKindOfClass:[YMLLineChartView class]]) {
+//            YMLLineChartView * currentView = (YMLLineChartView*) subview;
+//            [currentView draw];
+//        }
+//        if ([subview isKindOfClass:[YMLTimeLineChartView class]]) {
+//            YMLTimeLineChartView * currentView = (YMLTimeLineChartView*) subview;
+//            [currentView redrawCanvas];
+//        }
     }
 }
 
