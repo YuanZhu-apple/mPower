@@ -186,9 +186,9 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
                 [graphCell.graphView addSubview:timeLineChartView];
                 
                 [timeLineChartView redrawCanvas];
-                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:10 toUnit:12 animation:YES];
-                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:9.5 toUnit:10.5 animation:YES];
-                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:8 toUnit:10 animation:YES];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:15 toUnit:18 animation:YES];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:16 toUnit:19 animation:YES];
+                [timeLineChartView addBar:[YMLTimeLineChartBarLayer layerWithColor:[UIColor parkinsonBlueColor]] fromUnit:15 toUnit:17 animation:YES];
             }
 
             
@@ -242,7 +242,7 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
 #pragma mark - YMLTimeLineChartViewDataSource
 
 - (NSArray *) timeLineChartViewUnits:(YMLTimeLineChartView *)chartView {
-    return @[@(8), @(9), @(10), @(11), @(12)];
+    return @[@(15), @(16), @(17), @(18), @(19)];
 }
 
 - (NSString *) timeLineChartView:(YMLTimeLineChartView *)chartView titleAtIndex:(NSInteger)index {
