@@ -192,7 +192,7 @@
     }
     else if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemEmail) {
         if (![item.value isValidForRegex:kAPCGeneralInfoItemEmailRegEx]) {
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address, otherwise i will kick your ass.", @"")];
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address", @"")];
         }
         
     }

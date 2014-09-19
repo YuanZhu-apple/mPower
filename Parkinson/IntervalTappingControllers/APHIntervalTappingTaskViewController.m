@@ -118,25 +118,12 @@ static float tapInterval = 20.0;
                                   };
     Class  aClass = [controllers objectForKey:step.identifier];
     APHStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
     controller.continueButtonOnToolbar = NO;
     controller.step = step;
     return  controller;
-}
-
-#pragma  mark  -  Step View Controller Delegate Methods
-
-- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
-{
-    NSLog(@"stepViewControllerDidFinish");
-    id<RKLogicalTask>task = self.task;
-    RKStep  *step = stepViewController.step;
-    RKStep  *nextStep = [task stepAfterStep:step withSurveyResults:nil];
-    if (nextStep != nil) {
-        RKStepViewController  *controller = [self taskViewController:self viewControllerForStep:nextStep];
-        [self pushViewController:controller animated:YES];
-    }
 }
 
 @end

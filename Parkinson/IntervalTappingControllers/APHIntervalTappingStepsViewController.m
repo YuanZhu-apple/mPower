@@ -10,8 +10,8 @@
 #import "APHIntervalTappingTapView.h"
 
 static  NSUInteger      kInitialCountDownValue =  5;
-static  NSTimeInterval  kTappingTestDuration   = 20.0;
-//static  NSTimeInterval  kTappingTestDuration   =  5.0;
+//static  NSTimeInterval  kTappingTestDuration   = 20.0;
+static  NSTimeInterval  kTappingTestDuration   =  5.0;
 static  NSTimeInterval  kCountDownInterval     =  1.0;
 
 @interface APHIntervalTappingStepsViewController ()
@@ -100,6 +100,9 @@ static  NSTimeInterval  kCountDownInterval     =  1.0;
     [self setupDisplay];
 
     if (self.delegate != nil) {
+        if (self.resultCollector) {
+            [self.resultCollector didProduceResult:[[RKResult alloc] initWithStep:self.step] forStep:self.step];
+        }
         if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
             [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
         }

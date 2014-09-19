@@ -23,7 +23,9 @@
 
 - (void)doneButtonTapped:(id)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
+    if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
+        [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
+    }
 }
 
 - (void)viewDidLoad
