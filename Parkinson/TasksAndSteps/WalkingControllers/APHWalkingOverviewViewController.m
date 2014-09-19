@@ -7,7 +7,7 @@
 //
 
 #import "APHWalkingOverviewViewController.h"
-#import "APHConfirmationView.h"
+#import "APCConfirmationView.h"
 
 static  NSString  *kControllerTitle = @"Timed Walking";
 
@@ -16,15 +16,15 @@ static  CGFloat  kCornerRadius = 8.0;
 @interface APHWalkingOverviewViewController () <RKTaskViewControllerDelegate>
 
 @property  (nonatomic, weak)  IBOutlet  UIView               *morningView;
-@property  (nonatomic, weak)  IBOutlet  APHConfirmationView  *morningViewConfirm;
+@property  (nonatomic, weak)  IBOutlet  APCConfirmationView  *morningViewConfirm;
 @property  (nonatomic, weak)  IBOutlet  UILabel              *morningMessage;
 
 @property  (nonatomic, weak)  IBOutlet  UIView               *afternoonView;
-@property  (nonatomic, weak)  IBOutlet  APHConfirmationView  *afternoonViewConfirm;
+@property  (nonatomic, weak)  IBOutlet  APCConfirmationView  *afternoonViewConfirm;
 @property  (nonatomic, weak)  IBOutlet  UILabel              *afternoonMessage;
 
 @property  (nonatomic, weak)  IBOutlet  UIView               *eveningView;
-@property  (nonatomic, weak)  IBOutlet  APHConfirmationView  *eveningViewConfirm;
+@property  (nonatomic, weak)  IBOutlet  APCConfirmationView  *eveningViewConfirm;
 @property  (nonatomic, weak)  IBOutlet  UILabel              *eveningMessage;
 
 @end

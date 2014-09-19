@@ -58,7 +58,6 @@
 		F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
 		F5D14EDD19CC9BA700650FBB /* RKStep+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED619CC9BA700650FBB /* RKStep+Description.m */; };
 		F5D14EDE19CC9BA700650FBB /* UIColor+Parkinson.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED819CC9BA700650FBB /* UIColor+Parkinson.m */; };
-		F5D14EDF19CC9BA700650FBB /* APHConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EDB19CC9BA700650FBB /* APHConfirmationView.m */; };
 		F5D14F1919CC9BC900650FBB /* APHSetupTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE219CC9BC900650FBB /* APHSetupTaskViewController.m */; };
 		F5D14F1A19CC9BC900650FBB /* APHStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE419CC9BC900650FBB /* APHStepViewController.m */; };
 		F5D14F1B19CC9BC900650FBB /* APHCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE719CC9BC900650FBB /* APHCustomRecorder.m */; };
@@ -219,8 +218,6 @@
 		F5D14ED619CC9BA700650FBB /* RKStep+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKStep+Description.m"; sourceTree = "<group>"; };
 		F5D14ED719CC9BA700650FBB /* UIColor+Parkinson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Parkinson.h"; sourceTree = "<group>"; };
 		F5D14ED819CC9BA700650FBB /* UIColor+Parkinson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Parkinson.m"; sourceTree = "<group>"; };
-		F5D14EDA19CC9BA700650FBB /* APHConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHConfirmationView.h; sourceTree = "<group>"; };
-		F5D14EDB19CC9BA700650FBB /* APHConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHConfirmationView.m; sourceTree = "<group>"; };
 		F5D14EE119CC9BC900650FBB /* APHSetupTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSetupTaskViewController.h; sourceTree = "<group>"; };
 		F5D14EE219CC9BC900650FBB /* APHSetupTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSetupTaskViewController.m; sourceTree = "<group>"; };
 		F5D14EE319CC9BC900650FBB /* APHStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHStepViewController.h; sourceTree = "<group>"; };
@@ -443,9 +440,9 @@
 		F5D14E8F19CC9B9100650FBB /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F5D14E9019CC9B9100650FBB /* Activities */,
 				F5D14E9619CC9B9100650FBB /* Dashboard */,
 				F5D14EA619CC9B9100650FBB /* Learn */,
+				F5D14E9019CC9B9100650FBB /* Activities */,
 				F5D14EB619CC9B9100650FBB /* Profile */,
 			);
 			path = TabBarControllers;
@@ -535,7 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				F5D14ED219CC9BA700650FBB /* Categories */,
-				F5D14ED919CC9BA700650FBB /* CustomViews */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -551,15 +547,6 @@
 				F5D14ED819CC9BA700650FBB /* UIColor+Parkinson.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		F5D14ED919CC9BA700650FBB /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				F5D14EDA19CC9BA700650FBB /* APHConfirmationView.h */,
-				F5D14EDB19CC9BA700650FBB /* APHConfirmationView.m */,
-			);
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		F5D14EE019CC9BC900650FBB /* TasksAndSteps */ = {
@@ -873,7 +860,6 @@
 				F5D14F3919CC9C0000650FBB /* APHParkinsonAppDelegate.m in Sources */,
 				F5D14EDD19CC9BA700650FBB /* RKStep+Description.m in Sources */,
 				F5D14F2E19CC9BC900650FBB /* APHTracingObjectsTaskViewController.m in Sources */,
-				F5D14EDF19CC9BA700650FBB /* APHConfirmationView.m in Sources */,
 				F5D14EC219CC9B9100650FBB /* APHDashboardMessageViewCell.m in Sources */,
 				F5D14F2F19CC9BC900650FBB /* APHWalkingOverviewViewController.m in Sources */,
 				F5D14EC619CC9B9100650FBB /* APHLearnDetailViewController.m in Sources */,

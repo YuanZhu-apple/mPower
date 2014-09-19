@@ -8,12 +8,12 @@
 
 #import "APHIntervalTappingResultsViewController.h"
 #import "APCCircularProgressView.h"
-#import "APHConfirmationView.h"
+#import "APCConfirmationView.h"
 
 @interface APHIntervalTappingResultsViewController ()
 
 @property  (nonatomic, weak)  IBOutlet  APCCircularProgressView  *progressor;
-@property  (nonatomic, weak)  IBOutlet  APHConfirmationView      *confirmer;
+@property  (nonatomic, weak)  IBOutlet  APCConfirmationView      *confirmer;
 
 @end
 

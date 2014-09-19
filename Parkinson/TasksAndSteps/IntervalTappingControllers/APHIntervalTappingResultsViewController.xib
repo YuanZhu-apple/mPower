@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-vs-vfw" customClass="APCCircularProgressView">
                     <rect key="frame" x="128" y="64" width="64" height="64"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YV8-iL-ymV" customClass="APHConfirmationView">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YV8-iL-ymV" customClass="APCConfirmationView">
                     <rect key="frame" x="21" y="156" width="32" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
