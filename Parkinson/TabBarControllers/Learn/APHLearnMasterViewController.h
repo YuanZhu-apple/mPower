@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHLearnMasterViewController : UIViewController
+@interface APHLearnMasterViewController : UITableViewController
 
 @end

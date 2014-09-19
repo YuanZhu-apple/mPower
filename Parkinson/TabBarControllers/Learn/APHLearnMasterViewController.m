@@ -52,9 +52,6 @@ static CGFloat kResourceTableViewCellHeight   = 120.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.learnTableView registerNib:[UINib nibWithNibName:@"APHLearnMasterTableViewCell" bundle:nil] forCellReuseIdentifier:LearnMasterViewCellIdentifier];
-    [self.learnTableView registerNib:[UINib nibWithNibName:@"APHLearnResourceViewCell" bundle:nil] forCellReuseIdentifier:LearnResourceViewCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
