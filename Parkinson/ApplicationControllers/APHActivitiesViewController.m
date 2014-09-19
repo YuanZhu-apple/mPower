@@ -193,17 +193,21 @@ static NSInteger kNumberOfSectionsInTableView = 1;
         if (class != [NSNull class]) {
 
             
-            NSDate *currentDate = [NSDate date];
+//            NSDate *currentDate = [NSDate date];
             NSInteger taskIndex = -1;
             
             for (int i =0; i<groupedScheduledTask.scheduledTasks.count; i++) {
                 APCScheduledTask *scheduledTask = groupedScheduledTask.scheduledTasks[i];
                 
-                if ([currentDate compare:scheduledTask.dueOn] == NSOrderedAscending) {
+//                if ([currentDate compare:scheduledTask.dueOn] == NSOrderedAscending) {
+//                    taskIndex = i;
+//                    break;
+//                }else {
+//                    NSLog(@"The dueOn date for this task is older than the current time. Ignore this task.");
+//                }
+                if (!scheduledTask.completed.boolValue) {
                     taskIndex = i;
                     break;
-                }else {
-                    NSLog(@"The dueOn date for this task is older than the current time. Ignore this task.");
                 }
             }
             
