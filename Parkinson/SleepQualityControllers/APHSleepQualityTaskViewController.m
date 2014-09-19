@@ -8,34 +8,68 @@
 
 #import "APHSleepQualityTaskViewController.h"
 
+#import "APHSleepQualityOverviewViewController.h"
+
+static  NSString  *kSleepQualityStep101Key = @"Sleep Quality Step 101";
+
 @implementation APHSleepQualityTaskViewController
 
 static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 #pragma  mark  -  Initialisation
 
-+ (instancetype)customTaskViewController
++ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
-    RKTask  *task = [self createTask];
-    APHSleepQualityTaskViewController  *controller = [[APHSleepQualityTaskViewController alloc] initWithTask:task taskInstanceUUID:[NSUUID UUID]];
-    controller.delegate = controller;
+    RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
+    return  task;
+}
+
+- (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
+{
+    self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
+    return self;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController
+{
+    [taskViewController suspend];
+    [taskViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
+{
+    return  YES;
+}
+
+- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+{
+    NSLog(@"taskViewController viewControllerForStep = %@", step);
+
+    NSDictionary  *stepsToControllersMap = @{
+                                             kSleepQualityStep101Key : [APHSleepQualityOverviewViewController  class],
+                                           };
+    RKStepViewController  *controller = nil;
+    Class  classToCreate = stepsToControllersMap[step.identifier];
+    controller = [[classToCreate alloc] initWithStep:step];
+    controller.delegate = self;
+    
     return  controller;
 }
 
-+ (RKTask *)createTask
+- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
 {
-    NSArray  *configurations = @[
-                                 @{
-                                     APHStepStepTypeKey  : APHActiveStepType,
-                                     APHStepIdentiferKey : kQuestionStep101Key,
-                                     APHStepNameKey : @"question step",
-                                     APHActiveTextKey : @"How long do  you need to get to sleep?",
-                                     }
-                                 ];
-    
-    RKTask  *task = [self mapConfigurationsToTask:configurations];
-    
-    return  task;
+    return  YES;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+{
+    stepViewController.continueButtonOnToolbar = NO;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
+{
 }
 
 @end

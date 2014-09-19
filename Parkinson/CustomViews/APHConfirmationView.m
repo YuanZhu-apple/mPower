@@ -3,10 +3,11 @@
 //  Parkinson
 //
 //  Created by Henry McGilton on 8/20/14.
-//  Copyright (c) 2014 Henry McGilton. All rights reserved.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHConfirmationView.h"
+#import "UIColor+Parkinson.h"
 
 static  const  CGFloat  insetForBorder = 0.5;
 static  const  CGFloat  kDesignSpace   = 1000.0;
@@ -66,13 +67,19 @@ static  short  coordinates[] = {
         [[UIColor grayColor] set];
         [path stroke];
     } else {
-        [[UIColor greenColor] set];
+        [[UIColor parkinsonGreenColor] set];
         [path fill];
         [path stroke];
         [self createPath:path withDimension:CGRectGetWidth(bounds)];
         [[UIColor whiteColor] set];
         [path fill];
     }
+}
+
+- (void)setCompleted:(BOOL)completed
+{
+    _completed = completed;
+    [self setNeedsDisplay];
 }
 
 @end
