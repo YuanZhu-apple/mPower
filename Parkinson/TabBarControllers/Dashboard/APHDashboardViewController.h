@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APHOverviewViewController : UIViewController
+@interface APHDashboardViewController : UITableViewController
 
 
 @end

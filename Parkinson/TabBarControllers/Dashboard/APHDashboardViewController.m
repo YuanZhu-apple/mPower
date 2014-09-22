@@ -7,7 +7,7 @@
 //
 
 /* Controllers */
-#import "APHOverviewViewController.h"
+#import "APHDashboardViewController.h"
 #import "APHEditSectionsViewController.h"
 
 /* Views */
@@ -23,20 +23,13 @@ static NSString * const kDashboardGraphCellIdentifier    = @"DashboardGraphCellI
 static NSString * const kDashboardProgressCellIdentifier = @"DashboardProgressCellIdentifier";
 static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCellIdentifier";
 
-//Tab Bar Selected Images
-static NSString * const kTabBarDashboardSelectedImage = @"tab_dashboard_selected";
-static NSString * const kTabBarLearnSelectedImage = @"tab_learn_selected";
-static NSString * const kTabBarActivitiesSelectedImage = @"tab_activities_selected";
-static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
+@interface APHDashboardViewController () <YMLTimeLineChartViewDataSource>
 
-@interface APHOverviewViewController () <YMLTimeLineChartViewDataSource>
-
-@property (nonatomic, weak) IBOutlet UITableView *dashboardTableView;
 @property (nonatomic, strong) NSMutableArray *sectionsOrder;
 
 @end
 
-@implementation APHOverviewViewController
+@implementation APHDashboardViewController
 
 #pragma mark - Init
 
@@ -70,17 +63,11 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self customizeTabBar];
     
-    //Setup table
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardProgressViewCell" bundle:nil] forCellReuseIdentifier:kDashboardProgressCellIdentifier];
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardGraphViewCell" bundle:nil] forCellReuseIdentifier:kDashboardGraphCellIdentifier];
-    [self.dashboardTableView registerNib:[UINib nibWithNibName:@"APHDashboardMessageViewCell" bundle:nil] forCellReuseIdentifier:kDashboardMessagesCellIdentifier];
-    
-    [self.dashboardTableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(editTapped)];
     [self.navigationItem setLeftBarButtonItem:editButton];
-    self.dashboardTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -90,7 +77,7 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.sectionsOrder = [NSMutableArray arrayWithArray:[defaults objectForKey:kDashboardSectionsOrder]];
     
-    [self.dashboardTableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -254,19 +241,6 @@ static NSString * const kTabBarProfileSelectedImage = @"tab_profile_selected";
     }
     
     return title;
-}
-
-/*********************************************************************************/
-#pragma mark - Misc
-/*********************************************************************************/
-- (void) customizeTabBar
-{
-//    {
-//        UIImage* selectedImage = [[UIImage imageNamed:kTabBarDashboardSelectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//        UITabBarItem * tabBar =(UITabBarItem*)(self.tabBarController.tabBar.items[0]);
-//        [tabBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:(45/255.0) green:(180/255.0) blue:(250/255.0) alpha:1.000]} forState:UIControlStateHighlighted];
-//        tabBar.selectedImage = selectedImage;
-//    }
 }
 
 @end
