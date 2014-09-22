@@ -78,8 +78,6 @@ static NSInteger kNumberOfSectionsInTableView = 1;
     [super viewDidLoad];
     
     self.navigationItem.title = NSLocalizedString(@"Activities", @"Activities");
-
-    [self.tableView registerNib:[UINib nibWithNibName:@"APHActivitiesTableViewCell" bundle:nil] forCellReuseIdentifier:kTableCellReuseIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated
