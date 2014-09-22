@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yc2-sS-SsX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Health Profile-->
+        <scene sceneID="PHh-V4-mV1">
+            <objects>
+                <navigationController title="Health Profile" id="yc2-sS-SsX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Health Profile" image="tab_profile" selectedImage="tab_profile" id="umE-mA-TaU"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ojU-QO-30x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PSF-Tu-cq6" kind="relationship" relationship="rootViewController" id="9T9-7y-Ddd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bvp-kv-zTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="425" y="492"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="XCi-a2-PFU">
+            <objects>
+                <viewController id="PSF-Tu-cq6" customClass="APHSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hZh-Fk-FLw"/>
+                        <viewControllerLayoutGuide type="bottom" id="F4Y-5s-Fxs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hPo-qq-i1b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o3f-nv-cAb"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ujb-w4-rWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907" y="492"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_profile" width="24" height="24"/>
+    </resources>
+</document>

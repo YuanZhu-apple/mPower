@@ -16,11 +16,28 @@ static NSString *const kBaseURL = @"http://pd-staging.sagebridge.org/api/v1/";
 static NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 static NSString *const kLoggedInKey = @"LoggedIn";
 
-@interface APHParkinsonAppDelegate ()
+static NSString *const kDashBoardStoryBoardKey     = @"APHDashboard";
+static NSString *const kLearnStoryBoardKey         = @"APHLearn";
+static NSString *const kActivitiesStoryBoardKey    = @"APHActivities";
+static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
+
+@interface APHParkinsonAppDelegate  ( )  <UITabBarControllerDelegate>
+
+@property  (nonatomic, strong)  NSArray  *storyboardIdInfo;
 
 @end
 
 @implementation APHParkinsonAppDelegate
+
+- (void)initialiseStoryBoardIdInfo
+{
+    self.storyboardIdInfo = @[
+                              kDashBoardStoryBoardKey,
+                              kLearnStoryBoardKey,
+                              kActivitiesStoryBoardKey,
+                              kHealthProfileStoryBoardKey
+                              ];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -31,13 +48,48 @@ static NSString *const kLoggedInKey = @"LoggedIn";
     if (![self isLoggedIn]) {
         [self startOnBoardingProcess];
     }
-
+    
+    [self initialiseStoryBoardIdInfo];
+    
+    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
+    tabster.delegate = self;
+    
+    NSArray       *items = tabster.tabBar.items;
+    UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
+    NSUInteger     selectedItemIndex = 0;
+    if (selectedItem != nil) {
+        selectedItemIndex = [items indexOfObject:selectedItem];
+    }
+    
+    NSArray  *controllers = tabster.viewControllers;
+    [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+    
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [super applicationDidBecomeActive:application];
+}
+
+/*********************************************************************************/
+#pragma mark - UITab Bar Controller Delegate Methods
+/*********************************************************************************/
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    if ([viewController isMemberOfClass: [UIViewController class]] == YES) {
+        NSMutableArray  *controllers = [tabBarController.viewControllers mutableCopy];
+        NSUInteger  controllerIndex = [controllers indexOfObject:viewController];
+        
+        NSString  *name = [self.storyboardIdInfo objectAtIndex:controllerIndex];
+        UIStoryboard  *storyboard = [UIStoryboard storyboardWithName:name bundle:[NSBundle mainBundle]];
+        UIViewController  *controller = [storyboard instantiateInitialViewController];
+        [controllers replaceObjectAtIndex:controllerIndex withObject:controller];
+        
+        UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
+        [tabster setViewControllers:controllers animated:NO];
+    }
 }
 
 /*********************************************************************************/

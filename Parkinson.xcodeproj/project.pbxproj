@@ -16,6 +16,10 @@
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
 		CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */; };
+		CFF7D1C519D0A5E1001DF772 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D1C419D0A5E1001DF772 /* APHDashboard.storyboard */; };
+		CFF7D1C819D0A646001DF772 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D1C719D0A646001DF772 /* APHLearn.storyboard */; };
+		CFF7D1CA19D0A672001DF772 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D1C919D0A672001DF772 /* APHActivities.storyboard */; };
+		CFF7D1CC19D0A694001DF772 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D1CB19D0A694001DF772 /* APHHealthProfile.storyboard */; };
 		F5241C9519AD4CD20098A4DF /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9319AD4CD20098A4DF /* ResearchKit.framework */; };
 		F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */; };
 		F5241C9C19AD56B90098A4DF /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5241C9B19AD56B90098A4DF /* libbz2.dylib */; };
@@ -153,6 +157,10 @@
 		CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinsonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2F219A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkinsonTests.m; sourceTree = "<group>"; };
+		CFF7D1C419D0A5E1001DF772 /* APHDashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHDashboard.storyboard; sourceTree = "<group>"; };
+		CFF7D1C719D0A646001DF772 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
+		CFF7D1C919D0A672001DF772 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
+		CFF7D1CB19D0A694001DF772 /* APHHealthProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHHealthProfile.storyboard; sourceTree = "<group>"; };
 		F5241C9319AD4CD20098A4DF /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5241C9419AD4CD20098A4DF /* ResearchKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ResearchKit.bundle; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.bundle; sourceTree = SOURCE_ROOT; };
 		F5241C9B19AD56B90098A4DF /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
@@ -451,6 +459,7 @@
 		F5D14E9019CC9B9100650FBB /* Activities */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7D1C919D0A672001DF772 /* APHActivities.storyboard */,
 				F5D14E9119CC9B9100650FBB /* APHActivitiesTableViewCell.h */,
 				F5D14E9219CC9B9100650FBB /* APHActivitiesTableViewCell.m */,
 				F5D14E9319CC9B9100650FBB /* APHActivitiesTableViewCell.xib */,
@@ -463,6 +472,7 @@
 		F5D14E9619CC9B9100650FBB /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7D1C419D0A5E1001DF772 /* APHDashboard.storyboard */,
 				F5D14E9719CC9B9100650FBB /* APHEditSectionsViewController.h */,
 				F5D14E9819CC9B9100650FBB /* APHEditSectionsViewController.m */,
 				F5D14E9919CC9B9100650FBB /* APHEditSectionsViewController.xib */,
@@ -492,6 +502,7 @@
 		F5D14EA619CC9B9100650FBB /* Learn */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7D1C719D0A646001DF772 /* APHLearn.storyboard */,
 				F5D14EA719CC9B9100650FBB /* APHLearnDetailViewController.h */,
 				F5D14EA819CC9B9100650FBB /* APHLearnDetailViewController.m */,
 				F5D14EA919CC9B9100650FBB /* APHLearnDetailViewController.xib */,
@@ -521,6 +532,7 @@
 		F5D14EB619CC9B9100650FBB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7D1CB19D0A694001DF772 /* APHHealthProfile.storyboard */,
 				F5D14EB719CC9B9100650FBB /* APHSettingsTableFooterView.xib */,
 				F5D14EB819CC9B9100650FBB /* APHSettingsViewController.h */,
 				F5D14EB919CC9B9100650FBB /* APHSettingsViewController.m */,
@@ -803,9 +815,12 @@
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
 				F5D14F2919CC9BC900650FBB /* APHSleepQualityOverviewViewController.xib in Resources */,
 				F5D14EC119CC9B9100650FBB /* APHDashboardGraphViewCell.xib in Resources */,
+				CFF7D1CC19D0A694001DF772 /* APHHealthProfile.storyboard in Resources */,
+				CFF7D1C519D0A5E1001DF772 /* APHDashboard.storyboard in Resources */,
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,
 				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
 				F5241C9619AD4CD20098A4DF /* ResearchKit.bundle in Resources */,
+				CFF7D1C819D0A646001DF772 /* APHLearn.storyboard in Resources */,
 				F5D14F3019CC9BC900650FBB /* APHWalkingOverviewViewController.xib in Resources */,
 				F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */,
 				F5D14ECE19CC9B9100650FBB /* APHLearnResourceViewCell.xib in Resources */,
@@ -821,6 +836,7 @@
 				F5D14EC519CC9B9100650FBB /* APHDashboardProgressViewCell.xib in Resources */,
 				F5D14ECA19CC9B9100650FBB /* APHLearnDetailViewCell.xib in Resources */,
 				F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */,
+				CFF7D1CA19D0A672001DF772 /* APHActivities.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				F5D14F3219CC9BC900650FBB /* APHWalkingResultsViewController.xib in Resources */,
 			);
