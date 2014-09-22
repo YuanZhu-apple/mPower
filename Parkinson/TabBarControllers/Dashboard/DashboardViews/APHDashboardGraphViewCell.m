@@ -7,8 +7,7 @@
 //
 
 #import "APHDashboardGraphViewCell.h"
-#import "YMLLineChartView.h"
-#import "YMLTimeLineChartView.h"
+@import APCAppleCore;
 
 @implementation APHDashboardGraphViewCell
 

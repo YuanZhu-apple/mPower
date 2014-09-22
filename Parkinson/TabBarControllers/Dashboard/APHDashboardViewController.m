@@ -11,12 +11,10 @@
 #import "APHEditSectionsViewController.h"
 
 /* Views */
-
+@import APCAppleCore;
 #import "APHDashboardGraphViewCell.h"
 #import "APHDashboardMessageViewCell.h"
 #import "APHDashboardProgressViewCell.h"
-#import "YMLTimeLineChartView.h"
-#import "YMLLineChartView.h"
 #import "UIColor+Parkinson.h"
 
 static NSString * const kDashboardGraphCellIdentifier    = @"DashboardGraphCellIdentifier";

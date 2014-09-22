@@ -7,8 +7,8 @@
 //
 
 #import "APHIntervalTappingResultsViewController.h"
-#import "APCCircularProgressView.h"
-#import "APCConfirmationView.h"
+@import APCAppleCore;
+
 
 @interface APHIntervalTappingResultsViewController ()
 

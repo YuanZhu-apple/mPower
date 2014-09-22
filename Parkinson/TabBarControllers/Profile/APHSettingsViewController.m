@@ -6,14 +6,10 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCProfile.h"
+@import APCAppleCore;
 #import "APHUserInfoCell.h"
-#import "APCTableViewItem.h"
-#import "NSBundle+Helper.h"
-#import "APCUserInfoConstants.h"
-#import "UITableView+Appearance.h"
 #import "APHSettingsViewController.h"
-#import "APCAppleCore.h"
+
 
 static NSString * const kAPHGeneralInfoItemUserNameRegEx            = @"[A-Za-z0-9_.]+";
 

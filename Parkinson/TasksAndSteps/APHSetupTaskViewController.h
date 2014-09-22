@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
-#import "APCAppleCore.h"
+@import APCAppleCore;
 
 @interface APHSetupTaskViewController : RKTaskViewController <RKTaskViewControllerDelegate, RKStepViewControllerDelegate>
 

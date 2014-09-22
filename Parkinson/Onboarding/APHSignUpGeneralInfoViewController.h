@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCSignUpUserInfoViewController.h"
+@import APCAppleCore;
 
 @interface APHSignUpGeneralInfoViewController : APCSignUpUserInfoViewController
 

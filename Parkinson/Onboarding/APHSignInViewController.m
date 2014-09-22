@@ -6,14 +6,9 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "NSObject+Helper.h"
-#import "UIAlertView+Helper.h"
-#import "APCSageNetworkManager.h"
-#import "UITableView+Appearance.h"
+@import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHSignInViewController.h"
-#import "APCSpinnerViewController.h"
-#import "NSError+APCNetworkManager.h"
 
 static NSString *const kLoggedInKey = @"LoggedIn";
 
