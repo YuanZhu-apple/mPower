@@ -8,8 +8,8 @@
         <scene sceneID="PHh-V4-mV1">
             <objects>
                 <navigationController title="Health Profile" id="yc2-sS-SsX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Health Profile" image="tab_profile" selectedImage="tab_profile" id="umE-mA-TaU"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBarItem key="tabBarItem" title="Health Profile" id="umE-mA-TaU"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ojU-QO-30x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -28,7 +28,7 @@
             <objects>
                 <tableViewController id="9p1-TF-zuQ" customClass="APHSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lA8-LN-zzM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -44,7 +44,4 @@
             <point key="canvasLocation" x="958" y="492"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="tab_profile" width="24" height="24"/>
-    </resources>
 </document>

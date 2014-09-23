@@ -9,8 +9,8 @@
         <scene sceneID="fLO-Mh-TLB">
             <objects>
                 <navigationController title="Activities" id="hzw-2n-SwF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activities" image="tab_activities" selectedImage="tab_activities_selected" id="HnP-dZ-Edk"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBarItem key="tabBarItem" title="Activities" id="HnP-dZ-Edk"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hwg-km-YcN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -29,7 +29,7 @@
             <objects>
                 <tableViewController id="v3n-LY-Arx" customClass="APHActivitiesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PnQ-ER-saX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -119,8 +119,4 @@
             <point key="canvasLocation" x="916" y="489"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="tab_activities" width="24" height="23"/>
-        <image name="tab_activities_selected" width="23" height="23"/>
-    </resources>
 </document>

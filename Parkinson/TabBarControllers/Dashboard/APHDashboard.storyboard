@@ -9,8 +9,8 @@
         <scene sceneID="m2z-G3-Mm6">
             <objects>
                 <navigationController title="Dashboard" id="Mhn-Ic-VJp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="tab_dashboard" selectedImage="tab_dashboard_selected" id="pe7-z2-wbl"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="pe7-z2-wbl"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mBN-aH-VHD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -29,7 +29,7 @@
             <objects>
                 <tableViewController id="gwV-Vs-aVh" customClass="APHDashboardViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G6V-2S-gmW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -225,8 +225,4 @@
             <point key="canvasLocation" x="776" y="177"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="tab_dashboard" width="29" height="21"/>
-        <image name="tab_dashboard_selected" width="29" height="21"/>
-    </resources>
 </document>
