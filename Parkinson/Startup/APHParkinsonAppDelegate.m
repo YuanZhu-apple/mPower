@@ -29,6 +29,8 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 @implementation APHParkinsonAppDelegate
 
+#pragma  mark  -  Initialisation Methods for Story Board Switching
+
 - (void)initialiseStoryBoardIdInfo
 {
     self.storyboardIdInfo = @[
@@ -39,6 +41,23 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
                               ];
 }
 
+- (void)setupFirstSelectedTab
+{
+    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
+    tabster.delegate = self;
+    
+    NSArray       *items = tabster.tabBar.items;
+    UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
+    
+    NSUInteger     selectedItemIndex = 0;
+    if (selectedItem != nil) {
+        selectedItemIndex = [items indexOfObject:selectedItem];
+    }
+    
+    NSArray  *controllers = tabster.viewControllers;
+    [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initializeAppleCoreStack];
@@ -47,26 +66,10 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     
     if (![self isLoggedIn]) {
         [self startOnBoardingProcess];
-    }
-    else
-    {
+    } else {
         [self initialiseStoryBoardIdInfo];
-        
-        UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
-        tabster.delegate = self;
-        
-        NSArray       *items = tabster.tabBar.items;
-        UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
-        NSUInteger     selectedItemIndex = 0;
-        if (selectedItem != nil) {
-            selectedItemIndex = [items indexOfObject:selectedItem];
-        }
-        
-        NSArray  *controllers = tabster.viewControllers;
-        [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+        [self setupFirstSelectedTab];
     }
-    
-
     
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -161,6 +164,8 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     
     UITabBarController *tabBarController = (UITabBarController *)[storyBoard instantiateInitialViewController];
     self.window.rootViewController = tabBarController;
+    [self initialiseStoryBoardIdInfo];
+    [self setupFirstSelectedTab];
 }
 
 - (void) logOutNotification:(NSNotification *)notification {
