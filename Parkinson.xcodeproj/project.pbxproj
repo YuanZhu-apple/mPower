@@ -18,8 +18,8 @@
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
 		F5179FFC19D0BF08001DCCB7 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5179FF919D0BEF9001DCCB7 /* APCAppleCore.framework */; };
-		F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E419A5417D00170E69 /* Main.storyboard */; };
 		F5B2B88719D22C13007557A6 /* APCAppleCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5179FF919D0BEF9001DCCB7 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
 		F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4119CC991500650FBB /* JSON_READ_ME */; };
@@ -132,7 +132,6 @@
 		CFC2D2D719A5417D00170E69 /* Parkinson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFC2D2E519A5417D00170E69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
 		CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinsonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2F219A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,6 +142,7 @@
 		F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHHealthProfile.storyboard; sourceTree = "<group>"; };
 		F5179FF319D0BEF9001DCCB7 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
+		F5C1DC1F19D22E6F006527EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5D14E3D19CC98FD00650FBB /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
 		F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 		F5D14E4119CC991500650FBB /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
@@ -335,7 +335,6 @@
 		CFC2D2D919A5417D00170E69 /* Parkinson */ = {
 			isa = PBXGroup;
 			children = (
-				CFC2D2E419A5417D00170E69 /* Main.storyboard */,
 				F5D14F3619CC9C0000650FBB /* Startup */,
 				F5D14E7719CC9B8100650FBB /* Onboarding */,
 				F5D14E8F19CC9B9100650FBB /* TabBarControllers */,
@@ -635,6 +634,7 @@
 		F5D14F3619CC9C0000650FBB /* Startup */ = {
 			isa = PBXGroup;
 			children = (
+				F5C1DC1F19D22E6F006527EA /* Main.storyboard */,
 				F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */,
 				F5D14F3719CC9C0000650FBB /* APHParkinsonAppDelegate.h */,
 				F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */,
@@ -759,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
+				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
 				F5D14E4519CC991500650FBB /* sleepSurvey.json in Resources */,
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
@@ -768,7 +769,6 @@
 				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
 				F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */,
 				F5D14F3019CC9BC900650FBB /* APHWalkingOverviewViewController.xib in Resources */,
-				F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */,
 				F5D14F2119CC9BC900650FBB /* APHIntervalTappingStepsViewController.xib in Resources */,
 				F5D14F2D19CC9BC900650FBB /* APHTracingObjectsOverviewViewController.xib in Resources */,
 				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
@@ -862,17 +862,6 @@
 			targetProxy = CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CFC2D2E419A5417D00170E69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFC2D2E519A5417D00170E69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CFC2D2F519A5417D00170E69 /* Debug */ = {
