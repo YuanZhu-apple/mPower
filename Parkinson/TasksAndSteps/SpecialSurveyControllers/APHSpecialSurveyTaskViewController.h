@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APHSetupTaskViewController.h"
+@import APCAppleCore;
 
-@interface APHSpecialSurveyTaskViewController : APHSetupTaskViewController
+@interface APHSpecialSurveyTaskViewController : APCSetupTaskViewController
 
 @end

@@ -10,8 +10,8 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHSetupTaskViewController.h"
+@import APCAppleCore;
 
-@interface APHSleepQualityTaskViewController : APHSetupTaskViewController
+@interface APHSleepQualityTaskViewController : APCSetupTaskViewController
 
 @end
