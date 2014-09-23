@@ -15,6 +15,10 @@
 		CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */; };
 		F5179FFC19D0BF08001DCCB7 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5179FF919D0BEF9001DCCB7 /* APCAppleCore.framework */; };
 		F527234119CB475E00AD1DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E419A5417D00170E69 /* Main.storyboard */; };
+		F5930FE119D1E53F00FDC097 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5930FE019D1E53F00FDC097 /* ResearchKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F5930FE519D1E55B00FDC097 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5930FE419D1E55B00FDC097 /* libbz2.dylib */; };
+		F5930FE719D1E56D00FDC097 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5930FE619D1E56D00FDC097 /* libarchive.dylib */; };
+		F5930FE919D1E57500FDC097 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5930FE819D1E57500FDC097 /* libz.dylib */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
 		F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4119CC991500650FBB /* JSON_READ_ME */; };
@@ -119,6 +123,10 @@
 		CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkinsonTests.m; sourceTree = "<group>"; };
 		F5179FF319D0BEF9001DCCB7 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
+		F5930FE019D1E53F00FDC097 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
+		F5930FE419D1E55B00FDC097 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		F5930FE619D1E56D00FDC097 /* libarchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.dylib; path = usr/lib/libarchive.dylib; sourceTree = SDKROOT; };
+		F5930FE819D1E57500FDC097 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F5D14E3D19CC98FD00650FBB /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
 		F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 		F5D14E4119CC991500650FBB /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
@@ -232,8 +240,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5930FE919D1E57500FDC097 /* libz.dylib in Frameworks */,
+				F5930FE719D1E56D00FDC097 /* libarchive.dylib in Frameworks */,
+				F5930FE519D1E55B00FDC097 /* libbz2.dylib in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
 				F5179FFC19D0BF08001DCCB7 /* APCAppleCore.framework in Frameworks */,
+				F5930FE119D1E53F00FDC097 /* ResearchKit.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
@@ -270,11 +282,15 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5179FF319D0BEF9001DCCB7 /* APCAppleCore.xcodeproj */,
+				F5930FE819D1E57500FDC097 /* libz.dylib */,
+				F5930FE619D1E56D00FDC097 /* libarchive.dylib */,
+				F5930FE419D1E55B00FDC097 /* libbz2.dylib */,
+				F5930FE019D1E53F00FDC097 /* ResearchKit.framework */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
+				F5179FF319D0BEF9001DCCB7 /* APCAppleCore.xcodeproj */,
 			);
 			name = Frameworks;
 			path = Parkinson;
@@ -927,7 +943,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
-					"$(PROJECT_DIR)/AppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -949,7 +965,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
-					"$(PROJECT_DIR)/AppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
