@@ -48,23 +48,23 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     if (![self isLoggedIn]) {
         [self startOnBoardingProcess];
     }
-//    else
-//    {
-//        [self initialiseStoryBoardIdInfo];
-//        
-//        UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
-//        tabster.delegate = self;
-//        
-//        NSArray       *items = tabster.tabBar.items;
-//        UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
-//        NSUInteger     selectedItemIndex = 0;
-//        if (selectedItem != nil) {
-//            selectedItemIndex = [items indexOfObject:selectedItem];
-//        }
-//        
-//        NSArray  *controllers = tabster.viewControllers;
-//        [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
-//    }
+    else
+    {
+        [self initialiseStoryBoardIdInfo];
+        
+        UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
+        tabster.delegate = self;
+        
+        NSArray       *items = tabster.tabBar.items;
+        UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
+        NSUInteger     selectedItemIndex = 0;
+        if (selectedItem != nil) {
+            selectedItemIndex = [items indexOfObject:selectedItem];
+        }
+        
+        NSArray  *controllers = tabster.viewControllers;
+        [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+    }
     
 
     
@@ -87,7 +87,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         NSUInteger  controllerIndex = [controllers indexOfObject:viewController];
         
         NSString  *name = [self.storyboardIdInfo objectAtIndex:controllerIndex];
-        UIStoryboard  *storyboard = [UIStoryboard storyboardWithName:name bundle:[NSBundle mainBundle]];
+        UIStoryboard  *storyboard = [UIStoryboard storyboardWithName:name bundle:nil];
         UIViewController  *controller = [storyboard instantiateInitialViewController];
         [controllers replaceObjectAtIndex:controllerIndex withObject:controller];
         
