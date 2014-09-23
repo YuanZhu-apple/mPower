@@ -48,21 +48,25 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     if (![self isLoggedIn]) {
         [self startOnBoardingProcess];
     }
+//    else
+//    {
+//        [self initialiseStoryBoardIdInfo];
+//        
+//        UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
+//        tabster.delegate = self;
+//        
+//        NSArray       *items = tabster.tabBar.items;
+//        UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
+//        NSUInteger     selectedItemIndex = 0;
+//        if (selectedItem != nil) {
+//            selectedItemIndex = [items indexOfObject:selectedItem];
+//        }
+//        
+//        NSArray  *controllers = tabster.viewControllers;
+//        [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+//    }
     
-    [self initialiseStoryBoardIdInfo];
-    
-    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
-    tabster.delegate = self;
-    
-    NSArray       *items = tabster.tabBar.items;
-    UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
-    NSUInteger     selectedItemIndex = 0;
-    if (selectedItem != nil) {
-        selectedItemIndex = [items indexOfObject:selectedItem];
-    }
-    
-    NSArray  *controllers = tabster.viewControllers;
-    [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+
     
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
