@@ -447,10 +447,10 @@
 			isa = PBXGroup;
 			children = (
 				CFF7D1C919D0A672001DF772 /* APHActivities.storyboard */,
-				F5D14E9119CC9B9100650FBB /* APHActivitiesTableViewCell.h */,
-				F5D14E9219CC9B9100650FBB /* APHActivitiesTableViewCell.m */,
 				F5D14E9419CC9B9100650FBB /* APHActivitiesViewController.h */,
 				F5D14E9519CC9B9100650FBB /* APHActivitiesViewController.m */,
+				F5D14E9119CC9B9100650FBB /* APHActivitiesTableViewCell.h */,
+				F5D14E9219CC9B9100650FBB /* APHActivitiesTableViewCell.m */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -459,11 +459,11 @@
 			isa = PBXGroup;
 			children = (
 				CFF7D1C419D0A5E1001DF772 /* APHDashboard.storyboard */,
+				F5D14E9A19CC9B9100650FBB /* APHDashboardViewController.h */,
+				F5D14E9B19CC9B9100650FBB /* APHDashboardViewController.m */,
 				F5D14E9719CC9B9100650FBB /* APHEditSectionsViewController.h */,
 				F5D14E9819CC9B9100650FBB /* APHEditSectionsViewController.m */,
 				F5D14E9919CC9B9100650FBB /* APHEditSectionsViewController.xib */,
-				F5D14E9A19CC9B9100650FBB /* APHDashboardViewController.h */,
-				F5D14E9B19CC9B9100650FBB /* APHDashboardViewController.m */,
 				F5D14E9C19CC9B9100650FBB /* DashboardViews */,
 			);
 			path = Dashboard;
@@ -486,11 +486,11 @@
 			isa = PBXGroup;
 			children = (
 				CFF7D1C719D0A646001DF772 /* APHLearn.storyboard */,
+				F5D14EAA19CC9B9100650FBB /* APHLearnMasterViewController.h */,
+				F5D14EAB19CC9B9100650FBB /* APHLearnMasterViewController.m */,
 				F5D14EA719CC9B9100650FBB /* APHLearnDetailViewController.h */,
 				F5D14EA819CC9B9100650FBB /* APHLearnDetailViewController.m */,
 				F5D14EA919CC9B9100650FBB /* APHLearnDetailViewController.xib */,
-				F5D14EAA19CC9B9100650FBB /* APHLearnMasterViewController.h */,
-				F5D14EAB19CC9B9100650FBB /* APHLearnMasterViewController.m */,
 				F5D14EAC19CC9B9100650FBB /* LearnViews */,
 			);
 			path = Learn;
@@ -499,13 +499,13 @@
 		F5D14EAC19CC9B9100650FBB /* LearnViews */ = {
 			isa = PBXGroup;
 			children = (
-				F5D14EAD19CC9B9100650FBB /* APHLearnDetailViewCell.h */,
-				F5D14EAE19CC9B9100650FBB /* APHLearnDetailViewCell.m */,
-				F5D14EAF19CC9B9100650FBB /* APHLearnDetailViewCell.xib */,
 				F5D14EB019CC9B9100650FBB /* APHLearnMasterTableViewCell.h */,
 				F5D14EB119CC9B9100650FBB /* APHLearnMasterTableViewCell.m */,
 				F5D14EB319CC9B9100650FBB /* APHLearnResourceViewCell.h */,
 				F5D14EB419CC9B9100650FBB /* APHLearnResourceViewCell.m */,
+				F5D14EAD19CC9B9100650FBB /* APHLearnDetailViewCell.h */,
+				F5D14EAE19CC9B9100650FBB /* APHLearnDetailViewCell.m */,
+				F5D14EAF19CC9B9100650FBB /* APHLearnDetailViewCell.xib */,
 			);
 			path = LearnViews;
 			sourceTree = "<group>";
@@ -794,7 +794,6 @@
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
 				F5D14F2919CC9BC900650FBB /* APHSleepQualityOverviewViewController.xib in Resources */,
-				F5D14EC119CC9B9100650FBB /* APHDashboardGraphViewCell.xib in Resources */,
 				CFF7D1CC19D0A694001DF772 /* APHHealthProfile.storyboard in Resources */,
 				CFF7D1C519D0A5E1001DF772 /* APHDashboard.storyboard in Resources */,
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,

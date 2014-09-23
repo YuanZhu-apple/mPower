@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yc2-sS-SsX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yc2-sS-SsX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="PSF-Tu-cq6" kind="relationship" relationship="rootViewController" id="9T9-7y-Ddd"/>
+                        <segue destination="9p1-TF-zuQ" kind="relationship" relationship="rootViewController" id="e3r-Uf-vxk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bvp-kv-zTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,26 +24,24 @@
             <point key="canvasLocation" x="425" y="492"/>
         </scene>
         <!--Settings View Controller-->
-        <scene sceneID="XCi-a2-PFU">
+        <scene sceneID="evm-6e-00C">
             <objects>
-                <viewController id="PSF-Tu-cq6" customClass="APHSettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hZh-Fk-FLw"/>
-                        <viewControllerLayoutGuide type="bottom" id="F4Y-5s-Fxs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hPo-qq-i1b">
+                <tableViewController id="9p1-TF-zuQ" customClass="APHSettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lA8-LN-zzM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="o3f-nv-cAb"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                        <connections>
+                            <outlet property="dataSource" destination="9p1-TF-zuQ" id="QSd-K8-0Sa"/>
+                            <outlet property="delegate" destination="9p1-TF-zuQ" id="k7H-fS-0oV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fyJ-ok-7sf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ujb-w4-rWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3rn-lY-9IT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907" y="492"/>
+            <point key="canvasLocation" x="958" y="492"/>
         </scene>
     </scenes>
     <resources>

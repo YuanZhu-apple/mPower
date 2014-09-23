@@ -32,7 +32,7 @@
                 <constraint firstItem="Ex9-sh-B3c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="igd-jW-PYN"/>
                 <constraint firstAttribute="trailing" secondItem="Ex9-sh-B3c" secondAttribute="trailing" id="u5S-Z7-Rw8"/>
             </constraints>
-            <point key="canvasLocation" x="265" y="461"/>
+            <point key="canvasLocation" x="691" y="384"/>
         </view>
         <view contentMode="scaleToFill" id="Lik-dK-tEQ">
             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
