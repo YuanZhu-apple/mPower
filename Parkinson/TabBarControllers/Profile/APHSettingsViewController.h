@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCUserInfoViewController.h"
+@import APCAppleCore;
 
 @class APCProfile;
 

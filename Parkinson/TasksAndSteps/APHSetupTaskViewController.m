@@ -7,7 +7,7 @@
 //
 
 #import "APHSetupTaskViewController.h"
-#import "APCAppleCore.h"
+@import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import <objc/message.h>
 

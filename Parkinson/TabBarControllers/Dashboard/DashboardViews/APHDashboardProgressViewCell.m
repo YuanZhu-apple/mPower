@@ -7,7 +7,7 @@
 //
 
 #import "APHDashboardProgressViewCell.h"
-#import "APCCircularProgressView.h"
+@import APCAppleCore;
 
 @implementation APHDashboardProgressViewCell
 

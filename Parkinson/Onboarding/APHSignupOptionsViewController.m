@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "NSBundle+Helper.h"
+@import APCAppleCore;
 #import "APHSignInViewController.h"
 #import "APHSignupOptionsViewController.h"
 #import "APHSignUpGeneralInfoViewController.h"

@@ -7,7 +7,7 @@
 //
 
 #import "APHActivitiesTableViewCell.h"
-#import "APCConfirmationView.h"
+@import APCAppleCore;
 #import "UIColor+Parkinson.h"
 
 static NSInteger kNumberOfLinesForTypeDefault  = 2;

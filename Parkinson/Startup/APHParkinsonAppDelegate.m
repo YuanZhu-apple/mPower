@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCAppleCore.h"
+@import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHIntroVideoViewController.h"
 

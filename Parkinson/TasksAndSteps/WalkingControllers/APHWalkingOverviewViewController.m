@@ -7,7 +7,7 @@
 //
 
 #import "APHWalkingOverviewViewController.h"
-#import "APCConfirmationView.h"
+@import APCAppleCore;
 
 static  NSString  *kControllerTitle = @"Timed Walking";
 

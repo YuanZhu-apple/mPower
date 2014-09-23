@@ -6,18 +6,10 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCProfile.h"
-#import "UIView+Helper.h"
-#import "NSString+Helper.h"
-#import "NSBundle+Helper.h"
-#import "APHUserInfoCell.h"
-#import "APCTableViewItem.h"
-#import "APCStepProgressBar.h"
-#import "UIAlertView+Helper.h"
-#import "APCUserInfoConstants.h"
-#import "UITableView+Appearance.h"
+@import APCAppleCore;
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
+#import "APHUserInfoCell.h"
 
 #define DEMO 1
 

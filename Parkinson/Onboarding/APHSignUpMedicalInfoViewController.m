@@ -6,21 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCProfile.h"
-#import "UIView+Helper.h"
-#import "APCTableViewItem.h"
-#import "NSObject+Helper.h"
-#import "NSBundle+Helper.h"
-#import "APCStepProgressBar.h"
-#import "NSObject+Helper.h"
-#import "UIAlertView+Helper.h"
-#import "APCUserInfoConstants.h"
-#import "APCSageNetworkManager.h"
-#import "UITableView+Appearance.h"
-#import "APHParkinsonAppDelegate.h"
-#import "APCSpinnerViewController.h"
-#import "NSError+APCNetworkManager.h"
-#import "APCSignupTouchIDViewController.h"
+@import APCAppleCore;
 #import "APHSignUpMedicalInfoViewController.h"
 
 

@@ -21,15 +21,14 @@
 /* Views */
 #import "APHActivitiesTableViewCell.h"
 
-/* Model */
-#import "APCScheduledTask.h"
+@import APCAppleCore;
 
 /* Other Classes */
 #import "NSString+CustomMethods.h"
-#import "NSManagedObject+APCHelper.h"
 #import "UIColor+Parkinson.h"
 #import "APHParkinsonAppDelegate.h"
 #import <ResearchKit/ResearchKit.h>
+
 
 @interface APCGroupedScheduledTask : NSObject
 

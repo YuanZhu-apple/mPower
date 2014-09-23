@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ResearchKit/ResearchKit.h>
+@import APCAppleCore;
 
 typedef  enum  _WalkingStepsPhase
 {
