@@ -12,7 +12,6 @@
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
-		CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
@@ -87,13 +86,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFC2D2CF19A5417D00170E69 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CFC2D2D619A5417D00170E69;
-			remoteInfo = Parkinson;
-		};
 		F5B4211819D23A1200F9CD69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
@@ -146,9 +138,6 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
-		CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinsonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFC2D2F219A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkinsonTests.m; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
 		F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHDashboard.storyboard; sourceTree = "<group>"; };
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
@@ -279,13 +268,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC2D2EA19A5417D00170E69 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -329,7 +311,6 @@
 				CFC2D2D919A5417D00170E69 /* Parkinson */,
 				CFC2D2E719A5417D00170E69 /* Images.xcassets */,
 				CFA2ABB419A7C1C1000DB961 /* Frameworks */,
-				CFC2D2F019A5417D00170E69 /* ParkinsonTests */,
 				CFC2D2D819A5417D00170E69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -338,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				CFC2D2D719A5417D00170E69 /* Parkinson.app */,
-				CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -363,23 +343,6 @@
 				F5241CA819AEA5110098A4DF /* Parkinson.entitlements */,
 				CFC2D2DB19A5417D00170E69 /* Info.plist */,
 				CFC2D2DC19A5417D00170E69 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CFC2D2F019A5417D00170E69 /* ParkinsonTests */ = {
-			isa = PBXGroup;
-			children = (
-				CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */,
-				CFC2D2F119A5417D00170E69 /* Supporting Files */,
-			);
-			path = ParkinsonTests;
-			sourceTree = "<group>";
-		};
-		CFC2D2F119A5417D00170E69 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CFC2D2F219A5417D00170E69 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -674,24 +637,6 @@
 			productReference = CFC2D2D719A5417D00170E69 /* Parkinson.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CFC2D2EC19A5417D00170E69 /* ParkinsonTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CFC2D2FA19A5417D00170E69 /* Build configuration list for PBXNativeTarget "ParkinsonTests" */;
-			buildPhases = (
-				CFC2D2E919A5417D00170E69 /* Sources */,
-				CFC2D2EA19A5417D00170E69 /* Frameworks */,
-				CFC2D2EB19A5417D00170E69 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CFC2D2EF19A5417D00170E69 /* PBXTargetDependency */,
-			);
-			name = ParkinsonTests;
-			productName = ParkinsonTests;
-			productReference = CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -716,10 +661,6 @@
 							};
 						};
 					};
-					CFC2D2EC19A5417D00170E69 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = CFC2D2D619A5417D00170E69;
-					};
 				};
 			};
 			buildConfigurationList = CFC2D2D219A5417D00170E69 /* Build configuration list for PBXProject "Parkinson" */;
@@ -742,7 +683,6 @@
 			projectRoot = "";
 			targets = (
 				CFC2D2D619A5417D00170E69 /* Parkinson */,
-				CFC2D2EC19A5417D00170E69 /* ParkinsonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -797,13 +737,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC2D2EB19A5417D00170E69 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -855,22 +788,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC2D2E919A5417D00170E69 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CFC2D2EF19A5417D00170E69 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFC2D2D619A5417D00170E69 /* Parkinson */;
-			targetProxy = CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */;
-		};
 		F5F6454419D35D66004CFBB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APCAppleCore;
@@ -1004,40 +924,6 @@
 			};
 			name = Release;
 		};
-		CFC2D2FB19A5417D00170E69 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ParkinsonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parkinson.app/Parkinson";
-			};
-			name = Debug;
-		};
-		CFC2D2FC19A5417D00170E69 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ParkinsonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parkinson.app/Parkinson";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1055,15 +941,6 @@
 			buildConfigurations = (
 				CFC2D2F819A5417D00170E69 /* Debug */,
 				CFC2D2F919A5417D00170E69 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CFC2D2FA19A5417D00170E69 /* Build configuration list for PBXNativeTarget "ParkinsonTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFC2D2FB19A5417D00170E69 /* Debug */,
-				CFC2D2FC19A5417D00170E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
