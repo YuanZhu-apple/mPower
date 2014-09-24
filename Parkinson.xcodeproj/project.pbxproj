@@ -82,6 +82,8 @@
 		F5D7489219D1F77F00EEB7DE /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7489119D1F77F00EEB7DE /* libbz2.dylib */; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
+		F5F6454719D35D80004CFBB2 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
+		F5F6454819D35D80004CFBB2 /* APCAppleCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,20 @@
 			remoteGlobalIDString = F5DAB55D199EBFF6008E4A8E;
 			remoteInfo = APCAppleCoreTests;
 		};
+		F5F6454319D35D66004CFBB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppleCore;
+		};
+		F5F6454919D35D80004CFBB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppleCore;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -115,6 +131,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F5F6454819D35D80004CFBB2 /* APCAppleCore.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +272,7 @@
 				F5D7488E19D1F76B00EEB7DE /* libarchive.dylib in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
 				F5D7488C19D1F75600EEB7DE /* ResearchKit.framework in Frameworks */,
+				F5F6454719D35D80004CFBB2 /* APCAppleCore.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
@@ -648,6 +666,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				F5F6454419D35D66004CFBB2 /* PBXTargetDependency */,
+				F5F6454A19D35D80004CFBB2 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
 			productName = Parkinson;
@@ -850,6 +870,16 @@
 			isa = PBXTargetDependency;
 			target = CFC2D2D619A5417D00170E69 /* Parkinson */;
 			targetProxy = CFC2D2EE19A5417D00170E69 /* PBXContainerItemProxy */;
+		};
+		F5F6454419D35D66004CFBB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppleCore;
+			targetProxy = F5F6454319D35D66004CFBB2 /* PBXContainerItemProxy */;
+		};
+		F5F6454A19D35D80004CFBB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppleCore;
+			targetProxy = F5F6454919D35D80004CFBB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
