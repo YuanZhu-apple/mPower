@@ -21,6 +21,7 @@ static CGFloat kReadMoreButtonBorderWidth = 1.0f;
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self.titleLabel setTextColor:[UIColor parkinsonBlackColor]];
     [self.descriptionLabel setTextColor:[UIColor parkinsonLightGrayColor]];
     

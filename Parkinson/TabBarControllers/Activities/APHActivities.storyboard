@@ -33,14 +33,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ActivitiesTableViewCell" rowHeight="70" id="NFB-Sp-q3H" customClass="APHActivitiesTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ActivitiesTableViewCell" rowHeight="70" id="NFB-Sp-q3H" customClass="APCActivitiesTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFB-Sp-q3H" id="Gpp-FP-fvh">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timed Walking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-xe-ytO">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timed Walking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-xe-ytO">
                                             <rect key="frame" x="48" y="16" width="191" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="oYN-sT-dba"/>
@@ -49,7 +49,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hL-IG-syV" customClass="APCConfirmationView">
+                                        <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hL-IG-syV" customClass="APCConfirmationView">
                                             <rect key="frame" x="20" y="25" width="20" height="20"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
@@ -57,7 +57,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="aDd-cl-Ko9"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IB-0d-LDo">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="400" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IB-0d-LDo">
                                             <rect key="frame" x="247" y="27" width="35" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="35" id="d2o-WN-pGs"/>
@@ -67,7 +67,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3 Tasks Complete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-1C-XgK">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="300" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3 Tasks Complete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-1C-XgK">
                                             <rect key="frame" x="48" y="35" width="191" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Ibe-89-LNC"/>
@@ -90,14 +90,6 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="Rmo-xe-ytO" secondAttribute="trailing" constant="40" id="v1Q-ds-iMy"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="confirmationView" destination="9hL-IG-syV" id="Kem-6B-Eij"/>
-                                    <outlet property="durationLabel" destination="7IB-0d-LDo" id="kcy-cr-hlx"/>
-                                    <outlet property="subTitleLabel" destination="0ka-1C-XgK" id="zne-Z4-ygg"/>
-                                    <outlet property="titleLabel" destination="Rmo-xe-ytO" id="gSP-3h-Hc4"/>
-                                    <outlet property="titleLabelCenterYConstraint" destination="Aqg-P0-HCB" id="M0w-0a-tCf"/>
-                                    <outlet property="titleLabelHeightConstraint" destination="oYN-sT-dba" id="Al5-Vg-DoK"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

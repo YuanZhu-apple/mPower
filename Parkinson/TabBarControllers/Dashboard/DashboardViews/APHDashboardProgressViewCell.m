@@ -12,6 +12,7 @@
 @implementation APHDashboardProgressViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
     
     //TODO: Sammple Value. Remove later.

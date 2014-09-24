@@ -12,6 +12,7 @@
 @implementation APHDashboardGraphViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
     self.graphView.layer.cornerRadius = 3.0;
 }
