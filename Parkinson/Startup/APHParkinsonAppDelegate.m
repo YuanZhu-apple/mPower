@@ -116,6 +116,9 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
     if ([viewController isMemberOfClass: [UIViewController class]] == YES) {
+        
+        NSArray  *selectedImageNames = @[ @"tab_dashboard_selected", @"tab_learn_selected", @"tab_activities_selected", @"tab_profile_selected" ];
+        
         NSMutableArray  *controllers = [tabBarController.viewControllers mutableCopy];
         NSUInteger  controllerIndex = [controllers indexOfObject:viewController];
         
@@ -126,6 +129,9 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         
         UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
         [tabster setViewControllers:controllers animated:NO];
+        
+        UITabBarItem  *item = tabster.tabBar.selectedItem;
+        item.selectedImage = [UIImage imageNamed:selectedImageNames[controllerIndex]];
     }
 }
 
