@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
+		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -124,6 +126,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B29CE4E19D4BA7100E2FD62 /* APHStudyOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHStudyOverviewViewController.h; sourceTree = "<group>"; };
+		5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHStudyOverviewViewController.m; sourceTree = "<group>"; };
+		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
+		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -365,6 +371,10 @@
 			children = (
 				F5D14E7819CC9B8100650FBB /* APHIntroVideoViewController.h */,
 				F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */,
+				5B29CE4E19D4BA7100E2FD62 /* APHStudyOverviewViewController.h */,
+				5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */,
+				5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */,
+				5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */,
 				F5D14E7A19CC9B8100650FBB /* APHSignInViewController.h */,
 				F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */,
 				F5D14E7C19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.h */,
@@ -751,6 +761,7 @@
 				F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */,
 				F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */,
 				F5D14ED019CC9B9100650FBB /* APHSettingsViewController.m in Sources */,
+				5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */,
 				F5D14F3119CC9BC900650FBB /* APHWalkingResultsViewController.m in Sources */,
 				F5D14F2B19CC9BC900650FBB /* APHSpecialSurveyTaskViewController.m in Sources */,
 				F5D14F2619CC9BC900650FBB /* APHChangedMedsTaskViewController.m in Sources */,
@@ -764,6 +775,7 @@
 				F5D14EDE19CC9BA700650FBB /* UIColor+Parkinson.m in Sources */,
 				F5D14EBF19CC9B9100650FBB /* APHDashboardViewController.m in Sources */,
 				F5D14EC919CC9B9100650FBB /* APHLearnDetailViewCell.m in Sources */,
+				5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */,
 				F5D14F1E19CC9BC900650FBB /* APHIntervalTappingResultsViewController.m in Sources */,
 				F5D14E8719CC9B8100650FBB /* APHIntroVideoViewController.m in Sources */,
 				F5D14F1B19CC9BC900650FBB /* APHCustomRecorder.m in Sources */,

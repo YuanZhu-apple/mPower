@@ -132,6 +132,10 @@
     [self setupProgressBar];
 }
 
+- (UIRectEdge)edgesForExtendedLayout
+{
+    return UIRectEdgeNone;
+}
 
 #pragma mark - UI Methods
 

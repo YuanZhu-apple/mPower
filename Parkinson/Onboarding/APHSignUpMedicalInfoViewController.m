@@ -178,6 +178,15 @@
     [self.stepProgressBar setCompletedSteps:1 animation:YES];
 }
 
+- (UIRectEdge)edgesForExtendedLayout
+{
+    return UIRectEdgeNone;
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets
+{
+    return NO;
+}
 
 #pragma mark - UIMethods
 
