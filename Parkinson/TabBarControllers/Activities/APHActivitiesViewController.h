@@ -7,14 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import APCAppleCore;
 
-@interface APHActivitiesViewController : UITableViewController
-
-////
-////    Property Declaration for Category (Split Implementation) Files
-////
-//@property  (nonatomic, strong)  NSArray       *stepsConfigurations;
-//@property  (nonatomic, strong)  NSDictionary  *keysToPropertiesMap;
+@interface APHActivitiesViewController : APCActivitiesViewController
 
 @end
 

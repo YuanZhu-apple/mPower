@@ -11,6 +11,7 @@
 @implementation APHLearnDetailViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

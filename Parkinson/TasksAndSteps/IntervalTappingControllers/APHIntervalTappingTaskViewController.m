@@ -7,7 +7,7 @@
 //
 
 #import "APHIntervalTappingTaskViewController.h"
-#import "APHStepViewController.h"
+@import APCAppleCore;
 
 #import "APHIntervalTappingIntroViewController.h"
 #import "APHIntervalTappingStepsViewController.h"
@@ -117,7 +117,7 @@ static float tapInterval = 20.0;
                                    kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
                                   };
     Class  aClass = [controllers objectForKey:step.identifier];
-    APHStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
     controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";

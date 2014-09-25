@@ -39,5 +39,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Parkinson</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This may be used to collect walking data</string>
 </dict>
 </plist>

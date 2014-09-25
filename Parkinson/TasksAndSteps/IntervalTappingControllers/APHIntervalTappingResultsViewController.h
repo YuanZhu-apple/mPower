@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+@import APCAppleCore;
 
-@interface APHIntervalTappingResultsViewController : APHStepViewController
+@interface APHIntervalTappingResultsViewController : APCStepViewController
 
 @end
