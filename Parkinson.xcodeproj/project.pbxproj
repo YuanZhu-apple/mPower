@@ -16,12 +16,12 @@
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
-		F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
-		F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F54AB74819D3765D00986B52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7488F19D1F77800EEB7DE /* libz.dylib */; };
 		F54AB74919D3766A00986B52 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7489119D1F77F00EEB7DE /* libbz2.dylib */; };
 		F54AB74A19D3766E00986B52 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7488D19D1F76B00EEB7DE /* libarchive.dylib */; };
-		F56F60FE19D385CC00A0A2E1 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */; };
+		F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; };
+		F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F593798B19D4C78700FEC88B /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798A19D4C78700FEC88B /* ResearchKit.framework */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
@@ -81,18 +81,13 @@
 		F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */; };
 		F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */; };
 		F5D14F3919CC9C0000650FBB /* APHParkinsonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */; };
+		F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
+		F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F54AB73A19D36E4900986B52 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F5179B2819D09128001DCCB7;
-			remoteInfo = APCAppleCore;
-		};
 		F5B4211819D23A1200F9CD69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
@@ -107,16 +102,24 @@
 			remoteGlobalIDString = F5DAB55D199EBFF6008E4A8E;
 			remoteInfo = APCAppleCoreTests;
 		};
+		F5D1A91219D4C6FB00A03465 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppleCore;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F54AB73C19D36E4900986B52 /* Embed Frameworks */ = {
+		F5D1A91419D4C6FC00A03465 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */,
+				F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */,
+				F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +140,8 @@
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
 		F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHHealthProfile.storyboard; sourceTree = "<group>"; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
-		F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
+		F593798519D4C76100FEC88B /* BridgeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BridgeSDK.framework; path = ../AppleCore/APCAppleCore/BridgeSDK.framework; sourceTree = "<group>"; };
+		F593798A19D4C78700FEC88B /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5C1DC1F19D22E6F006527EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5D14E3D19CC98FD00650FBB /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
@@ -251,11 +255,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F54AB74819D3765D00986B52 /* libz.dylib in Frameworks */,
+				F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */,
 				F54AB74919D3766A00986B52 /* libbz2.dylib in Frameworks */,
-				F56F60FE19D385CC00A0A2E1 /* ResearchKit.framework in Frameworks */,
 				F54AB74A19D3766E00986B52 /* libarchive.dylib in Frameworks */,
-				F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */,
+				F593798B19D4C78700FEC88B /* ResearchKit.framework in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
+				F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
@@ -285,15 +290,16 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */,
-				F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */,
+				F593798519D4C76100FEC88B /* BridgeSDK.framework */,
 				F5D7489119D1F77F00EEB7DE /* libbz2.dylib */,
 				F5D7488F19D1F77800EEB7DE /* libz.dylib */,
 				F5D7488D19D1F76B00EEB7DE /* libarchive.dylib */,
+				F593798A19D4C78700FEC88B /* ResearchKit.framework */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
+				F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */,
 			);
 			name = Frameworks;
 			path = Parkinson;
@@ -618,12 +624,12 @@
 				CFC2D2D319A5417D00170E69 /* Sources */,
 				CFC2D2D419A5417D00170E69 /* Frameworks */,
 				CFC2D2D519A5417D00170E69 /* Resources */,
-				F54AB73C19D36E4900986B52 /* Embed Frameworks */,
+				F5D1A91419D4C6FC00A03465 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F54AB73B19D36E4900986B52 /* PBXTargetDependency */,
+				F5D1A91319D4C6FB00A03465 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
 			productName = Parkinson;
@@ -784,10 +790,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F54AB73B19D36E4900986B52 /* PBXTargetDependency */ = {
+		F5D1A91319D4C6FB00A03465 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APCAppleCore;
-			targetProxy = F54AB73A19D36E4900986B52 /* PBXContainerItemProxy */;
+			targetProxy = F5D1A91219D4C6FB00A03465 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -880,6 +886,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
 					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -902,6 +909,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
 					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
