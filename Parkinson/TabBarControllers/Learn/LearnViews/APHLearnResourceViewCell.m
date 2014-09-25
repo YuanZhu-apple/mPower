@@ -12,6 +12,7 @@
 @implementation APHLearnResourceViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
     [self.titleLabel setTextColor:[UIColor parkinsonBlackColor]];
     [self.descriptionLabel setTextColor:[UIColor parkinsonLightGrayColor]];

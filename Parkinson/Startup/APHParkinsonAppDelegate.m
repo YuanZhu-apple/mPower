@@ -31,31 +31,37 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 #pragma  mark  -  Initialisation Methods for Story Board Switching
 
-- (void)initialiseStoryBoardIdInfo
+- (NSArray *)storyboardIdInfo
 {
-    self.storyboardIdInfo = @[
+    if (!_storyboardIdInfo) {
+        _storyboardIdInfo = @[
                               kDashBoardStoryBoardKey,
                               kLearnStoryBoardKey,
                               kActivitiesStoryBoardKey,
                               kHealthProfileStoryBoardKey
                               ];
+    }
+    return _storyboardIdInfo;
 }
 
-- (void)setupFirstSelectedTab
+- (void)setUpTabBarController
 {
-    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
-    tabster.delegate = self;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"TabBar" bundle:[NSBundle appleCoreBundle]];
     
-    NSArray       *items = tabster.tabBar.items;
-    UITabBarItem  *selectedItem = tabster.tabBar.selectedItem;
+    UITabBarController *tabBarController = (UITabBarController *)[storyBoard instantiateInitialViewController];
+    self.window.rootViewController = tabBarController;
+    tabBarController.delegate = self;
+    
+    NSArray       *items = tabBarController.tabBar.items;
+    UITabBarItem  *selectedItem = tabBarController.tabBar.selectedItem;
     
     NSUInteger     selectedItemIndex = 0;
     if (selectedItem != nil) {
         selectedItemIndex = [items indexOfObject:selectedItem];
     }
     
-    NSArray  *controllers = tabster.viewControllers;
-    [self tabBarController:tabster didSelectViewController:controllers[selectedItemIndex]];
+    NSArray  *controllers = tabBarController.viewControllers;
+    [self tabBarController:tabBarController didSelectViewController:controllers[selectedItemIndex]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -67,8 +73,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     if (![self isLoggedIn]) {
         [self startOnBoardingProcess];
     } else {
-        [self initialiseStoryBoardIdInfo];
-        [self setupFirstSelectedTab];
+        [self setUpTabBarController];
     }
     
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
@@ -79,6 +84,31 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     [super applicationDidBecomeActive:application];
 }
 
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [super application:application didRegisterUserNotificationSettings:notificationSettings];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [super application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    [super application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
+{
+    
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    
+}
+
 /*********************************************************************************/
 #pragma mark - UITab Bar Controller Delegate Methods
 /*********************************************************************************/
@@ -86,6 +116,9 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
     if ([viewController isMemberOfClass: [UIViewController class]] == YES) {
+        
+        NSArray  *selectedImageNames = @[ @"tab_dashboard_selected", @"tab_learn_selected", @"tab_activities_selected", @"tab_profile_selected" ];
+        
         NSMutableArray  *controllers = [tabBarController.viewControllers mutableCopy];
         NSUInteger  controllerIndex = [controllers indexOfObject:viewController];
         
@@ -96,6 +129,9 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         
         UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
         [tabster setViewControllers:controllers animated:NO];
+        
+        UITabBarItem  *item = tabster.tabBar.selectedItem;
+        item.selectedImage = [UIImage imageNamed:selectedImageNames[controllerIndex]];
     }
 }
 
@@ -122,8 +158,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         [error handle];
         [self.dataSubstrate loadStaticTasksAndSchedules:dictionary];
 #ifdef TARGET_IPHONE_SIMULATOR
-        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        [self clearNSUserDefaults];
 #endif
     }
 }
@@ -149,7 +184,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
-    [self.window setRootViewController:navController];
+    self.window.rootViewController = navController;
 }
 
 - (BOOL) isLoggedIn
@@ -160,18 +195,18 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 #pragma mark - Notifications
 - (void) loginNotification:(NSNotification *)notification {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
-    UITabBarController *tabBarController = (UITabBarController *)[storyBoard instantiateInitialViewController];
-    self.window.rootViewController = tabBarController;
-    [self initialiseStoryBoardIdInfo];
-    [self setupFirstSelectedTab];
+    [self setUpTabBarController];
 }
 
 - (void) logOutNotification:(NSNotification *)notification {
+    [self clearNSUserDefaults];
+    [self startOnBoardingProcess];
+}
+
+- (void) clearNSUserDefaults
+{
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    [self startOnBoardingProcess];
 }
 
 @end
