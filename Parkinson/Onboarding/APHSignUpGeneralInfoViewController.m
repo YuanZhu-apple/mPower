@@ -140,7 +140,6 @@
 #pragma mark - UI Methods
 
 - (void) addNavigationItems {
-    self.title = NSLocalizedString(@"General Information", @"");
     
     UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(validateContent)];
     nextBarButton.enabled = [self isContentValid:nil];
@@ -148,6 +147,7 @@
 }
 
 - (void) setupProgressBar {
+    [self setStepNumber:1 title:NSLocalizedString(@"General Information", @"")];
     self.stepProgressBar.rightLabel.text = NSLocalizedString(@"Mandatory", @"");
 }
 

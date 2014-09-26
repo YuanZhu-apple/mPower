@@ -191,13 +191,15 @@
 #pragma mark - UIMethods
 
 - (void) addNavigationItems {
-    self.title = NSLocalizedString(@"Medical Information", @"");
     
     UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(signup)];
     self.navigationItem.rightBarButtonItem = nextBarButton;
 }
 
 - (void) setupProgressBar {
+    [self.stepProgressBar setCompletedSteps:0 animation:NO];
+    
+    [self setStepNumber:2 title:NSLocalizedString(@"Medical Information", @"")];
     self.stepProgressBar.rightLabel.text = NSLocalizedString(@"optional", @"");
 }
 
