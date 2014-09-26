@@ -15,9 +15,24 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 @interface APHStudyOverviewViewController ()
 
+@property (nonatomic, strong) NSArray *studyDetailsArray;
+
 @end
 
 @implementation APHStudyOverviewViewController
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self prepareContent];
+    }
+    return self;
+}
+
+- (void)prepareContent
+{
+    _studyDetailsArray = [self studyDetailsFromJSONFile:@"StudyOverview"];
+}
 
 #pragma mark - Lifecycle
 
@@ -25,6 +40,7 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.diseaseNameLabel.text = self.diseaseName;
     [self setupTable];
 }
 
@@ -45,17 +61,17 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.studyDetailsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyOverviewCellIdentifier forIndexPath:indexPath];
     
-    cell.imageView.backgroundColor = [UIColor grayColor];
-    cell.imageView.layer.cornerRadius = 3.0f;
+    APCStudyDetails *studyDetails = self.studyDetailsArray[indexPath.row];
     
-    cell.textLabel.text = @"What is this study about?";
+    cell.textLabel.text = studyDetails.title;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

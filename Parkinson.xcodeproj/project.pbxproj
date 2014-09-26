@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
 		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
+		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -130,6 +131,7 @@
 		5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHStudyOverviewViewController.m; sourceTree = "<group>"; };
 		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
+		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -359,6 +361,7 @@
 		F5D14E3F19CC991500650FBB /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				5BAC200F19D5FEC600451AAE /* StudyOverview.json */,
 				F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */,
 				F5D14E4119CC991500650FBB /* JSON_READ_ME */,
 				F5D14E4219CC991500650FBB /* sleepSurvey.json */,
@@ -714,6 +717,7 @@
 			files = (
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
+				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
 				F5D14E4519CC991500650FBB /* sleepSurvey.json in Resources */,
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
