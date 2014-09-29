@@ -141,10 +141,22 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 - (void) initializeAppleCoreStack
 {
-    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
+//    self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
+    [self initializeSBB];
     self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
     self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
     self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
+}
+
+- (void) initializeSBB
+{
+    
+    [BridgeSDK setupWithAppPrefix:@"pd"];
+    
+    // vvvvv TEMP REMOVE WHEN SAGEBRIDGE PD CERTS FIXED
+    SBBAuthManager *myAuthManager = [SBBAuthManager authManagerWithBaseURL:@"http://bridge-uat.herokuapp.com"];
+    [SBBComponentManager registerComponent:myAuthManager forClass:[SBBAuthManager class]];
+    // ^^^^^ TEMP REMOVE WHEN SAGEBRIDGE PD CERTS FIXED
 }
 
 - (void)loadStaticTasksAndSchedulesIfNecessary
