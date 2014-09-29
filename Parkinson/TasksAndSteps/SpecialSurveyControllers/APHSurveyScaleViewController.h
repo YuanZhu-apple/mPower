@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APHStepViewController.h"
+@import APCAppleCore;
 
-@interface APHSurveyScaleViewController : APHStepViewController
+@interface APHSurveyScaleViewController : APCStepViewController
 
 @end

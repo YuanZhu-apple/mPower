@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "APHStepViewController.h"
+@import APCAppleCore;
 
-@interface APHSurveyCompletionViewController : APHStepViewController
+@interface APHSurveyCompletionViewController : APCStepViewController
 
 @end
