@@ -186,6 +186,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
+    navController.navigationBar.translucent = NO;
     self.window.rootViewController = navController;
 }
 

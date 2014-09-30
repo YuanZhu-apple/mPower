@@ -7,7 +7,7 @@
 //
 
 #import "APHIntroVideoViewController.h"
-#import "APHSignupOptionsViewController.h"
+#import "APHStudyOverviewViewController.h"
 
 @interface APHIntroVideoViewController ()
 
@@ -21,9 +21,8 @@
 }
 
 - (void) skip {
-    APHSignupOptionsViewController *optionsViewController = [[APHSignupOptionsViewController alloc] initWithNibName:@"APHSignupOptionsViewController" bundle:nil];
     
-    [self.navigationController pushViewController:optionsViewController animated:YES];
+    [self.navigationController pushViewController:[APHStudyOverviewViewController new] animated:YES];
 }
 
 @end
