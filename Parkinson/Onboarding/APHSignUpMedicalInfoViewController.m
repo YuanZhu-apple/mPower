@@ -91,7 +91,6 @@
         field.detailDiscloserStyle = YES;
         field.pickerData = [APCUser heights];
         if (self.user.height) {
-//            self.user.height.
             
 //            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:split[0]]), @([field.pickerData[1] indexOfObject:split[1]]) ];
         }
@@ -182,7 +181,7 @@
 
 - (void) addNavigationItems {
     
-    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(signup)];
+    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(next)];
     self.navigationItem.rightBarButtonItem = nextBarButton;
 }
 
@@ -221,10 +220,6 @@
                 self.user.medications = [(APCTableViewCustomPickerItem *)item stringValue];
                 break;
                 
-            case APCSignUpUserInfoItemBloodType:
-//                self.user.bloodType = [APCUser bloodTypeFromStringValue:[(APCTableViewCustomPickerItem *)item stringValue]];
-                break;
-                
             case APCSignUpUserInfoItemHeight:
 //                self.user.height = [(APCTableViewCustomPickerItem *)item stringValue];
                 break;
@@ -250,10 +245,10 @@
 }
 
 - (void) signup {
+    
 #ifdef DEMO
     [self next];
 #else
-    [self loadProfileValuesInModel];
     
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
     [self presentViewController:spinnerController animated:YES completion:nil];
@@ -284,6 +279,8 @@
 }
 
 - (void) next {
+    [self loadProfileValuesInModel];
+    
     APCSignupTouchIDViewController *touchIDViewController = [[APCSignupTouchIDViewController alloc] initWithNibName:@"APCSignupTouchIDViewController" bundle:[NSBundle appleCoreBundle]];
     touchIDViewController.user = self.user;
     [self.navigationController pushViewController:touchIDViewController animated:YES];

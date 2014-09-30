@@ -129,6 +129,10 @@
     [self addHeaderView];
     [self addFooterView];
     [self setupProgressBar];
+    
+    [[[APCPermissionsManager alloc] init] requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
+        
+    }];
 }
 
 - (UIRectEdge)edgesForExtendedLayout
@@ -317,6 +321,12 @@
 }
 
 - (void) loadProfileValuesInModel {
+    
+    if (self.tableView.tableHeaderView) {
+        self.user.firstName = self.firstNameTextField.text;
+        self.user.lastName = self.lastNameTextField.text;
+    }
+    
     for (int i = 0; i < self.itemsOrder.count; i++) {
         NSNumber *order = self.itemsOrder[i];
         
