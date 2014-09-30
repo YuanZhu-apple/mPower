@@ -9,6 +9,7 @@
 @import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHIntroVideoViewController.h"
+#import "UIColor+Parkinson.h"
 
 static NSString *const kDatabaseName = @"db.sqlite";
 static NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
@@ -115,16 +116,9 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
+    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
     NSArray  *deselectedImageNames = @[ @"tab_dashboard",          @"tab_learn",          @"tab_activities",          @"tab_profile" ];
     NSArray  *selectedImageNames   = @[ @"tab_dashboard_selected", @"tab_learn_selected", @"tab_activities_selected", @"tab_profile_selected" ];
-    
-    UITabBarController  *tabster = (UITabBarController  *)self.window.rootViewController;
-    
-    for (NSUInteger  tabIndex = 0;  tabIndex < [selectedImageNames count];  tabIndex++) {
-        UITabBarItem  *item = tabster.tabBar.items[tabIndex];
-        item.image = [UIImage imageNamed:deselectedImageNames[tabIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil];
-        item.selectedImage = [UIImage imageNamed:selectedImageNames[tabIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil];
-    }
     
     if ([viewController isMemberOfClass: [UIViewController class]] == YES) {
         
@@ -137,9 +131,10 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         [controllers replaceObjectAtIndex:controllerIndex withObject:controller];
         
         [tabster setViewControllers:controllers animated:NO];
-        
+        tabster.tabBar.tintColor = [UIColor colorWithRed:0.083 green:0.651 blue:0.949 alpha:1.000];
         UITabBarItem  *item = tabster.tabBar.selectedItem;
-        item.selectedImage = [UIImage imageNamed:selectedImageNames[controllerIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil];
+        item.image = [UIImage imageNamed:deselectedImageNames[controllerIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil];
+        item.selectedImage = [[UIImage imageNamed:selectedImageNames[controllerIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
 }
 
