@@ -9,7 +9,6 @@
 @import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHIntroVideoViewController.h"
-#import "UIColor+Parkinson.h"
 
 static NSString *const kDatabaseName = @"db.sqlite";
 static NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
