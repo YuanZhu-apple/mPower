@@ -91,8 +91,11 @@
         field.detailDiscloserStyle = YES;
         field.pickerData = [APCUser heights];
         if (self.user.height) {
+            double heightInInches = [APCUser heightInInches:self.user.height];
+            NSString *feet = [NSString stringWithFormat:@"%d'", (int)heightInInches/12];
+            NSString *inches = [NSString stringWithFormat:@"%d''", (int)heightInInches%12];
             
-//            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:split[0]]), @([field.pickerData[1] indexOfObject:split[1]]) ];
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:feet]), @([field.pickerData[1] indexOfObject:inches]) ];
         }
         else {
             field.selectedRowIndices = @[ @(2), @(5) ];
@@ -108,7 +111,7 @@
         field.caption = NSLocalizedString(@"Weight", @"");
         field.placeholder = NSLocalizedString(@"lb", @"");
         field.regularExpression = kAPCMedicalInfoItemWeightRegEx;
-//        field.value = self.profile.weight.stringValue;
+        field.value = [NSString stringWithFormat:@"%.1f", [APCUser weightInPounds:self.user.weight]];
         field.keyboardType = UIKeyboardTypeNumberPad;
         field.textAlignnment = NSTextAlignmentRight;
         
