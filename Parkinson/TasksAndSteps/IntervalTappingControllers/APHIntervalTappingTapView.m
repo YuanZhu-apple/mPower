@@ -15,7 +15,7 @@ static  NSString  *kCaption = nil;
 static  NSString  *kFontName = @"Helvetica";
 static  CGFloat    kPointSize = 20.0;
 
-static  NSDictionary  *enabledAttributes = nil;
+static  NSDictionary  *enabledAttributes  = nil;
 static  NSDictionary  *disabledAttributes = nil;
 
 @implementation APHIntervalTappingTapView
@@ -83,6 +83,7 @@ static  NSDictionary  *disabledAttributes = nil;
         [[UIColor grayColor] set];
         [path stroke];
     }
+    [self drawTapCaption];
 }
 
 @end

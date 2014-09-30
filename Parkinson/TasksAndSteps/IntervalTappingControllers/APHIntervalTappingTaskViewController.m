@@ -13,7 +13,7 @@
 #import "APHIntervalTappingStepsViewController.h"
 #import "APHIntervalTappingResultsViewController.h"
 
-#import "APHCustomRecorder.h"
+#import "APHIntervalTappingRecorder.h"
 
 static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
@@ -21,7 +21,7 @@ static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
 static float tapInterval = 20.0;
 
-@interface APHIntervalTappingTaskViewController  ( ) <NSObject>
+@interface APHIntervalTappingTaskViewController  ( ) <NSObject, RKResultCollector>
 
 @end
 
@@ -29,20 +29,12 @@ static float tapInterval = 20.0;
 
 #pragma  mark  -  Initialisation
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    [super viewWillAppear:animated];
-//    [self addObserver:self forKeyPath:@"self.navigationItem.title" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
+    [super viewDidLoad];
+    self.showsProgressInNavigationBar = NO;
     self.navigationItem.title = @"Interval Tapping";
 }
-
-//- (void)observeValueForKeyPath:(NSString *)keyPath
-//                      ofObject:(id)object
-//                        change:(NSDictionary *)change
-//                       context:(void *)context
-//{
-//    NSLog(@"observeValueForKeyPath called");
-//}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -67,7 +59,7 @@ static float tapInterval = 20.0;
         step.caption = @"Button Tap";
         step.text = @"";
         step.countDown = tapInterval;
-        step.recorderConfigurations = @[[CustomRecorderConfiguration new]];
+        step.recorderConfigurations = @[[APHIntervalTappingRecorderConfiguration new]];
         [steps addObject:step];
     }
     
