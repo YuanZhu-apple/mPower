@@ -29,12 +29,12 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
         RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kPhonationStep101Key name:@"Introduction Step"];
         step.caption = @"Tests Speech Difficulties";
         step.explanation = @"";
-        step.instruction = @"In the next screen you will be asked to say \"Aaaahhh\" for 10 seconds.";
+        step.instruction = @"In the next screen you will be asked to say “Aaaahhh” for 10 seconds.";
         [steps addObject:step];
     }
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep102Key name:@"active step"];
-        step.text = @"Please say \"Aaaahhh\" for 10 seconds";
+        step.text = @"Please say “Aaaahhh” for 10 seconds";
         step.countDown = 10.0;
         step.buzz = YES;
         step.vibration = YES;

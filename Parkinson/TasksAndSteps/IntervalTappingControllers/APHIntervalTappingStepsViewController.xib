@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -10,6 +10,7 @@
                 <outlet property="countdownLabel" destination="6vd-EH-0F6" id="Cdc-SF-0gi"/>
                 <outlet property="countdownView" destination="rxQ-18-WCU" id="hvA-Uj-mwg"/>
                 <outlet property="numberOfTapsLabel" destination="XVl-gn-yCI" id="IQX-IR-Vzv"/>
+                <outlet property="progressor" destination="P5G-tB-dbI" id="eMq-VU-alo"/>
                 <outlet property="tapperLeft" destination="p4T-xI-cuR" id="4Fg-4l-E2G"/>
                 <outlet property="tapperRight" destination="nXj-f3-iZ3" id="gy6-Xt-HtQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -17,9 +18,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+            <rect key="frame" x="0.0" y="64" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5G-tB-dbI" customClass="APCStepProgressBar">
+                    <rect key="frame" x="0.0" y="46" width="320" height="5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use two fingers to alternately tap as fast as you can for 20 seconds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwk-OU-4Hb">
                     <rect key="frame" x="26" y="262" width="268" height="42"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -75,7 +80,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="-324" y="47"/>
+            <point key="canvasLocation" x="-37" y="362"/>
         </view>
     </objects>
 </document>
