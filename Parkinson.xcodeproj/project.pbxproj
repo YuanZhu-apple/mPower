@@ -41,7 +41,6 @@
 		CFB777E819D3920F002EADA1 /* APHMedsChangeMasterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB777E619D3920F002EADA1 /* APHMedsChangeMasterTableViewCell.xib */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
-		CFC2D2F419A5417D00170E69 /* ParkinsonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */; };
 		CFC5988219D21C0E00F6DF9E /* APHSurveyIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC5988019D21C0E00F6DF9E /* APHSurveyIntroViewController.m */; };
 		CFC5988319D21C0E00F6DF9E /* APHSurveyIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC5988119D21C0E00F6DF9E /* APHSurveyIntroViewController.xib */; };
 		CFC5988719D2225300F6DF9E /* APHSurveyScaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC5988519D2225300F6DF9E /* APHSurveyScaleViewController.m */; };
@@ -54,12 +53,9 @@
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
+		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
 		F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
 		F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F54AB74819D3765D00986B52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7488F19D1F77800EEB7DE /* libz.dylib */; };
-		F54AB74919D3766A00986B52 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7489119D1F77F00EEB7DE /* libbz2.dylib */; };
-		F54AB74A19D3766E00986B52 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D7488D19D1F76B00EEB7DE /* libarchive.dylib */; };
-		F56F60FE19D385CC00A0A2E1 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
@@ -214,9 +210,6 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
-		CFC2D2ED19A5417D00170E69 /* ParkinsonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinsonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFC2D2F219A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFC2D2F319A5417D00170E69 /* ParkinsonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkinsonTests.m; sourceTree = "<group>"; };
 		CFC5987F19D21C0E00F6DF9E /* APHSurveyIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSurveyIntroViewController.h; sourceTree = "<group>"; };
 		CFC5988019D21C0E00F6DF9E /* APHSurveyIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSurveyIntroViewController.m; sourceTree = "<group>"; };
 		CFC5988119D21C0E00F6DF9E /* APHSurveyIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSurveyIntroViewController.xib; sourceTree = "<group>"; };
@@ -234,7 +227,8 @@
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
 		F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHHealthProfile.storyboard; sourceTree = "<group>"; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
-		F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
+		F538D22319DB34C5008942A5 /* APHDataSubstrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDataSubstrate.h; sourceTree = "<group>"; };
+		F538D22419DB34C5008942A5 /* APHDataSubstrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDataSubstrate.m; sourceTree = "<group>"; };
 		F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5C1DC1F19D22E6F006527EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5D14E3D19CC98FD00650FBB /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
@@ -336,9 +330,6 @@
 		F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingTaskViewController.m; sourceTree = "<group>"; };
 		F5D14F3719CC9C0000650FBB /* APHParkinsonAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHParkinsonAppDelegate.h; sourceTree = "<group>"; };
 		F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHParkinsonAppDelegate.m; sourceTree = "<group>"; };
-		F5D7488D19D1F76B00EEB7DE /* libarchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.dylib; path = usr/lib/libarchive.dylib; sourceTree = SDKROOT; };
-		F5D7488F19D1F77800EEB7DE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		F5D7489119D1F77F00EEB7DE /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,10 +338,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F54AB74819D3765D00986B52 /* libz.dylib in Frameworks */,
-				F54AB74919D3766A00986B52 /* libbz2.dylib in Frameworks */,
-				F56F60FE19D385CC00A0A2E1 /* ResearchKit.framework in Frameworks */,
-				F54AB74A19D3766E00986B52 /* libarchive.dylib in Frameworks */,
 				F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
@@ -382,11 +369,7 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F56F60FD19D385CC00A0A2E1 /* ResearchKit.framework */,
 				F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */,
-				F5D7489119D1F77F00EEB7DE /* libbz2.dylib */,
-				F5D7488F19D1F77800EEB7DE /* libz.dylib */,
-				F5D7488D19D1F76B00EEB7DE /* libarchive.dylib */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
@@ -757,6 +740,8 @@
 				F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */,
 				F5D14F3719CC9C0000650FBB /* APHParkinsonAppDelegate.h */,
 				F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */,
+				F538D22319DB34C5008942A5 /* APHDataSubstrate.h */,
+				F538D22419DB34C5008942A5 /* APHDataSubstrate.m */,
 			);
 			path = Startup;
 			sourceTree = "<group>";
@@ -912,6 +897,7 @@
 				F5D14E8D19CC9B8100650FBB /* APHUserInfoCell.m in Sources */,
 				F5D14F2A19CC9BC900650FBB /* APHSleepQualityTaskViewController.m in Sources */,
 				F5D14E8A19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m in Sources */,
+				F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */,
 				F5D14E8B19CC9B8100650FBB /* APHSignupOptionsViewController.m in Sources */,
 				F5D14ECD19CC9B9100650FBB /* APHLearnResourceViewCell.m in Sources */,
 				CFB777A119D35D57002EADA1 /* APHSurveyTimeOnlyViewController.m in Sources */,
@@ -962,11 +948,9 @@
 				CFB3EFC319D47BD000B7FA70 /* APHSurveyManualSleepLogViewController.m in Sources */,
 				CFB7779219D3358B002EADA1 /* APHSurveyCompletionViewController.m in Sources */,
 				CFB777D819D386E7002EADA1 /* APHSurveyDateAndTimeViewController.m in Sources */,
-				F5D14F1919CC9BC900650FBB /* APHSetupTaskViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
 				CFB7779C19D34BB0002EADA1 /* APHSurveyDateOnlyViewController.m in Sources */,
 				CFC5989119D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.m in Sources */,
-				F5D14EBA19CC9B9100650FBB /* APHActivitiesTableViewCell.m in Sources */,
 				F5D14F2819CC9BC900650FBB /* APHSleepQualityOverviewViewController.m in Sources */,
 				F5D14EBD19CC9B9100650FBB /* APHEditSectionsViewController.m in Sources */,
 				F5D14EBC19CC9B9100650FBB /* APHActivitiesViewController.m in Sources */,

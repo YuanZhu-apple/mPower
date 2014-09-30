@@ -8,6 +8,7 @@
 
 @import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
+#import "APHDataSubstrate.h"
 #import "APHIntroVideoViewController.h"
 
 static NSString *const kDatabaseName = @"db.sqlite";
@@ -144,7 +145,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 - (void) initializeAppleCoreStack
 {
     self.networkManager = [[APCSageNetworkManager alloc] initWithBaseURL:kBaseURL];
-    self.dataSubstrate = [[APCDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
+    self.dataSubstrate = [[APHDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
     self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
     self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
 }
