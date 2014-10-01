@@ -58,27 +58,27 @@ static NSString *const kLoggedInKey = @"LoggedIn";
         APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
         [self presentViewController:spinnerController animated:YES completion:nil];
         
-        APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
-        
-        [networkManager signIn:self.userHandleTextField.text password:self.passwordTextField.text success:^(NSURLSessionDataTask *task, id responseObject) {
-            [NSObject performInMainThread:^{
-                [spinnerController dismissViewControllerAnimated:YES completion:nil];
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLoggedInKey];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
-            }];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-             [NSObject performInMainThread:^{
-                [spinnerController dismissViewControllerAnimated:YES completion:nil];
-                 
-                 if (error.code == kAPCServerPreconditionNotMet) {
-                     [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
-                 }
-                 else {
-                     [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign In", @"") message:error.message];
-                 }
-             }];
-        }];
+//        APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
+//        
+//        [networkManager signIn:self.userHandleTextField.text password:self.passwordTextField.text success:^(NSURLSessionDataTask *task, id responseObject) {
+//            [NSObject performInMainThread:^{
+//                [spinnerController dismissViewControllerAnimated:YES completion:nil];
+//                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLoggedInKey];
+//                [[NSUserDefaults standardUserDefaults] synchronize];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
+//            }];
+//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//             [NSObject performInMainThread:^{
+//                [spinnerController dismissViewControllerAnimated:YES completion:nil];
+//                 
+//                 if (error.code == kAPCServerPreconditionNotMet) {
+//                     [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)APCUserLoginNotification object:nil];
+//                 }
+//                 else {
+//                     [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign In", @"") message:error.message];
+//                 }
+//             }];
+//        }];
     }
     else {
         [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign In", @"") message:errorMessage];
