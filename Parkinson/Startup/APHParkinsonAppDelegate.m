@@ -182,6 +182,8 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 }
 
 - (void) startOnBoardingProcess {
+    
+    
     NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
     
     APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import APCAppleCore;
 
 static NSString * const kDashboardSectionsOrder = @"DashboardSectionsOrderKey";
 

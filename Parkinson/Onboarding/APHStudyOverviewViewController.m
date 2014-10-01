@@ -41,6 +41,7 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     // Do any additional setup after loading the view.
     
     self.diseaseNameLabel.text = self.diseaseName;
+    self.logoImageView.image = [UIImage imageNamed:@"logo_research_institute"];
     [self setupTable];
 }
 

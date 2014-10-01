@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-@import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHSignInViewController.h"
 
