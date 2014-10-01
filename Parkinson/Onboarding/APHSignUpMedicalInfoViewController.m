@@ -9,7 +9,7 @@
 #import "APHSignUpMedicalInfoViewController.h"
 
 
-#define DEMO    1
+#define DEMO    0
 
 
 @interface APHSignUpMedicalInfoViewController ()

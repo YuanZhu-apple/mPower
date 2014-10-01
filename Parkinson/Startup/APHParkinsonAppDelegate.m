@@ -9,6 +9,7 @@
 @import APCAppleCore;
 #import "APHParkinsonAppDelegate.h"
 #import "APHDataSubstrate.h"
+#import "APHStudyOverviewViewController.h"
 #import "APHIntroVideoViewController.h"
 
 static NSString *const kDatabaseName = @"db.sqlite";
@@ -16,6 +17,8 @@ static NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
 static NSString *const kBaseURL = @"http://pd-staging.sagebridge.org/api/v1/";
 static NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 static NSString *const kLoggedInKey = @"LoggedIn";
+static NSString *const kSignedUpKey = @"SignedUp";
+static NSString *const kVideoShownKey = @"VideoShown";
 
 static NSString *const kDashBoardStoryBoardKey     = @"APHDashboard";
 static NSString *const kLearnStoryBoardKey         = @"APHLearn";
@@ -176,18 +179,33 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 #pragma mark - Private Methods
 
 - (void) registerNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginNotification:) name:(NSString *)APCUserLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedUpNotification:) name:(NSString *)APCUserSignedUpNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedInNotification:) name:(NSString *)APCUserSignedInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logOutNotification:) name:(NSString *)APCUserLogOutNotification object:nil];
 }
 
-- (void) startOnBoardingProcess {
+- (void) startOnBoardingProcess
+{
+    if ([self isVideoShown]) {
+        [self showStudyOverview];
+    }
+    else
+    {
+        NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
+        
+        APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
+        navController.navigationBar.translucent = NO;
+        self.window.rootViewController = navController;
+    }
+}
+
+- (void) showStudyOverview
+{
+    APHStudyOverviewViewController *studyController = [APHStudyOverviewViewController new];
     
-    
-    NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
-    
-    APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:studyController];
     navController.navigationBar.translucent = NO;
     self.window.rootViewController = navController;
 }
@@ -197,10 +215,29 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     return [[NSUserDefaults standardUserDefaults] boolForKey:kLoggedInKey];
 }
 
+- (BOOL) isSignedUp
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSignedUpKey];
+}
+
+- (BOOL) isVideoShown
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
+}
 
 #pragma mark - Notifications
-- (void) loginNotification:(NSNotification *)notification {
+- (void) signedInNotification:(NSNotification *)notification {
     [self setUpTabBarController];
+}
+
+- (void) signedUpNotification: (NSNotification*) notification
+{
+    [self showStudyOverview];
+    
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Verify Email", @"Verify Email") message:NSLocalizedString(@"Please login to your email and confirm your email address." , @"Please login to your email and confirm your email address.") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL];
+    [alert addAction:defaultAction];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void) logOutNotification:(NSNotification *)notification {
