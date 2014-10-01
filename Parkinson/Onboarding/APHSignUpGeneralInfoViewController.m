@@ -15,6 +15,8 @@
 
 @interface APHSignUpGeneralInfoViewController ()
 
+@property (nonatomic, strong) APCPermissionsManager *permissionManager;
+
 @end
 
 @implementation APHSignUpGeneralInfoViewController
@@ -132,7 +134,8 @@
     
 
     //TODO: This permission request is temporary. Remove later.
-    [[[APCPermissionsManager alloc] init] requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
+    self.permissionManager = [[APCPermissionsManager alloc] init];
+    [self.permissionManager requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
         if (granted) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self prepareFields];
