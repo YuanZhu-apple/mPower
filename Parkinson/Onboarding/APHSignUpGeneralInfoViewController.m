@@ -10,7 +10,7 @@
 #import "APHSignUpMedicalInfoViewController.h"
 #import "APHUserInfoCell.h"
 
-#define DEMO 1
+#define DEMO 0
 
 
 @interface APHSignUpGeneralInfoViewController ()
@@ -130,9 +130,17 @@
     [self addFooterView];
     [self setupProgressBar];
     
+
+    //TODO: This permission request is temporary. Remove later.
     [[[APCPermissionsManager alloc] init] requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
-        
+        if (granted) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self prepareFields];
+                [self.tableView reloadData];
+            });
+        }
     }];
+
 }
 
 - (UIRectEdge)edgesForExtendedLayout

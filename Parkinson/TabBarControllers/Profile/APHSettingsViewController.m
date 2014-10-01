@@ -70,6 +70,9 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
     [super addHeaderView];
     
     [self.profileImageButton setImage:[UIImage imageNamed:@"img_user_placeholder"] forState:UIControlStateNormal];
+    
+    self.firstNameTextField.text = self.user.firstName;
+    self.lastNameTextField.text = self.user.lastName;
 }
 
 - (void) addFooterView {
@@ -203,7 +206,7 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
         field.pickerData = @[ [APCUser medications] ];
         
         if (self.user.medications) {
-            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:self.user.medicalConditions]) ];
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:self.user.medications]) ];
         }
         else {
             field.selectedRowIndices = @[ @(0) ];
@@ -234,8 +237,11 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
         field.detailDiscloserStyle = YES;
         field.pickerData = [APCUser heights];
         if (self.user.height) {
-//            NSArray *split = [self.user.height componentsSeparatedByString:@" "];
-//            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:split[0]]), @([field.pickerData[1] indexOfObject:split[1]]) ];
+            double heightInInches = [APCUser heightInInches:self.user.height];
+            NSString *feet = [NSString stringWithFormat:@"%d'", (int)heightInInches/12];
+            NSString *inches = [NSString stringWithFormat:@"%d''", (int)heightInInches%12];
+            
+            field.selectedRowIndices = @[ @([field.pickerData[0] indexOfObject:feet]), @([field.pickerData[1] indexOfObject:inches]) ];
         }
         else {
             field.selectedRowIndices = @[ @(2), @(5) ];
@@ -251,7 +257,7 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
         field.caption = NSLocalizedString(@"Weight", @"");
         field.placeholder = NSLocalizedString(@"lb", @"");
         field.regularExpression = kAPHMedicalInfoItemWeightRegEx;
-//        field.value = self.user.weight;
+        field.value = [NSString stringWithFormat:@"%.1f", [APCUser weightInPounds:self.user.weight]];;
         field.keyboardType = UIKeyboardTypeNumberPad;
         field.textAlignnment = NSTextAlignmentRight;
         
