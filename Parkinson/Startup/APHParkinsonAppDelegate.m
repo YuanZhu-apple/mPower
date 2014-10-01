@@ -146,7 +146,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 {
     self.dataSubstrate = [[APHDataSubstrate alloc] initWithPersistentStorePath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDatabaseName] additionalModels: nil studyIdentifier:kParkinsonIdentifier];
     self.scheduler = [[APCScheduler alloc] initWithDataSubstrate:self.dataSubstrate];
-    self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate networkManager:(APCSageNetworkManager*)self.networkManager scheduler:self.scheduler];
+    self.dataMonitor = [[APCDataMonitor alloc] initWithDataSubstrate:self.dataSubstrate scheduler:self.scheduler];
 }
 
 - (void)loadStaticTasksAndSchedulesIfNecessary
