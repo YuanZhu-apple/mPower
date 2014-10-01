@@ -14,8 +14,6 @@
 
 @implementation APHSpecialSurveyTaskViewController
 
-#pragma  mark  -  View Controller Methods
-
 #pragma  mark  -  Initialisation
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
@@ -29,6 +27,8 @@
     self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
     return self;
 }
+
+#pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad
 {

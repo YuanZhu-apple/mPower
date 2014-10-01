@@ -42,4 +42,14 @@
     [self.navigationController pushViewController:signInViewController animated:YES];
 }
 
+- (UIRectEdge)edgesForExtendedLayout
+{
+    return UIRectEdgeNone;
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets
+{
+    return NO;
+}
+
 @end
