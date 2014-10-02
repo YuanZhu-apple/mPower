@@ -28,7 +28,7 @@
 {
     self = [super init];
     if (self) {
-        self.user = [APCUser new];
+        self.user = ((APCAppDelegate*) [UIApplication sharedApplication].delegate).dataSubstrate.currentUser;
         self.itemsOrder = [NSMutableArray new];
         
         [self prepareFields];
@@ -211,7 +211,7 @@
 - (void) configurableCell:(APCUserInfoCell *)cell switchValueChanged:(BOOL)isOn {
     [super configurableCell:cell switchValueChanged:isOn];
     
-#ifdef DEMO
+#if DEMO
     self.navigationItem.rightBarButtonItem.enabled = YES;
 #else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
@@ -221,7 +221,7 @@
 - (void) configurableCell:(APCUserInfoCell *)cell segmentIndexChanged:(NSUInteger)index {
     [super configurableCell:cell segmentIndexChanged:index];
     
-#ifdef DEMO
+#if DEMO
     self.navigationItem.rightBarButtonItem.enabled = YES;
 #else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
@@ -231,7 +231,7 @@
 - (void) configurableCell:(APCUserInfoCell *)cell dateValueChanged:(NSDate *)date {
     [super configurableCell:cell dateValueChanged:date];
     
-#ifdef DEMO
+#if DEMO
     self.navigationItem.rightBarButtonItem.enabled = YES;
 #else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
@@ -240,7 +240,7 @@
 
 - (void) configurableCell:(APCUserInfoCell *)cell customPickerValueChanged:(NSArray *)selectedRowIndices {
     [super configurableCell:cell customPickerValueChanged:selectedRowIndices];
-#ifdef DEMO
+#if DEMO
     self.navigationItem.rightBarButtonItem.enabled = YES;
 #else
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
@@ -260,7 +260,7 @@
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
 
-#ifdef DEMO
+#if DEMO
     return YES;
 #else
     BOOL isContentValid = [super isContentValid:errorMessage];

@@ -249,35 +249,35 @@
 
 - (void) signup {
     
-#ifdef DEMO
+#if DEMO
     [self next];
 #else
     
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
     [self presentViewController:spinnerController animated:YES completion:nil];
     
-    typeof(self) __weak weakSelf = self;
+//    typeof(self) __weak weakSelf = self;
     
-    APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
-    [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
-        [NSObject performInMainThread:^{
-            [spinnerController dismissViewControllerAnimated:NO completion:^{
-                [self next];
-            }];
-        }];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [NSObject performInMainThread:^{
-            [spinnerController dismissViewControllerAnimated:YES completion:nil];
-            
-            if (error.code == kAPCServerPreconditionNotMet) {
-                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User account successfully created waiting for consent.", @"")];
-                [weakSelf next];
-            }
-            else {
-                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.message];
-            }
-        }];
-    }];
+//    APCSageNetworkManager *networkManager = (APCSageNetworkManager *)[(APHParkinsonAppDelegate *)[[UIApplication sharedApplication] delegate] networkManager];
+//    [networkManager signUp:self.profile.email username:self.profile.userName password:self.profile.password success:^(NSURLSessionDataTask *task, id responseObject) {
+//        [NSObject performInMainThread:^{
+//            [spinnerController dismissViewControllerAnimated:NO completion:^{
+//                [self next];
+//            }];
+//        }];
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        [NSObject performInMainThread:^{
+//            [spinnerController dismissViewControllerAnimated:YES completion:nil];
+//            
+//            if (error.code == kAPCServerPreconditionNotMet) {
+//                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:NSLocalizedString(@"User account successfully created waiting for consent.", @"")];
+//                [weakSelf next];
+//            }
+//            else {
+//                [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"Sign Up", @"") message:error.message];
+//            }
+//        }];
+//    }];
 #endif
 }
 

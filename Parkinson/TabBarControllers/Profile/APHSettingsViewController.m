@@ -96,7 +96,7 @@ static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a"
 
 - (APCUser *) user {
     if (!_user) {
-        _user = [APCUser new];
+        _user = ((APCAppDelegate*) [UIApplication sharedApplication].delegate).dataSubstrate.currentUser;
     }
     
     return _user;
