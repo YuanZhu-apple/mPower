@@ -16,6 +16,7 @@
 @interface APHSignUpGeneralInfoViewController ()
 
 @property (nonatomic, strong) APCPermissionsManager *permissionManager;
+@property (nonatomic) BOOL permissionGranted;
 
 @end
 
@@ -45,7 +46,6 @@
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Username", @"");
         field.placeholder = NSLocalizedString(@"Add Username", @"");
-        field.value = self.user.userName;
         field.keyboardType = UIKeyboardTypeDefault;
         field.returnKeyType = UIReturnKeyNext;
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -61,7 +61,6 @@
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Password", @"");
         field.placeholder = NSLocalizedString(@"Add Password", @"");
-//        field.value = self.profile.password;
         field.secure = YES;
         field.keyboardType = UIKeyboardTypeDefault;
         field.returnKeyType = UIReturnKeyNext;
@@ -78,7 +77,6 @@
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Email", @"");
         field.placeholder = NSLocalizedString(@"Add Email Address", @"");
-        field.value = self.user.email;
         field.keyboardType = UIKeyboardTypeEmailAddress;
         field.returnKeyType = UIReturnKeyNext;
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -95,7 +93,9 @@
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Birthdate", @"");
         field.placeholder = NSLocalizedString(@"MMMM DD, YYYY", @"");
-        field.date = self.user.birthDate;
+        if (self.permissionGranted) {
+            field.date = self.user.birthDate;
+        }
         field.datePickerMode = UIDatePickerModeDate;
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         
@@ -108,7 +108,9 @@
         APCTableViewSegmentItem *field = [APCTableViewSegmentItem new];
         field.style = UITableViewCellStyleValue1;
         field.segments = [APCUser sexTypesInStringValue];
-        field.selectedIndex = [APCUser stringIndexFromSexType:self.user.biologicalSex];
+        if (self.permissionGranted) {
+            field.selectedIndex = [APCUser stringIndexFromSexType:self.user.biologicalSex];
+        }
         field.identifier = NSStringFromClass([APCTableViewSegmentItem class]);
         
         [items addObject:field];
@@ -138,6 +140,7 @@
     [self.permissionManager requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
         if (granted) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                self.permissionGranted = YES;
                 [self prepareFields];
                 [self.tableView reloadData];
             });
