@@ -19,6 +19,7 @@ static NSString *const kTasksAndSchedulesJSONFileName = @"APHTasksAndSchedules";
 static NSString *const kLoggedInKey = @"LoggedIn";
 static NSString *const kSignedUpKey = @"SignedUp";
 static NSString *const kVideoShownKey = @"VideoShown";
+static NSString *const kPasswordPropertyName = @"password";
 
 static NSString *const kDashBoardStoryBoardKey     = @"APHDashboard";
 static NSString *const kLearnStoryBoardKey         = @"APHLearn";
@@ -233,16 +234,12 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 - (void) signedUpNotification: (NSNotification*) notification
 {
-    [self showStudyOverview];
-    
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Verify Email", @"Verify Email") message:NSLocalizedString(@"Please login to your email and confirm your email address." , @"Please login to your email and confirm your email address.") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL];
-    [alert addAction:defaultAction];
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [self setUpTabBarController];
 }
 
 - (void) logOutNotification:(NSNotification *)notification {
-    [self clearNSUserDefaults];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLoggedInKey];
+    [APCKeychainStore removeValueForKey:kPasswordPropertyName];
     [self startOnBoardingProcess];
 }
 

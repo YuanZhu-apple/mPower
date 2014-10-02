@@ -160,7 +160,10 @@
     
     UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(validateContent)];
     nextBarButton.enabled = [self isContentValid:nil];
-    self.navigationItem.rightBarButtonItem = nextBarButton;
+    //TODO: Remove secret button for production
+    UIBarButtonItem *secretBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@" ", @"") style:UIBarButtonItemStylePlain target:self action:@selector(secretButton)];
+    self.navigationItem.rightBarButtonItems = @[nextBarButton, secretBarButton];
+    
 }
 
 - (void) setupProgressBar {
@@ -276,12 +279,15 @@
             APCTableViewItem *item = self.items[i];
             
             switch (order.integerValue) {
+                    //TODO: Enable it for production
+                    /*
                 case APCSignUpUserInfoItemUserName:
                     isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemUserNameRegEx];
                     if (errorMessage) {
                         *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
                     }
                     break;
+                     */
                     
                 case APCSignUpUserInfoItemPassword:
                     if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
@@ -305,14 +311,6 @@
                     
                     if (errorMessage) {
                         *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
-                    }
-                    break;
-                    
-                case APCSignUpUserInfoItemDateOfBirth:
-                    isContentValid = ([(APCTableViewDatePickerItem *)item date] != nil);
-                    
-                    if (errorMessage) {
-                        *errorMessage = NSLocalizedString(@"Please give your Date of Birth", @"");
                     }
                     break;
                     
@@ -378,6 +376,41 @@
     }
     else {
         [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:message];
+    }
+}
+
+- (void) secretButton
+{
+    NSUInteger randomInteger = arc4random();
+    self.firstNameTextField.text = @"Test";
+    self.lastNameTextField.text = [NSString stringWithFormat:@"%@", @(randomInteger)];
+    
+    for (int i = 0; i < self.itemsOrder.count; i++) {
+        NSNumber *order = self.itemsOrder[i];
+        
+        APCTableViewTextFieldItem *item = self.items[i];
+        
+        switch (order.integerValue) {
+            case APCSignUpUserInfoItemUserName:
+                item.value = [NSString stringWithFormat:@"test_%@", @(randomInteger)];
+                break;
+                
+            case APCSignUpUserInfoItemPassword:
+                item.value = @"Password123";
+                break;
+                
+            case APCSignUpUserInfoItemEmail:
+                item.value = [NSString stringWithFormat:@"dhanush.balachandran+%@@ymedialabs.com", @(randomInteger)];
+                break;
+                
+            default:
+            {
+                //Do nothing for some types
+            }
+                break;
+        }
+        [self.tableView reloadData];
+        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
     }
 }
 
