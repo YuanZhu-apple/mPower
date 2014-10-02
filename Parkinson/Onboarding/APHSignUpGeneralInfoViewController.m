@@ -349,7 +349,7 @@
                 break;
                 
             case APCSignUpUserInfoItemPassword:
-//                self.user.password = [(APCTableViewTextFieldItem *)item value];
+                self.user.password = [(APCTableViewTextFieldItem *)item value];
                 break;
                 
             case APCSignUpUserInfoItemEmail:

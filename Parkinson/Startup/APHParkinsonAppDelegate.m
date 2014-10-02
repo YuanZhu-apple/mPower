@@ -164,6 +164,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
         [self.dataSubstrate loadStaticTasksAndSchedules:dictionary];
 #ifdef TARGET_IPHONE_SIMULATOR
         [self clearNSUserDefaults];
+        [APCKeychainStore resetKeyChain];
 #endif
     }
 }
