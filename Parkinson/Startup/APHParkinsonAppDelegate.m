@@ -71,6 +71,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initializeBridgeServerConnection];
     [self initializeAppleCoreStack];
     [self loadStaticTasksAndSchedulesIfNecessary];
     [self registerNotifications];
@@ -145,6 +146,16 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 /*********************************************************************************/
 #pragma mark - Helpers
 /*********************************************************************************/
+
+- (void) initializeBridgeServerConnection
+{
+    [BridgeSDK setupWithAppPrefix:@"pd"];
+    
+    // vvvvv TEMP REMOVE WHEN SAGEBRIDGE PD CERTS FIXED
+    SBBAuthManager *myAuthManager = [SBBAuthManager authManagerWithBaseURL:@"http://bridge-uat.herokuapp.com"];
+    [SBBComponentManager registerComponent:myAuthManager forClass:[SBBAuthManager class]];
+    // ^^^^^ TEMP REMOVE WHEN SAGEBRIDGE PD CERTS FIXED
+}
 
 - (void) initializeAppleCoreStack
 {
