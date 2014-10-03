@@ -10,6 +10,7 @@
 		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
 		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
+		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -49,6 +50,10 @@
 		CFC5988D19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC5988B19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib */; };
 		CFC5989119D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC5988F19D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.m */; };
 		CFC5989219D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC5989019D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib */; };
+		CFEBFD1419DDF44100CCD3E9 /* interval.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */; };
+		CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */; };
+		CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */; };
+		CFEBFD1719DDF44100CCD3E9 /* interval.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
@@ -163,6 +168,8 @@
 		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
+		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
+		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -222,6 +229,10 @@
 		CFC5988E19D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSurveyMultiChoiceViewController.h; sourceTree = "<group>"; };
 		CFC5988F19D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSurveyMultiChoiceViewController.m; sourceTree = "<group>"; };
 		CFC5989019D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSurveyMultiChoiceViewController.xib; sourceTree = "<group>"; };
+		CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.01@2x.png"; path = "IntervalTappingImages/interval.instructions.01@2x.png"; sourceTree = "<group>"; };
+		CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.02@2x.png"; path = "IntervalTappingImages/interval.instructions.02@2x.png"; sourceTree = "<group>"; };
+		CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.03@2x.png"; path = "IntervalTappingImages/interval.instructions.03@2x.png"; sourceTree = "<group>"; };
+		CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.04@2x.png"; path = "IntervalTappingImages/interval.instructions.04@2x.png"; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
 		F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHDashboard.storyboard; sourceTree = "<group>"; };
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
@@ -352,6 +363,7 @@
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFEBFD0619DDF0C700CCD3E9 /* Interval Tapping Images */,
 				F5D14E3F19CC991500650FBB /* JSONs */,
 				255D2F4A19C40F25002137F1 /* Videos */,
 			);
@@ -419,6 +431,17 @@
 				CFC2D2DC19A5417D00170E69 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFEBFD0619DDF0C700CCD3E9 /* Interval Tapping Images */ = {
+			isa = PBXGroup;
+			children = (
+				CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */,
+				CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */,
+				CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */,
+				CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */,
+			);
+			name = "Interval Tapping Images";
 			sourceTree = "<group>";
 		};
 		F5B4211319D23A1200F9CD69 /* Products */ = {
@@ -602,6 +625,8 @@
 				F5D14EEB19CC9BC900650FBB /* APHIntervalTappingResultsViewController.h */,
 				F5D14EEC19CC9BC900650FBB /* APHIntervalTappingResultsViewController.m */,
 				F5D14EED19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib */,
+				CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */,
+				CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */,
 				F5D14EF119CC9BC900650FBB /* APHIntervalTappingTapView.h */,
 				F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */,
 				F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */,
@@ -840,6 +865,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */,
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
@@ -859,6 +885,7 @@
 				CFB777DE19D38BD7002EADA1 /* APHSurveyTimeIntervalViewController.xib in Resources */,
 				CFC5988319D21C0E00F6DF9E /* APHSurveyIntroViewController.xib in Resources */,
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,
+				CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */,
 				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
 				F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */,
 				F5D14F3019CC9BC900650FBB /* APHWalkingOverviewViewController.xib in Resources */,
@@ -867,11 +894,13 @@
 				F5D14F2D19CC9BC900650FBB /* APHTracingObjectsOverviewViewController.xib in Resources */,
 				CFC5988D19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib in Resources */,
 				CFB7778C19D32A20002EADA1 /* APHSurveyBooleanChoiceViewController.xib in Resources */,
+				CFEBFD1719DDF44100CCD3E9 /* interval.instructions.04@2x.png in Resources */,
 				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				CFC5989219D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib in Resources */,
 				F5D14ECF19CC9B9100650FBB /* APHSettingsTableFooterView.xib in Resources */,
+				CFEBFD1419DDF44100CCD3E9 /* interval.instructions.01@2x.png in Resources */,
 				F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */,
 				F5D14F2519CC9BC900650FBB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */,
@@ -914,6 +943,7 @@
 				F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */,
 				F5D14ED019CC9B9100650FBB /* APHSettingsViewController.m in Sources */,
 				5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */,
+				CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */,
 				F5D14F3119CC9BC900650FBB /* APHWalkingResultsViewController.m in Sources */,
 				F5D14F2B19CC9BC900650FBB /* APHSpecialSurveyTaskViewController.m in Sources */,
 				CFB7779719D34803002EADA1 /* APHSurveyInputResponseViewController.m in Sources */,
