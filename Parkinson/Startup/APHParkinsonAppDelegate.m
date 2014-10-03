@@ -53,10 +53,16 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     //Give chance for super to initialize AppleCore before doing app specific stuff
     BOOL returnValue = [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    if (![self isLoggedIn]) {
-        [self showOnBoardingProcess];
-    } else {
+    if (self.dataSubstrate.currentUser.isSignedIn) {
         [self showTabBarController];
+    }
+    else if (self.dataSubstrate.currentUser.isSignedUp)
+    {
+        [self showVerifyEmailViewController];
+    }
+    else
+    {
+        [self showOnBoardingProcess];
     }
     
     return returnValue;
@@ -74,16 +80,25 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     {
         NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
         APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:introVideoController];
-        navController.navigationBar.translucent = NO;
-        self.window.rootViewController = navController;
+        [self setUpRootViewController:introVideoController];
     }
 }
 
 - (void) showStudyOverview
 {
     APHStudyOverviewViewController *studyController = [APHStudyOverviewViewController new];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:studyController];
+    [self setUpRootViewController:studyController];
+}
+
+- (void) showVerifyEmailViewController
+{
+    APCEmailVerifyViewController * viewController = (APCEmailVerifyViewController*)[[UIStoryboard storyboardWithName:@"APCEmailVerify" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+    [self setUpRootViewController:viewController];
+}
+
+- (void) setUpRootViewController: (UIViewController*) viewController
+{
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navController.navigationBar.translucent = NO;
     self.window.rootViewController = navController;
 }
@@ -156,19 +171,19 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 /*********************************************************************************/
 #pragma mark - Overridden Notification Methods
 /*********************************************************************************/
-- (void) signedInNotification:(NSNotification *)notification
+- (void) signedUpNotification: (NSNotification*) notification
+{
+    [super signedUpNotification:notification];
+    [self showVerifyEmailViewController];
+}
+
+- (void) signedInNotification:(NSNotification*) notification
 {
     [super signedInNotification:notification];
     [self showTabBarController];
 }
 
-- (void) signedUpNotification: (NSNotification*) notification
-{
-    [super signedUpNotification:notification];
-    [self showTabBarController];
-}
-
-- (void) logOutNotification:(NSNotification *)notification
+- (void) logOutNotification:(NSNotification*) notification
 {
     [super logOutNotification:notification];
     [self showOnBoardingProcess];
