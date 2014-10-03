@@ -9,8 +9,6 @@
 #import "APHParkinsonAppDelegate.h"
 #import "APHSignInViewController.h"
 
-static NSString *const kLoggedInKey = @"LoggedIn";
-
 @interface APHSignInViewController ()
 
 @end
