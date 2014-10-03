@@ -56,8 +56,6 @@
 		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
 		F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; };
 		F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
-		F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C11A2E19DCBE95003278FF /* APCParameters.json */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
@@ -68,8 +66,6 @@
 		F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */; };
 		F5D14E8919CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */; };
 		F5D14E8A19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */; };
-		F5D14E8B19CC9B8100650FBB /* APHSignupOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */; };
-		F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */; };
 		F5D14E8D19CC9B8100650FBB /* APHUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */; };
 		F5D14EBC19CC9B9100650FBB /* APHActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E9519CC9B9100650FBB /* APHActivitiesViewController.m */; };
 		F5D14EBD19CC9B9100650FBB /* APHEditSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E9819CC9B9100650FBB /* APHEditSectionsViewController.m */; };
@@ -252,9 +248,6 @@
 		F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpGeneralInfoViewController.m; sourceTree = "<group>"; };
 		F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpMedicalInfoViewController.h; sourceTree = "<group>"; };
 		F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpMedicalInfoViewController.m; sourceTree = "<group>"; };
-		F5D14E8019CC9B8100650FBB /* APHSignupOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignupOptionsViewController.h; sourceTree = "<group>"; };
-		F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignupOptionsViewController.m; sourceTree = "<group>"; };
-		F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSignupOptionsViewController.xib; sourceTree = "<group>"; };
 		F5D14E8319CC9B8100650FBB /* APHUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoCell.h; sourceTree = "<group>"; };
 		F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHUserInfoCell.m; sourceTree = "<group>"; };
 		F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoConstants.h; sourceTree = "<group>"; };
@@ -469,9 +462,6 @@
 				F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */,
 				F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */,
 				F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */,
-				F5D14E8019CC9B8100650FBB /* APHSignupOptionsViewController.h */,
-				F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */,
-				F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */,
 				F5D14E8319CC9B8100650FBB /* APHUserInfoCell.h */,
 				F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */,
 				F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */,
@@ -881,7 +871,6 @@
 				CFC5988D19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				CFB7778C19D32A20002EADA1 /* APHSurveyBooleanChoiceViewController.xib in Resources */,
-				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				CFC5989219D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib in Resources */,
@@ -912,7 +901,6 @@
 				F5D14F2A19CC9BC900650FBB /* APHSleepQualityTaskViewController.m in Sources */,
 				F5D14E8A19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m in Sources */,
 				F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */,
-				F5D14E8B19CC9B8100650FBB /* APHSignupOptionsViewController.m in Sources */,
 				F5D14ECD19CC9B9100650FBB /* APHLearnResourceViewCell.m in Sources */,
 				CFB777A119D35D57002EADA1 /* APHSurveyTimeOnlyViewController.m in Sources */,
 				CFB3EFC819D48DE600B7FA70 /* APHCommonPickerViewController.m in Sources */,
