@@ -74,7 +74,7 @@ static  NSString  *kMedicationsStep101Key = @"Medications Step 101";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.continueButtonOnToolbar = NO;
+
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
