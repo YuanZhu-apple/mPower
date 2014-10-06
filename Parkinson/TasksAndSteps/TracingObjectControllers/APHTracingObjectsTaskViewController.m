@@ -99,7 +99,7 @@ static  NSString  *kTracingObjectsStep101Key = @"Tracing Objects Step 101";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.continueButtonOnToolbar = NO;
+
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
