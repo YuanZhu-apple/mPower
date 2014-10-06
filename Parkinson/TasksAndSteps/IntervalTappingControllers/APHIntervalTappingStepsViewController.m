@@ -167,15 +167,6 @@ static  NSString  *kMimeTypeForResults   = @"application/json";
     [self.view addSubview:bar];
     self.progressor = bar;
     
-//    {
-//        UINavigationBar  *nb = self.taskViewController.navigationBar;
-//        CGRect  barFrame = nb.frame;
-//        CGRect  frame = CGRectMake(0.0, CGRectGetHeight(barFrame) - 10.0, CGRectGetWidth(barFrame), 10.0);
-//        UIView  *view = [[UIView alloc] initWithFrame:frame];
-//        view.backgroundColor = [UIColor magentaColor];
-//        [nb addSubview:view];
-//    }
-    
     [self setupDisplay:CountingTapsStateIsNotCounting];
     
     RKActiveStep  *step = (RKActiveStep *)self.step;
