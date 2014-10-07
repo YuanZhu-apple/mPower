@@ -75,8 +75,8 @@
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
 		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
-		F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
-		F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; };
+		F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C11A2E19DCBE95003278FF /* APCParameters.json */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
@@ -87,8 +87,6 @@
 		F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */; };
 		F5D14E8919CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */; };
 		F5D14E8A19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */; };
-		F5D14E8B19CC9B8100650FBB /* APHSignupOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */; };
-		F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */; };
 		F5D14E8D19CC9B8100650FBB /* APHUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */; };
 		F5D14EBC19CC9B9100650FBB /* APHActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E9519CC9B9100650FBB /* APHActivitiesViewController.m */; };
 		F5D14EBD19CC9B9100650FBB /* APHEditSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E9819CC9B9100650FBB /* APHEditSectionsViewController.m */; };
@@ -135,18 +133,13 @@
 		F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */; };
 		F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */; };
 		F5D14F3919CC9C0000650FBB /* APHParkinsonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */; };
+		F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
+		F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F54AB73A19D36E4900986B52 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F5179B2819D09128001DCCB7;
-			remoteInfo = APCAppleCore;
-		};
 		F5B4211819D23A1200F9CD69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
@@ -161,16 +154,24 @@
 			remoteGlobalIDString = F5DAB55D199EBFF6008E4A8E;
 			remoteInfo = APCAppleCoreTests;
 		};
+		F5D1A91219D4C6FB00A03465 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppleCore;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F54AB73C19D36E4900986B52 /* Embed Frameworks */ = {
+		F5D1A91419D4C6FC00A03465 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F54AB73919D36E4900986B52 /* APCAppleCore.framework in Embed Frameworks */,
+				F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */,
+				F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +275,8 @@
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
 		F538D22319DB34C5008942A5 /* APHDataSubstrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDataSubstrate.h; sourceTree = "<group>"; };
 		F538D22419DB34C5008942A5 /* APHDataSubstrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDataSubstrate.m; sourceTree = "<group>"; };
+		F593798519D4C76100FEC88B /* BridgeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BridgeSDK.framework; path = ../AppleCore/APCAppleCore/BridgeSDK.framework; sourceTree = "<group>"; };
+		F593798A19D4C78700FEC88B /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5C11A2E19DCBE95003278FF /* APCParameters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APCParameters.json; sourceTree = "<group>"; };
 		F5C1DC1F19D22E6F006527EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -289,9 +292,6 @@
 		F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpGeneralInfoViewController.m; sourceTree = "<group>"; };
 		F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpMedicalInfoViewController.h; sourceTree = "<group>"; };
 		F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpMedicalInfoViewController.m; sourceTree = "<group>"; };
-		F5D14E8019CC9B8100650FBB /* APHSignupOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignupOptionsViewController.h; sourceTree = "<group>"; };
-		F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignupOptionsViewController.m; sourceTree = "<group>"; };
-		F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHSignupOptionsViewController.xib; sourceTree = "<group>"; };
 		F5D14E8319CC9B8100650FBB /* APHUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoCell.h; sourceTree = "<group>"; };
 		F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHUserInfoCell.m; sourceTree = "<group>"; };
 		F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoConstants.h; sourceTree = "<group>"; };
@@ -381,8 +381,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F54AB73819D36E4900986B52 /* APCAppleCore.framework in Frameworks */,
+				F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
+				F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
@@ -449,11 +450,13 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */,
+				F593798519D4C76100FEC88B /* BridgeSDK.framework */,
+				F593798A19D4C78700FEC88B /* ResearchKit.framework */,
 				CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */,
 				CFA2ABBD19A7C3C2000DB961 /* Security.framework */,
 				CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */,
 				CFA2ABB519A7C229000DB961 /* HealthKit.framework */,
+				F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */,
 			);
 			name = Frameworks;
 			path = Parkinson;
@@ -548,9 +551,6 @@
 				F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */,
 				F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */,
 				F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */,
-				F5D14E8019CC9B8100650FBB /* APHSignupOptionsViewController.h */,
-				F5D14E8119CC9B8100650FBB /* APHSignupOptionsViewController.m */,
-				F5D14E8219CC9B8100650FBB /* APHSignupOptionsViewController.xib */,
 				F5D14E8319CC9B8100650FBB /* APHUserInfoCell.h */,
 				F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */,
 				F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */,
@@ -854,12 +854,12 @@
 				CFC2D2D319A5417D00170E69 /* Sources */,
 				CFC2D2D419A5417D00170E69 /* Frameworks */,
 				CFC2D2D519A5417D00170E69 /* Resources */,
-				F54AB73C19D36E4900986B52 /* Embed Frameworks */,
+				F5D1A91419D4C6FC00A03465 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F54AB73B19D36E4900986B52 /* PBXTargetDependency */,
+				F5D1A91319D4C6FB00A03465 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
 			productName = Parkinson;
@@ -975,9 +975,7 @@
 				CFC5988D19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				CFB7778C19D32A20002EADA1 /* APHSurveyBooleanChoiceViewController.xib in Resources */,
-				CFEBFD1719DDF44100CCD3E9 /* interval.instructions.04@2x.png in Resources */,
 				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
-				CF8BEC0219DF4CC400FF103D /* walking.instructions.02@2x.png in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				CFC5989219D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib in Resources */,
@@ -1013,7 +1011,6 @@
 				F5D14F2A19CC9BC900650FBB /* APHSleepQualityTaskViewController.m in Sources */,
 				F5D14E8A19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m in Sources */,
 				F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */,
-				F5D14E8B19CC9B8100650FBB /* APHSignupOptionsViewController.m in Sources */,
 				F5D14ECD19CC9B9100650FBB /* APHLearnResourceViewCell.m in Sources */,
 				CFB777A119D35D57002EADA1 /* APHSurveyTimeOnlyViewController.m in Sources */,
 				CFB3EFC819D48DE600B7FA70 /* APHCommonPickerViewController.m in Sources */,
@@ -1078,10 +1075,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F54AB73B19D36E4900986B52 /* PBXTargetDependency */ = {
+		F5D1A91319D4C6FB00A03465 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APCAppleCore;
-			targetProxy = F54AB73A19D36E4900986B52 /* PBXContainerItemProxy */;
+			targetProxy = F5D1A91219D4C6FB00A03465 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1174,6 +1171,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
 					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1196,6 +1194,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inhertited)",
 					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore",
 				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

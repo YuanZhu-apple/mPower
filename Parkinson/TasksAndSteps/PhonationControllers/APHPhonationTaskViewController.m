@@ -82,7 +82,6 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
-    controller.continueButtonOnToolbar = NO;
     controller.step = step;
     return  controller;
 }
