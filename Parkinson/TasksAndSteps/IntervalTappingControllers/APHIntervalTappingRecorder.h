@@ -8,9 +8,19 @@
 
 #import <ResearchKit/ResearchKit.h>
 
+@class  APHIntervalTappingRecorder;
+
+@protocol  APHIntervalTappingRecorderDelegate <NSObject>
+
+@required
+
+- (void)recorder:(APHIntervalTappingRecorder *)recorder didRecordTap:(NSNumber *)tapCount;
+
+@end
+
 @interface APHIntervalTappingRecorder : RKRecorder
 
-@property  (nonatomic, strong)  NSMutableArray  *records;
+@property  (nonatomic, weak)  id <APHIntervalTappingRecorderDelegate>  tappingDelegate;
 
 @end
 

@@ -2,18 +2,18 @@
 //  APHIntervalTappingIntorViewController.m
 //  Parkinson
 //
-//  Created by Henry McGilton on 9/16/14.
+//  Created by Henry McGilton on 10/03/14.
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APHIntervalTappingIntroViewController.h"
+#import "APHWalkingIntroViewController.h"
 #import "APHCommonInstructionalViewController.h"
 
-static  NSString  *kViewControllerTitle = @"Interval Tapping";
+static  NSString  *kViewControllerTitle = @"Gait Test";
 
-static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
+static  NSString  *kIntroHeadingCaption = @"Measures Gait & Balance";
 
-@interface APHIntervalTappingIntroViewController  ( )
+@interface APHWalkingIntroViewController  ( )
 
 @property  (nonatomic, strong)          APHCommonInstructionalViewController  *instructionsController;
 
@@ -26,13 +26,13 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
 
 @end
 
-@implementation APHIntervalTappingIntroViewController
+@implementation APHWalkingIntroViewController
 
 #pragma  mark  -  Initialisation
 
 + (void)initialize
 {
-    kIntroHeadingCaption = NSLocalizedString(@"Tests Bradykinesia", nil);
+    kIntroHeadingCaption = NSLocalizedString(kIntroHeadingCaption, nil);
 }
 
 #pragma  mark  -  Button Action Methods
@@ -63,13 +63,14 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
     
     self.title = kViewControllerTitle;
     
-    NSArray  *introImageNames = @[ @"interval.instructions.01@2x", @"interval.instructions.02@2x", @"interval.instructions.03@2x", @"interval.instructions.04@2x" ];
+    NSArray  *introImageNames = @[ @"walking.instructions.01@2x", @"walking.instructions.02@2x", @"walking.instructions.03@2x", @"walking.instructions.04@2x", @"walking.instructions.05@2x" ];
     
     NSArray  *paragraphs = @[
-                             @"For this task, please lay your phone on a flat surface to produce the most accurate results.",
-                             @"Once you tap “Get Started”, you will have five seconds before the first interval set appears.",
-                             @"Next, use two fingers on the same hand to alternately tap the buttons for 20 seconds.  Time your taps to be as consistent as possible.",
-                             @"After the intervals are finished, your results will be visible on the next screen."
+                             @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
+                             @"After the phone vibrates, walk 20 steps in a straight line.",
+                             @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
+                             @"Once you return to the starting point, you will feel a third vibration.  Stand as still as possible for 30 seconds.",
+                             @"After the test is complete, your results will be analyzed and the results will be returned when ready."
                              ];
     
     self.introHeadingCaption.text = kIntroHeadingCaption;
@@ -92,6 +93,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
     [super viewDidAppear:animated];
     
     self.title = kViewControllerTitle;
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
 }
 
 - (void)didReceiveMemoryWarning

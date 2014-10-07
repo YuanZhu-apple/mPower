@@ -21,7 +21,7 @@ static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
 static float tapInterval = 20.0;
 
-@interface APHIntervalTappingTaskViewController  ( ) <NSObject, RKResultCollector>
+@interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
 @end
 
@@ -110,6 +110,7 @@ static float tapInterval = 20.0;
                                   };
     Class  aClass = [controllers objectForKey:step.identifier];
     APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    controller.continueButtonOnToolbar = NO;
     controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";

@@ -98,7 +98,6 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.delegate = self.taskViewController;
     
     [self switchToWalkingPhaseView:self.walkingPhase];
     

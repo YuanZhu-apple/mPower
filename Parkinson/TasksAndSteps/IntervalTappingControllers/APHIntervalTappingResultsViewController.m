@@ -9,11 +9,11 @@
 #import "APHIntervalTappingResultsViewController.h"
 @import APCAppleCore;
 
-
 @interface APHIntervalTappingResultsViewController ()
 
 @property  (nonatomic, weak)  IBOutlet  APCCircularProgressView  *progressor;
 @property  (nonatomic, weak)  IBOutlet  APCConfirmationView      *confirmer;
+@property  (nonatomic, weak)  IBOutlet  YMLLineChartView         *charter;
 
 @end
 

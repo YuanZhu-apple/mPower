@@ -8,7 +8,7 @@
 
 #import "APHWalkingTaskViewController.h"
 
-#import "APHWalkingOverviewViewController.h"
+#import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
 #import "APHWalkingResultsViewController.h"
 #import <objc/message.h>
@@ -23,8 +23,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 {
     NSInteger _count;
 }
-
-//@property  (nonatomic, strong)  NSArray  *stepsConfigurations;
 
 @end
 
@@ -122,31 +120,30 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 {
 }
 
-//- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
-//{
-//    NSLog(@"taskViewController viewControllerForStep = %@", step);
-//    
-//    NSDictionary  *stepsToControllersMap = @{
-//                                             kWalkingStep101Key : @[ [APHWalkingOverviewViewController class], @(0) ],
-//                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
-//                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
-//                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
-//                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
-//                                           };
-//    
-//    RKStepViewController  *controller = nil;
-//    
-//    NSArray  *descriptor = stepsToControllersMap[step.identifier];
-//    
-//    Class  classToCreate = descriptor[0];
-//    NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
-//    controller = [[classToCreate alloc] initWithStep:step];
-//    if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
-//        ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
-//    }
-//    controller.delegate = self;
-//    return  controller;
-//}
+- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+{
+    NSDictionary  *stepsToControllersMap = @{
+                                             kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
+                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
+                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
+                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
+                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
+                                           };
+    
+    RKStepViewController  *controller = nil;
+    
+    NSArray  *descriptor = stepsToControllersMap[step.identifier];
+    
+    Class  classToCreate = descriptor[0];
+    NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
+    controller = [[classToCreate alloc] initWithStep:step];
+    if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
+        ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
+    }
+    controller.continueButtonOnToolbar = NO;
+    controller.delegate = self;
+    return  controller;
+}
 
 
 @end
