@@ -7,22 +7,97 @@
 //
 
 #import "APHIntervalTappingRecorder.h"
+#import "APHIntervalTappingTargetContainer.h"
+#import "APHIntervalTappingTapView.h"
+
+static  NSString  *kWhichTargetRecordKey = @"WhichTarget";
+static          NSString  *kLeftTargetRecordKey  = @"LeftTarget";
+static          NSString  *kRightTargetRecordKey = @"RightTarget";
+static  NSString  *kXCoordinateRecordKey = @"XCoordinate";
+static  NSString  *kYCoordinateRecordKey = @"YCoordinate";
+static  NSString  *kYTimeStampRecordKey  = @"TimeStamp";
 
 @interface APHIntervalTappingRecorder ()
 
-@property  (nonatomic, weak)    UIView          *containerView;
-//@property  (nonatomic, strong)  NSMutableArray  *records;
+@property  (nonatomic, weak)    APHIntervalTappingTargetContainer  *container;
+@property  (nonatomic, strong)  NSMutableArray                     *records;
+
+@property  (nonatomic, assign)  NSUInteger                          tapsCounter;
 
 @end
 
 @implementation APHIntervalTappingRecorder
 
+#pragma  mark  -  Tapping Methods
+
+- (BOOL)doesTargetContainPoint:(CGPoint)point inView:(UIView *)view
+{
+    BOOL  answer = YES;
+    
+    CGFloat  dx = point.x - CGRectGetMidX(view.bounds);
+    CGFloat  dy = point.y - CGRectGetMidY(view.bounds);
+    CGFloat  h = hypot(dx, dy);
+    if (h > CGRectGetWidth(view.bounds) / 2.0) {
+        answer = NO;
+    }
+    return  answer;
+}
+
+- (void)addRecord:(UITapGestureRecognizer *)recogniser
+{
+    
+    CGPoint  point = [recogniser locationInView:recogniser.view];
+    
+    NSDictionary  *record = @{ kWhichTargetRecordKey : recogniser.view == self.container.tapperLeft ? kLeftTargetRecordKey: kRightTargetRecordKey,
+                               kYTimeStampRecordKey  : [NSDate date],
+                               kXCoordinateRecordKey : @(point.x),
+                               kYCoordinateRecordKey : @(point.y)
+                            };
+    [self.records addObject:record];
+}
+
+- (void)targetWasTapped:(UITapGestureRecognizer *)recogniser
+{
+    BOOL  didRecordTouch = NO;
+    
+    if (recogniser.view == self.container.tapperLeft) {
+        CGPoint  location = [recogniser locationInView:self.container.tapperLeft];
+        if ([self doesTargetContainPoint:location inView:self.container.tapperLeft] == YES) {
+            didRecordTouch = YES;
+        }
+    } else if (recogniser.view == self.container.tapperRight) {
+        CGPoint  location = [recogniser locationInView:self.container.tapperRight];
+        if ([self doesTargetContainPoint:location inView:self.container.tapperRight] == YES) {
+            didRecordTouch = YES;
+        }
+    }
+    if (didRecordTouch == YES) {
+        [self addRecord:recogniser];
+        self.tapsCounter = self.tapsCounter + 1;
+        if (self.tappingDelegate != nil) {
+            [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
+        }
+    }
+}
+
+#pragma  -  Recorder Tap Targets Setup 
+
 - (void)viewController:(UIViewController*)viewController willStartStepWithView:(UIView *)view
 {
     NSLog(@"viewController willStartStepWithView called");
     [super viewController:viewController willStartStepWithView:view];
-    self.containerView = view;
+    self.container = (APHIntervalTappingTargetContainer *)view;
+    
+    UITapGestureRecognizer  *tapsterLeft = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
+    [self.container.tapperLeft addGestureRecognizer:tapsterLeft];
+    
+    UITapGestureRecognizer  *tapsterRight = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
+    [self.container.tapperRight addGestureRecognizer:tapsterRight];
+    
+    self.records = [NSMutableArray array];
 }
+
+#pragma  -  Recorder Control Methods
 
 - (BOOL)start:(NSError *__autoreleasing *)error
 {
@@ -31,7 +106,7 @@
     if (answer == NO) {
         NSLog(@"Error %@", *error);
     } else {
-//        NSAssert(self.containerView != nil, @"No container view attached.");
+        NSAssert(self.container != nil, @"No container view attached.");
     }
     return  answer;
 }
@@ -96,6 +171,8 @@
 }
 
 @end
+
+#pragma  -  Recorder Configuration and Initialisation
 
 @implementation APHIntervalTappingRecorderConfiguration
 

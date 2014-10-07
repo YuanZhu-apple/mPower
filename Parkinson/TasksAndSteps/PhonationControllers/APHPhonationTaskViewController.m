@@ -7,6 +7,7 @@
 //
 
 #import "APHPhonationTaskViewController.h"
+#import "APHPhonationIntroViewController.h"
 #import <objc/message.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -54,6 +55,36 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     RKTask  *task = [[RKTask alloc] initWithName:@"Sustained Phonation" identifier:@"Phonation Task" steps:steps];
     
     return  task;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStepViewController:(RKStepViewController *)stepViewController
+{
+    return  YES;
+}
+
+- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+{
+    stepViewController.cancelButton = nil;
+    stepViewController.backButton = nil;
+}
+
+- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+{
+    NSDictionary  *controllers = @{
+                                     kPhonationStep101Key : [APHPhonationIntroViewController class],
+//                                   kIntervalTappingStep102 : [APHIntervalTappingStepsViewController   class],
+//                                   kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
+                                   };
+    Class  aClass = [controllers objectForKey:step.identifier];
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    controller.resultCollector = self;
+    controller.delegate = self;
+    controller.title = @"Interval Tapping";
+    controller.continueButtonOnToolbar = NO;
+    controller.step = step;
+    return  controller;
 }
 
 @end

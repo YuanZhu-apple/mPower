@@ -21,7 +21,7 @@ static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
 static float tapInterval = 20.0;
 
-@interface APHIntervalTappingTaskViewController  ( ) <NSObject, RKResultCollector>
+@interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
 @end
 
