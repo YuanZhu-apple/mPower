@@ -65,7 +65,7 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.continueButtonOnToolbar = NO;
+    
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController

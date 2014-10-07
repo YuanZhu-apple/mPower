@@ -113,7 +113,6 @@ static float tapInterval = 20.0;
     controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
-    controller.continueButtonOnToolbar = NO;
     controller.step = step;
     return  controller;
 }
