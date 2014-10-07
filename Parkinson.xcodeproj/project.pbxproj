@@ -17,7 +17,6 @@
 		CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF519DF4CB700FF103D /* phonation.instructions.04@2x.png */; };
 		CF8BEBFB19DF4CB700FF103D /* phonation.instructions.05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF619DF4CB700FF103D /* phonation.instructions.05@2x.png */; };
 		CF8BEC0119DF4CC400FF103D /* walking.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFC19DF4CC400FF103D /* walking.instructions.01@2x.png */; };
-		CF8BEC0219DF4CC400FF103D /* walking.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFD19DF4CC400FF103D /* walking.instructions.02@2x.png */; };
 		CF8BEC0319DF4CC400FF103D /* walking.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFE19DF4CC400FF103D /* walking.instructions.03@2x.png */; };
 		CF8BEC0419DF4CC400FF103D /* walking.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFF19DF4CC400FF103D /* walking.instructions.04@2x.png */; };
 		CF8BEC0519DF4CC400FF103D /* walking.instructions.05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEC0019DF4CC400FF103D /* walking.instructions.05@2x.png */; };
@@ -68,7 +67,6 @@
 		CFEBFD1419DDF44100CCD3E9 /* interval.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */; };
 		CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */; };
 		CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */; };
-		CFEBFD1719DDF44100CCD3E9 /* interval.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */; };
 		CFF87EEE19E2FB5000B33D9B /* APHCommonInstructionalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF87EED19E2FB5000B33D9B /* APHCommonInstructionalViewController.xib */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
@@ -975,7 +973,6 @@
 				CFC5988D19D2288000F6DF9E /* APHSurveySingleChoiceViewController.xib in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				CFB7778C19D32A20002EADA1 /* APHSurveyBooleanChoiceViewController.xib in Resources */,
-				F5D14E8C19CC9B8100650FBB /* APHSignupOptionsViewController.xib in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				CFC5989219D23F1100F6DF9E /* APHSurveyMultiChoiceViewController.xib in Resources */,
@@ -1086,7 +1083,7 @@
 		CFC2D2F519A5417D00170E69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1127,7 +1124,7 @@
 		CFC2D2F619A5417D00170E69 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1205,6 +1202,71 @@
 			};
 			name = Release;
 		};
+		F5BB3C5F19E4A0C700088499 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"DEVELOPMENT=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Development;
+		};
+		F5BB3C6019E4A0C700088499 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Parkinson/Parkinson.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inhertited)",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore/ResearchKit",
+					"$(PROJECT_DIR)/AppleCore/APCAppleCore",
+				);
+				INFOPLIST_FILE = Parkinson/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Development;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1212,6 +1274,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CFC2D2F519A5417D00170E69 /* Debug */,
+				F5BB3C5F19E4A0C700088499 /* Development */,
 				CFC2D2F619A5417D00170E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1221,6 +1284,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CFC2D2F819A5417D00170E69 /* Debug */,
+				F5BB3C6019E4A0C700088499 /* Development */,
 				CFC2D2F919A5417D00170E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
