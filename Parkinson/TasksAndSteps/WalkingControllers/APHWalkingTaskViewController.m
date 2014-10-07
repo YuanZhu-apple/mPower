@@ -122,8 +122,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
 {
-    NSLog(@"taskViewController viewControllerForStep = %@", step);
-    
     NSDictionary  *stepsToControllersMap = @{
                                              kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
                                              kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
@@ -142,6 +140,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
         ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
     }
+    controller.continueButtonOnToolbar = NO;
     controller.delegate = self;
     return  controller;
 }

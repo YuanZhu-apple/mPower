@@ -33,7 +33,7 @@
                         <action selector="pageControlChangedValue:" destination="-1" eventType="valueChanged" id="kkc-UG-Rmd"/>
                     </connections>
                 </pageControl>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPZ-0g-8nN">
+                <scrollView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPZ-0g-8nN">
                     <rect key="frame" x="19" y="112" width="283" height="250"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="1T9-ha-MRk"/>
