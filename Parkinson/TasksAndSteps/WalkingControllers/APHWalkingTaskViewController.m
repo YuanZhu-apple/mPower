@@ -140,7 +140,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
         ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
     }
-    controller.continueButtonOnToolbar = NO;
     controller.delegate = self;
     return  controller;
 }
