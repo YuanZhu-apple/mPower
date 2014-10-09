@@ -28,6 +28,8 @@
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
+		CFA8293D19E6F3F600C5BEA7 /* interval.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */; };
+		CFA8293F19E6F40400C5BEA7 /* walking.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFD19DF4CC400FF103D /* walking.instructions.02@2x.png */; };
 		CFB3EFB719D4758B00B7FA70 /* APHSurveyMedsChangeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3EFB519D4758B00B7FA70 /* APHSurveyMedsChangeDetailViewController.m */; };
 		CFB3EFB819D4758B00B7FA70 /* APHSurveyMedsChangeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB3EFB619D4758B00B7FA70 /* APHSurveyMedsChangeDetailViewController.xib */; };
 		CFB3EFBE19D476B600B7FA70 /* APHSurveyMedsChangeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3EFBC19D476B600B7FA70 /* APHSurveyMedsChangeDetailTableViewCell.m */; };
@@ -936,6 +938,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA8293F19E6F40400C5BEA7 /* walking.instructions.02@2x.png in Resources */,
+				CFA8293D19E6F3F600C5BEA7 /* interval.instructions.04@2x.png in Resources */,
 				CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */,
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
