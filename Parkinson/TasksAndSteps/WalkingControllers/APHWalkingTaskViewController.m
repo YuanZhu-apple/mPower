@@ -100,19 +100,6 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     return self;
 }
 
-- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
-{
-    RKStep  *step = stepViewController.step;
-    RKTask  *task = self.task;
-    NSArray  *steps = task.steps;
-    NSUInteger  stepIndex = [steps indexOfObject:step];
-    if ((stepIndex + 1) < [steps count]) {
-        RKStep  *nextStep = steps[(stepIndex + 1)];
-        RKStepViewController  *controller = [self taskViewController:self viewControllerForStep:nextStep];
-        [self pushViewController:controller animated:YES];
-    }
-}
-
 #pragma  mark  -  Task View Controller Delegate Methods
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
