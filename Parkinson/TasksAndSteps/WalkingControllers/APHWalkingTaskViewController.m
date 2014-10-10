@@ -100,6 +100,19 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     return self;
 }
 
+- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+{
+    RKStep  *step = stepViewController.step;
+    RKTask  *task = self.task;
+    NSArray  *steps = task.steps;
+    NSUInteger  stepIndex = [steps indexOfObject:step];
+    if ((stepIndex + 1) < [steps count]) {
+        RKStep  *nextStep = steps[(stepIndex + 1)];
+        RKStepViewController  *controller = [self taskViewController:self viewControllerForStep:nextStep];
+        [self pushViewController:controller animated:YES];
+    }
+}
+
 #pragma  mark  -  Task View Controller Delegate Methods
 - (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
 {
@@ -134,13 +147,15 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     
     NSArray  *descriptor = stepsToControllersMap[step.identifier];
     
-    Class  classToCreate = descriptor[0];
-    NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
-    controller = [[classToCreate alloc] initWithStep:step];
-    if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
-        ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
+    if (descriptor != nil) {
+        Class  classToCreate = descriptor[0];
+        NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
+        controller = [[classToCreate alloc] initWithStep:step];
+        if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
+            ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
+        }
+        controller.delegate = self;
     }
-    controller.delegate = self;
     return  controller;
 }
 

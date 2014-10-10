@@ -91,6 +91,11 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
         } else {
             NSLog(@"Recorder Failed to Stop with Error = %@", error);
         }
+        if (self.delegate != nil) {
+            if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
+                [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
+            }
+        }
     }
 }
 
