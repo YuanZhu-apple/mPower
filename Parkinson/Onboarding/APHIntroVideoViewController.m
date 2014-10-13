@@ -28,6 +28,12 @@ static NSString *const kVideoShownKey = @"VideoShown";
     
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+}
+
 - (void) skip {
     
     [self.navigationController pushViewController:[APHStudyOverviewViewController new] animated:YES];
