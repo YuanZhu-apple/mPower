@@ -21,14 +21,6 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 @implementation APHStudyOverviewViewController
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        [self prepareContent];
-    }
-    return self;
-}
-
 - (void)prepareContent
 {
     _studyDetailsArray = [self studyDetailsFromJSONFile:@"StudyOverview"];
@@ -38,11 +30,21 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    [self prepareContent];
     self.diseaseNameLabel.text = self.diseaseName;
     self.logoImageView.image = [UIImage imageNamed:@"logo_research_institute"];
+    [self setUpAppearance];
     [self setupTable];
+}
+
+- (void)setUpAppearance
+{
+    //Headerview
+    self.headerView.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    self.headerView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.headerView.layer.shadowOpacity = 0.6;
+    self.headerView.layer.shadowRadius = 0.5;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,8 +56,6 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kStudyOverviewCellIdentifier];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -65,16 +65,33 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     return self.studyDetailsArray.count;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyOverviewCellIdentifier forIndexPath:indexPath];
     
     APCStudyDetails *studyDetails = self.studyDetailsArray[indexPath.row];
+    UILabel * label = (UILabel*) [cell viewWithTag:300];
+    label.text = studyDetails.title;
     
-    cell.textLabel.text = studyDetails.title;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [self setUpCellAppearance:cell];
     return cell;
+}
+
+- (void) setUpCellAppearance: (UITableViewCell*) cell
+{
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
 }
 
 #pragma mark - IBActions
@@ -88,6 +105,17 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 - (void)signUpTapped:(id)sender
 {
     [self.navigationController pushViewController:[APHInclusionCriteriaViewController new] animated:YES];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 @end

@@ -86,7 +86,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 
 - (void) showStudyOverview
 {
-    APHStudyOverviewViewController *studyController = [APHStudyOverviewViewController new];
+    APHStudyOverviewViewController *studyController = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
     [self setUpRootViewController:studyController];
 }
 

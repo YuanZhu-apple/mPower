@@ -136,6 +136,7 @@
 		F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
 		F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
+		F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -374,6 +375,7 @@
 		F5D14F3719CC9C0000650FBB /* APHParkinsonAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHParkinsonAppDelegate.h; sourceTree = "<group>"; };
 		F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHParkinsonAppDelegate.m; sourceTree = "<group>"; };
 		F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHOnboarding.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +541,7 @@
 		F5D14E7719CC9B8100650FBB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */,
 				F5D14E7819CC9B8100650FBB /* APHIntroVideoViewController.h */,
 				F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */,
 				5B29CE4E19D4BA7100E2FD62 /* APHStudyOverviewViewController.h */,
@@ -949,6 +952,7 @@
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
 				CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */,
+				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
 				CFC5988819D2225300F6DF9E /* APHSurveyScaleViewController.xib in Resources */,
 				CFB777E819D3920F002EADA1 /* APHMedsChangeMasterTableViewCell.xib in Resources */,
 				CF8BEBF819DF4CB700FF103D /* phonation.instructions.02@2x.png in Resources */,
