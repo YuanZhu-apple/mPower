@@ -6,10 +6,12 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+@import APCAppleCore;
 #import "APHStudyOverviewViewController.h"
 #import "APHSignInViewController.h"
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHInclusionCriteriaViewController.h"
+
 
 static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdentifier";
 
@@ -32,7 +34,6 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     [super viewDidLoad];
     
     [self prepareContent];
-    self.diseaseNameLabel.text = self.diseaseName;
     self.logoImageView.image = [UIImage imageNamed:@"logo_research_institute"];
     [self setUpAppearance];
     [self setupTable];
@@ -45,6 +46,12 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     self.headerView.layer.shadowOffset = CGSizeMake(0, 1);
     self.headerView.layer.shadowOpacity = 0.6;
     self.headerView.layer.shadowRadius = 0.5;
+    
+    self.diseaseNameLabel.font = [UIFont appBoldFontWithSize:17];
+    self.diseaseNameLabel.textColor = [UIColor appTextBodyColor2];
+    self.dateRangeLabel.font = [UIFont appFontWithSize:14];
+    self.dateRangeLabel.textColor = [UIColor appTextBodyColor3];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,17 +72,6 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     return self.studyDetailsArray.count;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStudyOverviewCellIdentifier forIndexPath:indexPath];
@@ -90,8 +86,10 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void) setUpCellAppearance: (UITableViewCell*) cell
 {
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.layoutMargins = UIEdgeInsetsZero;
+    
+    UILabel * label = (UILabel*) [cell viewWithTag:300];
+    label.font = [UIFont appFontWithSize:15];
+    label.textColor = [UIColor appTextBodyColor1];
 }
 
 #pragma mark - IBActions
@@ -107,15 +105,19 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     [self.navigationController pushViewController:[APHInclusionCriteriaViewController new] animated:YES];
 }
 
+/*********************************************************************************/
+#pragma mark - Misc Fix
+/*********************************************************************************/
 -(void)viewDidLayoutSubviews
 {
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setSeparatorInset:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
 }
 
 @end

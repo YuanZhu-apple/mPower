@@ -72,10 +72,11 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dV7-cM-J3W">
                                 <rect key="frame" x="0.0" y="510" width="160" height="58"/>
-                                <color key="backgroundColor" red="0.349145757" green="0.56842813280000004" blue="0.80057567360000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29599999999999999" green="0.307" blue="0.32600000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="seG-js-lrp"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,15 +96,15 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disease Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-QN-KmK">
-                                        <rect key="frame" x="105" y="71" width="111" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="104" y="71" width="113" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.253" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 1st - June 1st 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="6Hh-pG-P9Q">
-                                        <rect key="frame" x="65" y="102" width="191" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="70" y="100" width="182" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -112,7 +113,7 @@
                                     <constraint firstAttribute="height" constant="132" id="5Rh-U8-tWM"/>
                                     <constraint firstItem="XpJ-4Q-SLv" firstAttribute="top" secondItem="2lS-tC-r3N" secondAttribute="top" constant="29" id="K9V-Ip-4R3"/>
                                     <constraint firstItem="1g1-QN-KmK" firstAttribute="top" secondItem="XpJ-4Q-SLv" secondAttribute="bottom" constant="8" id="TrX-Rg-1xF"/>
-                                    <constraint firstItem="6Hh-pG-P9Q" firstAttribute="top" secondItem="1g1-QN-KmK" secondAttribute="bottom" constant="10" id="auJ-0n-V8o"/>
+                                    <constraint firstItem="6Hh-pG-P9Q" firstAttribute="top" secondItem="1g1-QN-KmK" secondAttribute="bottom" constant="8" id="auJ-0n-V8o"/>
                                     <constraint firstAttribute="centerX" secondItem="1g1-QN-KmK" secondAttribute="centerX" constant="-0.5" id="iyK-fp-gnX"/>
                                     <constraint firstAttribute="centerX" secondItem="XpJ-4Q-SLv" secondAttribute="centerX" id="wTo-Eb-1nf"/>
                                     <constraint firstAttribute="centerX" secondItem="6Hh-pG-P9Q" secondAttribute="centerX" constant="-0.5" id="yVw-Iq-kIS"/>
@@ -120,10 +121,11 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzq-C5-j6z">
                                 <rect key="frame" x="160" y="510" width="160" height="58"/>
-                                <color key="backgroundColor" red="0.16155408530000001" green="0.4393574422" blue="0.80057567360000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.18431372939999999" green="0.74509805439999999" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="Ky9-fg-cIR"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Join">
                                     <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
