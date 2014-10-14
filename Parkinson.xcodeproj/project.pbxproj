@@ -77,11 +77,11 @@
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
 		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
+		F584909A19E892700091A640 /* Intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F584909919E892700091A640 /* Intro.mp4 */; };
 		F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; };
 		F593798719D4C76100FEC88B /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C11A2E19DCBE95003278FF /* APCParameters.json */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
-		F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E3D19CC98FD00650FBB /* intro.m4v */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
 		F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4119CC991500650FBB /* JSON_READ_ME */; };
 		F5D14E4519CC991500650FBB /* sleepSurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4219CC991500650FBB /* sleepSurvey.json */; };
@@ -138,6 +138,7 @@
 		F5D1A91019D4C6FB00A03465 /* APCAppleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; };
 		F5D1A91119D4C6FB00A03465 /* APCAppleCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5B4211919D23A1200F9CD69 /* APCAppleCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
+		F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -280,12 +281,12 @@
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
 		F538D22319DB34C5008942A5 /* APHDataSubstrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDataSubstrate.h; sourceTree = "<group>"; };
 		F538D22419DB34C5008942A5 /* APHDataSubstrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDataSubstrate.m; sourceTree = "<group>"; };
+		F584909919E892700091A640 /* Intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Intro.mp4; sourceTree = "<group>"; };
 		F593798519D4C76100FEC88B /* BridgeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BridgeSDK.framework; path = ../AppleCore/APCAppleCore/BridgeSDK.framework; sourceTree = "<group>"; };
 		F593798A19D4C78700FEC88B /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppleCore/APCAppleCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
 		F5B4211219D23A1200F9CD69 /* APCAppleCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppleCore.xcodeproj; path = AppleCore/APCAppleCore/APCAppleCore.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F5C11A2E19DCBE95003278FF /* APCParameters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APCParameters.json; sourceTree = "<group>"; };
 		F5C1DC1F19D22E6F006527EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F5D14E3D19CC98FD00650FBB /* intro.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.m4v; sourceTree = "<group>"; };
 		F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 		F5D14E4119CC991500650FBB /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
 		F5D14E4219CC991500650FBB /* sleepSurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sleepSurvey.json; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 		F5D14F3719CC9C0000650FBB /* APHParkinsonAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHParkinsonAppDelegate.h; sourceTree = "<group>"; };
 		F5D14F3819CC9C0000650FBB /* APHParkinsonAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHParkinsonAppDelegate.m; sourceTree = "<group>"; };
 		F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHOnboarding.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,17 +407,9 @@
 				CF8BEBEF19DF4C8000FF103D /* Phonation Images */,
 				CF8BEBF119DF4C8F00FF103D /* Walking Images */,
 				F5D14E3F19CC991500650FBB /* JSONs */,
-				255D2F4A19C40F25002137F1 /* Videos */,
+				F584909819E892700091A640 /* Videos */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		255D2F4A19C40F25002137F1 /* Videos */ = {
-			isa = PBXGroup;
-			children = (
-				F5D14E3D19CC98FD00650FBB /* intro.m4v */,
-			);
-			path = Videos;
 			sourceTree = "<group>";
 		};
 		CF8BEBEF19DF4C8000FF103D /* Phonation Images */ = {
@@ -520,6 +514,14 @@
 			name = "Interval Tapping Images";
 			sourceTree = "<group>";
 		};
+		F584909819E892700091A640 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				F584909919E892700091A640 /* Intro.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		F5B4211319D23A1200F9CD69 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +546,7 @@
 		F5D14E7719CC9B8100650FBB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */,
 				F5D14E7819CC9B8100650FBB /* APHIntroVideoViewController.h */,
 				F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */,
 				5B29CE4E19D4BA7100E2FD62 /* APHStudyOverviewViewController.h */,
@@ -957,6 +960,7 @@
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
 				CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */,
+				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
 				CFC5988819D2225300F6DF9E /* APHSurveyScaleViewController.xib in Resources */,
 				CFB777E819D3920F002EADA1 /* APHMedsChangeMasterTableViewCell.xib in Resources */,
 				CF8BEBF819DF4CB700FF103D /* phonation.instructions.02@2x.png in Resources */,
@@ -972,6 +976,7 @@
 				CFB777DE19D38BD7002EADA1 /* APHSurveyTimeIntervalViewController.xib in Resources */,
 				CFC5988319D21C0E00F6DF9E /* APHSurveyIntroViewController.xib in Resources */,
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,
+				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
 				CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */,
 				CF8BEC1519E2366500FF103D /* APHWalkingIntroViewController.xib in Resources */,
 				CF8BEBFB19DF4CB700FF103D /* phonation.instructions.05@2x.png in Resources */,
@@ -995,7 +1000,6 @@
 				F5D14F2519CC9BC900650FBB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */,
 				F5D14ECA19CC9B9100650FBB /* APHLearnDetailViewCell.xib in Resources */,
-				F5D14E3E19CC98FD00650FBB /* intro.m4v in Resources */,
 				F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 				CFB7779819D34803002EADA1 /* APHSurveyInputResponseViewController.xib in Resources */,

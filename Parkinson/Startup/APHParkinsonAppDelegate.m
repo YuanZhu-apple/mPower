@@ -78,7 +78,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
     }
     else
     {
-        NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"intro" ofType:@"m4v"]];
+        NSURL *introFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Intro" ofType:@"mp4"]];
         APHIntroVideoViewController *introVideoController = [[APHIntroVideoViewController alloc] initWithContentURL:introFileURL];
         [self setUpRootViewController:introVideoController];
     }
@@ -86,7 +86,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
 
 - (void) showStudyOverview
 {
-    APHStudyOverviewViewController *studyController = [APHStudyOverviewViewController new];
+    APHStudyOverviewViewController *studyController = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
     [self setUpRootViewController:studyController];
 }
 
