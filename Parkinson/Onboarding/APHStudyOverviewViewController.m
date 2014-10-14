@@ -47,6 +47,11 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     self.headerView.layer.shadowOpacity = 0.6;
     self.headerView.layer.shadowRadius = 0.5;
     
+    [self.joinButton setBackgroundImage:[UIImage imageWithColor:[UIColor appPrimaryColor]] forState:UIControlStateNormal];
+    [self.joinButton setTitleColor:[UIColor appSecondaryColor4] forState:UIControlStateNormal];
+    [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor appSecondaryColor2]] forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[UIColor appSecondaryColor4] forState:UIControlStateNormal];
+    
     self.diseaseNameLabel.font = [UIFont appMediumFontWithSize:19];
     self.diseaseNameLabel.textColor = [UIColor appSecondaryColor1];
     self.dateRangeLabel.font = [UIFont appLightFontWithSize:16];
