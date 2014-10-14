@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
 		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
+		5B3AB76019E84F1500E7FC31 /* APHProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */; };
+		5B3AB78819E8931D00E7FC31 /* APHProfieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
 		CF8BEBF719DF4CB700FF103D /* phonation.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */; };
@@ -183,6 +185,9 @@
 		5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHStudyOverviewViewController.m; sourceTree = "<group>"; };
 		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
+		5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHProfile.storyboard; sourceTree = "<group>"; };
+		5B3AB78619E8931D00E7FC31 /* APHProfieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHProfieViewController.h; sourceTree = "<group>"; };
+		5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHProfieViewController.m; sourceTree = "<group>"; };
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
 		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
@@ -641,6 +646,9 @@
 				F5D14EB719CC9B9100650FBB /* APHSettingsTableFooterView.xib */,
 				F5D14EB819CC9B9100650FBB /* APHSettingsViewController.h */,
 				F5D14EB919CC9B9100650FBB /* APHSettingsViewController.m */,
+				5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */,
+				5B3AB78619E8931D00E7FC31 /* APHProfieViewController.h */,
+				5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -996,6 +1004,7 @@
 				CFB7779D19D34BB0002EADA1 /* APHSurveyDateOnlyViewController.xib in Resources */,
 				CF8BEBF719DF4CB700FF103D /* phonation.instructions.01@2x.png in Resources */,
 				CF8BEC0519DF4CC400FF103D /* walking.instructions.05@2x.png in Resources */,
+				5B3AB76019E84F1500E7FC31 /* APHProfile.storyboard in Resources */,
 				F5D14F3219CC9BC900650FBB /* APHWalkingResultsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1056,6 +1065,7 @@
 				CF8BEC0F19E2354100FF103D /* APHPhonationIntroViewController.m in Sources */,
 				CF8BEC1419E2366500FF103D /* APHWalkingIntroViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
+				5B3AB78819E8931D00E7FC31 /* APHProfieViewController.m in Sources */,
 				CFB777E719D3920F002EADA1 /* APHMedsChangeMasterTableViewCell.m in Sources */,
 				F5D14EC419CC9B9100650FBB /* APHDashboardProgressViewCell.m in Sources */,
 				F5D14EC819CC9B9100650FBB /* APHLearnMasterViewController.m in Sources */,

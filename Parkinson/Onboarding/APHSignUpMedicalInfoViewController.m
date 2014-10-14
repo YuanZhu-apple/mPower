@@ -127,7 +127,7 @@
         field.placeholder = NSLocalizedString(@"7:00 AM", @"");
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         field.datePickerMode = UIDatePickerModeTime;
-        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormate;
+        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.detailDiscloserStyle = YES;
         
         if (self.user.sleepTime) {
@@ -146,7 +146,7 @@
         field.placeholder = NSLocalizedString(@"9:30 PM", @"");
         field.identifier = NSStringFromClass([APCTableViewDatePickerItem class]);
         field.datePickerMode = UIDatePickerModeTime;
-        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormate;
+        field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.detailDiscloserStyle = YES;
         
         if (self.user.wakeUpTime) {

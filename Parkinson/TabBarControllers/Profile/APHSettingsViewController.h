@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) APCUser *user;
 
+@property (nonatomic, strong) IBOutlet UILabel *someLabel;
+
 @end

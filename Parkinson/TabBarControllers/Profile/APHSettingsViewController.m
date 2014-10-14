@@ -17,7 +17,7 @@ static NSString * const kAPHGeneralInfoItemEmailRegEx               = @"[A-Z0-9a
 
 static NSString * const kAPHMedicalInfoItemWeightRegEx              = @"[0-9]{1,3}";
 
-static NSString * const kAPHMedicalInfoItemSleepTimeFormate         = @"HH:mm a";
+static NSString * const kAPHMedicalInfoItemSleepTimeFormat          = @"HH:mm a";
 
 @interface APHSettingsViewController ()
 

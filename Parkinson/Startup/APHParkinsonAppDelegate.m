@@ -30,7 +30,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
 static NSString *const kDashBoardStoryBoardKey     = @"APHDashboard";
 static NSString *const kLearnStoryBoardKey         = @"APHLearn";
 static NSString *const kActivitiesStoryBoardKey    = @"APHActivities";
-static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
+static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
 
 @interface APHParkinsonAppDelegate  ( )  <UITabBarControllerDelegate>
 
@@ -53,7 +53,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     //Give chance for super to initialize AppleCore before doing app specific stuff
     BOOL returnValue = [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    if (self.dataSubstrate.currentUser.isSignedIn) {
+    if (1 | self.dataSubstrate.currentUser.isSignedIn) {
         [self showTabBarController];
     }
     else if (self.dataSubstrate.currentUser.isSignedUp)
