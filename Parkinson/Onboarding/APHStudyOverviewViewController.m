@@ -47,10 +47,10 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     self.headerView.layer.shadowOpacity = 0.6;
     self.headerView.layer.shadowRadius = 0.5;
     
-    self.diseaseNameLabel.font = [UIFont appBoldFontWithSize:17];
-    self.diseaseNameLabel.textColor = [UIColor appTextBodyColor2];
-    self.dateRangeLabel.font = [UIFont appFontWithSize:14];
-    self.dateRangeLabel.textColor = [UIColor appTextBodyColor3];
+    self.diseaseNameLabel.font = [UIFont appMediumFontWithSize:19];
+    self.diseaseNameLabel.textColor = [UIColor appSecondaryColor1];
+    self.dateRangeLabel.font = [UIFont appLightFontWithSize:16];
+    self.dateRangeLabel.textColor = [UIColor appSecondaryColor3];
 
 }
 
@@ -88,8 +88,8 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 {
     
     UILabel * label = (UILabel*) [cell viewWithTag:300];
-    label.font = [UIFont appFontWithSize:15];
-    label.textColor = [UIColor appTextBodyColor1];
+    label.font = [UIFont appRegularFontWithSize:16];
+    label.textColor = [UIColor appSecondaryColor1];
 }
 
 #pragma mark - IBActions
