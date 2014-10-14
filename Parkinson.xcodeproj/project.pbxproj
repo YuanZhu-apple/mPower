@@ -74,6 +74,7 @@
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
 		F5017E5719D1FCF300AC1F37 /* APHHealthProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */; };
+		F52549D219EDBB1800C7B7CB /* TempStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52549D119EDBB1800C7B7CB /* TempStoryBoard.storyboard */; };
 		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
 		F584909A19E892700091A640 /* Intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F584909919E892700091A640 /* Intro.mp4 */; };
 		F593798619D4C76100FEC88B /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F593798519D4C76100FEC88B /* BridgeSDK.framework */; };
@@ -274,6 +275,7 @@
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
 		F5017E5619D1FCF300AC1F37 /* APHHealthProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHHealthProfile.storyboard; sourceTree = "<group>"; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
+		F52549D119EDBB1800C7B7CB /* TempStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TempStoryBoard.storyboard; sourceTree = "<group>"; };
 		F538D22319DB34C5008942A5 /* APHDataSubstrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDataSubstrate.h; sourceTree = "<group>"; };
 		F538D22419DB34C5008942A5 /* APHDataSubstrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDataSubstrate.m; sourceTree = "<group>"; };
 		F584909919E892700091A640 /* Intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Intro.mp4; sourceTree = "<group>"; };
@@ -542,18 +544,19 @@
 			isa = PBXGroup;
 			children = (
 				F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */,
+				F52549D119EDBB1800C7B7CB /* TempStoryBoard.storyboard */,
 				F5D14E7819CC9B8100650FBB /* APHIntroVideoViewController.h */,
 				F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */,
 				5B29CE4E19D4BA7100E2FD62 /* APHStudyOverviewViewController.h */,
 				5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */,
 				5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */,
 				5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */,
-				F5D14E7A19CC9B8100650FBB /* APHSignInViewController.h */,
-				F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */,
 				F5D14E7C19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.h */,
 				F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */,
 				F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */,
 				F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */,
+				F5D14E7A19CC9B8100650FBB /* APHSignInViewController.h */,
+				F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */,
 				F5D14E8319CC9B8100650FBB /* APHUserInfoCell.h */,
 				F5D14E8419CC9B8100650FBB /* APHUserInfoCell.m */,
 				F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */,
@@ -941,6 +944,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52549D219EDBB1800C7B7CB /* TempStoryBoard.storyboard in Resources */,
 				CFA8293F19E6F40400C5BEA7 /* walking.instructions.02@2x.png in Resources */,
 				CFA8293D19E6F3F600C5BEA7 /* interval.instructions.04@2x.png in Resources */,
 				CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */,
