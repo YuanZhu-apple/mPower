@@ -18,8 +18,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *question1Option1;
 @property (weak, nonatomic) IBOutlet UIButton *question1Option2;
 
+@property (weak, nonatomic) IBOutlet UIButton *question2Option1;
+@property (weak, nonatomic) IBOutlet UIButton *question2Option2;
+@property (weak, nonatomic) IBOutlet UIButton *question2Option3;
 
-@property (nonatomic, strong) APCSegmentedButton * question1;
+@property (weak, nonatomic) IBOutlet UIButton *question4Option1;
+@property (weak, nonatomic) IBOutlet UIButton *question4Option2;
+@property (weak, nonatomic) IBOutlet UIButton *question4Option3;
+
+
+@property (nonatomic, strong) NSArray * questions; //Of APCSegmentedButtons
 
 @end
 
@@ -27,17 +35,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.question1 = [[APCSegmentedButton alloc] initWithButtons:@[self.question1Option1, self.question1Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]];
+    self.questions = @[
+                       [[APCSegmentedButton alloc] initWithButtons:@[self.question1Option1, self.question1Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
+                       [[APCSegmentedButton alloc] initWithButtons:@[self.question2Option1, self.question2Option2, self.question2Option3] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
+                       [[APCSegmentedButton alloc] initWithButtons:@[self.question4Option1, self.question4Option2, self.question4Option3] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]]
+                       ];
     [self setUpAppearance];
 }
 
 - (void) setUpAppearance
 {
-//    [self.question1Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-//    [self.question1Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-//    
-//    [self.question1Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateHighlighted];
-//    [self.question1Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateHighlighted];
+    self.question1Label.textColor = [UIColor appSecondaryColor1];
+    self.question2Label.textColor = [UIColor appSecondaryColor1];
+    self.question3Label.textColor = [UIColor appSecondaryColor1];
+    self.question4Label.textColor = [UIColor appSecondaryColor1];
+    
+    
+    self.question2Option3.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.question2Option3.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.question2Option3 setTitle:@"Not\nSure" forState:UIControlStateNormal];
 }
 
 - (void)startSignUp
