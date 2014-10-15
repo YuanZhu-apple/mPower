@@ -107,7 +107,7 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void)signUpTapped:(id)sender
 {
-    [self.navigationController pushViewController:[APHInclusionCriteriaViewController new] animated:YES];
+    [self.navigationController pushViewController: [[UIStoryboard storyboardWithName:@"TempStoryBoard" bundle:nil] instantiateViewControllerWithIdentifier:@"InclusionCriteriaVC"] animated:YES];
 }
 
 /*********************************************************************************/

@@ -7,12 +7,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Inclusion Criteria View Controller-->
         <scene sceneID="mS0-sG-7DV">
             <objects>
-                <tableViewController id="sww-cx-8e6" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InclusionCriteriaVC" id="sww-cx-8e6" customClass="APHInclusionCriteriaViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="9FE-00-v2k">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -191,7 +191,7 @@ Sure</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHO-V2-H6K">
-                                                    <rect key="frame" x="217" y="70" width="1" height="109"/>
+                                                    <rect key="frame" x="215" y="70" width="1" height="109"/>
                                                     <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="109" id="C47-3W-fHo"/>
@@ -199,15 +199,15 @@ Sure</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-L2-Pgk">
-                                                    <rect key="frame" x="102" y="70" width="1" height="109"/>
+                                                    <rect key="frame" x="100" y="70" width="1" height="109"/>
                                                     <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="URB-3D-TRT"/>
                                                         <constraint firstAttribute="height" constant="109" id="xl4-6I-m1N"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have Parkinson's Disease?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLl-nl-KtE">
-                                                    <rect key="frame" x="8" y="3" width="304" height="78"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the level of severity?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLl-nl-KtE">
+                                                    <rect key="frame" x="8" y="3" width="300" height="78"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="78" id="9ai-t8-1fG"/>
                                                     </constraints>
@@ -216,33 +216,31 @@ Sure</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-xY-KtP">
-                                                    <rect key="frame" x="118" y="70" width="84" height="103"/>
+                                                    <rect key="frame" x="116" y="70" width="84" height="103"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="84" id="2L7-V9-Yjr"/>
                                                         <constraint firstAttribute="height" constant="103" id="Ig6-gs-L37"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
-                                                    <state key="normal" title="No">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                                    <state key="normal" title="Moderate">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUs-Tq-7D8">
-                                                    <rect key="frame" x="226" y="70" width="84" height="103"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
-                                                    <state key="normal">
-                                                        <string key="title">Not 
-Sure</string>
+                                                    <rect key="frame" x="224" y="70" width="86" height="103"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                                    <state key="normal" title="Advanced">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifd-uA-9wL">
-                                                    <rect key="frame" x="10" y="70" width="84" height="103"/>
+                                                    <rect key="frame" x="8" y="70" width="84" height="103"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="84" id="9Ys-0M-JIC"/>
                                                         <constraint firstAttribute="height" constant="103" id="Z5X-6u-tOj"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
-                                                    <state key="normal" title="Yes">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                                    <state key="normal" title="Mild">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -260,7 +258,7 @@ Sure</string>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SUs-Tq-7D8" secondAttribute="trailing" constant="2" id="Yvc-ih-s8u"/>
                                                 <constraint firstItem="JLl-nl-KtE" firstAttribute="top" secondItem="rNa-Nm-rhA" secondAttribute="topMargin" constant="-5" id="aI6-1K-NNi"/>
                                                 <constraint firstItem="JLl-nl-KtE" firstAttribute="centerX" secondItem="FpJ-xY-KtP" secondAttribute="centerX" id="bKk-9O-8Hx"/>
-                                                <constraint firstAttribute="centerX" secondItem="FpJ-xY-KtP" secondAttribute="centerX" id="foY-hO-Dft"/>
+                                                <constraint firstAttribute="centerX" secondItem="FpJ-xY-KtP" secondAttribute="centerX" constant="2" id="foY-hO-Dft"/>
                                                 <constraint firstItem="hHO-V2-H6K" firstAttribute="leading" secondItem="FpJ-xY-KtP" secondAttribute="trailing" constant="15" id="oxi-ed-J3w"/>
                                                 <constraint firstItem="SUs-Tq-7D8" firstAttribute="leading" secondItem="hHO-V2-H6K" secondAttribute="trailing" constant="8" id="vky-wu-tUt"/>
                                                 <constraint firstItem="FpJ-xY-KtP" firstAttribute="top" secondItem="JLl-nl-KtE" secondAttribute="bottom" constant="-11" id="yP5-rI-8pE"/>
@@ -276,10 +274,18 @@ Sure</string>
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="question1Label" destination="qRT-B6-Y7N" id="QsG-zz-CXS"/>
+                        <outlet property="question1Option1" destination="EV8-Fa-Fot" id="j4Q-9q-hBC"/>
+                        <outlet property="question1Option2" destination="mOS-GA-n46" id="Lrj-ga-aaT"/>
+                        <outlet property="question2Label" destination="Upd-4d-DcX" id="ZLg-wZ-CD0"/>
+                        <outlet property="question3Label" destination="iJ9-R9-Sur" id="aET-T0-2WU"/>
+                        <outlet property="question4Label" destination="JLl-nl-KtE" id="kd3-W3-VJb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO3-WS-L08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="327"/>
+            <point key="canvasLocation" x="560" y="327"/>
         </scene>
     </scenes>
 </document>

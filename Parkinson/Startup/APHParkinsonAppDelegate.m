@@ -53,7 +53,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
     //Give chance for super to initialize AppleCore before doing app specific stuff
     BOOL returnValue = [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    [self setUpAppThemeColor];
+    [self setUpAppAppearance];
     
     if (self.dataSubstrate.currentUser.isSignedIn) {
         [self showTabBarController];
@@ -73,7 +73,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 /*********************************************************************************/
 #pragma mark - Private Methods
 /*********************************************************************************/
-- (void) setUpAppThemeColor
+- (void) setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
                                                  kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]  //#2db4fa Parkinson's
@@ -83,6 +83,13 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHHealthProfile";
 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.133 green:0.122 blue:0.447 alpha:1.000]  //#221f72 Asthma
 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.020 green:0.549 blue:0.737 alpha:1.000]  //#058cbc Diabetes
                                                      }];
+    //Appearance
+    [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName : [UIColor appSecondaryColor1],
+                                                            NSFontAttributeName : [UIFont appMediumFontWithSize:16]
+                                                            }];
+    
 }
 - (void) showOnBoardingProcess
 {
