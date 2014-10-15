@@ -159,7 +159,8 @@ static NSInteger kDatePickerCellRow = 3;
 - (void)next
 {
     if ([self isEligible]) {
-        [self.navigationController pushViewController:[APHSignUpGeneralInfoViewController new] animated:YES];
+        APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
+        [self.navigationController pushViewController:signUpVC animated:YES];
     }
     else
     {

@@ -86,8 +86,8 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
     //Appearance
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName : [UIColor appSecondaryColor1],
-                                                            NSFontAttributeName : [UIFont appMediumFontWithSize:16]
+                                                            NSForegroundColorAttributeName : [UIColor appSecondaryColor2],
+                                                            NSFontAttributeName : [UIFont appMediumFontWithSize:17.0f]
                                                             }];
     
 }

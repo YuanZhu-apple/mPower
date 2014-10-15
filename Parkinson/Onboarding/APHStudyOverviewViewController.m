@@ -91,7 +91,6 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void) setUpCellAppearance: (UITableViewCell*) cell
 {
-    
     UILabel * label = (UILabel*) [cell viewWithTag:300];
     label.font = [UIFont appRegularFontWithSize:16];
     label.textColor = [UIColor appSecondaryColor1];
@@ -107,7 +106,7 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void)signUpTapped:(id)sender
 {
-    [self.navigationController pushViewController: [[UIStoryboard storyboardWithName:@"TempStoryBoard" bundle:nil] instantiateViewControllerWithIdentifier:@"InclusionCriteriaVC"] animated:YES];
+    [self.navigationController pushViewController: [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"InclusionCriteriaVC"] animated:YES];
 }
 
 /*********************************************************************************/

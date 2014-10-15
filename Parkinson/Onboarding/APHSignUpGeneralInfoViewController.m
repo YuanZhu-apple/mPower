@@ -31,9 +31,9 @@
 
     [self prepareFields];
     
-//    [self setupProgressBar];
-    self.permissionButton.titleLabel.text = @"I agree to the Terms and Conditions";
-
+    self.permissionButton.unconfirmedTitle = NSLocalizedString(@"I agree to the Terms and Conditions", @"");
+    self.permissionButton.confirmedTitle = NSLocalizedString(@"I agree to the Terms and Conditions", @"");
+    
     //TODO: This permission request is temporary. Remove later.
     self.permissionManager = [[APCPermissionsManager alloc] init];
     [self.permissionManager requestForPermissionForType:kSignUpPermissionsTypeHealthKit withCompletion:^(BOOL granted, NSError *error) {
@@ -46,6 +46,10 @@
         }
     }];
 
+}
+- (void)setupAppearance
+{
+    [super setupAppearance];
 }
 
 - (void) prepareFields {
@@ -93,7 +97,7 @@
         //            field.date = self.user.birthDate;
         //        }
         field.datePickerMode = UIDatePickerModeDate;
-        field.identifier = kAPCPickerTableViewCellIdentifier;
+        field.identifier = kAPCDefaultTableViewCellIdentifier;
         
         [items addObject:field];
         
@@ -118,33 +122,6 @@
     self.items = items;
     self.itemsOrder = itemsOrder;
 }
-
-//#pragma mark - APCConfigurableCell
-//
-//- (void) configurableCell:(APCUserInfoCell *)cell textValueChanged:(NSString *)text {
-//    [super configurableCell:cell textValueChanged:text];
-//    
-//    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
-//    
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-//    
-//    APCTableViewTextFieldItem *item = self.items[indexPath.row];
-//    if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemPassword) {
-//        if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
-//            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid Password", @"")];
-//        }
-//        else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
-//            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Password should be at least 6 characters", @"")];
-//        }
-//    }
-//    else if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemEmail) {
-//        if (![item.value isValidForRegex:kAPCGeneralInfoItemEmailRegEx]) {
-//            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address", @"")];
-//        }
-//        
-//    }
-//}
-
 
 #pragma mark - APCPickerTableViewCellDelegate methods
 
@@ -174,6 +151,26 @@
     [super textFieldTableViewCellDidReturn:cell];
     
     self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
+    
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    APCTableViewTextFieldItem *item = self.items[indexPath.row];
+    if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemPassword) {
+        if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid Password", @"")];
+        }
+        else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Password should be at least 6 characters", @"")];
+        }
+    }
+    else if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemEmail) {
+        if (![item.value isValidForRegex:kAPCGeneralInfoItemEmailRegEx]) {
+            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address", @"")];
+        }
+        
+    }
+
 }
 
 #pragma mark - APCSegmentedTableViewCellDelegate methods
@@ -302,9 +299,9 @@
 
 #pragma mark - IBActions
 
-- (IBAction)termsAndConditions:(id)sender
+- (IBAction)termsAndConditions:(UIButton *)sender
 {
-    
+    [self.permissionButton setSelected:!sender.selected];
 }
 
 - (void) secretButton
