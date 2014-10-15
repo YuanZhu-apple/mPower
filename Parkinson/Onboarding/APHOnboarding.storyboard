@@ -343,7 +343,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cbe-0x-Kqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="372"/>
+            <point key="canvasLocation" x="-165" y="1714"/>
         </scene>
         <!--Medical Information-->
         <scene sceneID="PhK-En-HNa">
@@ -432,7 +432,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9X-jo-rnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1485" y="367"/>
+            <point key="canvasLocation" x="224" y="1714"/>
         </scene>
         <!--Identification-->
         <scene sceneID="yFG-YV-mWW">
@@ -506,7 +506,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AY0-JZ-UKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989" y="367"/>
+            <point key="canvasLocation" x="623" y="1714"/>
         </scene>
         <!--Permissions-->
         <scene sceneID="GeP-1s-Zfd">
@@ -537,7 +537,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0b8-NM-ubv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2427" y="367"/>
+            <point key="canvasLocation" x="1009" y="1714"/>
         </scene>
         <!--Inclusion Criteria View Controller-->
         <scene sceneID="COj-6s-aGi">
@@ -854,7 +854,76 @@ Sure</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOt-kv-4Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="560" y="309"/>
+            <point key="canvasLocation" x="-156" y="1043"/>
+        </scene>
+        <!--Eligible View Controller-->
+        <scene sceneID="hyF-sl-9bf">
+            <objects>
+                <viewController storyboardIdentifier="EligibleVC" id="stx-7A-2pS" customClass="APHEligibleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SgM-RV-Ymm"/>
+                        <viewControllerLayoutGuide type="bottom" id="4W9-gR-Qy1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ps3-Gf-Hu0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are eligible to join the study" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-j2-iGS">
+                                <rect key="frame" x="39" y="156" width="242" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-9h-by3">
+                                <rect key="frame" x="40" y="220" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Gjt-Rs-rus"/>
+                                    <constraint firstAttribute="width" constant="240" id="ymw-5x-CRa"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ0-7w-7Y7">
+                                <rect key="frame" x="0.0" y="517" width="320" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="Tf0-KO-ewp"/>
+                                </constraints>
+                                <state key="normal" title="Start Consent">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button below to begin the consent process" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sh-7E-Mv6">
+                                <rect key="frame" x="40" y="378" width="240" height="74"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6sh-7E-Mv6" firstAttribute="trailing" secondItem="aOO-9h-by3" secondAttribute="trailing" id="CO1-dP-aE7"/>
+                            <constraint firstItem="6sh-7E-Mv6" firstAttribute="leading" secondItem="aOO-9h-by3" secondAttribute="leading" id="R02-qj-X21"/>
+                            <constraint firstItem="aXd-j2-iGS" firstAttribute="top" secondItem="SgM-RV-Ymm" secondAttribute="bottom" constant="136" id="Rwn-uE-EgD"/>
+                            <constraint firstAttribute="centerY" secondItem="aOO-9h-by3" secondAttribute="centerY" id="T0x-dY-jDN"/>
+                            <constraint firstItem="aOO-9h-by3" firstAttribute="top" secondItem="aXd-j2-iGS" secondAttribute="bottom" constant="43" id="TeF-Mb-Ju4"/>
+                            <constraint firstItem="aXd-j2-iGS" firstAttribute="centerX" secondItem="aOO-9h-by3" secondAttribute="centerX" id="Uff-7v-gTb"/>
+                            <constraint firstItem="VQ0-7w-7Y7" firstAttribute="centerX" secondItem="6sh-7E-Mv6" secondAttribute="centerX" id="XBZ-I5-EfU"/>
+                            <constraint firstItem="6sh-7E-Mv6" firstAttribute="top" secondItem="aOO-9h-by3" secondAttribute="bottom" constant="30" id="ZO0-y4-iYS"/>
+                            <constraint firstItem="VQ0-7w-7Y7" firstAttribute="leading" secondItem="Ps3-Gf-Hu0" secondAttribute="leading" id="eZj-Ss-TYn"/>
+                            <constraint firstItem="VQ0-7w-7Y7" firstAttribute="bottom" secondItem="4W9-gR-Qy1" secondAttribute="top" id="f4U-YV-x2H"/>
+                            <constraint firstItem="VQ0-7w-7Y7" firstAttribute="top" secondItem="6sh-7E-Mv6" secondAttribute="bottom" constant="65" id="fUD-BK-CSW"/>
+                            <constraint firstAttribute="centerX" secondItem="aOO-9h-by3" secondAttribute="centerX" id="rTp-BQ-ptS"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="consentButton" destination="VQ0-7w-7Y7" id="bCE-k7-AJO"/>
+                        <outlet property="label1" destination="aXd-j2-iGS" id="f6P-Lv-z8c"/>
+                        <outlet property="label2" destination="6sh-7E-Mv6" id="qdE-Or-EEb"/>
+                        <outlet property="logoImageView" destination="aOO-9h-by3" id="D3K-n5-AUK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02w-yf-mHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224" y="1043"/>
         </scene>
     </scenes>
     <resources>
