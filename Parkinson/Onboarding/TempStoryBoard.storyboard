@@ -11,7 +11,7 @@
         <scene sceneID="mS0-sG-7DV">
             <objects>
                 <tableViewController storyboardIdentifier="InclusionCriteriaVC" id="sww-cx-8e6" customClass="APHInclusionCriteriaViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="9FE-00-v2k">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="9FE-00-v2k">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,6 +194,27 @@ Sure</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="219" id="AZt-MD-gwV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AZt-MD-gwV" id="hbW-Sz-5D2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="f3z-8H-rdz">
+                                                    <rect key="frame" x="0.0" y="28" width="320" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="435082160.515459">
+                                                        <!--2014-10-15 16:09:20 +0000-->
+                                                    </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="sww-cx-8e6" eventType="valueChanged" id="eY9-v0-222"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="f3z-8H-rdz" secondAttribute="centerX" id="NBy-dy-oP8"/>
+                                                <constraint firstAttribute="centerY" secondItem="f3z-8H-rdz" secondAttribute="centerY" id="bIF-NC-4II"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="hLH-Y4-m5O">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hLH-Y4-m5O" id="rNa-Nm-rhA">
@@ -281,6 +302,10 @@ Sure</string>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="dateLabel" destination="Lbc-DS-PVo" id="wjz-6i-LZw"/>
+                        <outlet property="datePicker" destination="f3z-8H-rdz" id="3Zh-fl-SSI"/>
+                        <outlet property="datePickerCell" destination="AZt-MD-gwV" id="OQS-ro-ZWM"/>
+                        <outlet property="dateTitleCell" destination="F1N-MP-KiW" id="7Bo-gj-Ggu"/>
                         <outlet property="question1Label" destination="qRT-B6-Y7N" id="QsG-zz-CXS"/>
                         <outlet property="question1Option1" destination="EV8-Fa-Fot" id="j4Q-9q-hBC"/>
                         <outlet property="question1Option2" destination="mOS-GA-n46" id="Lrj-ga-aaT"/>
