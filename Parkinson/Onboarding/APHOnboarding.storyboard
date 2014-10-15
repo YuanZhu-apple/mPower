@@ -688,10 +688,10 @@ Sure</string>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="aEj-Qy-kA3"/>
                                                     <exclude reference="HrB-7q-cfc"/>
-                                                    <exclude reference="qTM-ur-FyB"/>
+                                                    <exclude reference="aEj-Qy-kA3"/>
                                                     <exclude reference="Mxr-8q-MXW"/>
+                                                    <exclude reference="qTM-ur-FyB"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
