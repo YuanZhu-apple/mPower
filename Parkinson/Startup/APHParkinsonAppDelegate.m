@@ -53,7 +53,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
     //Give chance for super to initialize AppleCore before doing app specific stuff
     BOOL returnValue = [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    if (1 | self.dataSubstrate.currentUser.isSignedIn) {
+    if (self.dataSubstrate.currentUser.isSignedIn) {
         [self showTabBarController];
     }
     else if (self.dataSubstrate.currentUser.isSignedUp)

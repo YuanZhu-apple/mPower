@@ -20,14 +20,6 @@
 
 #pragma mark - Init
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self prepareFields];
-    }
-    return self;
-}
-
 - (void) prepareFields {
     NSMutableArray *items = [NSMutableArray array];
     NSMutableArray *itemsOrder = [NSMutableArray new];
@@ -161,7 +153,6 @@
     self.itemsOrder = itemsOrder;
 }
 
-
 #pragma mark - View Life Cycle
 
 - (void)viewDidLoad {
@@ -169,9 +160,8 @@
     
     self.tableView.tableHeaderView = nil;
     
-    [self addNavigationItems];
+    [self prepareFields];
     [self setupProgressBar];
-    [self addFooterView];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -182,27 +172,8 @@
 
 #pragma mark - UIMethods
 
-- (void) addNavigationItems {
-    
-    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(signup)];
-    self.navigationItem.rightBarButtonItem = nextBarButton;
-}
-
 - (void) setupProgressBar {
     [self.stepProgressBar setCompletedSteps:0 animation:NO];
-    
-    [self setStepNumber:2 title:NSLocalizedString(@"Medical Information", @"")];
-    self.stepProgressBar.rightLabel.text = NSLocalizedString(@"optional", @"");
-}
-
-- (void) addFooterView {
-    UILabel *label = [UILabel new];
-    label.frame = CGRectMake(0, 0, self.tableView.width, 44);
-    label.font = [UITableView footerFont];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UITableView footerTextColor];
-    label.text = NSLocalizedString(@"All fields on this screen are optional.", @"");
-    self.tableView.tableFooterView = label;
 }
 
 

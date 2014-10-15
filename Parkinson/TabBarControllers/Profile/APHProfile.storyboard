@@ -65,7 +65,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="QqY-8n-ETm" secondAttribute="bottom" constant="8" id="AoP-Qm-yxQ"/>
                                 <constraint firstItem="dmh-5T-mEu" firstAttribute="leading" secondItem="gWP-rS-8vz" secondAttribute="leading" constant="110" id="Gu1-Q7-tXZ"/>
@@ -211,7 +210,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCProfileTableViewCell" textLabel="cmv-rP-lN7" detailTextLabel="HKO-23-8yJ" rowHeight="64" style="IBUITableViewCellStyleValue1" id="hQX-UO-yCK" customClass="APCUserInfoCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCDefaultTableViewCell" textLabel="cmv-rP-lN7" detailTextLabel="HKO-23-8yJ" rowHeight="64" style="IBUITableViewCellStyleValue1" id="hQX-UO-yCK">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hQX-UO-yCK" id="OFY-zC-Dap">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -269,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeL-K5-D4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1351" y="469"/>
+            <point key="canvasLocation" x="1287" y="486"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wvb-eI-iA9">

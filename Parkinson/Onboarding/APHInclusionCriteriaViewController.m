@@ -28,7 +28,8 @@
 
 - (void)startSignUp
 {
-    [self.navigationController pushViewController:[APHSignUpGeneralInfoViewController new] animated:YES];
+    APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
+    [self.navigationController pushViewController:signUpVC animated:YES];
 }
 
 @end
