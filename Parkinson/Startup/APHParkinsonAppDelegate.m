@@ -53,6 +53,8 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
     //Give chance for super to initialize AppleCore before doing app specific stuff
     BOOL returnValue = [super application:application didFinishLaunchingWithOptions:launchOptions];
     
+    [self setUpAppAppearance];
+    
     if (self.dataSubstrate.currentUser.isSignedIn) {
         [self showTabBarController];
     }
@@ -71,6 +73,24 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
 /*********************************************************************************/
 #pragma mark - Private Methods
 /*********************************************************************************/
+- (void) setUpAppAppearance
+{
+    [APCAppearanceInfo setAppearanceDictionary:@{
+                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]  //#2db4fa Parkinson's
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.937 green:0.004 blue:0.553 alpha:1.000]  //#ef018d Breast Cancer
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.698 green:0.027 blue:0.220 alpha:1.000]  //#b20738 Cardio
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.008 green:0.498 blue:1.000 alpha:1.000]  //#027fff Cognitive
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.133 green:0.122 blue:0.447 alpha:1.000]  //#221f72 Asthma
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.020 green:0.549 blue:0.737 alpha:1.000]  //#058cbc Diabetes
+                                                     }];
+    //Appearance
+    [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSForegroundColorAttributeName : [UIColor appSecondaryColor1],
+                                                            NSFontAttributeName : [UIFont appMediumFontWithSize:16]
+                                                            }];
+    
+}
 - (void) showOnBoardingProcess
 {
     if ([self isVideoShown]) {

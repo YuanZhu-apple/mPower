@@ -47,10 +47,15 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
     self.headerView.layer.shadowOpacity = 0.6;
     self.headerView.layer.shadowRadius = 0.5;
     
-    self.diseaseNameLabel.font = [UIFont appBoldFontWithSize:17];
-    self.diseaseNameLabel.textColor = [UIColor appTextBodyColor2];
-    self.dateRangeLabel.font = [UIFont appFontWithSize:14];
-    self.dateRangeLabel.textColor = [UIColor appTextBodyColor3];
+    [self.joinButton setBackgroundImage:[UIImage imageWithColor:[UIColor appPrimaryColor]] forState:UIControlStateNormal];
+    [self.joinButton setTitleColor:[UIColor appSecondaryColor4] forState:UIControlStateNormal];
+    [self.loginButton setBackgroundImage:[UIImage imageWithColor:[UIColor appSecondaryColor2]] forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[UIColor appSecondaryColor4] forState:UIControlStateNormal];
+    
+    self.diseaseNameLabel.font = [UIFont appMediumFontWithSize:19];
+    self.diseaseNameLabel.textColor = [UIColor appSecondaryColor1];
+    self.dateRangeLabel.font = [UIFont appLightFontWithSize:16];
+    self.dateRangeLabel.textColor = [UIColor appSecondaryColor3];
 
 }
 
@@ -88,8 +93,8 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 {
     
     UILabel * label = (UILabel*) [cell viewWithTag:300];
-    label.font = [UIFont appFontWithSize:15];
-    label.textColor = [UIColor appTextBodyColor1];
+    label.font = [UIFont appRegularFontWithSize:16];
+    label.textColor = [UIColor appSecondaryColor1];
 }
 
 #pragma mark - IBActions
@@ -102,7 +107,7 @@ static NSString * const kStudyOverviewCellIdentifier = @"kStudyOverviewCellIdent
 
 - (void)signUpTapped:(id)sender
 {
-    [self.navigationController pushViewController:[APHInclusionCriteriaViewController new] animated:YES];
+    [self.navigationController pushViewController: [[UIStoryboard storyboardWithName:@"TempStoryBoard" bundle:nil] instantiateViewControllerWithIdentifier:@"InclusionCriteriaVC"] animated:YES];
 }
 
 /*********************************************************************************/

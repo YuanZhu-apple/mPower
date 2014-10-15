@@ -72,13 +72,11 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dV7-cM-J3W">
                                 <rect key="frame" x="0.0" y="510" width="160" height="58"/>
-                                <color key="backgroundColor" red="0.29599999999999999" green="0.307" blue="0.32600000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="seG-js-lrp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -97,7 +95,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disease Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-QN-KmK">
                                         <rect key="frame" x="104" y="71" width="113" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.253" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -121,13 +119,11 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzq-C5-j6z">
                                 <rect key="frame" x="160" y="510" width="160" height="58"/>
-                                <color key="backgroundColor" red="0.18431372939999999" green="0.74509805439999999" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="Ky9-fg-cIR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <state key="normal" title="Join">
-                                    <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -158,6 +154,8 @@
                         <outlet property="dateRangeLabel" destination="6Hh-pG-P9Q" id="l1P-r6-Yq2"/>
                         <outlet property="diseaseNameLabel" destination="1g1-QN-KmK" id="TDO-BT-1qW"/>
                         <outlet property="headerView" destination="2lS-tC-r3N" id="ymb-mW-Ehi"/>
+                        <outlet property="joinButton" destination="kzq-C5-j6z" id="SWK-Eg-C9Q"/>
+                        <outlet property="loginButton" destination="dV7-cM-J3W" id="yJb-9n-1oX"/>
                         <outlet property="logoImageView" destination="XpJ-4Q-SLv" id="lS0-pX-umW"/>
                         <outlet property="tableView" destination="FDj-to-yX4" id="N7a-79-LQ7"/>
                     </connections>

@@ -6,23 +6,23 @@
   "questions":
               [
                 {
-                  "title":"What is this study about?",
+                  "title":"About this Study",
                   "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum."
                 },
                 {
-                  "title":"How this study works?",
+                  "title":"How this study works",
                   "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum."
                 },
                 {
-                  "title":"Who is running this study?",
+                  "title":"Who is running this Study",
                   "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum."
                 },
                 {
-                  "title":"Who is eligible to participate?",
+                  "title":"Who is eligible to participate",
                   "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum."
                 },
                 {
-                  "title":"Length of study",
+                  "title":"Length of the Study",
                   "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum."
                 }
               ]

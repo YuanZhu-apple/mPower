@@ -49,7 +49,7 @@ static  NSString  *kYTimeStampRecordKey  = @"TimeStamp";
     CGPoint  point = [recogniser locationInView:recogniser.view];
     
     NSDictionary  *record = @{ kWhichTargetRecordKey : recogniser.view == self.container.tapperLeft ? kLeftTargetRecordKey: kRightTargetRecordKey,
-                               kYTimeStampRecordKey  : [NSDate date],
+                               kYTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
                                kXCoordinateRecordKey : @(point.x),
                                kYCoordinateRecordKey : @(point.y)
                             };
