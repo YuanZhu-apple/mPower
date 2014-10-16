@@ -304,7 +304,6 @@
 		F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpGeneralInfoViewController.m; sourceTree = "<group>"; };
 		F5D14E7E19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpMedicalInfoViewController.h; sourceTree = "<group>"; };
 		F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpMedicalInfoViewController.m; sourceTree = "<group>"; };
-		F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHUserInfoConstants.h; sourceTree = "<group>"; };
 		F5D14E9419CC9B9100650FBB /* APHActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHActivitiesViewController.h; sourceTree = "<group>"; };
 		F5D14E9519CC9B9100650FBB /* APHActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHActivitiesViewController.m; sourceTree = "<group>"; };
 		F5D14E9719CC9B9100650FBB /* APHEditSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHEditSectionsViewController.h; sourceTree = "<group>"; };
@@ -562,7 +561,6 @@
 				F5D14E7F19CC9B8100650FBB /* APHSignUpMedicalInfoViewController.m */,
 				F5D14E7A19CC9B8100650FBB /* APHSignInViewController.h */,
 				F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */,
-				F5D14E8519CC9B8100650FBB /* APHUserInfoConstants.h */,
 				5B5F179D19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.h */,
 				5B5F179E19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.m */,
 				5B5F17A019EF3D3B00A0E1D7 /* APHSignupTouchIDViewController.h */,

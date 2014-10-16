@@ -181,7 +181,7 @@ static NSString *const kHealthProfileStoryBoardKey = @"APHProfile";
         [controllers replaceObjectAtIndex:controllerIndex withObject:controller];
         
         [tabster setViewControllers:controllers animated:NO];
-        tabster.tabBar.tintColor = [UIColor colorWithRed:0.083 green:0.651 blue:0.949 alpha:1.000]; //Magic constant to match the blue color in the icons
+        tabster.tabBar.tintColor = [UIColor appPrimaryColor];
         UITabBarItem  *item = tabster.tabBar.selectedItem;
         item.image = [UIImage imageNamed:deselectedImageNames[controllerIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil];
         item.selectedImage = [[UIImage imageNamed:selectedImageNames[controllerIndex] inBundle:[NSBundle appleCoreBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
