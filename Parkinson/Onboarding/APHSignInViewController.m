@@ -23,6 +23,7 @@
     
     self.passwordTextField.font = [UITableView textFieldFont];
     self.passwordTextField.textColor = [UITableView textFieldTextColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {

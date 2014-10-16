@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL permissionGranted;
 @property (weak, nonatomic) IBOutlet APCPermissionButton *permissionButton;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextBarButton;
 @end
 
 @implementation APHSignUpGeneralInfoViewController
@@ -28,6 +29,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
 
+    [self setupNavigationItems];
     [self prepareFields];
     
     self.permissionButton.unconfirmedTitle = NSLocalizedString(@"I agree to the Terms and Conditions", @"");
@@ -49,6 +51,15 @@
 - (void)setupAppearance
 {
     [super setupAppearance];
+}
+
+- (void)setupNavigationItems
+{
+    self.nextBarButton.enabled = NO;
+    
+    UIBarButtonItem *hiddenButton = [[UIBarButtonItem alloc] initWithTitle:@"   " style:UIBarButtonItemStylePlain target:self action:@selector(secretButton)];
+    
+    [self.navigationItem setRightBarButtonItems:@[self.nextBarButton, hiddenButton]];
 }
 
 - (void) prepareFields {
@@ -122,6 +133,18 @@
     self.itemsOrder = itemsOrder;
 }
 
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [super textFieldShouldReturn:textField];
+    
+    [self.nextBarButton setEnabled:[self isContentValid:nil]];
+    
+    return YES;
+}
+
+
 #pragma mark - APCPickerTableViewCellDelegate methods
 
 - (void)pickerTableViewCell:(APCPickerTableViewCell *)cell datePickerValueChanged:(NSDate *)date
@@ -176,9 +199,6 @@
 
 - (BOOL) isContentValid:(NSString **)errorMessage {
 
-#if DEMO
-    return YES;
-#else
     BOOL isContentValid = [super isContentValid:errorMessage];
 
     if (isContentValid) {
@@ -237,7 +257,6 @@
     }
     
     return isContentValid;
-#endif
 }
 
 - (void) loadProfileValuesInModel {
@@ -254,9 +273,6 @@
         APCTableViewItem *item = self.items[i];
         
         switch (order.integerValue) {
-            case APCSignUpUserInfoItemUserName:
-                self.user.userName = [(APCTableViewTextFieldItem *)item value];
-                break;
                 
             case APCSignUpUserInfoItemPassword:
                 self.user.password = [(APCTableViewTextFieldItem *)item value];
@@ -301,8 +317,11 @@
 
 - (void) secretButton
 {
-    NSUInteger randomInteger = arc4random();
     self.nameTextField.text = @"John Appleseed";
+    
+    NSUInteger randomInteger = arc4random();
+    
+    self.userNameTextField.text = [NSString stringWithFormat:@"test_%@", @(randomInteger)];
     
     for (int i = 0; i < self.itemsOrder.count; i++) {
         NSNumber *order = self.itemsOrder[i];
@@ -310,10 +329,6 @@
         APCTableViewTextFieldItem *item = self.items[i];
         
         switch (order.integerValue) {
-            case APCSignUpUserInfoItemUserName:
-                item.value = [NSString stringWithFormat:@"test_%@", @(randomInteger)];
-                break;
-                
             case APCSignUpUserInfoItemPassword:
                 item.value = @"Password123";
                 break;
@@ -336,7 +351,7 @@
 {
     NSString *error;
     
-    if (1 | [self isContentValid:&error]) {
+    if ([self isContentValid:&error]) {
         
 //        [self loadProfileValuesInModel];
         

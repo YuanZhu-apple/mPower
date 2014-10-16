@@ -336,6 +336,7 @@
                         <outlet property="footerView" destination="N3a-rD-avo" id="C8h-He-u6G"/>
                         <outlet property="headerView" destination="Rav-BM-IJ8" id="4Yy-Je-Xri"/>
                         <outlet property="nameTextField" destination="qso-Uk-5Jz" id="P3l-Dp-y7W"/>
+                        <outlet property="nextBarButton" destination="0I7-mD-ZXp" id="J7k-qQ-ml3"/>
                         <outlet property="permissionButton" destination="QlK-bi-CSD" id="nEi-78-12G"/>
                         <outlet property="profileImageButton" destination="Rzv-vm-DVb" id="1m1-LS-Bnn"/>
                         <outlet property="userNameTextField" destination="ath-ub-BUQ" id="tjp-Wi-8jA"/>

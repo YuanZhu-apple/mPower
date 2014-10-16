@@ -134,7 +134,7 @@
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"What time do you wake up?", @"");
         field.placeholder = NSLocalizedString(@"7:00 AM", @"");
-        field.identifier = kAPCPickerTableViewCellIdentifier;
+        field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.detailDiscloserStyle = YES;
@@ -153,7 +153,7 @@
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"What time do you go to sleep?", @"");
         field.placeholder = NSLocalizedString(@"9:30 PM", @"");
-        field.identifier = kAPCPickerTableViewCellIdentifier;
+        field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.detailDiscloserStyle = YES;
