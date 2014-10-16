@@ -185,6 +185,8 @@
         }
         
     }
+    
+    self.nextBarButton.enabled = [self isContentValid:nil];
 
 }
 
@@ -263,6 +265,7 @@
     
     if (self.tableView.tableHeaderView) {
         self.user.name = self.nameTextField.text;
+        self.user.userName = self.userNameTextField.text;
     }
     
     for (int i = 0; i < self.itemsOrder.count; i++) {
@@ -351,7 +354,7 @@
     
     if ([self isContentValid:&error]) {
         
-//        [self loadProfileValuesInModel];
+        [self loadProfileValuesInModel];
         
         APHSignUpMedicalInfoViewController *medicalInfoViewController =  [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpMedicalInfoVC"];
         medicalInfoViewController.user = self.user;

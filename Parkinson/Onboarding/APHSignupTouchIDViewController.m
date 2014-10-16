@@ -28,12 +28,14 @@
 - (void)next
 {
     APHSignUpPermissionsViewController *permissionsVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"PermissionsVC"];
+    permissionsVC.user = self.user;
     [self.navigationController pushViewController:permissionsVC animated:YES];
 }
 
 - (void)skip
 {
     APHSignUpPermissionsViewController *permissionsVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"PermissionsVC"];
+    permissionsVC.user = self.user;
     [self.navigationController pushViewController:permissionsVC animated:YES];
 }
 @end

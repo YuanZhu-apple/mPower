@@ -252,6 +252,7 @@
     [self loadProfileValuesInModel];
     
     APCSignupTouchIDViewController *touchIDViewController = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"PasscodeVC"];
+    touchIDViewController.user = self.user;
     [self.navigationController pushViewController:touchIDViewController animated:YES];
 }
 
