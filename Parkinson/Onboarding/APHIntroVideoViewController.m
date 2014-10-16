@@ -7,8 +7,8 @@
 //
 
 #import "APHIntroVideoViewController.h"
-#import "APHSignupOptionsViewController.h"
-
+#import "APHStudyOverviewViewController.h"
+static NSString *const kVideoShownKey = @"VideoShown";
 @interface APHIntroVideoViewController ()
 
 @end
@@ -20,10 +20,23 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) skip {
-    APHSignupOptionsViewController *optionsViewController = [[APHSignupOptionsViewController alloc] initWithNibName:@"APHSignupOptionsViewController" bundle:nil];
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kVideoShownKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self.navigationController pushViewController:optionsViewController animated:YES];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+}
+
+- (void) skip {
+    
+    [self.navigationController pushViewController:[APHStudyOverviewViewController new] animated:YES];
 }
 
 @end

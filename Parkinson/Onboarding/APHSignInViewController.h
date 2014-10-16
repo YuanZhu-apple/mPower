@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import "APCSignInViewController.h"
+#import <APCAppleCore/APCAppleCore.h>
 
 @interface APHSignInViewController : APCSignInViewController
 
