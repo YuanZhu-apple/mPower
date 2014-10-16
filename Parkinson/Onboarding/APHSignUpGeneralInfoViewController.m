@@ -243,9 +243,7 @@
 - (void) loadProfileValuesInModel {
     
     if (self.tableView.tableHeaderView) {
-        NSArray *nameComponents = [self.nameTextField.text componentsSeparatedByString:@" "];
-        self.user.firstName = nameComponents[0];
-        self.user.lastName = nameComponents[1];
+        self.user.name = self.nameTextField.text;
     }
     
     for (int i = 0; i < self.itemsOrder.count; i++) {
