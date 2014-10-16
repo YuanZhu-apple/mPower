@@ -7,6 +7,7 @@
 //
 
 #import "APHEligibleViewController.h"
+#import "APHSignUpGeneralInfoViewController.h"
 
 @interface APHEligibleViewController ()
 
@@ -46,19 +47,15 @@
     [self.consentButton setTitleColor:[UIColor appSecondaryColor4] forState:UIControlStateNormal];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void) back
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) startSignUp
 {
-    
+    APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
+    [self.navigationController pushViewController:signUpVC animated:YES];
 }
 
 @end
