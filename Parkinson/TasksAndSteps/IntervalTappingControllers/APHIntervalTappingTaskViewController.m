@@ -7,11 +7,10 @@
 //
 
 #import "APHIntervalTappingTaskViewController.h"
-@import APCAppleCore;
 
-//#import "APHIntervalTappingIntroViewController.h"
-//#import "APHIntervalTappingStepsViewController.h"
-//#import "APHIntervalTappingResultsViewController.h"
+#import "APHIntervalTappingIntroViewController.h"
+#import "APHIntervalTappingStepsViewController.h"
+#import "APHIntervalTappingResultsViewController.h"
 
 #import "APHIntervalTappingRecorder.h"
 
@@ -21,7 +20,7 @@ static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
 static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
-static float tapInterval = 5.0;
+static float tapInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
@@ -103,25 +102,30 @@ static float tapInterval = 5.0;
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.cancelButton = nil;
-    stepViewController.backButton = nil;
+    if (kIntervalTappingStep102 == stepViewController.step.identifier)
+    {
+        stepViewController.continueButton = nil;
+    } else if (kIntervalTappingStep103 == stepViewController.step.identifier)
+    {
+        stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
+    }
 }
 
-//- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
-//{
-//    NSDictionary  *controllers = @{
-//                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
-//                                   kIntervalTappingStep102 : [APHIntervalTappingStepsViewController   class],
-//                                   kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
-//                                  };
-//    Class  aClass = [controllers objectForKey:step.identifier];
-//    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
-//    controller.resultCollector = self;
-//    controller.delegate = self;
-//    controller.title = @"Interval Tapping";
-//    controller.step = step;
-//    return  controller;
-//}
+- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+{
+    NSDictionary  *controllers = @{
+                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class]
+                                  };
+    
+    Class  aClass = [controllers objectForKey:step.identifier];
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    controller.resultCollector = self;
+    controller.delegate = self;
+    controller.title = @"Interval Tapping";
+    controller.step = step;
+    
+    return controller;
+}
 
 /*********************************************************************************/
 #pragma  mark  - Private methods
@@ -144,6 +148,7 @@ static float tapInterval = 5.0;
 
 -(void)sendResult:(RKResult*)result
 {
+    //TODO
     // In a real application, consider adding to the archive on a concurrent queue.
     NSError *err = nil;
     if (![result addToArchive:self.taskArchive error:&err])
@@ -177,7 +182,8 @@ static float tapInterval = 5.0;
 }
 
 - (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
-    
+    NSLog(@"taskViewControllerDidFail %@", error);
+
     [self.taskArchive resetContent];
     self.taskArchive = nil;
     

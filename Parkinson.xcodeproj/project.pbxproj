@@ -10,6 +10,8 @@
 		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
 		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
+		7BEE9D5219F0448200E75555 /* APHCustomIntervalTappingTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE9D5119F0448200E75555 /* APHCustomIntervalTappingTargetView.m */; };
+		7BEE9D5519F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */; };
 		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
 		CF8BEBF719DF4CB700FF103D /* phonation.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */; };
 		CF8BEBF819DF4CB700FF103D /* phonation.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF319DF4CB700FF103D /* phonation.instructions.02@2x.png */; };
@@ -184,6 +186,9 @@
 		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
+		7BEE9D5019F0448200E75555 /* APHCustomIntervalTappingTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHCustomIntervalTappingTargetView.h; sourceTree = "<group>"; };
+		7BEE9D5119F0448200E75555 /* APHCustomIntervalTappingTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHCustomIntervalTappingTargetView.m; sourceTree = "<group>"; };
+		7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHCustomIntervalTappingTargetView.xib; sourceTree = "<group>"; };
 		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
 		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
 		CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.01@2x.png"; path = "PhonationImages/phonation.instructions.01@2x.png"; sourceTree = "<group>"; };
@@ -701,6 +706,9 @@
 				F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */,
 				F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */,
 				F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */,
+				7BEE9D5019F0448200E75555 /* APHCustomIntervalTappingTargetView.h */,
+				7BEE9D5119F0448200E75555 /* APHCustomIntervalTappingTargetView.m */,
+				7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */,
 			);
 			path = IntervalTappingControllers;
 			sourceTree = "<group>";
@@ -966,6 +974,7 @@
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,
 				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
 				CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */,
+				7BEE9D5519F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib in Resources */,
 				CF8BEC1519E2366500FF103D /* APHWalkingIntroViewController.xib in Resources */,
 				CF8BEBFB19DF4CB700FF103D /* phonation.instructions.05@2x.png in Resources */,
 				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
@@ -1051,6 +1060,7 @@
 				F5D14E8719CC9B8100650FBB /* APHIntroVideoViewController.m in Sources */,
 				F5D14F1B19CC9BC900650FBB /* APHIntervalTappingRecorder.m in Sources */,
 				F5D14F2019CC9BC900650FBB /* APHIntervalTappingStepsViewController.m in Sources */,
+				7BEE9D5219F0448200E75555 /* APHCustomIntervalTappingTargetView.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
 				CF8BEC0F19E2354100FF103D /* APHPhonationIntroViewController.m in Sources */,
