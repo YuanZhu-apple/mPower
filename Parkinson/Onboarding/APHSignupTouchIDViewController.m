@@ -31,4 +31,9 @@
     [self.navigationController pushViewController:permissionsVC animated:YES];
 }
 
+- (void)skip
+{
+    APHSignUpPermissionsViewController *permissionsVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"PermissionsVC"];
+    [self.navigationController pushViewController:permissionsVC animated:YES];
+}
 @end

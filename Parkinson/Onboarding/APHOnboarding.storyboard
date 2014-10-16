@@ -493,7 +493,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Identification" id="s2e-ri-t9w">
-                        <barButtonItem key="rightBarButtonItem" title="Skip" id="Msl-UM-mQi"/>
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="Msl-UM-mQi">
+                            <connections>
+                                <action selector="skip" destination="M6H-Ab-9LQ" id="co9-nm-mcE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -530,7 +534,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Permissions" id="SxI-XR-pPG">
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="mFc-mc-Igg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="mFc-mc-Igg">
+                            <connections>
+                                <action selector="next:" destination="iSl-OY-cm0" id="bVB-rZ-Scl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

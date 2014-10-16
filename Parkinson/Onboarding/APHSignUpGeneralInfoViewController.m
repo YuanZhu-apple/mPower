@@ -8,7 +8,6 @@
 
 #import "APHSignUpGeneralInfoViewController.h"
 #import "APHSignUpMedicalInfoViewController.h"
-#import "APHUserInfoCell.h"
 
 #define DEMO 0
 
@@ -45,8 +44,8 @@
             });
         }
     }];
-
 }
+
 - (void)setupAppearance
 {
     [super setupAppearance];
@@ -128,15 +127,11 @@
 - (void)pickerTableViewCell:(APCPickerTableViewCell *)cell datePickerValueChanged:(NSDate *)date
 {
     [super pickerTableViewCell:cell datePickerValueChanged:date];
-    
-    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
 }
 
 - (void)pickerTableViewCell:(APCPickerTableViewCell *)cell pickerViewDidSelectIndices:(NSArray *)selectedIndices
 {
     [super pickerTableViewCell:cell pickerViewDidSelectIndices:selectedIndices];
-    
-    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
 }
 
 #pragma mark - APCTextFieldTableViewCellDelegate methods
@@ -149,9 +144,6 @@
 - (void)textFieldTableViewCellDidReturn:(APCTextFieldTableViewCell *)cell
 {
     [super textFieldTableViewCellDidReturn:cell];
-    
-    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
-    
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
@@ -178,7 +170,6 @@
 - (void)segmentedTableViewcell:(APCSegmentedTableViewCell *)cell didSelectSegmentAtIndex:(NSInteger)index
 {
     [super segmentedTableViewcell:cell didSelectSegmentAtIndex:index];
-    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
 }
 
 #pragma mark - Private Methods
@@ -202,7 +193,7 @@
                 case APCSignUpUserInfoItemUserName:
                     isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemUserNameRegEx];
                     if (errorMessage) {
-                        *errorMessage = NSLocalizedString(@"Please give a valid Username", @"");
+                        *errorMessage = NSLocalizedString(@"Please enter valid Username.", @"");
                     }
                     break;
                     
@@ -211,14 +202,14 @@
                         isContentValid = NO;
                         
                         if (errorMessage) {
-                            *errorMessage = NSLocalizedString(@"Please give a valid Password", @"");
+                            *errorMessage = NSLocalizedString(@"Please enter a Password.", @"");
                         }
                     }
                     else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
                         isContentValid = NO;
                         
                         if (errorMessage) {
-                            *errorMessage = NSLocalizedString(@"Password should be at least 6 characters", @"");
+                            *errorMessage = NSLocalizedString(@"Password should be at least 6 characters.", @"");
                         }
                     }
                     break;
@@ -227,7 +218,7 @@
                     isContentValid = [[(APCTableViewTextFieldItem *)item value] isValidForRegex:kAPCGeneralInfoItemEmailRegEx];
                     
                     if (errorMessage) {
-                        *errorMessage = NSLocalizedString(@"Please give a valid Email", @"");
+                        *errorMessage = NSLocalizedString(@"Please enter a valid email address.", @"");
                     }
                     break;
                     
@@ -273,6 +264,10 @@
                 
             case APCSignUpUserInfoItemEmail:
                 self.user.email = [(APCTableViewTextFieldItem *)item value];
+                break;
+            case APCSignUpUserInfoItemGender:{
+                
+            }
                 break;
                 
             default:
@@ -334,16 +329,25 @@
                 break;
         }
         [self.tableView reloadData];
-        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid:nil];
     }
 }
 
 - (IBAction)next
 {
-    APHSignUpMedicalInfoViewController *medicalInfoViewController =  [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpMedicalInfoVC"];
-    medicalInfoViewController.user = self.user;
+    NSString *error;
     
-    [self.navigationController pushViewController:medicalInfoViewController animated:YES];
+    if (1 | [self isContentValid:&error]) {
+        
+//        [self loadProfileValuesInModel];
+        
+        APHSignUpMedicalInfoViewController *medicalInfoViewController =  [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpMedicalInfoVC"];
+        medicalInfoViewController.user = self.user;
+        
+        [self.navigationController pushViewController:medicalInfoViewController animated:YES];
+    } else{
+        [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:error];
+    }
+    
 }
 
 - (IBAction)cancel:(id)sender
