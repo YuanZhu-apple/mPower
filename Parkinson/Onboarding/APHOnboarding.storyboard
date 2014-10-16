@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -933,6 +933,70 @@ Sure</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02w-yf-mHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="224" y="1043"/>
+        </scene>
+        <!--In Eligible View Controller-->
+        <scene sceneID="NPs-iW-PYz">
+            <objects>
+                <viewController storyboardIdentifier="InEligibleVC" id="Lqf-q4-PmE" customClass="APHInEligibleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1o8-T3-A9d"/>
+                        <viewControllerLayoutGuide type="bottom" id="PFQ-VP-OVh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L0Y-55-IY9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jF4-Kt-XCJ">
+                                <rect key="frame" x="0.0" y="517" width="320" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="TUc-4q-CbJ"/>
+                                </constraints>
+                                <state key="normal" title="Okay">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okayButtonPressed:" destination="Lqf-q4-PmE" eventType="touchUpInside" id="znX-Vy-UuW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unfortunately, you are currently ineligible to join this study due to your medical history" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-B9-hTC">
+                                <rect key="frame" x="16" y="247" width="288" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="E7e-dJ-dA8"/>
+                                    <constraint firstAttribute="width" constant="288" id="JOw-sU-Y7O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WZ2-NU-DH9">
+                                <rect key="frame" x="40" y="111" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Ima-I8-uxd"/>
+                                    <constraint firstAttribute="height" constant="128" id="QHU-wL-SmZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jF4-Kt-XCJ" firstAttribute="centerX" secondItem="xKc-B9-hTC" secondAttribute="centerX" id="95q-xm-RA1"/>
+                            <constraint firstItem="jF4-Kt-XCJ" firstAttribute="leading" secondItem="L0Y-55-IY9" secondAttribute="leading" id="VaX-s6-JTT"/>
+                            <constraint firstAttribute="centerY" secondItem="xKc-B9-hTC" secondAttribute="centerY" id="blV-tt-FU1"/>
+                            <constraint firstAttribute="centerX" secondItem="WZ2-NU-DH9" secondAttribute="centerX" id="dyf-kp-wZs"/>
+                            <constraint firstItem="jF4-Kt-XCJ" firstAttribute="bottom" secondItem="PFQ-VP-OVh" secondAttribute="top" id="eN4-s6-hRq"/>
+                            <constraint firstAttribute="centerX" secondItem="xKc-B9-hTC" secondAttribute="centerX" id="k0f-Nx-Bxg"/>
+                            <constraint firstItem="xKc-B9-hTC" firstAttribute="top" secondItem="WZ2-NU-DH9" secondAttribute="bottom" constant="8" id="k2h-Wk-Xf2"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="label" destination="xKc-B9-hTC" id="n1V-xD-EZU"/>
+                        <outlet property="logoImageView" destination="WZ2-NU-DH9" id="BlD-rd-qa8"/>
+                        <outlet property="okayButton" destination="jF4-Kt-XCJ" id="mfN-rg-oCC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0s-Tf-P6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631" y="1043"/>
         </scene>
     </scenes>
     <resources>
