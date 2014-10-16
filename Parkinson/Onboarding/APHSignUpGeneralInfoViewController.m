@@ -107,9 +107,10 @@
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Birthdate", @"");
         field.placeholder = NSLocalizedString(@"MMMM DD, YYYY", @"");
-        //        if (self.permissionGranted) {
-        //            field.date = self.user.birthDate;
-        //        }
+        if (self.permissionGranted) {
+            field.date = self.user.birthDate;
+            field.detailText = [field.date toStringWithFormat:field.dateFormat];
+        }
         field.datePickerMode = UIDatePickerModeDate;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         
@@ -122,9 +123,9 @@
         APCTableViewSegmentItem *field = [APCTableViewSegmentItem new];
         field.style = UITableViewCellStyleValue1;
         field.segments = [APCUser sexTypesInStringValue];
-        //        if (self.permissionGranted) {
-        //            field.selectedIndex = [APCUser stringIndexFromSexType:self.user.biologicalSex];
-        //        }
+        if (self.permissionGranted) {
+            field.selectedIndex = [APCUser stringIndexFromSexType:self.user.biologicalSex];
+        }
         field.identifier = kAPCSegmentedTableViewCellIdentifier;
         
         [items addObject:field];

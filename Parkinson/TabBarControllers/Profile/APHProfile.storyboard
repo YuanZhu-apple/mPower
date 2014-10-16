@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w28-Mt-EQV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Profile-->
@@ -203,13 +204,6 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell tag="5555" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCTextFieldTableViewCell" id="nyg-JA-d4o" customClass="APCTextFieldTableViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nyg-JA-d4o" id="nW3-IV-uDC">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCDefaultTableViewCell" textLabel="cmv-rP-lN7" detailTextLabel="HKO-23-8yJ" rowHeight="64" style="IBUITableViewCellStyleValue1" id="hQX-UO-yCK">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hQX-UO-yCK" id="OFY-zC-Dap">
@@ -230,12 +224,81 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell tag="5555" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCPickerTableViewCell" rowHeight="164" id="Fmu-Vd-7tt" customClass="APCPickerTableViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fmu-Vd-7tt" id="ggP-eM-OgC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCTextFieldTableViewCell" rowHeight="65" id="EHK-di-e5O" customClass="APCTextFieldTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EHK-di-e5O" id="i1s-su-hMt">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4W-EX-Oem">
+                                            <rect key="frame" x="17" y="21" width="183" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="VHe-tD-Xdp"/>
+                                                <constraint firstAttribute="width" constant="183" id="vic-jG-gNg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zg7-Ga-mef">
+                                            <rect key="frame" x="193" y="17" width="109" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="gtz-rU-327"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="E4W-EX-Oem" firstAttribute="leading" secondItem="i1s-su-hMt" secondAttribute="leadingMargin" constant="9" id="8BQ-SM-0y2"/>
+                                        <constraint firstAttribute="centerY" secondItem="zg7-Ga-mef" secondAttribute="centerY" id="KdP-a3-qhc"/>
+                                        <constraint firstAttribute="centerY" secondItem="E4W-EX-Oem" secondAttribute="centerY" constant="0.5" id="U0O-X1-jjn"/>
+                                        <constraint firstItem="E4W-EX-Oem" firstAttribute="trailing" secondItem="zg7-Ga-mef" secondAttribute="leading" constant="7" id="iN2-Za-All"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zg7-Ga-mef" secondAttribute="trailing" constant="10" id="pEi-Eb-sgB"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="zg7-Ga-mef" id="h6n-NJ-VPv"/>
+                                    <outlet property="textLabel" destination="E4W-EX-Oem" id="wZs-UZ-STj"/>
+                                    <outlet property="textLabelWidthConstraint" destination="vic-jG-gNg" id="Btz-LL-42l"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCPickerTableViewCell" rowHeight="164" id="aID-J7-lgk" customClass="APCPickerTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aID-J7-lgk" id="3uZ-Iv-6w9">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="OX6-ux-qFc">
+                                            <rect key="frame" x="0.0" y="1" width="320" height="162"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="434936841.48193699">
+                                                <!--2014-10-13 23:47:21 +0000-->
+                                            </date>
+                                            <connections>
+                                                <action selector="dateChanged:" destination="aID-J7-lgk" eventType="valueChanged" id="Gcy-DO-KfX"/>
+                                            </connections>
+                                        </datePicker>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bf-mu-rln">
+                                            <rect key="frame" x="0.0" y="1" width="320" height="162"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3bf-mu-rln" secondAttribute="trailing" constant="-8" id="3gV-mS-fYE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OX6-ux-qFc" secondAttribute="trailing" constant="-8" id="6jV-Uh-lPZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OX6-ux-qFc" secondAttribute="bottom" constant="-8" id="8hY-2a-rSx"/>
+                                        <constraint firstItem="3bf-mu-rln" firstAttribute="top" secondItem="3uZ-Iv-6w9" secondAttribute="topMargin" constant="-7" id="Az7-mJ-rMC"/>
+                                        <constraint firstItem="OX6-ux-qFc" firstAttribute="top" secondItem="3uZ-Iv-6w9" secondAttribute="topMargin" constant="-7" id="KpQ-xB-5xi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3bf-mu-rln" secondAttribute="bottom" constant="-8" id="MAy-K1-kai"/>
+                                        <constraint firstItem="OX6-ux-qFc" firstAttribute="leading" secondItem="3uZ-Iv-6w9" secondAttribute="leadingMargin" constant="-8" id="Znn-Fp-VpC"/>
+                                        <constraint firstItem="3bf-mu-rln" firstAttribute="leading" secondItem="3uZ-Iv-6w9" secondAttribute="leadingMargin" constant="-8" id="tQx-Os-FuT"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="OX6-ux-qFc" id="Hxa-Bv-nfI"/>
+                                    <outlet property="pickerView" destination="3bf-mu-rln" id="H8k-qI-MuO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
