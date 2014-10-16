@@ -88,11 +88,44 @@ static  NSString  *kYTimeStampRecordKey  = @"TimeStamp";
     [super viewController:viewController willStartStepWithView:view];
     self.container = (APHIntervalTappingTargetContainer *)view;
     
+    APHIntervalTappingTargetContainer *tapperContainer = [[APHIntervalTappingTargetContainer alloc] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 160.0)];
+    
+    APHIntervalTappingTapView *tapperLeft = [[APHIntervalTappingTapView alloc] initWithFrame:CGRectMake(20.0, 20.0, 100.0, 100.0)];
+    APHIntervalTappingTapView *tapperRight = [[APHIntervalTappingTapView alloc] initWithFrame:CGRectMake(182.0, 20.0, 100.0, 100.0)];
+    
+    [tapperContainer addSubview:tapperLeft];
+    [tapperContainer addSubview:tapperRight];
+
+    tapperContainer.tapperLeft = tapperLeft;
+    tapperContainer.tapperRight = tapperRight;
+    
+    self.container = (APHIntervalTappingTargetContainer *)tapperContainer;
+    
+    [tapperContainer setBackgroundColor:[UIColor redColor]];
     UITapGestureRecognizer  *tapsterLeft = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
     [self.container.tapperLeft addGestureRecognizer:tapsterLeft];
     
     UITapGestureRecognizer  *tapsterRight = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
     [self.container.tapperRight addGestureRecognizer:tapsterRight];
+    
+    [tapperContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(>=160)]" options:0 metrics:nil views:@{@"c":tapperContainer}];
+    
+    for (NSLayoutConstraint *constraint in verticalConstraints) {
+        constraint.priority = UILayoutPriorityFittingSizeLevel;
+    }
+    
+    [tapperContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(>=280)]" options:0 metrics:nil views:@{@"c":tapperContainer}]];
+    
+    [tapperContainer addConstraints:verticalConstraints];
+    
+    [(RKActiveStepViewController *)viewController setCustomView:tapperContainer];
+    
+    
+    
+    
+    
     
     self.records = [NSMutableArray array];
 }

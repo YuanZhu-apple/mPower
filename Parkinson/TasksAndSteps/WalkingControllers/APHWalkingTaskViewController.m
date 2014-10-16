@@ -46,7 +46,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         @"After the phone vibrates, follow the instructions to begin.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 10.0;
+        step.countDown = 5.0;
         [steps addObject:step];
     }
     {
@@ -55,7 +55,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 20.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -65,7 +65,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 20.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -75,7 +75,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 30.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -86,7 +86,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
                     @"Insert easy to understand meaning of this interpretation here.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 0.0;
+
         [steps addObject:step];
     }
     
@@ -126,6 +126,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         stepViewController.continueButton = nil;
     } else if (kWalkingStep104Key == stepViewController.step.identifier) {
         stepViewController.continueButton = nil;
+    } else if (kWalkingStep105Key == stepViewController.step.identifier) {
+                stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
     }
 }
 
@@ -249,7 +251,30 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
     
-    [taskViewController suspend];
+//    NSFetchRequest * request = [APCResult request];
+//    request.predicate = [NSPredicate predicateWithFormat:@"scheduledTask == %@ AND rkTaskInstanceUUID == %@", self.scheduledTask, self.taskInstanceUUID.UUIDString];
+//    
+//    APCAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    NSArray * results = [appDelegate.dataSubstrate.mainContext executeFetchRequest:request error:NULL];
+//    
+//    RKStep * dummyStep = [[RKStep alloc] initWithIdentifier:@"Dummy" name:@"name"];
+//    RKDataResult * result = [[RKDataResult alloc] initWithStep:dummyStep];
+//    result.filename = @"walkingTask.json";
+//    result.contentType = @"application/json";
+//    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
+//    [results enumerateObjectsUsingBlock:^(APCDataResult * result, NSUInteger idx, BOOL *stop) {
+//        dictionary[result.rkItemIdentifier] = [NSJSONSerialization JSONObjectWithData:result.data options:0 error:NULL];
+//    }];
+//    
+    
+//    NSMutableDictionary *wrapperDictionary = [NSMutableDictionary dictionary];
+//    wrapperDictionary[@"fitnessTest"] = dictionary;
+//    
+//    NSLog(@"Dictionary: %@", wrapperDictionary);
+//    
+//    result.data = [NSJSONSerialization dataWithJSONObject:wrapperDictionary options:(NSJSONWritingOptions)0 error:NULL];
+//    [result addToArchive:self.taskArchive error:NULL];
+
     
     NSError *err = nil;
     NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
