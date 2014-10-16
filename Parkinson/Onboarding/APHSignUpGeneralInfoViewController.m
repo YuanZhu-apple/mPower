@@ -346,6 +346,7 @@
         }
         [self.tableView reloadData];
     }
+    [self.nextBarButton setEnabled:[self isContentValid:nil]];
 }
 
 - (IBAction)next
