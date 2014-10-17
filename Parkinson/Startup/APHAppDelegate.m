@@ -44,6 +44,11 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kHKWritePermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
                                                    HKQuantityTypeIdentifierHeight
+                                                   ],
+                                           kAppServicesListRequiredKey           : @[
+                                                   @(kSignUpPermissionsTypeLocation),
+                                                   @(kSignUpPermissionsTypePushNotifications),
+                                                   @(kSignUpPermissionsTypeCoremotion)
                                                    ]
                                            }];
     self.initializationOptions = dictionary;
