@@ -10,8 +10,8 @@
 
 @interface APHCommonInstructionalViewController  ( ) <UIScrollViewDelegate>
 
-@property  (nonatomic, weak)    IBOutlet  UITextView     *instructionalParagraph;
-@property  (nonatomic, weak)    IBOutlet  UIScrollView   *exscrollibur;
+@property  (nonatomic, weak)    IBOutlet  UIScrollView   *textScroller;
+@property  (nonatomic, weak)    IBOutlet  UIScrollView   *imageScroller;
 @property  (nonatomic, weak)    IBOutlet  UIPageControl  *pager;
 
 @property  (nonatomic, strong)  NSArray  *instructionalImages;
@@ -26,9 +26,9 @@
 
 #pragma  mark  -  Initialise Scroll View With Images
 
-- (void)initialiseScrollView
+- (void)initialiseImageScrollView
 {
-    CGSize  contentSize = CGSizeMake(0.0, CGRectGetHeight(self.exscrollibur.frame));
+    CGSize  contentSize = CGSizeMake(0.0, CGRectGetHeight(self.imageScroller.frame));
     NSUInteger  imageIndex = 0;
     
     for (NSString  *imageName  in  self.instructionalImages) {
@@ -36,19 +36,39 @@
         NSString   *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
         UIImage    *anImage = [UIImage imageWithContentsOfFile:imagePath];
         
-        CGRect  frame = CGRectMake(imageIndex * CGRectGetWidth(self.exscrollibur.frame), 0.0, CGRectGetWidth(self.exscrollibur.frame), CGRectGetHeight(self.exscrollibur.frame));
+        CGRect  frame = CGRectMake(imageIndex * CGRectGetWidth(self.imageScroller.frame), 0.0, CGRectGetWidth(self.imageScroller.frame), CGRectGetHeight(self.imageScroller.frame));
         UIImageView  *imager = [[UIImageView alloc] initWithFrame:frame];
         imager.image = anImage;
-        [self.exscrollibur addSubview:imager];
+        [self.imageScroller addSubview:imager];
         
-        contentSize.width = contentSize.width + CGRectGetWidth(self.exscrollibur.frame);
+        contentSize.width = contentSize.width + CGRectGetWidth(self.imageScroller.frame);
         
         imageIndex = imageIndex + 1;
     }
-    self.exscrollibur.contentSize = contentSize;
-    self.exscrollibur.pagingEnabled = YES;
+    self.imageScroller.contentSize = contentSize;
     
     self.pager.numberOfPages = [self.instructionalImages count];
+}
+
+#pragma  mark  -  Initialise Scroll View With Paragraphs
+
+- (void)initialiseParagraphsScrollView
+{
+    CGSize  contentSize = CGSizeMake(0.0, CGRectGetHeight(self.textScroller.frame));
+    NSUInteger  paragraphIndex = 0;
+
+    for (NSAttributedString  *string  in  self.localisedParagraphs) {
+        
+        CGRect  frame = CGRectMake(paragraphIndex * CGRectGetWidth(self.textScroller.frame), 0.0, CGRectGetWidth(self.textScroller.frame), CGRectGetHeight(self.textScroller.frame));
+        UITextView  *texter = [[UITextView alloc] initWithFrame:frame];
+        texter.attributedText = string;
+        [self.textScroller addSubview:texter];
+        
+        contentSize.width = contentSize.width + CGRectGetWidth(self.textScroller.frame);
+        
+        paragraphIndex = paragraphIndex + 1;
+    }
+    self.textScroller.contentSize = contentSize;
 }
 
 #pragma  mark  -  Localise Instructional Paragraphs
@@ -74,37 +94,44 @@
 {
     self.instructionalImages = images;
     
-    [self initialiseScrollView];
+    [self initialiseImageScrollView];
     
     self.nonLocalisedParagraphs = paragraphs;
     [self initialiseInstructionalParagraphs];
-    
-    [self setupInstruction:0];
+    [self initialiseParagraphsScrollView];
 }
 
-#pragma  mark  -  Page Control Action Method
+#pragma  mark  -  Page Control Action Methods
 
-- (void)setupInstruction:(NSInteger)pageNumber
+- (void)scrollImageScroller:(NSInteger)pageNumber
 {
-    self.instructionalParagraph.attributedText = self.localisedParagraphs[pageNumber];
-    self.instructionalParagraph.alpha = 0.0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.instructionalParagraph.alpha = 1.0;
-    }];
+    CGRect  imageFrame = self.imageScroller.frame;
+    imageFrame.origin.x = CGRectGetWidth(imageFrame) * pageNumber;
+    imageFrame.origin.y = 0.0;
+    [self.imageScroller scrollRectToVisible:imageFrame animated:YES];
+}
+
+- (void)scrollTextScroller:(NSInteger)pageNumber
+{
+    CGRect  paragraphFrame = self.imageScroller.frame;
+    paragraphFrame.origin.x = CGRectGetWidth(paragraphFrame) * pageNumber;
+    paragraphFrame.origin.y = 0.0;
+    [self.textScroller scrollRectToVisible:paragraphFrame animated:YES];
+}
+
+- (void)performScroll:(NSInteger)pageNumber
+{
+    [self scrollImageScroller:pageNumber];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollTextScroller:pageNumber];
+    });
 }
 
 - (IBAction)pageControlChangedValue:(UIPageControl *)sender
 {
     NSInteger  pageNumber = sender.currentPage;
-        //
-        //   update scroll view to appropriate page
-        //
-    CGRect  frame = self.exscrollibur.frame;
-    frame.origin.x = CGRectGetWidth(frame) * pageNumber;
-    frame.origin.y = 0.0;
-    [self.exscrollibur scrollRectToVisible:frame animated:YES];
     
-    [self setupInstruction:pageNumber];
+    [self performScroll:pageNumber];
     
     self.scrolledViaPageControl = YES;
 }
@@ -116,18 +143,15 @@
     self.scrolledViaPageControl = NO;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    NSInteger  pageNumber = self.pager.currentPage;
-    [self setupInstruction:pageNumber];
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
     if (self.wasScrolledViaPageControl == NO) {
-        CGFloat  pageWidth = CGRectGetWidth(self.exscrollibur.frame);
-        NSInteger  pageNumber = floor((self.exscrollibur.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.pager.currentPage = pageNumber;
+        CGFloat  pageWidth = CGRectGetWidth(self.imageScroller.frame);
+        NSInteger  pageNumber = floor((self.imageScroller.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        if (self.pager.currentPage != pageNumber) {
+            self.pager.currentPage = pageNumber;
+            [self scrollTextScroller:pageNumber];
+        }
     }
 }
 

@@ -7,13 +7,14 @@
 //
 
 #import "APHIntervalTappingTaskViewController.h"
-@import APCAppleCore;
 
 #import "APHIntervalTappingIntroViewController.h"
 #import "APHIntervalTappingStepsViewController.h"
 #import "APHIntervalTappingResultsViewController.h"
 
 #import "APHIntervalTappingRecorder.h"
+
+static NSString *MainStudyIdentifier = @"com.parkinsons.intervalTapping";
 
 static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
@@ -22,6 +23,8 @@ static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 static float tapInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
+
+@property (strong, nonatomic) RKDataArchive *taskArchive;
 
 @end
 
@@ -40,6 +43,8 @@ static float tapInterval = 20.0;
 {
     [super viewDidAppear:animated];
     self.navigationItem.title = @"Interval Tapping";
+    
+    [self beginTask];
 }
 
 + (RKTask *)createTask:(APCScheduledTask *)scheduledTask
@@ -65,7 +70,7 @@ static float tapInterval = 20.0;
     
     {
         RKIntroductionStep* step = [[RKIntroductionStep alloc] initWithIdentifier:kIntervalTappingStep103 name:@"Tap Results"];
-        step.caption = @"Button Tap";
+        step.caption = @"You're finished.";
         step.explanation = @"";
         step.instruction = @"";
         [steps addObject:step];
@@ -97,24 +102,133 @@ static float tapInterval = 20.0;
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-    stepViewController.cancelButton = nil;
-    stepViewController.backButton = nil;
+    if (kIntervalTappingStep102 == stepViewController.step.identifier)
+    {
+        stepViewController.continueButton = nil;
+    } else if (kIntervalTappingStep103 == stepViewController.step.identifier)
+    {
+        stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
+    }
 }
 
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
 {
     NSDictionary  *controllers = @{
-                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
-                                   kIntervalTappingStep102 : [APHIntervalTappingStepsViewController   class],
-                                   kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
+                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class]
                                   };
+    
     Class  aClass = [controllers objectForKey:step.identifier];
     APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
     controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
     controller.step = step;
-    return  controller;
+    
+    return controller;
 }
+
+/*********************************************************************************/
+#pragma  mark  - Private methods
+/*********************************************************************************/
+
+- (void)beginTask
+{
+    if (self.taskArchive)
+    {
+        [self.taskArchive resetContent];
+    }
+    
+    self.taskArchive = [[RKDataArchive alloc] initWithItemIdentifier:[RKItemIdentifier itemIdentifierForTask:self.task] studyIdentifier:MainStudyIdentifier taskInstanceUUID:self.taskInstanceUUID extraMetadata:nil fileProtection:RKFileProtectionCompleteUnlessOpen];
+    
+}
+
+/*********************************************************************************/
+#pragma mark - Helpers
+/*********************************************************************************/
+
+-(void)sendResult:(RKResult*)result
+{
+    //TODO
+    // In a real application, consider adding to the archive on a concurrent queue.
+    NSError *err = nil;
+    if (![result addToArchive:self.taskArchive error:&err])
+    {
+        // Error adding the result to the archive; archive may be invalid. Tell
+        // the user there's been a problem and stop the task.
+        NSLog(@"Error adding %@ to archive: %@", result, err);
+    }
+}
+
+
+/*********************************************************************************/
+#pragma  mark  - TaskViewController delegates
+/*********************************************************************************/
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result {
+    
+    NSLog(@"didProduceResult = %@", result);
+    
+    if ([result isKindOfClass:[RKSurveyResult class]]) {
+        RKSurveyResult* sresult = (RKSurveyResult*)result;
+        
+        for (RKQuestionResult* qr in sresult.surveyResults) {
+            NSLog(@"%@ = [%@] %@ ", [[qr itemIdentifier] stringValue], [qr.answer class], qr.answer);
+        }
+    }
+    
+    
+    [self sendResult:result];
+    
+    [super taskViewController:taskViewController didProduceResult:result];
+}
+
+- (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
+    NSLog(@"taskViewControllerDidFail %@", error);
+
+    [self.taskArchive resetContent];
+    self.taskArchive = nil;
+    
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController{
+    
+    [taskViewController suspend];
+    
+    [self.taskArchive resetContent];
+    self.taskArchive = nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
+    
+    [taskViewController suspend];
+    
+    NSError *err = nil;
+    NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
+    if (archiveFileURL)
+    {
+        NSURL *documents = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
+        NSURL *outputUrl = [documents URLByAppendingPathComponent:[archiveFileURL lastPathComponent]];
+        
+        // This is where you would queue the archive for upload. In this demo, we move it
+        // to the documents directory, where you could copy it off using iTunes, for instance.
+        [[NSFileManager defaultManager] moveItemAtURL:archiveFileURL toURL:outputUrl error:nil];
+        
+        NSLog(@"outputUrl= %@", outputUrl);
+        
+        // When done, clean up:
+        self.taskArchive = nil;
+        if (archiveFileURL)
+        {
+            [[NSFileManager defaultManager] removeItemAtURL:archiveFileURL error:nil];
+        }
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+}
+
+
 
 @end

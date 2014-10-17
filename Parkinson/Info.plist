@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Parkinson</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,9 +24,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This may be used to collect walking data</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This may be used to collect walking data</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -39,11 +46,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>Parkinson</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This may be used to collect walking data</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This may be used to collect walking data</string>
 </dict>
 </plist>
