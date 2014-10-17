@@ -15,7 +15,7 @@
 /*********************************************************************************/
 #pragma mark - Initializations Options
 /*********************************************************************************/
-static NSString *const kParkinsonIdentifier = @"com.ymedialabs.aph.parkinsons";
+static NSString *const kStudyIdentifier = @"com.ymedialabs.aph.parkinsons";
 static NSString *const kAppPrefix = @"pd";
 static NSString *const kBaseURL = @"https://bridge-uat.herokuapp.com";
 
@@ -52,12 +52,12 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (void) setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
-                                                 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]  //#2db4fa Parkinson's
-                                                 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.937 green:0.004 blue:0.553 alpha:1.000]  //#ef018d Breast Cancer
-                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.698 green:0.027 blue:0.220 alpha:1.000]  //#b20738 Cardio
-                                                 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.008 green:0.498 blue:1.000 alpha:1.000]  //#027fff Cognitive
-                                                 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.133 green:0.122 blue:0.447 alpha:1.000]  //#221f72 Asthma
-                                                 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.020 green:0.549 blue:0.737 alpha:1.000]  //#058cbc Diabetes
+                                                   kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]  //#2db4fa Parkinson's
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.937 green:0.004 blue:0.553 alpha:1.000]  //#ef018d Breast Cancer
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.698 green:0.027 blue:0.220 alpha:1.000]  //#b20738 Cardio
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.008 green:0.498 blue:1.000 alpha:1.000]  //#027fff Cognitive
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.133 green:0.122 blue:0.447 alpha:1.000]  //#221f72 Asthma
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.020 green:0.549 blue:0.737 alpha:1.000]  //#058cbc Diabetes
                                                  }];
     
     //Appearance
