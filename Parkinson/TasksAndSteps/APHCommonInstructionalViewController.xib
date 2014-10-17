@@ -6,9 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="APHCommonInstructionalViewController">
             <connections>
-                <outlet property="exscrollibur" destination="oPZ-0g-8nN" id="3Fw-IF-ADB"/>
-                <outlet property="instructionalParagraph" destination="ncN-07-XAP" id="UNS-kZ-uvO"/>
+                <outlet property="imageScroller" destination="oPZ-0g-8nN" id="NWm-ws-D9H"/>
                 <outlet property="pager" destination="x3P-Tr-JsT" id="Fd0-Fu-JrZ"/>
+                <outlet property="textScroller" destination="Enl-cy-plq" id="J7W-u5-3Jg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5fK-3z-XHi"/>
             </connections>
         </placeholder>
@@ -17,33 +17,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncN-07-XAP">
+                <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enl-cy-plq" userLabel="Text Scroll View">
                     <rect key="frame" x="16" y="0.0" width="288" height="112"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="x3P-Tr-JsT">
-                    <rect key="frame" x="110" y="370" width="100" height="37"/>
-                    <color key="backgroundColor" white="0.89524406934306566" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="pageIndicatorTintColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </scrollView>
+                <scrollView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPZ-0g-8nN" userLabel="Image Scroll View">
+                    <rect key="frame" x="16" y="112" width="288" height="250"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="1T9-ha-MRk"/>
+                    </connections>
+                </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="x3P-Tr-JsT">
+                    <rect key="frame" x="19" y="370" width="283" height="37"/>
+                    <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="pageIndicatorTintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="pageControlChangedValue:" destination="-1" eventType="valueChanged" id="kkc-UG-Rmd"/>
                     </connections>
                 </pageControl>
-                <scrollView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPZ-0g-8nN">
-                    <rect key="frame" x="19" y="112" width="283" height="250"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="1T9-ha-MRk"/>
-                    </connections>
-                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="702" y="401"/>
+            <point key="canvasLocation" x="565" y="495"/>
         </view>
     </objects>
 </document>

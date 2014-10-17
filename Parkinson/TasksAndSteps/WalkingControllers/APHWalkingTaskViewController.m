@@ -13,6 +13,8 @@
 #import "APHWalkingResultsViewController.h"
 #import <objc/message.h>
 
+static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
+
 static  NSString  *kWalkingStep101Key = @"Walking Step 101";
 static  NSString  *kWalkingStep102Key = @"Walking Step 102";
 static  NSString  *kWalkingStep103Key = @"Walking Step 103";
@@ -23,6 +25,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 {
     NSInteger _count;
 }
+
+@property (strong, nonatomic) RKDataArchive *taskArchive;
 
 @end
 
@@ -42,7 +46,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         @"After the phone vibrates, follow the instructions to begin.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 10.0;
+        step.countDown = 5.0;
         [steps addObject:step];
     }
     {
@@ -51,7 +55,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 20.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -61,7 +65,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 20.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -71,7 +75,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 30.0;
+        step.countDown = 5.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -82,7 +86,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
                     @"Insert easy to understand meaning of this interpretation here.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 0.0;
+
         [steps addObject:step];
     }
     
@@ -113,37 +117,189 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
 {
-//    stepViewController.continueButtonOnToolbar = NO;
+    if (kWalkingStep101Key == stepViewController.step.identifier) {
+        stepViewController.continueButton = nil;
+        stepViewController.skipButton = nil;
+    } else if (kWalkingStep102Key == stepViewController.step.identifier) {
+        stepViewController.continueButton = nil;
+    } else if (kWalkingStep103Key == stepViewController.step.identifier) {
+        stepViewController.continueButton = nil;
+    } else if (kWalkingStep104Key == stepViewController.step.identifier) {
+        stepViewController.continueButton = nil;
+    } else if (kWalkingStep105Key == stepViewController.step.identifier) {
+                stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
+    }
 }
 
 - (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
 {
 }
 
-- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+//- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+//{
+
+//    NSDictionary  *stepsToControllersMap = @{
+//                                             kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
+//                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
+//                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
+//                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
+//                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
+//                                           };
+    
+//    RKStepViewController  *controller = nil;
+//    
+//    NSArray  *descriptor = stepsToControllersMap[step.identifier];
+//    
+//    if (descriptor != nil) {
+//        Class  classToCreate = descriptor[0];
+//        NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
+//        controller = [[classToCreate alloc] initWithStep:step];
+//        if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
+//            ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
+//        }
+//        controller.delegate = self;
+//    }
+//    return  controller;
+//}
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    NSDictionary  *stepsToControllersMap = @{
-                                             kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
-                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
-                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
-                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
-                                           };
+    [super viewWillAppear:animated];
     
-    RKStepViewController  *controller = nil;
-    
-    NSArray  *descriptor = stepsToControllersMap[step.identifier];
-    
-    if (descriptor != nil) {
-        Class  classToCreate = descriptor[0];
-        NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
-        controller = [[classToCreate alloc] initWithStep:step];
-        if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
-            ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
-        }
-        controller.delegate = self;
+    [self beginTask];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+/*********************************************************************************/
+#pragma  mark  - Private methods
+/*********************************************************************************/
+
+- (void)beginTask
+{
+    if (self.taskArchive)
+    {
+        [self.taskArchive resetContent];
     }
-    return  controller;
+    
+    self.taskArchive = [[RKDataArchive alloc] initWithItemIdentifier:[RKItemIdentifier itemIdentifierForTask:self.task] studyIdentifier:MainStudyIdentifier taskInstanceUUID:self.taskInstanceUUID extraMetadata:nil fileProtection:RKFileProtectionCompleteUnlessOpen];
+    
+}
+
+/*********************************************************************************/
+#pragma mark - Helpers
+/*********************************************************************************/
+
+-(void)sendResult:(RKResult*)result
+{
+    // In a real application, consider adding to the archive on a concurrent queue.
+    NSError *err = nil;
+    if (![result addToArchive:self.taskArchive error:&err])
+    {
+        // Error adding the result to the archive; archive may be invalid. Tell
+        // the user there's been a problem and stop the task.
+        NSLog(@"Error adding %@ to archive: %@", result, err);
+    }
+}
+
+
+/*********************************************************************************/
+#pragma  mark  - TaskViewController delegates
+/*********************************************************************************/
+- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result {
+    
+    NSLog(@"didProduceResult = %@", result);
+    
+    if ([result isKindOfClass:[RKSurveyResult class]]) {
+        RKSurveyResult* sresult = (RKSurveyResult*)result;
+        
+        for (RKQuestionResult* qr in sresult.surveyResults) {
+            NSLog(@"%@ = [%@] %@ ", [[qr itemIdentifier] stringValue], [qr.answer class], qr.answer);
+        }
+    }
+    
+    
+    [self sendResult:result];
+    
+    [super taskViewController:taskViewController didProduceResult:result];
+}
+
+- (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
+    
+    [self.taskArchive resetContent];
+    self.taskArchive = nil;
+    
+}
+
+- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController{
+    
+    [taskViewController suspend];
+    
+    [self.taskArchive resetContent];
+    self.taskArchive = nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
+    
+//    NSFetchRequest * request = [APCResult request];
+//    request.predicate = [NSPredicate predicateWithFormat:@"scheduledTask == %@ AND rkTaskInstanceUUID == %@", self.scheduledTask, self.taskInstanceUUID.UUIDString];
+//    
+//    APCAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    NSArray * results = [appDelegate.dataSubstrate.mainContext executeFetchRequest:request error:NULL];
+//    
+//    RKStep * dummyStep = [[RKStep alloc] initWithIdentifier:@"Dummy" name:@"name"];
+//    RKDataResult * result = [[RKDataResult alloc] initWithStep:dummyStep];
+//    result.filename = @"walkingTask.json";
+//    result.contentType = @"application/json";
+//    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
+//    [results enumerateObjectsUsingBlock:^(APCDataResult * result, NSUInteger idx, BOOL *stop) {
+//        dictionary[result.rkItemIdentifier] = [NSJSONSerialization JSONObjectWithData:result.data options:0 error:NULL];
+//    }];
+//    
+    
+//    NSMutableDictionary *wrapperDictionary = [NSMutableDictionary dictionary];
+//    wrapperDictionary[@"fitnessTest"] = dictionary;
+//    
+//    NSLog(@"Dictionary: %@", wrapperDictionary);
+//    
+//    result.data = [NSJSONSerialization dataWithJSONObject:wrapperDictionary options:(NSJSONWritingOptions)0 error:NULL];
+//    [result addToArchive:self.taskArchive error:NULL];
+
+    
+    NSError *err = nil;
+    NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
+    if (archiveFileURL)
+    {
+        NSURL *documents = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
+        NSURL *outputUrl = [documents URLByAppendingPathComponent:[archiveFileURL lastPathComponent]];
+        
+        // This is where you would queue the archive for upload. In this demo, we move it
+        // to the documents directory, where you could copy it off using iTunes, for instance.
+        [[NSFileManager defaultManager] moveItemAtURL:archiveFileURL toURL:outputUrl error:nil];
+        
+        NSLog(@"outputUrl= %@", outputUrl);
+        
+        // When done, clean up:
+        self.taskArchive = nil;
+        if (archiveFileURL)
+        {
+            [[NSFileManager defaultManager] removeItemAtURL:archiveFileURL error:nil];
+        }
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [super taskViewControllerDidComplete:taskViewController];
 }
 
 

@@ -12,9 +12,9 @@
 
 - (BOOL)hasContent
 {
-    BOOL  answer = YES;
-    if (self.length == 0) {
-        answer = NO;
+    BOOL  answer = NO;
+    if (self.length > 0) {
+        answer = YES;
     }
     return  answer;
 }

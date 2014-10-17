@@ -14,7 +14,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
 
 -(void)setUpCollectors
 {
-    if (self.currentUser.isConsented) {
+    //if (self.currentUser.isConsented) {
         NSError *error = nil;
         {
             HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
@@ -61,7 +61,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         
     errReturn:
         return;
-    }
+   // }
 
 }
 
