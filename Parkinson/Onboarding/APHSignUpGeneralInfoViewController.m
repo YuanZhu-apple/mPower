@@ -377,4 +377,6 @@
     
 }
 
+- (IBAction)changeProfileImage:(id)sender {
+}
 @end
