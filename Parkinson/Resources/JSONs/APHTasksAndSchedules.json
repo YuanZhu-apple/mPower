@@ -45,12 +45,6 @@
                   "href": "appleparkinson:",
                   "schedule": "1:7",
                   "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
-                  },
-                  {
-                  "type": "REPEATING",
-                  "href": "appleparkinson:",
-                  "schedule": "1:1",
-                  "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995"
                   }
                   ]
 }
