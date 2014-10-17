@@ -34,12 +34,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kBaseURLKey                          : kBaseURL,
                                            kHKReadPermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
-                                                   HKQuantityTypeIdentifierHeight,
-                                                   HKQuantityTypeIdentifierStepCount,
-                                                   HKQuantityTypeIdentifierHeartRate,
-                                                   HKQuantityTypeIdentifierDistanceWalkingRunning,
-                                                   HKQuantityTypeIdentifierFlightsClimbed,
-                                                   HKQuantityTypeIdentifierDistanceCycling
+                                                   HKQuantityTypeIdentifierHeight
                                                    ],
                                            kHKWritePermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
