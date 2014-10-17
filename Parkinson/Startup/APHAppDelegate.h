@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @import APCAppleCore;
 
-@interface APHParkinsonAppDelegate : APCAppDelegate
+@interface APHAppDelegate : APCAppDelegate
 
 @end
 
