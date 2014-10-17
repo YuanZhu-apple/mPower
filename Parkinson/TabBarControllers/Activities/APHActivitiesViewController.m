@@ -10,7 +10,7 @@
 #import "APHActivitiesViewController.h"
 
 /* Other Classes */
-#import "APHParkinsonAppDelegate.h"
+#import "APHAppDelegate.h"
 @import APCAppleCore;
 
 @implementation APHActivitiesViewController

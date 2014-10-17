@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "APHParkinsonAppDelegate.h"
+#import "APHAppDelegate.h"
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([APHParkinsonAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([APHAppDelegate class]));
     }
 }
