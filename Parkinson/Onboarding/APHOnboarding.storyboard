@@ -1061,23 +1061,32 @@
                                     <constraint firstAttribute="width" constant="184" id="t7B-k6-rfB"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDG-Sy-d6i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDG-Sy-d6i">
                                 <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.70588235290000001" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="KoU-a8-3xx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Use Touch ID">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="useTouchId:" destination="M6H-Ab-9LQ" eventType="touchUpInside" id="UdE-fV-aYc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bF1-Qu-Fjc" firstAttribute="top" secondItem="RDG-Sy-d6i" secondAttribute="bottom" id="2fG-oL-uvZ"/>
                             <constraint firstAttribute="centerX" secondItem="SEg-XA-ZM3" secondAttribute="centerX" id="3lf-Go-Ohk"/>
                             <constraint firstAttribute="centerX" secondItem="dod-dZ-Zf1" secondAttribute="centerX" id="3vp-Sa-nPc"/>
                             <constraint firstItem="SEg-XA-ZM3" firstAttribute="top" secondItem="mGi-Tu-NZO" secondAttribute="bottom" constant="100" id="4fx-os-ScT"/>
                             <constraint firstItem="izX-v1-n91" firstAttribute="top" secondItem="mGi-Tu-NZO" secondAttribute="bottom" constant="23" id="LBp-td-z6b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RDG-Sy-d6i" secondAttribute="trailing" constant="-16" id="j74-Vw-8c5"/>
                             <constraint firstAttribute="centerX" secondItem="izX-v1-n91" secondAttribute="centerX" id="mLB-et-P3D"/>
+                            <constraint firstItem="RDG-Sy-d6i" firstAttribute="leading" secondItem="4Fe-Tc-7HI" secondAttribute="leadingMargin" constant="-16" id="rba-RU-sg5"/>
                             <constraint firstItem="dod-dZ-Zf1" firstAttribute="top" secondItem="mGi-Tu-NZO" secondAttribute="bottom" constant="100" id="wWL-Ft-QZk"/>
                         </constraints>
                     </view>
@@ -1095,6 +1104,7 @@
                         <outlet property="retryPasscodeView" destination="dod-dZ-Zf1" id="GIe-WY-s9s"/>
                         <outlet property="titleLabel" destination="izX-v1-n91" id="nbE-j8-fDw"/>
                         <outlet property="touchIDButton" destination="RDG-Sy-d6i" id="0gl-6g-Zkh"/>
+                        <outlet property="touchIdButtonBottomConstraint" destination="2fG-oL-uvZ" id="W9z-OA-0Dq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AY0-JZ-UKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
