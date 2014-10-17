@@ -89,7 +89,6 @@
 		F5C98F8F19EF1E7D001D18C9 /* APHEligibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C98F8E19EF1E7D001D18C9 /* APHEligibleViewController.m */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
 		F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4119CC991500650FBB /* JSON_READ_ME */; };
-		F5D14E4519CC991500650FBB /* sleepSurvey.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4219CC991500650FBB /* sleepSurvey.json */; };
 		F5D14E8719CC9B8100650FBB /* APHIntroVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */; };
 		F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7B19CC9B8100650FBB /* APHSignInViewController.m */; };
 		F5D14E8919CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E7D19CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m */; };
@@ -300,7 +299,6 @@
 		F5C98F8E19EF1E7D001D18C9 /* APHEligibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHEligibleViewController.m; sourceTree = "<group>"; };
 		F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules.json; sourceTree = "<group>"; };
 		F5D14E4119CC991500650FBB /* JSON_READ_ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON_READ_ME; sourceTree = "<group>"; };
-		F5D14E4219CC991500650FBB /* sleepSurvey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sleepSurvey.json; sourceTree = "<group>"; };
 		F5D14E7819CC9B8100650FBB /* APHIntroVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntroVideoViewController.h; sourceTree = "<group>"; };
 		F5D14E7919CC9B8100650FBB /* APHIntroVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntroVideoViewController.m; sourceTree = "<group>"; };
 		F5D14E7A19CC9B8100650FBB /* APHSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignInViewController.h; sourceTree = "<group>"; };
@@ -541,7 +539,6 @@
 				5BAC200F19D5FEC600451AAE /* StudyOverview.json */,
 				F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */,
 				F5D14E4119CC991500650FBB /* JSON_READ_ME */,
-				F5D14E4219CC991500650FBB /* sleepSurvey.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -961,7 +958,6 @@
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
 				CFB777E319D38D9D002EADA1 /* APHMedsChangeMasterViewController.xib in Resources */,
-				F5D14E4519CC991500650FBB /* sleepSurvey.json in Resources */,
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
 				CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */,
