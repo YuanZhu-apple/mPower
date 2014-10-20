@@ -20,7 +20,7 @@ static  const  NSString  *kQuestionStep101Key = @"Question Step 101";
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
-    RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
+    RKTask * task = [scheduledTask.task rkTask];
     return  task;
 }
 

@@ -22,7 +22,7 @@ static NSString *MainStudyIdentifier = @"com.parkinsons.sleepSurvey";
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
-    RKTask * task = [scheduledTask.task generateRKTaskFromTaskDescription];
+    RKTask * task = [scheduledTask.task rkTask];
     return  task;
 }
 
