@@ -35,8 +35,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
 }
 
 - (void) skip {
-    
-    [self.navigationController pushViewController:[APHStudyOverviewViewController new] animated:YES];
+    APHStudyOverviewViewController * vc = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
