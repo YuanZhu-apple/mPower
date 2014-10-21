@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@import APCAppleCore;
+
 @interface APHLearnResourceViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
