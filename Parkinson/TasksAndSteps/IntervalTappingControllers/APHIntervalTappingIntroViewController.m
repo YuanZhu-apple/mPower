@@ -7,7 +7,6 @@
 //
 
 #import "APHIntervalTappingIntroViewController.h"
-#import "APHCommonInstructionalViewController.h"
 
 static  NSString  *kViewControllerTitle = @"Interval Tapping";
 
@@ -15,7 +14,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
 
 @interface APHIntervalTappingIntroViewController  ( )
 
-@property  (nonatomic, strong)          APHCommonInstructionalViewController  *instructionsController;
+@property  (nonatomic, strong)          APCIntroductionViewController  *instructionsController;
 
 @property  (nonatomic, weak)  IBOutlet  UILabel  *introHeadingCaption;
 @property  (nonatomic, weak)  IBOutlet  UIView   *instructionsContainer;
@@ -74,7 +73,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
     
     self.introHeadingCaption.text = kIntroHeadingCaption;
     
-    self.instructionsController = [[APHCommonInstructionalViewController alloc] initWithNibName:nil bundle:nil];
+    self.instructionsController = [[APCIntroductionViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     [self.instructionsContainer addSubview:self.instructionsController.view];
     [self.instructionsController setupWithInstructionalImages:introImageNames andParagraphs:paragraphs];
 }
