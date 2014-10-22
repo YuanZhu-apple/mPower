@@ -12,7 +12,7 @@
 #define DEMO 0
 
 
-@interface APHSignUpGeneralInfoViewController ()
+@interface APHSignUpGeneralInfoViewController () <APCTermsAndConditionsViewControllerDelegate>
 
 @property (nonatomic, strong) APCPermissionsManager *permissionManager;
 @property (nonatomic) BOOL permissionGranted;
@@ -57,9 +57,11 @@
 {
     self.nextBarButton.enabled = NO;
     
+#if DEVELOPMENT
     UIBarButtonItem *hiddenButton = [[UIBarButtonItem alloc] initWithTitle:@"   " style:UIBarButtonItemStylePlain target:self action:@selector(secretButton)];
     
     [self.navigationItem setRightBarButtonItems:@[self.nextBarButton, hiddenButton]];
+#endif
 }
 
 - (void) prepareFields {
@@ -259,6 +261,10 @@
         }
     }
     
+    if (isContentValid) {
+        isContentValid = self.permissionButton.isSelected;
+    }
+    
     return isContentValid;
 }
 
@@ -310,11 +316,28 @@
     }
 }
 
+#pragma mark - APCTermsAndConditionsViewControllerDelegate methods
+
+- (void)termsAndConditionsViewControllerDidAgree
+{
+    [self.permissionButton setSelected:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [self.nextBarButton setEnabled:[self isContentValid:nil]];
+    }];
+}
+
+- (void)termsAndConditionsViewControllerDidCancel
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)termsAndConditions:(UIButton *)sender
 {
-    [self.permissionButton setSelected:!sender.selected];
+    APCTermsAndConditionsViewController *termsViewController =  [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"TermsVC"];
+    termsViewController.delegate = self;
+    [self.navigationController presentViewController:termsViewController animated:YES completion:nil];
 }
 
 - (void) secretButton
@@ -347,6 +370,9 @@
         }
         [self.tableView reloadData];
     }
+    
+    [self.permissionButton setSelected:YES];
+    
     [self.nextBarButton setEnabled:[self isContentValid:nil]];
 }
 

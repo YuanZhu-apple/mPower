@@ -158,11 +158,10 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (void)next
 {
-    //TODO: Remove comments in Dev branch
-    //#ifdef DEVELOPMENT
-    //        APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
-    //        [self.navigationController pushViewController:signUpVC animated:YES];
-    //#else
+#ifdef DEVELOPMENT
+        APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
+        [self.navigationController pushViewController:signUpVC animated:YES];
+#else
     if ([self isEligible]) {
         
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"EligibleVC"] animated:YES];
@@ -171,7 +170,7 @@ static NSInteger kDatePickerCellRow = 3;
     {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"InEligibleVC"] animated:YES];
     }
-    //#endif
+#endif
 }
 
 - (BOOL) isEligible
