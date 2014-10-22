@@ -17,15 +17,6 @@
 		7BEE9D5219F0448200E75555 /* APHCustomIntervalTappingTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE9D5119F0448200E75555 /* APHCustomIntervalTappingTargetView.m */; };
 		7BEE9D5519F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */; };
 		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
-		CF8BEBF719DF4CB700FF103D /* phonation.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */; };
-		CF8BEBF819DF4CB700FF103D /* phonation.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF319DF4CB700FF103D /* phonation.instructions.02@2x.png */; };
-		CF8BEBF919DF4CB700FF103D /* phonation.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF419DF4CB700FF103D /* phonation.instructions.03@2x.png */; };
-		CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF519DF4CB700FF103D /* phonation.instructions.04@2x.png */; };
-		CF8BEBFB19DF4CB700FF103D /* phonation.instructions.05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBF619DF4CB700FF103D /* phonation.instructions.05@2x.png */; };
-		CF8BEC0119DF4CC400FF103D /* walking.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFC19DF4CC400FF103D /* walking.instructions.01@2x.png */; };
-		CF8BEC0319DF4CC400FF103D /* walking.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFE19DF4CC400FF103D /* walking.instructions.03@2x.png */; };
-		CF8BEC0419DF4CC400FF103D /* walking.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFF19DF4CC400FF103D /* walking.instructions.04@2x.png */; };
-		CF8BEC0519DF4CC400FF103D /* walking.instructions.05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEC0019DF4CC400FF103D /* walking.instructions.05@2x.png */; };
 		CF8BEC0F19E2354100FF103D /* APHPhonationIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEC0D19E2354100FF103D /* APHPhonationIntroViewController.m */; };
 		CF8BEC1019E2354100FF103D /* APHPhonationIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEC0E19E2354100FF103D /* APHPhonationIntroViewController.xib */; };
 		CF8BEC1419E2366500FF103D /* APHWalkingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEC1219E2366500FF103D /* APHWalkingIntroViewController.m */; };
@@ -33,13 +24,8 @@
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
-		CFA8293D19E6F3F600C5BEA7 /* interval.instructions.04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */; };
-		CFA8293F19E6F40400C5BEA7 /* walking.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEBFD19DF4CC400FF103D /* walking.instructions.02@2x.png */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
-		CFEBFD1419DDF44100CCD3E9 /* interval.instructions.01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */; };
-		CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */; };
-		CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
@@ -163,16 +149,6 @@
 		7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHCustomIntervalTappingTargetView.xib; sourceTree = "<group>"; };
 		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
 		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
-		CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.01@2x.png"; path = "PhonationImages/phonation.instructions.01@2x.png"; sourceTree = "<group>"; };
-		CF8BEBF319DF4CB700FF103D /* phonation.instructions.02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.02@2x.png"; path = "PhonationImages/phonation.instructions.02@2x.png"; sourceTree = "<group>"; };
-		CF8BEBF419DF4CB700FF103D /* phonation.instructions.03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.03@2x.png"; path = "PhonationImages/phonation.instructions.03@2x.png"; sourceTree = "<group>"; };
-		CF8BEBF519DF4CB700FF103D /* phonation.instructions.04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.04@2x.png"; path = "PhonationImages/phonation.instructions.04@2x.png"; sourceTree = "<group>"; };
-		CF8BEBF619DF4CB700FF103D /* phonation.instructions.05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phonation.instructions.05@2x.png"; path = "PhonationImages/phonation.instructions.05@2x.png"; sourceTree = "<group>"; };
-		CF8BEBFC19DF4CC400FF103D /* walking.instructions.01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "walking.instructions.01@2x.png"; path = "WalkingImages/walking.instructions.01@2x.png"; sourceTree = "<group>"; };
-		CF8BEBFD19DF4CC400FF103D /* walking.instructions.02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "walking.instructions.02@2x.png"; path = "WalkingImages/walking.instructions.02@2x.png"; sourceTree = "<group>"; };
-		CF8BEBFE19DF4CC400FF103D /* walking.instructions.03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "walking.instructions.03@2x.png"; path = "WalkingImages/walking.instructions.03@2x.png"; sourceTree = "<group>"; };
-		CF8BEBFF19DF4CC400FF103D /* walking.instructions.04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "walking.instructions.04@2x.png"; path = "WalkingImages/walking.instructions.04@2x.png"; sourceTree = "<group>"; };
-		CF8BEC0019DF4CC400FF103D /* walking.instructions.05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "walking.instructions.05@2x.png"; path = "WalkingImages/walking.instructions.05@2x.png"; sourceTree = "<group>"; };
 		CF8BEC0C19E2354100FF103D /* APHPhonationIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHPhonationIntroViewController.h; sourceTree = "<group>"; };
 		CF8BEC0D19E2354100FF103D /* APHPhonationIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHPhonationIntroViewController.m; sourceTree = "<group>"; };
 		CF8BEC0E19E2354100FF103D /* APHPhonationIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHPhonationIntroViewController.xib; sourceTree = "<group>"; };
@@ -187,10 +163,6 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
-		CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.01@2x.png"; path = "IntervalTappingImages/interval.instructions.01@2x.png"; sourceTree = "<group>"; };
-		CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.02@2x.png"; path = "IntervalTappingImages/interval.instructions.02@2x.png"; sourceTree = "<group>"; };
-		CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.03@2x.png"; path = "IntervalTappingImages/interval.instructions.03@2x.png"; sourceTree = "<group>"; };
-		CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "interval.instructions.04@2x.png"; path = "IntervalTappingImages/interval.instructions.04@2x.png"; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
 		F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHDashboard.storyboard; sourceTree = "<group>"; };
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
@@ -313,38 +285,11 @@
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CFEBFD0619DDF0C700CCD3E9 /* Interval Tapping Images */,
-				CF8BEBEF19DF4C8000FF103D /* Phonation Images */,
-				CF8BEBF119DF4C8F00FF103D /* Walking Images */,
 				F5D14E3F19CC991500650FBB /* JSONs */,
 				F536B93C19F5747B005A2D1C /* Tasks */,
 				F584909819E892700091A640 /* Videos */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		CF8BEBEF19DF4C8000FF103D /* Phonation Images */ = {
-			isa = PBXGroup;
-			children = (
-				CF8BEBF219DF4CB700FF103D /* phonation.instructions.01@2x.png */,
-				CF8BEBF319DF4CB700FF103D /* phonation.instructions.02@2x.png */,
-				CF8BEBF419DF4CB700FF103D /* phonation.instructions.03@2x.png */,
-				CF8BEBF519DF4CB700FF103D /* phonation.instructions.04@2x.png */,
-				CF8BEBF619DF4CB700FF103D /* phonation.instructions.05@2x.png */,
-			);
-			name = "Phonation Images";
-			sourceTree = "<group>";
-		};
-		CF8BEBF119DF4C8F00FF103D /* Walking Images */ = {
-			isa = PBXGroup;
-			children = (
-				CF8BEBFC19DF4CC400FF103D /* walking.instructions.01@2x.png */,
-				CF8BEBFD19DF4CC400FF103D /* walking.instructions.02@2x.png */,
-				CF8BEBFE19DF4CC400FF103D /* walking.instructions.03@2x.png */,
-				CF8BEBFF19DF4CC400FF103D /* walking.instructions.04@2x.png */,
-				CF8BEC0019DF4CC400FF103D /* walking.instructions.05@2x.png */,
-			);
-			name = "Walking Images";
 			sourceTree = "<group>";
 		};
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
@@ -402,17 +347,6 @@
 				CFC2D2DC19A5417D00170E69 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CFEBFD0619DDF0C700CCD3E9 /* Interval Tapping Images */ = {
-			isa = PBXGroup;
-			children = (
-				CFEBFD1019DDF44100CCD3E9 /* interval.instructions.01@2x.png */,
-				CFEBFD1119DDF44100CCD3E9 /* interval.instructions.02@2x.png */,
-				CFEBFD1219DDF44100CCD3E9 /* interval.instructions.03@2x.png */,
-				CFEBFD1319DDF44100CCD3E9 /* interval.instructions.04@2x.png */,
-			);
-			name = "Interval Tapping Images";
 			sourceTree = "<group>";
 		};
 		F536B93C19F5747B005A2D1C /* Tasks */ = {
@@ -797,46 +731,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA8293F19E6F40400C5BEA7 /* walking.instructions.02@2x.png in Resources */,
-				CFA8293D19E6F3F600C5BEA7 /* interval.instructions.04@2x.png in Resources */,
-				CFEBFD1519DDF44100CCD3E9 /* interval.instructions.02@2x.png in Resources */,
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
 				F5D14EBE19CC9B9100650FBB /* APHEditSectionsViewController.xib in Resources */,
 				F5D14E4419CC991500650FBB /* JSON_READ_ME in Resources */,
-				CF8BEBFA19DF4CB700FF103D /* phonation.instructions.04@2x.png in Resources */,
 				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
-				CF8BEBF819DF4CB700FF103D /* phonation.instructions.02@2x.png in Resources */,
-				CF8BEBF919DF4CB700FF103D /* phonation.instructions.03@2x.png in Resources */,
 				F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */,
 				F5D14F2919CC9BC900650FBB /* APHSleepQualityOverviewViewController.xib in Resources */,
-				CF8BEC0119DF4CC400FF103D /* walking.instructions.01@2x.png in Resources */,
 				F5D14F1F19CC9BC900650FBB /* APHIntervalTappingResultsViewController.xib in Resources */,
 				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
-				CFEBFD1619DDF44100CCD3E9 /* interval.instructions.03@2x.png in Resources */,
 				F536B93E19F5747B005A2D1C /* sample.task in Resources */,
 				7BEE9D5519F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib in Resources */,
 				CF8BEC1519E2366500FF103D /* APHWalkingIntroViewController.xib in Resources */,
-				CF8BEBFB19DF4CB700FF103D /* phonation.instructions.05@2x.png in Resources */,
 				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
 				CF8BEC1019E2354100FF103D /* APHPhonationIntroViewController.xib in Resources */,
-				CF8BEC0419DF4CC400FF103D /* walking.instructions.04@2x.png in Resources */,
 				F5D14F2119CC9BC900650FBB /* APHIntervalTappingStepsViewController.xib in Resources */,
 				F5D14F2D19CC9BC900650FBB /* APHTracingObjectsOverviewViewController.xib in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				F5D14EC719CC9B9100650FBB /* APHLearnDetailViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
-				CFEBFD1419DDF44100CCD3E9 /* interval.instructions.01@2x.png in Resources */,
 				F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */,
-				CF8BEC0319DF4CC400FF103D /* walking.instructions.03@2x.png in Resources */,
 				F5D14F2519CC9BC900650FBB /* APHChangedMedsOverviewViewController.xib in Resources */,
 				F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */,
 				F5D14ECA19CC9B9100650FBB /* APHLearnDetailViewCell.xib in Resources */,
 				F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
-				CF8BEBF719DF4CB700FF103D /* phonation.instructions.01@2x.png in Resources */,
-				CF8BEC0519DF4CC400FF103D /* walking.instructions.05@2x.png in Resources */,
 				5B3AB76019E84F1500E7FC31 /* APHProfile.storyboard in Resources */,
 				F5D14F3219CC9BC900650FBB /* APHWalkingResultsViewController.xib in Resources */,
 			);
