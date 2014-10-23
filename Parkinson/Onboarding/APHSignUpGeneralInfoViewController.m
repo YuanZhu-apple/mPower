@@ -290,7 +290,7 @@
                 self.user.email = [(APCTableViewTextFieldItem *)item value];
                 break;
             case APCSignUpUserInfoItemGender:{
-                
+                self.user.biologicalSex = [APCUser sexTypeForIndex:((APCTableViewSegmentItem *)item).selectedIndex];
             }
                 break;
                 

@@ -37,6 +37,8 @@
         field.caption = NSLocalizedString(@"Email", @"");
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.editable = NO;
+        field.textAlignnment = NSTextAlignmentRight;
+        field.detailText = self.user.email;
         [self.items addObject:field];
         [self.itemTypeOrder addObject:@(APCSignUpUserInfoItemEmail)];
     }
@@ -46,6 +48,8 @@
         field.caption = NSLocalizedString(@"Birthdate", @"");
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.editable = NO;
+        field.textAlignnment = NSTextAlignmentRight;
+        field.detailText = [self.user.birthDate toStringWithFormat:NSDateDefaultDateFormat];
         [self.items addObject:field];
         [self.itemTypeOrder addObject:@(APCSignUpUserInfoItemDateOfBirth)];
     }
@@ -55,6 +59,8 @@
         field.caption = NSLocalizedString(@"Biological Sex", @"");
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.editable = NO;
+        field.textAlignnment = NSTextAlignmentRight;
+        field.detailText = [APCUser stringValueFromSexType:self.user.biologicalSex];
         [self.items addObject:field];
         [self.itemTypeOrder addObject:@(APCSignUpUserInfoItemGender)];
     }
@@ -63,6 +69,7 @@
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.caption = NSLocalizedString(@"Medical Conditions", @"");
         field.pickerData = @[[APCUser medicalConditions]];
+        field.textAlignnment = NSTextAlignmentRight;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         
         if (self.user.medications) {
@@ -80,6 +87,7 @@
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.caption = NSLocalizedString(@"Medication", @"");
         field.pickerData = @[[APCUser medications]];
+        field.textAlignnment = NSTextAlignmentRight;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         
         if (self.user.medications) {
@@ -97,6 +105,7 @@
         APCTableViewCustomPickerItem *field = [APCTableViewCustomPickerItem new];
         field.caption = NSLocalizedString(@"Height", @"");
         field.pickerData = [APCUser heights];
+        field.textAlignnment = NSTextAlignmentRight;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         
         if (self.user.height) {
@@ -120,7 +129,7 @@
         field.placeholder = NSLocalizedString(@"lb", @"");
         field.regularExpression = kAPCMedicalInfoItemWeightRegEx;
         field.value = [NSString stringWithFormat:@"%.1f", [APCUser weightInPounds:self.user.weight]];
-        field.keyboardType = UIKeyboardTypeNumberPad;
+        field.keyboardType = UIKeyboardTypeDecimalPad;
         field.textAlignnment = NSTextAlignmentRight;
         field.identifier = kAPCTextFieldTableViewCellIdentifier;
         
@@ -137,10 +146,12 @@
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
+        field.textAlignnment = NSTextAlignmentRight;
         field.detailDiscloserStyle = YES;
         
         if (self.user.sleepTime) {
             field.date = self.user.sleepTime;
+            field.detailText = [field.date toStringWithFormat:kAPCMedicalInfoItemSleepTimeFormat];
         }
         
         [self.items addObject:field];
@@ -156,10 +167,12 @@
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
+        field.textAlignnment = NSTextAlignmentRight;
         field.detailDiscloserStyle = YES;
         
         if (self.user.wakeUpTime) {
             field.date = self.user.wakeUpTime;
+            field.detailText = [field.date toStringWithFormat:kAPCMedicalInfoItemSleepTimeFormat];
         }
         
         [self.items addObject:field];

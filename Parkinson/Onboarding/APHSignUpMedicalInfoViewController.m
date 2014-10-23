@@ -108,7 +108,7 @@
         field.placeholder = NSLocalizedString(@"add weight", @"");
         field.regularExpression = kAPCMedicalInfoItemWeightRegEx;
         field.value = [NSString stringWithFormat:@"%.1f", [APCUser weightInPounds:self.user.weight]];
-        field.keyboardType = UIKeyboardTypeNumberPad;
+        field.keyboardType = UIKeyboardTypeDecimalPad;
         field.textAlignnment = NSTextAlignmentRight;
         
         [items addObject:field];
@@ -200,11 +200,24 @@
                 break;
                 
             case APCSignUpUserInfoItemHeight:
-//                self.user.height = [(APCTableViewCustomPickerItem *)item stringValue];
+            {
+                double height = [APCUser heightInInchesForSelectedIndices:[(APCTableViewCustomPickerItem *)item selectedRowIndices]];
+                HKUnit *inchUnit = [HKUnit inchUnit];
+                HKQuantity *heightQuantity = [HKQuantity quantityWithUnit:inchUnit doubleValue:height];
+                
+                self.user.height = heightQuantity;
+            }
+                
                 break;
                 
             case APCSignUpUserInfoItemWeight:
-//                self.user.weight = @([[(APCTableViewTextFieldItem *)item value] floatValue]);
+            {
+                double weight = [[(APCTableViewTextFieldItem *)item value] floatValue];
+                HKUnit *poundUnit = [HKUnit poundUnit];
+                HKQuantity *weightQuantity = [HKQuantity quantityWithUnit:poundUnit doubleValue:weight];
+                
+                self.user.weight = weightQuantity;
+            }
                 break;
                 
             case APCSignUpUserInfoItemSleepTime:
