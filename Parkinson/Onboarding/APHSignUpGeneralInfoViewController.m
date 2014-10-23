@@ -111,7 +111,7 @@
         }
         field.datePickerMode = UIDatePickerModeDate;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
-        
+    
         [items addObject:field];
         
         [itemsOrder addObject:@(APCSignUpUserInfoItemDateOfBirth)];
