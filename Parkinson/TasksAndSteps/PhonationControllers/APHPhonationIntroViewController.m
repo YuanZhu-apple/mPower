@@ -7,6 +7,7 @@
 //
 
 #import "APHPhonationIntroViewController.h"
+#import "APHIntroductionViewController.h"
 
 static  NSString  *kViewControllerTitle = @"Sustained Phonation";
 
@@ -62,7 +63,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Speech Difficulties";
     
     self.title = kViewControllerTitle;
     
-    NSArray  *introImageNames = @[ @"phonation.instructions.01@2x", @"phonation.instructions.02@2x", @"phonation.instructions.03@2x", @"phonation.instructions.04@2x", @"phonation.instructions.05@2x" ];
+    NSArray  *introImageNames = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
     
     NSArray  *paragraphs = @[
                              @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
@@ -74,7 +75,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Speech Difficulties";
     
     self.introHeadingCaption.text = kIntroHeadingCaption;
     
-    self.instructionsController = [[APCIntroductionViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
+    self.instructionsController = [[APHIntroductionViewController alloc] initWithNibName:nil bundle:nil];
     [self.instructionsContainer addSubview:self.instructionsController.view];
     [self.instructionsController setupWithInstructionalImages:introImageNames andParagraphs:paragraphs];
 }
