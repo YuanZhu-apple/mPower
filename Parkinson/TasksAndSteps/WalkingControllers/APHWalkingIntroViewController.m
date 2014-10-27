@@ -7,7 +7,7 @@
 //
 
 #import "APHWalkingIntroViewController.h"
-#import "APHCommonInstructionalViewController.h"
+#import "APHIntroductionViewController.h"
 
 static  NSString  *kViewControllerTitle = @"Gait Test";
 
@@ -15,7 +15,7 @@ static  NSString  *kIntroHeadingCaption = @"Measures Gait & Balance";
 
 @interface APHWalkingIntroViewController  ( )
 
-@property  (nonatomic, strong)          APHCommonInstructionalViewController  *instructionsController;
+@property  (nonatomic, strong)          APCIntroductionViewController  *instructionsController;
 
 @property  (nonatomic, weak)  IBOutlet  UILabel  *introHeadingCaption;
 @property  (nonatomic, weak)  IBOutlet  UIView   *instructionsContainer;
@@ -63,7 +63,7 @@ static  NSString  *kIntroHeadingCaption = @"Measures Gait & Balance";
     
     self.title = kViewControllerTitle;
     
-    NSArray  *introImageNames = @[ @"walking.instructions.01@2x", @"walking.instructions.02@2x", @"walking.instructions.03@2x", @"walking.instructions.04@2x", @"walking.instructions.05@2x" ];
+    NSArray  *introImageNames = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
     
     NSArray  *paragraphs = @[
                              @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
@@ -75,7 +75,7 @@ static  NSString  *kIntroHeadingCaption = @"Measures Gait & Balance";
     
     self.introHeadingCaption.text = kIntroHeadingCaption;
     
-    self.instructionsController = [[APHCommonInstructionalViewController alloc] initWithNibName:nil bundle:nil];
+    self.instructionsController = [[APHIntroductionViewController alloc] initWithNibName:nil bundle:nil];
     [self.instructionsContainer addSubview:self.instructionsController.view];
     [self.instructionsController setupWithInstructionalImages:introImageNames andParagraphs:paragraphs];
 }

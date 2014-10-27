@@ -7,7 +7,6 @@
 //
 
 #import "APHLearnResourceViewCell.h"
-@import APCAppleCore;
 
 @implementation APHLearnResourceViewCell
 
