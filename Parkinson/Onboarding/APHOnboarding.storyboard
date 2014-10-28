@@ -166,6 +166,64 @@
             </objects>
             <point key="canvasLocation" x="-156" y="372"/>
         </scene>
+        <!--Study Details View Controller-->
+        <scene sceneID="uUX-C5-tHN">
+            <objects>
+                <viewController storyboardIdentifier="StudyDetailsVC" id="Hqf-wb-Ve8" customClass="APCStudyDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CIM-Mo-fZO"/>
+                        <viewControllerLayoutGuide type="bottom" id="YNq-Xp-Pm0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S3a-Rz-PFn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="study_details_video" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-ve-hBD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="E9I-tF-yeZ"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCM-67-g5M">
+                                <rect key="frame" x="16" y="281" width="288" height="279"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ohU-pu-WH1">
+                                <rect key="frame" x="142" y="236" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="2kH-5E-ACs"/>
+                                    <constraint firstAttribute="width" constant="37" id="VKj-66-qVu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ohU-pu-WH1" firstAttribute="top" secondItem="PCM-67-g5M" secondAttribute="top" constant="-45" id="0TH-un-axB"/>
+                            <constraint firstAttribute="centerX" secondItem="ohU-pu-WH1" secondAttribute="centerX" constant="-0.5" id="Bgp-cH-tmC"/>
+                            <constraint firstItem="ohU-pu-WH1" firstAttribute="top" secondItem="1Nu-ve-hBD" secondAttribute="top" constant="236" id="FUy-8G-yJM"/>
+                            <constraint firstItem="PCM-67-g5M" firstAttribute="trailing" secondItem="S3a-Rz-PFn" secondAttribute="trailingMargin" id="GJq-Qi-jRH"/>
+                            <constraint firstItem="1Nu-ve-hBD" firstAttribute="top" secondItem="CIM-Mo-fZO" secondAttribute="bottom" constant="-20" id="I7y-yn-oeA"/>
+                            <constraint firstItem="1Nu-ve-hBD" firstAttribute="leading" secondItem="S3a-Rz-PFn" secondAttribute="leadingMargin" constant="-16" id="Qje-37-6sh"/>
+                            <constraint firstItem="PCM-67-g5M" firstAttribute="leading" secondItem="S3a-Rz-PFn" secondAttribute="leadingMargin" id="bvT-f7-aOG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Nu-ve-hBD" secondAttribute="trailing" constant="-16" id="f7b-Ec-1l8"/>
+                            <constraint firstItem="YNq-Xp-Pm0" firstAttribute="top" secondItem="PCM-67-g5M" secondAttribute="bottom" constant="8" id="kgc-1v-g4c"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="ohU-pu-WH1" id="u4n-MY-gDA"/>
+                        <outlet property="textView" destination="PCM-67-g5M" id="P7F-Ag-dQu"/>
+                        <outlet property="videoImageView" destination="1Nu-ve-hBD" id="5yn-md-Cmw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08G-nf-mZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="372"/>
+        </scene>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="o5v-i6-IBf">
             <objects>
@@ -597,6 +655,7 @@
                                         <constraint firstAttribute="height" constant="30" id="JCP-Rc-6Gd"/>
                                     </constraints>
                                     <state key="normal" title="Forgot Your Username?">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -609,6 +668,7 @@
                                         <constraint firstAttribute="height" constant="30" id="gzQ-Gr-bXF"/>
                                     </constraints>
                                     <state key="normal" title="Forgot Your Password?">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -1765,5 +1825,6 @@ Sure</string>
     </scenes>
     <resources>
         <image name="profilePlaceholder" width="76" height="76"/>
+        <image name="study_details_video" width="320" height="214"/>
     </resources>
 </document>
