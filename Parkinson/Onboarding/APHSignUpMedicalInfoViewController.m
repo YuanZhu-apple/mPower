@@ -69,7 +69,12 @@
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Blood Type", @"");
         field.detailDiscloserStyle = YES;
-        field.selectedRowIndices = @[ @(self.user.bloodType) ];
+        
+        if (self.user.bloodType) {
+            field.selectedRowIndices = @[ @(self.user.bloodType) ];
+            field.editable = NO;
+        } 
+        
         field.textAlignnment = NSTextAlignmentRight;
         field.pickerData = @[ [APCUser bloodTypeInStringValues] ];
         
@@ -120,7 +125,7 @@
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"What time do you wake up?", @"");
-        field.placeholder = NSLocalizedString(@"7:00 AM", @"");
+        field.placeholder = @"--:--";
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.textAlignnment = NSTextAlignmentRight;
@@ -140,7 +145,7 @@
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"What time do you go to sleep?", @"");
-        field.placeholder = NSLocalizedString(@"9:30 PM", @"");
+        field.placeholder = @"--:--";
         field.datePickerMode = UIDatePickerModeTime;
         field.dateFormat = kAPCMedicalInfoItemSleepTimeFormat;
         field.textAlignnment = NSTextAlignmentRight;

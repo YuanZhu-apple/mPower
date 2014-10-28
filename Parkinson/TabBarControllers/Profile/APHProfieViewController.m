@@ -37,7 +37,7 @@
         field.caption = NSLocalizedString(@"Email", @"");
         field.identifier = kAPCDefaultTableViewCellIdentifier;
         field.editable = NO;
-        field.textAlignnment = NSTextAlignmentRight;
+        field.textAlignnment = NSTextAlignmentLeft;
         field.detailText = self.user.email;
         [self.items addObject:field];
         [self.itemsOrder addObject:@(APCSignUpUserInfoItemEmail)];

@@ -34,6 +34,8 @@
     
     self.permissionButton.unconfirmedTitle = NSLocalizedString(@"I agree to the Terms and Conditions", @"");
     self.permissionButton.confirmedTitle = NSLocalizedString(@"I agree to the Terms and Conditions", @"");
+    self.permissionButton.attributed = NO;
+    self.permissionButton.alignment = kAPCPermissionButtonAlignmentLeft;
     
     //TODO: This permission request is temporary. Remove later.
     self.permissionManager = [[APCPermissionsManager alloc] init];
@@ -72,7 +74,7 @@
         APCTableViewTextFieldItem *field = [APCTableViewTextFieldItem new];
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Password", @"");
-        field.placeholder = NSLocalizedString(@"Add Password", @"");
+        field.placeholder = NSLocalizedString(@"add password", @"");
         field.secure = YES;
         field.keyboardType = UIKeyboardTypeDefault;
         field.returnKeyType = UIReturnKeyNext;
@@ -88,7 +90,7 @@
         APCTableViewTextFieldItem *field = [APCTableViewTextFieldItem new];
         field.style = UITableViewCellStyleValue1;
         field.caption = NSLocalizedString(@"Email", @"");
-        field.placeholder = NSLocalizedString(@"Add Email Address", @"");
+        field.placeholder = NSLocalizedString(@"add email", @"");
         field.keyboardType = UIKeyboardTypeEmailAddress;
         field.returnKeyType = UIReturnKeyNext;
         field.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -104,10 +106,11 @@
         field.style = UITableViewCellStyleValue1;
         field.selectionStyle = UITableViewCellSelectionStyleGray;
         field.caption = NSLocalizedString(@"Birthdate", @"");
-        field.placeholder = NSLocalizedString(@"MMMM DD, YYYY", @"");
-        if (self.permissionGranted) {
+        field.placeholder = NSLocalizedString(@"add birthdate", @"");
+        if (self.permissionGranted && self.user.birthDate) {
             field.date = self.user.birthDate;
             field.detailText = [field.date toStringWithFormat:field.dateFormat];
+            field.editable = NO;
         }
         field.datePickerMode = UIDatePickerModeDate;
         field.identifier = kAPCDefaultTableViewCellIdentifier;
@@ -121,8 +124,9 @@
         APCTableViewSegmentItem *field = [APCTableViewSegmentItem new];
         field.style = UITableViewCellStyleValue1;
         field.segments = [APCUser sexTypesInStringValue];
-        if (self.permissionGranted) {
+        if (self.permissionGranted && self.user.biologicalSex) {
             field.selectedIndex = [APCUser stringIndexFromSexType:self.user.biologicalSex];
+            field.editable = NO;
         }
         field.identifier = kAPCSegmentedTableViewCellIdentifier;
         
