@@ -7,14 +7,12 @@
 //
 
 #import "APHDashboardGraphViewCell.h"
-@import APCAppleCore;
 
 @implementation APHDashboardGraphViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.graphView.layer.cornerRadius = 3.0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -33,8 +31,8 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    for (UIView *subview in self.graphView.subviews) {
-        subview.frame = self.graphView.bounds;
+    for (UIView *subview in self.graphContainerView.subviews) {
+        subview.frame = self.graphContainerView.bounds;
     }
 }
 
