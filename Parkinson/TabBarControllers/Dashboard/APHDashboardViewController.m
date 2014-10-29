@@ -91,21 +91,20 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
     return UIRectEdgeNone;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
 #pragma mark - UITableViewDataSource Methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.sectionsOrder.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.section]).integerValue;
+    NSInteger cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.row]).integerValue;
     
     UITableViewCell *cell = nil;
     
@@ -126,6 +125,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
                 lineGraphView.delegate = self;
                 lineGraphView.titleLabel.text = @"Interval Tapping";
                 lineGraphView.subTitleLabel.text = @"Average Score : 20";
+                lineGraphView.panGestureRecognizer = tableView.panGestureRecognizer;
                 [graphCell.graphContainerView addSubview:lineGraphView];
                 [self.lineCharts addObject:lineGraphView];
             }
@@ -142,6 +142,7 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
                 lineGraphView.titleLabel.text = @"Gait";
                 lineGraphView.subTitleLabel.text = @"Average Score : 20";
                 [graphCell.graphContainerView addSubview:lineGraphView];
+                lineGraphView.panGestureRecognizer = tableView.panGestureRecognizer;
                 [self.lineCharts addObject:lineGraphView];
             }
             
@@ -150,7 +151,17 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
         case kDashboardSectionMedications:
         {
             cell = (APHDashboardGraphViewCell *)[tableView dequeueReusableCellWithIdentifier:kDashboardGraphCellIdentifier forIndexPath:indexPath];
-            
+            APHDashboardGraphViewCell * graphCell = (APHDashboardGraphViewCell *) cell;
+            if (graphCell.graphContainerView.subviews.count == 0) {
+                APCLineGraphView *lineGraphView = [[APCLineGraphView alloc] initWithFrame:graphCell.graphContainerView.frame];
+                lineGraphView.datasource = self;
+                lineGraphView.delegate = self;
+                lineGraphView.titleLabel.text = @"Gait";
+                lineGraphView.subTitleLabel.text = @"Average Score : 20";
+                [graphCell.graphContainerView addSubview:lineGraphView];
+                lineGraphView.panGestureRecognizer = tableView.panGestureRecognizer;
+                [self.lineCharts addObject:lineGraphView];
+            }
         }
             break;
         case kDashboardSectionInsights:
@@ -177,14 +188,14 @@ static NSString * const kDashboardMessagesCellIdentifier = @"DashboardMessageCel
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height;
     
-    APHDashboardSection cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.section]).integerValue;
+    APHDashboardSection cellType = ((NSNumber *)[self.sectionsOrder objectAtIndex:indexPath.row]).integerValue;
     
     switch (cellType) {
         case kDashboardSectionBloodCount:

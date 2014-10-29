@@ -56,6 +56,8 @@ static NSInteger kDatePickerCellRow = 3;
     [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
+    [self.datePicker setMaximumDate:[NSDate date]];
+    
     self.questions = @[
                        [[APCSegmentedButton alloc] initWithButtons:@[self.question1Option1, self.question1Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
                        [[APCSegmentedButton alloc] initWithButtons:@[self.question2Option1, self.question2Option2, self.question2Option3] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
