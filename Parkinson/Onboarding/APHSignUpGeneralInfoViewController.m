@@ -151,6 +151,14 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return [super textField:textField shouldChangeCharactersInRange:range replacementString:string];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self.nextBarButton setEnabled:[self isContentValid:nil]];
+}
 
 #pragma mark - APCPickerTableViewCellDelegate methods
 
@@ -166,9 +174,18 @@
 
 #pragma mark - APCTextFieldTableViewCellDelegate methods
 
-- (void)textFieldTableViewCellDidBecomeFirstResponder:(APCTextFieldTableViewCell *)cell
+- (void)textFieldTableViewCellDidEndEditing:(APCTextFieldTableViewCell *)cell
 {
-    [super textFieldTableViewCellDidBecomeFirstResponder:cell];
+    [super textFieldTableViewCellDidEndEditing:cell];
+    
+    self.nextBarButton.enabled = [self isContentValid:nil];
+}
+
+- (void)textFieldTableViewCell:(APCTextFieldTableViewCell *)cell shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [super textFieldTableViewCell:cell shouldChangeCharactersInRange:range replacementString:string];
+    
+    self.nextBarButton.enabled = [self isContentValid:nil];
 }
 
 - (void)textFieldTableViewCellDidReturn:(APCTextFieldTableViewCell *)cell
@@ -423,16 +440,33 @@
 
 - (IBAction)changeProfileImage:(id)sender
 {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.editing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Take Photo", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.editing = YES;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerController.delegate = self;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [alertController addAction:cameraAction];
     }
-    imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
     
+    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Choose from Library", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.editing = YES;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerController.delegate = self;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }];
+    [alertController addAction:libraryAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
