@@ -10,7 +10,8 @@
 
 #import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
-#import "APHWalkingResultsViewController.h"
+#import "APHCommonTaskSummaryViewController.h"
+
 #import <objc/message.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
@@ -140,10 +141,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
     NSDictionary  *stepsToControllersMap = @{
                                              kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-//                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
-//                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
-//                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
-//                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
+                                             kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController  class], @(0) ],
                                            };
     
     RKStepViewController  *controller = nil;
