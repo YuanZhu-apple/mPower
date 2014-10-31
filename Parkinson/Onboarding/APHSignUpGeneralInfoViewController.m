@@ -197,17 +197,19 @@
     APCTableViewTextFieldItem *item = self.items[indexPath.row];
     if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemPassword) {
         if ([[(APCTableViewTextFieldItem *)item value] length] == 0) {
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid Password", @"")];
+            UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:@"Please give a valid Password"];
+            [self presentViewController:alert animated:YES completion:nil];
         }
         else if ([[(APCTableViewTextFieldItem *)item value] length] < 6) {
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Password should be at least 6 characters", @"")];
+            UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:@"Password should be at least 6 characters"];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     else if ([self.itemsOrder[indexPath.row] integerValue] == APCSignUpUserInfoItemEmail) {
         if (![item.value isValidForRegex:kAPCGeneralInfoItemEmailRegEx]) {
-            [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:NSLocalizedString(@"Please give a valid email address", @"")];
+            UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:@"Please give a valid email address"];
+            [self presentViewController:alert animated:YES completion:nil];
         }
-        
     }
     
     self.nextBarButton.enabled = [self isContentValid:nil];
@@ -333,7 +335,8 @@
         [self next];
     }
     else {
-        [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:message];
+        UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:message];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -428,7 +431,8 @@
         
         [self.navigationController pushViewController:medicalInfoViewController animated:YES];
     } else{
-        [UIAlertView showSimpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:error];
+        UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"General Information", @"") message:error];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
 }
