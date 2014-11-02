@@ -54,9 +54,6 @@ static CGFloat kProgressBarHeight = 10.0;
     self.navigationItem.title = NSLocalizedString(@"Survey Complete", @"Survey Complete");
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self
-                                                                                           action:@selector(doneButtonTapped:)];
     
     CGRect progressBarFrame = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
     self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
@@ -81,6 +78,11 @@ static CGFloat kProgressBarHeight = 10.0;
     
     CGRect progressBarRect = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
     [self.progressBar setFrame:progressBarRect];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                           target:self
+                                                                                           action:@selector(doneButtonTapped:)];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
