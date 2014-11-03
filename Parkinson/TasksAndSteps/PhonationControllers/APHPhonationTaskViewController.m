@@ -8,6 +8,7 @@
 
 #import "APHPhonationTaskViewController.h"
 #import "APHPhonationIntroViewController.h"
+#import "APHCommonTaskSummaryViewController.h"
 #import <objc/message.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -80,9 +81,8 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
 {
     NSDictionary  *controllers = @{
-                                     kPhonationStep101Key : [APHPhonationIntroViewController class],
-//                                   kIntervalTappingStep102 : [APHIntervalTappingStepsViewController   class],
-//                                   kIntervalTappingStep103 : [APHIntervalTappingResultsViewController class]
+                                   kPhonationStep101Key : [APHPhonationIntroViewController class],
+                                   kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
     APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];

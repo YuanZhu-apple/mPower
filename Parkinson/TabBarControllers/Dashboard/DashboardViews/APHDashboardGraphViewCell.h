@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import APCAppleCore;
 
 @class APHDashboardGraphViewCell;
 
@@ -19,8 +20,7 @@
 
 @interface APHDashboardGraphViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIView *graphView;
+@property (weak, nonatomic) IBOutlet UIView *graphContainerView;
 
 @property (weak, nonatomic) id <APHDashboardGraphViewCellDelegate> delegate;
 

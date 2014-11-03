@@ -213,6 +213,22 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
     return [[APHIntervalTappingRecorder alloc] initWithStep:step taskInstanceUUID:taskInstanceUUID];
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return NO;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    //DUMMY IMPLEMENTATION TO SUPPRESS WARNING
+    return [super init];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    //DUMMY IMPLEMENTATION TO SUPPRESS WARNING 
+}
+
 #pragma mark - RKSerialization
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary

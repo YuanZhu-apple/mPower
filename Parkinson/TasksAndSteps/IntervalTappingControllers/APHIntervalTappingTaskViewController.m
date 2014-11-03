@@ -10,7 +10,7 @@
 
 #import "APHIntervalTappingIntroViewController.h"
 #import "APHIntervalTappingStepsViewController.h"
-#import "APHIntervalTappingResultsViewController.h"
+#import "APHCommonTaskSummaryViewController.h"
 
 #import "APHIntervalTappingRecorder.h"
 
@@ -114,7 +114,8 @@ static float tapInterval = 20.0;
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
 {
     NSDictionary  *controllers = @{
-                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class]
+                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
+                                   kIntervalTappingStep103 : [APHCommonTaskSummaryViewController class]
                                   };
     
     Class  aClass = [controllers objectForKey:step.identifier];

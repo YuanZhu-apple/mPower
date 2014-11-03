@@ -10,7 +10,8 @@
 
 #import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
-#import "APHWalkingResultsViewController.h"
+#import "APHCommonTaskSummaryViewController.h"
+
 #import <objc/message.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
@@ -53,6 +54,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep102Key name:@"active step"];
         step.caption = NSLocalizedString(@"Walk out 20 Steps", @"");
         step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
+        step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 5.0;
@@ -63,6 +65,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep103Key name:@"active step"];
         step.caption = NSLocalizedString(@"Turn around and walk back", @"");
         step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
+        step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 5.0;
@@ -73,6 +76,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep104Key name:@"active step"];
         step.caption = NSLocalizedString(@"Standing Still", @"");
         step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
+        step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
         step.countDown = 5.0;
@@ -140,10 +144,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
     NSDictionary  *stepsToControllersMap = @{
                                              kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-//                                             kWalkingStep102Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkSomeDistance) ],
-//                                             kWalkingStep103Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseWalkBackToBase) ],
-//                                             kWalkingStep104Key : @[ [APHWalkingStepsViewController class], @(WalkingStepsPhaseStandStill) ],
-//                                             kWalkingStep105Key : @[ [APHWalkingResultsViewController  class], @(0) ],
+                                             kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController  class], @(0) ],
                                            };
     
     RKStepViewController  *controller = nil;
