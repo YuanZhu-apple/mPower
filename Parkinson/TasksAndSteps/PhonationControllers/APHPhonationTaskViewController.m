@@ -72,12 +72,6 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     return  YES;
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
-{
-    stepViewController.cancelButton = nil;
-    stepViewController.backButton = nil;
-}
-
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
 {
     NSDictionary  *controllers = @{
