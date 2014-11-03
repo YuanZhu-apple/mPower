@@ -19,6 +19,8 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Speech Difficulties";
 
 @property  (nonatomic, weak)  IBOutlet  UILabel  *introHeadingCaption;
 @property  (nonatomic, weak)  IBOutlet  UIView   *instructionsContainer;
+@property (weak, nonatomic) IBOutlet UIButton *getStartedButton;
+
 
 @property  (nonatomic, strong)          NSArray   *instructionalParagraphs;
 
@@ -78,6 +80,7 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Speech Difficulties";
     self.instructionsController = [[APHIntroductionViewController alloc] initWithNibName:nil bundle:nil];
     [self.instructionsContainer addSubview:self.instructionsController.view];
     [self.instructionsController setupWithInstructionalImages:introImageNames andParagraphs:paragraphs];
+    [self.getStartedButton setBackgroundImage:[UIImage imageWithColor:[UIColor appPrimaryColor]] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
