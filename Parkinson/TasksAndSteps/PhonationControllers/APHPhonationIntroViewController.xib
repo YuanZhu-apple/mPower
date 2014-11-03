@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="APHPhonationIntroViewController">
             <connections>
+                <outlet property="getStartedButton" destination="5zh-ed-I2M" id="qYp-CJ-p6l"/>
                 <outlet property="instructionsContainer" destination="9Cd-js-iNu" id="btE-9r-64b"/>
                 <outlet property="introHeadingCaption" destination="k9G-G0-ufe" id="kad-cU-uKp"/>
                 <outlet property="view" destination="C1w-dQ-FRx" id="vbY-NX-O2s"/>
@@ -25,7 +26,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-ed-I2M">
                     <rect key="frame" x="0.0" y="528" width="320" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5zh-ed-I2M" secondAttribute="height" multiplier="8:1" id="oRY-pZ-Al2"/>
                     </constraints>
