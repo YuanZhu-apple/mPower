@@ -476,13 +476,23 @@ Sure</string>
                                         <color key="textColor" white="0.253" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-5V-3Su">
+                                        <rect key="frame" x="0.0" y="131" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="FpI-Yd-pQ1"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="wbg-xu-M5O" secondAttribute="centerX" constant="63" id="2qT-QS-Z0p"/>
                                     <constraint firstAttribute="trailing" secondItem="TTI-Fu-6Al" secondAttribute="trailing" constant="46" id="3SU-V7-Wz2"/>
+                                    <constraint firstAttribute="bottom" secondItem="fAF-5V-3Su" secondAttribute="bottom" id="DZz-kO-0jW"/>
+                                    <constraint firstAttribute="trailing" secondItem="fAF-5V-3Su" secondAttribute="trailing" id="Ny0-2X-V60"/>
                                     <constraint firstItem="wbg-xu-M5O" firstAttribute="top" secondItem="q5O-dp-yJO" secondAttribute="top" constant="28" id="OYG-GI-POi"/>
                                     <constraint firstAttribute="centerX" secondItem="nEc-Z6-BOa" secondAttribute="centerX" constant="28.5" id="Th2-2c-wJR"/>
+                                    <constraint firstItem="fAF-5V-3Su" firstAttribute="leading" secondItem="q5O-dp-yJO" secondAttribute="leading" id="VWa-L4-tO3"/>
                                     <constraint firstItem="YAa-LK-Niv" firstAttribute="leading" secondItem="q5O-dp-yJO" secondAttribute="leading" constant="38" id="Vud-r2-z6u"/>
                                     <constraint firstAttribute="height" constant="132" id="WYd-DS-cf5"/>
                                     <constraint firstAttribute="bottom" secondItem="YAa-LK-Niv" secondAttribute="bottom" constant="14" id="hbb-de-24y"/>
@@ -1904,8 +1914,8 @@ Sure</string>
         <image name="eligibility_doctor_inactive" width="133" height="168"/>
         <image name="eligibility_patient" width="220" height="104"/>
         <image name="eligibility_patient_inactive" width="220" height="104"/>
-        <image name="logo_disease" width="44" height="43"/>
-        <image name="logo_researchInstitute" width="133" height="168"/>
+        <image name="logo_disease" width="60" height="58"/>
+        <image name="logo_researchInstitute" width="570" height="212"/>
         <image name="profilePlaceholder" width="150" height="150"/>
         <image name="rulerpencil_icon" width="62" height="62"/>
         <image name="study_details_video" width="320" height="214"/>
