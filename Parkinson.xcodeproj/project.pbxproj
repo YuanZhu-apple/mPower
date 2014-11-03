@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */; };
 		5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
-		5B3AB76019E84F1500E7FC31 /* APHProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */; };
-		5B3AB78819E8931D00E7FC31 /* APHProfieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */; };
 		5B5F179F19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F179E19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.m */; };
 		5B5F17A219EF3D3B00A0E1D7 /* APHSignupTouchIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F17A119EF3D3B00A0E1D7 /* APHSignupTouchIDViewController.m */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
@@ -126,9 +124,6 @@
 		5B29CE4F19D4BA7100E2FD62 /* APHStudyOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHStudyOverviewViewController.m; sourceTree = "<group>"; };
 		5B29CE5219D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHInclusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHInclusionCriteriaViewController.m; sourceTree = "<group>"; };
-		5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHProfile.storyboard; sourceTree = "<group>"; };
-		5B3AB78619E8931D00E7FC31 /* APHProfieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHProfieViewController.h; sourceTree = "<group>"; };
-		5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHProfieViewController.m; sourceTree = "<group>"; };
 		5B5F179D19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignUpPermissionsViewController.h; sourceTree = "<group>"; };
 		5B5F179E19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHSignUpPermissionsViewController.m; sourceTree = "<group>"; };
 		5B5F17A019EF3D3B00A0E1D7 /* APHSignupTouchIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHSignupTouchIDViewController.h; sourceTree = "<group>"; };
@@ -476,9 +471,6 @@
 		F5D14EB619CC9B9100650FBB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				5B3AB75F19E84F1500E7FC31 /* APHProfile.storyboard */,
-				5B3AB78619E8931D00E7FC31 /* APHProfieViewController.h */,
-				5B3AB78719E8931D00E7FC31 /* APHProfieViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -696,7 +688,6 @@
 				F5D14ECA19CC9B9100650FBB /* APHLearnDetailViewCell.xib in Resources */,
 				F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
-				5B3AB76019E84F1500E7FC31 /* APHProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,7 +730,6 @@
 				CFFB2A0919F86E29002E93FA /* APHIntroductionViewController.m in Sources */,
 				CF8BEC1419E2366500FF103D /* APHWalkingIntroViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
-				5B3AB78819E8931D00E7FC31 /* APHProfieViewController.m in Sources */,
 				F5D14EC419CC9B9100650FBB /* APHDashboardProgressViewCell.m in Sources */,
 				F5D14EC819CC9B9100650FBB /* APHLearnMasterViewController.m in Sources */,
 				F5D14EC019CC9B9100650FBB /* APHDashboardGraphViewCell.m in Sources */,

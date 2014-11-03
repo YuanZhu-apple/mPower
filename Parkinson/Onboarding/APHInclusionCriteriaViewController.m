@@ -67,14 +67,23 @@ static NSInteger kDatePickerCellRow = 3;
         obj.delegate = self;
     }];
     [self setUpAppearance];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void) setUpAppearance
 {
     self.question1Label.textColor = [UIColor appSecondaryColor1];
+    self.question1Label.font = [UIFont appRegularFontWithSize:19.0f];
+    
     self.question2Label.textColor = [UIColor appSecondaryColor1];
+    self.question2Label.font = [UIFont appRegularFontWithSize:19.0f];
+    
     self.question3Label.textColor = [UIColor appSecondaryColor1];
+    self.question3Label.font = [UIFont appRegularFontWithSize:19.0f];
+    
     self.question4Label.textColor = [UIColor appSecondaryColor1];
+    self.question4Label.font = [UIFont appRegularFontWithSize:19.0f];
     
     self.dateLabel.textColor = [UIColor appSecondaryColor3];
     self.dateLabel.font = [UIFont appRegularFontWithSize:16];
@@ -83,6 +92,40 @@ static NSInteger kDatePickerCellRow = 3;
     self.question2Option3.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.question2Option3.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.question2Option3 setTitle:NSLocalizedString(@"Not\nSure", @"Question Option") forState:UIControlStateNormal];
+    
+    [self.question1Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question1Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question1Option1.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
+    
+    [self.question1Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question1Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question1Option2.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
+    
+    [self.question2Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question2Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question2Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    
+    [self.question2Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question2Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question2Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    
+    [self.question2Option3 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question2Option3 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question2Option3.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    
+    
+    
+    [self.question4Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question4Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question4Option1.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
+    
+    [self.question4Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question4Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question4Option2.titleLabel setFont:[UIFont appRegularFontWithSize:18.0]];
+    
+    [self.question4Option3 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
+    [self.question4Option3 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question4Option3.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
 }
 
 - (void)startSignUp
@@ -187,9 +230,9 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (BOOL)isContentValid
 {
-#ifdef DEVELOPMENT
-    return YES;
-#else
+//#ifdef DEVELOPMENT
+//    return YES;
+//#else
     __block BOOL retValue = YES;
     [self.questions enumerateObjectsUsingBlock:^(APCSegmentedButton* obj, NSUInteger idx, BOOL *stop) {
         if (obj.selectedIndex == -1) {
@@ -202,7 +245,7 @@ static NSInteger kDatePickerCellRow = 3;
     }
     
     return retValue;
-#endif
+//#endif
 }
 
 @end
