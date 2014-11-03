@@ -47,7 +47,7 @@ static CGFloat kProgressBarHeight = 10.0;
             
         }
     }
-        
+    
     UIColor *viewBackgroundColor = [UIColor appSecondaryColor4];
     self.label1.textColor = [UIColor appSecondaryColor3];
     [self.view setBackgroundColor:viewBackgroundColor];
@@ -59,13 +59,13 @@ static CGFloat kProgressBarHeight = 10.0;
     self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
                                                                           style:APCStepProgressBarStyleOnlyProgressView];
     self.progressBar.numberOfSteps = 6;
-    self.progressBar.progressTintColor = [UIColor appTertiaryColor1];
+    self.progressBar.progressTintColor = [UIColor appPrimaryColor];
     [self.view addSubview:self.progressBar];
     
     self.circularProgress = [[APCCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame))];
     self.circularProgress.hidesProgressValue = YES;
     [self.circularProgress setProgress:0.33];
-    self.circularProgress.tintColor = [UIColor appTertiaryColor1];
+    self.circularProgress.tintColor = [UIColor appPrimaryColor];
     [self.circularProgressBar addSubview:self.circularProgress];
 
 }
