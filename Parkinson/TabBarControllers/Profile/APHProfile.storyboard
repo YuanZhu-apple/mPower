@@ -376,7 +376,23 @@
                         <view key="tableFooterView" contentMode="scaleToFill" id="zTe-um-a1N">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pch-L4-sYH">
+                                    <rect key="frame" x="17" y="11" width="197" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="M4Q-Vt-rCa"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="centerY" secondItem="pch-L4-sYH" secondAttribute="centerY" constant="0.5" id="8wB-6e-xf8"/>
+                                <constraint firstItem="pch-L4-sYH" firstAttribute="leading" secondItem="zTe-um-a1N" secondAttribute="leading" constant="17" id="IV1-hz-lL4"/>
+                                <constraint firstAttribute="trailing" secondItem="pch-L4-sYH" secondAttribute="trailing" constant="106" id="Uqi-Nf-lb6"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCSwitchTableViewCell" id="OWG-SV-jq1" customClass="APCSwitchTableViewCell">
@@ -461,6 +477,9 @@
                     <navigationItem key="navigationItem" title="Settings" id="ybu-Bh-AkV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="pch-L4-sYH" id="OGY-Dv-lz2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7b-6V-dAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
