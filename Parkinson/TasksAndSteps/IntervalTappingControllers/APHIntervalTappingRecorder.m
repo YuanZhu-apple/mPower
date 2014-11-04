@@ -82,15 +82,13 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
 - (void)viewController:(UIViewController*)viewController willStartStepWithView:(UIView *)view
 {
-    NSLog(@"viewController willStartStepWithView called");
+
     [super viewController:viewController willStartStepWithView:view];
     
     UINib *nib = [UINib nibWithNibName:@"APHCustomIntervalTappingTargetView" bundle:nil];
     APHCustomIntervalTappingTargetView *tapperContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
-    
-    
     [tapperContainer addGestureRecognizer:tapRecognizer];
     
     [tapperContainer.layer setBorderColor:[UIColor grayColor].CGColor];

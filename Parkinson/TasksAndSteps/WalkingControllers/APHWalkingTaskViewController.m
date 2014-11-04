@@ -22,6 +22,8 @@ static  NSString  *kWalkingStep103Key = @"Walking Step 103";
 static  NSString  *kWalkingStep104Key = @"Walking Step 104";
 static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
+static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+
 @interface APHWalkingTaskViewController  ( )
 {
     NSInteger _count;
@@ -29,12 +31,13 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 @property (strong, nonatomic) RKDataArchive *taskArchive;
 
+@property  (nonatomic, weak)  APCStepProgressBar  *progressor;
+
 @end
 
 @implementation APHWalkingTaskViewController
 
 #pragma  mark  -  Initialisation
-
 
 + (RKTask *)createTask: (APCScheduledTask*) scheduledTask
 {
@@ -47,7 +50,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         @"After the phone vibrates, follow the instructions to begin.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 5.0;
+        step.countDown = 10.0;
         [steps addObject:step];
     }
     {
@@ -57,7 +60,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 5.0;
+        step.countDown = 30.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -68,7 +71,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 5.0;
+        step.countDown = 30.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -79,7 +82,7 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
         step.voicePrompt = step.text;
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 5.0;
+        step.countDown = 30.0;
         step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -163,6 +166,8 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     return  controller;
 }
 
+#pragma  mark  -  View Controller Methods
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -173,6 +178,19 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect  navigationBarFrame = self.navigationBar.frame;
+    CGRect  progressorFrame = CGRectMake(0.0, CGRectGetHeight(navigationBarFrame) - kAPCStepProgressBarHeight, CGRectGetWidth(navigationBarFrame), kAPCStepProgressBarHeight);
+    
+    APCStepProgressBar  *tempProgressor = [[APCStepProgressBar alloc] initWithFrame:progressorFrame style:APCStepProgressBarStyleOnlyProgressView];
+    
+    RKTask  *task = self.task;
+    NSArray  *steps = task.steps;
+    tempProgressor.numberOfSteps = [steps count];
+    [tempProgressor setCompletedSteps: 1 animation:NO];
+    self.progressor.progressTintColor = [UIColor appTertiaryColor1];
+    [self.navigationBar addSubview:tempProgressor];
+    self.progressor = tempProgressor;
 }
 
 - (void)didReceiveMemoryWarning
@@ -303,5 +321,29 @@ static  NSString  *kWalkingStep105Key = @"Walking Step 105";
     [super taskViewControllerDidComplete:taskViewController];
 }
 
+/*********************************************************************************/
+#pragma mark - StepViewController Delegate Methods
+/*********************************************************************************/
+
+- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+{
+    viewController.skipButton = nil;
+    viewController.continueButton = nil;
+}
+
+- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+{
+    [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
+    
+    stepViewController.continueButton = nil;
+    
+    NSInteger  completedSteps = self.progressor.completedSteps;
+    if (direction == RKStepViewControllerNavigationDirectionForward) {
+        completedSteps = completedSteps + 1;
+    } else {
+        completedSteps = completedSteps - 1;
+    }
+    [self.progressor setCompletedSteps:completedSteps animation:YES];
+}
 
 @end

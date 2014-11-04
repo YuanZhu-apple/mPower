@@ -7,13 +7,13 @@
 //
 
 #import "APHCommonTaskSummaryViewController.h"
-@import APCAppleCore;
+//@import APCAppleCore;
 
 static NSString *ActivityCell = @"ActivityProgressCell";
 static NSString *HeartAgeCell = @"HeartAgeCell";
 static NSString *InformationCell = @"InformationCell";
 
-static CGFloat kProgressBarHeight = 10.0;
+//static CGFloat kProgressBarHeight = 10.0;
 
 @interface APHCommonTaskSummaryViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
@@ -26,7 +26,7 @@ static CGFloat kProgressBarHeight = 10.0;
 @property (weak, nonatomic) IBOutlet UIView *circularProgressBar;
 
 @property (nonatomic, strong) APCCircularProgressView *circularProgress;
-@property (nonatomic, strong) APCStepProgressBar *progressBar;
+//@property (nonatomic, strong) APCStepProgressBar *progressBar;
 @end
 
 @implementation APHCommonTaskSummaryViewController
@@ -55,12 +55,12 @@ static CGFloat kProgressBarHeight = 10.0;
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
     
-    CGRect progressBarFrame = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
-    self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
-                                                                          style:APCStepProgressBarStyleOnlyProgressView];
-    self.progressBar.numberOfSteps = 6;
-    self.progressBar.progressTintColor = [UIColor appPrimaryColor];
-    [self.view addSubview:self.progressBar];
+//    CGRect progressBarFrame = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
+//    self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
+//                                                                          style:APCStepProgressBarStyleOnlyProgressView];
+//    self.progressBar.numberOfSteps = 6;
+//    self.progressBar.progressTintColor = [UIColor appPrimaryColor];
+//    [self.view addSubview:self.progressBar];
     
     self.circularProgress = [[APCCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame))];
     self.circularProgress.hidesProgressValue = YES;
@@ -76,8 +76,8 @@ static CGFloat kProgressBarHeight = 10.0;
     CGRect rect = CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame));
     [self.circularProgress setFrame:rect];
     
-    CGRect progressBarRect = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
-    [self.progressBar setFrame:progressBarRect];
+//    CGRect progressBarRect = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
+//    [self.progressBar setFrame:progressBarRect];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
@@ -89,7 +89,7 @@ static CGFloat kProgressBarHeight = 10.0;
 {
     [super viewDidAppear:animated];
 
-    [self.progressBar setCompletedSteps:6 animation:YES];
+//    [self.progressBar setCompletedSteps:6 animation:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

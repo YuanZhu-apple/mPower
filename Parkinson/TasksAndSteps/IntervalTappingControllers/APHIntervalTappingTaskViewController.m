@@ -22,21 +22,38 @@ static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
 static float tapInterval = 20.0;
 
+static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
 @property (strong, nonatomic) RKDataArchive *taskArchive;
+
+@property  (nonatomic, weak)  APCStepProgressBar  *progressor;
 
 @end
 
 @implementation APHIntervalTappingTaskViewController
 
-#pragma  mark  -  Initialisation
+#pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.showsProgressInNavigationBar = NO;
     self.navigationItem.title = @"Interval Tapping";
+    
+    CGRect  navigationBarFrame = self.navigationBar.frame;
+    CGRect  progressorFrame = CGRectMake(0.0, CGRectGetHeight(navigationBarFrame) - kAPCStepProgressBarHeight, CGRectGetWidth(navigationBarFrame), kAPCStepProgressBarHeight);
+    
+    APCStepProgressBar  *tempProgressor = [[APCStepProgressBar alloc] initWithFrame:progressorFrame style:APCStepProgressBarStyleOnlyProgressView];
+    
+    RKTask  *task = self.task;
+    NSArray  *steps = task.steps;
+    tempProgressor.numberOfSteps = [steps count];
+    [tempProgressor setCompletedSteps: 1 animation:NO];
+    self.progressor.progressTintColor = [UIColor appTertiaryColor1];
+    [self.navigationBar addSubview:tempProgressor];
+    self.progressor = tempProgressor;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,6 +63,8 @@ static float tapInterval = 20.0;
     
     [self beginTask];
 }
+
+#pragma  mark  -  Task Creation Methods
 
 + (RKTask *)createTask:(APCScheduledTask *)scheduledTask
 {
@@ -108,6 +127,7 @@ static float tapInterval = 20.0;
     } else if (kIntervalTappingStep103 == stepViewController.step.identifier)
     {
         stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
+        stepViewController.continueButton = nil;
     }
 }
 
@@ -230,6 +250,29 @@ static float tapInterval = 20.0;
     [super taskViewControllerDidComplete:taskViewController];
 }
 
+/*********************************************************************************/
+#pragma mark - StepViewController Delegate Methods
+/*********************************************************************************/
 
+- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+{
+    viewController.skipButton = nil;
+    viewController.continueButton = nil;
+}
+
+- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+{
+    [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
+    
+    stepViewController.continueButton = nil;
+    
+    NSInteger  completedSteps = self.progressor.completedSteps;
+    if (direction == RKStepViewControllerNavigationDirectionForward) {
+        completedSteps = completedSteps + 1;
+    } else {
+        completedSteps = completedSteps - 1;
+    }
+    [self.progressor setCompletedSteps:completedSteps animation:YES];
+}
 
 @end
