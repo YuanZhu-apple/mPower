@@ -188,7 +188,7 @@ static  CGFloat  kAPCStepProgressBarHeight = 10.0;
     NSArray  *steps = task.steps;
     tempProgressor.numberOfSteps = [steps count];
     [tempProgressor setCompletedSteps: 1 animation:NO];
-    self.progressor.progressTintColor = [UIColor appTertiaryColor1];
+    tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
     [self.navigationBar addSubview:tempProgressor];
     self.progressor = tempProgressor;
 }
