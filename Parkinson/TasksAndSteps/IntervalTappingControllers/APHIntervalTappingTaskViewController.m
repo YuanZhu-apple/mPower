@@ -20,9 +20,11 @@ static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
 static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
 
+static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
+
 static float tapInterval = 20.0;
 
-static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+static  CGFloat  kAPCStepProgressBarHeight = 8.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
@@ -39,8 +41,6 @@ static  CGFloat  kAPCStepProgressBarHeight = 10.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.showsProgressInNavigationBar = NO;
-    self.navigationItem.title = @"Interval Tapping";
     
     CGRect  navigationBarFrame = self.navigationBar.frame;
     CGRect  progressorFrame = CGRectMake(0.0, CGRectGetHeight(navigationBarFrame) - kAPCStepProgressBarHeight, CGRectGetWidth(navigationBarFrame), kAPCStepProgressBarHeight);
@@ -54,12 +54,14 @@ static  CGFloat  kAPCStepProgressBarHeight = 10.0;
     tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
     [self.navigationBar addSubview:tempProgressor];
     self.progressor = tempProgressor;
+    
+    self.showsProgressInNavigationBar = NO;
+    self.navigationBar.topItem.title = kTaskViewControllerTitle;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationItem.title = @"Interval Tapping";
     
     [self beginTask];
 }

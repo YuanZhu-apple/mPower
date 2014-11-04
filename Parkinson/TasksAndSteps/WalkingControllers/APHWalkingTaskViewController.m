@@ -22,7 +22,9 @@ static  NSString  *kWalkingStep103Key = @"Walking Step 103";
 static  NSString  *kWalkingStep104Key = @"Walking Step 104";
 static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
-static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
+
+static  CGFloat  kAPCStepProgressBarHeight = 8.0;
 
 @interface APHWalkingTaskViewController  ( )
 {
@@ -191,6 +193,9 @@ static  CGFloat  kAPCStepProgressBarHeight = 10.0;
     tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
     [self.navigationBar addSubview:tempProgressor];
     self.progressor = tempProgressor;
+    
+    self.showsProgressInNavigationBar = NO;
+    self.navigationBar.topItem.title = kTaskViewControllerTitle;
 }
 
 - (void)didReceiveMemoryWarning

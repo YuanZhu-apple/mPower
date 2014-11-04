@@ -20,7 +20,9 @@ static NSString * kPhonationStep103Key = @"Phonation_Step_103";
 static NSString * kPhonationStep104Key = @"Phonation_Step_104";
 static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 
-static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
+
+static  CGFloat  kAPCStepProgressBarHeight = 8.0;
 
 @interface APHPhonationTaskViewController ()
 
@@ -123,6 +125,9 @@ static  CGFloat  kAPCStepProgressBarHeight = 10.0;
     tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
     [self.navigationBar addSubview:tempProgressor];
     self.progressor = tempProgressor;
+    
+    self.showsProgressInNavigationBar = NO;
+    self.navigationBar.topItem.title = kTaskViewControllerTitle;
 }
 
 /*********************************************************************************/
