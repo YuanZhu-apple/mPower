@@ -195,7 +195,7 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
     self.progressor = tempProgressor;
     
     self.showsProgressInNavigationBar = NO;
-    self.navigationBar.topItem.title = kTaskViewControllerTitle;
+    self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
 }
 
 - (void)didReceiveMemoryWarning
