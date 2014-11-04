@@ -20,9 +20,13 @@ static NSString * kPhonationStep103Key = @"Phonation_Step_103";
 static NSString * kPhonationStep104Key = @"Phonation_Step_104";
 static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 
+static  CGFloat  kAPCStepProgressBarHeight = 10.0;
+
 @interface APHPhonationTaskViewController ()
 
 @property (strong, nonatomic) RKDataArchive *taskArchive;
+
+@property  (nonatomic, weak)  APCStepProgressBar  *progressor;
 
 @end
 
@@ -76,6 +80,7 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 {
     stepViewController.cancelButton = nil;
     stepViewController.backButton = nil;
+    stepViewController.continueButton = nil;
 }
 
 - (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
@@ -93,11 +98,31 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     return  controller;
 }
 
+#pragma  mark  - View Controller methods
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     [self beginTask];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    CGRect  navigationBarFrame = self.navigationBar.frame;
+    CGRect  progressorFrame = CGRectMake(0.0, CGRectGetHeight(navigationBarFrame) - kAPCStepProgressBarHeight, CGRectGetWidth(navigationBarFrame), kAPCStepProgressBarHeight);
+    
+    APCStepProgressBar  *tempProgressor = [[APCStepProgressBar alloc] initWithFrame:progressorFrame style:APCStepProgressBarStyleOnlyProgressView];
+    
+    RKTask  *task = self.task;
+    NSArray  *steps = task.steps;
+    tempProgressor.numberOfSteps = [steps count];
+    [tempProgressor setCompletedSteps: 1 animation:NO];
+    tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
+    [self.navigationBar addSubview:tempProgressor];
+    self.progressor = tempProgressor;
 }
 
 /*********************************************************************************/
@@ -200,6 +225,29 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
     [super taskViewControllerDidComplete:taskViewController];
 }
 
+/*********************************************************************************/
+#pragma mark - StepViewController Delegate Methods
+/*********************************************************************************/
 
+- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+{
+    viewController.skipButton = nil;
+    viewController.continueButton = nil;
+}
+
+- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+{
+    [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
+    
+    stepViewController.continueButton = nil;
+    
+    NSInteger  completedSteps = self.progressor.completedSteps;
+    if (direction == RKStepViewControllerNavigationDirectionForward) {
+        completedSteps = completedSteps + 1;
+    } else {
+        completedSteps = completedSteps - 1;
+    }
+    [self.progressor setCompletedSteps:completedSteps animation:YES];
+}
 
 @end
