@@ -1,16 +1,18 @@
 {
     "tasks": [
               {
-              "taskTitle" : "Timed Walking",
+              "taskTitle" : "Gait Test",
               "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9",
               "taskType": "APHTimedWalking",
-              "taskClassName" : "APHWalkingTaskViewController"
+              "taskClassName" : "APHWalkingTaskViewController",
+              "taskCompletionTimeString" : "1 Minute"
               },
               {
               "taskTitle" : "Sustained Phonation",
               "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
               "taskType": "APHPhonation",
-              "taskClassName" : "APHPhonationTaskViewController"
+              "taskClassName" : "APHPhonationTaskViewController",
+              "taskCompletionTimeString" : "45 Seconds"
               },
               {
               "taskTitle" : "Interval Tapping",
