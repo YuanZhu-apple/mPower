@@ -55,17 +55,11 @@ static NSString *InformationCell = @"InformationCell";
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
     
-//    CGRect progressBarFrame = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
-//    self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
-//                                                                          style:APCStepProgressBarStyleOnlyProgressView];
-//    self.progressBar.numberOfSteps = 6;
-//    self.progressBar.progressTintColor = [UIColor appPrimaryColor];
-//    [self.view addSubview:self.progressBar];
     
     self.circularProgress = [[APCCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame))];
     self.circularProgress.hidesProgressValue = YES;
     [self.circularProgress setProgress:0.33];
-    self.circularProgress.tintColor = [UIColor appPrimaryColor];
+    self.circularProgress.tintColor = [UIColor appTertiaryColor1];
     [self.circularProgressBar addSubview:self.circularProgress];
 
 }
@@ -75,9 +69,6 @@ static NSString *InformationCell = @"InformationCell";
 
     CGRect rect = CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame));
     [self.circularProgress setFrame:rect];
-    
-//    CGRect progressBarRect = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
-//    [self.progressBar setFrame:progressBarRect];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
