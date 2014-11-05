@@ -79,7 +79,8 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
     self.instructionsController = [[APHIntroductionViewController alloc] initWithNibName:nil bundle:nil];
     [self.instructionsContainer addSubview:self.instructionsController.view];
     [self.instructionsController setupWithInstructionalImages:introImageNames andParagraphs:paragraphs];
-    [self.getStartedButton setBackgroundImage:[UIImage imageWithColor:[UIColor appPrimaryColor]] forState:UIControlStateNormal];
+    
+    [self.getStartedButton setBackgroundColor:[UIColor appPrimaryColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
