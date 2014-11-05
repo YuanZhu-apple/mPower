@@ -55,18 +55,17 @@ static NSString *InformationCell = @"InformationCell";
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
     
-//    CGRect progressBarFrame = CGRectMake(0, 0, self.view.frame.size.width, kProgressBarHeight);
-//    self.progressBar = [[APCStepProgressBar alloc] initWithFrame:progressBarFrame
-//                                                                          style:APCStepProgressBarStyleOnlyProgressView];
-//    self.progressBar.numberOfSteps = 6;
-//    self.progressBar.progressTintColor = [UIColor appPrimaryColor];
-//    [self.view addSubview:self.progressBar];
-    
     self.circularProgress = [[APCCircularProgressView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.circularProgressBar.frame), CGRectGetHeight(self.circularProgressBar.frame))];
     self.circularProgress.hidesProgressValue = YES;
-    [self.circularProgress setProgress:0.33];
-    self.circularProgress.tintColor = [UIColor appPrimaryColor];
+    NSUInteger allScheduledTasks = ((APCAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.allScheduledTasksForToday;
+    NSUInteger completedScheduledTasks = ((APCAppDelegate *)[UIApplication sharedApplication].delegate).dataSubstrate.completedScheduledTasksForToday;
+    completedScheduledTasks = MIN(allScheduledTasks, completedScheduledTasks+1);
+    CGFloat percent = (CGFloat) completedScheduledTasks / (CGFloat) allScheduledTasks;
+    [self.circularProgress setProgress:percent];
+    self.circularProgress.tintColor = [UIColor appTertiaryColor1];
     [self.circularProgressBar addSubview:self.circularProgress];
+    
+    self.label3.text = [NSString stringWithFormat:@"%lu/%lu", completedScheduledTasks, allScheduledTasks];
 
 }
 
