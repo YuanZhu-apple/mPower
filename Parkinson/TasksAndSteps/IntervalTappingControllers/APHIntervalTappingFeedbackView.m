@@ -19,16 +19,18 @@
 - (void)createGradient
 {
     CGColorSpaceRef  colorSpace = CGColorSpaceCreateDeviceRGB();
+    
     CGFloat  lite[4] = { 0.9375, 0.9375, 1.0, 0.75 };    //    light color
     CGFloat  dark[4] = { 0.5000, 0.5000, 1.0, 1.00 };    //    dark color
     
     CGFloat  locations[] = { 1.0, 0.0 };
+    
     CGColorRef  startColorRef  = CGColorCreate(colorSpace, lite);
     CGColorRef  endColorRef    = CGColorCreate(colorSpace, dark);
     
-    NSArray  *colors = @[(__bridge NSObject *)startColorRef, (__bridge NSObject *)endColorRef];
-    CGGradientRef  aGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
-    self.gradient = aGradient;
+    NSArray  *colors = @[(__bridge_transfer NSObject *)startColorRef, (__bridge_transfer NSObject *)endColorRef];
+    self.gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
+    CFRelease(colorSpace);
 }
 
 - (BOOL)isOpaque
