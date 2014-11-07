@@ -96,38 +96,18 @@ static NSInteger kDatePickerCellRow = 3;
     self.question2Option3.titleLabel.numberOfLines = 2;
     [self.question2Option3 setTitle:NSLocalizedString(@"Not\nSure", @"Question Option") forState:UIControlStateNormal];
     
-    [self.question1Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question1Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question1Option1 setImage:[[UIImage imageNamed:@"eligibility_patient"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.question1Option1.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
     
-    [self.question1Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question1Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
+    [self.question1Option2 setImage:[[UIImage imageNamed:@"eligibility_doctor"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.question1Option2.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
     
-    [self.question2Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question2Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question2Option1.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
-    
-    [self.question2Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question2Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question2Option2.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
-    
-    [self.question2Option3 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question2Option3 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question2Option3.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
     
-    
-    
-    [self.question4Option1 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question4Option1 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question4Option1.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
-    
-    [self.question4Option2 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question4Option2 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question4Option2.titleLabel setFont:[UIFont appRegularFontWithSize:18.0]];
-    
-    [self.question4Option3 setTitleColor:[UIColor appSecondaryColor3] forState:UIControlStateNormal];
-    [self.question4Option3 setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateSelected];
     [self.question4Option3.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
 }
 
