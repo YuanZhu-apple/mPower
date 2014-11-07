@@ -197,7 +197,12 @@ static NSInteger kDatePickerCellRow = 3;
 /*********************************************************************************/
 - (void)segmentedButtonPressed:(UIButton *)button selectedIndex:(NSInteger)selectedIndex
 {
-    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
+    if (button == self.question2Option2) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else{
+        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
+    }
+    
 }
 
 /*********************************************************************************/
