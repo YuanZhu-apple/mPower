@@ -28,6 +28,7 @@
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
+		CFE6769F1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE6769E1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.m */; };
 		CFFB2A0919F86E29002E93FA /* APHIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFB2A0819F86E29002E93FA /* APHIntroductionViewController.m */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5319D1FCA400AC1F37 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5219D1FCA400AC1F37 /* APHDashboard.storyboard */; };
@@ -159,6 +160,8 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
+		CFE6769D1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingFeedbackView.h; sourceTree = "<group>"; };
+		CFE6769E1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingFeedbackView.m; sourceTree = "<group>"; };
 		CFFB2A0719F86E29002E93FA /* APHIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntroductionViewController.h; sourceTree = "<group>"; };
 		CFFB2A0819F86E29002E93FA /* APHIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntroductionViewController.m; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */,
 				F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */,
 				F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */,
+				CFE6769D1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.h */,
+				CFE6769E1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.m */,
 				7BEE9D5019F0448200E75555 /* APHCustomIntervalTappingTargetView.h */,
 				7BEE9D5119F0448200E75555 /* APHCustomIntervalTappingTargetView.m */,
 				7BEE9D5419F044BC00E75555 /* APHCustomIntervalTappingTargetView.xib */,
@@ -725,6 +730,7 @@
 				F5D14F1C19CC9BC900650FBB /* APHIntervalTappingIntroViewController.m in Sources */,
 				F5D14E8919CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m in Sources */,
 				F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */,
+				CFE6769F1A0C23BA0016CCBB /* APHIntervalTappingFeedbackView.m in Sources */,
 				F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */,
 				5B29CE5019D4BA7100E2FD62 /* APHStudyOverviewViewController.m in Sources */,
 				5B5F17A219EF3D3B00A0E1D7 /* APHSignupTouchIDViewController.m in Sources */,

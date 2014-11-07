@@ -11,6 +11,7 @@
 #import "APHIntervalTappingTapView.h"
 
 #import "APHCustomIntervalTappingTargetView.h"
+#import "APHIntervalTappingFeedbackView.h"
 
 
 static  NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";
@@ -28,11 +29,16 @@ static  NSString  *kXCoordinateRecordKey         = @"XCoordinate";
 static  NSString  *kYCoordinateRecordKey         = @"YCoordinate";
 static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
+static  CGFloat    kFeedbackViewSide             = 60.0;
+
 @interface APHIntervalTappingRecorder ()
 
-@property  (nonatomic, weak)    UIView               *container;
+@property  (nonatomic, strong)  RKActiveStepViewController      *stepperViewController;
+@property  (nonatomic, weak)    APHIntervalTappingFeedbackView  *feedbackView;
+
 @property  (nonatomic, strong)  NSMutableDictionary  *intervalTappingDictionary;
 @property  (nonatomic, strong)  NSMutableArray       *tappingRecords;
+@property  (nonatomic, assign)  BOOL                  dictionaryHeaderWasCreated;
 
 @property  (nonatomic, assign)  NSUInteger            tapsCounter;
 
@@ -67,26 +73,60 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
     [self.tappingRecords addObject:record];
 }
 
+- (void)setupdictionaryHeader
+{
+    APHCustomIntervalTappingTargetView  *targetView = (APHCustomIntervalTappingTargetView *)self.stepperViewController.customView;
+    
+    [self.intervalTappingDictionary setObject:NSStringFromCGSize(targetView.frame.size)
+                                       forKey:kContainerSizeTargetRecordKey];
+    
+    [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperLeft.frame)
+                                       forKey:kLeftTargetFrameRecordKey];
+    
+    [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperRight.frame)
+                                       forKey:kRightTargetFrameRecordKey];
+    
+    [self.intervalTappingDictionary setObject:self.tappingRecords
+                                       forKey:kIntervalTappingRecordsKey];
+}
+
 - (void)targetWasTapped:(UITapGestureRecognizer *)recogniser
 {
-    NSLog(@"Tapping");
+    if (self.dictionaryHeaderWasCreated == NO) {
+        [self setupdictionaryHeader];
+        self.dictionaryHeaderWasCreated = YES;
+    }
     
     [self addRecord:recogniser];
     self.tapsCounter = self.tapsCounter + 1;
     if (self.tappingDelegate != nil) {
         [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
     }
+    UIView  *tapView = recogniser.view;
+    CGPoint  point = [recogniser locationInView:tapView];
+    
+    CGRect  feedbackerFrame = CGRectMake(0.0, 0.0, kFeedbackViewSide, kFeedbackViewSide);
+    APHIntervalTappingFeedbackView  *feedbacker = [[APHIntervalTappingFeedbackView alloc] initWithFrame:feedbackerFrame];
+    [tapView addSubview:feedbacker];
+    [tapView bringSubviewToFront:feedbacker];
+    feedbacker.center = point;
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
+                     animations: ^{
+                         feedbacker.alpha = 0.0;
+                     } completion: ^(BOOL finished) {
+                         [feedbacker removeFromSuperview];
+                     }];
 }
 
-#pragma  -  Recorder Tap Targets Setup 
+#pragma  -  Recorder Tap Targets Setup
 
 - (void)viewController:(UIViewController*)viewController willStartStepWithView:(UIView *)view
 {
 
     [super viewController:viewController willStartStepWithView:view];
     
-    UINib *nib = [UINib nibWithNibName:@"APHCustomIntervalTappingTargetView" bundle:nil];
-    APHCustomIntervalTappingTargetView *tapperContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    UINib  *nib = [UINib nibWithNibName:@"APHCustomIntervalTappingTargetView" bundle:nil];
+    APHCustomIntervalTappingTargetView  *tapperContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
     [tapperContainer addGestureRecognizer:tapRecognizer];
@@ -102,29 +142,17 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
     for (NSLayoutConstraint *constraint in verticalConstraints) {
         constraint.priority = UILayoutPriorityFittingSizeLevel;
     }
-    
     [tapperContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(>=280)]" options:0 metrics:nil views:@{@"c":tapperContainer}]];
     
     [tapperContainer addConstraints:verticalConstraints];
+    [tapperContainer layoutIfNeeded];
     
     [(RKActiveStepViewController *)viewController setCustomView:tapperContainer];
-    RKActiveStepViewController *VC = (RKActiveStepViewController *)viewController;
-    
+    RKActiveStepViewController  *stepper = (RKActiveStepViewController *)viewController;
+    self.stepperViewController = stepper;
     
     self.tappingRecords            = [NSMutableArray array];
     self.intervalTappingDictionary = [NSMutableDictionary dictionary];
-    
-    [self.intervalTappingDictionary setObject:NSStringFromCGSize(VC.customView.frame.size)
-                                       forKey:kContainerSizeTargetRecordKey];
-    
-    [self.intervalTappingDictionary setObject:NSStringFromCGRect(tapperContainer.tapperLeft.frame)
-                                       forKey:kLeftTargetFrameRecordKey];
-    
-    [self.intervalTappingDictionary setObject:NSStringFromCGRect(tapperContainer.tapperRight.frame)
-                                       forKey:kRightTargetFrameRecordKey];
-    
-    [self.intervalTappingDictionary setObject:self.tappingRecords
-                                       forKey:kIntervalTappingRecordsKey];
 }
 
 #pragma  -  Recorder Control Methods
@@ -148,7 +176,7 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
         NSLog(@"Error %@", *error);
     } else {
         if (self.tappingRecords != nil) {
-            NSLog(@"%@", self.intervalTappingDictionary);
+//            NSLog(@"%@", self.intervalTappingDictionary);
             
             id <RKRecorderDelegate> kludgedDelegate = self.delegate;
             
@@ -207,7 +235,6 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
 - (RKRecorder *)recorderForStep:(RKStep *)step taskInstanceUUID:(NSUUID *)taskInstanceUUID
 {
-    NSLog(@"APHIntervalTappingRecorderConfiguration recorderForStep called");
     return [[APHIntervalTappingRecorder alloc] initWithStep:step taskInstanceUUID:taskInstanceUUID];
 }
 
