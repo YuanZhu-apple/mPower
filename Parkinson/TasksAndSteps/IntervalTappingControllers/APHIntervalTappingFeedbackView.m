@@ -46,4 +46,11 @@ static  CGGradientRef  target = NULL;
                                 CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds)), CGRectGetWidth(bounds) / 2.0, 0);
 }
 
+- (void)dealloc
+{
+    if (target != NULL) {
+        CGGradientRelease(target);
+    }
+}
+
 @end
