@@ -868,6 +868,7 @@ Sure</string>
                         <outlet property="logoImageView" destination="2E2-Yo-FnM" id="wln-M9-73n"/>
                         <outlet property="messageLabel" destination="3fs-Sy-NwE" id="LIQ-CG-blt"/>
                         <outlet property="okayButton" destination="fGt-jE-Min" id="ajJ-sh-C8K"/>
+                        <outlet property="tableBottomConstraint" destination="W5M-DZ-xSc" id="t6w-k1-bdL"/>
                         <outlet property="tableHeaderLabel" destination="v88-nG-H6D" id="SaC-lq-Dg7"/>
                         <outlet property="tableView" destination="Xb7-lQ-LjK" id="NJt-iF-guA"/>
                     </connections>
