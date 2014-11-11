@@ -29,7 +29,7 @@ static  NSString  *kXCoordinateRecordKey         = @"XCoordinate";
 static  NSString  *kYCoordinateRecordKey         = @"YCoordinate";
 static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
-static  CGFloat    kFeedbackViewSide             = 60.0;
+static  CGFloat    kFeedbackViewSide             = 100.0;
 
 @interface APHIntervalTappingRecorder ()
 
@@ -110,7 +110,7 @@ static  CGFloat    kFeedbackViewSide             = 60.0;
     [tapView addSubview:feedbacker];
     [tapView bringSubviewToFront:feedbacker];
     feedbacker.center = point;
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
                      animations: ^{
                          feedbacker.alpha = 0.0;
                      } completion: ^(BOOL finished) {

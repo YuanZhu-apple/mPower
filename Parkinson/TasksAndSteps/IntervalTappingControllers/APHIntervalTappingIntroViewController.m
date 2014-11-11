@@ -18,9 +18,9 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
 
 @property  (nonatomic, strong)          APCIntroductionViewController  *instructionsController;
 
-@property  (nonatomic, weak)  IBOutlet  UILabel  *introHeadingCaption;
-@property  (nonatomic, weak)  IBOutlet  UIView   *instructionsContainer;
-@property (weak, nonatomic) IBOutlet UIButton *getStartedButton;
+@property  (nonatomic, weak)  IBOutlet  UILabel   *introHeadingCaption;
+@property  (nonatomic, weak)  IBOutlet  UIView    *instructionsContainer;
+@property  (weak, nonatomic)  IBOutlet  UIButton  *getStartedButton;
 
 @property  (nonatomic, strong)          NSArray  *instructionalParagraphs;
 
@@ -48,8 +48,6 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
     }
 }
 
-#pragma  mark  -  View Controller Methods
-
 - (void)cancelButtonTapped:(id)sender
 {
     if (self.delegate != nil) {
@@ -58,6 +56,8 @@ static  NSString  *kIntroHeadingCaption = @"Tests for Bradykinesia";
         }
     }
 }
+
+#pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad
 {
