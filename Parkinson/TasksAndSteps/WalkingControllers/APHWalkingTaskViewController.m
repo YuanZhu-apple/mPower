@@ -60,7 +60,7 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
     
     {
         //Introduction to fitness test
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kgetReadyStep name:@"active step"];
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kGetReadyStep name:@"active step"];
         step.caption = NSLocalizedString(@"Timed Walking", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDown = kCountDownTimer;
