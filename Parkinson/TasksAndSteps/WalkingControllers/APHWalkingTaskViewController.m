@@ -17,7 +17,7 @@
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
 
 static  NSString  *kWalkingStep101Key = @"Walking Step 101";
-static  NSString  *kgetReadyStep = @"Get Ready";
+static  NSString  *kGetReadyStep = @"Get Ready";
 static  NSString  *kWalkingStep102Key = @"Walking Step 102";
 static  NSString  *kWalkingStep103Key = @"Walking Step 103";
 static  NSString  *kWalkingStep104Key = @"Walking Step 104";
