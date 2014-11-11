@@ -7,88 +7,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="APHIntervalTappingTargetView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="APHCustomIntervalTappingTargetView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPU-Dc-NMB" customClass="APHIntervalTappingTapView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="grV-te-GRJ"/>
-                        <constraint firstAttribute="width" constant="100" id="td9-NR-Jw2"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="grV-te-GRJ"/>
-                            <exclude reference="td9-NR-Jw2"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="grV-te-GRJ"/>
-                            <include reference="td9-NR-Jw2"/>
-                        </mask>
-                    </variation>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWg-ft-ake" userLabel="rightTapper" customClass="APHIntervalTappingTapView">
+                    <rect key="frame" x="153" y="30" width="100" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-tT-EIy" customClass="APHIntervalTappingTapView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaD-Vm-ejN" userLabel="leftTapper" customClass="APHIntervalTappingTapView">
+                    <rect key="frame" x="27" y="30" width="100" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="YP6-UO-DEh"/>
-                        <constraint firstAttribute="width" constant="100" id="xoB-fK-Wz8"/>
+                        <constraint firstAttribute="height" constant="100" id="GeB-DM-lRr"/>
+                        <constraint firstAttribute="width" constant="100" id="xST-Ib-OgT"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="YP6-UO-DEh"/>
-                            <exclude reference="xoB-fK-Wz8"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="YP6-UO-DEh"/>
-                            <include reference="xoB-fK-Wz8"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NPU-Dc-NMB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="AjB-Fs-vMa"/>
-                <constraint firstItem="NPU-Dc-NMB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="a3R-WK-6uk"/>
-                <constraint firstAttribute="trailing" secondItem="bYf-tT-EIy" secondAttribute="trailing" constant="8" id="azE-gf-pub"/>
-                <constraint firstItem="bYf-tT-EIy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="sDB-1t-iQQ"/>
+                <constraint firstItem="OaD-Vm-ejN" firstAttribute="centerY" secondItem="GWg-ft-ake" secondAttribute="centerY" id="PI1-lL-5Ug"/>
+                <constraint firstAttribute="centerY" secondItem="OaD-Vm-ejN" secondAttribute="centerY" id="VeQ-nZ-Tif"/>
+                <constraint firstItem="OaD-Vm-ejN" firstAttribute="width" secondItem="GWg-ft-ake" secondAttribute="width" id="avd-ux-Xb3"/>
+                <constraint firstItem="OaD-Vm-ejN" firstAttribute="height" secondItem="GWg-ft-ake" secondAttribute="height" id="kN6-so-s0Z"/>
+                <constraint firstAttribute="centerX" secondItem="OaD-Vm-ejN" secondAttribute="centerX" constant="63" id="xJo-7g-LaC"/>
+                <constraint firstItem="GWg-ft-ake" firstAttribute="leading" secondItem="OaD-Vm-ejN" secondAttribute="trailing" constant="26" id="zsx-Ed-z63"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="NPU-Dc-NMB"/>
-                    <exclude reference="bYf-tT-EIy"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="AjB-Fs-vMa"/>
-                    <exclude reference="a3R-WK-6uk"/>
-                    <exclude reference="azE-gf-pub"/>
-                    <exclude reference="sDB-1t-iQQ"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
-                <mask key="subviews">
-                    <include reference="NPU-Dc-NMB"/>
-                    <include reference="bYf-tT-EIy"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="AjB-Fs-vMa"/>
-                    <include reference="a3R-WK-6uk"/>
-                    <include reference="azE-gf-pub"/>
-                    <include reference="sDB-1t-iQQ"/>
-                </mask>
-            </variation>
             <connections>
-                <outlet property="tapperLeft" destination="NPU-Dc-NMB" id="Jt9-Jo-z33"/>
-                <outlet property="tapperRight" destination="bYf-tT-EIy" id="Gw2-BQ-PaU"/>
+                <outlet property="tapperLeft" destination="OaD-Vm-ejN" id="pw4-62-eNP"/>
+                <outlet property="tapperRight" destination="GWg-ft-ake" id="lpz-Eh-jsc"/>
             </connections>
-            <point key="canvasLocation" x="106" y="307"/>
+            <point key="canvasLocation" x="247" y="274"/>
         </view>
     </objects>
 </document>
