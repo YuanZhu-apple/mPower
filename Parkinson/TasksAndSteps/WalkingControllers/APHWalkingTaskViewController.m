@@ -17,12 +17,15 @@
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
 
 static  NSString  *kWalkingStep101Key = @"Walking Step 101";
+static  NSString  *kgetReadyStep = @"Get Ready";
 static  NSString  *kWalkingStep102Key = @"Walking Step 102";
 static  NSString  *kWalkingStep103Key = @"Walking Step 103";
 static  NSString  *kWalkingStep104Key = @"Walking Step 104";
 static  NSString  *kWalkingStep105Key = @"Walking Step 105";
 
 static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
+
+static NSInteger kCountDownTimer = 10;
 
 static  CGFloat  kAPCStepProgressBarHeight = 8.0;
 
@@ -52,9 +55,22 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
         @"After the phone vibrates, follow the instructions to begin.", @"");
         step.buzz = YES;
         step.vibration = YES;
-        step.countDown = 10.0;
         [steps addObject:step];
     }
+    
+    {
+        //Introduction to fitness test
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kgetReadyStep name:@"active step"];
+        step.caption = NSLocalizedString(@"Timed Walking", @"");
+        step.text = NSLocalizedString(@"Get Ready!", @"");
+        step.countDown = kCountDownTimer;
+        step.useNextForSkip = NO;
+        step.buzz = YES;
+        step.speakCountDown = YES;
+        
+        [steps addObject:step];
+    }
+    
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep102Key name:@"active step"];
         step.caption = NSLocalizedString(@"Walk out 20 Steps", @"");
