@@ -42,24 +42,6 @@
           "icon_image":"globe_icon",
           "tint_color" : "gray"
           },
-          {
-          "title":"Parkinson’s Resource",
-          "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-          "icon_image":"globe_icon",
-          "tint_color" : "gray"
-          },
-          {
-          "title":"Parkinson’s Resource",
-          "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-          "icon_image":"globe_icon",
-          "tint_color" : "gray"
-          },
-          {
-          "title":"Parkinson’s Resource",
-          "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-          "icon_image":"globe_icon",
-          "tint_color" : "gray"
-          }
           ]
          }
     ]
