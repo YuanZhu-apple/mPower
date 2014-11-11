@@ -20,8 +20,8 @@
 {
     CGColorSpaceRef  colorSpace = CGColorSpaceCreateDeviceRGB();
     
-    CGFloat  lite[4] = { 0.9375, 0.9375, 1.0, 0.75 };    //    light color
-    CGFloat  dark[4] = { 0.5000, 0.5000, 1.0, 1.00 };    //    dark color
+    CGFloat  lite[4] = { 0.176, 0.706, 0.980, 0.875 };    //    light color
+    CGFloat  dark[4] = { 0.500, 0.500, 1.000, 1.000 };    //    dark  color
     
     CGFloat  locations[] = { 1.0, 0.0 };
     
