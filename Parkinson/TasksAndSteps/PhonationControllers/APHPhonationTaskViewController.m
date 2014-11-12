@@ -13,8 +13,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.phonation";
-
+static NSInteger kCountDownTimer = 5;
 static NSString * kPhonationStep101Key = @"Phonation_Step_101";
+static NSString * kGetReadyStep = @"Get Ready";
 static NSString * kPhonationStep102Key = @"Phonation_Step_102";
 static NSString * kPhonationStep103Key = @"Phonation_Step_103";
 static NSString * kPhonationStep104Key = @"Phonation_Step_104";
@@ -48,6 +49,20 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
         step.instruction = @"In the next screen you will be asked to say “Aaaahhh” for 10 seconds.";
         [steps addObject:step];
     }
+    
+    {
+        //Introduction to fitness test
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kGetReadyStep name:@"active step"];
+        step.caption = NSLocalizedString(@"Sustained Phonation", @"");
+        step.text = NSLocalizedString(@"Get Ready!", @"");
+        step.countDown = kCountDownTimer;
+        step.useNextForSkip = NO;
+        step.buzz = YES;
+        step.speakCountDown = YES;
+        
+        [steps addObject:step];
+    }
+    
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep102Key name:@"active step"];
         step.text = @"Please say “Aaaahhh” for 10 seconds";
