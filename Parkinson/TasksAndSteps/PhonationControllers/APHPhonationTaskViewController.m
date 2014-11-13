@@ -23,7 +23,7 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 
 static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
 
-static  CGFloat  kAPCStepProgressBarHeight = 8.0;
+static  CGFloat  kAPCStepProgressBarHeight = 12.0;
 
 @interface APHPhonationTaskViewController ()
 

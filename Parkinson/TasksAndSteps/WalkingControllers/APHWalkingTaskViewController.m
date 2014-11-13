@@ -27,7 +27,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 static NSInteger kCountDownTimer = 10;
 
-static  CGFloat  kAPCStepProgressBarHeight = 8.0;
+static  CGFloat  kAPCStepProgressBarHeight = 12.0;
 
 @interface APHWalkingTaskViewController  ( )
 {
