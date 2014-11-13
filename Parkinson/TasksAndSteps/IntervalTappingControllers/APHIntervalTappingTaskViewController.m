@@ -24,7 +24,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
 
 static float tapInterval = 20.0;
 
-static  CGFloat  kAPCStepProgressBarHeight = 8.0;
+static  CGFloat  kAPCStepProgressBarHeight = 12.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
