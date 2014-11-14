@@ -64,6 +64,7 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 - (void)setupdictionaryHeader
 {
     APHIntervalTappingRecorderCustomView  *containerView = (APHIntervalTappingRecorderCustomView *)self.stepperViewController.customView;
+    
     APHRippleView  *targetView = (APHRippleView *)containerView.tapTargetsContainer;
     
     [self.intervalTappingDictionary setObject:NSStringFromCGSize(targetView.frame.size)
@@ -124,35 +125,30 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     [tapTargetsContainer.layer setCornerRadius:2.0];
     
     self.tappingTargetsContainer = tapTargetsContainer;
+    [tapTargetsContainer setBackgroundColor:[UIColor yellowColor]];
+    
+    //[outerContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    RKActiveStepViewController *stepVC = (RKActiveStepViewController *)viewController;
     
     [outerContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==300)]" options:0 metrics:nil views:@{@"c":outerContainer}];
-//    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c]|"   options:0 metrics:nil views:@{@"c":outerContainer}];
+    [stepVC.view addSubview:outerContainer];
+    [stepVC.view setBackgroundColor:[UIColor greenColor]];
 
-    [view addSubview:outerContainer];
-    
-    RKActiveStepViewController *stepVC = (RKActiveStepViewController *)viewController;
-    UIView *aView = [UIView new];
-    stepVC.customView = aView;
-    [stepVC.customView addSubview:outerContainer];
+    //[blankView addSubview:outerContainer];
     
     [stepVC.view addConstraint:[NSLayoutConstraint constraintWithItem:outerContainer attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:stepVC.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+   
+    [stepVC.view addConstraint:[NSLayoutConstraint constraintWithItem:outerContainer
+                                                            attribute:NSLayoutAttributeCenterX
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:stepVC.view
+                                                            attribute:NSLayoutAttributeCenterX
+                                                           multiplier:1.0
+                                                             constant:0.0]];
     
-    for (NSLayoutConstraint *constraint in vc1) {
-        constraint.priority = UILayoutPriorityFittingSizeLevel;
-    }
-//    for (NSLayoutConstraint *constraint in vc2) {
-//        constraint.priority = UILayoutPriorityFittingSizeLevel;
-//    }
-    [outerContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(>=280)]" options:0 metrics:nil views:@{@"c":outerContainer}]];
-    
-    [outerContainer addConstraints:vc1];
-//    [outerContainer addConstraints:vc2];
-    
-    [(RKActiveStepViewController *)viewController setCustomView:outerContainer];
-    RKActiveStepViewController  *stepper = (RKActiveStepViewController *)viewController;
-    self.stepperViewController = stepper;
+    self.stepperViewController = stepVC;
     
     self.tappingRecords            = [NSMutableArray array];
     self.intervalTappingDictionary = [NSMutableDictionary dictionary];

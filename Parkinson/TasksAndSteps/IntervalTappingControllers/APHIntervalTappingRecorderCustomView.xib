@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -21,6 +21,7 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfh-8P-ZC0">
                             <rect key="frame" x="8" y="42" width="264" height="39"/>
+                            <color key="backgroundColor" red="0.14901961389999999" green="0.82352948189999997" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -44,7 +45,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVo-Hb-wd9" userLabel="leftTapper" customClass="APHIntervalTappingTapView">
                             <rect key="frame" x="27" y="30" width="100" height="100"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.16078431900000001" green="0.97254908080000002" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="KMv-st-GC7"/>
                                 <constraint firstAttribute="width" constant="100" id="gdZ-g9-T2X"/>
@@ -77,6 +78,7 @@
                 <constraint firstAttribute="centerX" secondItem="bRZ-hT-ixb" secondAttribute="centerX" id="FxL-Qk-3u4"/>
                 <constraint firstItem="AoM-Bx-dQV" firstAttribute="leading" secondItem="dH4-MX-KYb" secondAttribute="leading" id="Ggt-N2-lih"/>
                 <constraint firstAttribute="centerX" secondItem="AoM-Bx-dQV" secondAttribute="centerX" id="hh3-L9-SHQ"/>
+                <constraint firstItem="bRZ-hT-ixb" firstAttribute="top" secondItem="dH4-MX-KYb" secondAttribute="top" constant="97" id="ovQ-bB-lhh"/>
                 <constraint firstItem="AoM-Bx-dQV" firstAttribute="top" secondItem="dH4-MX-KYb" secondAttribute="top" constant="8" id="tFa-uP-zVI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -87,7 +89,7 @@
                 <outlet property="tapperRight" destination="PDK-Yz-Lvc" id="1ON-kh-v60"/>
                 <outlet property="totalTapsCount" destination="gfh-8P-ZC0" id="ayc-OR-0lJ"/>
             </connections>
-            <point key="canvasLocation" x="544" y="64.5"/>
+            <point key="canvasLocation" x="561" y="64.5"/>
         </view>
     </objects>
 </document>
