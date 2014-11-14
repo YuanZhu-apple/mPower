@@ -7,11 +7,10 @@
 //
 
 #import "APHIntervalTappingRecorder.h"
-#import "APHIntervalTappingTargetContainer.h"
-#import "APHIntervalTappingTapView.h"
 
-#import "APHCustomIntervalTappingTargetView.h"
-#import "APHIntervalTappingFeedbackView.h"
+#import "APHIntervalTappingRecorderCustomView.h"
+#import "APHIntervalTappingTapView.h"
+#import "APHRippleView.h"
 
 
 static  NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";
@@ -29,37 +28,26 @@ static  NSString  *kXCoordinateRecordKey         = @"XCoordinate";
 static  NSString  *kYCoordinateRecordKey         = @"YCoordinate";
 static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
-static  CGFloat    kFeedbackViewSide             = 100.0;
+static  CGFloat  kRipplerMinimumRadius           =   5.0;
+static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 @interface APHIntervalTappingRecorder ()
 
-@property  (nonatomic, strong)  RKActiveStepViewController      *stepperViewController;
-@property  (nonatomic, weak)    APHIntervalTappingFeedbackView  *feedbackView;
+@property  (nonatomic, strong)  APHIntervalTappingRecorderCustomView  *outerTappingContainer;
+@property  (nonatomic, strong)  RKActiveStepViewController            *stepperViewController;
+@property  (nonatomic, weak)    APHRippleView                         *tappingTargetsContainer;
 
-@property  (nonatomic, strong)  NSMutableDictionary  *intervalTappingDictionary;
-@property  (nonatomic, strong)  NSMutableArray       *tappingRecords;
-@property  (nonatomic, assign)  BOOL                  dictionaryHeaderWasCreated;
+@property  (nonatomic, strong)  NSMutableDictionary                   *intervalTappingDictionary;
+@property  (nonatomic, strong)  NSMutableArray                        *tappingRecords;
+@property  (nonatomic, assign)  BOOL                                   dictionaryHeaderWasCreated;
 
-@property  (nonatomic, assign)  NSUInteger            tapsCounter;
+@property  (nonatomic, assign)  NSUInteger                             tapsCounter;
 
 @end
 
 @implementation APHIntervalTappingRecorder
 
 #pragma  mark  -  Tapping Methods
-
-//- (BOOL)doesTargetContainPoint:(CGPoint)point inView:(UIView *)view
-//{
-//    BOOL  answer = YES;
-//    
-//    CGFloat  dx = point.x - CGRectGetMidX(view.bounds);
-//    CGFloat  dy = point.y - CGRectGetMidY(view.bounds);
-//    CGFloat  h = hypot(dx, dy);
-//    if (h > CGRectGetWidth(view.bounds) / 2.0) {
-//        answer = NO;
-//    }
-//    return  answer;
-//}
 
 - (void)addRecord:(UITapGestureRecognizer *)recogniser
 {
@@ -75,7 +63,8 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
 
 - (void)setupdictionaryHeader
 {
-    APHCustomIntervalTappingTargetView  *targetView = (APHCustomIntervalTappingTargetView *)self.stepperViewController.customView;
+    APHIntervalTappingRecorderCustomView  *containerView = (APHIntervalTappingRecorderCustomView *)self.stepperViewController.customView;
+    APHRippleView  *targetView = (APHRippleView *)containerView.tapTargetsContainer;
     
     [self.intervalTappingDictionary setObject:NSStringFromCGSize(targetView.frame.size)
                                        forKey:kContainerSizeTargetRecordKey];
@@ -98,56 +87,70 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
     }
     
     [self addRecord:recogniser];
+    
     self.tapsCounter = self.tapsCounter + 1;
+    self.outerTappingContainer.totalTapsCount.text = [NSString stringWithFormat:@"%lu", self.tapsCounter];
     if (self.tappingDelegate != nil) {
         [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
     }
     UIView  *tapView = recogniser.view;
     CGPoint  point = [recogniser locationInView:tapView];
-    
-    CGRect  feedbackerFrame = CGRectMake(0.0, 0.0, kFeedbackViewSide, kFeedbackViewSide);
-    APHIntervalTappingFeedbackView  *feedbacker = [[APHIntervalTappingFeedbackView alloc] initWithFrame:feedbackerFrame];
-    [tapView addSubview:feedbacker];
-    [tapView bringSubviewToFront:feedbacker];
-    feedbacker.center = point;
-    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
-                     animations: ^{
-                         feedbacker.alpha = 0.0;
-                     } completion: ^(BOOL finished) {
-                         [feedbacker removeFromSuperview];
-                     }];
+    [self.tappingTargetsContainer rippleAtPoint:point];
 }
 
 #pragma  -  Recorder Tap Targets Setup
 
 - (void)viewController:(UIViewController*)viewController willStartStepWithView:(UIView *)view
 {
-
     [super viewController:viewController willStartStepWithView:view];
     
-    UINib  *nib = [UINib nibWithNibName:@"APHCustomIntervalTappingTargetView" bundle:nil];
-    APHCustomIntervalTappingTargetView  *tapperContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    UINib  *nib = [UINib nibWithNibName:@"APHIntervalTappingRecorderCustomView" bundle:nil];
+    APHIntervalTappingRecorderCustomView  *outerContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    self.outerTappingContainer = outerContainer;
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
-    [tapperContainer addGestureRecognizer:tapRecognizer];
+    APHRippleView  *tapTargetsContainer = (APHRippleView *)outerContainer.tapTargetsContainer;
+    tapTargetsContainer.tapperLeft = outerContainer.tapperLeft;
+    tapTargetsContainer.tapperRight = outerContainer.tapperRight;
     
-    [tapperContainer.layer setBorderColor:[UIColor grayColor].CGColor];
-    [tapperContainer.layer setBorderWidth:1.0];
-    [tapperContainer.layer setCornerRadius:4.0];
+    UITapGestureRecognizer  *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
+    [tapTargetsContainer addGestureRecognizer:tapRecognizer];
+    tapTargetsContainer.minimumRadius = kRipplerMinimumRadius;
+    tapTargetsContainer.maximumRadius = kRipplerMaximumRadius;
+
+    [tapTargetsContainer addGestureRecognizer:tapRecognizer];
     
-    [tapperContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [tapTargetsContainer.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [tapTargetsContainer.layer setBorderWidth:0.5];
+    [tapTargetsContainer.layer setCornerRadius:2.0];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(>=160)]" options:0 metrics:nil views:@{@"c":tapperContainer}];
+    self.tappingTargetsContainer = tapTargetsContainer;
     
-    for (NSLayoutConstraint *constraint in verticalConstraints) {
+    [outerContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==300)]" options:0 metrics:nil views:@{@"c":outerContainer}];
+//    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c]|"   options:0 metrics:nil views:@{@"c":outerContainer}];
+
+    [view addSubview:outerContainer];
+    
+    RKActiveStepViewController *stepVC = (RKActiveStepViewController *)viewController;
+    UIView *aView = [UIView new];
+    stepVC.customView = aView;
+    [stepVC.customView addSubview:outerContainer];
+    
+    [stepVC.view addConstraint:[NSLayoutConstraint constraintWithItem:outerContainer attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:stepVC.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    
+    for (NSLayoutConstraint *constraint in vc1) {
         constraint.priority = UILayoutPriorityFittingSizeLevel;
     }
-    [tapperContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(>=280)]" options:0 metrics:nil views:@{@"c":tapperContainer}]];
+//    for (NSLayoutConstraint *constraint in vc2) {
+//        constraint.priority = UILayoutPriorityFittingSizeLevel;
+//    }
+    [outerContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(>=280)]" options:0 metrics:nil views:@{@"c":outerContainer}]];
     
-    [tapperContainer addConstraints:verticalConstraints];
-    [tapperContainer layoutIfNeeded];
+    [outerContainer addConstraints:vc1];
+//    [outerContainer addConstraints:vc2];
     
-    [(RKActiveStepViewController *)viewController setCustomView:tapperContainer];
+    [(RKActiveStepViewController *)viewController setCustomView:outerContainer];
     RKActiveStepViewController  *stepper = (RKActiveStepViewController *)viewController;
     self.stepperViewController = stepper;
     
@@ -176,7 +179,7 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
         NSLog(@"Error %@", *error);
     } else {
         if (self.tappingRecords != nil) {
-//            NSLog(@"%@", self.intervalTappingDictionary);
+            NSLog(@"%@", self.intervalTappingDictionary);
             
             id <RKRecorderDelegate> kludgedDelegate = self.delegate;
             
