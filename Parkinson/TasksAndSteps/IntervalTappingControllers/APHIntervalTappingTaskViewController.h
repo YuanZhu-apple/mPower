@@ -10,6 +10,6 @@
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
 
-@interface APHIntervalTappingTaskViewController : APCSetupTaskViewController
+@interface APHIntervalTappingTaskViewController : APCBaseWithProgressTaskViewController
 
 @end

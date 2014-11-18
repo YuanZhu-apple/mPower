@@ -13,6 +13,6 @@
 
 
 
-@interface APHWalkingTaskViewController : APCSetupTaskViewController
+@interface APHWalkingTaskViewController : APCBaseWithProgressTaskViewController
 
 @end
