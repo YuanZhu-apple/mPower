@@ -40,8 +40,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         
         if (!_rowItemsOrder.count) {
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
-                                                                     @(kAPHDashboardItemTypeDistance),
-                                                                     @(kAPHDashboardItemTypeHeartRate),
+                                                                     @(kAPHDashboardItemTypeIntervalTapping),
+                                                                     @(kAPHDashboardItemTypeGait),
+                                                                     @(kAPHDashboardItemTypeSteps),
                                                                      @(kAPHDashboardItemTypeAlerts),
                                                                      @(kAPHDashboardItemTypeInsights)]];
             
@@ -145,10 +146,10 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             APHDashboardItemType rowType = typeNumber.integerValue;
             
             switch (rowType) {
-                case kAPHDashboardItemTypeDistance:
+                case kAPHDashboardItemTypeIntervalTapping:
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
-                    item.caption = NSLocalizedString(@"Gait", @"");
+                    item.caption = NSLocalizedString(@"Interval Tapping", @"");
                     item.graphData = self.distanceScore;
                     item.detailText = [NSString stringWithFormat:NSLocalizedString(@"Average : %lu", @"Average: {value} ft"), [[self.distanceScore averageDataPoint] integerValue]];
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
@@ -162,7 +163,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 
                 }
                     break;
-                case kAPHDashboardItemTypeHeartRate:{
+                case kAPHDashboardItemTypeGait:{
                     
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
@@ -171,6 +172,23 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryYellowColor];
+                    
+                    APCTableViewRow *row = [APCTableViewRow new];
+                    row.item = item;
+                    row.itemType = rowType;
+                    [rowItems addObject:row];
+                }
+                    break;
+                    
+                case kAPHDashboardItemTypeSteps:{
+                    
+                    APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
+                    item.caption = NSLocalizedString(@"Steps", @"");
+                    item.graphData = self.heartRateScore;
+                    item.detailText = [NSString stringWithFormat:NSLocalizedString(@"Average : %lu", @"Average: {value} bpm"), [[self.heartRateScore averageDataPoint] integerValue]];
+                    item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
+                    item.editable = YES;
+                    item.tintColor = [UIColor appTertiaryGreenColor];
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;

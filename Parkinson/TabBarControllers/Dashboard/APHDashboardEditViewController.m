@@ -27,19 +27,27 @@
             APHDashboardItemType rowType = typeNumber.integerValue;
             
             switch (rowType) {
-                case kAPHDashboardItemTypeDistance:
+                case kAPHDashboardItemTypeIntervalTapping:
                 {
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
-                    item.caption = NSLocalizedString(@"Distance", @"");
+                    item.caption = NSLocalizedString(@"Interval Tapping", @"");
                     
                     [self.items addObject:item];
                     
                 }
                     break;
-                case kAPHDashboardItemTypeHeartRate:{
+                case kAPHDashboardItemTypeGait:{
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
-                    item.caption = NSLocalizedString(@"Heart Rate", @"");
+                    item.caption = NSLocalizedString(@"Gait", @"");
+                    
+                    [self.items addObject:item];
+                }
+                    break;
+                case kAPHDashboardItemTypeSteps:{
+                    
+                    APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
+                    item.caption = NSLocalizedString(@"Steps", @"");
                     
                     [self.items addObject:item];
                 }

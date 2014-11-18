@@ -9,8 +9,9 @@
 @import APCAppleCore;
 
 typedef NS_ENUM(APCTableViewItemType, APHDashboardItemType) {
-    kAPHDashboardItemTypeDistance,
-    kAPHDashboardItemTypeHeartRate,
+    kAPHDashboardItemTypeIntervalTapping,
+    kAPHDashboardItemTypeGait,
+    kAPHDashboardItemTypeSteps,
     kAPHDashboardItemTypeAlerts,
     kAPHDashboardItemTypeInsights,
 };
