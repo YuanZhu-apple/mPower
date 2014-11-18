@@ -105,50 +105,51 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 {
     [super viewController:viewController willStartStepWithView:view];
     
+        //
+        //    outerContainer is the view loaded from the Nib
+        //
+        //        outerContainer has two sub-views:
+        //            top sub-view contains the 'Total Taps' label,
+        //            and the Taps Count label
+        //
+        //            bottom sub-view is APHRippleView which contains the two tapping targets.
+        //            APHRippleView tracks taps and provides fusion bomb feedback . . .
+        //
     UINib  *nib = [UINib nibWithNibName:@"APHIntervalTappingRecorderCustomView" bundle:nil];
     APHIntervalTappingRecorderCustomView  *outerContainer = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     self.outerTappingContainer = outerContainer;
     
     APHRippleView  *tapTargetsContainer = (APHRippleView *)outerContainer.tapTargetsContainer;
+    
     tapTargetsContainer.tapperLeft = outerContainer.tapperLeft;
+    tapTargetsContainer.tapperLeft.enabled = YES;
+    
     tapTargetsContainer.tapperRight = outerContainer.tapperRight;
+    tapTargetsContainer.tapperRight.enabled = YES;
+    
+    tapTargetsContainer.minimumRadius = kRipplerMinimumRadius;
+    tapTargetsContainer.maximumRadius = kRipplerMaximumRadius;
     
     UITapGestureRecognizer  *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
     [tapTargetsContainer addGestureRecognizer:tapRecognizer];
-    tapTargetsContainer.minimumRadius = kRipplerMinimumRadius;
-    tapTargetsContainer.maximumRadius = kRipplerMaximumRadius;
 
     [tapTargetsContainer addGestureRecognizer:tapRecognizer];
     
-    [tapTargetsContainer.layer setBorderColor:[UIColor lightGrayColor].CGColor];
-    [tapTargetsContainer.layer setBorderWidth:0.5];
-    [tapTargetsContainer.layer setCornerRadius:2.0];
-    
     self.tappingTargetsContainer = tapTargetsContainer;
-    [tapTargetsContainer setBackgroundColor:[UIColor yellowColor]];
     
-    //[outerContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    RKActiveStepViewController *stepVC = (RKActiveStepViewController *)viewController;
+    RKActiveStepViewController  *stepper = (RKActiveStepViewController *)viewController;
     
     [outerContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [stepVC.view addSubview:outerContainer];
-    [stepVC.view setBackgroundColor:[UIColor greenColor]];
+    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==257.0)]" options:0 metrics:nil views:@{@"c":outerContainer}];
+    [outerContainer addConstraints:vc1];
 
-    //[blankView addSubview:outerContainer];
+    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(==320.0)]" options:0 metrics:nil views:@{@"c":outerContainer}];
+    [outerContainer addConstraints:vc2];
     
-    [stepVC.view addConstraint:[NSLayoutConstraint constraintWithItem:outerContainer attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:stepVC.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-   
-    [stepVC.view addConstraint:[NSLayoutConstraint constraintWithItem:outerContainer
-                                                            attribute:NSLayoutAttributeCenterX
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:stepVC.view
-                                                            attribute:NSLayoutAttributeCenterX
-                                                           multiplier:1.0
-                                                             constant:0.0]];
+    stepper.customView = outerContainer;
     
-    self.stepperViewController = stepVC;
+    self.stepperViewController = stepper;
     
     self.tappingRecords            = [NSMutableArray array];
     self.intervalTappingDictionary = [NSMutableDictionary dictionary];

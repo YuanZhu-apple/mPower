@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Ramsundar Shandilya. All rights reserved.
 //
 
+@import APCAppleCore;
+
 #import "APHRippleView.h"
 
 @interface APHRippleView ()
@@ -50,7 +52,8 @@
     
     _animationDuration = 0.2;
     
-    _tintColor = [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000];
+//    _tintColor = [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000];
+    _tintColor = [UIColor appTertiaryPurpleColor];
     
     _count = 0;
 }
@@ -78,17 +81,17 @@
     [self animateRipple:rippleLayer];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint touchPoint = [touch locationInView:self];
-    
-    CAShapeLayer *rippleLayer = [self rippleLayer];
-    [self.layer addSublayer:rippleLayer];
-    
-    rippleLayer.position = touchPoint;
-    [self animateRipple:rippleLayer];
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    CGPoint touchPoint = [touch locationInView:self];
+//    
+//    CAShapeLayer *rippleLayer = [self rippleLayer];
+//    [self.layer addSublayer:rippleLayer];
+//    
+//    rippleLayer.position = touchPoint;
+//    [self animateRipple:rippleLayer];
+//}
 
 #pragma mark - Animation
 
