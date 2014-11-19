@@ -25,7 +25,7 @@ static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
 
 @interface APHPhonationTaskViewController ()
 
-@property (strong, nonatomic) RKDataArchive *taskArchive;
+@property (strong, nonatomic) RKSTDataArchive *taskArchive;
 
 @end
 
@@ -33,70 +33,70 @@ static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
 
 #pragma  mark  -  Initialisation
 
-+ (RKTask *)createTask:(APCScheduledTask*) scheduledTask
++ (RKSTOrderedTask *)createTask:(APCScheduledTask*) scheduledTask
 {
     
     NSMutableArray *steps = [NSMutableArray array];
     
     {
-        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kPhonationStep101Key name:@"Introduction Step"];
-        step.caption = @"Tests Speech Difficulties";
-        step.explanation = @"";
-        step.instruction = @"In the next screen you will be asked to say “Aaaahhh” for 10 seconds.";
+        RKSTInstructionStep *step = [[RKSTInstructionStep alloc] initWithIdentifier:kPhonationStep101Key];
+        step.title = @"Tests Speech Difficulties";
+        step.text = @"";
+        step.detailText = @"In the next screen you will be asked to say “Aaaahhh” for 10 seconds.";
         [steps addObject:step];
     }
     
     {
         //Introduction to fitness test
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kGetReadyStep name:@"active step"];
-        step.caption = NSLocalizedString(@"Sustained Phonation", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
+        step.title = NSLocalizedString(@"Sustained Phonation", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
-        step.countDown = kCountDownTimer;
-        step.useNextForSkip = NO;
-        step.buzz = YES;
-        step.speakCountDown = YES;
+        step.countDownInterval = kCountDownTimer;
+        step.shouldUseNextAsSkipButton = NO;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldSpeakCountDown = YES;
         
         [steps addObject:step];
     }
     
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep102Key name:@"active step"];
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kPhonationStep102Key];
         step.text = @"Please say “Aaaahhh” for 10 seconds";
-        step.countDown = 10.0;
-        step.buzz = YES;
-        step.vibration = YES;
-        step.recorderConfigurations = @[[[RKAudioRecorderConfiguration alloc] initWithRecorderSettings:@{AVFormatIDKey : @(kAudioFormatAppleLossless),
+        step.countDownInterval = 10.0;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
+        step.recorderConfigurations = @[[[RKSTAudioRecorderConfiguration alloc] initWithRecorderSettings:@{AVFormatIDKey : @(kAudioFormatAppleLossless),
                                                                                                          AVNumberOfChannelsKey : @(2),
                                                                                                          AVSampleRateKey: @(44100.0)
                                                                                                          }]];
         [steps addObject:step];
     }
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep103Key name:@"active step"];
-        step.caption = @"Great Job!";
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kPhonationStep103Key];
+        step.title = @"Great Job!";
         [steps addObject:step];
     }
     
-    RKTask  *task = [[RKTask alloc] initWithName:@"Sustained Phonation" identifier:@"Phonation Task" steps:steps];
+    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Phonation Task" steps:steps];
     
     return  task;
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStepViewController:(RKStepViewController *)stepViewController
+- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStepViewController:(RKSTStepViewController *)stepViewController
 {
     return  YES;
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController willPresentStepViewController:(RKSTStepViewController *)stepViewController
 {
     stepViewController.cancelButton = nil;
     stepViewController.backButton = nil;
     stepViewController.continueButton = nil;
 }
 
-- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+- (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     NSDictionary  *controllers = @{
                                    kPhonationStep101Key : [APHPhonationIntroViewController class],
@@ -104,7 +104,6 @@ static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
     APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
-    controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
     controller.step = step;
@@ -117,7 +116,6 @@ static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
 {
     [super viewWillAppear:animated];
     
-    [self beginTask];
 }
 
 - (void)viewDidLoad
@@ -127,117 +125,29 @@ static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
 }
 
-/*********************************************************************************/
-#pragma  mark  - Private methods
-/*********************************************************************************/
-
-- (void)beginTask
-{
-    if (self.taskArchive)
-    {
-        [self.taskArchive resetContent];
-    }
-    
-    self.taskArchive = [[RKDataArchive alloc] initWithItemIdentifier:[RKItemIdentifier itemIdentifierForTask:self.task] studyIdentifier:MainStudyIdentifier taskInstanceUUID:self.taskInstanceUUID extraMetadata:nil fileProtection:RKFileProtectionCompleteUnlessOpen];
-    
-}
-
-/*********************************************************************************/
-#pragma mark - Helpers
-/*********************************************************************************/
-
--(void)sendResult:(RKResult*)result
-{
-    // In a real application, consider adding to the archive on a concurrent queue.
-    NSError *err = nil;
-    if (![result addToArchive:self.taskArchive error:&err])
-    {
-        // Error adding the result to the archive; archive may be invalid. Tell
-        // the user there's been a problem and stop the task.
-        NSLog(@"Error adding %@ to archive: %@", result, err);
-    }
-}
-
 
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result {
-    
-    NSLog(@"didProduceResult = %@", result);
-    
-    if ([result isKindOfClass:[RKSurveyResult class]]) {
-        RKSurveyResult* sresult = (RKSurveyResult*)result;
-        
-        for (RKQuestionResult* qr in sresult.surveyResults) {
-            NSLog(@"%@ = [%@] %@ ", [[qr itemIdentifier] stringValue], [qr.answer class], qr.answer);
-        }
-    }
-    
-    
-    [self sendResult:result];
-    
-    [super taskViewController:taskViewController didProduceResult:result];
-}
 
-- (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
+- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error{
     
     [self.taskArchive resetContent];
     self.taskArchive = nil;
     
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController{
-    
-    [taskViewController suspend];
-    
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
-    
-    [taskViewController suspend];
-    
-    NSError *err = nil;
-    NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
-    if (archiveFileURL)
-    {
-        NSURL *documents = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-        NSURL *outputUrl = [documents URLByAppendingPathComponent:[archiveFileURL lastPathComponent]];
-        
-        // This is where you would queue the archive for upload. In this demo, we move it
-        // to the documents directory, where you could copy it off using iTunes, for instance.
-        [[NSFileManager defaultManager] moveItemAtURL:archiveFileURL toURL:outputUrl error:nil];
-        
-        NSLog(@"outputUrl= %@", outputUrl);
-        
-        // When done, clean up:
-        self.taskArchive = nil;
-        if (archiveFileURL)
-        {
-            [[NSFileManager defaultManager] removeItemAtURL:archiveFileURL error:nil];
-        }
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    [super taskViewControllerDidComplete:taskViewController];
 }
 
 /*********************************************************************************/
 #pragma mark - StepViewController Delegate Methods
 /*********************************************************************************/
 
-- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+- (void)stepViewControllerWillBePresented:(RKSTStepViewController *)viewController
 {
     viewController.skipButton = nil;
     viewController.continueButton = nil;
 }
 
-- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+- (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
 {
     [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
     

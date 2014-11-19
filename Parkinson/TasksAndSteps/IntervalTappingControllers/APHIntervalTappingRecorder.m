@@ -33,7 +33,7 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
 
 @interface APHIntervalTappingRecorder ()
 
-@property  (nonatomic, strong)  RKActiveStepViewController      *stepperViewController;
+@property  (nonatomic, strong)  RKSTActiveStepViewController      *stepperViewController;
 @property  (nonatomic, weak)    APHIntervalTappingFeedbackView  *feedbackView;
 
 @property  (nonatomic, strong)  NSMutableDictionary  *intervalTappingDictionary;
@@ -147,8 +147,8 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
     [tapperContainer addConstraints:verticalConstraints];
     [tapperContainer layoutIfNeeded];
     
-    [(RKActiveStepViewController *)viewController setCustomView:tapperContainer];
-    RKActiveStepViewController  *stepper = (RKActiveStepViewController *)viewController;
+    [(RKSTActiveStepViewController *)viewController setCustomView:tapperContainer];
+    RKSTActiveStepViewController  *stepper = (RKSTActiveStepViewController *)viewController;
     self.stepperViewController = stepper;
     
     self.tappingRecords            = [NSMutableArray array];
@@ -157,59 +157,30 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
 
 #pragma  -  Recorder Control Methods
 
-- (BOOL)start:(NSError *__autoreleasing *)error
+- (void)stop
 {
-    BOOL  answer = [super start:error];
-
-    if (answer == NO) {
-        NSLog(@"Error %@", *error);
-    }
-    
-    return  answer;
-}
-
-- (BOOL)stop:(NSError *__autoreleasing *)error
-{
-    BOOL  answer = [super stop:error];
-    
-    if (answer == NO) {
-        NSLog(@"Error %@", *error);
-    } else {
-        if (self.tappingRecords != nil) {
-//            NSLog(@"%@", self.intervalTappingDictionary);
+    if (self.tappingRecords != nil) {
+        //            NSLog(@"%@", self.intervalTappingDictionary);
+        
+        id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
+        
+        if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
+            RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
+            result.contentType = [self mimeType];
+            NSError  *serializationError = nil;
+            result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
             
-            id <RKRecorderDelegate> kludgedDelegate = self.delegate;
-            
-            if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
-                RKDataResult  *result = [[RKDataResult alloc] initWithStep:self.step];
-                result.contentType = [self mimeType];
-                NSError  *serializationError = nil;
-                result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
+            if (serializationError != nil) {
                 
-                if (serializationError != nil) {
-                    if (error != nil) {
-                        *error = serializationError;
-                        NSLog(@"Error %@", *error);
-                    }
-                    answer = NO;
-                } else {
-                    result.filename = self.fileName;
-                    [kludgedDelegate recorder:self didCompleteWithResult:result];
-//                    self.records = nil;
-                }
+            } else {
+                result.filename = self.fileName;
+                [kludgedDelegate recorder:self didCompleteWithResult:result];
+                //                    self.records = nil;
             }
-        } else {
-            if (error != nil) {
-                *error = [NSError errorWithDomain:RKErrorDomain
-                                             code:RKErrorObjectNotFound
-                                         userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Records object is nil.", nil)}];
-
-                NSLog(@"Error %@", *error);
-            }
-            answer = NO;
         }
     }
-    return  answer;
+    
+    [super stop];
 }
 
 - (NSString*)dataType
@@ -233,44 +204,9 @@ static  CGFloat    kFeedbackViewSide             = 100.0;
 
 @implementation APHIntervalTappingRecorderConfiguration
 
-- (RKRecorder *)recorderForStep:(RKStep *)step taskInstanceUUID:(NSUUID *)taskInstanceUUID
+- (RKSTRecorder *)recorderForStep:(RKSTStep *)step outputDirectory:(NSURL *)outputDirectory
 {
-    return [[APHIntervalTappingRecorder alloc] initWithStep:step taskInstanceUUID:taskInstanceUUID];
-}
-
-+ (BOOL)supportsSecureCoding
-{
-    return NO;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-    //DUMMY IMPLEMENTATION TO SUPPRESS WARNING
-    return [super init];
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder
-{
-    //DUMMY IMPLEMENTATION TO SUPPRESS WARNING 
-}
-
-#pragma mark - RKSerialization
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [self init];
-    if (self) {
-    }
-    return self;
-}
-
-- (NSDictionary *)dictionaryValue
-{
-    NSMutableDictionary  *dictionary = [NSMutableDictionary new];
-    
-    dictionary[@"_class"] = NSStringFromClass([self class]);
-    
-    return  dictionary;
+    return [[APHIntervalTappingRecorder alloc] initWithStep:step outputDirectory:nil];
 }
 
 @end

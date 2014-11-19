@@ -61,7 +61,6 @@
 		F5D14EBC19CC9B9100650FBB /* APHActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14E9519CC9B9100650FBB /* APHActivitiesViewController.m */; };
 		F5D14EC819CC9B9100650FBB /* APHLearnMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EAB19CC9B9100650FBB /* APHLearnMasterViewController.m */; };
 		F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
-		F5D14EDD19CC9BA700650FBB /* RKStep+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED619CC9BA700650FBB /* RKStep+Description.m */; };
 		F5D14F1B19CC9BC900650FBB /* APHIntervalTappingRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */; };
 		F5D14F1C19CC9BC900650FBB /* APHIntervalTappingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE919CC9BC900650FBB /* APHIntervalTappingIntroViewController.m */; };
 		F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EEA19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib */; };
@@ -210,8 +209,6 @@
 		F5D14EAB19CC9B9100650FBB /* APHLearnMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHLearnMasterViewController.m; sourceTree = "<group>"; };
 		F5D14ED319CC9BA700650FBB /* NSString+CustomMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustomMethods.h"; sourceTree = "<group>"; };
 		F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomMethods.m"; sourceTree = "<group>"; };
-		F5D14ED519CC9BA700650FBB /* RKStep+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKStep+Description.h"; sourceTree = "<group>"; };
-		F5D14ED619CC9BA700650FBB /* RKStep+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKStep+Description.m"; sourceTree = "<group>"; };
 		F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorder.h; sourceTree = "<group>"; };
 		F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingRecorder.m; sourceTree = "<group>"; };
 		F5D14EE819CC9BC900650FBB /* APHIntervalTappingIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingIntroViewController.h; sourceTree = "<group>"; };
@@ -483,8 +480,6 @@
 			children = (
 				F5D14ED319CC9BA700650FBB /* NSString+CustomMethods.h */,
 				F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */,
-				F5D14ED519CC9BA700650FBB /* RKStep+Description.h */,
-				F5D14ED619CC9BA700650FBB /* RKStep+Description.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -712,7 +707,6 @@
 				CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */,
 				5B5F179F19EF394C00A0E1D7 /* APHSignUpPermissionsViewController.m in Sources */,
 				F5D14F3919CC9C0000650FBB /* APHAppDelegate.m in Sources */,
-				F5D14EDD19CC9BA700650FBB /* RKStep+Description.m in Sources */,
 				5B5A31441A112C5200552F7D /* APHWithdrawSurveyViewController.m in Sources */,
 				F58EA05919F02BF50001C67C /* APHInEligibleViewController.m in Sources */,
 				5B424C6A1A083418009EDF11 /* APHProfieViewController.m in Sources */,

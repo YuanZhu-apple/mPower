@@ -91,22 +91,17 @@ static  NSString  *kMimeTypeForResults   = @"application/json";
         self.tapperContainer.tapperRight = self.tapperRight;
         [self.recorder viewController:self willStartStepWithView:self.tapperContainer];
         
-        NSError  *error = nil;
-        BOOL  startedSuccessfully = [self.recorder start:&error];
+        [self.recorder start];
         
-        if (startedSuccessfully == YES) {
-            self.counter = 0;
-            self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:kCountTapsInterval target:self selector:@selector(tapsCountTimerDidFire:) userInfo:nil repeats:YES];
-        } else {
-            NSLog(@"Failed to Start APHIntervalTappingRecorder");
-        }
+        self.counter = 0;
+        self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:kCountTapsInterval target:self selector:@selector(tapsCountTimerDidFire:) userInfo:nil repeats:YES];
     }
 }
 
 - (void)sendNextStepDelegateMessage:(id)object
 {
     if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
-        [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
+        [self.delegate stepViewControllerDidFinish:self navigationDirection:RKSTStepViewControllerNavigationDirectionForward];
     }
 }
 
@@ -121,15 +116,10 @@ static  NSString  *kMimeTypeForResults   = @"application/json";
 
         [self setupDisplay:CountingTapsStateIsNotCounting];
         
-        NSError  *error = nil;
-        BOOL  stoppedSuccessfully = [self.recorder stop:&error];
+        [self.recorder stop];
         
-        if (stoppedSuccessfully == YES) {
-            if (self.delegate != nil) {
-                [self performSelector:@selector(sendNextStepDelegateMessage:) withObject:nil afterDelay:1.0];
-            }
-        } else {
-            NSLog(@"Failed to Stop APHIntervalTappingRecorder and Save Results");
+        if (self.delegate != nil) {
+            [self performSelector:@selector(sendNextStepDelegateMessage:) withObject:nil afterDelay:1.0];
         }
     }
 }
@@ -169,9 +159,9 @@ static  NSString  *kMimeTypeForResults   = @"application/json";
     
     [self setupDisplay:CountingTapsStateIsNotCounting];
     
-    RKActiveStep  *step = (RKActiveStep *)self.step;
+    RKSTActiveStep  *step = (RKSTActiveStep *)self.step;
     APHIntervalTappingRecorderConfiguration  *configuration = step.recorderConfigurations[0];
-    self.recorder = (APHIntervalTappingRecorder *)[configuration recorderForStep:self.step taskInstanceUUID:self.taskViewController.taskInstanceUUID];
+    self.recorder = (APHIntervalTappingRecorder *)[configuration recorderForStep:self.step outputDirectory:nil];
     self.recorder.tappingDelegate = self;
     
     self.counter = kInitialCountDownValue;

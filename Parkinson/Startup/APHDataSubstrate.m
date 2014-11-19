@@ -18,7 +18,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         NSError *error = nil;
         {
             HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-            RKHealthCollector *healthCollector = [self.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
+            RKSTHealthCollector *healthCollector = [self.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
             if (!healthCollector)
             {
                 NSLog(@"Error creating health collector: %@", error);
@@ -28,7 +28,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
             
             HKQuantityType *quantityType2 = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodGlucose];
             HKUnit *unit = [HKUnit unitFromString:@"mg/dL"];
-            RKHealthCollector *glucoseCollector = [self.study addHealthCollectorWithSampleType:quantityType2 unit:unit startDate:nil error:&error];
+            RKSTHealthCollector *glucoseCollector = [self.study addHealthCollectorWithSampleType:quantityType2 unit:unit startDate:nil error:&error];
             
             if (!glucoseCollector)
             {
@@ -38,7 +38,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
             }
             
             HKCorrelationType *bpType = (HKCorrelationType *)[HKCorrelationType correlationTypeForIdentifier:HKCorrelationTypeIdentifierBloodPressure];
-            RKHealthCorrelationCollector *bpCollector = [self.study addHealthCorrelationCollectorWithCorrelationType:bpType sampleTypes:@[[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureDiastolic], [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureSystolic]] units:@[[HKUnit unitFromString:@"mmHg"], [HKUnit unitFromString:@"mmHg"]] startDate:nil error:&error];
+            RKSTHealthCorrelationCollector *bpCollector = [self.study addHealthCorrelationCollectorWithCorrelationType:bpType sampleTypes:@[[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureDiastolic], [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureSystolic]] units:@[[HKUnit unitFromString:@"mmHg"], [HKUnit unitFromString:@"mmHg"]] startDate:nil error:&error];
             if (!bpCollector)
             {
                 NSLog(@"Error creating BP collector: %@", error);
@@ -46,7 +46,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
                 goto errReturn;
             }
             
-            RKMotionActivityCollector *motionCollector = [self.study addMotionActivityCollectorWithStartDate:nil error:&error];
+            RKSTMotionActivityCollector *motionCollector = [self.study addMotionActivityCollectorWithStartDate:nil error:&error];
             if (!motionCollector)
             {
                 NSLog(@"Error creating motion collector: %@", error);

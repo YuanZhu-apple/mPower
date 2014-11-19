@@ -32,7 +32,7 @@ static NSInteger kCountDownTimer = 10;
     NSInteger _count;
 }
 
-@property (strong, nonatomic) RKDataArchive *taskArchive;
+@property (strong, nonatomic) RKSTDataArchive *taskArchive;
 
 @end
 
@@ -40,85 +40,85 @@ static NSInteger kCountDownTimer = 10;
 
 #pragma  mark  -  Initialisation
 
-+ (RKTask *)createTask: (APCScheduledTask*) scheduledTask
++ (RKSTOrderedTask *)createTask: (APCScheduledTask*) scheduledTask
 {
     NSMutableArray  *steps = [NSMutableArray array];
     
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep101Key name:@"active step"];
-        step.caption = NSLocalizedString(@"Measures Gait and Balance", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep101Key];
+        step.title = NSLocalizedString(@"Measures Gait and Balance", @"");
         step.text = NSLocalizedString(@"You have 10 seconds to put this device in your pocket."
         @"After the phone vibrates, follow the instructions to begin.", @"");
-        step.buzz = YES;
-        step.vibration = YES;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
         [steps addObject:step];
     }
     
     {
         //Introduction to fitness test
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kGetReadyStep name:@"active step"];
-        step.caption = NSLocalizedString(@"Timed Walking", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
+        step.title = NSLocalizedString(@"Timed Walking", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
-        step.countDown = kCountDownTimer;
-        step.useNextForSkip = NO;
-        step.buzz = YES;
-        step.speakCountDown = YES;
+        step.countDownInterval = kCountDownTimer;
+        step.shouldUseNextAsSkipButton = NO;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldSpeakCountDown = YES;
         
         [steps addObject:step];
     }
     
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep102Key name:@"active step"];
-        step.caption = NSLocalizedString(@"Walk out 20 Steps", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep102Key];
+        step.title = NSLocalizedString(@"Walk out 20 Steps", @"");
         step.text = NSLocalizedString(@"Now please walk out 20 steps.", @"");
-        step.voicePrompt = step.text;
-        step.buzz = YES;
-        step.vibration = YES;
-        step.countDown = 30.0;
-        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.spokenInstruction = step.text;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
+        step.countDownInterval = 30.0;
+        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep103Key name:@"active step"];
-        step.caption = NSLocalizedString(@"Turn around and walk back", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep103Key];
+        step.title = NSLocalizedString(@"Turn around and walk back", @"");
         step.text = NSLocalizedString(@"Now please turn 180 degrees, and walk back to your starting point.", @"");
-        step.voicePrompt = step.text;
-        step.buzz = YES;
-        step.vibration = YES;
-        step.countDown = 30.0;
-        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.spokenInstruction = step.text;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
+        step.countDownInterval = 30.0;
+        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep104Key name:@"active step"];
-        step.caption = NSLocalizedString(@"Standing Still", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep104Key];
+        step.title = NSLocalizedString(@"Standing Still", @"");
         step.text = NSLocalizedString(@"Now please stand still for 30 seconds.", @"");
-        step.voicePrompt = step.text;
-        step.buzz = YES;
-        step.vibration = YES;
-        step.countDown = 30.0;
-        step.recorderConfigurations = @[ [[RKAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.spokenInstruction = step.text;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
+        step.countDownInterval = 30.0;
+        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kWalkingStep105Key name:@"active step"];
-        step.caption = NSLocalizedString(@"Great Job!", @"");
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep105Key];
+        step.title = NSLocalizedString(@"Great Job!", @"");
         step.text = NSLocalizedString(@"Your gait symptoms seem to appear mild."
                     @"Insert easy to understand meaning of this interpretation here.", @"");
-        step.buzz = YES;
-        step.vibration = YES;
+        step.shouldPlaySoundOnStart = YES;
+        step.shouldVibrateOnStart = YES;
 
         [steps addObject:step];
     }
     
-    RKTask  *task = [[RKTask alloc] initWithName:@"Timed Walking Task" identifier:@"Timed Walking Task" steps:steps];
+    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Timed Walking Task" steps:steps];
     
     return  task;
 }
 
-- (instancetype)initWithTask:(id<RKLogicalTask>)task taskInstanceUUID:(NSUUID *)taskInstanceUUID
+- (instancetype)initWithTask:(id<RKSTTask>)task taskRunUUID:(NSUUID *)taskRunUUID
 {
-    self = [super initWithTask:task taskInstanceUUID:taskInstanceUUID];
+    self = [super initWithTask:task taskRunUUID:taskRunUUID];
     if (self) {
         _count = 0;
     }
@@ -126,17 +126,17 @@ static NSInteger kCountDownTimer = 10;
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKStep *)step
+- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKSTStep *)step
 {
     return  NO;
 }
 
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStep:(RKStep*)step
+- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStep:(RKSTStep*)step
 {
     return  YES;
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController willPresentStepViewController:(RKSTStepViewController *)stepViewController
 {
     if (kWalkingStep101Key == stepViewController.step.identifier) {
         stepViewController.continueButton = nil;
@@ -152,11 +152,11 @@ static NSInteger kCountDownTimer = 10;
     }
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKStepViewController *)stepViewController
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKSTStepViewController *)stepViewController
 {
 }
 
-- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+- (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
 
     NSDictionary  *stepsToControllersMap = @{
@@ -164,7 +164,7 @@ static NSInteger kCountDownTimer = 10;
                                              kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController  class], @(0) ],
                                            };
     
-    RKStepViewController  *controller = nil;
+    RKSTStepViewController  *controller = nil;
     
     NSArray  *descriptor = stepsToControllersMap[step.identifier];
     
@@ -185,8 +185,6 @@ static NSInteger kCountDownTimer = 10;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self beginTask];
 }
 
 - (void)viewDidLoad
@@ -202,139 +200,27 @@ static NSInteger kCountDownTimer = 10;
 }
 
 /*********************************************************************************/
-#pragma  mark  - Private methods
-/*********************************************************************************/
-
-- (void)beginTask
-{
-    if (self.taskArchive)
-    {
-        [self.taskArchive resetContent];
-    }
-    
-    self.taskArchive = [[RKDataArchive alloc] initWithItemIdentifier:[RKItemIdentifier itemIdentifierForTask:self.task] studyIdentifier:MainStudyIdentifier taskInstanceUUID:self.taskInstanceUUID extraMetadata:nil fileProtection:RKFileProtectionCompleteUnlessOpen];
-    
-}
-
-/*********************************************************************************/
-#pragma mark - Helpers
-/*********************************************************************************/
-
--(void)sendResult:(RKResult*)result
-{
-    // In a real application, consider adding to the archive on a concurrent queue.
-    NSError *err = nil;
-    if (![result addToArchive:self.taskArchive error:&err])
-    {
-        // Error adding the result to the archive; archive may be invalid. Tell
-        // the user there's been a problem and stop the task.
-        NSLog(@"Error adding %@ to archive: %@", result, err);
-    }
-}
-
-
-/*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result {
-    
-    NSLog(@"didProduceResult = %@", result);
-    
-    if ([result isKindOfClass:[RKSurveyResult class]]) {
-        RKSurveyResult* sresult = (RKSurveyResult*)result;
-        
-        for (RKQuestionResult* qr in sresult.surveyResults) {
-            NSLog(@"%@ = [%@] %@ ", [[qr itemIdentifier] stringValue], [qr.answer class], qr.answer);
-        }
-    }
-    
-    
-    [self sendResult:result];
-    
-    [super taskViewController:taskViewController didProduceResult:result];
-}
 
-- (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
+- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error{
     
     [self.taskArchive resetContent];
     self.taskArchive = nil;
     
-}
-
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController{
-    
-    [taskViewController suspend];
-    
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
-    
-//    NSFetchRequest * request = [APCResult request];
-//    request.predicate = [NSPredicate predicateWithFormat:@"scheduledTask == %@ AND rkTaskInstanceUUID == %@", self.scheduledTask, self.taskInstanceUUID.UUIDString];
-//    
-//    APCAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-//    NSArray * results = [appDelegate.dataSubstrate.mainContext executeFetchRequest:request error:NULL];
-//    
-//    RKStep * dummyStep = [[RKStep alloc] initWithIdentifier:@"Dummy" name:@"name"];
-//    RKDataResult * result = [[RKDataResult alloc] initWithStep:dummyStep];
-//    result.filename = @"walkingTask.json";
-//    result.contentType = @"application/json";
-//    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
-//    [results enumerateObjectsUsingBlock:^(APCDataResult * result, NSUInteger idx, BOOL *stop) {
-//        dictionary[result.rkItemIdentifier] = [NSJSONSerialization JSONObjectWithData:result.data options:0 error:NULL];
-//    }];
-//    
-    
-//    NSMutableDictionary *wrapperDictionary = [NSMutableDictionary dictionary];
-//    wrapperDictionary[@"fitnessTest"] = dictionary;
-//    
-//    NSLog(@"Dictionary: %@", wrapperDictionary);
-//    
-//    result.data = [NSJSONSerialization dataWithJSONObject:wrapperDictionary options:(NSJSONWritingOptions)0 error:NULL];
-//    [result addToArchive:self.taskArchive error:NULL];
-
-    
-    NSError *err = nil;
-    NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
-    if (archiveFileURL)
-    {
-        NSURL *documents = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-        NSURL *outputUrl = [documents URLByAppendingPathComponent:[archiveFileURL lastPathComponent]];
-        
-        // This is where you would queue the archive for upload. In this demo, we move it
-        // to the documents directory, where you could copy it off using iTunes, for instance.
-        [[NSFileManager defaultManager] moveItemAtURL:archiveFileURL toURL:outputUrl error:nil];
-        
-        NSLog(@"outputUrl= %@", outputUrl);
-        
-        // When done, clean up:
-        self.taskArchive = nil;
-        if (archiveFileURL)
-        {
-            [[NSFileManager defaultManager] removeItemAtURL:archiveFileURL error:nil];
-        }
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    [super taskViewControllerDidComplete:taskViewController];
 }
 
 /*********************************************************************************/
 #pragma mark - StepViewController Delegate Methods
 /*********************************************************************************/
 
-- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+- (void)stepViewControllerWillBePresented:(RKSTStepViewController *)viewController
 {
     viewController.skipButton = nil;
     viewController.continueButton = nil;
 }
 
-- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+- (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
 {
     [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
     

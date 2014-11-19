@@ -26,7 +26,7 @@ static float tapInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
-@property (strong, nonatomic) RKDataArchive *taskArchive;
+@property (strong, nonatomic) RKSTDataArchive *taskArchive;
 
 @end
 
@@ -44,42 +44,41 @@ static float tapInterval = 20.0;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self beginTask];
+
 }
 
 #pragma  mark  -  Task Creation Methods
 
-+ (RKTask *)createTask:(APCScheduledTask *)scheduledTask
++ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     NSMutableArray *steps = [[NSMutableArray alloc] init];
     
     {
-        RKIntroductionStep *step = [[RKIntroductionStep alloc] initWithIdentifier:kIntervalTappingStep101 name:@"Tap Intro"];
-        step.caption = @"Tests Bradykinesia";
-        step.explanation = @"";
-        step.instruction = @"";
+        RKSTInstructionStep *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep101];
+        step.title = @"Tests Bradykinesia";
+        step.text = @"";
+        step.detailText = @"";
         [steps addObject:step];
     }
     
     {
-        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kIntervalTappingStep102 name:@"active step"];
-        step.caption = @"Button Tap";
+        RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep102];
+        step.title = @"Button Tap";
         step.text = @"";
-        step.countDown = tapInterval;
+        step.countDownInterval = tapInterval;
         step.recorderConfigurations = @[[APHIntervalTappingRecorderConfiguration new]];
         [steps addObject:step];
     }
     
     {
-        RKIntroductionStep* step = [[RKIntroductionStep alloc] initWithIdentifier:kIntervalTappingStep103 name:@"Tap Results"];
-        step.caption = @"You're finished.";
-        step.explanation = @"";
-        step.instruction = @"";
+        RKSTInstructionStep* step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep103];
+        step.title = @"You're finished.";
+        step.text = @"";
+        step.detailText = @"";
         [steps addObject:step];
     }
 
-    RKTask  *task = [[RKTask alloc] initWithName:@"Interval Touches" identifier:@"Tapping Task" steps:steps];
+    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Tapping Task" steps:steps];
     
     return  task;
 }
@@ -98,12 +97,12 @@ static float tapInterval = 20.0;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (BOOL)taskViewController:(RKTaskViewController *)taskViewController shouldPresentStepViewController:(RKStepViewController *)stepViewController
+- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStepViewController:(RKSTStepViewController *)stepViewController
 {
     return  YES;
 }
 
-- (void)taskViewController:(RKTaskViewController *)taskViewController willPresentStepViewController:(RKStepViewController *)stepViewController
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController willPresentStepViewController:(RKSTStepViewController *)stepViewController
 {
     if (kIntervalTappingStep102 == stepViewController.step.identifier)
     {
@@ -115,7 +114,7 @@ static float tapInterval = 20.0;
     }
 }
 
-- (RKStepViewController *)taskViewController:(RKTaskViewController *)taskViewController viewControllerForStep:(RKStep *)step
+- (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     NSDictionary  *controllers = @{
                                    kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
@@ -124,7 +123,6 @@ static float tapInterval = 20.0;
     
     Class  aClass = [controllers objectForKey:step.identifier];
     APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
-    controller.resultCollector = self;
     controller.delegate = self;
     controller.title = @"Interval Tapping";
     controller.step = step;
@@ -132,61 +130,13 @@ static float tapInterval = 20.0;
     return controller;
 }
 
-/*********************************************************************************/
-#pragma  mark  - Private methods
-/*********************************************************************************/
-
-- (void)beginTask
-{
-    if (self.taskArchive)
-    {
-        [self.taskArchive resetContent];
-    }
-    
-    self.taskArchive = [[RKDataArchive alloc] initWithItemIdentifier:[RKItemIdentifier itemIdentifierForTask:self.task] studyIdentifier:MainStudyIdentifier taskInstanceUUID:self.taskInstanceUUID extraMetadata:nil fileProtection:RKFileProtectionCompleteUnlessOpen];
-    
-}
-
-/*********************************************************************************/
-#pragma mark - Helpers
-/*********************************************************************************/
-
--(void)sendResult:(RKResult*)result
-{
-    //TODO
-    // In a real application, consider adding to the archive on a concurrent queue.
-    NSError *err = nil;
-    if (![result addToArchive:self.taskArchive error:&err])
-    {
-        // Error adding the result to the archive; archive may be invalid. Tell
-        // the user there's been a problem and stop the task.
-        NSLog(@"Error adding %@ to archive: %@", result, err);
-    }
-}
 
 
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
-- (void)taskViewController:(RKTaskViewController *)taskViewController didProduceResult:(RKResult *)result {
-    
-    NSLog(@"didProduceResult = %@", result);
-    
-    if ([result isKindOfClass:[RKSurveyResult class]]) {
-        RKSurveyResult* sresult = (RKSurveyResult*)result;
-        
-        for (RKQuestionResult* qr in sresult.surveyResults) {
-            NSLog(@"%@ = [%@] %@ ", [[qr itemIdentifier] stringValue], [qr.answer class], qr.answer);
-        }
-    }
-    
-    
-    [self sendResult:result];
-    
-    [super taskViewController:taskViewController didProduceResult:result];
-}
 
-- (void)taskViewControllerDidFail: (RKTaskViewController *)taskViewController withError:(NSError*)error{
+- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error{
     NSLog(@"taskViewControllerDidFail %@", error);
 
     [self.taskArchive resetContent];
@@ -194,57 +144,17 @@ static float tapInterval = 20.0;
     
 }
 
-- (void)taskViewControllerDidCancel:(RKTaskViewController *)taskViewController{
-    
-    [taskViewController suspend];
-    
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)taskViewControllerDidComplete: (RKTaskViewController *)taskViewController{
-    
-    [taskViewController suspend];
-    
-    NSError *err = nil;
-    NSURL *archiveFileURL = [self.taskArchive archiveURLWithError:&err];
-    if (archiveFileURL)
-    {
-        NSURL *documents = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
-        NSURL *outputUrl = [documents URLByAppendingPathComponent:[archiveFileURL lastPathComponent]];
-        
-        // This is where you would queue the archive for upload. In this demo, we move it
-        // to the documents directory, where you could copy it off using iTunes, for instance.
-        [[NSFileManager defaultManager] moveItemAtURL:archiveFileURL toURL:outputUrl error:nil];
-        
-        NSLog(@"outputUrl= %@", outputUrl);
-        
-        // When done, clean up:
-        self.taskArchive = nil;
-        if (archiveFileURL)
-        {
-            [[NSFileManager defaultManager] removeItemAtURL:archiveFileURL error:nil];
-        }
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    [super taskViewControllerDidComplete:taskViewController];
-}
-
 /*********************************************************************************/
 #pragma mark - StepViewController Delegate Methods
 /*********************************************************************************/
 
-- (void)stepViewControllerWillBePresented:(RKStepViewController *)viewController
+- (void)stepViewControllerWillBePresented:(RKSTStepViewController *)viewController
 {
     viewController.skipButton = nil;
     viewController.continueButton = nil;
 }
 
-- (void)stepViewControllerDidFinish:(RKStepViewController *)stepViewController navigationDirection:(RKStepViewControllerNavigationDirection)direction
+- (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
 {
     [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
     
