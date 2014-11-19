@@ -31,7 +31,7 @@ static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 static  CGFloat  kRipplerMinimumRadius           =   5.0;
 static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
-@interface APHIntervalTappingRecorder ()
+@interface APHIntervalTappingRecorder () <APHRippleViewDelegate>
 
 @property  (nonatomic, strong)  APHIntervalTappingRecorderCustomView  *outerTappingContainer;
 @property  (nonatomic, strong)  RKActiveStepViewController            *stepperViewController;
@@ -78,24 +78,17 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     [self.tappingRecords addObject:record];
 }
 
-- (void)targetWasTapped:(UITapGestureRecognizer *)recogniser
+- (void)rippleView:(APHRippleView *)rippleView touchesDidOccurAtPoints:(NSArray *)points
 {
     if (self.dictionaryHeaderWasCreated == NO) {
         [self setupdictionaryHeader];
         self.dictionaryHeaderWasCreated = YES;
     }
-    NSUInteger  numberOfTouches = recogniser.numberOfTouches;
-    self.tapsCounter = self.tapsCounter + numberOfTouches;
-    self.outerTappingContainer.totalTapsCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.tapsCounter];
-    
-    UIView  *tapView = recogniser.view;
-    for (NSUInteger  touchIndex = 0;  touchIndex < numberOfTouches;  touchIndex++) {
-        CGPoint  point = [recogniser locationOfTouch:touchIndex inView:tapView];
+    for (NSValue *value in points) {
+        CGPoint  point = [value CGPointValue];
         [self addRecord:point];
-        if (self.tappingDelegate != nil) {
-            [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
-        }
-        [self.tappingTargetsContainer rippleAtPoint:point];
+        self.tapsCounter = self.tapsCounter + 1;
+        self.outerTappingContainer.totalTapsCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.tapsCounter];
     }
 }
 
@@ -121,6 +114,8 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     
     APHRippleView  *tapTargetsContainer = (APHRippleView *)outerContainer.tapTargetsContainer;
     
+    tapTargetsContainer.delegate = self;
+    
     tapTargetsContainer.tapperLeft = outerContainer.tapperLeft;
     tapTargetsContainer.tapperLeft.enabled = YES;
     
@@ -129,11 +124,6 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     
     tapTargetsContainer.minimumRadius = kRipplerMinimumRadius;
     tapTargetsContainer.maximumRadius = kRipplerMaximumRadius;
-    
-    UITapGestureRecognizer  *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetWasTapped:)];
-    [tapTargetsContainer addGestureRecognizer:tapRecognizer];
-
-    [tapTargetsContainer addGestureRecognizer:tapRecognizer];
     
     self.tappingTargetsContainer = tapTargetsContainer;
     
