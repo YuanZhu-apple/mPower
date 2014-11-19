@@ -49,18 +49,6 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 #pragma  mark  -  Tapping Methods
 
-- (void)addRecord:(UITapGestureRecognizer *)recogniser
-{
-    CGPoint  point = [recogniser locationInView:recogniser.view];
-    
-    NSDictionary  *record = @{
-                               kYTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
-                               kXCoordinateRecordKey : @(point.x),
-                               kYCoordinateRecordKey : @(point.y)
-                            };
-    [self.tappingRecords addObject:record];
-}
-
 - (void)setupdictionaryHeader
 {
     APHIntervalTappingRecorderCustomView  *containerView = (APHIntervalTappingRecorderCustomView *)self.stepperViewController.customView;
@@ -80,23 +68,35 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
                                        forKey:kIntervalTappingRecordsKey];
 }
 
+- (void)addRecord:(CGPoint)point
+{
+    NSDictionary  *record = @{
+                              kYTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
+                              kXCoordinateRecordKey : @(point.x),
+                              kYCoordinateRecordKey : @(point.y)
+                              };
+    [self.tappingRecords addObject:record];
+}
+
 - (void)targetWasTapped:(UITapGestureRecognizer *)recogniser
 {
     if (self.dictionaryHeaderWasCreated == NO) {
         [self setupdictionaryHeader];
         self.dictionaryHeaderWasCreated = YES;
     }
+    NSUInteger  numberOfTouches = recogniser.numberOfTouches;
+    self.tapsCounter = self.tapsCounter + numberOfTouches;
+    self.outerTappingContainer.totalTapsCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.tapsCounter];
     
-    [self addRecord:recogniser];
-    
-    self.tapsCounter = self.tapsCounter + 1;
-    self.outerTappingContainer.totalTapsCount.text = [NSString stringWithFormat:@"%lu", self.tapsCounter];
-    if (self.tappingDelegate != nil) {
-        [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
-    }
     UIView  *tapView = recogniser.view;
-    CGPoint  point = [recogniser locationInView:tapView];
-    [self.tappingTargetsContainer rippleAtPoint:point];
+    for (NSUInteger  touchIndex = 0;  touchIndex < numberOfTouches;  touchIndex++) {
+        CGPoint  point = [recogniser locationOfTouch:touchIndex inView:tapView];
+        [self addRecord:point];
+        if (self.tappingDelegate != nil) {
+            [self.tappingDelegate recorder:self didRecordTap:@(self.tapsCounter)];
+        }
+        [self.tappingTargetsContainer rippleAtPoint:point];
+    }
 }
 
 #pragma  -  Recorder Tap Targets Setup
