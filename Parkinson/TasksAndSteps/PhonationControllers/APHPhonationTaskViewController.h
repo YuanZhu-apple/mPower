@@ -11,6 +11,6 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-@interface APHPhonationTaskViewController : APCSetupTaskViewController
+@interface APHPhonationTaskViewController : APCBaseWithProgressTaskViewController
 
 @end

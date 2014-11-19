@@ -15,19 +15,30 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="C1w-dQ-FRx">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tests for Bradykinesia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9G-G0-ufe">
-                    <rect key="frame" x="76" y="36" width="169" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="0.0" y="17" width="320" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="k9G-G0-ufe" secondAttribute="height" multiplier="320:21" id="kGw-Lo-GmW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-ed-I2M">
-                    <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-js-iNu">
+                    <rect key="frame" x="21" y="38" width="279" height="406"/>
+                    <color key="backgroundColor" red="0.97647064920000004" green="0.90980398650000005" blue="0.20000001789999999" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="5zh-ed-I2M" secondAttribute="height" multiplier="8:1" id="woD-4l-s7j"/>
+                        <constraint firstAttribute="height" constant="406" id="0Bc-IX-gl4"/>
+                        <constraint firstAttribute="width" constant="279" id="vMi-Cr-Qqk"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-ed-I2M">
+                    <rect key="frame" x="0.0" y="440" width="320" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="IBI-g8-10M"/>
                     </constraints>
                     <state key="normal" title="Get Started">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -37,25 +48,19 @@
                         <action selector="getStartedWasTapped:" destination="-1" eventType="touchUpInside" id="NYd-Yj-Ibk"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-js-iNu">
-                    <rect key="frame" x="16" y="74" width="288" height="420"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="420" id="HCs-LT-EYk"/>
-                        <constraint firstAttribute="width" constant="288" id="XmS-Zc-A2s"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="5zh-ed-I2M" firstAttribute="leading" secondItem="C1w-dQ-FRx" secondAttribute="leading" id="3yd-1J-1qQ"/>
-                <constraint firstAttribute="bottom" secondItem="5zh-ed-I2M" secondAttribute="bottom" id="M0s-2T-vRE"/>
-                <constraint firstAttribute="centerX" secondItem="9Cd-js-iNu" secondAttribute="centerX" id="UTu-0r-fbF"/>
-                <constraint firstItem="9Cd-js-iNu" firstAttribute="top" secondItem="k9G-G0-ufe" secondAttribute="bottom" constant="17" id="eDA-nQ-anu"/>
-                <constraint firstAttribute="centerX" secondItem="k9G-G0-ufe" secondAttribute="centerX" id="rM0-6A-yN4"/>
-                <constraint firstAttribute="trailing" secondItem="5zh-ed-I2M" secondAttribute="trailing" id="t3t-fB-Vls"/>
-                <constraint firstAttribute="centerY" secondItem="9Cd-js-iNu" secondAttribute="centerY" id="v98-Ue-f7V"/>
+                <constraint firstAttribute="centerX" secondItem="9Cd-js-iNu" secondAttribute="centerX" id="CQ0-jr-Qg4"/>
+                <constraint firstAttribute="bottom" secondItem="5zh-ed-I2M" secondAttribute="bottom" id="FGG-46-81K"/>
+                <constraint firstItem="k9G-G0-ufe" firstAttribute="leading" secondItem="C1w-dQ-FRx" secondAttribute="leading" id="McM-dd-9IV"/>
+                <constraint firstItem="5zh-ed-I2M" firstAttribute="leading" secondItem="C1w-dQ-FRx" secondAttribute="leading" id="erC-YS-v5S"/>
+                <constraint firstAttribute="trailing" secondItem="5zh-ed-I2M" secondAttribute="trailing" id="fV9-BS-STW"/>
+                <constraint firstItem="9Cd-js-iNu" firstAttribute="top" secondItem="k9G-G0-ufe" secondAttribute="bottom" id="hK1-Pl-der"/>
+                <constraint firstItem="k9G-G0-ufe" firstAttribute="top" secondItem="C1w-dQ-FRx" secondAttribute="top" constant="17" id="sHc-FE-I9q"/>
+                <constraint firstAttribute="trailing" secondItem="k9G-G0-ufe" secondAttribute="trailing" id="x96-H5-nJd"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="521" y="242"/>
         </view>

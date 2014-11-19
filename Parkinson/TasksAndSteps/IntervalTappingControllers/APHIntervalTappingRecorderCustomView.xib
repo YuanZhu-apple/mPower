@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="APHIntervalTappingTargetView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="dH4-MX-KYb" customClass="APHIntervalTappingRecorderCustomView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoM-Bx-dQV" userLabel="Total Taps Container">
+                    <rect key="frame" x="0.0" y="8" width="320" height="81"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Taps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9Y-QC-zsi">
+                            <rect key="frame" x="8" y="13" width="304" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfh-8P-ZC0">
+                            <rect key="frame" x="8" y="42" width="304" height="39"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="h9Y-QC-zsi" firstAttribute="leading" secondItem="AoM-Bx-dQV" secondAttribute="leading" constant="8" id="OLM-mx-fia"/>
+                        <constraint firstItem="gfh-8P-ZC0" firstAttribute="top" secondItem="h9Y-QC-zsi" secondAttribute="bottom" constant="8" id="UTu-9y-5Gc"/>
+                        <constraint firstAttribute="trailing" secondItem="gfh-8P-ZC0" secondAttribute="trailing" constant="8" id="bbr-7T-Qn2"/>
+                        <constraint firstAttribute="centerX" secondItem="h9Y-QC-zsi" secondAttribute="centerX" id="gTz-pZ-KWm"/>
+                        <constraint firstAttribute="trailing" secondItem="h9Y-QC-zsi" secondAttribute="trailing" constant="8" id="jQ5-58-0kW"/>
+                        <constraint firstAttribute="centerX" secondItem="gfh-8P-ZC0" secondAttribute="centerX" id="k94-IA-tqO"/>
+                        <constraint firstItem="h9Y-QC-zsi" firstAttribute="top" secondItem="AoM-Bx-dQV" secondAttribute="top" constant="13" id="mts-OP-geS"/>
+                        <constraint firstItem="gfh-8P-ZC0" firstAttribute="leading" secondItem="AoM-Bx-dQV" secondAttribute="leading" constant="8" id="pxX-NC-G6Q"/>
+                        <constraint firstAttribute="height" constant="81" id="wP3-CW-8gQ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRZ-hT-ixb" customClass="APHRippleView">
+                    <rect key="frame" x="0.0" y="97" width="320" height="160"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVo-Hb-wd9" userLabel="leftTapper" customClass="APHIntervalTappingTapView">
+                            <rect key="frame" x="40" y="30" width="100" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="KMv-st-GC7"/>
+                                <constraint firstAttribute="width" constant="100" id="gdZ-g9-T2X"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDK-Yz-Lvc" userLabel="rightTapper" customClass="APHIntervalTappingTapView">
+                            <rect key="frame" x="180" y="30" width="100" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="3iv-pw-inY"/>
+                                <constraint firstAttribute="width" constant="100" id="If5-c0-sqK"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="EVo-Hb-wd9" firstAttribute="leading" secondItem="bRZ-hT-ixb" secondAttribute="leading" constant="40" id="8xV-Rx-h6k"/>
+                        <constraint firstAttribute="centerY" secondItem="PDK-Yz-Lvc" secondAttribute="centerY" id="Cmk-z8-QDg"/>
+                        <constraint firstAttribute="height" constant="160" id="ehG-KU-aEy"/>
+                        <constraint firstItem="PDK-Yz-Lvc" firstAttribute="leading" secondItem="EVo-Hb-wd9" secondAttribute="trailing" constant="40" id="ehx-BJ-9uI"/>
+                        <constraint firstAttribute="width" constant="320" id="wFx-rf-0dF"/>
+                        <constraint firstAttribute="centerY" secondItem="EVo-Hb-wd9" secondAttribute="centerY" id="x4F-Yt-T2W"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bRZ-hT-ixb" secondAttribute="bottom" id="5CI-IL-Jyv"/>
+                <constraint firstAttribute="trailing" secondItem="AoM-Bx-dQV" secondAttribute="trailing" id="Ete-W6-Cci"/>
+                <constraint firstAttribute="centerX" secondItem="bRZ-hT-ixb" secondAttribute="centerX" id="FxL-Qk-3u4"/>
+                <constraint firstItem="AoM-Bx-dQV" firstAttribute="leading" secondItem="dH4-MX-KYb" secondAttribute="leading" id="Ggt-N2-lih"/>
+                <constraint firstAttribute="centerX" secondItem="AoM-Bx-dQV" secondAttribute="centerX" id="hh3-L9-SHQ"/>
+                <constraint firstItem="bRZ-hT-ixb" firstAttribute="top" secondItem="dH4-MX-KYb" secondAttribute="top" constant="97" id="ovQ-bB-lhh"/>
+                <constraint firstItem="AoM-Bx-dQV" firstAttribute="top" secondItem="dH4-MX-KYb" secondAttribute="top" constant="8" id="tFa-uP-zVI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tapTargetsContainer" destination="bRZ-hT-ixb" id="xST-mh-tPv"/>
+                <outlet property="tapperLeft" destination="EVo-Hb-wd9" id="XW5-Vr-6c8"/>
+                <outlet property="tapperRight" destination="PDK-Yz-Lvc" id="1ON-kh-v60"/>
+                <outlet property="totalTapsCount" destination="gfh-8P-ZC0" id="ayc-OR-0lJ"/>
+            </connections>
+            <point key="canvasLocation" x="561" y="64.5"/>
+        </view>
+    </objects>
+</document>

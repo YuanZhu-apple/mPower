@@ -13,8 +13,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.phonation";
-
+static NSInteger kCountDownTimer = 5;
 static NSString * kPhonationStep101Key = @"Phonation_Step_101";
+static NSString * kGetReadyStep = @"Get Ready";
 static NSString * kPhonationStep102Key = @"Phonation_Step_102";
 static NSString * kPhonationStep103Key = @"Phonation_Step_103";
 static NSString * kPhonationStep104Key = @"Phonation_Step_104";
@@ -22,13 +23,9 @@ static NSString * kPhonationStep105Key = @"Phonation_Step_105";
 
 static  NSString  *kTaskViewControllerTitle = @"Sustained Phonation";
 
-static  CGFloat  kAPCStepProgressBarHeight = 8.0;
-
 @interface APHPhonationTaskViewController ()
 
 @property (strong, nonatomic) RKDataArchive *taskArchive;
-
-@property  (nonatomic, weak)  APCStepProgressBar  *progressor;
 
 @end
 
@@ -48,6 +45,20 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
         step.instruction = @"In the next screen you will be asked to say “Aaaahhh” for 10 seconds.";
         [steps addObject:step];
     }
+    
+    {
+        //Introduction to fitness test
+        RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kGetReadyStep name:@"active step"];
+        step.caption = NSLocalizedString(@"Sustained Phonation", @"");
+        step.text = NSLocalizedString(@"Get Ready!", @"");
+        step.countDown = kCountDownTimer;
+        step.useNextForSkip = NO;
+        step.buzz = YES;
+        step.speakCountDown = YES;
+        
+        [steps addObject:step];
+    }
+    
     {
         RKActiveStep* step = [[RKActiveStep alloc] initWithIdentifier:kPhonationStep102Key name:@"active step"];
         step.text = @"Please say “Aaaahhh” for 10 seconds";
@@ -113,20 +124,6 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
 {
     [super viewDidLoad];
     
-    CGRect  navigationBarFrame = self.navigationBar.frame;
-    CGRect  progressorFrame = CGRectMake(0.0, CGRectGetHeight(navigationBarFrame) - kAPCStepProgressBarHeight, CGRectGetWidth(navigationBarFrame), kAPCStepProgressBarHeight);
-    
-    APCStepProgressBar  *tempProgressor = [[APCStepProgressBar alloc] initWithFrame:progressorFrame style:APCStepProgressBarStyleOnlyProgressView];
-    
-    RKTask  *task = self.task;
-    NSArray  *steps = task.steps;
-    tempProgressor.numberOfSteps = [steps count];
-    [tempProgressor setCompletedSteps: 1 animation:NO];
-    tempProgressor.progressTintColor = [UIColor appTertiaryColor1];
-    [self.navigationBar addSubview:tempProgressor];
-    self.progressor = tempProgressor;
-    
-    self.showsProgressInNavigationBar = NO;
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
 }
 
@@ -245,14 +242,6 @@ static  CGFloat  kAPCStepProgressBarHeight = 8.0;
     [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
     
     stepViewController.continueButton = nil;
-    
-    NSInteger  completedSteps = self.progressor.completedSteps;
-    if (direction == RKStepViewControllerNavigationDirectionForward) {
-        completedSteps = completedSteps + 1;
-    } else {
-        completedSteps = completedSteps - 1;
-    }
-    [self.progressor setCompletedSteps:completedSteps animation:YES];
 }
 
 @end
