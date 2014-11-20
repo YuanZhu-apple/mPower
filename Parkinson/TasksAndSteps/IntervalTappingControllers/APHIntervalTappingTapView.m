@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
+@import APCAppleCore;
+
 #import "APHIntervalTappingTapView.h"
 
 static  CGFloat  kPathLineWidth = 2.0;
@@ -73,7 +75,7 @@ static  NSDictionary  *disabledAttributes = nil;
     
     if (self.isEnabled == YES) {
         UIBezierPath  *path = [UIBezierPath bezierPathWithOvalInRect:bounds];
-        [[UIColor blueColor] set];
+        [[UIColor appPrimaryColor] set];
         [path fill];
     } else {
         UIEdgeInsets  insets = UIEdgeInsetsMake(kPathHalfLineWidth, kPathHalfLineWidth, kPathHalfLineWidth, kPathHalfLineWidth);
