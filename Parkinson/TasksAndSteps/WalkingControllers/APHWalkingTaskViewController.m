@@ -16,16 +16,18 @@
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
 
-static  NSString  *kWalkingStep101Key = @"Walking Step 101";
-static  NSString  *kGetReadyStep = @"Get Ready";
-static  NSString  *kWalkingStep102Key = @"Walking Step 102";
-static  NSString  *kWalkingStep103Key = @"Walking Step 103";
-static  NSString  *kWalkingStep104Key = @"Walking Step 104";
-static  NSString  *kWalkingStep105Key = @"Walking Step 105";
+static  NSString       *kWalkingStep101Key               = @"Walking Step 101";
+static  NSString       *kGetReadyStep                    = @"Get Ready";
+static  NSTimeInterval  kGetReadyCountDownInterval       = 10.0;
+static  NSString       *kWalkingStep102Key               = @"Walking Step 102";
+static  NSTimeInterval  kWalkingStep102CountDownInterval = 30.0;
+static  NSString       *kWalkingStep103Key               = @"Walking Step 103";
+static  NSTimeInterval  kWalkingStep103CountDownInterval = 30.0;
+static  NSString       *kWalkingStep104Key               = @"Walking Step 104";
+static  NSTimeInterval  kWalkingStep104CountDownInterval = 30.0;
+static  NSString       *kWalkingStep105Key               = @"Walking Step 105";
 
 static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
-
-static NSInteger kCountDownTimer = 10;
 
 @interface APHWalkingTaskViewController  ( )
 {
@@ -59,7 +61,8 @@ static NSInteger kCountDownTimer = 10;
         RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
         step.title = NSLocalizedString(@"Timed Walking", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
-        step.countDownInterval = kCountDownTimer;
+        step.countDownInterval = kGetReadyCountDownInterval;
+        step.shouldStartTimerAutomatically = YES;
         step.shouldUseNextAsSkipButton = NO;
         step.shouldPlaySoundOnStart = YES;
         step.shouldSpeakCountDown = YES;
@@ -74,7 +77,8 @@ static NSInteger kCountDownTimer = 10;
         step.spokenInstruction = step.text;
         step.shouldPlaySoundOnStart = YES;
         step.shouldVibrateOnStart = YES;
-        step.countDownInterval = 30.0;
+        step.countDownInterval = kWalkingStep102CountDownInterval;
+        step.shouldStartTimerAutomatically = YES;
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -85,7 +89,8 @@ static NSInteger kCountDownTimer = 10;
         step.spokenInstruction = step.text;
         step.shouldPlaySoundOnStart = YES;
         step.shouldVibrateOnStart = YES;
-        step.countDownInterval = 30.0;
+        step.countDownInterval = kWalkingStep103CountDownInterval;
+        step.shouldStartTimerAutomatically = YES;
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -96,7 +101,8 @@ static NSInteger kCountDownTimer = 10;
         step.spokenInstruction = step.text;
         step.shouldPlaySoundOnStart = YES;
         step.shouldVibrateOnStart = YES;
-        step.countDownInterval = 30.0;
+        step.countDownInterval = kWalkingStep104CountDownInterval;
+        step.shouldStartTimerAutomatically = YES;
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -214,7 +220,7 @@ static NSInteger kCountDownTimer = 10;
 #pragma mark - StepViewController Delegate Methods
 /*********************************************************************************/
 
-- (void)stepViewControllerWillBePresented:(RKSTStepViewController *)viewController
+- (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
     viewController.skipButton = nil;
     viewController.continueButton = nil;
