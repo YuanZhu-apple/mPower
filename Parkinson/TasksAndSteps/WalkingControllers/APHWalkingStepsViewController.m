@@ -11,7 +11,7 @@
 
 static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 
-@interface APHWalkingStepsViewController  ( ) <RKRecorderDelegate>
+@interface APHWalkingStepsViewController  ( ) <RKSTRecorderDelegate>
 
 @property  (nonatomic, strong)  IBOutlet  UIView   *phaseEgressView;
 @property  (nonatomic, strong)  IBOutlet  UILabel  *phaseEgressViewCounterDisplay;
@@ -25,7 +25,7 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 @property  (nonatomic, strong)            NSTimer  *timer;
 @property  (nonatomic, assign)            NSUInteger  counter;
 
-@property  (nonatomic, strong)            RKAccelerometerRecorder  *recorder;
+@property  (nonatomic, strong)            RKSTAccelerometerRecorder  *recorder;
 
 @end
 
@@ -33,12 +33,12 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 
 #pragma  mark  -  Recorder Delegate Methods
 
-- (void)recorder:(RKRecorder *)recorder didCompleteWithResult:(RKResult *)result
+- (void)recorder:(RKSTRecorder *)recorder didCompleteWithResult:(RKSTResult *)result
 {
     NSLog(@"recorder didCompleteWithResult = %@", result);
 }
 
-- (void)recorder:(RKRecorder *)recorder didFailWithError:(NSError *)error
+- (void)recorder:(RKSTRecorder *)recorder didFailWithError:(NSError *)error
 {
     NSLog(@"recorder didFailWithError = %@", error);
 }
@@ -84,16 +84,11 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
     if (self.counter == 0) {
         [self.timer invalidate];
         self.timer = nil;
-        NSError  *error = nil;
-        BOOL  success = [self.recorder stop:&error];
-        if (success == YES) {
-            NSLog(@"Recorder Stopped Okay");
-        } else {
-            NSLog(@"Recorder Failed to Stop with Error = %@", error);
-        }
+        [self.recorder stop];
+
         if (self.delegate != nil) {
             if ([self.delegate respondsToSelector:@selector(stepViewControllerDidFinish:navigationDirection:)] == YES) {
-                [self.delegate stepViewControllerDidFinish:self navigationDirection:RKStepViewControllerNavigationDirectionForward];
+                [self.delegate stepViewControllerDidFinish:self navigationDirection:RKSTStepViewControllerNavigationDirectionForward];
             }
         }
     }
@@ -108,9 +103,9 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
     
     NSArray  *recorderConfigurations = nil;
     NSTimeInterval  countDownValue = kDefaultTimeInterval;
-    if ([self.step isKindOfClass:[RKActiveStep class]] == YES) {
-        countDownValue = [(RKActiveStep *)[self step] countDown];
-        recorderConfigurations = [(RKActiveStep *)[self step] recorderConfigurations];
+    if ([self.step isKindOfClass:[RKSTActiveStep class]] == YES) {
+        countDownValue = [(RKSTActiveStep *)[self step] countDownInterval];
+        recorderConfigurations = [(RKSTActiveStep *)[self step] recorderConfigurations];
     }
     if (isfinite(countDownValue) == 0) {
         countDownValue = kDefaultTimeInterval;
@@ -124,20 +119,15 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
                                                     target:self  selector:@selector(countdownTimerFired:)
                                                   userInfo:nil repeats:YES];
 
-    RKAccelerometerRecorderConfiguration  *configuration = (RKAccelerometerRecorderConfiguration *)(recorderConfigurations[0]);
+    RKSTAccelerometerRecorderConfiguration  *configuration = (RKSTAccelerometerRecorderConfiguration *)(recorderConfigurations[0]);
     
     double  frequency = configuration.frequency;
-    self.recorder = [[RKAccelerometerRecorder alloc] initWithFrequency:frequency
+    self.recorder = [[RKSTAccelerometerRecorder alloc] initWithFrequency:frequency
                                             step:self.step
-                                            taskInstanceUUID:self.taskViewController.taskInstanceUUID];
+                                            outputDirectory:nil];
+    
     [self.recorder viewController:self willStartStepWithView:self.view];
-    NSError  *error = nil;
-    BOOL  success = [self.recorder start:&error];
-    if (success == YES) {
-        NSLog(@"Recorder Started Okay");
-    } else {
-        NSLog(@"Recorder Failed to Start with Error = %@", error);
-    }
+    [self.recorder start];
 }
 
 - (void)didReceiveMemoryWarning {
