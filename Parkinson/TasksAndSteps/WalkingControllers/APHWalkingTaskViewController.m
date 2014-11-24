@@ -19,7 +19,7 @@ static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
 static  NSString       *kWalkingStep101Key               = @"Walking Step 101";
 
 static  NSString       *kGetReadyStep                    = @"Get Ready";
-static  NSTimeInterval  kGetReadyCountDownInterval       = 5.0;
+static  NSTimeInterval  kGetReadyCountDownInterval       = 10.0;
 
 static  NSString       *kWalkingStep102Key               = @"Walking Step 102";
 static  NSTimeInterval  kWalkingStep102CountDownInterval = 30.0;
@@ -172,10 +172,10 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
     NSDictionary  *stepsToControllersMap = @{
                                              kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-//                                             kGetReadyStep      : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep102Key : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep103Key : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep104Key : @[ [APCStepViewController class],   @(0) ],
+                                             kGetReadyStep      : @[ [APCActiveStepViewController class],   @(0) ],
+                                             kWalkingStep102Key : @[ [APCActiveStepViewController class],   @(0) ],
+                                             kWalkingStep103Key : @[ [APCActiveStepViewController class],   @(0) ],
+                                             kWalkingStep104Key : @[ [APCActiveStepViewController class],   @(0) ],
                                              kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController class], @(0) ],
                                            };
     

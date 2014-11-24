@@ -123,8 +123,8 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 {
     NSDictionary  *controllers = @{
                                    kPhonationStep101Key : [APHPhonationIntroViewController class],
-//                                   kGetReadyStep : [APCActiveStepViewController class],
-//                                   kPhonationStep102Key : [APCActiveStepViewController class],
+                                   kGetReadyStep : [APCActiveStepViewController class],
+                                   kPhonationStep102Key : [APCActiveStepViewController class],
                                    kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
