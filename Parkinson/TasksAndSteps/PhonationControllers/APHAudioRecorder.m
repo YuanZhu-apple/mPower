@@ -11,26 +11,38 @@
 NSString  *APHAudioRecorderDidStartKey = @"APHAudioRecorderDidStart";
 NSString  *APHAudioRecorderInstanceKey = @"APHAudioRecorderInstance";
 
+@interface APHAudioRecorder ( )
+
+@property  (nonatomic, assign)  BOOL  startRecorderMessageWasSent;
+@property  (nonatomic, assign)  BOOL  stopRecorderMessageWasSent;
+
+@end
+
 @implementation APHAudioRecorder
 
 - (void)start
 {
-    NSLog(@"APHAudioRecorder start");
-    [super start];
-    
-    NSDictionary  *info = @{ APHAudioRecorderInstanceKey : self };
-    
-    NSNotification  *notification = [NSNotification notificationWithName:APHAudioRecorderDidStartKey
-                                                   object:nil
-                                                userInfo:info];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+//    NSLog(@"APHAudioRecorder start");
+    if (self.startRecorderMessageWasSent == NO) {
+        [super start];
+        NSDictionary  *info = @{ APHAudioRecorderInstanceKey : self };
+        
+        NSNotification  *notification = [NSNotification notificationWithName:APHAudioRecorderDidStartKey
+                                                       object:nil
+                                                    userInfo:info];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        self.startRecorderMessageWasSent = YES;
+    }
     
 }
 
 - (void)stop
 {
-    NSLog(@"APHAudioRecorder stop");
-    [super stop];
+//    NSLog(@"APHAudioRecorder stop");
+    if (self.stopRecorderMessageWasSent == NO) {
+        [super stop];
+        self.stopRecorderMessageWasSent = YES;
+    }
 }
 
 @end
