@@ -40,7 +40,7 @@
                         <constraint firstAttribute="height" constant="81" id="wP3-CW-8gQ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRZ-hT-ixb" customClass="APHRippleView">
+                <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRZ-hT-ixb" customClass="APHRippleView">
                     <rect key="frame" x="0.0" y="97" width="320" height="160"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVo-Hb-wd9" userLabel="leftTapper" customClass="APHIntervalTappingTapView">

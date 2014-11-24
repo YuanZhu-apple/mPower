@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class  APHIntervalTappingTapView;
+@class  APHRippleView;
+
+@protocol  APHRippleViewDelegate <NSObject>
+@required
+- (void)rippleView:(APHRippleView *)rippleView touchesDidOccurAtPoints:(NSArray *)points;
+@end
+
 
 @interface APHRippleView : UIView
 
@@ -19,6 +26,8 @@
 
 @property  (nonatomic, assign)  CGFloat                     minimumRadius;
 @property  (nonatomic, assign)  CGFloat                     maximumRadius;
+
+@property  (nonatomic, weak)    id <APHRippleViewDelegate>  delegate;
 
 - (void)rippleAtPoint:(CGPoint)touchPoint;
 

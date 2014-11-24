@@ -16,7 +16,7 @@ typedef  enum  _WalkingStepsPhase
     WalkingStepsPhaseStandStill
 }  WalkingStepsPhase;
 
-@interface APHWalkingStepsViewController : RKStepViewController
+@interface APHWalkingStepsViewController : RKSTStepViewController
 
 @property  (nonatomic, assign)  WalkingStepsPhase   walkingPhase;
 

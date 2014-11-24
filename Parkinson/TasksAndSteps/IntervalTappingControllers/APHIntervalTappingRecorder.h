@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
-#import <ResearchKit/ResearchKit.h>
+#import <ResearchKit/ResearchKit_Private.h>
 
 @class  APHIntervalTappingRecorder;
 
@@ -18,12 +18,12 @@
 
 @end
 
-@interface APHIntervalTappingRecorder : RKRecorder
+@interface APHIntervalTappingRecorder : RKSTRecorder
 
 @property  (nonatomic, weak)  id <APHIntervalTappingRecorderDelegate>  tappingDelegate;
 
 @end
 
-@interface APHIntervalTappingRecorderConfiguration : NSObject <RKRecorderConfiguration>
+@interface APHIntervalTappingRecorderConfiguration : RKSTRecorderConfiguration 
 
 @end
