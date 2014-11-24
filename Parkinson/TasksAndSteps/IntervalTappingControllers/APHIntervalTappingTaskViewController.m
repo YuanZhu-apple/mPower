@@ -122,7 +122,7 @@ static float tapInterval = 20.0;
 {
     NSDictionary  *controllers = @{
                                    kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
-                                   kIntervalTappingStep102 : [APCActiveStepViewController class],
+                                   kIntervalTappingStep102 : [APCStepViewController class],
                                    kIntervalTappingStep103 : [APHCommonTaskSummaryViewController class]
                                   };
     
