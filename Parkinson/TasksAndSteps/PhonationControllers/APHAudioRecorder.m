@@ -21,7 +21,7 @@ NSString  *APHAudioRecorderInstanceKey = @"APHAudioRecorderInstance";
     NSDictionary  *info = @{ APHAudioRecorderInstanceKey : self };
     
     NSNotification  *notification = [NSNotification notificationWithName:APHAudioRecorderDidStartKey
-                                                   object:self
+                                                   object:nil
                                                 userInfo:info];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
