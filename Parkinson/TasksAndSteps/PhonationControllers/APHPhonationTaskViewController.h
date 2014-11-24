@@ -9,8 +9,6 @@
 @import APCAppleCore;
 #import <Foundation/Foundation.h>
 
-#import <ResearchKit/ResearchKit.h>
-
 @interface APHPhonationTaskViewController : APCBaseWithProgressTaskViewController
 
 @end
