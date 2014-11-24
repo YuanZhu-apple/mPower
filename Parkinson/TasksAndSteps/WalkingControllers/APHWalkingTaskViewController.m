@@ -172,10 +172,10 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
     NSDictionary  *stepsToControllersMap = @{
                                              kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-                                             kGetReadyStep      : @[ [APCStepViewController class],   @(0) ],
-                                             kWalkingStep102Key : @[ [APCStepViewController class],   @(0) ],
-                                             kWalkingStep103Key : @[ [APCStepViewController class],   @(0) ],
-                                             kWalkingStep104Key : @[ [APCStepViewController class],   @(0) ],
+//                                             kGetReadyStep      : @[ [APCStepViewController class],   @(0) ],
+//                                             kWalkingStep102Key : @[ [APCStepViewController class],   @(0) ],
+//                                             kWalkingStep103Key : @[ [APCStepViewController class],   @(0) ],
+//                                             kWalkingStep104Key : @[ [APCStepViewController class],   @(0) ],
                                              kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController class], @(0) ],
                                            };
     
