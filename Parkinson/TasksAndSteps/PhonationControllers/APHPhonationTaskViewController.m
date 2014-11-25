@@ -125,9 +125,9 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     NSDictionary  *controllers = @{
-                                   kPhonationStep101Key : [APHPhonationIntroViewController class],
-                                   kGetReadyStep : [APCActiveStepViewController class],
-                                   kPhonationStep102Key : [APCActiveStepViewController class],
+                                   kPhonationStep101Key : [APHPhonationIntroViewController    class],
+                                   kGetReadyStep :        [APCActiveStepViewController        class],
+                                   kPhonationStep102Key : [APCActiveStepViewController        class],
                                    kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
@@ -223,8 +223,9 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     if ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
         [self.meteringTimer invalidate];
-        self.meteringTimer = nil;
-        self.audioRecorder = nil;
+        self.meteringTimer    = nil;
+        self.ourAudioRecorder = nil;
+        self.audioRecorder    = nil;
     }
     stepViewController.continueButton = nil;
 }
