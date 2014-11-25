@@ -20,12 +20,16 @@
 static NSString *MainStudyIdentifier = @"com.parkinsons.intervalTapping";
 
 static  NSString  *kIntervalTappingStep101 = @"IntervalTappingStep101";
+
 static  NSString  *kIntervalTappingStep102 = @"IntervalTappingStep102";
+static  CGFloat    kGetReadyStepCountdownInterval = 5.0;
+
 static  NSString  *kIntervalTappingStep103 = @"IntervalTappingStep103";
+static  CGFloat    kTappingStepCountdownInterval = 20.0;
+
+static  NSString  *kIntervalTappingStep104 = @"IntervalTappingStep104";
 
 static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
-
-static float tapInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
@@ -65,19 +69,28 @@ static float tapInterval = 20.0;
         step.detailText = @"";
         [steps addObject:step];
     }
-
+    
     {
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep102];
+        step.title = @"Get Ready";
+        step.text = @"";
+        step.countDownInterval = kGetReadyStepCountdownInterval;
+        step.shouldStartTimerAutomatically = YES;
+        [steps addObject:step];
+    }
+    
+    {
+        RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep103];
         step.title = @"Button Tap";
         step.text = @"";
-        step.countDownInterval = tapInterval;
+        step.countDownInterval = kTappingStepCountdownInterval;
         step.shouldStartTimerAutomatically = YES;
         step.recorderConfigurations = @[[APHIntervalTappingRecorderConfiguration new]];
         [steps addObject:step];
     }
     
     {
-        RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep103];
+        RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep104];
         step.title = @"You're finished.";
         step.text = @"";
         step.detailText = @"";
@@ -101,6 +114,17 @@ static float tapInterval = 20.0;
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
 }
 
+/*********************************************************************************/
+#pragma mark - Bar Button Action Methods
+/*********************************************************************************/
+
+- (void)cancelButtonWasTapped:(id)sender
+{
+    if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
+        [self taskViewControllerDidCancel:self];
+    }
+}
+
 #pragma  mark  -  Task View Controller Delegate Methods
 
 - (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStepViewController:(RKSTStepViewController *)stepViewController
@@ -112,7 +136,7 @@ static float tapInterval = 20.0;
 {
     if (kIntervalTappingStep102 == stepViewController.step.identifier) {
         stepViewController.continueButton = nil;
-    } else if (kIntervalTappingStep103 == stepViewController.step.identifier) {
+    } else if (kIntervalTappingStep104 == stepViewController.step.identifier) {
         stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
         stepViewController.continueButton = nil;
     }
@@ -121,21 +145,23 @@ static float tapInterval = 20.0;
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     NSDictionary  *controllers = @{
-                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController   class],
-//                                   kIntervalTappingStep102 : [APCStepViewController class],
-                                   kIntervalTappingStep103 : [APHCommonTaskSummaryViewController class]
+                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController class],
+                                   kIntervalTappingStep102 : [APCActiveStepViewController           class],
+                                   kIntervalTappingStep103 : [APCActiveStepViewController           class],
+                                   kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]
                                   };
-    
     Class  aClass = [controllers objectForKey:step.identifier];
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    NSBundle  *bundle = nil;
+    if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
+        bundle = [NSBundle appleCoreBundle];
+    }
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
     controller.delegate = self;
     controller.title = @"Interval Tapping";
     controller.step = step;
     
     return controller;
 }
-
-
 
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
@@ -156,8 +182,15 @@ static float tapInterval = 20.0;
 
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
-    viewController.skipButton = nil;
+    viewController.skipButton     = nil;
     viewController.continueButton = nil;
+    
+    if (([viewController.step.identifier isEqualToString:kIntervalTappingStep102] == YES) ||
+        ([viewController.step.identifier isEqualToString:kIntervalTappingStep103] == YES)) {
+        
+        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+        viewController.cancelButton = cancellor;
+    }
 }
 
 - (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction

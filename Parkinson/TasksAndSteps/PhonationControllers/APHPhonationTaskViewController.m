@@ -34,6 +34,8 @@ static  NSString       *kTaskViewControllerTitle   = @"Sustained Phonation";
 
 static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
+static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
+
 @interface APHPhonationTaskViewController ()
 
 @property (strong, nonatomic)   RKSTDataArchive                *taskArchive;
@@ -45,6 +47,7 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 @property  (nonatomic, strong)  NSTimer                        *meteringTimer;
 
 @property  (nonatomic, strong)  APHAudioRecorderConfiguration  *audioConfiguration;
+@property  (nonatomic, strong)  RKSTAudioRecorder              *ourAudioRecorder;
 @property  (nonatomic, strong)  AVAudioRecorder                *audioRecorder;
 
 @end
@@ -123,8 +126,8 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 {
     NSDictionary  *controllers = @{
                                    kPhonationStep101Key : [APHPhonationIntroViewController class],
-//                                   kGetReadyStep : [APCActiveStepViewController class],
-//                                   kPhonationStep102Key : [APCActiveStepViewController class],
+                                   kGetReadyStep : [APCActiveStepViewController class],
+                                   kPhonationStep102Key : [APCActiveStepViewController class],
                                    kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
@@ -158,7 +161,6 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
 - (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
 {
-    
     [self.taskArchive resetContent];
     self.taskArchive = nil;
 }
@@ -170,12 +172,23 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 - (void)audioRecorderDidStart:(NSNotification *)notification
 {
     NSDictionary  *info = [notification userInfo];
-    RKSTAudioRecorder  *recorder = [info objectForKey:APHAudioRecorderInstanceKey];
-    self.audioRecorder = recorder.audioRecorder;
+    self.ourAudioRecorder = [info objectForKey:APHAudioRecorderInstanceKey];
+    self.audioRecorder = self.ourAudioRecorder.audioRecorder;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:APHAudioRecorderDidStartKey object:nil];
     
     self.audioRecorder.meteringEnabled = YES;
     [self setupTimer];
+}
+
+/*********************************************************************************/
+#pragma mark - Bar Button Action Methods
+/*********************************************************************************/
+
+- (void)cancelButtonWasTapped:(id)sender
+{
+    if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
+        [self taskViewControllerDidCancel:self];
+    }
 }
 
 /*********************************************************************************/
@@ -185,8 +198,15 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
     [super stepViewControllerWillAppear:viewController];
-    viewController.skipButton = nil;
+    
+    viewController.skipButton     = nil;
     viewController.continueButton = nil;
+    
+    if (([viewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
+        
+        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+        viewController.cancelButton = cancellor;
+    }
 
     if ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRecorderDidStart:) name:APHAudioRecorderDidStartKey object:nil];
@@ -244,39 +264,39 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
                               ];
     
     [viewController.view addConstraints:constraints];
-//    [viewController.view layoutSubviews];
     [viewController.view bringSubviewToFront:meterologist];
 }
 
 - (void)setupTimer
 {
-    self.meteringTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+    self.meteringTimer = [NSTimer scheduledTimerWithTimeInterval:kMeteringTimeInterval
                                                           target:self
                                                         selector:@selector(meteringTimerDidFire:)
                                                         userInfo:nil
                                                          repeats:YES];
 }
 
-static  float  kMinimumPowerOffsetFromBase = 60.0;
+static  float  kMinimumPowerOffsetFromBase = 40.0;
 static  float  kMaximumPowerOffsetFromFull =  2.5;
 
 - (void)meteringTimerDidFire:(NSTimer *)timer
 {
     [self.audioRecorder updateMeters];
+    float  power = [self.audioRecorder averagePowerForChannel:0];
     
-    float  averagePowerForChannelOne = [self.audioRecorder averagePowerForChannel:0];
-    NSLog(@"averagePowerForChannelOne before %.2f", averagePowerForChannelOne);
-    averagePowerForChannelOne = averagePowerForChannelOne + kMinimumPowerOffsetFromBase;
-    if (averagePowerForChannelOne < 0.0) {
-        averagePowerForChannelOne = 0.0;
+    float  range = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
+    
+    power = power + kMinimumPowerOffsetFromBase;
+    if (power < 0.0) {
+        power = 0.0;
     }
-    if (averagePowerForChannelOne > (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull)) {
-        averagePowerForChannelOne = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
+    if (power > range) {
+        power = range;
     }
-    averagePowerForChannelOne = averagePowerForChannelOne / (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
-    self.meteringDisplay.powerLevel = averagePowerForChannelOne;
+    float  mappedPower = power / range;
+    self.meteringDisplay.powerLevel = mappedPower;
     [self.meteringDisplay setNeedsDisplay];
-    NSLog(@"averagePowerForChannelOne after %.2f", averagePowerForChannelOne);
+//    NSLog(@"power = %.2f, mappedPower = %.2f", power, mappedPower);
 }
 
 @end

@@ -19,7 +19,7 @@ static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
 static  NSString       *kWalkingStep101Key               = @"Walking Step 101";
 
 static  NSString       *kGetReadyStep                    = @"Get Ready";
-static  NSTimeInterval  kGetReadyCountDownInterval       = 5.0;
+static  NSTimeInterval  kGetReadyCountDownInterval       = 10.0;
 
 static  NSString       *kWalkingStep102Key               = @"Walking Step 102";
 static  NSTimeInterval  kWalkingStep102CountDownInterval = 30.0;
@@ -171,31 +171,23 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 {
 
     NSDictionary  *stepsToControllersMap = @{
-                                             kWalkingStep101Key : @[ [APHWalkingIntroViewController class], @(0) ],
-//                                             kGetReadyStep      : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep102Key : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep103Key : @[ [APCStepViewController class],   @(0) ],
-//                                             kWalkingStep104Key : @[ [APCStepViewController class],   @(0) ],
-                                             kWalkingStep105Key : @[ [APHCommonTaskSummaryViewController class], @(0) ],
+                                             kWalkingStep101Key : [APHWalkingIntroViewController      class],
+                                             kGetReadyStep      : [APCActiveStepViewController        class],
+                                             kWalkingStep102Key : [APCActiveStepViewController        class],
+                                             kWalkingStep103Key : [APCActiveStepViewController        class],
+                                             kWalkingStep104Key : [APCActiveStepViewController        class],
+                                             kWalkingStep105Key : [APHCommonTaskSummaryViewController class]
                                            };
     
     RKSTStepViewController  *controller = nil;
     
-    NSArray  *descriptor = stepsToControllersMap[step.identifier];
-    
-    if (descriptor != nil) {
-        Class  classToCreate = descriptor[0];
-        NSUInteger  phase = [descriptor[1] unsignedIntegerValue];
-        controller = [[classToCreate alloc] initWithStep:step];
-        if ([controller respondsToSelector:@selector(setWalkingPhase:)] == YES) {
-            ((APHWalkingStepsViewController *)controller).walkingPhase = (WalkingStepsPhase)phase;
-        }
-        controller.delegate = self;
-    }
+    Class  classToCreate = stepsToControllersMap[step.identifier];
+    controller = [[classToCreate alloc] initWithStep:step];
+    controller.delegate = self;
     return  controller;
 }
 
-#pragma  mark  -  View Controller Methods    kWalkingStep102Key
+#pragma  mark  -  View Controller Methods
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -215,10 +207,22 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 }
 
 /*********************************************************************************/
+#pragma mark - Bar Button Action Methods
+/*********************************************************************************/
+
+- (void)cancelButtonWasTapped:(id)sender
+{
+    if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
+        [self taskViewControllerDidCancel:self];
+    }
+}
+
+/*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
 
-- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error{
+- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
+{
     
     [self.taskArchive resetContent];
     self.taskArchive = nil;
@@ -231,8 +235,17 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
-    viewController.skipButton = nil;
+    viewController.skipButton     = nil;
     viewController.continueButton = nil;
+    
+    if (([viewController.step.identifier isEqualToString:kGetReadyStep] == YES) ||
+        ([viewController.step.identifier isEqualToString:kWalkingStep102Key] == YES) ||
+        ([viewController.step.identifier isEqualToString:kWalkingStep103Key] == YES) ||
+        ([viewController.step.identifier isEqualToString:kWalkingStep104Key] == YES)) {
+        
+        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+        viewController.cancelButton = cancellor;
+    }
 }
 
 - (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction

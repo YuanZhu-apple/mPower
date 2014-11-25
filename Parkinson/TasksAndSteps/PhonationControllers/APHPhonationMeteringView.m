@@ -62,7 +62,7 @@
     
     self.outerRingRectangle  = self.bounds;
     
-    self.powerLevel = 1.0;
+    self.powerLevel = 0.0;
 }
 
 - (void)drawRect:(CGRect)rect
