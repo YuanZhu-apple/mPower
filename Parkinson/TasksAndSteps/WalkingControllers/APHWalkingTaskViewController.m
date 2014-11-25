@@ -10,7 +10,6 @@
 
 #import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
-#import "APHCommonTaskSummaryViewController.h"
 
 #import <objc/message.h>
 
@@ -176,14 +175,18 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
                                              kWalkingStep102Key : [APCActiveStepViewController        class],
                                              kWalkingStep103Key : [APCActiveStepViewController        class],
                                              kWalkingStep104Key : [APCActiveStepViewController        class],
-                                             kWalkingStep105Key : [APHCommonTaskSummaryViewController class]
+                                             kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
                                            };
     
-    RKSTStepViewController  *controller = nil;
-    
-    Class  classToCreate = stepsToControllersMap[step.identifier];
-    controller = [[classToCreate alloc] initWithStep:step];
+    Class  aClass = stepsToControllersMap[step.identifier];
+    NSBundle  *bundle = nil;
+    if ([step.identifier isEqualToString:kWalkingStep105Key] == YES) {
+        bundle = [NSBundle appleCoreBundle];
+    }
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
     controller.delegate = self;
+    controller.title = kTaskViewControllerTitle;
+    controller.step = step;
     return  controller;
 }
 

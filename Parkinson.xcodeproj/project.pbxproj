@@ -44,8 +44,6 @@
 		CFFE952A1A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFE95291A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
-		F511EBB31A04292C0056A617 /* APHCommonTaskSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F511EBB11A04292C0056A617 /* APHCommonTaskSummaryViewController.m */; };
-		F511EBB41A04292C0056A617 /* APHCommonTaskSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F511EBB21A04292C0056A617 /* APHCommonTaskSummaryViewController.xib */; };
 		F536B93E19F5747B005A2D1C /* sample.task in Resources */ = {isa = PBXBuildFile; fileRef = F536B93D19F5747B005A2D1C /* sample.task */; };
 		F538D22519DB34C5008942A5 /* APHDataSubstrate.m in Sources */ = {isa = PBXBuildFile; fileRef = F538D22419DB34C5008942A5 /* APHDataSubstrate.m */; };
 		F584909A19E892700091A640 /* Intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F584909919E892700091A640 /* Intro.mp4 */; };
@@ -183,9 +181,6 @@
 		CFFE95291A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHAudioRecorderConfiguration.m; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
 		F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHActivities.storyboard; sourceTree = "<group>"; };
-		F511EBB01A04292C0056A617 /* APHCommonTaskSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHCommonTaskSummaryViewController.h; sourceTree = "<group>"; };
-		F511EBB11A04292C0056A617 /* APHCommonTaskSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHCommonTaskSummaryViewController.m; sourceTree = "<group>"; };
-		F511EBB21A04292C0056A617 /* APHCommonTaskSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHCommonTaskSummaryViewController.xib; sourceTree = "<group>"; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
 		F536B93D19F5747B005A2D1C /* sample.task */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = sample.task; sourceTree = "<group>"; };
 		F538D22319DB34C5008942A5 /* APHDataSubstrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDataSubstrate.h; sourceTree = "<group>"; };
@@ -346,16 +341,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F511EBAF1A04292C0056A617 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				F511EBB01A04292C0056A617 /* APHCommonTaskSummaryViewController.h */,
-				F511EBB11A04292C0056A617 /* APHCommonTaskSummaryViewController.m */,
-				F511EBB21A04292C0056A617 /* APHCommonTaskSummaryViewController.xib */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		F536B93C19F5747B005A2D1C /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,7 +481,6 @@
 				F5D14EE519CC9BC900650FBB /* IntervalTappingControllers */,
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
 				F5D14F0D19CC9BC900650FBB /* WalkingControllers */,
-				F511EBAF1A04292C0056A617 /* Common */,
 			);
 			path = TasksAndSteps;
 			sourceTree = "<group>";
@@ -678,7 +662,6 @@
 				CF8BEC1019E2354100FF103D /* APHPhonationIntroViewController.xib in Resources */,
 				5B975A161A112E2C00A34E42 /* Learn.json in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
-				F511EBB41A04292C0056A617 /* APHCommonTaskSummaryViewController.xib in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
@@ -733,7 +716,6 @@
 				5B424C6C1A083418009EDF11 /* APHSettingsViewController.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
 				F5D14EBC19CC9B9100650FBB /* APHActivitiesViewController.m in Sources */,
-				F511EBB31A04292C0056A617 /* APHCommonTaskSummaryViewController.m in Sources */,
 				5B424C691A083418009EDF11 /* APHChangePasscodeViewController.m in Sources */,
 				5B1D9D4D1A1BCD81000F4AD6 /* APHDataPoint.m in Sources */,
 				CFFE952A1A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m in Sources */,
