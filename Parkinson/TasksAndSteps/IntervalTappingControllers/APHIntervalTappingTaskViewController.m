@@ -114,6 +114,17 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
 }
 
+/*********************************************************************************/
+#pragma mark - Bar Button Action Methods
+/*********************************************************************************/
+
+- (void)cancelButtonWasTapped:(id)sender
+{
+    if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
+        [self taskViewControllerDidCancel:self];
+    }
+}
+
 #pragma  mark  -  Task View Controller Delegate Methods
 
 - (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStepViewController:(RKSTStepViewController *)stepViewController
@@ -152,8 +163,6 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     return controller;
 }
 
-
-
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
@@ -173,8 +182,15 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
 
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
-    viewController.skipButton = nil;
+    viewController.skipButton     = nil;
     viewController.continueButton = nil;
+    
+    if (([viewController.step.identifier isEqualToString:kIntervalTappingStep102] == YES) ||
+        ([viewController.step.identifier isEqualToString:kIntervalTappingStep103] == YES)) {
+        
+        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+        viewController.cancelButton = cancellor;
+    }
 }
 
 - (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
