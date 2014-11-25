@@ -71,10 +71,10 @@
     
     CGContextRef  context = UIGraphicsGetCurrentContext();
     
-    CGFloat clipRatio = 0.5 + (self.powerLevel * 0.5);
+    CGFloat  clipRatio = 0.5 + (self.powerLevel * 0.5);
     CGFloat  diameter = CGRectGetWidth(bounds) * clipRatio;
     
-    CGRect  clipRectangle = CGRectMake((CGRectGetWidth(bounds) - diameter) / 2.0, (CGRectGetWidth(bounds) - diameter) / 2.0, diameter, diameter);
+    CGRect  clipRectangle = CGRectMake((CGRectGetWidth(bounds) - diameter) / 2.0, (CGRectGetWidth(bounds) - diameter) / 2.0, diameter , diameter);
     CGContextAddEllipseInRect(context, clipRectangle);
     CGContextClip(context);
     

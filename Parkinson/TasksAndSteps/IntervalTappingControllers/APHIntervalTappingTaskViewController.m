@@ -9,7 +9,6 @@
 #import "APHIntervalTappingTaskViewController.h"
 
 #import "APHIntervalTappingIntroViewController.h"
-#import "APHCommonTaskSummaryViewController.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"
 #import "APHIntervalTappingTapView.h"

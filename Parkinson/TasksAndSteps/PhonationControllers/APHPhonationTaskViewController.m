@@ -8,7 +8,6 @@
 
 #import "APHPhonationTaskViewController.h"
 #import "APHPhonationIntroViewController.h"
-#import "APHCommonTaskSummaryViewController.h"
 
 #import <objc/message.h>
 #import <AVFoundation/AVFoundation.h>
@@ -128,10 +127,14 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
                                    kPhonationStep101Key : [APHPhonationIntroViewController    class],
                                    kGetReadyStep :        [APCActiveStepViewController        class],
                                    kPhonationStep102Key : [APCActiveStepViewController        class],
-                                   kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
+                                   kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]
                                    };
     Class  aClass = [controllers objectForKey:step.identifier];
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
+    NSBundle  *bundle = nil;
+    if ([step.identifier isEqualToString:kPhonationStep103Key] == YES) {
+        bundle = [NSBundle appleCoreBundle];
+    }
+    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
     controller.delegate = self;
     controller.title = @"Sustained Phonation";
     controller.step = step;
@@ -223,9 +226,10 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     if ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
         [self.meteringTimer invalidate];
-        self.meteringTimer    = nil;
-        self.ourAudioRecorder = nil;
-        self.audioRecorder    = nil;
+        self.meteringTimer      = nil;
+        self.audioConfiguration = nil;
+        self.ourAudioRecorder   = nil;
+        self.audioRecorder      = nil;
     }
     stepViewController.continueButton = nil;
 }
