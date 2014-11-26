@@ -29,10 +29,6 @@
 		CF535F891A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF535F871A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m */; };
 		CF535F8A1A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */; };
 		CF535F8D1A15ADEB00F4C023 /* APHRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF535F8C1A15ADEB00F4C023 /* APHRippleView.m */; };
-		CF8BEC0F19E2354100FF103D /* APHPhonationIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEC0D19E2354100FF103D /* APHPhonationIntroViewController.m */; };
-		CF8BEC1019E2354100FF103D /* APHPhonationIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEC0E19E2354100FF103D /* APHPhonationIntroViewController.xib */; };
-		CF8BEC1419E2366500FF103D /* APHWalkingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEC1219E2366500FF103D /* APHWalkingIntroViewController.m */; };
-		CF8BEC1519E2366500FF103D /* APHWalkingIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8BEC1319E2366500FF103D /* APHWalkingIntroViewController.xib */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -40,7 +36,6 @@
 		CFBEA21D1A21A2DE00937707 /* APHPhonationMeteringView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBEA21C1A21A2DE00937707 /* APHPhonationMeteringView.m */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
-		CFFB2A0919F86E29002E93FA /* APHIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFB2A0819F86E29002E93FA /* APHIntroductionViewController.m */; };
 		CFFE952A1A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFE95291A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m */; };
 		F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */; };
 		F5017E5519D1FCB200AC1F37 /* APHActivities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5017E5419D1FCB200AC1F37 /* APHActivities.storyboard */; };
@@ -63,8 +58,6 @@
 		F5D14EC819CC9B9100650FBB /* APHLearnMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EAB19CC9B9100650FBB /* APHLearnMasterViewController.m */; };
 		F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
 		F5D14F1B19CC9BC900650FBB /* APHIntervalTappingRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */; };
-		F5D14F1C19CC9BC900650FBB /* APHIntervalTappingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EE919CC9BC900650FBB /* APHIntervalTappingIntroViewController.m */; };
-		F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14EEA19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib */; };
 		F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */; };
 		F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */; };
 		F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EFD19CC9BC900650FBB /* APHPhonationTaskViewController.m */; };
@@ -157,12 +150,6 @@
 		CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHIntervalTappingRecorderCustomView.xib; sourceTree = "<group>"; };
 		CF535F8B1A15ADEB00F4C023 /* APHRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHRippleView.h; sourceTree = "<group>"; };
 		CF535F8C1A15ADEB00F4C023 /* APHRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHRippleView.m; sourceTree = "<group>"; };
-		CF8BEC0C19E2354100FF103D /* APHPhonationIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHPhonationIntroViewController.h; sourceTree = "<group>"; };
-		CF8BEC0D19E2354100FF103D /* APHPhonationIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHPhonationIntroViewController.m; sourceTree = "<group>"; };
-		CF8BEC0E19E2354100FF103D /* APHPhonationIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHPhonationIntroViewController.xib; sourceTree = "<group>"; };
-		CF8BEC1119E2366500FF103D /* APHWalkingIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingIntroViewController.h; sourceTree = "<group>"; };
-		CF8BEC1219E2366500FF103D /* APHWalkingIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingIntroViewController.m; sourceTree = "<group>"; };
-		CF8BEC1319E2366500FF103D /* APHWalkingIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHWalkingIntroViewController.xib; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -175,8 +162,6 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
-		CFFB2A0719F86E29002E93FA /* APHIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntroductionViewController.h; sourceTree = "<group>"; };
-		CFFB2A0819F86E29002E93FA /* APHIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntroductionViewController.m; sourceTree = "<group>"; };
 		CFFE95281A1FD85B00F23C92 /* APHAudioRecorderConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHAudioRecorderConfiguration.h; sourceTree = "<group>"; };
 		CFFE95291A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHAudioRecorderConfiguration.m; sourceTree = "<group>"; };
 		F5017E5019D1FC9500AC1F37 /* APHLearn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHLearn.storyboard; sourceTree = "<group>"; };
@@ -213,9 +198,6 @@
 		F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustomMethods.m"; sourceTree = "<group>"; };
 		F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorder.h; sourceTree = "<group>"; };
 		F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingRecorder.m; sourceTree = "<group>"; };
-		F5D14EE819CC9BC900650FBB /* APHIntervalTappingIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingIntroViewController.h; sourceTree = "<group>"; };
-		F5D14EE919CC9BC900650FBB /* APHIntervalTappingIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingIntroViewController.m; sourceTree = "<group>"; };
-		F5D14EEA19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHIntervalTappingIntroViewController.xib; sourceTree = "<group>"; };
 		F5D14EF119CC9BC900650FBB /* APHIntervalTappingTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTapView.h; sourceTree = "<group>"; };
 		F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTapView.m; sourceTree = "<group>"; };
 		F5D14EF319CC9BC900650FBB /* APHIntervalTappingTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTaskViewController.h; sourceTree = "<group>"; };
@@ -476,8 +458,6 @@
 		F5D14EE019CC9BC900650FBB /* TasksAndSteps */ = {
 			isa = PBXGroup;
 			children = (
-				CFFB2A0719F86E29002E93FA /* APHIntroductionViewController.h */,
-				CFFB2A0819F86E29002E93FA /* APHIntroductionViewController.m */,
 				F5D14EE519CC9BC900650FBB /* IntervalTappingControllers */,
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
 				F5D14F0D19CC9BC900650FBB /* WalkingControllers */,
@@ -490,9 +470,6 @@
 			children = (
 				F5D14EF319CC9BC900650FBB /* APHIntervalTappingTaskViewController.h */,
 				F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */,
-				F5D14EE819CC9BC900650FBB /* APHIntervalTappingIntroViewController.h */,
-				F5D14EE919CC9BC900650FBB /* APHIntervalTappingIntroViewController.m */,
-				F5D14EEA19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib */,
 				F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */,
 				F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */,
 				CF535F861A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.h */,
@@ -513,9 +490,6 @@
 			children = (
 				F5D14EFC19CC9BC900650FBB /* APHPhonationTaskViewController.h */,
 				F5D14EFD19CC9BC900650FBB /* APHPhonationTaskViewController.m */,
-				CF8BEC0C19E2354100FF103D /* APHPhonationIntroViewController.h */,
-				CF8BEC0D19E2354100FF103D /* APHPhonationIntroViewController.m */,
-				CF8BEC0E19E2354100FF103D /* APHPhonationIntroViewController.xib */,
 				CFFE95281A1FD85B00F23C92 /* APHAudioRecorderConfiguration.h */,
 				CFFE95291A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m */,
 				CFBEA1D71A211FE200937707 /* APHAudioRecorder.h */,
@@ -531,9 +505,6 @@
 			children = (
 				F5D14F1719CC9BC900650FBB /* APHWalkingTaskViewController.h */,
 				F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */,
-				CF8BEC1119E2366500FF103D /* APHWalkingIntroViewController.h */,
-				CF8BEC1219E2366500FF103D /* APHWalkingIntroViewController.m */,
-				CF8BEC1319E2366500FF103D /* APHWalkingIntroViewController.xib */,
 				F5D14F1419CC9BC900650FBB /* APHWalkingStepsViewController.h */,
 				F5D14F1519CC9BC900650FBB /* APHWalkingStepsViewController.m */,
 				F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */,
@@ -657,9 +628,6 @@
 				F5017E5119D1FC9500AC1F37 /* APHLearn.storyboard in Resources */,
 				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
 				F536B93E19F5747B005A2D1C /* sample.task in Resources */,
-				CF8BEC1519E2366500FF103D /* APHWalkingIntroViewController.xib in Resources */,
-				F5D14F1D19CC9BC900650FBB /* APHIntervalTappingIntroViewController.xib in Resources */,
-				CF8BEC1019E2354100FF103D /* APHPhonationIntroViewController.xib in Resources */,
 				5B975A161A112E2C00A34E42 /* Learn.json in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
@@ -684,7 +652,6 @@
 				CFBEA21D1A21A2DE00937707 /* APHPhonationMeteringView.m in Sources */,
 				F5D14F3319CC9BC900650FBB /* APHWalkingStepsViewController.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
-				F5D14F1C19CC9BC900650FBB /* APHIntervalTappingIntroViewController.m in Sources */,
 				F5D14E8919CC9B8100650FBB /* APHSignUpGeneralInfoViewController.m in Sources */,
 				CFBEA1D91A211FE200937707 /* APHAudioRecorder.m in Sources */,
 				F5D14E8819CC9B8100650FBB /* APHSignInViewController.m in Sources */,
@@ -708,9 +675,6 @@
 				5B1D9D4E1A1BCD81000F4AD6 /* APHScoring.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
-				CF8BEC0F19E2354100FF103D /* APHPhonationIntroViewController.m in Sources */,
-				CFFB2A0919F86E29002E93FA /* APHIntroductionViewController.m in Sources */,
-				CF8BEC1419E2366500FF103D /* APHWalkingIntroViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
 				F5D14EC819CC9B9100650FBB /* APHLearnMasterViewController.m in Sources */,
 				5B424C6C1A083418009EDF11 /* APHSettingsViewController.m in Sources */,

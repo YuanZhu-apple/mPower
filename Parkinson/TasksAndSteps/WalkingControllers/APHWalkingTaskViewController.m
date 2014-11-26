@@ -8,7 +8,6 @@
 
 #import "APHWalkingTaskViewController.h"
 
-#import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
 
 #import <objc/message.h>
@@ -168,25 +167,42 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-
-    NSDictionary  *stepsToControllersMap = @{
-                                             kWalkingStep101Key : [APHWalkingIntroViewController      class],
-                                             kGetReadyStep      : [APCActiveStepViewController        class],
-                                             kWalkingStep102Key : [APCActiveStepViewController        class],
-                                             kWalkingStep103Key : [APCActiveStepViewController        class],
-                                             kWalkingStep104Key : [APCActiveStepViewController        class],
-                                             kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
-                                           };
+    APCStepViewController  *controller = nil;
     
-    Class  aClass = stepsToControllersMap[step.identifier];
-    NSBundle  *bundle = nil;
-    if ([step.identifier isEqualToString:kWalkingStep105Key] == YES) {
-        bundle = [NSBundle appleCoreBundle];
+    if ([step.identifier isEqualToString:kWalkingStep101Key]) {
+        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+        
+        instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
+        instController.headingsArray = nil;
+        instController.messagesArray  = @[
+                                          @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
+                                          @"After the phone vibrates, walk 20 steps in a straight line.",
+                                          @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
+                                          @"Once you return to the starting point, you will feel a third vibration.  Stand as still as possible for 30 seconds.",
+                                          @"After the test is complete, your results will be analyzed and the results will be returned when ready."
+                                          ];
+        controller.delegate = self;
+        controller.step = step;
+    } else {
+        NSDictionary  *stepsToControllersMap = @{
+                                                 kGetReadyStep      : [APCActiveStepViewController        class],
+                                                 kWalkingStep102Key : [APCActiveStepViewController        class],
+                                                 kWalkingStep103Key : [APCActiveStepViewController        class],
+                                                 kWalkingStep104Key : [APCActiveStepViewController        class],
+                                                 kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
+                                               };
+        
+        Class  aClass = stepsToControllersMap[step.identifier];
+        NSBundle  *bundle = nil;
+        if ([step.identifier isEqualToString:kWalkingStep105Key] == YES) {
+            bundle = [NSBundle appleCoreBundle];
+        }
+        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller.delegate = self;
+        controller.title = kTaskViewControllerTitle;
+        controller.step = step;
     }
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
-    controller.delegate = self;
-    controller.title = kTaskViewControllerTitle;
-    controller.step = step;
     return  controller;
 }
 

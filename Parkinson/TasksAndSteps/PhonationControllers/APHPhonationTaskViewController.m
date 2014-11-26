@@ -7,7 +7,6 @@
 //
 
 #import "APHPhonationTaskViewController.h"
-#import "APHPhonationIntroViewController.h"
 
 #import <objc/message.h>
 #import <AVFoundation/AVFoundation.h>
@@ -123,21 +122,39 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-    NSDictionary  *controllers = @{
-                                   kPhonationStep101Key : [APHPhonationIntroViewController    class],
-                                   kGetReadyStep :        [APCActiveStepViewController        class],
-                                   kPhonationStep102Key : [APCActiveStepViewController        class],
-                                   kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]
-                                   };
-    Class  aClass = [controllers objectForKey:step.identifier];
-    NSBundle  *bundle = nil;
-    if ([step.identifier isEqualToString:kPhonationStep103Key] == YES) {
-        bundle = [NSBundle appleCoreBundle];
+    APCStepViewController  *controller = nil;
+    
+    if ([step.identifier isEqualToString:kPhonationStep101Key]) {
+        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+        
+        instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
+        instController.headingsArray = nil;
+        instController.messagesArray  = @[
+                                          @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
+                                          @"Continue by saying “Aaah” into the microphone on your device for as long as you are able.",
+                                          @"As you speak, keep a continuous steady vocal volume so the outermost ring remains green.",
+                                          @"You will be prompted to adjust your vocal volume if it is too quiet or too loud.",
+                                          @"After the test is finished, your results will be analyzed and available on the dashboard.  You will be notified when analysis is ready."
+                                          ];
+        controller.delegate = self;
+        controller.step = step;
+    } else {
+        NSDictionary  *controllers = @{
+                                       kGetReadyStep :        [APCActiveStepViewController        class],
+                                       kPhonationStep102Key : [APCActiveStepViewController        class],
+                                       kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]
+                                       };
+        Class  aClass = [controllers objectForKey:step.identifier];
+        NSBundle  *bundle = nil;
+        if ([step.identifier isEqualToString:kPhonationStep103Key] == YES) {
+            bundle = [NSBundle appleCoreBundle];
+        }
+        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller.delegate = self;
+        controller.title = @"Sustained Phonation";
+        controller.step = step;
     }
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
-    controller.delegate = self;
-    controller.title = @"Sustained Phonation";
-    controller.step = step;
     return  controller;
 }
 
