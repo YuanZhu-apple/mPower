@@ -8,6 +8,8 @@
 
 #import "APHPhonationMeteringView.h"
 
+static  CGFloat  kDisabledPowerLevel = -1.0;
+
 @interface APHPhonationMeteringView  ( )
 
 @property  (nonatomic, assign)  CGRect  innerDiskRectangle;
@@ -44,25 +46,36 @@
 
 - (void)setupDefaults
 {
-    self.innerDiskColor  = [UIColor lightGrayColor];
-    self.innerRingColor  = [UIColor whiteColor];
-    self.middleRingColor = [UIColor greenColor];
-    self.outerRingColor  = [UIColor redColor];
+    self.disabledStrokeColor = [UIColor grayColor];
+    
+    self.innerDiskColor       = [UIColor lightGrayColor];
+    self.innerRingFillColor   = [UIColor whiteColor];
+    self.middleRingColor      = [UIColor greenColor];
+    self.outerRingColor       = [UIColor redColor];
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.innerDiskRectangle  = CGRectMake(CGRectGetWidth(self.bounds) * 3.0 / 8.0, CGRectGetWidth(self.bounds) * 3.0 / 8.0,
-                                          CGRectGetWidth(self.bounds) * 1.0 / 4.0, CGRectGetWidth(self.bounds) * 1.0 / 4.0);
+    CGFloat  innerDiskOffset    = 3.0 /  8.0;
+    CGFloat  innerDiskDiameter  = 1.0 /  4.0;
     
-    self.innerRingRectangle  = CGRectMake(CGRectGetWidth(self.bounds) * 1.0 / 4.0, CGRectGetWidth(self.bounds) * 1.0 / 4.0,
-                                          CGRectGetWidth(self.bounds) * 1.0 / 2.0, CGRectGetWidth(self.bounds) * 1.0 / 2.0);
+    CGFloat  innerRingOffset    = 5.0 / 16.0;
+    CGFloat  innerRingDiameter  = 3.0 /  8.0;
     
-    self.middleRingRectangle = CGRectMake(CGRectGetWidth(self.bounds) * 1.0 / 8.0, CGRectGetWidth(self.bounds) * 1.0 / 8.0,
-                                          CGRectGetWidth(self.bounds) * 3.0 / 4.0, CGRectGetWidth(self.bounds) * 3.0 / 4.0);
+    CGFloat  middleRingOffset   = 1.0 /  8.0;
+    CGFloat  middleRingDiameter = 3.0 /  4.0;
+    
+    self.innerDiskRectangle  = CGRectMake(CGRectGetWidth(self.bounds) * innerDiskOffset, CGRectGetWidth(self.bounds) * innerDiskOffset,
+                                          CGRectGetWidth(self.bounds) * innerDiskDiameter, CGRectGetWidth(self.bounds) * innerDiskDiameter);
+    
+    self.innerRingRectangle  = CGRectMake(CGRectGetWidth(self.bounds) * innerRingOffset, CGRectGetWidth(self.bounds) * innerRingOffset,
+                                          CGRectGetWidth(self.bounds) * innerRingDiameter, CGRectGetWidth(self.bounds) * innerRingDiameter);
+    
+    self.middleRingRectangle = CGRectMake(CGRectGetWidth(self.bounds) * middleRingOffset, CGRectGetWidth(self.bounds) * middleRingOffset,
+                                          CGRectGetWidth(self.bounds) * middleRingDiameter, CGRectGetWidth(self.bounds) * middleRingDiameter);
     
     self.outerRingRectangle  = self.bounds;
     
-    self.powerLevel = 0.0;
+    self.powerLevel = kDisabledPowerLevel;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -74,21 +87,38 @@
     CGFloat  clipRatio = 0.5 + (self.powerLevel * 0.5);
     CGFloat  diameter = CGRectGetWidth(bounds) * clipRatio;
     
-    CGRect  clipRectangle = CGRectMake((CGRectGetWidth(bounds) - diameter) / 2.0, (CGRectGetWidth(bounds) - diameter) / 2.0, diameter , diameter);
-    CGContextAddEllipseInRect(context, clipRectangle);
-    CGContextClip(context);
-    
-    CGContextAddEllipseInRect(context, self.outerRingRectangle);
-    CGContextSetFillColorWithColor(context, self.outerRingColor.CGColor);
-    CGContextFillPath(context);
-    
-    CGContextAddEllipseInRect(context, self.middleRingRectangle);
-    CGContextSetFillColorWithColor(context, self.middleRingColor.CGColor);
-    CGContextFillPath(context);
+    if (self.powerLevel >= 0.0) {
+        CGRect  clipRectangle = CGRectMake((CGRectGetWidth(bounds) - diameter) / 2.0, (CGRectGetWidth(bounds) - diameter) / 2.0, diameter , diameter);
+        CGContextAddEllipseInRect(context, clipRectangle);
+        CGContextClip(context);
+    }
+    if (self.powerLevel >= 0.0) {
+        CGContextAddEllipseInRect(context, self.outerRingRectangle);
+        CGContextSetFillColorWithColor(context, self.outerRingColor.CGColor);
+        CGContextFillPath(context);
+        
+        CGContextAddEllipseInRect(context, self.middleRingRectangle);
+        CGContextSetFillColorWithColor(context, self.middleRingColor.CGColor);
+        CGContextFillPath(context);
+    } else {
+        CGContextAddEllipseInRect(context, self.outerRingRectangle);
+        CGContextSetStrokeColorWithColor(context, self.disabledStrokeColor.CGColor);
+        CGContextStrokePath(context);
+
+        CGContextAddEllipseInRect(context, self.middleRingRectangle);
+        CGContextSetFillColorWithColor(context, self.disabledStrokeColor.CGColor);
+        CGContextStrokePath(context);
+    }
     
     CGContextAddEllipseInRect(context, self.innerRingRectangle);
-    CGContextSetFillColorWithColor(context, self.innerRingColor.CGColor);
+    CGContextSetFillColorWithColor(context, self.innerRingFillColor.CGColor);
     CGContextFillPath(context);
+    
+    if (self.powerLevel < 0.0) {
+        CGContextAddEllipseInRect(context, self.innerRingRectangle);
+        CGContextSetFillColorWithColor(context, self.disabledStrokeColor.CGColor);
+        CGContextStrokePath(context);
+    }
     
     CGContextAddEllipseInRect(context, self.innerDiskRectangle);
     CGContextSetFillColorWithColor(context, self.innerDiskColor.CGColor);

@@ -11,7 +11,8 @@
 @interface APHPhonationMeteringView : UIView
 
 @property  (nonatomic, strong)  UIColor  *innerDiskColor;
-@property  (nonatomic, strong)  UIColor  *innerRingColor;
+@property  (nonatomic, strong)  UIColor  *innerRingFillColor;
+@property  (nonatomic, strong)  UIColor  *disabledStrokeColor;
 @property  (nonatomic, strong)  UIColor  *middleRingColor;
 @property  (nonatomic, strong)  UIColor  *outerRingColor;
 

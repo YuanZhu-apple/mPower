@@ -298,27 +298,30 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
                                                          repeats:YES];
 }
 
-static  float  kMinimumPowerOffsetFromBase = 40.0;
-static  float  kMaximumPowerOffsetFromFull =  2.5;
+    //
+    //    range of magic numbers collected from audio meter
+    //
+static  float  kMinimumPowerOffsetFromBase = 30.0;
+static  float  kMaximumPowerOffsetFromFull =  5.0;
 
 - (void)meteringTimerDidFire:(NSTimer *)timer
 {
     [self.audioRecorder updateMeters];
+    
     float  power = [self.audioRecorder averagePowerForChannel:0];
-    
-    float  range = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
-    
     power = power + kMinimumPowerOffsetFromBase;
+    
+    float  inputRange = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
+    
     if (power < 0.0) {
         power = 0.0;
     }
-    if (power > range) {
-        power = range;
+    if (power > inputRange) {
+        power = inputRange;
     }
-    float  mappedPower = power / range;
+    float  mappedPower = power / inputRange;
     self.meteringDisplay.powerLevel = mappedPower;
     [self.meteringDisplay setNeedsDisplay];
-//    NSLog(@"power = %.2f, mappedPower = %.2f", power, mappedPower);
 }
 
 @end
