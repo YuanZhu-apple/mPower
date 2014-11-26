@@ -8,8 +8,6 @@
 
 #import "APHIntervalTappingTaskViewController.h"
 
-#import "APHIntervalTappingIntroViewController.h"
-
 #import "APHIntervalTappingRecorderCustomView.h"
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
@@ -143,22 +141,38 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-    NSDictionary  *controllers = @{
-                                   kIntervalTappingStep101 : [APHIntervalTappingIntroViewController class],
-                                   kIntervalTappingStep102 : [APCActiveStepViewController           class],
-                                   kIntervalTappingStep103 : [APCActiveStepViewController           class],
-                                   kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]
-                                  };
-    Class  aClass = [controllers objectForKey:step.identifier];
-    NSBundle  *bundle = nil;
-    if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
-        bundle = [NSBundle appleCoreBundle];
-    }
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
-    controller.delegate = self;
-    controller.title = @"Interval Tapping";
-    controller.step = step;
+    APCStepViewController  *controller = nil;
     
+    if ([step.identifier isEqualToString:kIntervalTappingStep101]) {
+        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+        instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
+        instController.headingsArray = nil;
+        instController.messagesArray  = @[
+                                          @"For this task, please lay your phone on a flat surface to produce the most accurate results.",
+                                          @"Once you tap “Get Started”, you will have five seconds before the first interval set appears.",
+                                          @"Next, use two fingers on the same hand to alternately tap the buttons for 20 seconds.  Time your taps to be as consistent as possible.",
+                                          @"After the intervals are finished, your results will be visible on the next screen."
+                                          ];
+        controller.delegate = self;
+        controller.step = step;
+    } else {
+        NSDictionary  *controllers = @{
+                                       kIntervalTappingStep102 : [APCActiveStepViewController           class],
+                                       kIntervalTappingStep103 : [APCActiveStepViewController           class],
+                                       kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]
+                                      };
+        Class  aClass = [controllers objectForKey:step.identifier];
+        NSBundle  *bundle = nil;
+        if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
+            bundle = [NSBundle appleCoreBundle];
+        }
+//        APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller.delegate = self;
+        controller.title = @"Interval Tapping";
+        controller.step = step;
+    }
     return controller;
 }
 
