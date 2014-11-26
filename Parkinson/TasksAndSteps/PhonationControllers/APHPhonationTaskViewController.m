@@ -129,7 +129,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         
         instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
-        instController.headingsArray = nil;
+        instController.headingsArray = @[ @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation" ];
         instController.messagesArray  = @[
                                           @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
                                           @"Continue by saying “Aaah” into the microphone on your device for as long as you are able.",

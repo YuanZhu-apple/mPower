@@ -174,7 +174,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         
         instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
-        instController.headingsArray = nil;
+        instController.headingsArray = @[ @"Walking Test", @"Walking Test", @"Walking Test", @"Walking Test", @"Walking Test" ];
         instController.messagesArray  = @[
                                           @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
                                           @"After the phone vibrates, walk 20 steps in a straight line.",
