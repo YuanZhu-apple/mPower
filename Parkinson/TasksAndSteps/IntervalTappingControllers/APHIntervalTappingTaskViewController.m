@@ -147,7 +147,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
         controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-        instController.headingsArray = @[ @"Test Bradykinesia", @"Test Bradykinesia", @"Test Bradykinesia", @"Test Bradykinesia" ];
+        instController.headingsArray = @[ @"Tests for Bradykinesia", @"Tests for Bradykinesia", @"Tests for Bradykinesia", @"Tests for Bradykinesia" ];
         instController.messagesArray  = @[
                                           @"For this task, please lay your phone on a flat surface to produce the most accurate results.",
                                           @"Once you tap “Get Started”, you will have five seconds before the first interval set appears.",
