@@ -1,9 +1,8 @@
 //
 //  APHWalkingStepsViewController.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 8/20/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHWalkingStepsViewController.h"
@@ -35,12 +34,12 @@ static  NSTimeInterval  kDefaultTimeInterval = 5.0;
 
 - (void)recorder:(RKSTRecorder *)recorder didCompleteWithResult:(RKSTResult *)result
 {
-    NSLog(@"recorder didCompleteWithResult = %@", result);
+//  NSLog(@"recorder didCompleteWithResult = %@", result);
 }
 
 - (void)recorder:(RKSTRecorder *)recorder didFailWithError:(NSError *)error
 {
-    NSLog(@"recorder didFailWithError = %@", error);
+//  NSLog(@"recorder didFailWithError = %@", error);
 }
 
 #pragma  mark  -  Helper Methods

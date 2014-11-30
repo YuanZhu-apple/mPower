@@ -1,9 +1,8 @@
 //
-//  YMLDataPoint.h
-//  Scratch
+//  APHDataPoint.h
+//  Parkinson's
 //
-//  Created by Farhan Ahmed on 11/2/14.
-//  Copyright (c) 2014 Y Media Labs, Inc. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

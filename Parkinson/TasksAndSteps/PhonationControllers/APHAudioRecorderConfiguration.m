@@ -1,9 +1,8 @@
 //
 //  APHAudioRecorderConfiguration.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 11/21/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHAudioRecorderConfiguration.h"
@@ -20,7 +19,7 @@
         NSError  *fileError = nil;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&fileError];
         if (fileError != nil) {
-            NSLog(@"APHAudioRecorderConfiguration directory creation error = %@", fileError);
+//          NSLog(@"APHAudioRecorderConfiguration directory creation error = %@", fileError);
         }
     }
     NSURL  *pathUrl = nil;

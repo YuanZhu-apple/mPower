@@ -1,9 +1,8 @@
 //
-//  YMLScoring.m
-//  CardioHealth
+//  APHScoring.m
+//  Parkinson's
 //
-//  Created by Farhan Ahmed on 10/29/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHScoring.h"
@@ -22,9 +21,9 @@
 @implementation APHScoring
 
 /**
- * @brief   Returns an instance of YMLScoring.
+ * @brief   Returns an instance of APHScoring.
  *
- * @param   kind            One of the YMLScoreDataKinds enums choices
+ * @param   kind            One of the APHScoreDataKinds enums choices
  *
  * @param   numberOfDays    Number of days that the data is needed.
  *
@@ -33,15 +32,15 @@
  */
 
 /*
- * @usage  Both YMLScoring.h and YMLDataPoint.h should be imported.
+ * @usage  Both APHScoring.h and APHDataPoint.h should be imported.
  *
- *   YMLScoring *scoring = [[YMLScoring alloc] initWithKind:YMLDataKindWalk numberOfDays:10 correlateWithKind:YMLDataKindNone];
+ *   APHScoring *scoring = [[APHScoring alloc] initWithKind:APHDataKindWalk numberOfDays:10 correlateWithKind:APHDataKindNone];
  *
  *   NSLog(@"Score Min: %f", [[scoring minimumDataPoint] doubleValue]);
  *   NSLog(@"Score Max: %f", [[scoring maximumDataPoint] doubleValue]);
  *   NSLog(@"Score Avg: %f", [[scoring averageDataPoint] doubleValue]);
  *
- *   YMLDataPoint *score = nil;
+ *   APHDataPoint *score = nil;
  *   while (score = [scoring nextObject]) {
  *       NSLog(@"Score: %f", [score.value doubleValue]);
  *   }

@@ -1,9 +1,8 @@
 //
 //  APHIntervalTappingTaskViewController.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 9/3/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHIntervalTappingTaskViewController.h"
@@ -182,11 +181,8 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
 
 - (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
 {
-    NSLog(@"taskViewControllerDidFail %@", error);
-
     [self.taskArchive resetContent];
     self.taskArchive = nil;
-    
 }
 
 /*********************************************************************************/
