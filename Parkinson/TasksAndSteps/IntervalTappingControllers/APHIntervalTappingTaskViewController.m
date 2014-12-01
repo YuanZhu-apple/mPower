@@ -44,6 +44,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    self.stepsToAutomaticallyAdvanceOnTimer = @[kIntervalTappingStep102, kIntervalTappingStep103];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -157,8 +158,6 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
         controller.step = step;
     } else {
         NSDictionary  *controllers = @{
-                                       kIntervalTappingStep102 : [APCActiveStepViewController           class],
-                                       kIntervalTappingStep103 : [APCActiveStepViewController           class],
                                        kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]
                                       };
         Class  aClass = [controllers objectForKey:step.identifier];
