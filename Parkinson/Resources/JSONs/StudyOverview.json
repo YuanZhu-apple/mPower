@@ -1,39 +1,29 @@
 {
-    "disease_name":"Parkinson's Disease",
-    "from_date":"November 2014",
-    "to_date":"October 2015",
+    "disease_name":"Parkinson's",
+    "from_date":"December 2014",
+    "to_date":"January 2015",
     "logo_name": "logo_research_institute",
     "questions":
     [
      {
      "title":"About this Study",
-     "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
+     "details":"AboutStudy",
      "icon_image":"paperplus_icon",
      "tint_color" : "blue"
      },
+     
      {
-     "title":"Who is Running this Study",
-     "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
+     "title":"How this study works",
+     "details":"howstudyworks",
      "icon_image":"stethescope_icon",
-     "tint_color" : "green"
-     },
-     {
-     "title":"Who is Eligible to Participate",
-     "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-     "icon_image":"clipboard_icon",
-     "tint_color" : "yellow"
-     },
-     {
-     "title":"Length of Study",
-     "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-     "icon_image":"stopwatch_icon",
      "tint_color" : "purple"
      },
+     
      {
-     "title":"Share this Study",
-     "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim vel turpis id fringilla. Nam pharetra gravida enim consectetur rutrum.",
-     "icon_image":"share_icon",
-     "tint_color" : "red"
-     }
-    ]
+     "title":"Who is Eligible to Participate",
+     "details":"EligibleToParticipate",
+     "icon_image":"clipboard_icon",
+     "tint_color" : "green"
+     } 
+     ]
 }

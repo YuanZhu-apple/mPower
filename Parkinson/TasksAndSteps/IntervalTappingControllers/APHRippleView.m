@@ -1,9 +1,8 @@
 //
 //  APHRippleView.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Ramsundar Shandilya on 11/12/14.
-//  Copyright (c) 2014 Ramsundar Shandilya. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHRippleView.h"

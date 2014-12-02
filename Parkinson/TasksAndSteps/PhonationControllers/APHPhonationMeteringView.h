@@ -1,9 +1,8 @@
 //
 //  APHPhonationMeteringView.h
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 11/22/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,7 +10,8 @@
 @interface APHPhonationMeteringView : UIView
 
 @property  (nonatomic, strong)  UIColor  *innerDiskColor;
-@property  (nonatomic, strong)  UIColor  *innerRingColor;
+@property  (nonatomic, strong)  UIColor  *innerRingFillColor;
+@property  (nonatomic, strong)  UIColor  *disabledStrokeColor;
 @property  (nonatomic, strong)  UIColor  *middleRingColor;
 @property  (nonatomic, strong)  UIColor  *outerRingColor;
 

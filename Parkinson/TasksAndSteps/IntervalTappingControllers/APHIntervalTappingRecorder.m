@@ -1,9 +1,8 @@
 //
 //  APHIntervalTappingRecorder.h
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 9/26/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHIntervalTappingRecorder.h"
@@ -150,7 +149,7 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 - (void)stop
 {
     if (self.tappingRecords != nil) {
-        NSLog(@"%@", self.intervalTappingDictionary);
+//      NSLog(@"%@", self.intervalTappingDictionary);
         
         id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
         

@@ -1,16 +1,13 @@
 //
 //  APHWalkingTaskViewController.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 9/3/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHWalkingTaskViewController.h"
 
-#import "APHWalkingIntroViewController.h"
 #import "APHWalkingStepsViewController.h"
-#import "APHCommonTaskSummaryViewController.h"
 
 #import <objc/message.h>
 
@@ -169,21 +166,38 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-
-    NSDictionary  *stepsToControllersMap = @{
-                                             kWalkingStep101Key : [APHWalkingIntroViewController      class],
-                                             kGetReadyStep      : [APCActiveStepViewController        class],
-                                             kWalkingStep102Key : [APCActiveStepViewController        class],
-                                             kWalkingStep103Key : [APCActiveStepViewController        class],
-                                             kWalkingStep104Key : [APCActiveStepViewController        class],
-                                             kWalkingStep105Key : [APHCommonTaskSummaryViewController class]
-                                           };
+    APCStepViewController  *controller = nil;
     
-    RKSTStepViewController  *controller = nil;
-    
-    Class  classToCreate = stepsToControllersMap[step.identifier];
-    controller = [[classToCreate alloc] initWithStep:step];
-    controller.delegate = self;
+    if ([step.identifier isEqualToString:kWalkingStep101Key]) {
+        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+        
+        instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
+        instController.headingsArray = @[ @"Walking Test", @"Walking Test", @"Walking Test", @"Walking Test", @"Walking Test" ];
+        instController.messagesArray  = @[
+                                          @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
+                                          @"After the phone vibrates, walk 20 steps in a straight line.",
+                                          @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
+                                          @"Once you return to the starting point, you will feel a third vibration.  Stand as still as possible for 30 seconds.",
+                                          @"After the test is complete, your results will be analyzed and the results will be returned when ready."
+                                          ];
+        controller.delegate = self;
+        controller.step = step;
+    } else {
+        NSDictionary  *stepsToControllersMap = @{
+                                                 kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
+                                               };
+        
+        Class  aClass = stepsToControllersMap[step.identifier];
+        NSBundle  *bundle = nil;
+        if ([step.identifier isEqualToString:kWalkingStep105Key] == YES) {
+            bundle = [NSBundle appleCoreBundle];
+        }
+        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller.delegate = self;
+        controller.title = kTaskViewControllerTitle;
+        controller.step = step;
+    }
     return  controller;
 }
 
@@ -199,6 +213,8 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
     [super viewDidLoad];
 
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    
+    self.stepsToAutomaticallyAdvanceOnTimer = @[kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key];
 }
 
 - (void)didReceiveMemoryWarning

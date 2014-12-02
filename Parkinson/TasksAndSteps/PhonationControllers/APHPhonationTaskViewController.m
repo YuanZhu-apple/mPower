@@ -1,14 +1,11 @@
 //
 //  APHPhonationTaskViewController.m
-//  Parkinson
+//  Parkinson's
 //
-//  Created by Henry McGilton on 9/3/14.
-//  Copyright (c) 2014 Y Media Labs. All rights reserved.
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
 //
 
 #import "APHPhonationTaskViewController.h"
-#import "APHPhonationIntroViewController.h"
-#import "APHCommonTaskSummaryViewController.h"
 
 #import <objc/message.h>
 #import <AVFoundation/AVFoundation.h>
@@ -124,17 +121,37 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-    NSDictionary  *controllers = @{
-                                   kPhonationStep101Key : [APHPhonationIntroViewController    class],
-                                   kGetReadyStep :        [APCActiveStepViewController        class],
-                                   kPhonationStep102Key : [APCActiveStepViewController        class],
-                                   kPhonationStep103Key : [APHCommonTaskSummaryViewController class]
-                                   };
-    Class  aClass = [controllers objectForKey:step.identifier];
-    APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:nil];
-    controller.delegate = self;
-    controller.title = @"Sustained Phonation";
-    controller.step = step;
+    APCStepViewController  *controller = nil;
+    
+    if ([step.identifier isEqualToString:kPhonationStep101Key]) {
+        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+        
+        instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
+        instController.headingsArray = @[ @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation" ];
+        instController.messagesArray  = @[
+                                          @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
+                                          @"Continue by saying “Aaah” into the microphone on your device for as long as you are able.",
+                                          @"As you speak, keep a continuous steady vocal volume so the outermost ring remains green.",
+                                          @"You will be prompted to adjust your vocal volume if it is too quiet or too loud.",
+                                          @"After the test is finished, your results will be analyzed and available on the dashboard.  You will be notified when analysis is ready."
+                                          ];
+        controller.delegate = self;
+        controller.step = step;
+    } else {
+        NSDictionary  *controllers = @{
+                                       kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]
+                                       };
+        Class  aClass = [controllers objectForKey:step.identifier];
+        NSBundle  *bundle = nil;
+        if ([step.identifier isEqualToString:kPhonationStep103Key] == YES) {
+            bundle = [NSBundle appleCoreBundle];
+        }
+        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
+        controller.delegate = self;
+        controller.title = @"Sustained Phonation";
+        controller.step = step;
+    }
     return  controller;
 }
 
@@ -152,7 +169,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
-//    self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
+    self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
 }
 
 /*********************************************************************************/
@@ -223,9 +240,10 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     if ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
         [self.meteringTimer invalidate];
-        self.meteringTimer    = nil;
-        self.ourAudioRecorder = nil;
-        self.audioRecorder    = nil;
+        self.meteringTimer      = nil;
+        self.audioConfiguration = nil;
+        self.ourAudioRecorder   = nil;
+        self.audioRecorder      = nil;
     }
     stepViewController.continueButton = nil;
 }
@@ -277,27 +295,30 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
                                                          repeats:YES];
 }
 
-static  float  kMinimumPowerOffsetFromBase = 40.0;
-static  float  kMaximumPowerOffsetFromFull =  2.5;
+    //
+    //    range of magic numbers collected from audio meter
+    //
+static  float  kMinimumPowerOffsetFromBase = 30.0;
+static  float  kMaximumPowerOffsetFromFull =  5.0;
 
 - (void)meteringTimerDidFire:(NSTimer *)timer
 {
     [self.audioRecorder updateMeters];
+    
     float  power = [self.audioRecorder averagePowerForChannel:0];
-    
-    float  range = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
-    
     power = power + kMinimumPowerOffsetFromBase;
+    
+    float  inputRange = (kMinimumPowerOffsetFromBase - kMaximumPowerOffsetFromFull);
+    
     if (power < 0.0) {
         power = 0.0;
     }
-    if (power > range) {
-        power = range;
+    if (power > inputRange) {
+        power = inputRange;
     }
-    float  mappedPower = power / range;
+    float  mappedPower = power / inputRange;
     self.meteringDisplay.powerLevel = mappedPower;
     [self.meteringDisplay setNeedsDisplay];
-//    NSLog(@"power = %.2f, mappedPower = %.2f", power, mappedPower);
 }
 
 @end

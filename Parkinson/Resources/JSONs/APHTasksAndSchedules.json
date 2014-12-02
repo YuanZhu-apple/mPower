@@ -3,49 +3,36 @@
               {
               "taskTitle" : "Gait Test",
               "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9",
-              "taskType": "APHTimedWalking",
               "taskClassName" : "APHWalkingTaskViewController",
-              "taskCompletionTimeString" : "1 Minute"
+              "taskCompletionTimeString" : "1.5 Minutes"
               },
               {
               "taskTitle" : "Sustained Phonation",
               "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
-              "taskType": "APHPhonation",
               "taskClassName" : "APHPhonationTaskViewController",
-              "taskCompletionTimeString" : "45 Seconds"
+              "taskCompletionTimeString" : "20 Seconds"
               },
               {
               "taskTitle" : "Interval Tapping",
               "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF",
-              "taskType": "APHIntervalTapping",
-              "taskClassName" : "APHIntervalTappingTaskViewController"
-              },
-              {
-              "taskTitle" : "Sleep Survey",              
-              "taskID": "APHCustomizableSurvey-70D101B0-8135-4E47-8D2A-F810BE28D995",
-              "taskType": "APHCustomizableSurvey",
-              "fileName": "sample",
-              "taskClassName" : "APHSpecialSurveyTaskViewController"
+              "taskClassName" : "APHIntervalTappingTaskViewController",
+              "taskCompletionTimeString" : "30 Seconds"
               }
               ],
     "schedules": [
                   {
-                  "type": "REPEATING",
-                  "href": "appleparkinson:",
-                  "schedule": "1:2,4,6",
+                  "scheduleType": "recurring",
+                  "scheduleString": "0 5,11,17 * * *",
                   "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                   },
                   {
-                  "type": "REPEATING",
-                  "href": "appleparkinson:",
-                  "schedule": "1:5",
-                  "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
-                  "reminder": "1"
+                  "scheduleType": "recurring",
+                  "scheduleString": "0 5 * * *",
+                  "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
                   },
                   {
-                  "type": "REPEATING",
-                  "href": "appleparkinson:",
-                  "schedule": "1:7",
+                  "scheduleType": "recurring",
+                  "scheduleString": "0 5 * * *",
                   "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                   }
                   ]
