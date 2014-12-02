@@ -140,8 +140,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         controller.step = step;
     } else {
         NSDictionary  *controllers = @{
-                                       kGetReadyStep :        [APCActiveStepViewController        class],
-                                       kPhonationStep102Key : [APCActiveStepViewController        class],
                                        kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]
                                        };
         Class  aClass = [controllers objectForKey:step.identifier];
@@ -171,7 +169,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
-//    self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
+    self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
 }
 
 /*********************************************************************************/

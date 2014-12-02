@@ -8,7 +8,7 @@
 
 
 #import "APHInclusionCriteriaViewController.h"
-#import "APHSignUpGeneralInfoViewController.h"
+#import "APHAppDelegate.h"
 
 static NSInteger kDatePickerCellRow = 3;
 
@@ -110,11 +110,9 @@ static NSInteger kDatePickerCellRow = 3;
     [self.question4Option3.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
 }
 
-- (void)startSignUp
+- (APCOnboarding *)onboarding
 {
-    APHSignUpGeneralInfoViewController *signUpVC = [[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"SignUpGeneralInfoVC"];
-    [self.navigationController pushViewController:signUpVC animated:YES];
-
+    return ((APHAppDelegate *)[UIApplication sharedApplication].delegate).onboarding;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,6 +140,7 @@ static NSInteger kDatePickerCellRow = 3;
                 self.dateLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
             }
         }
+        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
     }
     [self.tableView endUpdates];
     if (cell == self.dateTitleCell) {
@@ -190,14 +189,10 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (void)next
 {
-    if ([self isEligible]) {
-        
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"EligibleVC"] animated:YES];
-    }
-    else
-    {
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"APHOnboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"InEligibleVC"] animated:YES];
-    }
+    [self onboarding].signUpTask.eligible = [self isEligible];
+    
+    UIViewController *viewController = [[self onboarding] nextScene];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (BOOL) isEligible
@@ -212,9 +207,9 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (BOOL)isContentValid
 {
-//#ifdef DEVELOPMENT
-//    return YES;
-//#else
+    //#ifdef DEVELOPMENT
+    //    return YES;
+    //#else
     __block BOOL retValue = YES;
     [self.questions enumerateObjectsUsingBlock:^(APCSegmentedButton* obj, NSUInteger idx, BOOL *stop) {
         if (obj.selectedIndex == -1) {
@@ -227,7 +222,6 @@ static NSInteger kDatePickerCellRow = 3;
     }
     
     return retValue;
-//#endif
+    //#endif
 }
-
 @end

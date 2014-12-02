@@ -185,10 +185,6 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         controller.step = step;
     } else {
         NSDictionary  *stepsToControllersMap = @{
-                                                 kGetReadyStep      : [APCActiveStepViewController        class],
-                                                 kWalkingStep102Key : [APCActiveStepViewController        class],
-                                                 kWalkingStep103Key : [APCActiveStepViewController        class],
-                                                 kWalkingStep104Key : [APCActiveStepViewController        class],
                                                  kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
                                                };
         
@@ -217,6 +213,8 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
     [super viewDidLoad];
 
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    
+    self.stepsToAutomaticallyAdvanceOnTimer = @[kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key];
 }
 
 - (void)didReceiveMemoryWarning
