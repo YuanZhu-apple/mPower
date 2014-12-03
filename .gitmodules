@@ -1,6 +1,3 @@
-[submodule "AppleCore"]
-	path = AppCore
-	url = https://bitbucket.org/ymedialabs/applecore
 [submodule "AppCore"]
 	path = AppCore
 	url = https://bitbucket.org/ymedialabs/applecore.git
