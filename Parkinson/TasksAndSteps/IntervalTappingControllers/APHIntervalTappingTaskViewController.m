@@ -25,7 +25,7 @@ static  CGFloat    kTappingStepCountdownInterval = 20.0;
 
 static  NSString  *kIntervalTappingStep104 = @"IntervalTappingStep104";
 
-static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
+static  NSString  *kTaskViewControllerTitle = @"Tapping";
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
@@ -61,7 +61,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     
     {
         RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep101];
-        step.title = @"Tests Bradykinesia";
+        step.title = @"Tapping task";
         step.text = @"";
         step.detailText = @"";
         [steps addObject:step];
@@ -147,11 +147,11 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
         controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-        instController.headingsArray = @[ @"Tests for Bradykinesia", @"Tests for Bradykinesia", @"Tests for Bradykinesia", @"Tests for Bradykinesia" ];
+        instController.headingsArray = @[ @"Tapping Task", @"Tapping Task", @"Tapping Task", @"Tapping Task" ];
         instController.messagesArray  = @[
-                                          @"For this task, please lay your phone on a flat surface to produce the most accurate results.",
-                                          @"Once you tap “Get Started”, you will have five seconds before the first interval set appears.",
-                                          @"Next, use two fingers on the same hand to alternately tap the buttons for 20 seconds.  Time your taps to be as consistent as possible.",
+                                          @"Please lay your phone on a flat surface when tapping for best results.",
+                                          @"Once you tap “Get Started” below, you will have 5 seconds before the task begins.",
+                                          @"Use 2 fingers on the same hand to alternately tap the left and right circles on the screen as quickly and as evenly as possible for 20 seconds.",
                                           @"After the intervals are finished, your results will be visible on the next screen."
                                           ];
         controller.delegate = self;
@@ -165,10 +165,9 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
         if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
             bundle = [NSBundle appleCoreBundle];
         }
-//        APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller.delegate = self;
-        controller.title = @"Interval Tapping";
+        controller.title = @"Tapping";
         controller.step = step;
     }
     return controller;

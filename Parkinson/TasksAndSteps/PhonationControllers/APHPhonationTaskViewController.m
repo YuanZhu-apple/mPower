@@ -27,7 +27,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kPhonationStep103Key       = @"Phonation_Step_103";
 
-static  NSString       *kTaskViewControllerTitle   = @"Sustained Phonation";
+static  NSString       *kTaskViewControllerTitle   = @"Voice";
 
 static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
@@ -69,7 +69,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     {
         //Introduction to fitness test
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
-        step.title = NSLocalizedString(@"Sustained Phonation", @"");
+        step.title = NSLocalizedString(@"Voice", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDownInterval = kGetReadyCountDownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -128,12 +128,12 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         
         instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
-        instController.headingsArray = @[ @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation" ];
+        instController.headingsArray = @[ @"Voice", @"Voice", @"Voice", @"Voice", @"Voice" ];
         instController.messagesArray  = @[
                                           @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
-                                          @"Continue by saying “Aaah” into the microphone on your device for as long as you are able.",
-                                          @"As you speak, keep a continuous steady vocal volume so the outermost ring remains green.",
-                                          @"You will be prompted to adjust your vocal volume if it is too quiet or too loud.",
+                                          @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",
+                                          @"Try to maintain a steady volume so that the outermost ring remains green.",
+                                          @"If you are too quiet or too loud, you will be prompted to raise or lower your voice.",
                                           @"After the test is finished, your results will be analyzed and available on the dashboard.  You will be notified when analysis is ready."
                                           ];
         controller.delegate = self;
@@ -149,7 +149,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         }
         controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller.delegate = self;
-        controller.title = @"Sustained Phonation";
+        controller.title = NSLocalizedString(@"Voice", @"");
         controller.step = step;
     }
     return  controller;
