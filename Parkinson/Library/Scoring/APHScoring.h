@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@import APCAppleCore;
+@import APCAppCore;
 
 typedef NS_ENUM(NSUInteger, APHScoreDataKinds)
 {
