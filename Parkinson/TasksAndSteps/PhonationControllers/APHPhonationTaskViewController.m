@@ -27,7 +27,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kPhonationStep103Key       = @"Phonation_Step_103";
 
-static  NSString       *kTaskViewControllerTitle   = @"Voice Task";
+static  NSString       *kTaskViewControllerTitle   = @"Voice";
 
 static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
@@ -69,7 +69,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     {
         //Introduction to fitness test
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
-        step.title = NSLocalizedString(@"Voice Task", @"");
+        step.title = NSLocalizedString(@"Voice", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDownInterval = kGetReadyCountDownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -168,7 +168,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         }
         controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller.delegate = self;
-        controller.title = @"Voice Test";
+        controller.title = NSLocalizedString(@"Voice", @"");
         controller.step = step;
     }
     return  controller;

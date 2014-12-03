@@ -25,7 +25,7 @@ static  CGFloat    kTappingStepCountdownInterval  = 20.0;
 
 static  NSString  *kIntervalTappingStep104        = @"IntervalTappingStep104";
 
-static  NSString  *kTaskViewControllerTitle       = @"Interval Tapping";
+static  NSString  *kTaskViewControllerTitle = @"Tapping";
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
@@ -155,7 +155,7 @@ static  NSString  *kTaskViewControllerTitle       = @"Interval Tapping";
         controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-        instController.headingsArray = @[ @"Tapping task", @"Tapping task", @"Tapping task", @"Tapping task" ];
+        instController.headingsArray = @[ @"Tapping Task", @"Tapping Task", @"Tapping Task", @"Tapping Task" ];
         instController.messagesArray  = @[
                                           @"Please lay your phone on a flat surface when tapping for best results.",
                                           @"Once you tap “Get Started” below, you will have 5 seconds before the task begins.",
