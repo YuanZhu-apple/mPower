@@ -29,7 +29,7 @@
                 case kAPHDashboardItemTypeIntervalTapping:
                 {
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
-                    item.caption = NSLocalizedString(@"Interval Tapping", @"");
+                    item.caption = NSLocalizedString(@"Tapping", @"");
                     
                     [self.items addObject:item];
                     

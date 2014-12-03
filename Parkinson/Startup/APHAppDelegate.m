@@ -158,15 +158,15 @@ errReturn:
     return scene;
 }
 
-//- (APCScene *)customInfoSceneForOnboarding:(APCOnboarding *)onboarding
-//{
-//    APCScene *scene = [APCScene new];
-//    scene.name = @"APHSignUpGlucoseViewController";
-//    scene.storyboardName = @"APHOnboarding";
-//    scene.bundle = [NSBundle mainBundle];
-//    
-//    return scene;
-//}
+- (APCScene *)customInfoSceneForOnboarding:(APCOnboarding *)onboarding
+{
+    APCScene *scene = [APCScene new];
+    scene.name = @"APCHomeLocationViewController";
+    scene.storyboardName = @"APCHomeLocation";
+    scene.bundle = [NSBundle appleCoreBundle];
+    
+    return scene;
+}
 
 /*********************************************************************************/
 #pragma mark - Consent
