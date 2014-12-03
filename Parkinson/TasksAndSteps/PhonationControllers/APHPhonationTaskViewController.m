@@ -27,7 +27,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kPhonationStep103Key       = @"Phonation_Step_103";
 
-static  NSString       *kTaskViewControllerTitle   = @"Sustained Phonation";
+static  NSString       *kTaskViewControllerTitle   = @"Voice Task";
 
 static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
@@ -69,7 +69,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     {
         //Introduction to fitness test
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
-        step.title = NSLocalizedString(@"Sustained Phonation", @"");
+        step.title = NSLocalizedString(@"Voice Task", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDownInterval = kGetReadyCountDownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -109,8 +109,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 - (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
 {
-    [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
-    
     stepViewController.cancelButton = nil;
     stepViewController.backButton = nil;
     stepViewController.continueButton = nil;
@@ -129,6 +127,15 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         
         [self addMeteringStuff:(APCStepViewController *)stepViewController];
     }
+    if ([stepViewController.step.identifier isEqualToString:kPhonationStep103Key] == YES) {
+        [self.meteringTimer invalidate];
+        self.meteringTimer      = nil;
+        [self.audioRecorder stop];
+        self.audioConfiguration = nil;
+        self.ourAudioRecorder   = nil;
+        self.audioRecorder      = nil;
+    }
+    [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
@@ -140,12 +147,12 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         
         instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
-        instController.headingsArray = @[ @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation", @"Sustained Phonation" ];
+        instController.headingsArray = @[ @"Voice", @"Voice", @"Voice", @"Voice", @"Voice" ];
         instController.messagesArray  = @[
                                           @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
-                                          @"Continue by saying “Aaah” into the microphone on your device for as long as you are able.",
-                                          @"As you speak, keep a continuous steady vocal volume so the outermost ring remains green.",
-                                          @"You will be prompted to adjust your vocal volume if it is too quiet or too loud.",
+                                          @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",
+                                          @"Try to maintain a steady volume so that the outermost ring remains green.",
+                                          @"If you are too quiet or too loud, you will be prompted to raise or lower your voice.",
                                           @"After the test is finished, your results will be analyzed and available on the dashboard.  You will be notified when analysis is ready."
                                           ];
         controller.delegate = self;
@@ -161,7 +168,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         }
         controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller.delegate = self;
-        controller.title = @"Sustained Phonation";
+        controller.title = @"Voice Test";
         controller.step = step;
     }
     return  controller;
@@ -208,46 +215,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
         [self taskViewControllerDidCancel:self];
     }
-}
-
-/*********************************************************************************/
-#pragma mark - StepViewController Delegate Methods
-/*********************************************************************************/
-
-//- (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
-//{
-//    [super stepViewControllerWillAppear:viewController];
-//    
-//    viewController.skipButton     = nil;
-//    viewController.continueButton = nil;
-//    
-//    if (([viewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
-//        
-//        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
-//        viewController.cancelButton = cancellor;
-//    }
-//
-//    if ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRecorderDidStart:) name:APHAudioRecorderDidStartKey object:nil];
-//        RKSTActiveStep  *activeStep = (RKSTActiveStep *)viewController.step;
-//        self.audioConfiguration = [activeStep.recorderConfigurations firstObject];
-//        
-//        [self addMeteringStuff:(APCStepViewController *)viewController];
-//    }
-//}
-
-- (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
-{
-    [super stepViewControllerDidFinish:stepViewController navigationDirection:direction];
-    
-    if ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
-        [self.meteringTimer invalidate];
-        self.meteringTimer      = nil;
-        self.audioConfiguration = nil;
-        self.ourAudioRecorder   = nil;
-        self.audioRecorder      = nil;
-    }
-    stepViewController.continueButton = nil;
 }
 
 /*********************************************************************************/
