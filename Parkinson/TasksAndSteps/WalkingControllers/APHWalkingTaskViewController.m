@@ -140,9 +140,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (void)dealloc
 {
-    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
-    [centre removeObserver:self];
-    [centre removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
