@@ -36,7 +36,9 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
     NSInteger _count;
 }
 
-@property (strong, nonatomic) RKSTDataArchive *taskArchive;
+@property  (strong, nonatomic)  RKSTDataArchive    *taskArchive;
+
+@property  (assign, nonatomic)  UIApplicationState  applicationState;
 
 @end
 
@@ -84,6 +86,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
+    
     {
         RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep103Key];
         step.title = NSLocalizedString(@"Turn around and walk back", @"");
@@ -96,6 +99,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
+    
     {
         RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep104Key];
         step.title = NSLocalizedString(@"Standing Still", @"");
@@ -108,6 +112,7 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
+    
     {
         RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kWalkingStep105Key];
         step.title = NSLocalizedString(@"Great Job!", @"");
@@ -133,13 +138,21 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
     return self;
 }
 
+- (void)dealloc
+{
+    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
+    [centre removeObserver:self];
+    [centre removeObserver:self];
+}
+
 #pragma  mark  -  Task View Controller Delegate Methods
+
 - (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKSTStep *)step
 {
     return  NO;
 }
 
-- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStep:(RKSTStep*)step
+- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStep:(RKSTStep *)step
 {
     return  YES;
 }
@@ -201,6 +214,18 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
     return  controller;
 }
 
+#pragma  mark  -  UIApplication Notification Methods
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    NSLog(@"APHWalkingTaskViewController applicationWillResignActive");
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    NSLog(@"APHWalkingTaskViewController applicationDidEnterBackground");
+}
+
 #pragma  mark  -  View Controller Methods
 
 - (void)viewWillAppear:(BOOL)animated
@@ -214,7 +239,12 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
-    self.stepsToAutomaticallyAdvanceOnTimer = @[kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key];
+    self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key ];
+    
+    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
+    
+    [centre addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    [centre addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -239,10 +269,8 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
 {
-    
     [self.taskArchive resetContent];
     self.taskArchive = nil;
-    
 }
 
 /*********************************************************************************/
@@ -251,6 +279,10 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
+    NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear for step = %@", viewController.step.identifier);
+    [super stepViewControllerWillAppear:viewController];
+    self.applicationState = [[UIApplication sharedApplication] applicationState];
+    
     viewController.skipButton     = nil;
     viewController.continueButton = nil;
     
@@ -261,6 +293,15 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         
         UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
         viewController.cancelButton = cancellor;
+    }
+    if (self.applicationState != UIApplicationStateActive) {
+        NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear sending LocalNotification");
+        NSString  *speech = viewController.step.text;
+        
+        UILocalNotification  *localNotification = [UILocalNotification new];
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        localNotification.userInfo = @{ @"stuff": @"other stuff" };
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
     }
 }
 

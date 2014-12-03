@@ -33,7 +33,7 @@ static  CGFloat         kMeteringDisplayWidth      = 180.0;
 
 static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
-@interface APHPhonationTaskViewController ()
+@interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
 
 @property (strong, nonatomic)   RKSTDataArchive                *taskArchive;
 
@@ -107,16 +107,28 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStepViewController:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
 {
-    return  YES;
-}
-
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController willPresentStepViewController:(RKSTStepViewController *)stepViewController
-{
+    [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
+    
     stepViewController.cancelButton = nil;
     stepViewController.backButton = nil;
     stepViewController.continueButton = nil;
+    stepViewController.skipButton     = nil;
+    
+    if (([stepViewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
+        
+        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+        stepViewController.cancelButton = cancellor;
+    }
+    
+    if ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRecorderDidStart:) name:APHAudioRecorderDidStartKey object:nil];
+        RKSTActiveStep  *activeStep = (RKSTActiveStep *)stepViewController.step;
+        self.audioConfiguration = [activeStep.recorderConfigurations firstObject];
+        
+        [self addMeteringStuff:(APCStepViewController *)stepViewController];
+    }
 }
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
@@ -173,16 +185,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 }
 
 /*********************************************************************************/
-#pragma  mark  - TaskViewController delegates
-/*********************************************************************************/
-
-- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
-{
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
-}
-
-/*********************************************************************************/
 #pragma mark - Audio Recorder Notification Method
 /*********************************************************************************/
 
@@ -212,27 +214,27 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 #pragma mark - StepViewController Delegate Methods
 /*********************************************************************************/
 
-- (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
-{
-    [super stepViewControllerWillAppear:viewController];
-    
-    viewController.skipButton     = nil;
-    viewController.continueButton = nil;
-    
-    if (([viewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
-        
-        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
-        viewController.cancelButton = cancellor;
-    }
-
-    if ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRecorderDidStart:) name:APHAudioRecorderDidStartKey object:nil];
-        RKSTActiveStep  *activeStep = (RKSTActiveStep *)viewController.step;
-        self.audioConfiguration = [activeStep.recorderConfigurations firstObject];
-        
-        [self addMeteringStuff:(APCStepViewController *)viewController];
-    }
-}
+//- (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
+//{
+//    [super stepViewControllerWillAppear:viewController];
+//    
+//    viewController.skipButton     = nil;
+//    viewController.continueButton = nil;
+//    
+//    if (([viewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
+//        
+//        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
+//        viewController.cancelButton = cancellor;
+//    }
+//
+//    if ([viewController.step.identifier isEqualToString:kPhonationStep102Key] == YES) {
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRecorderDidStart:) name:APHAudioRecorderDidStartKey object:nil];
+//        RKSTActiveStep  *activeStep = (RKSTActiveStep *)viewController.step;
+//        self.audioConfiguration = [activeStep.recorderConfigurations firstObject];
+//        
+//        [self addMeteringStuff:(APCStepViewController *)viewController];
+//    }
+//}
 
 - (void)stepViewControllerDidFinish:(RKSTStepViewController *)stepViewController navigationDirection:(RKSTStepViewControllerNavigationDirection)direction
 {

@@ -44,7 +44,8 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    self.stepsToAutomaticallyAdvanceOnTimer = @[kIntervalTappingStep102, kIntervalTappingStep103];
+    
+    self.stepsToAutomaticallyAdvanceOnTimer = @[ kIntervalTappingStep102, kIntervalTappingStep103 ];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -134,7 +135,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
     if (kIntervalTappingStep102 == stepViewController.step.identifier) {
         stepViewController.continueButton = nil;
     } else if (kIntervalTappingStep104 == stepViewController.step.identifier) {
-        stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
+//        stepViewController.continueButton = [[UIBarButtonItem alloc] initWithTitle:@"Well done!" style:stepViewController.continueButton.style target:stepViewController.continueButton.target action:stepViewController.continueButton.action];
         stepViewController.continueButton = nil;
     }
 }
@@ -165,7 +166,6 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
         if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
             bundle = [NSBundle appleCoreBundle];
         }
-//        APCStepViewController  *controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
         controller.delegate = self;
         controller.title = @"Interval Tapping";
@@ -190,6 +190,7 @@ static  NSString  *kTaskViewControllerTitle = @"Interval Tapping";
 
 - (void)stepViewControllerWillAppear:(RKSTStepViewController *)viewController
 {
+    [super stepViewControllerWillAppear:viewController];
     viewController.skipButton     = nil;
     viewController.continueButton = nil;
     
