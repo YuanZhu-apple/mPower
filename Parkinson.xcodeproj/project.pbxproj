@@ -45,8 +45,6 @@
 		F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EF219CC9BC900650FBB /* APHIntervalTappingTapView.m */; };
 		F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */; };
 		F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EFD19CC9BC900650FBB /* APHPhonationTaskViewController.m */; };
-		F5D14F3319CC9BC900650FBB /* APHWalkingStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1519CC9BC900650FBB /* APHWalkingStepsViewController.m */; };
-		F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */; };
 		F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */; };
 		F5D14F3919CC9C0000650FBB /* APHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */; };
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
@@ -150,9 +148,6 @@
 		F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTaskViewController.m; sourceTree = "<group>"; };
 		F5D14EFC19CC9BC900650FBB /* APHPhonationTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHPhonationTaskViewController.h; sourceTree = "<group>"; };
 		F5D14EFD19CC9BC900650FBB /* APHPhonationTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHPhonationTaskViewController.m; sourceTree = "<group>"; };
-		F5D14F1419CC9BC900650FBB /* APHWalkingStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingStepsViewController.h; sourceTree = "<group>"; };
-		F5D14F1519CC9BC900650FBB /* APHWalkingStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingStepsViewController.m; sourceTree = "<group>"; };
-		F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHWalkingStepsViewController.xib; sourceTree = "<group>"; };
 		F5D14F1719CC9BC900650FBB /* APHWalkingTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHWalkingTaskViewController.h; sourceTree = "<group>"; };
 		F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHWalkingTaskViewController.m; sourceTree = "<group>"; };
 		F5D14F3719CC9C0000650FBB /* APHAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHAppDelegate.h; sourceTree = "<group>"; };
@@ -394,9 +389,6 @@
 			children = (
 				F5D14F1719CC9BC900650FBB /* APHWalkingTaskViewController.h */,
 				F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */,
-				F5D14F1419CC9BC900650FBB /* APHWalkingStepsViewController.h */,
-				F5D14F1519CC9BC900650FBB /* APHWalkingStepsViewController.m */,
-				F5D14F1619CC9BC900650FBB /* APHWalkingStepsViewController.xib */,
 			);
 			path = WalkingControllers;
 			sourceTree = "<group>";
@@ -519,7 +511,6 @@
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				5B0432561A304F8D000DC9ED /* HTMLContent in Resources */,
-				F5D14F3419CC9BC900650FBB /* APHWalkingStepsViewController.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
 				5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
@@ -550,7 +541,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFBEA21D1A21A2DE00937707 /* APHPhonationMeteringView.m in Sources */,
-				F5D14F3319CC9BC900650FBB /* APHWalkingStepsViewController.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
 				CFBEA1D91A211FE200937707 /* APHAudioRecorder.m in Sources */,
 				F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */,
