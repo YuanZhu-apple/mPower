@@ -51,22 +51,6 @@
                     [self.items addObject:item];
                 }
                     break;
-                case kAPHDashboardItemTypeAlerts:{
-                    
-                    APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
-                    item.caption = NSLocalizedString(@"Alerts", @"");
-                    
-                    [self.items addObject:item];
-                }
-                    break;
-                case kAPHDashboardItemTypeInsights:{
-                    
-                    APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
-                    item.caption = NSLocalizedString(@"Insights", @"");
-                    
-                    [self.items addObject:item];
-                }
-                    break;
                 default:
                     break;
             }
