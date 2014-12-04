@@ -8,6 +8,8 @@
 @import APCAppCore;
 #import "APHAppDelegate.h"
 
+#import "APHWalkingTaskViewController.h"
+
 /*********************************************************************************/
 #pragma mark - Initializations Options
 /*********************************************************************************/
@@ -248,5 +250,24 @@ errReturn:
     return _consentVC;
 }
 
+/*********************************************************************************/
+#pragma mark - Handle Local Notifications
+/*********************************************************************************/
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSDictionary  *info = [notification userInfo];
+    if (info != nil) {
+        NSString  *identifier = [info objectForKey:WalkingTaskNotificationIdentifierKey];
+        NSString  *squawk = nil;
+        if ((identifier != nil) && ([identifier isEqualToString:APHWalkingTaskViewControllerKey] == YES)) {
+            squawk = [info objectForKey:WalkingTaskNotificationSpeechKey];
+            if (squawk != nil) {
+                AVSpeechSynthesizer *synthesiser= [[AVSpeechSynthesizer alloc] init];
+                [synthesiser speakUtterance:[AVSpeechUtterance speechUtteranceWithString:squawk]];
+            }
+        }
+    }
+}
 
 @end
