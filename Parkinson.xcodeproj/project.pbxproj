@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0432561A304F8D000DC9ED /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5B0432551A304F8D000DC9ED /* HTMLContent */; };
 		5B18CED01A2CF2E5001A905E /* TermsAndConditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */; };
-		5B18CED21A2CF2F3001A905E /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5B18CED11A2CF2F3001A905E /* HTMLContent */; };
 		5B18CEF71A2D3A57001A905E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B18CEF61A2D3A56001A905E /* MapKit.framework */; };
 		5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1D9D401A1BCC6B000F4AD6 /* APHDashboard.storyboard */; };
 		5B1D9D461A1BCC6B000F4AD6 /* APHDashboardEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */; };
@@ -92,8 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B0432551A304F8D000DC9ED /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
 		5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TermsAndConditions.json; sourceTree = "<group>"; };
-		5B18CED11A2CF2F3001A905E /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
 		5B18CEF61A2D3A56001A905E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5B1D9D401A1BCC6B000F4AD6 /* APHDashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHDashboard.storyboard; sourceTree = "<group>"; };
 		5B1D9D411A1BCC6B000F4AD6 /* APHDashboardEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDashboardEditViewController.h; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5B18CED11A2CF2F3001A905E /* HTMLContent */,
+				5B0432551A304F8D000DC9ED /* HTMLContent */,
 				F5D14E3F19CC991500650FBB /* JSONs */,
 				F536B93C19F5747B005A2D1C /* Tasks */,
 				F584909819E892700091A640 /* Videos */,
@@ -510,7 +510,7 @@
 				5B975A161A112E2C00A34E42 /* Learn.json in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
-				5B18CED21A2CF2F3001A905E /* HTMLContent in Resources */,
+				5B0432561A304F8D000DC9ED /* HTMLContent in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
 				5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
