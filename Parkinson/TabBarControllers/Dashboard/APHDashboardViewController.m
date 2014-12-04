@@ -197,34 +197,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     [rowItems addObject:row];
                 }
                     break;
-                case kAPHDashboardItemTypeAlerts:{
-                    
-                    APCTableViewDashboardMessageItem *item = [APCTableViewDashboardMessageItem new];
-                    item.identifier = kAPCDashboardMessageTableViewCellIdentifier;
-                    item.messageType = kAPCDashboardMessageTypeAlert;
-                    item.detailText = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-                    item.editable = YES;
-                    
-                    APCTableViewRow *row = [APCTableViewRow new];
-                    row.item = item;
-                    row.itemType = rowType;
-                    [rowItems addObject:row];
-                }
-                    break;
-                case kAPHDashboardItemTypeInsights:{
-                    
-                    APCTableViewDashboardMessageItem *item = [APCTableViewDashboardMessageItem new];
-                    item.identifier = kAPCDashboardMessageTableViewCellIdentifier;
-                    item.messageType = kAPCDashboardMessageTypeInsight;
-                    item.detailText = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-                    item.editable = YES;
-                    
-                    APCTableViewRow *row = [APCTableViewRow new];
-                    row.item = item;
-                    row.itemType = rowType;
-                    [rowItems addObject:row];
-                }
-                    break;
                 default:
                     break;
             }

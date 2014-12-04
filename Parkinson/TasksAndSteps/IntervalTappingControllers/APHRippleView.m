@@ -7,7 +7,7 @@
 
 #import "APHRippleView.h"
 
-@import APCAppleCore;
+@import APCAppCore;
 
 @interface APHRippleView ()
 

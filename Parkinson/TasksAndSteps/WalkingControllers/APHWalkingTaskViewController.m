@@ -7,8 +7,6 @@
 
 #import "APHWalkingTaskViewController.h"
 
-#import "APHWalkingStepsViewController.h"
-
 #import <objc/message.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
@@ -29,7 +27,15 @@ static  NSTimeInterval  kWalkingStep104CountDownInterval = 30.0;
 
 static  NSString       *kWalkingStep105Key               = @"Walking Step 105";
 
-static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
+static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
+
+    //
+    //    keys for local notifications
+    //
+NSString  *WalkingTaskNotificationIdentifierKey = @"WalkingTaskNotificationIdentifier";
+NSString  *APHWalkingTaskViewControllerKey      = @"APHWalkingTaskViewController";
+NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeech";
+
 
 @interface APHWalkingTaskViewController  ( )
 {
@@ -145,11 +151,6 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldShowMoreInfoOnStep:(RKSTStep *)step
-{
-    return  NO;
-}
-
 - (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStep:(RKSTStep *)step
 {
     return  YES;
@@ -182,20 +183,26 @@ static  NSString  *kTaskViewControllerTitle = @"Timed Walking";
         UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
         stepViewController.cancelButton = cancellor;
     }
-    if (self.applicationState != UIApplicationStateActive) {
-        NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear sending LocalNotification");
-        NSString  *speech = stepViewController.step.text;
-        
-        UILocalNotification  *localNotification = [UILocalNotification new];
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        localNotification.userInfo = @{ @"stuff": @"other stuff" };
-        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+    if (([stepViewController.step.identifier isEqualToString:kGetReadyStep] == YES) ||
+        ([stepViewController.step.identifier isEqualToString:kWalkingStep102Key] == YES) ||
+        ([stepViewController.step.identifier isEqualToString:kWalkingStep103Key] == YES) ||
+        ([stepViewController.step.identifier isEqualToString:kWalkingStep104Key] == YES)) {
+        if (self.applicationState != UIApplicationStateActive) {
+            NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear sending LocalNotification");
+            NSString  *speech = stepViewController.step.text;
+            
+            UILocalNotification  *localNotification = [UILocalNotification new];
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            NSDictionary  *info = @{
+                                    WalkingTaskNotificationIdentifierKey : APHWalkingTaskViewControllerKey,
+                                    WalkingTaskNotificationSpeechKey : speech
+                                    };
+            localNotification.userInfo = info;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+        }
     }
+    
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
-}
-
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController didReceiveLearnMoreEventFromStepViewController:(RKSTStepViewController *)stepViewController
-{
 }
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
