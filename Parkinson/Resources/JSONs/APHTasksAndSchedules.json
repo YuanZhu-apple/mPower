@@ -7,13 +7,13 @@
               "taskCompletionTimeString" : "1.5 Minutes"
               },
               {
-              "taskTitle" : "Sustained Phonation",
+              "taskTitle" : "Voice Test",
               "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292",
               "taskClassName" : "APHPhonationTaskViewController",
               "taskCompletionTimeString" : "20 Seconds"
               },
               {
-              "taskTitle" : "Interval Tapping",
+              "taskTitle" : "Tapping Test",
               "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF",
               "taskClassName" : "APHIntervalTappingTaskViewController",
               "taskCompletionTimeString" : "30 Seconds"
