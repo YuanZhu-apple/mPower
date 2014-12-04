@@ -12,8 +12,8 @@
                           },
                           
                 {
-                    "title": "Cardiovascular Disease information",
-                    "details": "disease_information",
+                    "title": "Life with Parkinson's",
+                    "details": "lifewithPD",
                     "icon_image": "disease_icon",
                     "tint_color": "red"
                 },

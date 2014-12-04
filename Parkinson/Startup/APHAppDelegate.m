@@ -51,7 +51,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (void) setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
-                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]
+                                                 kPrimaryAppColorKey : [UIColor colorWithRed:255/255.0f                 green:0 blue:56/255.0f alpha:1.000]
+//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]
                                                  }];
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
