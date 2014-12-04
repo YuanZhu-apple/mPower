@@ -1,8 +1,9 @@
 //
 //  APHInclusionCriteriaViewController.m
-//  Parkinson's
+//  Parkinson
 //
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
+//  Created by Ramsundar Shandilya on 9/25/14.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 
@@ -10,39 +11,19 @@
 #import "APHInclusionCriteriaViewController.h"
 #import "APHAppDelegate.h"
 
-static NSInteger kDatePickerCellRow = 3;
-
 @interface APHInclusionCriteriaViewController () <APCSegmentedButtonDelegate>
 
 //Outlets
 @property (weak, nonatomic) IBOutlet UILabel *question1Label;
-@property (weak, nonatomic) IBOutlet UILabel *question2Label;
-@property (weak, nonatomic) IBOutlet UILabel *question3Label;
-@property (weak, nonatomic) IBOutlet UILabel *question4Label;
-
 @property (weak, nonatomic) IBOutlet UIButton *question1Option1;
 @property (weak, nonatomic) IBOutlet UIButton *question1Option2;
 
+@property (weak, nonatomic) IBOutlet UILabel *question2Label;
 @property (weak, nonatomic) IBOutlet UIButton *question2Option1;
 @property (weak, nonatomic) IBOutlet UIButton *question2Option2;
-@property (weak, nonatomic) IBOutlet UIButton *question2Option3;
-
-@property (weak, nonatomic) IBOutlet UIButton *question4Option1;
-@property (weak, nonatomic) IBOutlet UIButton *question4Option2;
-@property (weak, nonatomic) IBOutlet UIButton *question4Option3;
-
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
-@property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *dateTitleCell;
 
 //Properties
 @property (nonatomic, strong) NSArray * questions; //Of APCSegmentedButtons
-
-@property (nonatomic, strong) NSDate* diagnosisDate;
-@property (nonatomic, getter = isDateOpen) BOOL dateOpen;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -51,16 +32,9 @@ static NSInteger kDatePickerCellRow = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    
-    [self.datePicker setMaximumDate:[NSDate date]];
-    
     self.questions = @[
                        [[APCSegmentedButton alloc] initWithButtons:@[self.question1Option1, self.question1Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
-                       [[APCSegmentedButton alloc] initWithButtons:@[self.question2Option1, self.question2Option2, self.question2Option3] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
-                       [[APCSegmentedButton alloc] initWithButtons:@[self.question4Option1, self.question4Option2, self.question4Option3] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]]
+                       [[APCSegmentedButton alloc] initWithButtons:@[self.question2Option1, self.question2Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
                        ];
     [self.questions enumerateObjectsUsingBlock:^(APCSegmentedButton * obj, NSUInteger idx, BOOL *stop) {
         obj.delegate = self;
@@ -72,88 +46,28 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (void) setUpAppearance
 {
-    self.question1Label.textColor = [UIColor appSecondaryColor1];
-    self.question1Label.font = [UIFont appRegularFontWithSize:19.0f];
+    {
+        self.question1Label.textColor = [UIColor appSecondaryColor1];
+        self.question1Label.font = [UIFont appRegularFontWithSize:19.0f];
+        
+        [self.question1Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+        [self.question1Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    }
     
-    self.question2Label.textColor = [UIColor appSecondaryColor1];
-    self.question2Label.font = [UIFont appRegularFontWithSize:19.0f];
+    {
+        self.question2Label.textColor = [UIColor appSecondaryColor1];
+        self.question2Label.font = [UIFont appRegularFontWithSize:15.0f];
+        
+        [self.question2Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+        [self.question2Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    }
     
-    self.question3Label.textColor = [UIColor appSecondaryColor1];
-    self.question3Label.font = [UIFont appRegularFontWithSize:19.0f];
-    
-    self.question4Label.textColor = [UIColor appSecondaryColor1];
-    self.question4Label.font = [UIFont appRegularFontWithSize:19.0f];
-    
-    self.dateLabel.textColor = [UIColor appSecondaryColor3];
-    self.dateLabel.font = [UIFont appRegularFontWithSize:16];
-    self.dateLabel.text = NSLocalizedString(@"Enter Date", "");
-    
-    self.question2Option3.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.question2Option3.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.question2Option3.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.question2Option3.titleLabel.minimumScaleFactor = 0.6;
-    self.question2Option3.titleLabel.numberOfLines = 2;
-    [self.question2Option3 setTitle:NSLocalizedString(@"Not\nSure", @"Question Option") forState:UIControlStateNormal];
-    
-    [self.question1Option1 setImage:[[UIImage imageNamed:@"eligibility_patient"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    [self.question1Option1.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
-    
-    [self.question1Option2 setImage:[[UIImage imageNamed:@"eligibility_doctor"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    [self.question1Option2.titleLabel setFont:[UIFont appRegularFontWithSize:16.0]];
-    
-    [self.question2Option1.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
-    [self.question2Option2.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
-    [self.question2Option3.titleLabel setFont:[UIFont appRegularFontWithSize:40.0]];
-    
-    [self.question4Option1.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
-    [self.question4Option2.titleLabel setFont:[UIFont appRegularFontWithSize:18.0]];
-    [self.question4Option3.titleLabel setFont:[UIFont appRegularFontWithSize:19.0]];
 }
 
 - (APCOnboarding *)onboarding
 {
     return ((APHAppDelegate *)[UIApplication sharedApplication].delegate).onboarding;
 }
-
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0 && indexPath.row == kDatePickerCellRow && !self.isDateOpen){
-        return 0;
-    }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-}
-
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    [tableView beginUpdates];
-    if (cell == self.dateTitleCell) {
-        self.dateOpen = !self.isDateOpen;
-        if (self.dateOpen) {
-            if (self.diagnosisDate) {
-                self.datePicker.date = self.diagnosisDate;
-            }
-            else
-            {
-                self.diagnosisDate = self.datePicker.date;
-                self.dateLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
-            }
-        }
-        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
-    }
-    [self.tableView endUpdates];
-    if (cell == self.dateTitleCell) {
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
-}
-
-- (IBAction)datePickerChanged:(UIDatePicker*)sender
-{
-    self.diagnosisDate = sender.date;
-    self.dateLabel.text = [self.dateFormatter stringFromDate:sender.date];
-}
-
 
 /*********************************************************************************/
 #pragma mark - Misc Fix
@@ -175,11 +89,7 @@ static NSInteger kDatePickerCellRow = 3;
 /*********************************************************************************/
 - (void)segmentedButtonPressed:(UIButton *)button selectedIndex:(NSInteger)selectedIndex
 {
-    if (button == self.question2Option2) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    } else{
-        self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
-    }
+    self.navigationItem.rightBarButtonItem.enabled = [self isContentValid];
     
 }
 
@@ -198,8 +108,12 @@ static NSInteger kDatePickerCellRow = 3;
 - (BOOL) isEligible
 {
     BOOL retValue = YES;
-    APCSegmentedButton * question2Button = self.questions[1];
-    if (question2Button.selectedIndex == 1) {
+    
+    APCSegmentedButton * question1 = self.questions[0];
+    APCSegmentedButton * question2 = self.questions[1];
+    
+    if ((question1.selectedIndex == 1) ||
+        (question2.selectedIndex == 1)) {
         retValue = NO;
     }
     return retValue;
@@ -207,21 +121,14 @@ static NSInteger kDatePickerCellRow = 3;
 
 - (BOOL)isContentValid
 {
-    //#ifdef DEVELOPMENT
-    //    return YES;
-    //#else
     __block BOOL retValue = YES;
     [self.questions enumerateObjectsUsingBlock:^(APCSegmentedButton* obj, NSUInteger idx, BOOL *stop) {
-        if (obj.selectedIndex == -1) {
-            retValue = NO;
-            *stop = YES;
-        }
-    }];
-    if (!self.diagnosisDate) {
+    if (obj.selectedIndex == -1) {
         retValue = NO;
+        *stop = YES;
     }
-    
+    }];
     return retValue;
-    //#endif
 }
+
 @end
