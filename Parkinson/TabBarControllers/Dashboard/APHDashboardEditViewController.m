@@ -1,10 +1,10 @@
-//
-//  APHDashboardEditViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHDashboardEditViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHDashboardEditViewController.h"
 
 @implementation APHDashboardEditViewController

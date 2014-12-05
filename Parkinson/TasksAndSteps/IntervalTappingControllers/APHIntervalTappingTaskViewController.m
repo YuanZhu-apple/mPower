@@ -1,10 +1,10 @@
-//
-//  APHIntervalTappingTaskViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingTaskViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHIntervalTappingTaskViewController.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"

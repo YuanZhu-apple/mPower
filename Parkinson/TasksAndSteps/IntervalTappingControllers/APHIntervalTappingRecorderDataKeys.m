@@ -1,10 +1,10 @@
-//
-//  APHIntervalTappingRecorderDataKeys.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingRecorderDataKeys.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHIntervalTappingRecorderDataKeys.h"
 
 NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";

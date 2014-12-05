@@ -1,10 +1,10 @@
-//
-//  APHParkinsonAppDelegate.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHAppDelegate.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 @import APCAppCore;
 #import "APHAppDelegate.h"
 
