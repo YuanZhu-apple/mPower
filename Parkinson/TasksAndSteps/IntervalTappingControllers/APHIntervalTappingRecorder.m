@@ -1,5 +1,5 @@
 //
-//  APHIntervalTappingRecorder.h
+//  APHIntervalTappingRecorder.m
 //  Parkinson's
 //
 //  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
@@ -8,24 +8,9 @@
 #import "APHIntervalTappingRecorder.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
-
-
-static  NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";
-static  NSString  *kHealthApplicationName        = @"Parkinson Health Application";
-static  NSString  *kHealthApplicationTaskKey     = @"HealthApplicationTask";
-static  NSString  *kIntervalTappingName          = @"ParkinsonIntervalTappingTask";
-
-static  NSString  *kIntervalTappingRecordsKey    = @"ParkinsonIntervalTappingRecords";
-
-static  NSString  *kContainerSizeTargetRecordKey = @"ContainerSize";
-static  NSString  *kLeftTargetFrameRecordKey     = @"LeftTargetFrame";
-static  NSString  *kRightTargetFrameRecordKey    = @"RightTargetFrame";
-
-static  NSString  *kXCoordinateRecordKey         = @"XCoordinate";
-static  NSString  *kYCoordinateRecordKey         = @"YCoordinate";
-static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
 static  CGFloat  kRipplerMinimumRadius           =   5.0;
 static  CGFloat  kRipplerMaximumRadius           =  80.0;
@@ -41,6 +26,8 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 @property  (nonatomic, assign)  BOOL                                   dictionaryHeaderWasCreated;
 
 @property  (nonatomic, assign)  NSUInteger                             tapsCounter;
+
+@property  (nonatomic, assign)  BOOL                                   stopMethodWasCalled;
 
 @end
 
@@ -70,7 +57,7 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 - (void)addRecord:(CGPoint)point
 {
     NSDictionary  *record = @{
-                              kYTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
+                              kTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
                               kXCoordinateRecordKey : @(point.x),
                               kYCoordinateRecordKey : @(point.y)
                               };
@@ -146,28 +133,37 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 #pragma  -  Recorder Control Methods
 
+- (void)start
+{
+    [super start];
+}
+
 - (void)stop
 {
-    if (self.tappingRecords != nil) {
-//      NSLog(@"%@", self.intervalTappingDictionary);
-        
-        id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
-        
-        if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
-            RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
-            result.contentType = [self mimeType];
-            NSError  *serializationError = nil;
-            result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
+    if (self.stopMethodWasCalled == NO) {
+        if (self.tappingRecords != nil) {
+            id <RKSTRecorderDelegate> substituteDelegate = self.delegate;
             
-            if (serializationError != nil) {
+            if (substituteDelegate != nil && [substituteDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
+                RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
+                result.contentType = [self mimeType];
                 
-            } else {
-                result.filename = self.fileName;
-                [kludgedDelegate recorder:self didCompleteWithResult:result];
+                NSError  *serializationError = nil;
+                result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
+                
+                if (serializationError != nil) {
+                    if (substituteDelegate != nil && [substituteDelegate respondsToSelector:@selector(recorder:didFailWithError:)]) {
+                        [substituteDelegate recorder:self didFailWithError:serializationError];
+                    }
+                } else {
+                    result.filename = self.fileName;
+                    [substituteDelegate recorder:self didCompleteWithResult:result];
+                }
             }
         }
+        self.stopMethodWasCalled = YES;
+        [super stop];
     }
-    [super stop];
 }
 
 - (NSString*)dataType

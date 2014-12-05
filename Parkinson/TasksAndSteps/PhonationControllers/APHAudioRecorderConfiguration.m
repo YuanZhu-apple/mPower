@@ -19,7 +19,6 @@
         NSError  *fileError = nil;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&fileError];
         if (fileError != nil) {
-//          NSLog(@"APHAudioRecorderConfiguration directory creation error = %@", fileError);
         }
     }
     NSURL  *pathUrl = nil;
