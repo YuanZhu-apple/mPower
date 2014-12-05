@@ -198,9 +198,9 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
             
             NSError  *error = nil;
             NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSArray  *records = [dictionary objectForKey:IntervalTappingRecordsKey];
+            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
             
-            NSDictionary  *summary = @{ SummaryNumberOfRecordsKey : @([records count]) };
+            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
             NSError  *serializationError = nil;
             NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
             
@@ -223,19 +223,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 {
     [self.taskArchive resetContent];
     self.taskArchive = nil;
-}
-
-/*********************************************************************************/
-#pragma  mark  - Recorder Delegate Methods
-/*********************************************************************************/
-
-- (void)recorder:(RKSTRecorder *)recorder didCompleteWithResult:(RKSTResult *)result
-{
-    self.recorderResult = result;
-}
-
-- (void)recorder:(RKSTRecorder *)recorder didFailWithError:(NSError *)error
-{
 }
 
 @end

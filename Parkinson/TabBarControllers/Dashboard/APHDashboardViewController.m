@@ -42,9 +42,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
                                                                      @(kAPHDashboardItemTypeGait),
-                                                                     @(kAPHDashboardItemTypeSteps),]];
-//                                                                     @(kAPHDashboardItemTypeAlerts),
-//                                                                     @(kAPHDashboardItemTypeInsights)]];
+                                                                     @(kAPHDashboardItemTypeSteps)
+                                                                     ]];
             
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
             [defaults synchronize];
@@ -66,14 +65,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-//    self.distanceScore = [[APHScoring alloc] initWithKind:APHDataKindWalk
-//                                             numberOfDays:5
-//                                        correlateWithKind:APHDataKindNone];
-//    
-//    self.heartRateScore = [[APHScoring alloc] initWithKind:APHDataKindHeartRate
-//                                              numberOfDays:5
-//                                         correlateWithKind:APHDataKindNone];
     
     [self prepareData];
 }
@@ -152,14 +143,12 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APHScoring  *scoring = [[APHScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                                                               numberOfDays:-5
-                                                            valueKey:SummaryNumberOfRecordsKey
+                                                            valueKey:kSummaryNumberOfRecordsKey
                                             dataKey:nil];
                     
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
                     item.graphData = scoring;
-//                    item.detailText = [NSString stringWithFormat:NSLocalizedString(@"Average : %lu", @"Average: {value} taps"),
-//                                       [[self.distanceScore averageDataPoint] integerValue]];
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryPurpleColor];
@@ -181,8 +170,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
                     item.graphData = scoring;
-                    item.detailText = [NSString stringWithFormat:NSLocalizedString(@"Average : %lu", @"Average: {value} steps"),
-                                       [[self.heartRateScore averageDataPoint] integerValue]];
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryYellowColor];
@@ -202,8 +189,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem  *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Steps", @"Steps");
                     item.graphData = scoring;
-                    item.detailText = [NSString stringWithFormat:NSLocalizedString(@"Average : %lu", @"Average: {value} steps"),
-                                       [[self.heartRateScore averageDataPoint] integerValue]];
+                    NSString  *detail = [NSString stringWithFormat:@"Average : %lu", [[scoring averageDataPoint] integerValue]];
+                    item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryGreenColor];

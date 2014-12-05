@@ -7,19 +7,19 @@
 
 #import <Foundation/Foundation.h>
 
-extern  NSString  *HealthApplicationNameKey;
-extern  NSString  *HealthApplicationName;
-extern  NSString  *HealthApplicationTaskKey;
-extern  NSString  *IntervalTappingName;
+extern  NSString  *kHealthApplicationNameKey;
+extern  NSString  *kHealthApplicationName;
+extern  NSString  *kHealthApplicationTaskKey;
+extern  NSString  *kIntervalTappingName;
 
-extern  NSString  *IntervalTappingRecordsKey;
+extern  NSString  *kIntervalTappingRecordsKey;
 
-extern  NSString  *ContainerSizeTargetRecordKey;
-extern  NSString  *LeftTargetFrameRecordKey;
-extern  NSString  *RightTargetFrameRecordKey;
+extern  NSString  *kContainerSizeTargetRecordKey;
+extern  NSString  *kLeftTargetFrameRecordKey;
+extern  NSString  *kRightTargetFrameRecordKey;
 
-extern  NSString  *XCoordinateRecordKey;
-extern  NSString  *YCoordinateRecordKey;
-extern  NSString  *TimeStampRecordKey;
+extern  NSString  *kXCoordinateRecordKey;
+extern  NSString  *kYCoordinateRecordKey;
+extern  NSString  *kTimeStampRecordKey;
 
-extern  NSString  *SummaryNumberOfRecordsKey;
+extern  NSString  *kSummaryNumberOfRecordsKey;

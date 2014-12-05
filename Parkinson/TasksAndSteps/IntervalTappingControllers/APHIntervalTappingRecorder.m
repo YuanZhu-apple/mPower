@@ -42,24 +42,24 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     APHRippleView  *targetView = (APHRippleView *)containerView.tapTargetsContainer;
     
     [self.intervalTappingDictionary setObject:NSStringFromCGSize(targetView.frame.size)
-                                       forKey:ContainerSizeTargetRecordKey];
+                                       forKey:kContainerSizeTargetRecordKey];
     
     [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperLeft.frame)
-                                       forKey:LeftTargetFrameRecordKey];
+                                       forKey:kLeftTargetFrameRecordKey];
     
     [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperRight.frame)
-                                       forKey:RightTargetFrameRecordKey];
+                                       forKey:kRightTargetFrameRecordKey];
     
     [self.intervalTappingDictionary setObject:self.tappingRecords
-                                       forKey:IntervalTappingRecordsKey];
+                                       forKey:kIntervalTappingRecordsKey];
 }
 
 - (void)addRecord:(CGPoint)point
 {
     NSDictionary  *record = @{
-                              TimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
-                              XCoordinateRecordKey : @(point.x),
-                              YCoordinateRecordKey : @(point.y)
+                              kTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
+                              kXCoordinateRecordKey : @(point.x),
+                              kYCoordinateRecordKey : @(point.y)
                               };
     [self.tappingRecords addObject:record];
 }
@@ -142,19 +142,22 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 {
     if (self.stopMethodWasCalled == NO) {
         if (self.tappingRecords != nil) {
-            id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
+            id <RKSTRecorderDelegate> substituteDelegate = self.delegate;
             
-            if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
+            if (substituteDelegate != nil && [substituteDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
                 RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
                 result.contentType = [self mimeType];
+                
                 NSError  *serializationError = nil;
                 result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
                 
                 if (serializationError != nil) {
-                    
+                    if (substituteDelegate != nil && [substituteDelegate respondsToSelector:@selector(recorder:didFailWithError:)]) {
+                        [substituteDelegate recorder:self didFailWithError:serializationError];
+                    }
                 } else {
                     result.filename = self.fileName;
-                    [kludgedDelegate recorder:self didCompleteWithResult:result];
+                    [substituteDelegate recorder:self didCompleteWithResult:result];
                 }
             }
         }

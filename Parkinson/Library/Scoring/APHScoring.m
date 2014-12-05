@@ -51,7 +51,7 @@ static NSString *const kDatasetValueKey = @"datasetValueKey";
 {
     _dataPoints = [NSMutableArray array];
     _correlateDataPoints = [NSMutableArray array];
-    _hasCorrelateDataPoints = NO; //(correlateKind != APHDataKindNone);
+    _hasCorrelateDataPoints = NO;
     
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -67,8 +67,6 @@ static NSString *const kDatasetValueKey = @"datasetValueKey";
                                             completion:^(BOOL success, NSError *error) {
                                                 if (!success) {
                                                     NSLog(@"You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: %@. If you're using a simulator, try it on a device.", error);
-                                                    
-                                                    return;
                                                 }
                                             }];
     }
@@ -122,7 +120,6 @@ static NSString *const kDatasetValueKey = @"datasetValueKey";
 }
 
 #pragma mark - Queries
-#pragma mark Core Data
 
 - (void)queryTaskId:(NSString *)taskId forDays:(NSUInteger)days valueKey:(NSString *)valueKey dataKey:(NSString *)dataKey
 {

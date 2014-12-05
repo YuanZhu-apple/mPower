@@ -7,19 +7,19 @@
 
 #import "APHIntervalTappingRecorderDataKeys.h"
 
-NSString  *HealthApplicationNameKey     = @"HealthApplicationName";
-NSString  *HealthApplicationName        = @"Parkinson Health Application";
-NSString  *HealthApplicationTaskKey     = @"HealthApplicationTask";
-NSString  *IntervalTappingName          = @"ParkinsonIntervalTappingTask";
+NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";
+NSString  *kHealthApplicationName        = @"Parkinson Health Application";
+NSString  *kHealthApplicationTaskKey     = @"HealthApplicationTask";
+NSString  *kIntervalTappingName          = @"ParkinsonIntervalTappingTask";
 
-NSString  *IntervalTappingRecordsKey    = @"ParkinsonIntervalTappingRecords";
+NSString  *kIntervalTappingRecordsKey    = @"ParkinsonIntervalTappingRecords";
 
-NSString  *ContainerSizeTargetRecordKey = @"ContainerSize";
-NSString  *LeftTargetFrameRecordKey     = @"LeftTargetFrame";
-NSString  *RightTargetFrameRecordKey    = @"RightTargetFrame";
+NSString  *kContainerSizeTargetRecordKey = @"ContainerSize";
+NSString  *kLeftTargetFrameRecordKey     = @"LeftTargetFrame";
+NSString  *kRightTargetFrameRecordKey    = @"RightTargetFrame";
 
-NSString  *XCoordinateRecordKey         = @"XCoordinate";
-NSString  *YCoordinateRecordKey         = @"YCoordinate";
-NSString  *TimeStampRecordKey           = @"TimeStamp";
+NSString  *kXCoordinateRecordKey         = @"XCoordinate";
+NSString  *kYCoordinateRecordKey         = @"YCoordinate";
+NSString  *kTimeStampRecordKey           = @"TimeStamp";
 
-NSString  *SummaryNumberOfRecordsKey    = @"SummaryNumberOfRecords";
+NSString  *kSummaryNumberOfRecordsKey    = @"SummaryNumberOfRecords";

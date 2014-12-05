@@ -192,18 +192,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 }
 
 /*********************************************************************************/
-#pragma  mark  - Recorder Delegate Methods
-/*********************************************************************************/
-
-- (void)recorder:(RKSTRecorder *)recorder didCompleteWithResult:(RKSTResult *)result
-{
-}
-
-- (void)recorder:(RKSTRecorder *)recorder didFailWithError:(NSError *)error
-{
-}
-
-/*********************************************************************************/
 #pragma mark - Audio Recorder Notification Method
 /*********************************************************************************/
 
