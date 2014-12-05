@@ -35,7 +35,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kBridgeEnvironmentKey                : @(SBBEnvironmentStaging),
                                            kHKReadPermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
-                                                   HKQuantityTypeIdentifierHeight
+                                                   HKQuantityTypeIdentifierHeight,
+                                                   HKQuantityTypeIdentifierStepCount
                                                    ],
                                            kHKWritePermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
@@ -43,7 +44,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    ],
                                            kAppServicesListRequiredKey           : @[
                                                    @(kSignUpPermissionsTypeLocation),
-                                                   //@(kSignUpPermissionsTypePushNotifications),
                                                    @(kSignUpPermissionsTypeCoremotion)
                                                    ]
                                            }];
@@ -53,7 +53,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (void) setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
-                                                 kPrimaryAppColorKey : [UIColor colorWithRed:255/255.0f                 green:0 blue:56/255.0f alpha:1.000]
+                                                 kPrimaryAppColorKey : [UIColor colorWithRed:255/255.0f green:0 blue:56/255.0f alpha:1.000]
 //                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]
                                                  }];
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
@@ -88,38 +88,28 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
 
 -(void)setUpCollectors
 {
-    //if (self.currentUser.isConsented) {
     NSError *error = nil;
     {
+        //Setting the Audio Session Category for voice prompts when device is locked
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        
+        NSError *setCategoryError = nil;
+        BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+        if (!success) { /* handle the error condition */ }
+        
+        NSError *activationError = nil;
+        [audioSession setActive:YES error:&activationError];
+        [activationError handle];
+        
         HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         RKSTHealthCollector *healthCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
         if (!healthCollector)
         {
-            NSLog(@"Error creating health collector: %@", error);
+            [error handle];
             [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
             goto errReturn;
         }
-        
-        HKQuantityType *quantityType2 = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodGlucose];
-        HKUnit *unit = [HKUnit unitFromString:@"mg/dL"];
-        RKSTHealthCollector *glucoseCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType2 unit:unit startDate:nil error:&error];
-        
-        if (!glucoseCollector)
-        {
-            NSLog(@"Error creating glucose collector: %@", error);
-            [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
-            goto errReturn;
-        }
-        
-        HKCorrelationType *bpType = (HKCorrelationType *)[HKCorrelationType correlationTypeForIdentifier:HKCorrelationTypeIdentifierBloodPressure];
-        RKSTHealthCorrelationCollector *bpCollector = [self.dataSubstrate.study addHealthCorrelationCollectorWithCorrelationType:bpType sampleTypes:@[[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureDiastolic], [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodPressureSystolic]] units:@[[HKUnit unitFromString:@"mmHg"], [HKUnit unitFromString:@"mmHg"]] startDate:nil error:&error];
-        if (!bpCollector)
-        {
-            NSLog(@"Error creating BP collector: %@", error);
-            [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
-            goto errReturn;
-        }
-        
+
         RKSTMotionActivityCollector *motionCollector = [self.dataSubstrate.study addMotionActivityCollectorWithStartDate:nil error:&error];
         if (!motionCollector)
         {
@@ -135,8 +125,6 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
     
 errReturn:
     return;
-    // }
-    
 }
 
 /*********************************************************************************/
