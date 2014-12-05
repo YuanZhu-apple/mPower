@@ -12,22 +12,16 @@
                           },
                           
                 {
-                    "title": "Cardiovascular Disease information",
-                    "details": "disease_information",
+                    "title": "Life with Parkinson's",
+                    "details": "lifewithPD",
                     "icon_image": "disease_icon",
-                    "tint_color": "red"
+                    "tint_color": "purple"
                 },
                 {
                     "title": "Symptoms",
                     "details": "symptoms",
                     "icon_image": "diagnostics_icon",
                     "tint_color": "red"
-                },
-                {
-                    "title": "Treatment Options",
-                    "details": "treatment",
-                    "icon_image": "treatment_icon",
-                    "tint_color": "yellow"
                 }
             ]
         },
