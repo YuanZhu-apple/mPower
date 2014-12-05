@@ -1,10 +1,10 @@
-//
-//  APHWalkingTaskViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHWalkingTaskViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHWalkingTaskViewController.h"
 
 #import <objc/message.h>

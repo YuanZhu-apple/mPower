@@ -1,10 +1,10 @@
-//
-//  APHIntervalTappingRecorder.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingRecorder.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHIntervalTappingRecorder.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"

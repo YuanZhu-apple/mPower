@@ -1,10 +1,10 @@
-//
-//  APHIntervalTappingStepsViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingStepsViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHIntervalTappingStepsViewController.h"
 #import "APHIntervalTappingRecorder.h"
 #import "APHIntervalTappingTargetContainer.h"

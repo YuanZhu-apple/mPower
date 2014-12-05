@@ -1,10 +1,10 @@
-//
-//  APHDataPoint.h
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHDataPoint.h 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import <Foundation/Foundation.h>
 
 @interface APHDataPoint : NSObject

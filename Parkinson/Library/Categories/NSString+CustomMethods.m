@@ -1,10 +1,10 @@
-//
-//  NSString+CustomMethods.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  NSString+CustomMethods.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "NSString+CustomMethods.h"
 
 @implementation NSString (CustomMethods)
