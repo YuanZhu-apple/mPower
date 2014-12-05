@@ -21,6 +21,7 @@
 		CF535F891A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF535F871A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m */; };
 		CF535F8A1A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */; };
 		CF535F8D1A15ADEB00F4C023 /* APHRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF535F8C1A15ADEB00F4C023 /* APHRippleView.m */; };
+		CF832C091A30F3A000D20982 /* APHIntervalTappingRecorderDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = CF832C081A30F3A000D20982 /* APHIntervalTappingRecorderDataKeys.m */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -112,6 +113,8 @@
 		CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHIntervalTappingRecorderCustomView.xib; sourceTree = "<group>"; };
 		CF535F8B1A15ADEB00F4C023 /* APHRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHRippleView.h; sourceTree = "<group>"; };
 		CF535F8C1A15ADEB00F4C023 /* APHRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHRippleView.m; sourceTree = "<group>"; };
+		CF832C081A30F3A000D20982 /* APHIntervalTappingRecorderDataKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingRecorderDataKeys.m; sourceTree = "<group>"; };
+		CF832C0B1A30F43C00D20982 /* APHIntervalTappingRecorderDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderDataKeys.h; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -356,6 +359,8 @@
 				F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */,
 				F5D14EE619CC9BC900650FBB /* APHIntervalTappingRecorder.h */,
 				F5D14EE719CC9BC900650FBB /* APHIntervalTappingRecorder.m */,
+				CF832C0B1A30F43C00D20982 /* APHIntervalTappingRecorderDataKeys.h */,
+				CF832C081A30F3A000D20982 /* APHIntervalTappingRecorderDataKeys.m */,
 				CF535F861A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.h */,
 				CF535F871A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m */,
 				CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */,
@@ -540,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF832C091A30F3A000D20982 /* APHIntervalTappingRecorderDataKeys.m in Sources */,
 				CFBEA21D1A21A2DE00937707 /* APHPhonationMeteringView.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
 				CFBEA1D91A211FE200937707 /* APHAudioRecorder.m in Sources */,

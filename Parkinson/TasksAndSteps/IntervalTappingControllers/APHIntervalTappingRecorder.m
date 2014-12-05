@@ -1,5 +1,5 @@
 //
-//  APHIntervalTappingRecorder.h
+//  APHIntervalTappingRecorder.m
 //  Parkinson's
 //
 //  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
@@ -8,24 +8,9 @@
 #import "APHIntervalTappingRecorder.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
-
-
-static  NSString  *kHealthApplicationNameKey     = @"HealthApplicationName";
-static  NSString  *kHealthApplicationName        = @"Parkinson Health Application";
-static  NSString  *kHealthApplicationTaskKey     = @"HealthApplicationTask";
-static  NSString  *kIntervalTappingName          = @"ParkinsonIntervalTappingTask";
-
-static  NSString  *kIntervalTappingRecordsKey    = @"ParkinsonIntervalTappingRecords";
-
-static  NSString  *kContainerSizeTargetRecordKey = @"ContainerSize";
-static  NSString  *kLeftTargetFrameRecordKey     = @"LeftTargetFrame";
-static  NSString  *kRightTargetFrameRecordKey    = @"RightTargetFrame";
-
-static  NSString  *kXCoordinateRecordKey         = @"XCoordinate";
-static  NSString  *kYCoordinateRecordKey         = @"YCoordinate";
-static  NSString  *kYTimeStampRecordKey          = @"TimeStamp";
 
 static  CGFloat  kRipplerMinimumRadius           =   5.0;
 static  CGFloat  kRipplerMaximumRadius           =  80.0;
@@ -42,6 +27,8 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 @property  (nonatomic, assign)  NSUInteger                             tapsCounter;
 
+@property  (nonatomic, assign)  BOOL                                   stopMethodWasCalled;
+
 @end
 
 @implementation APHIntervalTappingRecorder
@@ -55,24 +42,24 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
     APHRippleView  *targetView = (APHRippleView *)containerView.tapTargetsContainer;
     
     [self.intervalTappingDictionary setObject:NSStringFromCGSize(targetView.frame.size)
-                                       forKey:kContainerSizeTargetRecordKey];
+                                       forKey:ContainerSizeTargetRecordKey];
     
     [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperLeft.frame)
-                                       forKey:kLeftTargetFrameRecordKey];
+                                       forKey:LeftTargetFrameRecordKey];
     
     [self.intervalTappingDictionary setObject:NSStringFromCGRect(targetView.tapperRight.frame)
-                                       forKey:kRightTargetFrameRecordKey];
+                                       forKey:RightTargetFrameRecordKey];
     
     [self.intervalTappingDictionary setObject:self.tappingRecords
-                                       forKey:kIntervalTappingRecordsKey];
+                                       forKey:IntervalTappingRecordsKey];
 }
 
 - (void)addRecord:(CGPoint)point
 {
     NSDictionary  *record = @{
-                              kYTimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
-                              kXCoordinateRecordKey : @(point.x),
-                              kYCoordinateRecordKey : @(point.y)
+                              TimeStampRecordKey  : @([[NSDate date] timeIntervalSinceReferenceDate]),
+                              XCoordinateRecordKey : @(point.x),
+                              YCoordinateRecordKey : @(point.y)
                               };
     [self.tappingRecords addObject:record];
 }
@@ -146,28 +133,34 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 #pragma  -  Recorder Control Methods
 
+- (void)start
+{
+    [super start];
+}
+
 - (void)stop
 {
-    if (self.tappingRecords != nil) {
-//      NSLog(@"%@", self.intervalTappingDictionary);
-        
-        id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
-        
-        if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
-            RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
-            result.contentType = [self mimeType];
-            NSError  *serializationError = nil;
-            result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
+    if (self.stopMethodWasCalled == NO) {
+        if (self.tappingRecords != nil) {
+            id <RKSTRecorderDelegate> kludgedDelegate = self.delegate;
             
-            if (serializationError != nil) {
+            if (kludgedDelegate != nil && [kludgedDelegate respondsToSelector:@selector(recorder:didCompleteWithResult:)]) {
+                RKSTDataResult  *result = [[RKSTDataResult alloc] initWithIdentifier:self.step.identifier];
+                result.contentType = [self mimeType];
+                NSError  *serializationError = nil;
+                result.data = [NSJSONSerialization dataWithJSONObject:self.intervalTappingDictionary options:(NSJSONWritingOptions)0 error:&serializationError];
                 
-            } else {
-                result.filename = self.fileName;
-                [kludgedDelegate recorder:self didCompleteWithResult:result];
+                if (serializationError != nil) {
+                    
+                } else {
+                    result.filename = self.fileName;
+                    [kludgedDelegate recorder:self didCompleteWithResult:result];
+                }
             }
         }
+        self.stopMethodWasCalled = YES;
+        [super stop];
     }
-    [super stop];
 }
 
 - (NSString*)dataType

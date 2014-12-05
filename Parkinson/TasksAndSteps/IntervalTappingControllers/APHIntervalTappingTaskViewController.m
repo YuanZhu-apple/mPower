@@ -8,6 +8,7 @@
 #import "APHIntervalTappingTaskViewController.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
 
@@ -32,6 +33,8 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 @property  (nonatomic, strong)  APHRippleView  *tappingTargetsContainer;
 
 @property  (nonatomic, strong)  RKSTDataArchive  *taskArchive;
+
+@property  (nonatomic, strong)  RKSTResult       *recorderResult;
 
 @end
 
@@ -127,7 +130,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-
 - (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
 {
     if (kIntervalTappingStep102 == stepViewController.step.identifier) {
@@ -181,14 +183,59 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     return controller;
 }
 
+- (NSString *)createResultSummary
+{
+    RKSTResult  *aStepResult = [self.result resultForIdentifier:kIntervalTappingStep103];
+    NSArray  *stepResults = nil;
+    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
+        stepResults = [(RKSTStepResult *)aStepResult results];
+    }
+    NSString  *contentString = @"";
+    if (stepResults != nil) {
+        RKSTResult  *aDataResult = [stepResults firstObject];
+        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
+            NSData  *data = [(RKSTDataResult *)aDataResult data];
+            
+            NSError  *error = nil;
+            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSArray  *records = [dictionary objectForKey:IntervalTappingRecordsKey];
+            
+            NSDictionary  *summary = @{ SummaryNumberOfRecordsKey : @([records count]) };
+            NSError  *serializationError = nil;
+            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
+            
+            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
+        }
+    }
+    return contentString;
+}
+
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
+
+- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+{
+    [super taskViewControllerDidComplete:taskViewController];
+}
 
 - (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
 {
     [self.taskArchive resetContent];
     self.taskArchive = nil;
+}
+
+/*********************************************************************************/
+#pragma  mark  - Recorder Delegate Methods
+/*********************************************************************************/
+
+- (void)recorder:(RKSTRecorder *)recorder didCompleteWithResult:(RKSTResult *)result
+{
+    self.recorderResult = result;
+}
+
+- (void)recorder:(RKSTRecorder *)recorder didFailWithError:(NSError *)error
+{
 }
 
 @end

@@ -1,12 +1,17 @@
 //
 //  APHScoring.m
-//  Parkinson's
+//  CardioHealth
 //
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
+//  Created by Farhan Ahmed on 10/29/14.
+//  Copyright (c) 2014 Y Media Labs. All rights reserved.
 //
 
 #import "APHScoring.h"
-#import "APHDataPoint.h"
+
+static NSDateFormatter *dateFormatter = nil;
+
+static NSString *const kDatasetDateKey  = @"datasetDateKey";
+static NSString *const kDatasetValueKey = @"datasetValueKey";
 
 @interface APHScoring()
 
@@ -15,138 +20,264 @@
 @property (nonatomic) NSUInteger current;
 @property (nonatomic) NSUInteger correlatedCurrent;
 @property (nonatomic) BOOL hasCorrelateDataPoints;
+@property (nonatomic, strong) HKHealthStore *healthStore;
 
 @end
 
 @implementation APHScoring
 
-/**
- * @brief   Returns an instance of APHScoring.
- *
- * @param   kind            One of the APHScoreDataKinds enums choices
- *
- * @param   numberOfDays    Number of days that the data is needed.
- *
- * @note    This is the designated initializer for this class.
- *
- */
-
 /*
- * @usage  Both APHScoring.h and APHDataPoint.h should be imported.
+ * @usage  APHScoring.h should be imported.
  *
- *   APHScoring *scoring = [[APHScoring alloc] initWithKind:APHDataKindWalk numberOfDays:10 correlateWithKind:APHDataKindNone];
+ *   There are two ways to get data, Core Data and HealthKit. Each source can
+ *   
+ *   For Core Data:
+ *      APHScoring *scoring = [APHScoring alloc] initWithTaskId:taskId numberOfDays:-5 valueKey:@"value";
+ *
+ *   For HealthKit:
+ *      APHScoring *scoring = [APHScoring alloc] initWithHealthKitQuantityType:[HKQuantityType ...] numberOfDays:-5
  *
  *   NSLog(@"Score Min: %f", [[scoring minimumDataPoint] doubleValue]);
  *   NSLog(@"Score Max: %f", [[scoring maximumDataPoint] doubleValue]);
  *   NSLog(@"Score Avg: %f", [[scoring averageDataPoint] doubleValue]);
  *
- *   APHDataPoint *score = nil;
+ *   NSDictionary *score = nil;
  *   while (score = [scoring nextObject]) {
- *       NSLog(@"Score: %f", [score.value doubleValue]);
+ *       NSLog(@"Score: %f", [[score valueForKey:@"value"] doubleValue]);
  *   }
  */
-- (instancetype)initWithKind:(NSUInteger)kind numberOfDays:(NSUInteger)numberOfDays correlateWithKind:(NSUInteger)correlateKind
+
+- (void)sharedInit
+{
+    _dataPoints = [NSMutableArray array];
+    _correlateDataPoints = [NSMutableArray array];
+    _hasCorrelateDataPoints = NO; //(correlateKind != APHDataKindNone);
+    
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    
+    if ([HKHealthStore isHealthDataAvailable]) {
+        _healthStore = [[HKHealthStore alloc] init];
+        
+        NSSet *readDataTypes = [self healthKitDataTypesToRead];
+        
+        [_healthStore requestAuthorizationToShareTypes:nil
+                                             readTypes:readDataTypes
+                                            completion:^(BOOL success, NSError *error) {
+                                                if (!success) {
+                                                    NSLog(@"You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: %@. If you're using a simulator, try it on a device.", error);
+                                                    
+                                                    return;
+                                                }
+                                            }];
+    }
+}
+
+/**
+ * @brief   Returns an instance of APHScoring.
+ *
+ * @param   taskId          The ID of the task whoes data needs to be displayed
+ *
+ * @param   numberOfDays    Number of days that the data is needed. Negative will produce data
+ *                          from past and positive will yeild future days.
+ *
+ * @param   valueKey        The key that is used for storing data
+ *
+ */
+- (instancetype)initWithTask:(NSString *)taskId
+                numberOfDays:(NSUInteger)numberOfDays
+                    valueKey:(NSString *)valueKey
+                     dataKey:(NSString *)dataKey
 {
     self = [super init];
     
     if (self) {
-        _dataPoints = [NSMutableArray array];
-        _correlateDataPoints = [NSMutableArray array];
-        _hasCorrelateDataPoints = (correlateKind != APHDataKindNone);
-        
-        [self generateDataPointsForKind:kind numberOfDays:numberOfDays correlateWithKind:correlateKind];
+        [self sharedInit];
+        [self queryTaskId:taskId forDays:numberOfDays valueKey:valueKey dataKey:dataKey];
     }
     
     return self;
 }
 
-- (void)generateDataPointsForKind:(NSUInteger)kind numberOfDays:(NSUInteger)numberOfDays correlateWithKind:(NSUInteger)correlateKind
-{
-    // The intent is that we will check the datastore first to see if
-    // the task in question has any data. If so, we will pull that from the
-    // datastore. Otherwise, for testing/dev purpose we will generate the requested
-    // data.
-    [self fakeDataForKind:kind numberOfDays:numberOfDays correlateWithKind:correlateKind];
-}
-
-
-/*
- * Commenting out the below method until the proper startegy can be worked out as to how best
- * to get at the data that is being persisted using CoreData. When uncommenting, don't forget to
- * import CoreData.
+/**
+ * @brief   Returns an instance of APHScoring.
+ *
+ * @param   quantityType    The HealthKit quantity type
+ *
+ * @param   numberOfDays    Number of days that the data is needed. Negative will produce data
+ *                          from past and positive will yeild future days.
+ *
  */
-//- (void)dataPointsFromDataStoreForTask:(NSString *)taskUUID kind:(NSUInteger)kind numberOfDays:(NSUInteger)numberOfDays
-//{
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"APCTask" inManagedObjectContext:<#context#>];
-//    [fetchRequest setEntity:entity];
-//    
-//    // Specify criteria for filtering which objects to fetch
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uid == %@", <#arguments#>];
-//    [fetchRequest setPredicate:predicate];
-//    
-//    // Specify how the fetched objects should be sorted
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"<#key#>"
-//                                                                   ascending:YES];
-//    
-//    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
-//
-//    NSError *error = nil;
-//    NSArray *fetchedObjects = [<#context#> executeFetchRequest:fetchRequest error:&error];
-//    
-//    if (fetchedObjects == nil) {
-//        <#Error handling code#>
-//    }
-//}
-
-- (void)fakeDataForKind:(NSUInteger)kind numberOfDays:(NSUInteger)numberOfDays correlateWithKind:(NSUInteger)correlateKind
-{   
-    self.dataPoints = [[self generateDataPointsForSpan:numberOfDays kind:kind] mutableCopy];
+- (instancetype)initWithHealthKitQuantityType:(HKQuantityType *)quantityType numberOfDays:(NSUInteger)numberOfDays
+{
+    self = [super init];
     
-    if (self.hasCorrelateDataPoints) {
-        self.correlateDataPoints = [[self generateDataPointsForSpan:numberOfDays kind:kind] mutableCopy];
+    if (self) {
+        [self sharedInit];
+        [self statsCollectionQueryForQuantityType:quantityType forDays:numberOfDays];
+    }
+    
+    return self;
+}
+
+#pragma mark - Queries
+#pragma mark Core Data
+
+- (void)queryTaskId:(NSString *)taskId forDays:(NSUInteger)days valueKey:(NSString *)valueKey dataKey:(NSString *)dataKey
+{
+    APCAppDelegate *appDelegate = (APCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startOn"
+                                                                   ascending:YES];
+    
+    NSFetchRequest *request = [APCScheduledTask request];
+    
+    NSDate *startDate = [[NSCalendar currentCalendar] dateBySettingHour:0
+                                                                 minute:0
+                                                                 second:0
+                                                                 ofDate:[self dateForSpan:days]
+                                                                options:0];
+    
+    NSDate *endDate = [[NSCalendar currentCalendar] dateBySettingHour:23
+                                                               minute:59
+                                                               second:59
+                                                               ofDate:[NSDate date]
+                                                              options:0];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(task.taskID == %@) AND (startOn >= %@) AND (startOn <= %@)",
+                              taskId, startDate, endDate];
+    
+    request.predicate = predicate;
+    request.sortDescriptors = @[sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *tasks = [appDelegate.dataSubstrate.mainContext executeFetchRequest:request error:&error];
+
+    for (APCScheduledTask *task in tasks) {
+        if ([task.completed boolValue]) {
+            NSDictionary *taskResult = [self retrieveResultSummaryFromResults:task.results];
+            
+            if (taskResult) {
+                if (!dataKey) {
+                    [self.dataPoints addObject:@{
+                                         kDatasetDateKey: task.startOn,
+                                         kDatasetValueKey: [taskResult valueForKey:valueKey]
+                                        }];
+                } else {
+                    NSDictionary *nestedData = [taskResult valueForKey:dataKey];
+                    
+                    if (nestedData) {
+                        [self.dataPoints addObject:@{
+                                                     kDatasetDateKey: task.startOn,
+                                                     kDatasetValueKey: [taskResult valueForKey:valueKey]
+                                                     }];
+                    }
+                }
+            }
+        }
     }
 }
 
-- (NSArray *)generateDataPointsForSpan:(NSUInteger)daySpan kind:(NSUInteger)kind
+- (NSDictionary *)retrieveResultSummaryFromResults:(NSSet *)results
 {
-    NSMutableArray *points = [NSMutableArray array];
+    NSDictionary *result = nil;
+    NSArray *scheduledTaskResults = [results allObjects];
     
-    NSNumber *maxBaseline = nil;
-    NSNumber *minBaseline = nil;
+    // sort the results in a decsending order,
+    // in case there are more than one result for a meal time.
+    NSSortDescriptor *sortByCreateAtDescending = [[NSSortDescriptor alloc] initWithKey:@"createdAt"
+                                                                             ascending:NO];
     
-    switch (kind) {
-        case APHDataKindSystolicBloodPressure:
-            maxBaseline = @120;
-            minBaseline = @60;
+    NSArray *sortedScheduleTaskresults = [scheduledTaskResults sortedArrayUsingDescriptors:@[sortByCreateAtDescending]];
+    
+    // We are iterating throught the results because:
+    // a.) There could be more than one result
+    // b.) In case the last result is nil, we will pick the next result that has a value.
+    NSString *resultSummary = nil;
+    
+    for (APCResult *result in sortedScheduleTaskresults) {
+        resultSummary = [result resultSummary];
+        if (resultSummary) {
             break;
-        case APHDataKindTotalCholesterol:
-            maxBaseline = @200;
-            minBaseline = @50;
-            break;
-        case APHDataKindWalk:
-            maxBaseline = @1000;
-            minBaseline = @1;
-            break;
-        case APHDataKindHeartRate:
-            maxBaseline = @100;
-            minBaseline = @60;
-        case APHDataKindHDL:
-            maxBaseline = @60;
-            minBaseline = @40;
-        default:
-            NSAssert(YES, @"Data kind is not implemented.");
-            break;
+        }
     }
     
-    for (NSInteger day = 1; day <= daySpan; day++) {
-        NSDate *span = [self dateForSpan:-(daySpan - day)];
-        NSInteger point = arc4random() % ([maxBaseline integerValue] - [minBaseline integerValue] + 1) + [minBaseline integerValue];
-        APHDataPoint *dp = [[APHDataPoint alloc] initWithValue:[NSNumber numberWithInteger:point] timestamp:span];
-        [points addObject:dp];
+    if (resultSummary) {
+        NSData *resultData = [resultSummary dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error = nil;
+        result = [NSJSONSerialization JSONObjectWithData:resultData
+                                                 options:NSJSONReadingAllowFragments
+                                                   error:&error];
     }
     
-    return points;
+    return result;
+}
+
+#pragma mark HealthKit
+
+- (void)statsCollectionQueryForQuantityType:(HKQuantityType *)quantityType forDays:(NSInteger)days
+{
+    NSMutableArray *queryDataset = [NSMutableArray array];
+    NSDateComponents *interval = [[NSDateComponents alloc] init];
+    interval.day = 1;
+    
+    NSDate *startDate = [[NSCalendar currentCalendar] dateBySettingHour:0
+                                                                 minute:0
+                                                                 second:0
+                                                                 ofDate:[self dateForSpan:days]
+                                                                options:0];
+    
+    NSLog(@"Week Start/End: %@/%@", startDate, [NSDate date]);
+    
+    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:[NSDate date] options:HKQueryOptionStrictStartDate];
+    
+    HKStatisticsCollectionQuery *query = [[HKStatisticsCollectionQuery alloc] initWithQuantityType:quantityType
+                                                                           quantitySamplePredicate:predicate
+                                                                                           options:HKStatisticsOptionCumulativeSum
+                                                                                        anchorDate:startDate
+                                                                                intervalComponents:interval];
+    // set the results handler
+    query.initialResultsHandler = ^(HKStatisticsCollectionQuery *query, HKStatisticsCollection *results, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSDate *endDate = [[NSCalendar currentCalendar] dateBySettingHour:23
+                                                                       minute:59
+                                                                       second:59
+                                                                       ofDate:[NSDate date]
+                                                                      options:0];
+            NSDate *beginDate = startDate;
+            
+            [results enumerateStatisticsFromDate:beginDate
+                                          toDate:endDate
+                                       withBlock:^(HKStatistics *result, BOOL *stop) {
+                                           HKQuantity *quantity = result.sumQuantity;
+                                           
+                                           if (quantity) {
+                                               NSDate *date = result.startDate;
+                                               double value = [quantity doubleValueForUnit:[HKUnit meterUnit]];
+                                               
+                                               NSDictionary *dataPoint = @{
+                                                                           kDatasetDateKey: [dateFormatter stringFromDate:date],
+                                                                           kDatasetValueKey: [NSNumber numberWithDouble:value]
+                                                                           };
+                                               
+                                               [queryDataset addObject:dataPoint];
+                                               
+                                               NSLog(@"%@: %f", date, value);
+                                           }
+                                       }];
+            [self dataIsAvailableFromHealthKit:queryDataset];
+        }
+    };
+    
+    [self.healthStore executeQuery:query];
+}
+
+- (void)dataIsAvailableFromHealthKit:(NSArray *)dataset
+{
+    self.dataPoints = [dataset mutableCopy];
 }
 
 /**
@@ -172,17 +303,17 @@
 
 - (NSNumber *)minimumDataPoint
 {
-    return [self.dataPoints valueForKeyPath:@"@min.value"];
+    return [self.dataPoints valueForKeyPath:@"@min.datasetValueKey"];
 }
 
 - (NSNumber *)maximumDataPoint
 {
-    return [self.dataPoints valueForKeyPath:@"@max.value"];
+    return [self.dataPoints valueForKeyPath:@"@max.datasetValueKey"];
 }
 
 - (NSNumber *)averageDataPoint
 {
-    return [self.dataPoints valueForKeyPath:@"@avg.value"];
+    return [self.dataPoints valueForKeyPath:@"@avg.datasetValueKey"];
 }
 
 - (id)nextObject
@@ -190,10 +321,6 @@
     id nextPoint = nil;
     
     if (self.current < [self.dataPoints count]) {
-        nextPoint = [self.dataPoints objectAtIndex:self.current++];
-    } else {
-        // reset index
-        self.current = 0;
         nextPoint = [self.dataPoints objectAtIndex:self.current++];
     }
     
@@ -209,6 +336,16 @@
     }
     
     return nextCorrelatedPoint;
+}
+
+#pragma mark - Helpers
+
+- (NSSet *)healthKitDataTypesToRead {
+    HKQuantityType *steps = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    HKQuantityType *carbs = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCarbohydrates];
+    HKQuantityType *sugar = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietarySugar];
+    
+    return [NSSet setWithObjects:steps, carbs, sugar, nil];
 }
 
 #pragma mark - Graph Datasource
@@ -251,11 +388,11 @@
     CGFloat value;
     
     if (plotIndex == 0) {
-        APHDataPoint *point = [self nextObject];
-        value = [point.value doubleValue];
+        NSDictionary *point = [self nextObject];
+        value = [[point valueForKey:kDatasetValueKey] doubleValue];
     } else {
-        APHDataPoint *correlatedPoint = [self nextCorrelatedObject];
-        value = [correlatedPoint.value doubleValue];
+        NSDictionary *correlatedPoint = [self nextCorrelatedObject];
+        value = [[correlatedPoint valueForKey:kDatasetValueKey] doubleValue];
     }
     
     return value;
