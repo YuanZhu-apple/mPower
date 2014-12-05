@@ -114,7 +114,9 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     stepViewController.continueButton = nil;
     stepViewController.skipButton     = nil;
     
-    if (([stepViewController.step.identifier isEqualToString:kGetReadyStep] == YES) || ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
+    if (([stepViewController.step.identifier isEqualToString:kPhonationStep101Key] == YES) ||
+        ([stepViewController.step.identifier isEqualToString:kGetReadyStep] == YES) ||
+        ([stepViewController.step.identifier isEqualToString:kPhonationStep102Key] == YES)) {
         
         UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
         stepViewController.cancelButton = cancellor;
