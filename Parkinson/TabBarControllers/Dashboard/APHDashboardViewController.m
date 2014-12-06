@@ -10,9 +10,6 @@
 #import "APHDashboardEditViewController.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
 
-/* Scoring */
-#import "APHScoring.h"
-
 static NSString * const kAPCBasicTableViewCellIdentifier       = @"APCBasicTableViewCell";
 static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetailTableViewCell";
 
@@ -20,8 +17,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 
 @property (nonatomic, strong) NSMutableArray *rowItemsOrder;
 
-@property (nonatomic, strong) APHScoring *distanceScore;
-@property (nonatomic, strong) APHScoring *heartRateScore;
+@property (nonatomic, strong) APCScoring *distanceScore;
+@property (nonatomic, strong) APCScoring *heartRateScore;
 
 @property (nonatomic, strong) APCPresentAnimator *presentAnimator;
 
@@ -141,7 +138,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             switch (rowType) {
                 case kAPHDashboardItemTypeIntervalTapping:
                 {
-                    APHScoring  *scoring = [[APHScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
+                    APCScoring  *scoring = [[APCScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                                                               numberOfDays:-5
                                                             valueKey:kSummaryNumberOfRecordsKey
                                             dataKey:nil];
@@ -162,7 +159,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     break;
                 case kAPHDashboardItemTypeGait:
                 {
-                    APHScoring  *scoring = [[APHScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
+                    APCScoring  *scoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                                                                numberOfDays:-5
                                                                    valueKey:@"value"
                                             dataKey:nil];
@@ -184,7 +181,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 case kAPHDashboardItemTypeSteps:
                 {
                     HKQuantityType  *hkStepCount = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-                    APHScoring  *scoring = [[APHScoring alloc] initWithHealthKitQuantityType:hkStepCount numberOfDays:-5];
+                    APCScoring  *scoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkStepCount unit:[HKUnit countUnit] numberOfDays:-5];
                     
                     APCTableViewDashboardGraphItem  *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Steps", @"Steps");
