@@ -20,8 +20,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 @interface APHAppDelegate ()
 
-@property (nonatomic, strong) RKSTTaskViewController *consentVC;
-
 @end
 
 @implementation APHAppDelegate
