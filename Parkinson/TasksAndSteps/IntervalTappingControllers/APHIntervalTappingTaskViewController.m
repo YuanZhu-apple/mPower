@@ -1,13 +1,14 @@
-//
-//  APHIntervalTappingTaskViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingTaskViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHIntervalTappingTaskViewController.h"
 
 #import "APHIntervalTappingRecorderCustomView.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
 
@@ -32,6 +33,8 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 @property  (nonatomic, strong)  APHRippleView  *tappingTargetsContainer;
 
 @property  (nonatomic, strong)  RKSTDataArchive  *taskArchive;
+
+@property  (nonatomic, strong)  RKSTResult       *recorderResult;
 
 @end
 
@@ -127,7 +130,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-
 - (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
 {
     if (kIntervalTappingStep102 == stepViewController.step.identifier) {
@@ -181,9 +183,41 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     return controller;
 }
 
+- (NSString *)createResultSummary
+{
+    RKSTResult  *aStepResult = [self.result resultForIdentifier:kIntervalTappingStep103];
+    NSArray  *stepResults = nil;
+    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
+        stepResults = [(RKSTStepResult *)aStepResult results];
+    }
+    NSString  *contentString = @"";
+    if (stepResults != nil) {
+        RKSTResult  *aDataResult = [stepResults firstObject];
+        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
+            NSData  *data = [(RKSTDataResult *)aDataResult data];
+            
+            NSError  *error = nil;
+            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
+            
+            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
+            NSError  *serializationError = nil;
+            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
+            
+            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
+        }
+    }
+    return contentString;
+}
+
 /*********************************************************************************/
 #pragma  mark  - TaskViewController delegates
 /*********************************************************************************/
+
+- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+{
+    [super taskViewControllerDidComplete:taskViewController];
+}
 
 - (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
 {

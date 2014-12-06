@@ -1,10 +1,10 @@
-//
-//  APHAudioRecorderConfiguration.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHAudioRecorderConfiguration.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHAudioRecorderConfiguration.h"
 #import "APHAudioRecorder.h"
 
@@ -19,7 +19,6 @@
         NSError  *fileError = nil;
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&fileError];
         if (fileError != nil) {
-//          NSLog(@"APHAudioRecorderConfiguration directory creation error = %@", fileError);
         }
     }
     NSURL  *pathUrl = nil;

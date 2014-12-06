@@ -1,10 +1,10 @@
-//
-//  APHWalkingTaskViewController.m
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHWalkingTaskViewController.m 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import "APHWalkingTaskViewController.h"
 
 #import <objc/message.h>
@@ -205,25 +205,31 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
 
+- (APCStepViewController *)setupInstructionStepWithStep:(RKSTStep *)step
+{
+    APCStepViewController  *controller = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+    APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+    
+    instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
+    instController.headingsArray = @[ @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test" ];
+    instController.messagesArray  = @[
+                                      @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
+                                      @"After the phone vibrates, walk 20 steps in a straight line.",
+                                      @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
+                                      @"Once you return to the starting point, you will feel a third vibration.  Stand as still as possible for 30 seconds.",
+                                      @"After the test is complete, your results will be analyzed and the results will be returned when ready."
+                                      ];
+    controller.delegate = self;
+    controller.step = step;
+    return  controller;
+}
+
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     APCStepViewController  *controller = nil;
     
     if ([step.identifier isEqualToString:kWalkingStep101Key]) {
-        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
-        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
-        
-        instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
-        instController.headingsArray = @[ @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test" ];
-        instController.messagesArray  = @[
-                                          @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
-                                          @"After the phone vibrates, walk 20 steps in a straight line.",
-                                          @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
-                                          @"Once you return to the starting point, you will feel a third vibration.  Stand as still as possible for 30 seconds.",
-                                          @"After the test is complete, your results will be analyzed and the results will be returned when ready."
-                                          ];
-        controller.delegate = self;
-        controller.step = step;
+        controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
     } else {
         NSDictionary  *stepsToControllersMap = @{
                                                  kWalkingStep105Key : [APCSimpleTaskSummaryViewController class]
@@ -241,6 +247,42 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     }
     return  controller;
 }
+
+//- (NSString *)createResultSummary
+//{
+//    NSArray  *taskResults = self.result.results;
+//    for (RKSTResult *aStepResult in taskResults) {
+//        NSLog(@"createResultSummary aStepResult = %@", aStepResult);
+//            if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
+//                NSArray  *stepResults = [(RKSTStepResult *)aStepResult results];
+//                 NSLog(@"createResultSummary stepResults = %@", stepResults
+//                       );
+//            }
+//    }
+////    RKSTResult  *aStepResult = [self.result resultForIdentifier:kWalkingStep102Key];
+////    NSArray  *stepResults = nil;
+////    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
+////        stepResults = [(RKSTStepResult *)aStepResult results];
+////    }
+//    NSString  *contentString = @"";
+////    if (stepResults != nil) {
+////        RKSTResult  *aDataResult = [stepResults firstObject];
+////        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
+////            NSData  *data = [(RKSTDataResult *)aDataResult data];
+////            
+////            NSError  *error = nil;
+////            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+////            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
+////            
+////            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
+////            NSError  *serializationError = nil;
+////            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
+////            
+////            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
+////        }
+////    }
+//    return contentString;
+//}
 
 #pragma  mark  -  UIApplication Notification Methods
 

@@ -1,10 +1,10 @@
-//
-//  APHIntervalTappingTapView.h
-//  Parkinson's
-//
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD>. All rights reserved.
-//
-
+// 
+//  APHIntervalTappingTapView.h 
+//  mPower 
+// 
+//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+// 
+ 
 #import <UIKit/UIKit.h>
 
 @interface APHIntervalTappingTapView : UIView
