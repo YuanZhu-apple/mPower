@@ -29,6 +29,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo_disease_large" width="233" height="224"/>
+        <image name="logo_disease_large" width="227" height="219"/>
     </resources>
 </document>
