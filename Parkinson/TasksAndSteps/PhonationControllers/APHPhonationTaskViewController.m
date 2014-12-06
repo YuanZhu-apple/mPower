@@ -20,7 +20,7 @@ static  NSString       *MainStudyIdentifier        = @"com.parkinsons.phonation"
 static  NSString       *kPhonationStep101Key       = @"Phonation_Step_101";
 
 static  NSString       *kGetReadyStep              = @"Get Ready";
-static  NSTimeInterval  kGetReadyCountDownInterval = 5.0;
+static  NSTimeInterval  kGetReadyCountDownInterval =  5.0;
 
 static  NSString       *kPhonationStep102Key       = @"Phonation_Step_102";
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
@@ -29,7 +29,7 @@ static  NSString       *kPhonationStep103Key       = @"Phonation_Step_103";
 
 static  NSString       *kTaskViewControllerTitle   = @"Voice";
 
-static  CGFloat         kMeteringDisplayWidth      = 180.0;
+static  CGFloat         kMeteringDisplayWidthPlusInsets = 182.0;
 
 static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
@@ -228,9 +228,9 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     APHPhonationMeteringView  *meterologist = [[APHPhonationMeteringView alloc] initWithFrame:CGRectMake(0.0, 0.0, kMeteringDisplayWidth, kMeteringDisplayWidth)];
     self.meteringDisplay = meterologist;
     
-    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==180.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
+    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==182.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
     [meterologist addConstraints:vc1];
-    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(==180.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
+    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(==182.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
     [meterologist addConstraints:vc2];
     
     [viewController.view addSubview:meterologist];
@@ -269,7 +269,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     //
     //    range of magic numbers collected from audio meter
     //
-static  float  kMinimumPowerOffsetFromBase = 30.0;
+static  float  kMinimumPowerOffsetFromBase = 20.0;
 static  float  kMaximumPowerOffsetFromFull =  5.0;
 
 - (void)meteringTimerDidFire:(NSTimer *)timer
