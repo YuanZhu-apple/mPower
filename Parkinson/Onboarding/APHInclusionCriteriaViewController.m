@@ -2,7 +2,7 @@
 //  APHInclusionCriteriaViewController.m 
 //  mPower 
 // 
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+//  Copyright (c) 2014 Apple, Inc. All rights reserved. 
 // 
  
 
@@ -98,7 +98,7 @@
 
 - (void)next
 {
-    [self onboarding].signUpTask.eligible = [self isEligible];
+    [self onboarding].onboardingTask.eligible = [self isEligible];
     
     UIViewController *viewController = [[self onboarding] nextScene];
     [self.navigationController pushViewController:viewController animated:YES];

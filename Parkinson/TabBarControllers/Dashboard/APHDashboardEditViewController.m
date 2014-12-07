@@ -2,7 +2,7 @@
 //  APHDashboardEditViewController.m 
 //  mPower 
 // 
-//  Copyright (c) 2014 <INSTITUTION-NAME-TBD> All rights reserved. 
+//  Copyright (c) 2014 Apple, Inc. All rights reserved. 
 // 
  
 #import "APHDashboardEditViewController.h"
@@ -30,6 +30,7 @@
                 {
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
+                    item.tintColor = [UIColor appTertiaryPurpleColor];
                     
                     [self.items addObject:item];
                     
@@ -39,6 +40,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
+                    item.tintColor = [UIColor appTertiaryYellowColor];
                     
                     [self.items addObject:item];
                 }
@@ -47,6 +49,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Steps", @"");
+                    item.tintColor = [UIColor appTertiaryGreenColor];
                     
                     [self.items addObject:item];
                 }
