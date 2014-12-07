@@ -17,6 +17,7 @@
 		5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B975A151A112E2C00A34E42 /* WithdrawStudy.json */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
+		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
 		BAB6644F1A328B0000360892 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8FF1A2F8C660011C270 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAB664501A328B1F00360892 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
@@ -104,6 +105,7 @@
 		5B975A151A112E2C00A34E42 /* WithdrawStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WithdrawStudy.json; sourceTree = "<group>"; };
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
+		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
 		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
 		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
 		CF535F861A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderCustomView.h; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		F5D14E3F19CC991500650FBB /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				5BBDAEF11A350FB40047DF87 /* LocationInfo.json */,
 				5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */,
 				5B975A141A112E2C00A34E42 /* Learn.json */,
 				5B975A151A112E2C00A34E42 /* WithdrawStudy.json */,
@@ -500,6 +503,7 @@
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
 				5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */,
+				5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
