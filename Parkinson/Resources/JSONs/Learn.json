@@ -12,16 +12,16 @@
                           },
                           
                 {
-                    "title": "Life with Parkinson's",
+                    "title": "Life with Parkinson's Disease",
                     "details": "lifewithPD",
                     "icon_image": "disease_icon",
-                    "tint_color": "purple"
+                    "tint_color": "red"
                 },
                 {
                     "title": "Symptoms",
                     "details": "symptoms",
                     "icon_image": "diagnostics_icon",
-                    "tint_color": "red"
+                    "tint_color": "green"
                 }
             ]
         },
@@ -29,7 +29,7 @@
             "section_title": "Resources",
             "row_items": [
                 {
-                    "title": "Links of Interest",
+                    "title": "Online Resources",
                     "details": "online_resources",
                     "icon_image": "globe_icon",
                     "tint_color": "gray"
