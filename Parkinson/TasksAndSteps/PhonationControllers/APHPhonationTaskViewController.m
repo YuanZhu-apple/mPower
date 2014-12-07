@@ -225,7 +225,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 - (void)addMeteringStuff:(APCStepViewController *)viewController
 {
-    APHPhonationMeteringView  *meterologist = [[APHPhonationMeteringView alloc] initWithFrame:CGRectMake(0.0, 0.0, kMeteringDisplayWidth, kMeteringDisplayWidth)];
+    APHPhonationMeteringView  *meterologist = [[APHPhonationMeteringView alloc] initWithFrame:CGRectMake(0.0, 0.0, kMeteringDisplayWidthPlusInsets, kMeteringDisplayWidthPlusInsets)];
     self.meteringDisplay = meterologist;
     
     NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==182.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
