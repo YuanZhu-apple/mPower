@@ -30,6 +30,7 @@
                 {
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
+                    item.tintColor = [UIColor appTertiaryPurpleColor];
                     
                     [self.items addObject:item];
                     
@@ -39,6 +40,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
+                    item.tintColor = [UIColor appTertiaryYellowColor];
                     
                     [self.items addObject:item];
                 }
@@ -47,6 +49,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Steps", @"");
+                    item.tintColor = [UIColor appTertiaryGreenColor];
                     
                     [self.items addObject:item];
                 }
