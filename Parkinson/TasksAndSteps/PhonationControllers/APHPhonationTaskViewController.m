@@ -29,7 +29,14 @@ static  NSString       *kPhonationStep103Key       = @"Phonation_Step_103";
 
 static  NSString       *kTaskViewControllerTitle   = @"Voice";
 
-static  CGFloat         kMeteringDisplayWidthPlusInsets = 182.0;
+static  CGFloat         kPhoneFiveScreenWidth                    = 320.0;
+static  CGFloat         kPhoneSixScreenWidth                     = 375.0;
+
+static  CGFloat         kMeteringDisplayWidthPlusInsetsForPhone5 = 162.0;
+static  CGFloat         kMeteringDisplayWidthPlusInsetsForPhone6 = 182.0;
+
+static  CGFloat         kMeteringDisplayOffetFromBottomForPhone5 =   5.0;
+static  CGFloat         kMeteringDisplayOffetFromBottomForPhone6 =  24.0;
 
 static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
@@ -40,12 +47,15 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     //
     //    metering-related stuff
     //
-@property  (nonatomic, weak)    APHPhonationMeteringView       *meteringDisplay;
-@property  (nonatomic, strong)  NSTimer                        *meteringTimer;
+@property  (nonatomic, weak)    APHPhonationMeteringView        *meteringDisplay;
+@property  (nonatomic, assign)  CGFloat                         meteringDisplayWidthPlusInsets;
+@property  (nonatomic, assign)  CGFloat                         meteringDisplayOffsetFromBottom;
 
-@property  (nonatomic, strong)  APHAudioRecorderConfiguration  *audioConfiguration;
-@property  (nonatomic, strong)  RKSTAudioRecorder              *ourAudioRecorder;
-@property  (nonatomic, strong)  AVAudioRecorder                *audioRecorder;
+@property  (nonatomic, strong)  NSTimer                         *meteringTimer;
+
+@property  (nonatomic, strong)  APHAudioRecorderConfiguration   *audioConfiguration;
+@property  (nonatomic, strong)  RKSTAudioRecorder               *ourAudioRecorder;
+@property  (nonatomic, strong)  AVAudioRecorder                 *audioRecorder;
 
 @end
 
@@ -187,7 +197,19 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    CGRect  bounds = [[UIScreen mainScreen] bounds];
+    if (CGRectGetWidth(bounds) >= kPhoneSixScreenWidth) {
+        self.meteringDisplayWidthPlusInsets = kMeteringDisplayWidthPlusInsetsForPhone6;
+        self.meteringDisplayOffsetFromBottom = kMeteringDisplayOffetFromBottomForPhone6;
+    } else if (CGRectGetWidth(bounds) >= kPhoneFiveScreenWidth) {
+        self.meteringDisplayWidthPlusInsets = kMeteringDisplayWidthPlusInsetsForPhone5;
+        self.meteringDisplayOffsetFromBottom = kMeteringDisplayOffetFromBottomForPhone5;
+    } else {
+        self.meteringDisplayWidthPlusInsets = kMeteringDisplayWidthPlusInsetsForPhone5;
+        self.meteringDisplayOffsetFromBottom = kMeteringDisplayOffetFromBottomForPhone5;
+    }
+
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
@@ -225,12 +247,15 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 - (void)addMeteringStuff:(APCStepViewController *)viewController
 {
-    APHPhonationMeteringView  *meterologist = [[APHPhonationMeteringView alloc] initWithFrame:CGRectMake(0.0, 0.0, kMeteringDisplayWidthPlusInsets, kMeteringDisplayWidthPlusInsets)];
+    APHPhonationMeteringView  *meterologist = [[APHPhonationMeteringView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.meteringDisplayWidthPlusInsets, self.meteringDisplayWidthPlusInsets)];
     self.meteringDisplay = meterologist;
-    
-    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[c(==182.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
+
+    NSString  *verticalConstraint = [NSString stringWithFormat:@"V:[c(==%.0f)]", self.meteringDisplayWidthPlusInsets];
+    NSArray  *vc1 = [NSLayoutConstraint constraintsWithVisualFormat:verticalConstraint options:0 metrics:nil views:@{@"c":meterologist}];
     [meterologist addConstraints:vc1];
-    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[c(==182.0)]" options:0 metrics:nil views:@{@"c":meterologist}];
+
+    NSString  *horizontalConstraint = [NSString stringWithFormat:@"H:[c(==%.0f)]", self.meteringDisplayWidthPlusInsets];
+    NSArray  *vc2 = [NSLayoutConstraint constraintsWithVisualFormat:horizontalConstraint options:0 metrics:nil views:@{@"c":meterologist}];
     [meterologist addConstraints:vc2];
     
     [viewController.view addSubview:meterologist];
@@ -243,7 +268,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
                                                               toItem:meterologist
                                                            attribute:NSLayoutAttributeBottom
                                                           multiplier:1.0
-                                                            constant:10.0],
+                                                            constant:self.meteringDisplayOffsetFromBottom],
                               [NSLayoutConstraint constraintWithItem:viewController.view
                                                            attribute:NSLayoutAttributeCenterX
                                                            relatedBy:NSLayoutRelationEqual
