@@ -198,7 +198,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 {
     [super viewDidLoad];
 
-    CGRect  bounds = [[UIScreen mainScreen] bounds];
+    CGRect  bounds = [[[UIScreen mainScreen] fixedCoordinateSpace] bounds];
     if (CGRectGetWidth(bounds) >= kPhoneSixScreenWidth) {
         self.meteringDisplayWidthPlusInsets = kMeteringDisplayWidthPlusInsetsForPhone6;
         self.meteringDisplayOffsetFromBottom = kMeteringDisplayOffetFromBottomForPhone6;
