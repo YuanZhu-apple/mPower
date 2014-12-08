@@ -88,16 +88,6 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
 {
     NSError *error = nil;
     {
-        //Setting the Audio Session Category for voice prompts when device is locked
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        
-        NSError *setCategoryError = nil;
-        BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
-        if (!success) { /* handle the error condition */ }
-        
-        NSError *activationError = nil;
-        [audioSession setActive:YES error:&activationError];
-        [activationError handle];
         
         HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         RKSTHealthCollector *healthCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
