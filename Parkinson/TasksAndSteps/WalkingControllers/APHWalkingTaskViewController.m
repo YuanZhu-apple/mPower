@@ -18,13 +18,13 @@ static  NSString       *kGetReadyStep                    = @"Get Ready";
 static  NSTimeInterval  kGetReadyCountDownInterval       = 10.0;
 
 static  NSString       *kWalkingStep102Key               = @"Walking Step 102";
-static  NSTimeInterval  kWalkingStep102CountDownInterval = 10.0;
+static  NSTimeInterval  kWalkingStep102CountDownInterval = 30.0;
 
 static  NSString       *kWalkingStep103Key               = @"Walking Step 103";
-static  NSTimeInterval  kWalkingStep103CountDownInterval = 10.0;
+static  NSTimeInterval  kWalkingStep103CountDownInterval = 30.0;
 
 static  NSString       *kWalkingStep104Key               = @"Walking Step 104";
-static  NSTimeInterval  kWalkingStep104CountDownInterval = 10.0;
+static  NSTimeInterval  kWalkingStep104CountDownInterval = 30.0;
 
 static  NSString       *kWalkingStep105Key               = @"Walking Step 105";
 
@@ -222,7 +222,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
                                                                   completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
                                                                       if (result != nil) {
                                                                           self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
-                                                                          NSLog(@"stepViewControllerWillAppear self.collectedNumberOfSteps = %ld", (long)self.collectedNumberOfSteps);
                                                                       }
                                                                   }];
         HKHealthStore  *healthStore = [HKHealthStore new];
@@ -279,13 +278,10 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
 
 - (NSString *)createResultSummary
 {
-    NSLog(@"createResultSummary self.collectedNumberOfSteps = %ld", (long)self.collectedNumberOfSteps);
     NSDictionary  *summary = @{  @"value" : @(self.collectedNumberOfSteps) };
     NSError  *serializationError = nil;
     NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
-    NSLog(@"createResultSummary serializationError = %@", serializationError);
     NSString  *contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
-    NSLog(@"createResultSummary contentString = %@", contentString);
     return  contentString;
 }
 
