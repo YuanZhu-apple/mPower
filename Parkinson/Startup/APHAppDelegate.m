@@ -111,7 +111,6 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         RKSTMotionActivityCollector *motionCollector = [self.dataSubstrate.study addMotionActivityCollectorWithStartDate:nil error:&error];
         if (!motionCollector)
         {
-            NSLog(@"Error creating motion collector: %@", error);
             [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
             goto errReturn;
         }
