@@ -153,7 +153,7 @@ static  CGFloat  kBoundsInsetAmount  =  1.0;
     
     CGFloat  clipRatio = self.innerRingDiameter + (self.powerLevel * (1.0 - self.innerRingDiameter));
     CGFloat  diameter = CGRectGetWidth(bounds) * clipRatio;
-    
+
     if (self.powerLevel > 0.0) {
         CGRect  clipRectangle = CGRectMake((CGRectGetWidth(bounds) - diameter) / 2.0, (CGRectGetWidth(bounds) - diameter) / 2.0, diameter , diameter);
         CGContextAddEllipseInRect(context, clipRectangle);
@@ -168,7 +168,7 @@ static  CGFloat  kBoundsInsetAmount  =  1.0;
         CGContextSetFillColorWithColor(context, self.middleRingColor.CGColor);
         CGContextFillPath(context);
     }
-    
+
     if (self.powerLevel > 0.0) {
         CGContextAddEllipseInRect(context, self.innerRingRectangle);
         CGContextSetFillColorWithColor(context, self.innerRingFillColor.CGColor);

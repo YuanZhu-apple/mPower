@@ -17,8 +17,11 @@
 		5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B975A151A112E2C00A34E42 /* WithdrawStudy.json */; };
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
+		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
 		BAB6644F1A328B0000360892 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8FF1A2F8C660011C270 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAB664501A328B1F00360892 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BAB961BA1A3531C3004701B7 /* APHAccelerometerRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB961B51A3531C3004701B7 /* APHAccelerometerRecorder.m */; };
+		BAB961BB1A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB961B71A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m */; };
 		CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */; };
 		CF535F891A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF535F871A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m */; };
 		CF535F8A1A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF535F881A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.xib */; };
@@ -104,6 +107,11 @@
 		5B975A151A112E2C00A34E42 /* WithdrawStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WithdrawStudy.json; sourceTree = "<group>"; };
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
+		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
+		BAB961B41A3531C3004701B7 /* APHAccelerometerRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHAccelerometerRecorder.h; sourceTree = "<group>"; };
+		BAB961B51A3531C3004701B7 /* APHAccelerometerRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHAccelerometerRecorder.m; sourceTree = "<group>"; };
+		BAB961B61A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHAccelerometerRecorderConfiguration.h; sourceTree = "<group>"; };
+		BAB961B71A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHAccelerometerRecorderConfiguration.m; sourceTree = "<group>"; };
 		CF004A0219DC9E1200451180 /* APHIntervalTappingTargetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingTargetContainer.h; sourceTree = "<group>"; };
 		CF004A0319DC9E1200451180 /* APHIntervalTappingTargetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingTargetContainer.m; sourceTree = "<group>"; };
 		CF535F861A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderCustomView.h; sourceTree = "<group>"; };
@@ -279,6 +287,7 @@
 		F5D14E3F19CC991500650FBB /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				5BBDAEF11A350FB40047DF87 /* LocationInfo.json */,
 				5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */,
 				5B975A141A112E2C00A34E42 /* Learn.json */,
 				5B975A151A112E2C00A34E42 /* WithdrawStudy.json */,
@@ -376,6 +385,10 @@
 			children = (
 				F5D14F1719CC9BC900650FBB /* APHWalkingTaskViewController.h */,
 				F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */,
+				BAB961B61A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.h */,
+				BAB961B71A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m */,
+				BAB961B41A3531C3004701B7 /* APHAccelerometerRecorder.h */,
+				BAB961B51A3531C3004701B7 /* APHAccelerometerRecorder.m */,
 			);
 			path = WalkingControllers;
 			sourceTree = "<group>";
@@ -500,6 +513,7 @@
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
 				5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */,
+				5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,6 +545,7 @@
 				CFBEA21D1A21A2DE00937707 /* APHPhonationMeteringView.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
 				CFBEA1D91A211FE200937707 /* APHAudioRecorder.m in Sources */,
+				BAB961BB1A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m in Sources */,
 				F5D14F2219CC9BC900650FBB /* APHIntervalTappingTapView.m in Sources */,
 				5B1D9D461A1BCC6B000F4AD6 /* APHDashboardEditViewController.m in Sources */,
 				5B1D9D471A1BCC6B000F4AD6 /* APHDashboardViewController.m in Sources */,
@@ -542,6 +557,7 @@
 				F5D14F1B19CC9BC900650FBB /* APHIntervalTappingRecorder.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
+				BAB961BA1A3531C3004701B7 /* APHAccelerometerRecorder.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
 				CFFE952A1A1FD85B00F23C92 /* APHAudioRecorderConfiguration.m in Sources */,

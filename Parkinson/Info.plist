@@ -21,13 +21,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>a14</string>
+	<string>a15</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This may be used to collect walking data</string>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This may be used to collect walking data</string>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

@@ -88,17 +88,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
 {
     NSError *error = nil;
     {
-        //Setting the Audio Session Category for voice prompts when device is locked
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        
-        NSError *setCategoryError = nil;
-        BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
-        if (!success) { /* handle the error condition */ }
-        
-        NSError *activationError = nil;
-        [audioSession setActive:YES error:&activationError];
-        [activationError handle];
-        
+
         HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         RKSTHealthCollector *healthCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
         if (!healthCollector)
@@ -111,7 +101,6 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         RKSTMotionActivityCollector *motionCollector = [self.dataSubstrate.study addMotionActivityCollectorWithStartDate:nil error:&error];
         if (!motionCollector)
         {
-            NSLog(@"Error creating motion collector: %@", error);
             [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
             goto errReturn;
         }
@@ -196,8 +185,8 @@ errReturn:
             case RKSTConsentSectionTypeOverview:
             {
                 section.title = NSLocalizedString(@"Welcome", nil);
-                section.summary = @"This simple walkthrough will help you to understand the study, the impact it will have on your life, and will allow you to provide consent to participate.";
-                section.content = @"SUMMARY\n\nYou are invited to participate in a research study to understand variations in symptoms during recovery from breast cancer treatment. This study is designed for women between 18 and 80 years old with a history of breast cancer treatment and women without any history of cancer. Your participation in this study is entirely voluntary.\n\nTo be in a research study you must give your informed consent. The purpose of this form is to help you decide if you want to participate in this study. Please read the information carefully. If you decide to take part in this research study, you will be given a copy of this signed and dated consent form. If you decide to participate, you are free to withdraw your consent, and to discontinue participation at any time.\n\nYou should not join the research study until all of your questions are answered.\n\nParticipating in a research study is not the same as receiving medical care. The decision to join or not join the research study will not affect your medical benefits.\n\nPURPOSE OF THE STUDY \nWomen recovering from breast cancer treatment can have very different and more or less severe symptoms day to day. These symptoms affect quality of life and make managing recovery difficult. We would like to understand the causes of these symptom variations.\n\nNew technologies allow people to record and track their health and symptoms in real time. This study will monitor your health and symptoms using questionnaires and sensors via a mobile phone application.\n\nIf you decide to join the study you will need to download the study application on your mobile device. Then, periodically we will ask you to answer questions and/or perform some tasks on your mobile phone. These questions may be about your health, exercise, diet, sleep and medicines, in addition to some more general health surveys. The tasks may include exercising or journaling about your week. Your study data will include your responses to surveys and tasks and some measurements from the phone itself about how you are moving and interacting with others.\n\nYour data, without your name, will be added to the data of other study participants and made available to groups of researchers worldwide for analysis and future research. You also will have a unique account that you can use to review your own data. We anticipate this study will be open for multiple years, during which time your data will remain available to you to review. We anticipate enrolling 20,000 subjects in this study.\n\nThe sponsor is Sage Bionetworks with some funding from the Robert Wood Johnson Foundation.\n";
+                section.summary = @"mPower is a a research study for volunteers over 18 years of age. This simple walkthrough will explain the study, the impact it may have on your life, and will allow you to provide your consent to participate.";
+                section.content = @"SUMMARY\n\nYou are invited to participate in a research study to understand variations in symptoms of Parkinson’s disease (PD).  This study is designed for persons over 18 years old with or without PD.  Your participation in this study is entirely voluntary.\n\nTo be in a research study you must give your informed consent.   The purpose of this form is to help you decide if you want to participate in this study.  Please read the information carefully. If you decide to take part in this research study, you will be given a copy of this signed and dated consent form. If you decide to participate, you are free to withdraw your consent, and to discontinue participation at any time.\n\nYou should not join the research study until all of your questions are answered.\n\nParticipating in a research study is not the same as receiving medical care. The decision to join or not join the research study will not affect your medical benefits.\n\nPURPOSE OF THE STUDY\n\nPeople with PD can have very different and more or less severe symptoms day to day.  This affects quality of life and makes managing treatment difficult.  We would like to understand the causes of these symptom variations.\n\nNew technologies allow people to record and track their health and symptoms in real time.  This study will monitor individual’s health and symptoms using questionnaires and sensors via a mobile phone application and wearable devices if available.\n\nIf you decide to join the study you will need to download the study application on your mobile device.  Then periodically we will ask you to answer questions and perform some tasks via your mobile phone. These questions may be about your health, exercise, diet, sleep and medicines, in addition to other surveys.  The tasks will be some brief activities that you perform while holding your phone like walking, typing or balancing for a short period of time.  In addition, if you are able to sustain moderate physical activity, we may send you motivational prompts to remain active.  Your study data will include your responses to surveys and the measurements from the phone itself when you perform a task.\n\nYour data, without your name, will be added to the data of other study participants and made available to groups of researchers for analysis and future research. You also will have a unique account that you can use to review your own data.  We anticipate enrolling 20,000 subjects in the study.\n\nThe sponsor is Sage Bionetworks with some funding from the Robert Wood Johnson Foundation.";
             }
                 break;
             case RKSTConsentSectionTypeActivity:

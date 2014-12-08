@@ -6,7 +6,8 @@
 // 
  
 #import "APHWalkingTaskViewController.h"
-
+#import "APHAccelerometerRecorderConfiguration.h"
+#import <HealthKit/HealthKit.h>
 #import <objc/message.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
@@ -45,6 +46,11 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
 @property  (strong, nonatomic)  RKSTDataArchive    *taskArchive;
 
 @property  (assign, nonatomic)  UIApplicationState  applicationState;
+
+@property  (strong, nonatomic)  NSDate             *startCollectionDate;
+@property  (strong, nonatomic)  NSDate             *endCollectionDate;
+
+@property  (assign, nonatomic)  NSInteger  __block  collectedNumberOfSteps;
 
 @end
 
@@ -89,7 +95,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         step.shouldVibrateOnStart = YES;
         step.countDownInterval = kWalkingStep102CountDownInterval;
         step.shouldStartTimerAutomatically = YES;
-        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.recorderConfigurations = @[ [[APHAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     
@@ -102,7 +108,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         step.shouldVibrateOnStart = YES;
         step.countDownInterval = kWalkingStep103CountDownInterval;
         step.shouldStartTimerAutomatically = YES;
-        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.recorderConfigurations = @[ [[APHAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     
@@ -115,7 +121,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         step.shouldVibrateOnStart = YES;
         step.countDownInterval = kWalkingStep104CountDownInterval;
         step.shouldStartTimerAutomatically = YES;
-        step.recorderConfigurations = @[ [[RKSTAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
+        step.recorderConfigurations = @[ [[APHAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
     
@@ -188,7 +194,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         ([stepViewController.step.identifier isEqualToString:kWalkingStep103Key] == YES) ||
         ([stepViewController.step.identifier isEqualToString:kWalkingStep104Key] == YES)) {
         if (self.applicationState != UIApplicationStateActive) {
-            NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear sending LocalNotification");
             NSString  *speech = stepViewController.step.text;
             
             UILocalNotification  *localNotification = [UILocalNotification new];
@@ -201,7 +206,28 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
             [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
         }
     }
-    
+
+    if ([stepViewController.step.identifier isEqualToString:kWalkingStep102Key] == YES) {
+        self.startCollectionDate = [NSDate date];
+    }
+    if ([stepViewController.step.identifier isEqualToString:kWalkingStep105Key] == YES) {
+        self.endCollectionDate = [NSDate date];
+
+        HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:self.startCollectionDate endDate:self.endCollectionDate options:HKQueryOptionNone];
+
+        HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
+                                                            quantitySamplePredicate:predicate
+                                                                            options:HKStatisticsOptionCumulativeSum
+                                                                  completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+                                                                      if (result != nil) {
+                                                                          self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
+                                                                      }
+                                                                  }];
+        HKHealthStore  *healthStore = [HKHealthStore new];
+        [healthStore executeQuery:query];
+    }
+
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
 
@@ -248,52 +274,25 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     return  controller;
 }
 
-//- (NSString *)createResultSummary
-//{
-//    NSArray  *taskResults = self.result.results;
-//    for (RKSTResult *aStepResult in taskResults) {
-//        NSLog(@"createResultSummary aStepResult = %@", aStepResult);
-//            if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-//                NSArray  *stepResults = [(RKSTStepResult *)aStepResult results];
-//                 NSLog(@"createResultSummary stepResults = %@", stepResults
-//                       );
-//            }
-//    }
-////    RKSTResult  *aStepResult = [self.result resultForIdentifier:kWalkingStep102Key];
-////    NSArray  *stepResults = nil;
-////    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-////        stepResults = [(RKSTStepResult *)aStepResult results];
-////    }
-//    NSString  *contentString = @"";
-////    if (stepResults != nil) {
-////        RKSTResult  *aDataResult = [stepResults firstObject];
-////        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
-////            NSData  *data = [(RKSTDataResult *)aDataResult data];
-////            
-////            NSError  *error = nil;
-////            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-////            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
-////            
-////            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
-////            NSError  *serializationError = nil;
-////            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
-////            
-////            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
-////        }
-////    }
-//    return contentString;
-//}
+#pragma  mark  -  Create Results
+
+- (NSString *)createResultSummary
+{
+    NSDictionary  *summary = @{  @"value" : @(self.collectedNumberOfSteps) };
+    NSError  *serializationError = nil;
+    NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
+    NSString  *contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
+    return  contentString;
+}
 
 #pragma  mark  -  UIApplication Notification Methods
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
-    NSLog(@"APHWalkingTaskViewController applicationWillResignActive");
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    NSLog(@"APHWalkingTaskViewController applicationDidEnterBackground");
 }
 
 #pragma  mark  -  View Controller Methods
