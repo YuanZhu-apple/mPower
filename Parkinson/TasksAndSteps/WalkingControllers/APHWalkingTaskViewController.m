@@ -188,7 +188,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         ([stepViewController.step.identifier isEqualToString:kWalkingStep103Key] == YES) ||
         ([stepViewController.step.identifier isEqualToString:kWalkingStep104Key] == YES)) {
         if (self.applicationState != UIApplicationStateActive) {
-            NSLog(@"APHWalkingTaskViewController stepViewControllerWillAppear sending LocalNotification");
             NSString  *speech = stepViewController.step.text;
             
             UILocalNotification  *localNotification = [UILocalNotification new];
@@ -248,52 +247,14 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     return  controller;
 }
 
-//- (NSString *)createResultSummary
-//{
-//    NSArray  *taskResults = self.result.results;
-//    for (RKSTResult *aStepResult in taskResults) {
-//        NSLog(@"createResultSummary aStepResult = %@", aStepResult);
-//            if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-//                NSArray  *stepResults = [(RKSTStepResult *)aStepResult results];
-//                 NSLog(@"createResultSummary stepResults = %@", stepResults
-//                       );
-//            }
-//    }
-////    RKSTResult  *aStepResult = [self.result resultForIdentifier:kWalkingStep102Key];
-////    NSArray  *stepResults = nil;
-////    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-////        stepResults = [(RKSTStepResult *)aStepResult results];
-////    }
-//    NSString  *contentString = @"";
-////    if (stepResults != nil) {
-////        RKSTResult  *aDataResult = [stepResults firstObject];
-////        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
-////            NSData  *data = [(RKSTDataResult *)aDataResult data];
-////            
-////            NSError  *error = nil;
-////            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-////            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
-////            
-////            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
-////            NSError  *serializationError = nil;
-////            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
-////            
-////            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
-////        }
-////    }
-//    return contentString;
-//}
-
 #pragma  mark  -  UIApplication Notification Methods
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
-    NSLog(@"APHWalkingTaskViewController applicationWillResignActive");
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    NSLog(@"APHWalkingTaskViewController applicationDidEnterBackground");
 }
 
 #pragma  mark  -  View Controller Methods
