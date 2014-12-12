@@ -42,8 +42,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 @interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
 
-@property (strong, nonatomic)   RKSTDataArchive                *taskArchive;
-
     //
     //    metering-related stuff
     //
@@ -146,6 +144,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         self.audioConfiguration = nil;
         self.ourAudioRecorder   = nil;
         self.audioRecorder      = nil;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     }
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
