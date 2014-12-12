@@ -447,8 +447,9 @@
 		CFC2D2CF19A5417D00170E69 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = APH;
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Y Media Labs";
+				ORGANIZATIONNAME = "Apple, Inc.";
 				TargetAttributes = {
 					CFC2D2D619A5417D00170E69 = {
 						CreatedOnToolsVersion = 6.0;
