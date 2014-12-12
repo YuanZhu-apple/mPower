@@ -32,10 +32,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 
 @property  (nonatomic, strong)  APHRippleView  *tappingTargetsContainer;
 
-@property  (nonatomic, strong)  RKSTDataArchive  *taskArchive;
-
-@property  (nonatomic, strong)  RKSTResult       *recorderResult;
-
 @end
 
 @implementation APHIntervalTappingTaskViewController
@@ -217,12 +213,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
 - (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
 {
     [super taskViewControllerDidComplete:taskViewController];
-}
-
-- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
-{
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
 }
 
 @end

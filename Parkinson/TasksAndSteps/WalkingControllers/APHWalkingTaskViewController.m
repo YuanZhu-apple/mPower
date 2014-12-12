@@ -43,8 +43,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     NSInteger _count;
 }
 
-@property  (strong, nonatomic)  RKSTDataArchive    *taskArchive;
-
 @property  (assign, nonatomic)  UIApplicationState  applicationState;
 
 @property  (strong, nonatomic)  NSDate             *startCollectionDate;
@@ -330,16 +328,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
         [self taskViewControllerDidCancel:self];
     }
-}
-
-/*********************************************************************************/
-#pragma  mark  - TaskViewController delegates
-/*********************************************************************************/
-
-- (void)taskViewControllerDidFail: (RKSTTaskViewController *)taskViewController withError:(NSError*)error
-{
-    [self.taskArchive resetContent];
-    self.taskArchive = nil;
 }
 
 @end

@@ -93,7 +93,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         RKSTHealthCollector *healthCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
         if (!healthCollector)
         {
-            [error handle];
+            APCLogError2(error);
             [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
             goto errReturn;
         }
