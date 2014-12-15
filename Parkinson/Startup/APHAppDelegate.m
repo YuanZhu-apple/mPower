@@ -42,7 +42,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    ],
                                            kAppServicesListRequiredKey           : @[
                                                    @(kSignUpPermissionsTypeLocation),
-                                                   @(kSignUpPermissionsTypeCoremotion)
+                                                   @(kSignUpPermissionsTypeCoremotion),
+                                                   @(kSignUpPermissionsTypeMicrophone)
                                                    ]
                                            }];
     self.initializationOptions = dictionary;
