@@ -37,8 +37,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    HKQuantityTypeIdentifierStepCount
                                                    ],
                                            kHKWritePermissionsKey                : @[
-                                                   HKQuantityTypeIdentifierBodyMass,
-                                                   HKQuantityTypeIdentifierHeight
                                                    ],
                                            kAppServicesListRequiredKey           : @[
                                                    @(kSignUpPermissionsTypeLocation),
