@@ -61,7 +61,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep101];
-        step.title = @"Tapping Activity";
+        step.title = NSLocalizedString(@"Tapping Activity", @"");
         step.text = @"";
         step.detailText = @"";
         [steps addObject:step];
@@ -80,7 +80,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep103];
-        step.title = @"Button Tap";
+        step.title = NSLocalizedString(@"Button Tap", @"");
         step.text = @"";
         step.countDownInterval = kTappingStepCountdownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -90,7 +90,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep104];
-        step.title = @"Great Job!";
+        step.title = NSLocalizedString(@"Great Job!", @"");
         step.text = @"";
         step.detailText = @"";
         [steps addObject:step];
