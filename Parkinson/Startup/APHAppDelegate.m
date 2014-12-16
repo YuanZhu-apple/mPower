@@ -37,8 +37,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    HKQuantityTypeIdentifierStepCount
                                                    ],
                                            kHKWritePermissionsKey                : @[
-                                                   HKQuantityTypeIdentifierBodyMass,
-                                                   HKQuantityTypeIdentifierHeight
                                                    ],
                                            kAppServicesListRequiredKey           : @[
                                                    @(kSignUpPermissionsTypeLocation),
@@ -53,6 +51,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kAPCUserInfoItemTypeWakeUpTime),
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
+                                                   ]
                                            }];
     self.initializationOptions = dictionary;
 }
