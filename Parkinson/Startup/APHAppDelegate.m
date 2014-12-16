@@ -51,7 +51,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kAPCUserInfoItemTypeWakeUpTime),
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
-                                                   ]
                                            }];
     self.initializationOptions = dictionary;
 }
