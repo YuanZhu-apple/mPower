@@ -42,7 +42,16 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kSignUpPermissionsTypeLocation),
                                                    @(kSignUpPermissionsTypeCoremotion),
                                                    @(kSignUpPermissionsTypeMicrophone)
-                                                   ]
+                                                   ],
+                                           kAppProfileElementsListKey            : @[
+                                                   @(kAPCUserInfoItemTypeEmail),
+                                                   @(kAPCUserInfoItemTypeDateOfBirth),
+                                                   @(kAPCUserInfoItemTypeBiologicalSex),
+                                                   @(kAPCUserInfoItemTypeHeight),
+                                                   @(kAPCUserInfoItemTypeWeight),
+                                                   @(kAPCUserInfoItemTypeWakeUpTime),
+                                                   @(kAPCUserInfoItemTypeSleepTime),
+                                                   ],
                                            }];
     self.initializationOptions = dictionary;
 }
