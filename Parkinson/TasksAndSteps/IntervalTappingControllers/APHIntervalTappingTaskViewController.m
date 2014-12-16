@@ -157,7 +157,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
         instController.messagesArray  = @[
                                           @"Please lay your phone on a flat surface when tapping for best results.",
                                           @"Once you tap “Get Started” below, you will have 5 seconds before the task begins.",
-                                          @"Use 2 fingers on the same hand to alternately tap the left and right circles on the screen as quickly and as evenly as possible for 20 seconds.",
+                                          @"Please use your index and middle finger on the same hand for the tapping activity.",
                                           @"After the intervals are finished, your results will be visible on the next screen."
                                           ];
         controller.delegate = self;
