@@ -8,6 +8,8 @@
 #import "APHWalkingTaskViewController.h"
 #import "APHAccelerometerRecorderConfiguration.h"
 #import <HealthKit/HealthKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 #import <objc/message.h>
 
 static NSString *MainStudyIdentifier = @"com.parkinsons.walkingTask";
@@ -210,6 +212,13 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     }
     if ([stepViewController.step.identifier isEqualToString:kWalkingStep105Key] == YES) {
         self.endCollectionDate = [NSDate date];
+        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        AVSpeechUtterance  *talk = [AVSpeechUtterance
+                                    speechUtteranceWithString:NSLocalizedString(@"You have completed the task.", @"You have completed the task.")];
+        AVSpeechSynthesizer  *synthesiser = [[AVSpeechSynthesizer alloc] init];
+        talk.rate = 0.1;
+        [synthesiser speakUtterance:talk];
 
         HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:self.startCollectionDate endDate:self.endCollectionDate options:HKQueryOptionNone];
