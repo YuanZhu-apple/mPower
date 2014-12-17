@@ -61,7 +61,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep101];
-        step.title = @"Tapping";
+        step.title = NSLocalizedString(@"Tapping Activity", @"");
         step.text = @"";
         step.detailText = @"";
         [steps addObject:step];
@@ -69,7 +69,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep102];
-        step.title = NSLocalizedString(@"Tapping", @"");
+        step.title = NSLocalizedString(@"Tapping Activity", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDownInterval = kGetReadyStepCountdownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -80,7 +80,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep103];
-        step.title = @"Button Tap";
+        step.title = NSLocalizedString(@"Button Tap", @"");
         step.text = @"";
         step.countDownInterval = kTappingStepCountdownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -90,13 +90,13 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     {
         RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep104];
-        step.title = @"You're finished.";
+        step.title = NSLocalizedString(@"Great Job!", @"");
         step.text = @"";
         step.detailText = @"";
         [steps addObject:step];
     }
 
-    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Tapping Task" steps:steps];
+    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Tapping Activity" steps:steps];
     
     return  task;
 }
@@ -153,11 +153,11 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
         controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-        instController.headingsArray = @[ @"Tapping Task", @"Tapping Task", @"Tapping Task", @"Tapping Task" ];
+        instController.headingsArray = @[ @"Tapping Activity", @"Tapping Activity", @"Tapping Activity", @"Tapping Activity" ];
         instController.messagesArray  = @[
                                           @"Please lay your phone on a flat surface when tapping for best results.",
                                           @"Once you tap “Get Started” below, you will have 5 seconds before the task begins.",
-                                          @"Use 2 fingers on the same hand to alternately tap the left and right circles on the screen as quickly and as evenly as possible for 20 seconds.",
+                                          @"Please use your index and middle finger on the same hand for the tapping activity.",
                                           @"After the intervals are finished, your results will be visible on the next screen."
                                           ];
         controller.delegate = self;
