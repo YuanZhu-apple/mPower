@@ -108,7 +108,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         [steps addObject:step];
     }
     
-    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Phonation Task" steps:steps];
+    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Phonation Activity" steps:steps];
     
     return  task;
 }
@@ -158,7 +158,7 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
         
         instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
-        instController.headingsArray = @[ @"Voice", @"Voice", @"Voice", @"Voice", @"Voice" ];
+        instController.headingsArray = @[ @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity" ];
         instController.messagesArray  = @[
                                           @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
                                           @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",

@@ -75,7 +75,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     {
         //Introduction to fitness test
         RKSTActiveStep* step = [[RKSTActiveStep alloc] initWithIdentifier:kGetReadyStep];
-        step.title = NSLocalizedString(@"Timed Walking", @"");
+        step.title = NSLocalizedString(@"Measures Gait and Balance", @"");
         step.text = NSLocalizedString(@"Get Ready!", @"");
         step.countDownInterval = kGetReadyCountDownInterval;
         step.shouldStartTimerAutomatically = YES;
@@ -244,7 +244,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
     
     instController.imagesArray = @[ @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
-    instController.headingsArray = @[ @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test", @"Gait Test" ];
+    instController.headingsArray = @[ @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity" ];
     instController.messagesArray  = @[
                                       @"Once you tap Get Started, you will have ten seconds to put this device in your pocket.  A non-swinging bag or similar location will work as well.",
                                       @"After the phone vibrates, walk 20 steps in a straight line.",
