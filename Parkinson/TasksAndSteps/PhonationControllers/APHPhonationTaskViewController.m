@@ -190,7 +190,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidLoad
@@ -212,6 +211,8 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
 /*********************************************************************************/
