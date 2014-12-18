@@ -146,8 +146,8 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         self.audioRecorder      = nil;
         
         NSError  *error = nil;
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-        if (error != nil) {
+        BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+        if (success == NO) {
             APCLogError2(error);
         }
     }
@@ -218,8 +218,8 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
     
     NSError  *error = nil;
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    if (error != nil) {
+    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (success == NO) {
         APCLogError2(error);
     }
 }

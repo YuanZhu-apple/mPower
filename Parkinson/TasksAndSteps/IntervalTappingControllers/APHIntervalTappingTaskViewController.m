@@ -47,8 +47,8 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kIntervalTappingStep102, kIntervalTappingStep103 ];
     
     NSError  *error = nil;
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    if (error != nil) {
+    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (success == NO) {
         APCLogError2(error);
     }
 }
