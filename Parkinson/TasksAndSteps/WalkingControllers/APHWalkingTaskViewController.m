@@ -215,7 +215,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         AVSpeechUtterance  *talk = [AVSpeechUtterance
-                                    speechUtteranceWithString:NSLocalizedString(@"You have completed the task.", @"You have completed the task.")];
+                                    speechUtteranceWithString:NSLocalizedString(@"You have completed the activity.", @"You have completed the activity.")];
         AVSpeechSynthesizer  *synthesiser = [[AVSpeechSynthesizer alloc] init];
         talk.rate = 0.1;
         [synthesiser speakUtterance:talk];
