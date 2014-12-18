@@ -144,7 +144,12 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         self.audioConfiguration = nil;
         self.ourAudioRecorder   = nil;
         self.audioRecorder      = nil;
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        
+        NSError  *error = nil;
+        BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+        if (success == NO) {
+            APCLogError2(error);
+        }
     }
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
@@ -190,7 +195,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidLoad
@@ -212,6 +216,12 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
+    
+    NSError  *error = nil;
+    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (success == NO) {
+        APCLogError2(error);
+    }
 }
 
 /*********************************************************************************/
