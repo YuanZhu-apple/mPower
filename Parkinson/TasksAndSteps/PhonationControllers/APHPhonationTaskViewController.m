@@ -144,7 +144,12 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
         self.audioConfiguration = nil;
         self.ourAudioRecorder   = nil;
         self.audioRecorder      = nil;
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        
+        NSError  *error = nil;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+        if (error != nil) {
+            APCLogError2(error);
+        }
     }
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
@@ -212,7 +217,11 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kPhonationStep102Key ];
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    NSError  *error = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (error != nil) {
+        APCLogError2(error);
+    }
 }
 
 /*********************************************************************************/
