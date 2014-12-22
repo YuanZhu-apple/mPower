@@ -215,7 +215,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         AVSpeechUtterance  *talk = [AVSpeechUtterance
-                                    speechUtteranceWithString:NSLocalizedString(@"You have completed the task.", @"You have completed the task.")];
+                                    speechUtteranceWithString:NSLocalizedString(@"You have completed the activity.", @"You have completed the activity.")];
         AVSpeechSynthesizer  *synthesiser = [[AVSpeechSynthesizer alloc] init];
         talk.rate = 0.1;
         [synthesiser speakUtterance:talk];
@@ -322,6 +322,12 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     
     [centre addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [centre addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    NSError  *error = nil;
+    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (success == NO) {
+        APCLogError2(error);
+    }
 }
 
 - (void)didReceiveMemoryWarning
