@@ -136,6 +136,7 @@ errReturn:
     return scene;
 }
 
+/* Commenting out as we no longer need Home Location
 - (APCScene *)customInfoSceneForOnboarding:(APCOnboarding *)onboarding
 {
     APCScene *scene = [APCScene new];
@@ -145,7 +146,8 @@ errReturn:
     
     return scene;
 }
-
+*/
+ 
 /*********************************************************************************/
 #pragma mark - Consent
 /*********************************************************************************/
