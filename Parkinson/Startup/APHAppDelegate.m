@@ -90,7 +90,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
 /*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
-static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
+
+static  NSTimeInterval  kPassiveLocationCollectionInterval = 5 * 60.0;
 
 -(void)setUpCollectors
 {
@@ -114,7 +115,7 @@ static NSTimeInterval LOCATION_COLLECTION_INTERVAL = 5 * 60.0 * 60.0;
         }
         
         //Set Up Passive Location Collection
-        self.dataSubstrate.passiveLocationTracking = [[APCPassiveLocationTracking alloc] initWithTimeInterval:LOCATION_COLLECTION_INTERVAL];
+        self.dataSubstrate.passiveLocationTracking = [[APCPassiveLocationTracking alloc] initWithTimeInterval:kPassiveLocationCollectionInterval];
         [self.dataSubstrate.passiveLocationTracking start];
     }
     
