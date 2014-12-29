@@ -189,7 +189,7 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 - (RKSTRecorder *)recorderForStep:(RKSTStep *)step outputDirectory:(NSURL *)outputDirectory
 {
-    return [[APHIntervalTappingRecorder alloc] initWithStep:step outputDirectory:nil];
+    return [[APHIntervalTappingRecorder alloc] initWithStep:step outputDirectory:outputDirectory];
 }
 
 @end
