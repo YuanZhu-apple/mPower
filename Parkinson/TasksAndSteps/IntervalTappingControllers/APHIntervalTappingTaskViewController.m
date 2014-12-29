@@ -193,7 +193,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     }
     NSString  *contentString = @"";
     if (stepResults != nil) {
-        RKSTResult  *aDataResult = [stepResults firstObject];
+        RKSTResult  *aDataResult = [stepResults lastObject];
         if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
             NSData  *data = [(RKSTDataResult *)aDataResult data];
             

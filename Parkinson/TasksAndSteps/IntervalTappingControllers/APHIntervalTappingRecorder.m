@@ -133,10 +133,10 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 #pragma  -  Recorder Control Methods
 
-- (void)start
-{
-    [super start];
-}
+//- (void)start
+//{
+//    [super start];
+//}
 
 - (void)stop
 {
