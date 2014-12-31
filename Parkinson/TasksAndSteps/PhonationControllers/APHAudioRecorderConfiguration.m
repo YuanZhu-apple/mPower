@@ -8,6 +8,8 @@
 #import "APHAudioRecorderConfiguration.h"
 #import "APHAudioRecorder.h"
 
+#import <APCAppCore/APCAppCore.h>
+
 @implementation APHAudioRecorderConfiguration
 
 - (RKSTRecorder*)recorderForStep:(RKSTStep*)step outputDirectory:(NSURL *)outputDirectory

@@ -53,11 +53,6 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
 #pragma  mark  -  Task Creation Methods
 
 + (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
