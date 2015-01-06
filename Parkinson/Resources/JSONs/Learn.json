@@ -15,7 +15,7 @@
                     "title": "Life with Parkinson's Disease",
                     "details": "lifewithPD",
                     "icon_image": "disease_icon",
-                    "tint_color": "red"
+                    "tint_color": "appColor"
                 },
                 {
                     "title": "Symptoms",
