@@ -10,10 +10,6 @@
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
 
-extern  NSString  *WalkingTaskNotificationIdentifierKey;
-extern  NSString  *APHWalkingTaskViewControllerKey;
-extern  NSString  *WalkingTaskNotificationSpeechKey;
-
 @interface APHWalkingTaskViewController : APCBaseWithProgressTaskViewController
 
 @end

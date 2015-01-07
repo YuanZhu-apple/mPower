@@ -12,6 +12,10 @@
 #import "APHIntervalTappingTapView.h"
 #import "APHRippleView.h"
 
+#import <APCAppCore/APCAppCore.h>
+
+
+
 static  CGFloat  kRipplerMinimumRadius           =   5.0;
 static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
@@ -189,7 +193,8 @@ static  CGFloat  kRipplerMaximumRadius           =  80.0;
 
 - (RKSTRecorder *)recorderForStep:(RKSTStep *)step outputDirectory:(NSURL *)outputDirectory
 {
-    return [[APHIntervalTappingRecorder alloc] initWithStep:step outputDirectory:nil];
+    APHIntervalTappingRecorder  *recorder = [[APHIntervalTappingRecorder alloc] initWithStep:step outputDirectory:outputDirectory];
+    return  recorder;
 }
 
 @end

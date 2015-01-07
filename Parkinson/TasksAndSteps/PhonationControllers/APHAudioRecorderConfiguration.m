@@ -8,34 +8,13 @@
 #import "APHAudioRecorderConfiguration.h"
 #import "APHAudioRecorder.h"
 
-@implementation APHAudioRecorderConfiguration
+#import <APCAppCore/APCAppCore.h>
 
-- (NSURL *)makeOutputDirectory
-{
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString  *path = [[paths lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", [[NSUUID UUID] UUIDString]]];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
-        NSError  *fileError = nil;
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&fileError];
-        if (fileError != nil) {
-        }
-    }
-    NSURL  *pathUrl = nil;
-    if (path != nil) {
-        pathUrl = [NSURL fileURLWithPath:path];
-    }
-    return  pathUrl;
-}
+@implementation APHAudioRecorderConfiguration
 
 - (RKSTRecorder*)recorderForStep:(RKSTStep*)step outputDirectory:(NSURL *)outputDirectory
 {
-    if (outputDirectory == nil) {
-        outputDirectory = [self makeOutputDirectory];
-    }
-    
     self.recorder = [[APHAudioRecorder alloc] initWithRecorderSettings:self.recorderSettings step:step outputDirectory:outputDirectory];
-    
     return  self.recorder;
 }
 
