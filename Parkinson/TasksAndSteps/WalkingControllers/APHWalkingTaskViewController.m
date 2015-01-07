@@ -32,13 +32,6 @@ static  NSString       *kWalkingStep105Key               = @"Walking Step 105";
 
 static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
 
-    //
-    //    keys for local notifications
-    //
-NSString  *WalkingTaskNotificationIdentifierKey = @"WalkingTaskNotificationIdentifier";
-NSString  *APHWalkingTaskViewControllerKey      = @"APHWalkingTaskViewController";
-NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeech";
-
 
 @interface APHWalkingTaskViewController  ( )
 {
@@ -150,11 +143,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     return self;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma  mark  -  Task View Controller Delegate Methods
 
 - (BOOL)taskViewController:(RKSTTaskViewController *)taskViewController shouldPresentStep:(RKSTStep *)step
@@ -193,18 +181,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
         ([stepViewController.step.identifier isEqualToString:kWalkingStep102Key] == YES) ||
         ([stepViewController.step.identifier isEqualToString:kWalkingStep103Key] == YES) ||
         ([stepViewController.step.identifier isEqualToString:kWalkingStep104Key] == YES)) {
-        if (self.applicationState != UIApplicationStateActive) {
-            NSString  *speech = stepViewController.step.text;
-            
-            UILocalNotification  *localNotification = [UILocalNotification new];
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-            NSDictionary  *info = @{
-                                    WalkingTaskNotificationIdentifierKey : APHWalkingTaskViewControllerKey,
-                                    WalkingTaskNotificationSpeechKey : speech
-                                    };
-            localNotification.userInfo = info;
-            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-        }
     }
 
     if ([stepViewController.step.identifier isEqualToString:kWalkingStep102Key] == YES) {
@@ -293,22 +269,7 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     return  contentString;
 }
 
-#pragma  mark  -  UIApplication Notification Methods
-
-- (void)applicationWillResignActive:(NSNotification *)notification
-{
-}
-
-- (void)applicationDidEnterBackground:(NSNotification *)notification
-{
-}
-
 #pragma  mark  -  View Controller Methods
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
 - (void)viewDidLoad
 {
@@ -317,11 +278,6 @@ NSString  *WalkingTaskNotificationSpeechKey     = @"WalkingTaskNotificationSpeec
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key ];
-    
-    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
-    
-    [centre addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
-    [centre addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     NSError  *error = nil;
     BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];

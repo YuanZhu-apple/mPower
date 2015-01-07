@@ -192,11 +192,6 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
 
 #pragma  mark  - View Controller methods
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
