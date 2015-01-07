@@ -8,8 +8,6 @@
 @import APCAppCore;
 #import "APHAppDelegate.h"
 
-#import "APHWalkingTaskViewController.h"
-
 /*********************************************************************************/
 #pragma mark - Initializations Options
 /*********************************************************************************/
@@ -91,7 +89,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
 
-static  NSTimeInterval  kPassiveLocationCollectionInterval = 5 * 60.0;
+static  NSTimeInterval  kPassiveLocationDeferredUpdatesTimeout = 1.0 * 60.0;
 
 -(void)setUpCollectors
 {
@@ -114,8 +112,10 @@ static  NSTimeInterval  kPassiveLocationCollectionInterval = 5 * 60.0;
             goto errReturn;
         }
         
-        //Set Up Passive Location Collection
-        self.dataSubstrate.passiveLocationTracking = [[APCPassiveLocationTracking alloc] initWithTimeInterval:kPassiveLocationCollectionInterval];
+            //    Set Up Passive Location Collection: User's Home Location is not available in Parkinson's
+        
+        self.dataSubstrate.passiveLocationTracking = [[APCPassiveLocationTracking alloc] initWithDeferredUpdatesTimeout:kPassiveLocationDeferredUpdatesTimeout
+                                                                                              andHomeLocationStatus:APCPassiveLocationTrackingHomeLocationUnavailable];
         [self.dataSubstrate.passiveLocationTracking start];
     }
     
@@ -285,26 +285,6 @@ errReturn:
     RKSTTaskViewController *consentVC = [[RKSTTaskViewController alloc] initWithTask:task taskRunUUID:[NSUUID UUID]];
     
     return consentVC;
-}
-
-/*********************************************************************************/
-#pragma mark - Handle Local Notifications
-/*********************************************************************************/
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    NSDictionary  *info = [notification userInfo];
-    if (info != nil) {
-        NSString  *identifier = [info objectForKey:WalkingTaskNotificationIdentifierKey];
-        NSString  *squawk = nil;
-        if ((identifier != nil) && ([identifier isEqualToString:APHWalkingTaskViewControllerKey] == YES)) {
-            squawk = [info objectForKey:WalkingTaskNotificationSpeechKey];
-            if (squawk != nil) {
-                AVSpeechSynthesizer *synthesiser= [[AVSpeechSynthesizer alloc] init];
-                [synthesiser speakUtterance:[AVSpeechUtterance speechUtteranceWithString:squawk]];
-            }
-        }
-    }
 }
 
 @end
