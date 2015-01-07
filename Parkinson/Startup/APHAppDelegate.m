@@ -18,6 +18,10 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 @interface APHAppDelegate ()
 
+@property (nonatomic) UIBackgroundTaskIdentifier bgTask;
+@property (nonatomic, strong) NSTimer * timer;
+@property (nonatomic) NSInteger timeCounter;
+
 @end
 
 @implementation APHAppDelegate
@@ -83,6 +87,43 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (BOOL) isVideoShown
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
+}
+
+-(void)applicationDidEnterBackground:(UIApplication *)application
+{
+    APCLogDebug(@"Application Did Enter Background");
+    self.bgTask = [application beginBackgroundTaskWithName:@"MyTask" expirationHandler:^{
+        [application endBackgroundTask:self.bgTask];
+        self.bgTask = UIBackgroundTaskInvalid;
+    }];
+    
+    // Start the long-running task and return immediately.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+       self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                         target:self
+                                       selector:@selector(targetMethod:)
+                                       userInfo:nil
+                                        repeats:NO];
+        
+        [application endBackgroundTask:self.bgTask];
+        self.bgTask = UIBackgroundTaskInvalid;
+    });
+}
+
+- (void) targetMethod: (NSTimer*) timer
+{
+    self.timeCounter++;
+    APCLogDebug(@"Current Timer: %@ TIME REMAINING: %@", @(self.timeCounter), @([UIApplication sharedApplication].backgroundTimeRemaining));
+    if (self.timeCounter == 30) {
+        [timer invalidate];
+        self.timer = nil;
+    }
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    APCLogDebug(@"Application Did Receive Memory Warning");
 }
 
 /*********************************************************************************/
