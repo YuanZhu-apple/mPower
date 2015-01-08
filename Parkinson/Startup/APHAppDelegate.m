@@ -89,8 +89,19 @@ static NSString *const kVideoShownKey = @"VideoShown";
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
 }
 
+-(void)applicationDidFinishLaunching:(UIApplication *)application
+{
+    [super applicationDidFinishLaunching:application];
+    NSError *setCategoryErr = nil;
+    NSError *activationErr  = nil;
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
+    [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
+}
+
+
 -(void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [super applicationDidEnterBackground:application];
     APCLogDebug(@"Application Did Enter Background");
     self.bgTask = [application beginBackgroundTaskWithName:@"MyTask" expirationHandler:^{
         [application endBackgroundTask:self.bgTask];
@@ -105,6 +116,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                        selector:@selector(targetMethod:)
                                        userInfo:nil
                                         repeats:NO];
+        APCLogDebug(@"Set up timer: %@", self.timer);
         
         [application endBackgroundTask:self.bgTask];
         self.bgTask = UIBackgroundTaskInvalid;
@@ -119,11 +131,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
         [timer invalidate];
         self.timer = nil;
     }
-}
-
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
-{
-    APCLogDebug(@"Application Did Receive Memory Warning");
 }
 
 /*********************************************************************************/
