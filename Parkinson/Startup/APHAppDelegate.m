@@ -92,45 +92,19 @@ static NSString *const kVideoShownKey = @"VideoShown";
 -(void)applicationDidFinishLaunching:(UIApplication *)application
 {
     [super applicationDidFinishLaunching:application];
-    NSError *setCategoryErr = nil;
-    NSError *activationErr  = nil;
-    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
-    [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
+    APCLogDebug(@"Application Did Launch");
 }
 
-
--(void)applicationDidEnterBackground:(UIApplication *)application
+- (void) applicationDidEnterBackground:(UIApplication *)application
 {
     [super applicationDidEnterBackground:application];
-    APCLogDebug(@"Application Did Enter Background");
-    self.bgTask = [application beginBackgroundTaskWithName:@"MyTask" expirationHandler:^{
-        [application endBackgroundTask:self.bgTask];
-        self.bgTask = UIBackgroundTaskInvalid;
-    }];
-    
-    // Start the long-running task and return immediately.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-       self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0
-                                         target:self
-                                       selector:@selector(targetMethod:)
-                                       userInfo:nil
-                                        repeats:NO];
-        APCLogDebug(@"Set up timer: %@", self.timer);
-        
-        [application endBackgroundTask:self.bgTask];
-        self.bgTask = UIBackgroundTaskInvalid;
-    });
+    APCLogDebug(@"Application Did EnterBackground");
 }
 
-- (void) targetMethod: (NSTimer*) timer
+- (void) applicationDidBecomeActive:(UIApplication *)application
 {
-    self.timeCounter++;
-    APCLogDebug(@"Current Timer: %@ TIME REMAINING: %@", @(self.timeCounter), @([UIApplication sharedApplication].backgroundTimeRemaining));
-    if (self.timeCounter == 30) {
-        [timer invalidate];
-        self.timer = nil;
-    }
+    [super applicationDidBecomeActive:application];
+    APCLogDebug(@"Application Did Become Active");
 }
 
 /*********************************************************************************/

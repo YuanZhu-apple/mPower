@@ -54,6 +54,7 @@
 		F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
 		F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */; };
 		F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
+		F5F510DE1A5EF8CE0030C1A5 /* APHActiveStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F510DD1A5EF8CE0030C1A5 /* APHActiveStepViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,8 @@
 		F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHAppDelegate.m; sourceTree = "<group>"; };
 		F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = APHOnboarding.storyboard; sourceTree = "<group>"; };
+		F5F510DC1A5EF8CE0030C1A5 /* APHActiveStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHActiveStepViewController.h; sourceTree = "<group>"; };
+		F5F510DD1A5EF8CE0030C1A5 /* APHActiveStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHActiveStepViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +406,8 @@
 				BAB961B71A3531C3004701B7 /* APHAccelerometerRecorderConfiguration.m */,
 				BAB961B41A3531C3004701B7 /* APHAccelerometerRecorder.h */,
 				BAB961B51A3531C3004701B7 /* APHAccelerometerRecorder.m */,
+				F5F510DC1A5EF8CE0030C1A5 /* APHActiveStepViewController.h */,
+				F5F510DD1A5EF8CE0030C1A5 /* APHActiveStepViewController.m */,
 			);
 			path = WalkingControllers;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				CF535F891A1590F800F4C023 /* APHIntervalTappingRecorderCustomView.m in Sources */,
 				CF004A0419DC9E1200451180 /* APHIntervalTappingTargetContainer.m in Sources */,
 				F5D14F3919CC9C0000650FBB /* APHAppDelegate.m in Sources */,
+				F5F510DE1A5EF8CE0030C1A5 /* APHActiveStepViewController.m in Sources */,
 				CF535F8D1A15ADEB00F4C023 /* APHRippleView.m in Sources */,
 				5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */,
 				F5D14F1B19CC9BC900650FBB /* APHIntervalTappingRecorder.m in Sources */,

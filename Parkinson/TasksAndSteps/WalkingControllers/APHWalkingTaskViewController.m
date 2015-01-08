@@ -9,6 +9,7 @@
 #import "APHAccelerometerRecorderConfiguration.h"
 #import <HealthKit/HealthKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "APHActiveStepViewController.h"
 
 #import <objc/message.h>
 
@@ -44,6 +45,8 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
 @property  (strong, nonatomic)  NSDate             *endCollectionDate;
 
 @property  (assign, nonatomic)  NSInteger  __block  collectedNumberOfSteps;
+
+@property (nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 
 @end
 
@@ -114,6 +117,7 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
         step.shouldVibrateOnStart = YES;
         step.countDownInterval = kWalkingStep104CountDownInterval;
         step.shouldStartTimerAutomatically = YES;
+        step.shouldUseNextAsSkipButton = YES;
         step.recorderConfigurations = @[ [[APHAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -236,8 +240,8 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
-    APCStepViewController  *controller = nil;
-    
+    RKSTStepViewController  *controller = nil;
+    [self showRemainingTime];
     if ([step.identifier isEqualToString:kWalkingStep101Key]) {
         controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
     } else {
@@ -255,6 +259,9 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
         controller.title = kTaskViewControllerTitle;
         controller.step = step;
     }
+    if (controller == nil) {
+        controller = [[APHActiveStepViewController alloc] initWithStep:step];
+    }
     return  controller;
 }
 
@@ -266,6 +273,7 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
     NSError  *serializationError = nil;
     NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
     NSString  *contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
+    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
     return  contentString;
 }
 
@@ -278,12 +286,23 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key ];
+//    
+//    NSError  *error = nil;
+//    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+//    if (success == NO) {
+//        APCLogError2(error);
+//    }
+    self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"Walking Task" expirationHandler:^{
+        APCLogDebug(@"Ending Background Task: %@", @(self.backgroundTaskIdentifier));
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+    }];
+     APCLogDebug(@"Setup Background Task: %@", @(self.backgroundTaskIdentifier));
     
-    NSError  *error = nil;
-    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    if (success == NO) {
-        APCLogError2(error);
-    }
+}
+
+- (void) showRemainingTime
+{
+    APCLogDebug(@"Remaining Background Time: %@", @([UIApplication sharedApplication].backgroundTimeRemaining));
 }
 
 - (void)didReceiveMemoryWarning
