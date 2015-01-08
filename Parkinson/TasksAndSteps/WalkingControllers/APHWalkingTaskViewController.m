@@ -117,7 +117,6 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
         step.shouldVibrateOnStart = YES;
         step.countDownInterval = kWalkingStep104CountDownInterval;
         step.shouldStartTimerAutomatically = YES;
-        step.shouldUseNextAsSkipButton = YES;
         step.recorderConfigurations = @[ [[APHAccelerometerRecorderConfiguration alloc] initWithFrequency:100.0]];
         [steps addObject:step];
     }
@@ -286,18 +285,12 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
     
     self.stepsToAutomaticallyAdvanceOnTimer = @[ kGetReadyStep, kWalkingStep102Key, kWalkingStep103Key, kWalkingStep104Key ];
-//    
-//    NSError  *error = nil;
-//    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-//    if (success == NO) {
-//        APCLogError2(error);
-//    }
+
     self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"Walking Task" expirationHandler:^{
         APCLogDebug(@"Ending Background Task: %@", @(self.backgroundTaskIdentifier));
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
     }];
      APCLogDebug(@"Setup Background Task: %@", @(self.backgroundTaskIdentifier));
-    
 }
 
 - (void) showRemainingTime

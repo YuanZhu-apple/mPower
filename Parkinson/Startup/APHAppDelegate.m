@@ -18,10 +18,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 @interface APHAppDelegate ()
 
-@property (nonatomic) UIBackgroundTaskIdentifier bgTask;
-@property (nonatomic, strong) NSTimer * timer;
-@property (nonatomic) NSInteger timeCounter;
-
 @end
 
 @implementation APHAppDelegate
@@ -87,24 +83,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (BOOL) isVideoShown
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
-}
-
--(void)applicationDidFinishLaunching:(UIApplication *)application
-{
-    [super applicationDidFinishLaunching:application];
-    APCLogDebug(@"Application Did Launch");
-}
-
-- (void) applicationDidEnterBackground:(UIApplication *)application
-{
-    [super applicationDidEnterBackground:application];
-    APCLogDebug(@"Application Did EnterBackground");
-}
-
-- (void) applicationDidBecomeActive:(UIApplication *)application
-{
-    [super applicationDidBecomeActive:application];
-    APCLogDebug(@"Application Did Become Active");
 }
 
 /*********************************************************************************/
