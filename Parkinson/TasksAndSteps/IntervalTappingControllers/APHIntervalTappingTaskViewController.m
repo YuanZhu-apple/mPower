@@ -145,23 +145,34 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
 
+- (APCStepViewController *)setupInstructionStepWithStep:(RKSTStep *)step
+{
+    APCStepViewController             *controller     = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep"
+                                                                                                                       bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+    APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+    
+    instController.imagesArray    = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
+    
+    instController.headingsArray  = @[ @"Tapping Activity", @"Tapping Activity", @"Tapping Activity", @"Tapping Activity" ];
+    
+    instController.messagesArray  = @[
+                                      @"Please lay your phone on a flat surface when tapping for best results.",
+                                      @"Once you tap “Get Started” below, you will have 5 seconds before the activity begins.",
+                                      @"Please use your index and middle finger on the same hand for the tapping activity.",
+                                      @"After your tapping is finished finished, your results will be available on the Dashboard."
+                                    ];
+    controller.delegate = self;
+    controller.step     = step;
+    
+    return  controller;
+}
+
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     APCStepViewController  *controller = nil;
     
     if ([step.identifier isEqualToString:kIntervalTappingStep101]) {
-        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
-        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
-        instController.imagesArray = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-        instController.headingsArray = @[ @"Tapping Activity", @"Tapping Activity", @"Tapping Activity", @"Tapping Activity" ];
-        instController.messagesArray  = @[
-                                          @"Please lay your phone on a flat surface when tapping for best results.",
-                                          @"Once you tap “Get Started” below, you will have 5 seconds before the task begins.",
-                                          @"Please use your index and middle finger on the same hand for the tapping activity.",
-                                          @"After the intervals are finished, your results will be visible on the next screen."
-                                          ];
-        controller.delegate = self;
-        controller.step = step;
+        controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
     } else {
         NSDictionary  *controllers = @{
                                        kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]

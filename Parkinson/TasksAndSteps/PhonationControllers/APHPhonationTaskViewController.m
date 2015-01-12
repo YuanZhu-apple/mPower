@@ -154,25 +154,34 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
 }
 
+- (APCStepViewController *)setupInstructionStepWithStep:(RKSTStep *)step
+{
+    APCStepViewController             *controller     = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep"
+                                                                                                                       bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+    APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
+    
+    instController.imagesArray    = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04" ];
+    
+    instController.headingsArray  = @[ @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity" ];
+    
+    instController.messagesArray  = @[
+                                      @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
+                                      @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",
+                                      @"Try to maintain a steady volume so that the outermost ring remains green.",
+                                      @"If you are too quiet or too loud, you will be prompted to raise or lower your voice."
+                                    ];
+    controller.delegate = self;
+    controller.step     = step;
+    
+    return  controller;
+}
+
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     APCStepViewController  *controller = nil;
     
     if ([step.identifier isEqualToString:kPhonationStep101Key]) {
-        controller = (APCInstructionStepViewController*) [[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
-        APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
-        
-        instController.imagesArray = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04", @"phonation.instructions.05" ];
-        instController.headingsArray = @[ @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity" ];
-        instController.messagesArray  = @[
-                                          @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
-                                          @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",
-                                          @"Try to maintain a steady volume so that the outermost ring remains green.",
-                                          @"If you are too quiet or too loud, you will be prompted to raise or lower your voice.",
-                                          @"After the test is finished, your results will be analyzed and available on the dashboard.  You will be notified when analysis is ready."
-                                          ];
-        controller.delegate = self;
-        controller.step = step;
+        controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
     } else {
         NSDictionary  *controllers = @{
                                        kPhonationStep103Key : [APCSimpleTaskSummaryViewController class]

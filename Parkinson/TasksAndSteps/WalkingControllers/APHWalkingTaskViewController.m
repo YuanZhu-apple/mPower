@@ -219,27 +219,32 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
 
 - (APCStepViewController *)setupInstructionStepWithStep:(RKSTStep *)step
 {
-    APCStepViewController  *controller = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep" bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
+    APCStepViewController             *controller     = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep"
+                                                                                                                       bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
     APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
     
-    instController.imagesArray = @[ @"walking.instructions.06", @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
-    instController.headingsArray = @[ @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity" ];
+    instController.imagesArray    = @[ @"walking.instructions.06", @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
+    
+    instController.headingsArray  = @[ @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity" ];
+    
     instController.messagesArray  = @[
                                       @"Please find a place where you can walk 20 steps, turn around, and return 20 steps.",
-                                      @"Once you tap Get Started, you have ten seconds to put the phone in your pocket. A non-swinging bag or similar location will work as well as a pocket.",
+                                      @"Once you tap Get Started, you have ten seconds to put the phone in your pocket. A non-swinging bag or similar location works as well as a pocket.",
                                       @"After the phone vibrates, walk 20 steps in a straight line.",
                                       @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
                                       @"On return to the starting point, there will be a third vibration.  Stand as still as possible for 30 seconds. At the end, remove the phone from your pocket and tap Done.",
-                                      @"After the test is complete, your results will be analyzed and the results will be returned when ready."
-                                      ];
+                                      @"After your walking activity is complete, your results will be available on the Dashboard."
+                                    ];
     controller.delegate = self;
-    controller.step = step;
+    controller.step     = step;
+    
     return  controller;
 }
 
 - (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
 {
     RKSTStepViewController  *controller = nil;
+    
     [self showRemainingTime];
     if ([step.identifier isEqualToString:kWalkingStep101Key]) {
         controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
