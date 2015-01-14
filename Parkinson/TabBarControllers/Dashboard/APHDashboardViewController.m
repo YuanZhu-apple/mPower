@@ -101,14 +101,14 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                                               valueKey:kSummaryNumberOfRecordsKey
                                                dataKey:nil
                                                sortKey:nil
-                                            groupByDay:YES];
+                                               groupBy:APHTimelineGroupDay];
     
     self.gaitScoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                                            numberOfDays:-5
                                                valueKey:@"value"
                                                 dataKey:nil
                                                 sortKey:nil
-                                             groupByDay:YES];
+                                                groupBy:APHTimelineGroupDay];
     
     HKQuantityType *hkQuantity = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     self.stepScoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkQuantity
