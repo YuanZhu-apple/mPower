@@ -162,13 +162,13 @@ static  NSTimeInterval  kMeteringTimeInterval      =   0.01;
     
     instController.imagesArray    = @[ @"phonation.instructions.01", @"phonation.instructions.02", @"phonation.instructions.03", @"phonation.instructions.04" ];
     
-    instController.headingsArray  = @[ @"Voice Activity", @"Voice Activity", @"Voice Activity", @"Voice Activity" ];
+    instController.headingsArray  = @[ @"Get ready for your Voice Test", @"Say “Aaah” into your phone for ten seconds", @"Try to maintain a large green ring", @"Reduce volume if you see a red ring appear" ];
     
     instController.messagesArray  = @[
                                       @"Once you tap Get Started, you will have five seconds until this test begins tracking your vocal patterns.",
                                       @"When prompted, say “Aaah” into your phone's microphone for as long as you are comfortably able to.",
                                       @"Try to maintain a steady volume so that the outermost ring remains green.",
-                                      @"If you are too quiet or too loud, you will be prompted to raise or lower your voice."
+                                      @"If you are too quiet or too loud, you will need to raise or lower your voice."
                                     ];
     controller.delegate = self;
     controller.step     = step;
