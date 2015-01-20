@@ -159,7 +159,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
                                       @"Please lay your phone on a flat surface when tapping for best results.",
                                       @"Once you tap “Get Started” below, you will have 5 seconds before the activity begins.",
                                       @"Please use your index and middle finger on the same hand for the tapping activity.",
-                                      @"After your tapping is finished finished, your results will be available on the Dashboard."
+                                      @"After your tapping is finished, your results will be available on the Dashboard."
                                     ];
     controller.delegate = self;
     controller.step     = step;
