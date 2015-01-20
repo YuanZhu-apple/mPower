@@ -225,11 +225,11 @@ static  NSString       *kTaskViewControllerTitle         = @"Timed Walking";
     
     instController.imagesArray    = @[ @"walking.instructions.06", @"walking.instructions.01", @"walking.instructions.02", @"walking.instructions.03", @"walking.instructions.04", @"walking.instructions.05" ];
     
-    instController.headingsArray  = @[ @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity", @"Gait Activity" ];
+    instController.headingsArray  = @[ @"Find a Place to Set Up for Walking", @"Put the Phone in Your Pocket or an Armband", @"Walk Out Twenty Steps", @"Walk Back Twenty Steps", @"Stand Still for 30 Seconds", @"View Results on Dashboard" ];
     
     instController.messagesArray  = @[
                                       @"Please find a place where you can walk 20 steps, turn around, and return 20 steps.",
-                                      @"Once you tap Get Started, you have ten seconds to put the phone in your pocket. A non-swinging bag or similar location works as well as a pocket.",
+                                      @"Once you tap Get Started, you have ten seconds to put the phone in your pocket or an armband.",
                                       @"After the phone vibrates, walk 20 steps in a straight line.",
                                       @"After 20 steps, there will be a second vibration.  Turn around and walk 20 steps back to your starting point.",
                                       @"On return to the starting point, there will be a third vibration.  Stand as still as possible for 30 seconds. At the end, remove the phone from your pocket and tap Done.",

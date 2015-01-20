@@ -153,7 +153,7 @@ static  NSString  *kTaskViewControllerTitle = @"Tapping";
     
     instController.imagesArray    = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
     
-    instController.headingsArray  = @[ @"Tapping Activity", @"Tapping Activity", @"Tapping Activity", @"Tapping Activity" ];
+    instController.headingsArray  = @[ @"Place your phone on a flat surface", @"Get ready to start tapping", @"Tap on the targets as much as possible", @"View your results on the Dashboard" ];
     
     instController.messagesArray  = @[
                                       @"Please lay your phone on a flat surface when tapping for best results.",
