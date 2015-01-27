@@ -51,6 +51,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
                                            kAnalyticsOnOffKey  : @(YES),
+                                           kAppServicesListRequiredKey : @[ @(kSignUpPermissionsTypeLocalNotifications) ],
                                            kAnalyticsFlurryAPIKeyKey : @"4T6KKBMDSYFVX95PNNWT"
                                            }];
     self.initializationOptions = dictionary;

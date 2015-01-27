@@ -40,9 +40,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         
         if (!_rowItemsOrder.count) {
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
+                                                                     @(kAPHDashboardItemTypeSteps),
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
-                                                                     @(kAPHDashboardItemTypeGait),
-                                                                     @(kAPHDashboardItemTypeSteps)
+                                                                     @(kAPHDashboardItemTypeGait)
                                                                      ]];
             
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
