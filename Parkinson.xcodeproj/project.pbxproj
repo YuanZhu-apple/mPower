@@ -26,6 +26,20 @@
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
+		CFA801901A79895D00A14389 /* consent_01@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801811A79895D00A14389 /* consent_01@2x.m4v */; };
+		CFA801911A79895D00A14389 /* consent_02@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801821A79895D00A14389 /* consent_02@2x.m4v */; };
+		CFA801921A79895D00A14389 /* consent_03@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801831A79895D00A14389 /* consent_03@2x.m4v */; };
+		CFA801931A79895D00A14389 /* consent_04@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801841A79895D00A14389 /* consent_04@2x.m4v */; };
+		CFA801941A79895D00A14389 /* consent_05@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801851A79895D00A14389 /* consent_05@2x.m4v */; };
+		CFA801951A79895D00A14389 /* consent_06@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801861A79895D00A14389 /* consent_06@2x.m4v */; };
+		CFA801961A79895D00A14389 /* consent_07@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801871A79895D00A14389 /* consent_07@2x.m4v */; };
+		CFA801971A79895D00A14389 /* consent_01@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA801891A79895D00A14389 /* consent_01@3x.m4v */; };
+		CFA801981A79895D00A14389 /* consent_02@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018A1A79895D00A14389 /* consent_02@3x.m4v */; };
+		CFA801991A79895D00A14389 /* consent_03@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018B1A79895D00A14389 /* consent_03@3x.m4v */; };
+		CFA8019A1A79895D00A14389 /* consent_04@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018C1A79895D00A14389 /* consent_04@3x.m4v */; };
+		CFA8019B1A79895D00A14389 /* consent_05@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018D1A79895D00A14389 /* consent_05@3x.m4v */; };
+		CFA8019C1A79895D00A14389 /* consent_06@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018E1A79895D00A14389 /* consent_06@3x.m4v */; };
+		CFA8019D1A79895D00A14389 /* consent_07@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = CFA8018F1A79895D00A14389 /* consent_07@3x.m4v */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
 		F536B93E19F5747B005A2D1C /* sample.task in Resources */ = {isa = PBXBuildFile; fileRef = F536B93D19F5747B005A2D1C /* sample.task */; };
@@ -107,6 +121,20 @@
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CFA801811A79895D00A14389 /* consent_01@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_01@2x.m4v"; sourceTree = "<group>"; };
+		CFA801821A79895D00A14389 /* consent_02@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_02@2x.m4v"; sourceTree = "<group>"; };
+		CFA801831A79895D00A14389 /* consent_03@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_03@2x.m4v"; sourceTree = "<group>"; };
+		CFA801841A79895D00A14389 /* consent_04@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_04@2x.m4v"; sourceTree = "<group>"; };
+		CFA801851A79895D00A14389 /* consent_05@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_05@2x.m4v"; sourceTree = "<group>"; };
+		CFA801861A79895D00A14389 /* consent_06@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_06@2x.m4v"; sourceTree = "<group>"; };
+		CFA801871A79895D00A14389 /* consent_07@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_07@2x.m4v"; sourceTree = "<group>"; };
+		CFA801891A79895D00A14389 /* consent_01@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_01@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018A1A79895D00A14389 /* consent_02@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_02@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018B1A79895D00A14389 /* consent_03@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_03@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018C1A79895D00A14389 /* consent_04@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_04@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018D1A79895D00A14389 /* consent_05@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_05@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018E1A79895D00A14389 /* consent_06@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_06@3x.m4v"; sourceTree = "<group>"; };
+		CFA8018F1A79895D00A14389 /* consent_07@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "consent_07@3x.m4v"; sourceTree = "<group>"; };
 		CFC2D2D719A5417D00170E69 /* Parkinson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,6 +182,7 @@
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFA8017E1A79895D00A14389 /* ResearchKit-Assets */,
 				5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */,
 				BA50EA3A1A37B1AA0049B835 /* Certificates */,
 				F5D14E3F19CC991500650FBB /* JSONs */,
@@ -197,6 +226,51 @@
 			);
 			name = Frameworks;
 			path = Parkinson;
+			sourceTree = "<group>";
+		};
+		CFA8017E1A79895D00A14389 /* ResearchKit-Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CFA8017F1A79895D00A14389 /* Consent */,
+			);
+			path = "ResearchKit-Assets";
+			sourceTree = "<group>";
+		};
+		CFA8017F1A79895D00A14389 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				CFA801801A79895D00A14389 /* phone@2x */,
+				CFA801881A79895D00A14389 /* phone@3x */,
+			);
+			path = Consent;
+			sourceTree = "<group>";
+		};
+		CFA801801A79895D00A14389 /* phone@2x */ = {
+			isa = PBXGroup;
+			children = (
+				CFA801811A79895D00A14389 /* consent_01@2x.m4v */,
+				CFA801821A79895D00A14389 /* consent_02@2x.m4v */,
+				CFA801831A79895D00A14389 /* consent_03@2x.m4v */,
+				CFA801841A79895D00A14389 /* consent_04@2x.m4v */,
+				CFA801851A79895D00A14389 /* consent_05@2x.m4v */,
+				CFA801861A79895D00A14389 /* consent_06@2x.m4v */,
+				CFA801871A79895D00A14389 /* consent_07@2x.m4v */,
+			);
+			path = "phone@2x";
+			sourceTree = "<group>";
+		};
+		CFA801881A79895D00A14389 /* phone@3x */ = {
+			isa = PBXGroup;
+			children = (
+				CFA801891A79895D00A14389 /* consent_01@3x.m4v */,
+				CFA8018A1A79895D00A14389 /* consent_02@3x.m4v */,
+				CFA8018B1A79895D00A14389 /* consent_03@3x.m4v */,
+				CFA8018C1A79895D00A14389 /* consent_04@3x.m4v */,
+				CFA8018D1A79895D00A14389 /* consent_05@3x.m4v */,
+				CFA8018E1A79895D00A14389 /* consent_06@3x.m4v */,
+				CFA8018F1A79895D00A14389 /* consent_07@3x.m4v */,
+			);
+			path = "phone@3x";
 			sourceTree = "<group>";
 		};
 		CFC2D2CE19A5417D00170E69 = {
@@ -462,21 +536,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
+				CFA801971A79895D00A14389 /* consent_01@3x.m4v in Resources */,
+				CFA801911A79895D00A14389 /* consent_02@2x.m4v in Resources */,
 				5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */,
+				CFA801981A79895D00A14389 /* consent_02@3x.m4v in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
+				CFA801921A79895D00A14389 /* consent_03@2x.m4v in Resources */,
+				CFA801931A79895D00A14389 /* consent_04@2x.m4v in Resources */,
+				CFA801951A79895D00A14389 /* consent_06@2x.m4v in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
+				CFA8019C1A79895D00A14389 /* consent_06@3x.m4v in Resources */,
+				CFA801961A79895D00A14389 /* consent_07@2x.m4v in Resources */,
 				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
 				BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */,
+				CFA8019D1A79895D00A14389 /* consent_07@3x.m4v in Resources */,
+				CFA801901A79895D00A14389 /* consent_01@2x.m4v in Resources */,
 				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
 				5B18CED01A2CF2E5001A905E /* TermsAndConditions.json in Resources */,
 				BA50EA3E1A37B30D0049B835 /* parkinson-staging.pem in Resources */,
 				F536B93E19F5747B005A2D1C /* sample.task in Resources */,
+				CFA8019A1A79895D00A14389 /* consent_04@3x.m4v in Resources */,
 				5B975A161A112E2C00A34E42 /* Learn.json in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
+				CFA8019B1A79895D00A14389 /* consent_05@3x.m4v in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
+				CFA801991A79895D00A14389 /* consent_03@3x.m4v in Resources */,
 				5B975A171A112E2C00A34E42 /* WithdrawStudy.json in Resources */,
 				5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */,
+				CFA801941A79895D00A14389 /* consent_05@2x.m4v in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
