@@ -35,29 +35,33 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 
 - (NSString *)createResultSummary
 {
-//    RKSTResult  *aStepResult = [self.result resultForIdentifier:kIntervalTappingStep103];
-//    NSArray  *stepResults = nil;
-//    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-//        stepResults = [(RKSTStepResult *)aStepResult results];
-//    }
-//    NSString  *contentString = @"";
-//    if (stepResults != nil) {
-//        RKSTResult  *aDataResult = [stepResults lastObject];
-//        if ([aDataResult isKindOfClass:[APCDataResult class]] == YES) {
-//            NSData  *data = [(APCDataResult *)aDataResult data];
-//            
-//            NSError  *error = nil;
-//            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-//            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
-//            
-//            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
-//            NSError  *serializationError = nil;
-//            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
-//            
-//            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
-//        }
-//    }
-    return @"";
+    RKSTTaskResult  *taskResults = self.result;
+    RKSTTappingIntervalResult  *tapsterResults = nil;
+    for (RKSTStepResult *stepResult  in  taskResults.results) {
+        if (stepResult.results.count > 0) {
+            if ([[stepResult.results firstObject] isKindOfClass:[RKSTTappingIntervalResult class]] == YES) {
+                tapsterResults = [stepResult.results firstObject];
+                break;
+            }
+        }
+    }
+    NSUInteger  numberOfSamples = 0;
+    NSDictionary  *summary = nil;
+    if (tapsterResults == nil) {
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+    } else {
+        numberOfSamples = [tapsterResults.samples count];
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+    }
+    NSError  *error = nil;
+    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+    NSString  *contentString = nil;
+    if (data == nil) {
+        APCLogError2 (error);
+    } else {
+        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    return  contentString;
 }
 
 #pragma  mark  -  View Controller Methods
