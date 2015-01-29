@@ -68,6 +68,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                             NSForegroundColorAttributeName : [UIColor appSecondaryColor2],
                                                             NSFontAttributeName : [UIFont appMediumFontWithSize:17.0f]
                                                             }];
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
 }
 
 - (void) showOnBoarding
@@ -156,18 +157,6 @@ errReturn:
 #pragma mark - Consent
 /*********************************************************************************/
 
-//RKSTConsentSectionTypeOverview,
-//RKSTConsentSectionTypeDataGathering,
-//RKSTConsentSectionTypePrivacy,
-//RKSTConsentSectionTypeDataUse,
-//RKSTConsentSectionTypeTimeCommitment,
-//RKSTConsentSectionTypeStudySurvey,
-//RKSTConsentSectionTypeStudyTasks,
-//RKSTConsentSectionTypeWithdrawing,
-//RKSTConsentSectionTypeCustom,                                 // No predefined title/summary/content/animation.
-//RKSTConsentSectionTypeOnlyInDocument                          // Section with this type only appears in pdf file.
-
-
 - (RKSTTaskViewController *)consentViewController
 {
     RKSTConsentDocument* consent = [[RKSTConsentDocument alloc] init];
@@ -176,38 +165,29 @@ errReturn:
     consent.signaturePageContent = @"I agree  to participate in this research Study.";
     
     
-    UIImage *consentSignatureImage = [UIImage imageWithData:self.dataSubstrate.currentUser.consentSignatureImage];
-//    RKSTConsentSignature *participantSig = [RKSTConsentSignature signatureForPersonWithTitle:@"Participant"
-//                                                                                        name:self.dataSubstrate.currentUser.consentSignatureName
-//                                                                              signatureImage:consentSignatureImage
-//                                                                                  dateString:nil
-//                                                                                  identifier:@"participant"];
-    RKSTConsentSignature *participantSig = [RKSTConsentSignature signatureForPersonWithTitle:@"Participant" dateFormatString:nil
-                                                                                  identifier:@"participant" firstName:self.dataSubstrate.currentUser.consentSignatureName
-                                                                                    lastName:self.dataSubstrate.currentUser.consentSignatureName
-                                                                              signatureImage:consentSignatureImage
-                                                                                  dateString:nil];
+    RKSTConsentSignature *participantSig = [RKSTConsentSignature signatureForPersonWithTitle:@"Participant"
+                                                                            dateFormatString:nil
+                                                                                  identifier:@"participant"];
     [consent addSignature:participantSig];
     
     
     NSMutableArray* components = [NSMutableArray new];
     
     NSArray* scenes = @[
-                        @(RKSTConsentSectionTypeOverview),  //1
-                        @(RKSTConsentSectionTypeDataGathering),  //2
-                        @(RKSTConsentSectionTypeDataUse),    //3
-                        @(RKSTConsentSectionTypePrivacy),  //4
-                        @(RKSTConsentSectionTypeStudySurvey), //5
-                        @(RKSTConsentSectionTypeStudyTasks), //6
-                        @(RKSTConsentSectionTypeCustom),    //7.Potential Benefits
-                        @(RKSTConsentSectionTypeCustom),    //8.Risk To Privacy
-                        @(RKSTConsentSectionTypeCustom), //9. Issues to consider
-                        @(RKSTConsentSectionTypeCustom),    //10.Issues to consider
-                        @(RKSTConsentSectionTypeTimeCommitment), //11. Issues to Consider
-                        @(RKSTConsentSectionTypeWithdrawing)]; //12.
+                        @(RKSTConsentSectionTypeOverview),              //     0.
+                        @(RKSTConsentSectionTypeDataGathering),         //     1.
+                        @(RKSTConsentSectionTypePrivacy),               //     2.
+                        @(RKSTConsentSectionTypeDataUse),               //     3.
+                        @(RKSTConsentSectionTypeTimeCommitment),        //     4.  Issues to Consider
+                        @(RKSTConsentSectionTypeStudySurvey),           //     5.
+                        @(RKSTConsentSectionTypeStudyTasks),            //     6.
+                        @(RKSTConsentSectionTypeWithdrawing),           //     7.
+                        @(RKSTConsentSectionTypeCustom),                //     8.  Potential Benefits
+                        @(RKSTConsentSectionTypeCustom),                //     9.  Risk To Privacy
+                        @(RKSTConsentSectionTypeCustom),                //    10.  Issues to consider
+                        @(RKSTConsentSectionTypeCustom)];               //    11.
     
-    for (int i = 0; i<scenes.count; i ++) {
-        
+    for (NSUInteger i = 0;  i < scenes.count;  i ++) {
         
         RKSTConsentSectionType sectionType = [scenes[i] integerValue];
         RKSTConsentSection *section = [[RKSTConsentSection alloc] initWithType:sectionType];
@@ -256,23 +236,23 @@ errReturn:
                 break;
             case RKSTConsentSectionTypeCustom:
             {
-                if (i == 6) {
+                if (i == 8) {
                     section.title = @"Potential Benefits";
                     section.summary = @"You will be able to see your data and potentially learn more about trends in your health.";
                     section.customImage = [UIImage imageNamed:@"consent_visualize"];
                     section.content = @"The goal of this study is to create knowledge that can benefit us as a society. The benefits are primarily the creation of insights to help current and future patients and their families to better detect, understand and manage their health. We will return the insights learned from analysis of the study data through the study website, but these insights may not be of direct benefit to you. We cannot, and thus we do not, guarantee or promise that you will personally receive any direct benefits from this study. However you will be able to track your health and export your data at will to share with your medical doctor and anyone you choose.";
                     
-                } else if (i == 7){
+                } else if (i == 9) {
                     section.title = @"Risk to Privacy";
                     section.summary = @"We will make every effort to protect your information, but total anonymity cannot be guaranteed.";
                     section.customImage = [UIImage imageNamed:@"consent_privacy"];
                     section.content = @"You may have concerns about data security, privacy and confidentiality. We take great care to protect your information, however there is a slight risk of loss of privacy. This is a low risk because we separate your personal information (information that can directly identify you, such as your name or phone number) from the research data to respect your privacy. However, even with removal of this information, it is sometimes possible to re-identify an individual given enough cross-reference information about him or her. This risk, while very low, should still be contemplated prior to enrolling.\n\nCONFIDENTIALITY\nWe are committed to protect your privacy. Your identity will be kept as confidential as possible. Except as required by law, you will not be identified by name or by any other direct personal identifier. We will use a random code number instead of your name on all your data collected, analyzed, aggregated and released to researchers. Information about the code will be kept in a secure system. This study anticipates that your data will be added to a combined study dataset placed in a “repository” - an online database – like Sage Bionetworks Synapse where other researchers can access it. No name or contact information will be included in this combined study dataset. Researchers will have access to all the study data but will be unable to easily map any particular data to the identities of the participants. However, there is always a risk that the database can be breached by hackers, or that experts in re- identification may attempt to reverse our processes. Total confidentiality cannot be guaranteed.";
-                } else if (i == 8){
+                } else if (i == 10) {
                     section.title = @"Issues to Consider";
                     section.summary = @"Some questions may make you uncomfortable. Simply do not respond.";
                     section.customImage = [UIImage imageNamed:@"consent_uncomfortablequestions"];
                     section.content = @"This is not a treatment study and we do not expect any medical side effects from participating.\nSome survey questions may make you feel uncomfortable. Know that the information you provide is entirely up to you and you are free to skip questions that you do not want to answer.\n\nOther people may glimpse the study notifications and/or reminders on your phone and realize you are enrolled in this study. This can make some people feel self- conscious. You can avoid this discomfort by putting a passcode on your phone to block unauthorized users from accessing your phone content.\n\nYou may have concerns about data security, privacy and confidentiality. We take great care to protect your information, however there is a slight risk of loss of privacy. This is a low risk because we separate your personal information (information that can directly identify you, such as your name or phone number) from the research data to respect your privacy. However, even with removal of this information, it is sometimes possible to re-identify an individual given enough cross-reference information about him or her. This risk, while very low, should still be contemplated prior to enrolling.\n\nData collected in this study will count against your existing mobile data plan. You may configure the application to only use WiFi connections to limit the impact this data collection has on your data plan.";
-                }else if (i == 9){
+                } else if (i == 11) {
                     section.title = @"Issues to Consider";
                     section.summary = @"Participating in this study may alter how you feel. You may feel more tired, sad, energized, or happy.";
                     section.customImage = [UIImage imageNamed:@"consent_mood"];
@@ -298,9 +278,18 @@ errReturn:
     consent.sections = [components copy];
     
     RKSTVisualConsentStep *step = [[RKSTVisualConsentStep alloc] initWithIdentifier:@"VisualStep" document:consent ];
-    RKSTConsentReviewStep *reviewStep = [[RKSTConsentReviewStep alloc] initWithIdentifier:@"VisualStep" signature:participantSig inDocument:consent];
+    RKSTConsentReviewStep *reviewStep = nil;
     
-    RKSTOrderedTask *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"consent" steps:@[step, reviewStep]];
+    NSMutableArray  *consentSteps = [NSMutableArray new];
+    [consentSteps addObject: step];
+    
+    if (self.dataSubstrate.currentUser.isSignedIn == NO) {
+        reviewStep = [[RKSTConsentReviewStep alloc] initWithIdentifier:@"reviewStep" signature:participantSig inDocument:consent];
+        reviewStep.reasonForConsent = @"By agreeing you are consenting to take part in this research study.";
+        [consentSteps addObject: reviewStep];
+    }
+    
+    RKSTOrderedTask *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"consent" steps:consentSteps];
     
     RKSTTaskViewController *consentVC = [[RKSTTaskViewController alloc] initWithTask:task taskRunUUID:[NSUUID UUID]];
     
