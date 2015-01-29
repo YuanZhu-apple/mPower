@@ -37,10 +37,17 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 {
     RKSTTaskResult  *taskResults = self.result;
     RKSTTappingIntervalResult  *tapsterResults = nil;
-    for (RKSTStepResult *stepResult  in  taskResults.results) {
+    BOOL  found = NO;
+    for (RKSTStepResult  *stepResult  in  taskResults.results) {
         if (stepResult.results.count > 0) {
-            if ([[stepResult.results firstObject] isKindOfClass:[RKSTTappingIntervalResult class]] == YES) {
-                tapsterResults = [stepResult.results firstObject];
+            for (id  object  in  stepResult.results) {
+                if ([object isKindOfClass:[RKSTTappingIntervalResult class]] == YES) {
+                    found = YES;
+                    tapsterResults = object;
+                    break;
+                }
+            }
+            if (found == YES) {
                 break;
             }
         }
