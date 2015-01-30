@@ -27,12 +27,12 @@
                   },
                   {
                   "scheduleType": "recurring",
-                  "scheduleString": "0 5 * * *",
+                  "scheduleString": "0 5,11,17 * * *",
                   "taskID": "APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
                   },
                   {
                   "scheduleType": "recurring",
-                  "scheduleString": "0 5 * * *",
+                  "scheduleString": "0 5,11,17 * * *",
                   "taskID": "APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                   }
                   ]

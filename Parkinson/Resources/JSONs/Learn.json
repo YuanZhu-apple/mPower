@@ -42,14 +42,7 @@
                             "details": "symptoms",
                             "icon_image": "diagnostics_icon",
                             "tint_color": "green"
-                        },
-                          {
-                          "title": "Review Consent",
-                          "details": "consent",
-                          "icon_image": "consent_icon",
-                          "tint_color": "purple"
-                          },
-                          
+                        }
             ]
         },
         {

@@ -40,9 +40,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         
         if (!_rowItemsOrder.count) {
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
+                                                                     @(kAPHDashboardItemTypeSteps),
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
-                                                                     @(kAPHDashboardItemTypeGait),
-                                                                     @(kAPHDashboardItemTypeSteps)
+                                                                     @(kAPHDashboardItemTypeGait)
                                                                      ]];
             
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
@@ -218,7 +218,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         
         APCTableViewSection *section = [APCTableViewSection new];
         section.rows = [NSArray arrayWithArray:rowItems];
-        section.sectionTitle = NSLocalizedString(@"Past 5 Days", @"");
+        section.sectionTitle = NSLocalizedString(@"Recent Activity", @"");
         [self.items addObject:section];
     }
     

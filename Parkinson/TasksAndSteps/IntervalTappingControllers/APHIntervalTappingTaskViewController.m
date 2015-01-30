@@ -6,224 +6,81 @@
 // 
  
 #import "APHIntervalTappingTaskViewController.h"
-
-#import "APHIntervalTappingRecorderCustomView.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
-#import "APHIntervalTappingTapView.h"
-#import "APHRippleView.h"
 
-#import "APHIntervalTappingRecorder.h"
+#import <AVFoundation/AVFoundation.h>
 
-static NSString *MainStudyIdentifier = @"com.parkinsons.intervalTapping";
-
-static  NSString  *kIntervalTappingStep101        = @"IntervalTappingStep101";
-
-static  NSString  *kIntervalTappingStep102        = @"IntervalTappingStep102";
-static  CGFloat    kGetReadyStepCountdownInterval = 5.0;
-
-static  NSString  *kIntervalTappingStep103        = @"IntervalTappingStep103";
-static  CGFloat    kTappingStepCountdownInterval  = 20.0;
-
-static  NSString  *kIntervalTappingStep104        = @"IntervalTappingStep104";
-
-static  NSString  *kTaskViewControllerTitle = @"Tapping";
+static  NSString       *kIntervalTappingTitle         = @"Finger Tapping Activity";
+static  NSString       *kIntendedUseDescription       = @"Play The Finger Drums";
+static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
-
-@property  (nonatomic, strong)  APHRippleView  *tappingTargetsContainer;
 
 @end
 
 @implementation APHIntervalTappingTaskViewController
+
+#pragma  mark  -  Task Creation Methods
+
++ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
+{
+    RKSTOrderedTask  *task = [RKSTOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
+                                                                  intendedUseDescription:kIntendedUseDescription
+                                                                                duration:kTappingStepCountdownInterval
+                                                                                 options:0];
+    return  task;
+}
+
+#pragma  mark  -  Results For Dashboard
+
+- (NSString *)createResultSummary
+{
+    RKSTTaskResult  *taskResults = self.result;
+    RKSTTappingIntervalResult  *tapsterResults = nil;
+    BOOL  found = NO;
+    for (RKSTStepResult  *stepResult  in  taskResults.results) {
+        if (stepResult.results.count > 0) {
+            for (id  object  in  stepResult.results) {
+                if ([object isKindOfClass:[RKSTTappingIntervalResult class]] == YES) {
+                    found = YES;
+                    tapsterResults = object;
+                    break;
+                }
+            }
+            if (found == YES) {
+                break;
+            }
+        }
+    }
+    NSUInteger  numberOfSamples = 0;
+    NSDictionary  *summary = nil;
+    if (tapsterResults == nil) {
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+    } else {
+        numberOfSamples = [tapsterResults.samples count];
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+    }
+    NSError  *error = nil;
+    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+    NSString  *contentString = nil;
+    if (data == nil) {
+        APCLogError2 (error);
+    } else {
+        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    return  contentString;
+}
 
 #pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    
-    self.stepsToAutomaticallyAdvanceOnTimer = @[ kIntervalTappingStep102, kIntervalTappingStep103 ];
-    
-    NSError  *error = nil;
-    BOOL  success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    if (success == NO) {
-        APCLogError2(error);
-    }
 }
 
-#pragma  mark  -  Task Creation Methods
-
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
+- (void)viewWillAppear:(BOOL)animated
 {
-    NSMutableArray *steps = [[NSMutableArray alloc] init];
-    
-    {
-        RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep101];
-        step.title = NSLocalizedString(@"Tapping Activity", @"");
-        step.text = @"";
-        step.detailText = @"";
-        [steps addObject:step];
-    }
-    
-    {
-        RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep102];
-        step.title = NSLocalizedString(@"Tapping Activity", @"");
-        step.text = NSLocalizedString(@"Get Ready!", @"");
-        step.countDownInterval = kGetReadyStepCountdownInterval;
-        step.shouldStartTimerAutomatically = YES;
-        step.shouldSpeakCountDown = YES;
-        
-        [steps addObject:step];
-    }
-    
-    {
-        RKSTActiveStep  *step = [[RKSTActiveStep alloc] initWithIdentifier:kIntervalTappingStep103];
-        step.title = NSLocalizedString(@"Button Tap", @"");
-        step.text = @"";
-        step.countDownInterval = kTappingStepCountdownInterval;
-        step.shouldStartTimerAutomatically = YES;
-        step.recorderConfigurations = @[[APHIntervalTappingRecorderConfiguration new]];
-        [steps addObject:step];
-    }
-    
-    {
-        RKSTInstructionStep  *step = [[RKSTInstructionStep alloc] initWithIdentifier:kIntervalTappingStep104];
-        step.title = NSLocalizedString(@"Great Job!", @"");
-        step.text = @"";
-        step.detailText = @"";
-        [steps addObject:step];
-    }
-
-    RKSTOrderedTask  *task = [[RKSTOrderedTask alloc] initWithIdentifier:@"Tapping Activity" steps:steps];
-    
-    return  task;
-}
-
-#pragma  mark  -  Navigation Bar Button Action Methods
-
-- (void)cancelButtonTapped:(id)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
-}
-
-- (void)doneButtonTapped:(id)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{ } ];
-}
-
-/*********************************************************************************/
-#pragma mark - Bar Button Action Methods
-/*********************************************************************************/
-
-- (void)cancelButtonWasTapped:(id)sender
-{
-    if ([self respondsToSelector:@selector(taskViewControllerDidCancel:)] == YES) {
-        [self taskViewControllerDidCancel:self];
-    }
-}
-
-#pragma  mark  -  Task View Controller Delegate Methods
-
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
-{
-    if (kIntervalTappingStep102 == stepViewController.step.identifier) {
-        stepViewController.continueButton = nil;
-    } else if (kIntervalTappingStep104 == stepViewController.step.identifier) {
-        stepViewController.continueButton = nil;
-    }
-    stepViewController.skipButton     = nil;
-    stepViewController.continueButton = nil;
-    
-    if (([stepViewController.step.identifier isEqualToString:kIntervalTappingStep102] == YES) ||
-        ([stepViewController.step.identifier isEqualToString:kIntervalTappingStep103] == YES)) {
-        
-        UIBarButtonItem  *cancellor = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonWasTapped:)];
-        stepViewController.cancelButton = cancellor;
-    }
-    [super taskViewController:taskViewController stepViewControllerWillAppear:stepViewController];
-}
-
-- (APCStepViewController *)setupInstructionStepWithStep:(RKSTStep *)step
-{
-    APCStepViewController             *controller     = (APCInstructionStepViewController *)[[UIStoryboard storyboardWithName:@"APCInstructionStep"
-                                                                                                                       bundle:[NSBundle appleCoreBundle]] instantiateInitialViewController];
-    APCInstructionStepViewController  *instController = (APCInstructionStepViewController*)controller;
-    
-    instController.imagesArray    = @[ @"interval.instructions.01", @"interval.instructions.02", @"interval.instructions.03", @"interval.instructions.04" ];
-    
-    instController.headingsArray  = @[ @"Place your phone on a flat surface", @"Get ready to start tapping", @"Tap on the targets as much as possible", @"View your results on the Dashboard" ];
-    
-    instController.messagesArray  = @[
-                                      @"Please lay your phone on a flat surface when tapping for best results.",
-                                      @"Once you tap “Get Started” below, you will have 5 seconds before the activity begins.",
-                                      @"Please use your index and middle finger on the same hand for the tapping activity.",
-                                      @"After your tapping is finished, your results will be available on the Dashboard."
-                                    ];
-    controller.delegate = self;
-    controller.step     = step;
-    
-    return  controller;
-}
-
-- (RKSTStepViewController *)taskViewController:(RKSTTaskViewController *)taskViewController viewControllerForStep:(RKSTStep *)step
-{
-    APCStepViewController  *controller = nil;
-    
-    if ([step.identifier isEqualToString:kIntervalTappingStep101]) {
-        controller = [self setupInstructionStepWithStep:(RKSTStep *)step];
-    } else {
-        NSDictionary  *controllers = @{
-                                       kIntervalTappingStep104 : [APCSimpleTaskSummaryViewController    class]
-                                      };
-        Class  aClass = [controllers objectForKey:step.identifier];
-        NSBundle  *bundle = nil;
-        if ([step.identifier isEqualToString:kIntervalTappingStep104] == YES) {
-            bundle = [NSBundle appleCoreBundle];
-        }
-        controller = [[aClass alloc] initWithNibName:nil bundle:bundle];
-        controller.delegate = self;
-        controller.title = @"Interval Tapping";
-        controller.step = step;
-    }
-    return controller;
-}
-
-- (NSString *)createResultSummary
-{
-    RKSTResult  *aStepResult = [self.result resultForIdentifier:kIntervalTappingStep103];
-    NSArray  *stepResults = nil;
-    if ([aStepResult isKindOfClass:[RKSTStepResult class]] == YES) {
-        stepResults = [(RKSTStepResult *)aStepResult results];
-    }
-    NSString  *contentString = @"";
-    if (stepResults != nil) {
-        RKSTResult  *aDataResult = [stepResults lastObject];
-        if ([aDataResult isKindOfClass:[RKSTDataResult class]] == YES) {
-            NSData  *data = [(RKSTDataResult *)aDataResult data];
-            
-            NSError  *error = nil;
-            NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSArray  *records = [dictionary objectForKey:kIntervalTappingRecordsKey];
-            
-            NSDictionary  *summary = @{ kSummaryNumberOfRecordsKey : @([records count]) };
-            NSError  *serializationError = nil;
-            NSData  *summaryData = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&serializationError];
-            
-            contentString = [[NSString alloc] initWithData:summaryData encoding:NSUTF8StringEncoding];
-        }
-    }
-    return contentString;
-}
-
-/*********************************************************************************/
-#pragma  mark  - TaskViewController delegates
-/*********************************************************************************/
-
-- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
-{
-    [super taskViewControllerDidComplete:taskViewController];
+    [super viewWillAppear:animated];
 }
 
 @end
