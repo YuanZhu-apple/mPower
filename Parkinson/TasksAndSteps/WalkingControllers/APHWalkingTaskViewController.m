@@ -76,9 +76,13 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
     }
     if (self.walkingStepOrdinal == WalkingStepOrdinalsStandStillStep) {
         self.endCollectionDate = [NSDate date];
+        
+        NSTimeZone  *localZone = [NSTimeZone localTimeZone];
+        NSDate  *adjustedStartDate = [self.startCollectionDate dateByAddingTimeInterval:localZone.secondsFromGMT];
+        NSDate  *adjustedEndDate   = [self.endCollectionDate   dateByAddingTimeInterval:localZone.secondsFromGMT];
 
         HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:self.startCollectionDate endDate:self.endCollectionDate options:HKQueryOptionNone];
+        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:adjustedStartDate endDate:adjustedEndDate options:HKQueryOptionNone];
 
         HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
                                                             quantitySamplePredicate:predicate
@@ -86,7 +90,6 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
                                                                   completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
                                                                       if (result != nil) {
                                                                           self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
-                                                                          NSLog(@"APHWalkingTaskViewController completionHandler self.collectedNumberOfSteps %lu", (unsigned long)(self.collectedNumberOfSteps));
                                                                       } else {
                                                                           APCLogError2 (error);
                                                                       }
