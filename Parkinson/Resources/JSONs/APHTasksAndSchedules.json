@@ -1,7 +1,7 @@
 {
     "tasks": [
               {
-              "taskTitle" : "Gait Activity",
+              "taskTitle" : "Walking Activity",
               "taskID": "APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9",
               "taskClassName" : "APHWalkingTaskViewController",
               "taskCompletionTimeString" : "1.5 Minutes"

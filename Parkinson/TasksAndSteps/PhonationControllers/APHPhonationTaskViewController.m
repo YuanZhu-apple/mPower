@@ -9,11 +9,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString       *kTaskViewControllerTitle   = @"Speaking Activity";
+static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 
-static  NSString       *kIntendedUseDescription    = @"Hear Me Aaaaahhhhh";
-static  NSString       *kShortSpeechInstruction    = @"Get Ready to Record";
-static  NSString       *kLongSpeechInstruction     = @"Get Ready to Record";
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 @interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
@@ -32,9 +29,9 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
                                     };
     
       RKSTOrderedTask  *task = [RKSTOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
-                                intendedUseDescription:NSLocalizedString(kIntendedUseDescription, kIntendedUseDescription)
-                                speechInstruction:kShortSpeechInstruction
-                                shortSpeechInstruction:kLongSpeechInstruction
+                                intendedUseDescription:nil
+                                speechInstruction:nil
+                                shortSpeechInstruction:nil
                                 duration:kGetSoundingAaahhhInterval
                                 recordingSettings:audioSettings
                                 options:0];
