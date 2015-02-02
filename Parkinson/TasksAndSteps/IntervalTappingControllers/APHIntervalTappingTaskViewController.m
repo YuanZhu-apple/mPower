@@ -10,8 +10,10 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString       *kIntervalTappingTitle         = @"Finger Tapping Activity";
-static  NSString       *kIntendedUseDescription       = @"Play The Finger Drums";
+static  NSString       *kTaskViewControllerTitle      = @"Tapping Activity";
+
+static  NSString       *kIntervalTappingTitle         = @"Tapping Activity";
+
 static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
@@ -25,7 +27,7 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 + (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     RKSTOrderedTask  *task = [RKSTOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
-                                                                  intendedUseDescription:kIntendedUseDescription
+                                                                  intendedUseDescription:nil
                                                                                 duration:kTappingStepCountdownInterval
                                                                                  options:0];
     return  task;
@@ -76,6 +78,8 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
 }
 
 - (void)viewWillAppear:(BOOL)animated

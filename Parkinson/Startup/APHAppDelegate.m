@@ -39,7 +39,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kAppServicesListRequiredKey           : @[
                                                    @(kSignUpPermissionsTypeLocation),
                                                    @(kSignUpPermissionsTypeCoremotion),
-                                                   @(kSignUpPermissionsTypeMicrophone)
+                                                   @(kSignUpPermissionsTypeMicrophone),
+                                                   @(kSignUpPermissionsTypeLocalNotifications)
                                                    ],
                                            kAppProfileElementsListKey            : @[
                                                    @(kAPCUserInfoItemTypeEmail),
@@ -51,7 +52,6 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
                                            kAnalyticsOnOffKey  : @(YES),
-                                           kAppServicesListRequiredKey : @[ @(kSignUpPermissionsTypeLocalNotifications) ],
                                            kAnalyticsFlurryAPIKeyKey : @"4T6KKBMDSYFVX95PNNWT"
                                            }];
     self.initializationOptions = dictionary;
