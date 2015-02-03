@@ -92,39 +92,12 @@ static NSString *const kVideoShownKey = @"VideoShown";
 /*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
-
-//static  NSTimeInterval  kPassiveLocationDeferredUpdatesTimeout = 1.0 * 60.0;
-
 -(void)setUpCollectors
 {
-//    NSError *error = nil;
-//    {
-
-//        HKQuantityType *quantityType = (HKQuantityType*)[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-//        RKSTHealthCollector *healthCollector = [self.dataSubstrate.study addHealthCollectorWithSampleType:quantityType unit:[HKUnit countUnit] startDate:nil error:&error];
-//        if (!healthCollector)
-//        {
-//            APCLogError2(error);
-//            [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
-//            goto errReturn;
-//        }
-
-//        RKSTMotionActivityCollector *motionCollector = [self.dataSubstrate.study addMotionActivityCollectorWithStartDate:nil error:&error];
-//        if (!motionCollector)
-//        {
-//            [self.dataSubstrate.studyStore removeStudy:self.dataSubstrate.study error:nil];
-//            goto errReturn;
-//        }
-        
-            //    Set Up Passive Location Collection: User's Home Location is not available in Parkinson's
-        
-//        self.dataSubstrate.passiveLocationTracking = [[APCPassiveLocationTracking alloc] initWithDeferredUpdatesTimeout:kPassiveLocationDeferredUpdatesTimeout
-//                                                                                              andHomeLocationStatus:APCPassiveLocationTrackingHomeLocationUnavailable];
-//        [self.dataSubstrate.passiveLocationTracking start];
-//    }
-//    
-//errReturn:
-//    return;
+    NSDateComponents * interval = [[NSDateComponents alloc] init];
+    interval.day = 1;
+    APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier:@"stepTracker" quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount interval:interval];
+    [self.passiveDataCollector addTracker: stepTracker];
 }
 
 /*********************************************************************************/
