@@ -19,10 +19,12 @@ typedef  enum  _WalkingStepOrdinals
     WalkingStepOrdinalsConclusionStep,
 }  WalkingStepOrdinals;
 
-static  NSString       *kWalkingActivityTitle = @"Walking Activity";
+static  NSString       *kWalkingActivityTitle     = @"Walking Activity";
 
-static  NSUInteger      kNumberOfStepsPerLeg  = 20;
-static  NSTimeInterval  kStandStillDuration   = 30.0;
+static  NSUInteger      kNumberOfStepsPerLeg      = 20;
+static  NSTimeInterval  kStandStillDuration       = 30.0;
+
+static  NSString       *kConclusionStepIdentifier = @"conclusion";
 
 
 @interface APHWalkingTaskViewController  ( )
@@ -71,6 +73,10 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
 
 - (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
 {
+    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+    
     if (self.walkingStepOrdinal == WalkingStepOrdinalsWalkOutStep) {
         self.startCollectionDate = [NSDate date];
     }
@@ -107,6 +113,21 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
         [synthesiser speakUtterance:talk];
     }
     self.walkingStepOrdinal = self.walkingStepOrdinal + 1;
+}
+
+- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+    
+}
+
+- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  View Controller Methods

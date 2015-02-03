@@ -13,6 +13,8 @@ static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
+static  NSString       *kConclusionStepIdentifier  = @"conclusion";
+
 @interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
 
 @end
@@ -36,7 +38,33 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
                                 recordingSettings:audioSettings
                                 options:0];
     
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
     return  task;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController {
+    
+    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+}
+
+- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+    
+}
+
+- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  Results For Dashboard
