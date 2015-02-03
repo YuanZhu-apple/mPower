@@ -16,6 +16,8 @@ static  NSString       *kIntervalTappingTitle         = @"Tapping Activity";
 
 static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 
+static NSString* const  kConclusionStepIdentifier     = @"conclusion";
+
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
 
 @end
@@ -30,6 +32,8 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
                                                                   intendedUseDescription:nil
                                                                                 duration:kTappingStepCountdownInterval
                                                                                  options:0];
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
     return  task;
 }
 
@@ -71,6 +75,30 @@ static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
         contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     return  contentString;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController {
+    
+    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+}
+
+- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+    
+}
+
+- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  View Controller Methods
