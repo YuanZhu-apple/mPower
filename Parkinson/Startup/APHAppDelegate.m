@@ -97,6 +97,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
     NSDateComponents * interval = [[NSDateComponents alloc] init];
     interval.day = 1;
     APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier:@"stepTracker" quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount interval:interval];
+    stepTracker.unitForTracker = [HKUnit countUnit];
     [self.passiveDataCollector addTracker: stepTracker];
 }
 
