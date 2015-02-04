@@ -94,11 +94,21 @@ static NSString *const kVideoShownKey = @"VideoShown";
 /*********************************************************************************/
 -(void)setUpCollectors
 {
-    NSDateComponents * interval = [[NSDateComponents alloc] init];
-    interval.day = 1;
-    APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier:@"stepTracker" quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount interval:interval];
-    stepTracker.unitForTracker = [HKUnit countUnit];
-    [self.passiveDataCollector addTracker: stepTracker];
+//    //Set up step tracker
+//    NSDateComponents * interval = [[NSDateComponents alloc] init];
+//    interval.day = 1;
+//    APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier:@"stepTracker" quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount interval:interval];
+//    stepTracker.unitForTracker = [HKUnit countUnit];
+//    [self.passiveDataCollector addTracker: stepTracker];
+    
+//    //Set up weight tracker
+//    APCHKDiscreteQuantityTracker * weightTracker = [[APCHKDiscreteQuantityTracker alloc] initWithIdentifier:@"weightTracker" sampleType: [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]];
+//    weightTracker.unitForTracker = [HKUnit poundUnit];
+//    [self.passiveDataCollector addTracker:weightTracker];
+    
+//       //Set up location tracker
+//    APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier:@"locationTracker" deferredUpdatesTimeout:60*60 andHomeLocationStatus:APCPassiveLocationTrackingHomeLocationUnavailable];
+//       [self.passiveDataCollector addTracker:locationTracker];
 }
 
 /*********************************************************************************/
