@@ -92,23 +92,54 @@ static NSString *const kVideoShownKey = @"VideoShown";
 /*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
--(void)setUpCollectors
+- (void) setUpCollectors
 {
-//    //Set up step tracker
-//    NSDateComponents * interval = [[NSDateComponents alloc] init];
-//    interval.day = 1;
-//    APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier:@"stepTracker" quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount interval:interval];
-//    stepTracker.unitForTracker = [HKUnit countUnit];
-//    [self.passiveDataCollector addTracker: stepTracker];
-    
-//    //Set up weight tracker
-//    APCHKDiscreteQuantityTracker * weightTracker = [[APCHKDiscreteQuantityTracker alloc] initWithIdentifier:@"weightTracker" sampleType: [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass]];
-//    weightTracker.unitForTracker = [HKUnit poundUnit];
-//    [self.passiveDataCollector addTracker:weightTracker];
-    
-//       //Set up location tracker
-//    APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier:@"locationTracker" deferredUpdatesTimeout:60*60 andHomeLocationStatus:APCPassiveLocationTrackingHomeLocationUnavailable];
-//       [self.passiveDataCollector addTracker:locationTracker];
+	/*
+	 How to test this:  
+	 
+	 -	Uncomment all these lines.  That will make the data
+		collectors upload data whenever they get 1Mb of
+		data, the default amount.
+	 
+	 -	To make them upload much more frequently, uncomment
+		the lines that say
+	 
+			<thingy>.sizeThreshold = 100;
+	 
+		This will make the trackers upload data every 100 bytes --
+		basically, every time we get any data record at all, since
+		each record is more than 100 bytes.
+	 */
+
+//		//
+//		// Set up step tracker
+//		//
+//		NSDateComponents * interval = [[NSDateComponents alloc] init];
+//		interval.day = 1;
+//		APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier: @"stepTracker"
+//																						   quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount
+//																										 interval: interval];
+//		stepTracker.unitForTracker = [HKUnit countUnit];
+//	//	stepTracker.sizeThreshold = 100;
+//		[self.passiveDataCollector addTracker: stepTracker];
+//
+//		//
+//		// Set up weight tracker
+//		//
+//		APCHKDiscreteQuantityTracker * weightTracker = [[APCHKDiscreteQuantityTracker alloc] initWithIdentifier: @"weightTracker"
+//																									 sampleType: [HKSampleType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyMass]];
+//		weightTracker.unitForTracker = [HKUnit poundUnit];
+//	//	weightTracker.sizeThreshold = 100;
+//		[self.passiveDataCollector addTracker: weightTracker];
+//
+//		//
+//		// Set up location tracker
+//		//
+//		APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier: @"locationTracker"
+//																			   deferredUpdatesTimeout: 60*60
+//																				andHomeLocationStatus: APCPassiveLocationTrackingHomeLocationUnavailable];
+//	//	locationTracker.sizeThreshold = 100;
+//		[self.passiveDataCollector addTracker: locationTracker];
 }
 
 /*********************************************************************************/
