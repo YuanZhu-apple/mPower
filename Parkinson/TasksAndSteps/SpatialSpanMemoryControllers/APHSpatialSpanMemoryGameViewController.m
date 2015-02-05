@@ -9,7 +9,7 @@
 
 static  NSString       *kTaskViewControllerTitle      = @"Memory Activity";
 
-static  NSString       *kMemorySpanTitle              = @"Tapping Activity";
+static  NSString       *kMemorySpanTitle              = @"Memory Activity";
 
 static  NSString       *kConclusionStepIdentifier     = @"conclusion";
 
@@ -52,7 +52,8 @@ static  BOOL            kRequiresReversal             = NO;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController {
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+{
     
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
