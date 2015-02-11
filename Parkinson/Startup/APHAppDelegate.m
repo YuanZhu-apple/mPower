@@ -60,8 +60,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (void) setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
-                                                 kPrimaryAppColorKey : [UIColor colorWithRed:255/255.0f green:0 blue:56/255.0f alpha:1.000]
-//                                                 kPrimaryAppColorKey : [UIColor colorWithRed:0.176 green:0.706 blue:0.980 alpha:1.000]
+                                                 kPrimaryAppColorKey : [UIColor colorWithRed:255 / 255.0f green:0.0 blue:56 / 255.0f alpha:1.000]
                                                  }];
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
@@ -94,52 +93,13 @@ static NSString *const kVideoShownKey = @"VideoShown";
 /*********************************************************************************/
 - (void) setUpCollectors
 {
-	/*
-	 How to test this:  
-	 
-	 -	Uncomment all these lines.  That will make the data
-		collectors upload data whenever they get 1Mb of
-		data, the default amount.
-	 
-	 -	To make them upload much more frequently, uncomment
-		the lines that say
-	 
-			<thingy>.sizeThreshold = 100;
-	 
-		This will make the trackers upload data every 100 bytes --
-		basically, every time we get any data record at all, since
-		each record is more than 100 bytes.
-	 */
-
-//		//
-//		// Set up step tracker
-//		//
-//		NSDateComponents * interval = [[NSDateComponents alloc] init];
-//		interval.day = 1;
-//		APCHKCumulativeQuantityTracker * stepTracker = [[APCHKCumulativeQuantityTracker alloc] initWithIdentifier: @"stepTracker"
-//																						   quantityTypeIdentifier: HKQuantityTypeIdentifierStepCount
-//																										 interval: interval];
-//		stepTracker.unitForTracker = [HKUnit countUnit];
-//	//	stepTracker.sizeThreshold = 100;
-//		[self.passiveDataCollector addTracker: stepTracker];
-//
-//		//
-//		// Set up weight tracker
-//		//
-//		APCHKDiscreteQuantityTracker * weightTracker = [[APCHKDiscreteQuantityTracker alloc] initWithIdentifier: @"weightTracker"
-//																									 sampleType: [HKSampleType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyMass]];
-//		weightTracker.unitForTracker = [HKUnit poundUnit];
-//	//	weightTracker.sizeThreshold = 100;
-//		[self.passiveDataCollector addTracker: weightTracker];
-//
-//		//
-//		// Set up location tracker
-//		//
-//		APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier: @"locationTracker"
-//																			   deferredUpdatesTimeout: 60*60
-//																				andHomeLocationStatus: APCPassiveLocationTrackingHomeLocationUnavailable];
-//	//	locationTracker.sizeThreshold = 100;
-//		[self.passiveDataCollector addTracker: locationTracker];
+  		//
+  		// Set up location tracker
+  		//
+		APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier: @"locationTracker"
+																			   deferredUpdatesTimeout: 60.0 * 60.0
+																				andHomeLocationStatus: APCPassiveLocationTrackingHomeLocationUnavailable];
+		[self.passiveDataCollector addTracker: locationTracker];
 }
 
 /*********************************************************************************/
