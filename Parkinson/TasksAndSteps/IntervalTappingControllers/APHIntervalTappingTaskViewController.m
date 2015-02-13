@@ -10,15 +10,27 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+typedef  enum  _TappingStepOrdinals
+{
+    TappingStepOrdinalsIntroductionStep = 0,
+    TappingStepOrdinalsInstructionStep,
+    TappingStepOrdinalsTappingStep,
+    TappingStepOrdinalsConclusionStep,
+}  TappingStepOrdinals;
+
 static  NSString       *kTaskViewControllerTitle      = @"Tapping Activity";
 
 static  NSString       *kIntervalTappingTitle         = @"Tapping Activity";
 
 static  NSTimeInterval  kTappingStepCountdownInterval = 20.0;
 
-static NSString* const  kConclusionStepIdentifier     = @"conclusion";
+static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 @interface APHIntervalTappingTaskViewController  ( ) <NSObject>
+
+@property  (nonatomic, assign)  TappingStepOrdinals  tappingStepOrdinal;
+
+@property  (nonatomic, assign)  BOOL                 preferStatusBarShouldBeHidden;
 
 @end
 
@@ -79,11 +91,18 @@ static NSString* const  kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController {
-    
-    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+{
+    if (self.tappingStepOrdinal == TappingStepOrdinalsTappingStep) {
+        self.preferStatusBarShouldBeHidden = YES;
+        [[UIApplication sharedApplication] setStatusBarHidden: YES];
+    }
+    if (self.tappingStepOrdinal == TappingStepOrdinalsConclusionStep) {
+        self.preferStatusBarShouldBeHidden = NO;
+        [[UIApplication sharedApplication] setStatusBarHidden: NO];
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
+    self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }
 
 - (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
@@ -103,11 +122,19 @@ static NSString* const  kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  View Controller Methods
 
+- (BOOL)prefersStatusBarHidden
+{
+    return  self.preferStatusBarShouldBeHidden;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    
+    self.tappingStepOrdinal = TappingStepOrdinalsIntroductionStep;
+    self.preferStatusBarShouldBeHidden = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
