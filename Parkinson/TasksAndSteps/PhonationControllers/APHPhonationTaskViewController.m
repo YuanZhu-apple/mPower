@@ -9,6 +9,15 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+typedef  enum  _PhonationStepOrdinals
+{
+    PhonationStepOrdinalsIntroductionStep = 0,
+    PhonationStepOrdinalsInstructionStep,
+    PhonationStepOrdinalsCountdownStep,
+    PhonationStepOrdinalsVoiceRecordingStep,
+    PhonationStepOrdinalsConclusionStep,
+}  PhonationStepOrdinals;
+
 static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
@@ -16,6 +25,8 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 @interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
+
+@property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
 @end
 
@@ -45,11 +56,15 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController {
-    
-    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+{
+    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
+    }
+    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsConclusionStep) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
+    self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
 }
 
 - (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
@@ -81,6 +96,8 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    
+    self.voiceRecordingStepOrdinal = PhonationStepOrdinalsIntroductionStep;
 }
 
 - (void)viewWillAppear:(BOOL)animated
