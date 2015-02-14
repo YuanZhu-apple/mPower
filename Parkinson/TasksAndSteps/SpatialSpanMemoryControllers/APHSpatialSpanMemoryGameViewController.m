@@ -30,9 +30,9 @@ static  BOOL            kRequiresReversal             = NO;
 
 #pragma  mark  -  Task Creation Methods
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
-        RKSTOrderedTask  *task = [RKSTOrderedTask spatialSpanMemoryTaskWithIdentifier:kMemorySpanTitle
+        ORKOrderedTask  *task = [ORKOrderedTask spatialSpanMemoryTaskWithIdentifier:kMemorySpanTitle
             intendedUseDescription:nil
             initialSpan:kInitialSpan
             minimumSpan:kMinimumSpan
@@ -43,7 +43,7 @@ static  BOOL            kRequiresReversal             = NO;
             customTargetImage:nil
             customTargetPluralName:kCustomTargetPluralName
             requireReversal:kRequiresReversal
-            options:RKPredefinedTaskOptionNone];
+            options:ORKPredefinedTaskOptionNone];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -52,7 +52,7 @@ static  BOOL            kRequiresReversal             = NO;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
@@ -60,7 +60,7 @@ static  BOOL            kRequiresReversal             = NO;
     }
 }
 
-- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -68,7 +68,7 @@ static  BOOL            kRequiresReversal             = NO;
     
 }
 
-- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     

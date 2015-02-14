@@ -42,13 +42,13 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
 
 #pragma  mark  -  Initialisation
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
-    RKSTOrderedTask  *task = [RKSTOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
+    ORKOrderedTask  *task = [ORKOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
                             intendedUseDescription:nil
                             numberOfStepsPerLeg:kNumberOfStepsPerLeg
                             restDuration:kStandStillDuration
-                            options:RKPredefinedTaskOptionNone];
+                            options:ORKPredefinedTaskOptionNone];
     return  task;
 }
 
@@ -71,7 +71,7 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
@@ -115,7 +115,7 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
     self.walkingStepOrdinal = self.walkingStepOrdinal + 1;
 }
 
-- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -123,7 +123,7 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
     
 }
 
-- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     

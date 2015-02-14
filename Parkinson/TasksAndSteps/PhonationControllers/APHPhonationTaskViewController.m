@@ -24,7 +24,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
-@interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
+@interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
 
 @property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
@@ -34,14 +34,14 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 #pragma  mark  -  Initialisation
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
                                       AVSampleRateKey       : @(44100.0)
                                     };
     
-      RKSTOrderedTask  *task = [RKSTOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
+      ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
                                 intendedUseDescription:nil
                                 speechInstruction:nil
                                 shortSpeechInstruction:nil
@@ -56,7 +56,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
@@ -67,7 +67,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
 }
 
-- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -75,7 +75,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     
 }
 
-- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
