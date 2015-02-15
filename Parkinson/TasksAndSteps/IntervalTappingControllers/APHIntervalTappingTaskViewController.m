@@ -38,12 +38,12 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task Creation Methods
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
-    RKSTOrderedTask  *task = [RKSTOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
-                                                                  intendedUseDescription:nil
-                                                                                duration:kTappingStepCountdownInterval
-                                                                                 options:0];
+    ORKOrderedTask  *task = [ORKOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
+                                                                intendedUseDescription:nil
+                                                                              duration:kTappingStepCountdownInterval
+                                                                                options:0];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
     return  task;
@@ -53,13 +53,13 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 - (NSString *)createResultSummary
 {
-    RKSTTaskResult  *taskResults = self.result;
-    RKSTTappingIntervalResult  *tapsterResults = nil;
+    ORKTaskResult  *taskResults = self.result;
+    ORKTappingIntervalResult  *tapsterResults = nil;
     BOOL  found = NO;
-    for (RKSTStepResult  *stepResult  in  taskResults.results) {
+    for (ORKStepResult  *stepResult  in  taskResults.results) {
         if (stepResult.results.count > 0) {
             for (id  object  in  stepResult.results) {
-                if ([object isKindOfClass:[RKSTTappingIntervalResult class]] == YES) {
+                if ([object isKindOfClass:[ORKTappingIntervalResult class]] == YES) {
                     found = YES;
                     tapsterResults = object;
                     break;
@@ -91,7 +91,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if (self.tappingStepOrdinal == TappingStepOrdinalsTappingStep) {
         self.preferStatusBarShouldBeHidden = YES;
@@ -105,7 +105,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }
 
-- (void)taskViewControllerDidComplete:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -113,7 +113,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     
 }
 
-- (void)taskViewControllerDidCancel:(RKSTTaskViewController *)taskViewController
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
 {
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
