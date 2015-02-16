@@ -7,6 +7,7 @@
  
 @import APCAppCore;
 #import "APHAppDelegate.h"
+#import "APHProfileExtender.h"
 
 /*********************************************************************************/
 #pragma mark - Initializations Options
@@ -17,6 +18,7 @@ static NSString *const kAppPrefix       = @"parkinson";
 static NSString *const kVideoShownKey = @"VideoShown";
 
 @interface APHAppDelegate ()
+@property (nonatomic, strong) APHProfileExtender* profileExtender;
 
 @end
 
@@ -55,6 +57,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kAnalyticsFlurryAPIKeyKey : @"4T6KKBMDSYFVX95PNNWT"
                                            }];
     self.initializationOptions = dictionary;
+    
+    self.profileExtender = [[APHProfileExtender alloc] init];
 }
 
 - (void) setUpAppAppearance
@@ -68,6 +72,11 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                             NSFontAttributeName : [UIFont appMediumFontWithSize:17.0f]
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+}
+
+- (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
+    
+    return self.profileExtender;
 }
 
 - (void) showOnBoarding
