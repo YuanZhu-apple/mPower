@@ -41,9 +41,9 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 + (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     ORKOrderedTask  *task = [ORKOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
-                                                                  intendedUseDescription:nil
-                                                                                duration:kTappingStepCountdownInterval
-                                                                                 options:0];
+                                                                intendedUseDescription:nil
+                                                                              duration:kTappingStepCountdownInterval
+                                                                                options:0];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
     return  task;

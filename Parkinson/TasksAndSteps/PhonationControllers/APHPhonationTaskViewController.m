@@ -42,12 +42,12 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
                                     };
     
       ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
-                                intendedUseDescription:nil
-                                speechInstruction:nil
-                                shortSpeechInstruction:nil
-                                duration:kGetSoundingAaahhhInterval
-                                recordingSettings:audioSettings
-                                options:0];
+                                               intendedUseDescription:nil
+                                                    speechInstruction:nil
+                                               shortSpeechInstruction:nil
+                                                             duration:kGetSoundingAaahhhInterval
+                                                    recordingSettings:audioSettings
+                                                              options:0];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     

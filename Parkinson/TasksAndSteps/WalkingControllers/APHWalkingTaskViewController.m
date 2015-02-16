@@ -45,10 +45,10 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
 + (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     ORKOrderedTask  *task = [ORKOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
-                            intendedUseDescription:nil
-                            numberOfStepsPerLeg:kNumberOfStepsPerLeg
-                            restDuration:kStandStillDuration
-                            options:ORKPredefinedTaskOptionNone];
+                                                 intendedUseDescription:nil
+                                                    numberOfStepsPerLeg:kNumberOfStepsPerLeg
+                                                           restDuration:kStandStillDuration
+                                                                options:ORKPredefinedTaskOptionNone];
     return  task;
 }
 

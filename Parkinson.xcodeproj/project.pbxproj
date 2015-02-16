@@ -19,6 +19,8 @@
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
 		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
 		743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
+		74FA82951A9157A200F93769 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FA82941A9157A200F93769 /* ResearchKit.framework */; };
+		74FA82981A9157AB00F93769 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74FA82971A9157AB00F93769 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA50EA3E1A37B30D0049B835 /* parkinson-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */; };
 		BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3D1A37B30D0049B835 /* parkinson.pem */; };
 		BAB6644F1A328B0000360892 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8FF1A2F8C660011C270 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,8 +36,6 @@
 		F571C8FB1A2F8C580011C270 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */; };
 		F571C9001A2F8C660011C270 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8FF1A2F8C660011C270 /* BridgeSDK.framework */; };
 		F584909A19E892700091A640 /* Intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F584909919E892700091A640 /* Intro.mp4 */; };
-		F5BBC8531A900DB900815B56 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BBC8521A900DB900815B56 /* ResearchKit.framework */; };
-		F5BBC8551A900E2F00815B56 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BBC8521A900DB900815B56 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C11A2E19DCBE95003278FF /* APCParameters.json */; };
 		F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
 		F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
@@ -82,7 +82,7 @@
 			files = (
 				BAB664501A328B1F00360892 /* APCAppCore.framework in Embed Frameworks */,
 				BAB6644F1A328B0000360892 /* BridgeSDK.framework in Embed Frameworks */,
-				F5BBC8551A900E2F00815B56 /* ResearchKit.framework in Embed Frameworks */,
+				74FA82981A9157AB00F93769 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +105,8 @@
 		5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
 		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
 		743BFFFE1A90E12800438241 /* APHConsentSection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHConsentSection.json; sourceTree = "<group>"; };
+		74FA82941A9157A200F93769 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = AppCore/APCAppCore/ResearchKit/ResearchKit.framework; sourceTree = SOURCE_ROOT; };
+		74FA82971A9157AB00F93769 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = ../AppCore/APCAppCore/ResearchKit/ResearchKit.framework; sourceTree = "<group>"; };
 		BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "parkinson-staging.pem"; path = "Certificates/parkinson-staging.pem"; sourceTree = "<group>"; };
 		BA50EA3D1A37B30D0049B835 /* parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = parkinson.pem; path = Certificates/parkinson.pem; sourceTree = "<group>"; };
 		CF2BF9911A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderDataKeys.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
 				F5BBC8531A900DB900815B56 /* ResearchKit.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
+				74FA82951A9157A200F93769 /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +200,8 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74FA82971A9157AB00F93769 /* ResearchKit.framework */,
+				74FA82941A9157A200F93769 /* ResearchKit.framework */,
 				F571C8FF1A2F8C660011C270 /* BridgeSDK.framework */,
 				F571C8F21A2F8C4C0011C270 /* APCAppCore.xcodeproj */,
 				F5BBC8521A900DB900815B56 /* ResearchKit.framework */,
@@ -609,7 +614,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppCore/APCAppCore/**",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit/x86",
 					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -717,8 +721,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppCore/APCAppCore/**",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit/x86",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
@@ -743,8 +745,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppCore/APCAppCore/**",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit/x86",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
@@ -814,8 +814,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppCore/APCAppCore/**",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit/x86",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
