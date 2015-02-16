@@ -21,8 +21,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 @property (nonatomic, strong) APCScoring *gaitScoring;
 @property (nonatomic, strong) APCScoring *stepScoring;
 
-@property (nonatomic, strong) APCPresentAnimator *presentAnimator;
-
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
@@ -51,8 +49,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         }
         
         self.title = NSLocalizedString(@"Dashboard", @"Dashboard");
-        
-        _presentAnimator = [APCPresentAnimator new];
         _dateFormatter = [NSDateFormatter new];
     }
     
@@ -168,6 +164,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryPurpleColor];
                     
+                    #warning Replace Placeholder Values - APPLE-1576
+                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+                    
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
                     row.itemType = rowType;
@@ -186,6 +185,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryYellowColor];
                     
+                    #warning Replace Placeholder Values - APPLE-1576
+                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+                    
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
                     row.itemType = rowType;
@@ -203,6 +205,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryGreenColor];
+                    
+                    #warning Replace Placeholder Values - APPLE-1576
+                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
@@ -223,39 +228,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     }
     
     [self.tableView reloadData];
-}
-
-#pragma mark - APCDashboardGraphTableViewCellDelegate methods
-
-- (void)dashboardGraphViewCellDidTapExpandForCell:(APCDashboardLineGraphTableViewCell *)cell
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    APCTableViewDashboardGraphItem *graphItem = (APCTableViewDashboardGraphItem *)[self itemForIndexPath:indexPath];
-    
-    CGRect initialFrame = [cell convertRect:cell.bounds toView:self.view.window];
-    self.presentAnimator.initialFrame = initialFrame;
-
-    APCLineGraphViewController *graphViewController = [[UIStoryboard storyboardWithName:@"APHDashboard" bundle:nil] instantiateViewControllerWithIdentifier:@"GraphVC"];
-    graphViewController.graphItem = graphItem;
-//    graphViewController.transitioningDelegate = self;
-//    graphViewController.modalPresentationStyle = UIModalPresentationCustom;
-    [self.navigationController presentViewController:graphViewController animated:YES completion:nil];
-}
-
-#pragma mark - UIViewControllerTransitioningDelegate methods
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
-                                                                  presentingController:(UIViewController *)presenting
-                                                                      sourceController:(UIViewController *)source {
-    self.presentAnimator.presenting = YES;
-    return self.presentAnimator;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    
-    self.presentAnimator.presenting = NO;
-    return self.presentAnimator;
 }
 
 @end

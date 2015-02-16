@@ -19,10 +19,12 @@ typedef  enum  _WalkingStepOrdinals
     WalkingStepOrdinalsConclusionStep,
 }  WalkingStepOrdinals;
 
-static  NSString       *kWalkingActivityTitle = @"Walking Activity";
+static  NSString       *kWalkingActivityTitle     = @"Walking Activity";
 
-static  NSUInteger      kNumberOfStepsPerLeg  = 20;
-static  NSTimeInterval  kStandStillDuration   = 30.0;
+static  NSUInteger      kNumberOfStepsPerLeg      = 20;
+static  NSTimeInterval  kStandStillDuration       = 30.0;
+
+static  NSString       *kConclusionStepIdentifier = @"conclusion";
 
 
 @interface APHWalkingTaskViewController  ( )
@@ -40,13 +42,13 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
 
 #pragma  mark  -  Initialisation
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
-    RKSTOrderedTask  *task = [RKSTOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
-                            intendedUseDescription:nil
-                            numberOfStepsPerLeg:kNumberOfStepsPerLeg
-                            restDuration:kStandStillDuration
-                            options:RKPredefinedTaskOptionNone];
+    ORKOrderedTask  *task = [ORKOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
+                                                 intendedUseDescription:nil
+                                                    numberOfStepsPerLeg:kNumberOfStepsPerLeg
+                                                           restDuration:kStandStillDuration
+                                                                options:ORKPredefinedTaskOptionNone];
     return  task;
 }
 
@@ -69,16 +71,25 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(RKSTTaskViewController *)taskViewController stepViewControllerWillAppear:(RKSTStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
+    if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+    
     if (self.walkingStepOrdinal == WalkingStepOrdinalsWalkOutStep) {
         self.startCollectionDate = [NSDate date];
     }
     if (self.walkingStepOrdinal == WalkingStepOrdinalsStandStillStep) {
         self.endCollectionDate = [NSDate date];
+        
+        NSTimeZone  *timezone = [NSTimeZone localTimeZone];
+        
+        NSDate  *adjustedStartDate = [self.startCollectionDate dateByAddingTimeInterval:timezone.secondsFromGMT];
+        NSDate  *adjustedEndDate   = [self.endCollectionDate   dateByAddingTimeInterval:timezone.secondsFromGMT];
 
         HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:self.startCollectionDate endDate:self.endCollectionDate options:HKQueryOptionNone];
+        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:adjustedStartDate endDate:adjustedEndDate options:HKQueryOptionNone];
 
         HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
                                                             quantitySamplePredicate:predicate
@@ -86,7 +97,6 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
                                                                   completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
                                                                       if (result != nil) {
                                                                           self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
-                                                                          NSLog(@"APHWalkingTaskViewController completionHandler self.collectedNumberOfSteps %lu", (unsigned long)(self.collectedNumberOfSteps));
                                                                       } else {
                                                                           APCLogError2 (error);
                                                                       }
@@ -103,6 +113,21 @@ static  NSTimeInterval  kStandStillDuration   = 30.0;
         [synthesiser speakUtterance:talk];
     }
     self.walkingStepOrdinal = self.walkingStepOrdinal + 1;
+}
+
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+    
+}
+
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  View Controller Methods

@@ -9,14 +9,24 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString       *kTaskViewControllerTitle   = @"Speaking Activity";
+typedef  enum  _PhonationStepOrdinals
+{
+    PhonationStepOrdinalsIntroductionStep = 0,
+    PhonationStepOrdinalsInstructionStep,
+    PhonationStepOrdinalsCountdownStep,
+    PhonationStepOrdinalsVoiceRecordingStep,
+    PhonationStepOrdinalsConclusionStep,
+}  PhonationStepOrdinals;
 
-static  NSString       *kIntendedUseDescription    = @"Hear Me Aaaaahhhhh";
-static  NSString       *kShortSpeechInstruction    = @"Get Ready to Record";
-static  NSString       *kLongSpeechInstruction     = @"Get Ready to Record";
+static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
+
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
-@interface APHPhonationTaskViewController ( )  <RKSTTaskViewControllerDelegate>
+static  NSString       *kConclusionStepIdentifier  = @"conclusion";
+
+@interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
+
+@property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
 @end
 
@@ -24,22 +34,52 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 #pragma  mark  -  Initialisation
 
-+ (RKSTOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
                                       AVSampleRateKey       : @(44100.0)
                                     };
     
-      RKSTOrderedTask  *task = [RKSTOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
-                                intendedUseDescription:NSLocalizedString(kIntendedUseDescription, kIntendedUseDescription)
-                                speechInstruction:kShortSpeechInstruction
-                                shortSpeechInstruction:kLongSpeechInstruction
-                                duration:kGetSoundingAaahhhInterval
-                                recordingSettings:audioSettings
-                                options:0];
+      ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
+                                               intendedUseDescription:nil
+                                                    speechInstruction:nil
+                                               shortSpeechInstruction:nil
+                                                             duration:kGetSoundingAaahhhInterval
+                                                    recordingSettings:audioSettings
+                                                              options:0];
+    
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
     return  task;
+}
+
+#pragma  mark  -  Task View Controller Delegate Methods
+
+- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+{
+    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
+    }
+    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsConclusionStep) {
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+    self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
+}
+
+- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidComplete:taskViewController];
+    
+}
+
+- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
+{
+    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  Results For Dashboard
@@ -56,6 +96,8 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+    
+    self.voiceRecordingStepOrdinal = PhonationStepOrdinalsIntroductionStep;
 }
 
 - (void)viewWillAppear:(BOOL)animated
