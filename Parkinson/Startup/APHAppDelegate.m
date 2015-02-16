@@ -141,6 +141,37 @@ static NSString *const kVideoShownKey = @"VideoShown";
 #pragma mark - Consent
 /*********************************************************************************/
 
+- (NSArray*)quizSteps
+{
+    ORKTextChoiceAnswerFormat*  purposeChoice   = [[ORKTextChoiceAnswerFormat alloc] initWithStyle:ORKChoiceAnswerStyleSingleChoice
+                                                                                       textChoices:@[NSLocalizedString(@"Understand the fluctuations of Parkinson’s disease symptoms", nil),
+                                                                                                     NSLocalizedString(@"Treating Parkinson’s disease", nil)]];
+    ORKQuestionStep*    question1 = [ORKQuestionStep questionStepWithIdentifier:@"purpose"
+                                                                          title:NSLocalizedString(@"What is the purpose of this study?", nil)
+                                                                         answer:purposeChoice];
+    ORKQuestionStep*    question2 = [ORKQuestionStep questionStepWithIdentifier:@"deidentified"
+                                                                          title:NSLocalizedString(@"My name will be stored with my Study data", nil)
+                                                                         answer:[ORKBooleanAnswerFormat new]];
+    ORKQuestionStep*    question3 = [ORKQuestionStep questionStepWithIdentifier:@"access"
+                                                                          title:NSLocalizedString(@"Many researchers will be able to access my study data", nil)
+                                                                         answer:[ORKBooleanAnswerFormat new]];
+    ORKQuestionStep*    question4 = [ORKQuestionStep questionStepWithIdentifier:@"skipSurvey"
+                                                                          title:NSLocalizedString(@"I will be albe to skip any survey question", nil)
+                                                                         answer:[ORKBooleanAnswerFormat new]];
+    
+    ORKQuestionStep*    question5 = [ORKQuestionStep questionStepWithIdentifier:@"stopParticipating"
+                                                                          title:NSLocalizedString(@"I will be able to stop participating at any time", nil)
+                                                                         answer:[ORKBooleanAnswerFormat new]];
+    
+    question1.optional = NO;
+    question2.optional = NO;
+    question3.optional = NO;
+    question4.optional = NO;
+    question5.optional = NO;
+    
+    return @[question1, question2, question3, question4, question5];
+}
+
 - (ORKTaskViewController*)consentViewController
 {
     NSArray*                sections  = [super consentSections];
@@ -159,6 +190,9 @@ static NSString *const kVideoShownKey = @"VideoShown";
     ORKVisualConsentStep*   step         = [[ORKVisualConsentStep alloc] initWithIdentifier:@"VisualStep" document:consent];
     ORKConsentReviewStep*   reviewStep   = nil;
     NSMutableArray*         consentSteps = [NSMutableArray arrayWithObject:step];
+    
+    [consentSteps addObjectsFromArray:[self quizSteps]];
+
 
 #warning Reconsider if the the `signedIn` feature for consent is needed.
     if (self.dataSubstrate.currentUser.isSignedIn == NO)
