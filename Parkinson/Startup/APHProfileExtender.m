@@ -75,11 +75,6 @@
 - (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    APCMedicationTrackerSetupViewController *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
-    
-    controller.navigationController.navigationBar.topItem.title = NSLocalizedString(@"Medication Tracker Setup", @"");
-    
-    [navigationController pushViewController:controller animated:YES];
 }
 
 @end
