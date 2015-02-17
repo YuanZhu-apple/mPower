@@ -34,7 +34,7 @@
 //Add to the number of sections
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 0;
 }
 
 //Add to the number of sections
