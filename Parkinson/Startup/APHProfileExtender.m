@@ -49,17 +49,16 @@
     return count;
 }
 
-- (UIView *)cellForRowAtAdjustedIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)cellForRowAtAdjustedIndexPath:(NSIndexPath *)indexPath {
     
-    UILabel *view = nil;
+    UITableViewCell *cell = nil;
     if (indexPath.section == 0) {
-        CGSize screen = [[UIScreen mainScreen] bounds].size;
-        view = (UILabel *)[[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, screen.width, 60.0)];
-        view.text = NSLocalizedString(@"Medication Tracker Setup", @"");
-        view.textAlignment = NSTextAlignmentCenter;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"Medication Tracker Setup"];
+        cell.textLabel.text = @"Medication Tracker Setup";
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
 
-    return view;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtAdjustedIndexPath:(NSIndexPath *)indexPath {
@@ -67,17 +66,18 @@
     CGFloat height = tableView.rowHeight;
     
     if (indexPath.section == 0) {
-        height = 60.0;
+        height = 44.0;
     }
     
     return height;
 }
 
-- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    UIViewController *controller = [[UIViewController alloc] init];
+    APCMedicationTrackerSetupViewController *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     
-    controller.navigationController.navigationBar.topItem.title = NSLocalizedString(@"Medication Tracker", @"");
+    controller.navigationController.navigationBar.topItem.title = NSLocalizedString(@"Medication Tracker Setup", @"");
     
     [navigationController pushViewController:controller animated:YES];
 }
