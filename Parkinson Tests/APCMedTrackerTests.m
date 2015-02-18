@@ -94,7 +94,17 @@
     localContext.parentContext = masterContextIThink;
     id thingy = [localContext objectWithID: scheduleId];
 
-    NSLog (@"And after retrieving a new one, we got: %@", thingy);
+    if ([thingy isKindOfClass: [APCMedTrackerMedicationSchedule class]])
+    {
+        NSLog (@"And after retrieving a new one, we got: %@", thingy);
+        
+        APCMedTrackerMedicationSchedule *retrievedSchedule = thingy;
+        NSLog (@"Is it active? [%@]", retrievedSchedule.isActive ? @"YES" : @"NO");
+    }
+    else
+    {
+        NSLog (@"Hey!  We couldn't retrieve that ID from the database as a Schedule!");
+    }
 
 //    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass([APCMedTrackerMedicationSchedule class])];
 //    request.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"objectId", scheduleId];
