@@ -8,28 +8,30 @@
      {
      "title":"About this Study",
      "details":"AboutStudy_intro",
-     "icon_image":"paperplus_icon",
-     "tint_color" : "blue"
+    
      },
      {
      "title":"Study & App info",
      "details":"consentvideo_intro",
-     "icon_image":"clipboard_icon",
-     "tint_color" : "green"
+     
      },
+     
      {
      "title":"How this Study works",
      "details":"howstudyworks_intro",
-     "icon_image":"rulerpencil_icon",
-     "tint_color" : "purple"
+     
      },
      
+     {
+     "title":"How this Study works",
+     "details":"feedback_intro",
     
+     },
+     
      {
      "title":"Who is Running this Study",
      "details":"whoisrunning_intro",
-     "icon_image":"stethescope_icon",
-     "tint_color" : "yellow"
+   
      }
      ]
 }

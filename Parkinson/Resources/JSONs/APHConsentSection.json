@@ -17,7 +17,7 @@
      {
      "sectionType" : "custom",
      "sectionTitle": "Quick questions coming!",
-     "sectionSummary": "At the end of this walkthrough we will ask you few questions about the details of the study.",
+     "sectionSummary": "At the end of this walkthrough, we will ask you a few questions about the details of the study",
      "sectionHtmlContent" : "2quiz_headsup"
      
      },
@@ -44,7 +44,7 @@
      {
      "sectionType" : "dataGathering",
      "sectionTitle": "Data Processing",
-     "sectionSummary" : "Your study data (survey, tactivities and sensors) will be combined with similar data from other participants.",
+     "sectionSummary" : "Your study data (survey, activities and sensors) will be combined with similar data from other participants.",
      "sectionHtmlContent" : "5dataprocessing"
      },
      {
@@ -78,8 +78,8 @@
      
      {
      "sectionType" : "studyTasks",
-     "sectionTitle" : "Study Tasks",
-     "sectionSummary": "We will ask you to perform specific tasks, like walking few steps, while holding or using your iPhone",
+     "sectionTitle" : "Study Activities",
+     "sectionSummary": "We will ask you to perform specific activities, like walking a few steps while holding or using your iPhone",
      "sectionHtmlContent" : "10study_task"
      },
      {

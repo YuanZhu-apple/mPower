@@ -44,6 +44,10 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
                                                                 intendedUseDescription:nil
                                                                               duration:kTappingStepCountdownInterval
                                                                                 options:0];
+
+#warning TODO: Replace this next line with a proper search for the Info step with the correct identifier.
+    [task.steps[0] setText: @"This test evaluates your tapping speed and coordination."];
+    
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
     return  task;
