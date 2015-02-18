@@ -46,7 +46,7 @@
     }];
 }
 
-- (void) testWithCoreDataStuff
+- (void) testCreateOneScheduleAsynchronously
 {
     NSArray *daysOfTheWeek = @[ @(1), @(5) ];
     NSNumber *timesPerDay = @(3);
@@ -59,14 +59,19 @@
                                                  daysOfTheWeek: daysOfTheWeek
                                            numberOfTimesPerDay: timesPerDay
                                                andUseThisQueue: someQueue
-                                              toDoThisWhenDone: ^(id createdObject, NSTimeInterval operationDuration, NSManagedObjectContext *context, NSManagedObjectID *scheduleId) {
+                                              toDoThisWhenDone: ^(id createdObject,
+                                                                  NSTimeInterval operationDuration,
+                                                                  NSManagedObjectContext *context,
+                                                                  NSManagedObjectID *scheduleId)
+     {
+         APCMedTrackerMedicationSchedule *schedule = createdObject;
+         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
 
-                                                  APCMedTrackerMedicationSchedule *schedule = createdObject;
-                                                  NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
+         [self okLetsPlayWithTheSchedule: schedule
+                         fromThisContext: context
+                              withThisId: scheduleId];
 
-                                                  [self okLetsPlayWithTheSchedule: schedule fromThisContext: context withThisId: scheduleId];
-
-                                              }];
+     }];
 
     // This is required, or else the code may not get a chance to complete.
     // This suggests we may need to ask the system to let the app stay awake
@@ -85,7 +90,9 @@
     NSLog (@"The schedule is: color: %@", schedule.color.name);
     NSLog (@"The schedule is: dosage: %@", schedule.dosage.name);
     NSLog (@"The schedule is: meds: %@", schedule.medicine.name);
-
+    NSLog (@"The schedule is: Created on: %@", schedule.dateStartedUsing);
+    NSLog (@"The schedule is: object ID is temporary: %@", scheduleId.isTemporaryID ? @"YES" : @"NO");
+//    schedule.t
 
 
     APCAppDelegate *appDelegate = (APCAppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -100,15 +107,72 @@
         
         APCMedTrackerMedicationSchedule *retrievedSchedule = thingy;
         NSLog (@"Is it active? [%@]", retrievedSchedule.isActive ? @"YES" : @"NO");
+        NSLog (@"timesPerDay:  [%@]", retrievedSchedule.numberOfTimesPerDay);
+        NSLog (@"date created:  [%@]", retrievedSchedule.dateStartedUsing);
+        NSLog (@"temp ID:  [%d]", retrievedSchedule.objectID.isTemporaryID);
     }
     else
     {
         NSLog (@"Hey!  We couldn't retrieve that ID from the database as a Schedule!");
     }
 
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass([APCMedTrackerMedicationSchedule class])];
-//    request.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"objectId", scheduleId];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
+//    request.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"objectId", "*"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector (dateStartedUsing))
+                                                              ascending: YES]];
+
+//    [localContext objectWithID: ]
+
+    NSError *error = nil;
+    NSArray *allSchedules = [localContext executeFetchRequest: request error: &error];
+    NSLog (@"All schedules in the system are now: %@", allSchedules);
+
 }
+
+//- (void) testAllFeatures
+//{
+//    NSArray *medications = [APCMedicationDataStorageEngine allMedications];
+//    NSArray *colors = [APCMedicationDataStorageEngine allColors];
+//    NSArray *dosages = [APCMedicationDataStorageEngine allDosages];
+//    NSArray *sampleSchedules = [APCMedicationDataStorageEngine allSampleSchedules];
+//    NSArray *sampleDosesTaken = [APCMedicationDataStorageEngine allSampleDosesTaken];
+//
+//
+//    NSLog (@"The medications on disk are: %@", medications);
+//    NSLog (@"The colors on disk are: %@", colors);
+//    NSLog (@"The dosages on disk are: %@", dosages);
+//    NSLog (@"The sample schedules on disk are: %@", sampleSchedules);
+//    NSLog (@"The sample doses on disk are: %@", sampleDosesTaken);
+//
+//    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
+//    NSNumber *timesPerDay = @(3);
+//
+//    APCMedicationWeeklySchedule *schedule = [APCMedicationWeeklySchedule weeklyScheduleWithMedication: medications [0]
+//                                                                                               dosage: dosages [0]
+//                                                                                                color: colors [1]
+//                                                                                        daysOfTheWeek: daysOfTheWeek
+//                                                                                  numberOfTimesPerDay: timesPerDay];
+//
+//    NSLog (@"For a new schedule:");
+//    NSLog (@"- Medication name: %@", schedule.medicationName);
+//    NSLog (@"- Schedule color: %@", schedule.color);
+//    NSLog (@"- Frequencies and Days: %@", schedule.frequenciesAndDays);
+//    NSLog (@"- Dosage value: %@", schedule.dosageValue);
+//    NSLog (@"- Dosage Text: %@", schedule.dosageText);
+//
+//    [schedule save];
+//
+//    NSArray *lozenges = schedule.blankLozenges;
+//    NSLog (@"The blank lozenges are:  %@", lozenges);
+//
+//    APCMedicationLozenge *lozenge = lozenges [0];
+//    [lozenge takeDoseNowAndSave];
+//    NSLog (@"After taking one dose, the first lozenge is:  %@", lozenge);
+//
+//    NSLog (@"Waiting 3 seconds so the 'save' has a chance to finish...");
+//    [NSThread sleepForTimeInterval: 3];
+//    NSLog (@"...done!");
+//}
 
 @end
 
