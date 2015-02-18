@@ -129,6 +129,58 @@
 
 }
 
+- (void) testRetrieveAllEntitiesWithoutProvidingThem
+{
+    // Create a context
+    APCAppDelegate *appDelegate = (APCAppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *masterContextIThink = appDelegate.dataSubstrate.persistentContext;
+    NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType: NSPrivateQueueConcurrencyType];
+    localContext.parentContext = masterContextIThink;
+
+    // Simplest-possible requests
+    NSFetchRequest  *scheduleRequest        = nil,
+                    *medRequest             = nil,
+                    *possibleDosageRequest  = nil,
+                    *colorsRequest          = nil,
+                    *doseHistoryRequest     = nil;
+
+    NSArray *schedules          = nil,
+            *meds               = nil,
+            *possibleDosages    = nil,
+            *colors             = nil,
+            *doseHistory        = nil;
+
+    NSError *scheduleRequestError = nil,
+            *medRequestError = nil,
+            *possibleDosageRequestError = nil,
+            *colorsRequestError = nil,
+            *doseHistoryRequestError = nil;
+
+    scheduleRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
+    medRequest              = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
+    possibleDosageRequest   = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
+    colorsRequest           = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerScheduleColor class])];
+    doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+
+    schedules       = [localContext executeFetchRequest: scheduleRequest error: &scheduleRequestError];
+    meds            = [localContext executeFetchRequest: medRequest error: &medRequestError];
+    possibleDosages = [localContext executeFetchRequest: possibleDosageRequest error: &possibleDosageRequestError];
+    colors          = [localContext executeFetchRequest: colorsRequest error: &colorsRequestError];
+    doseHistory     = [localContext executeFetchRequest: doseHistoryRequest error: &doseHistoryRequestError];
+
+    NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+    NSLog (@"medRequestError:  %@",             medRequestError);
+    NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
+    NSLog (@"colorsRequestError:  %@",          colorsRequestError);
+    NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
+
+    NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+    NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
+    NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
+    NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
+    NSLog (@"Dose History retrieved:\n----------\n%@\n----------",      doseHistory);
+}
+
 //- (void) testAllFeatures
 //{
 //    NSArray *medications = [APCMedicationDataStorageEngine allMedications];
