@@ -6,8 +6,8 @@
 // 
  
 #import "APHPhonationTaskViewController.h"
-
 #import <AVFoundation/AVFoundation.h>
+#import <APCAppCore/APCAppCore.h>
 
 typedef  enum  _PhonationStepOrdinals
 {
@@ -67,19 +67,20 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
 }
 
-- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
+- (void) taskViewController: (ORKTaskViewController *) taskViewController
+        didFinishWithResult: (ORKTaskViewControllerResult) result
+                      error: (NSError *) error
 {
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidComplete:taskViewController];
-    
-}
+    [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
 
-- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
-{
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidCancel:taskViewController];
+    if (result == ORKTaskViewControllerResultFailed && error != nil)
+    {
+        APCLogError2 (error);
+    }
+
+    [super taskViewController: taskViewController
+          didFinishWithResult: result
+                        error: error];
 }
 
 #pragma  mark  -  Results For Dashboard
