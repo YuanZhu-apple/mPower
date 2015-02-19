@@ -104,24 +104,8 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     if (self.tappingStepOrdinal == TappingStepOrdinalsConclusionStep) {
         self.preferStatusBarShouldBeHidden = NO;
         [[UIApplication sharedApplication] setStatusBarHidden: NO];
-        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
-}
-
-- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
-{
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidComplete:taskViewController];
-    
-}
-
-- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
-{
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidCancel:taskViewController];
 }
 
 #pragma  mark  -  View Controller Methods
