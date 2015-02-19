@@ -48,6 +48,14 @@
 
 - (void) testCreateOneScheduleAsynchronously
 {
+    /*
+     Wait for my asynch operation to finish.
+     Learned how from here:
+     http://stackoverflow.com/questions/4326350/how-do-i-wait-for-an-asynchronously-dispatched-block-to-finish
+     */
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+
     NSArray *daysOfTheWeek = @[ @(1), @(5) ];
     NSNumber *timesPerDay = @(3);
     NSOperationQueue *someQueue = [NSOperationQueue new];
@@ -71,14 +79,12 @@
                          fromThisContext: context
                               withThisId: scheduleId];
 
+         dispatch_semaphore_signal (semaphore);
      }];
 
-    // This is required, or else the code may not get a chance to complete.
-    // This suggests we may need to ask the system to let the app stay awake
-    // 'til our CoreData stuff has finished writing.  Are we doing that?
-    NSLog (@"Waiting for schedule-generator to finish...");
-    [NSThread sleepForTimeInterval: 60];
-    NSLog (@"Done waiting.  Hopefully exiting the app.");
+
+    // And wait for the op to finish.
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
 }
 
 - (void) okLetsPlayWithTheSchedule: (APCMedTrackerMedicationSchedule *) schedule
@@ -150,11 +156,11 @@
             *colors             = nil,
             *doseHistory        = nil;
 
-    NSError *scheduleRequestError = nil,
-            *medRequestError = nil,
+    NSError *scheduleRequestError       = nil,
+            *medRequestError            = nil,
             *possibleDosageRequestError = nil,
-            *colorsRequestError = nil,
-            *doseHistoryRequestError = nil;
+            *colorsRequestError         = nil,
+            *doseHistoryRequestError    = nil;
 
     scheduleRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
     medRequest              = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
@@ -184,14 +190,15 @@
 - (void) testGenerateAllStaticData
 {
     /*
-     Using this code:
+     Wait for my asynch operation to finish.
+     Learned how from here:
         http://stackoverflow.com/questions/4326350/how-do-i-wait-for-an-asynchronously-dispatched-block-to-finish
      */
-
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
 
     NSOperationQueue *someQueue = [NSOperationQueue new];
     someQueue.name = @"Slurping in contents from disk...";
+
 
     [APCMedTrackerScheduleColor generateFromPlistFileNamed: @"APCMedTrackerPredefinedScheduleColors.plist"
                                                 usingQueue: someQueue
@@ -207,6 +214,119 @@
 
     // And wait for the op to finish.
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+}
+
+/**
+ Making sure this alphabetizes last.  Deletes all
+ data from the device in question.  Maybe.  Not at all
+ sure this is a good idea.  The issue is that the data
+ is persisting across runs of my test cases.  Sometimes,
+ that's wonderful; sometimes, it's in the way.
+ */
+- (void) testZZZZZZZ_deleteAllData
+{
+    // Create a context
+    APCAppDelegate *appDelegate = (APCAppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *masterContextIThink = appDelegate.dataSubstrate.persistentContext;
+    NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType: NSPrivateQueueConcurrencyType];
+    localContext.parentContext = masterContextIThink;
+
+    // Simplest-possible requests
+    NSFetchRequest  *scheduleRequest        = nil,
+                    *medRequest             = nil,
+                    *possibleDosageRequest  = nil,
+                    *colorsRequest          = nil,
+                    *doseHistoryRequest     = nil;
+
+    NSArray *schedules          = nil,
+            *meds               = nil,
+            *possibleDosages    = nil,
+            *colors             = nil,
+            *doseHistory        = nil;
+
+    NSError *scheduleRequestError       = nil,
+            *medRequestError            = nil,
+            *possibleDosageRequestError = nil,
+            *colorsRequestError         = nil,
+            *doseHistoryRequestError    = nil;
+
+    scheduleRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
+    medRequest              = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
+    possibleDosageRequest   = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
+    colorsRequest           = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerScheduleColor class])];
+    doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+
+    schedules       = [localContext executeFetchRequest: scheduleRequest error: &scheduleRequestError];
+    meds            = [localContext executeFetchRequest: medRequest error: &medRequestError];
+    possibleDosages = [localContext executeFetchRequest: possibleDosageRequest error: &possibleDosageRequestError];
+    colors          = [localContext executeFetchRequest: colorsRequest error: &colorsRequestError];
+    doseHistory     = [localContext executeFetchRequest: doseHistoryRequest error: &doseHistoryRequestError];
+
+
+    NSLog (@"======== About to delete all objects.  Here's what we're going to delete: =======");
+
+    NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+    NSLog (@"medRequestError:  %@",             medRequestError);
+    NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
+    NSLog (@"colorsRequestError:  %@",          colorsRequestError);
+    NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
+
+    NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+    NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
+    NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
+    NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
+    NSLog (@"Dose History retrieved:\n----------\n%@\n----------",      doseHistory);
+
+
+    NSMutableArray *stuffToDelete = [NSMutableArray new];
+    [stuffToDelete addObjectsFromArray: schedules];
+    [stuffToDelete addObjectsFromArray: meds];
+    [stuffToDelete addObjectsFromArray: possibleDosages];
+    [stuffToDelete addObjectsFromArray: colors];
+    [stuffToDelete addObjectsFromArray: doseHistory];
+
+    NSManagedObject *firstThingy = nil;
+
+    for (id thingy in stuffToDelete)
+    {
+        if (firstThingy == nil)
+        {
+            firstThingy = thingy;
+        }
+
+        [localContext deleteObject: thingy];
+    }
+
+    // To use our save() method, I need a pointer to at least
+    // one object.  (...or else I have to duplicate that whole
+    // save() concept.  Not sure I'm ready to do that.)
+    NSError *deletionError = nil;
+    [firstThingy saveToPersistentStore: & deletionError];
+
+
+    NSLog (@"======== All objects deleted.  Deletion error: =======");
+    NSLog (@"%@", deletionError);
+
+
+    NSLog (@"======== Re-running all queries to see what we missed: =======");
+
+    schedules       = [localContext executeFetchRequest: scheduleRequest error: &scheduleRequestError];
+    meds            = [localContext executeFetchRequest: medRequest error: &medRequestError];
+    possibleDosages = [localContext executeFetchRequest: possibleDosageRequest error: &possibleDosageRequestError];
+    colors          = [localContext executeFetchRequest: colorsRequest error: &colorsRequestError];
+    doseHistory     = [localContext executeFetchRequest: doseHistoryRequest error: &doseHistoryRequestError];
+
+    NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+    NSLog (@"medRequestError:  %@",             medRequestError);
+    NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
+    NSLog (@"colorsRequestError:  %@",          colorsRequestError);
+    NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
+
+    NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+    NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
+    NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
+    NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
+    NSLog (@"Dose History retrieved:\n----------\n%@\n----------",      doseHistory);
 }
 
 //- (void) testAllFeatures
