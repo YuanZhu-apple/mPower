@@ -37,6 +37,11 @@
                BlueprintName = "Parkinson Tests"
                ReferencedContainer = "container:Parkinson.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "APCMedTrackerTests/testZZZZZZZ_deleteAllData">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
