@@ -6,7 +6,7 @@
 // 
  
 
-#import <APCAppCore/APCAppCore.h>
+@import APCAppCore;
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
 
