@@ -45,20 +45,6 @@ static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
 {
 }
 
-- (void)taskViewControllerDidComplete:(ORKTaskViewController *)taskViewController
-{
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidComplete:taskViewController];
-}
-
-- (void)taskViewControllerDidCancel:(ORKTaskViewController *)taskViewController
-{
-    [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
-    [super taskViewControllerDidCancel:taskViewController];
-}
-
 #pragma  mark  -  View Controller Methods
 
 - (void)viewDidLoad
