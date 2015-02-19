@@ -58,8 +58,7 @@
 
     NSArray *daysOfTheWeek = @[ @(1), @(5) ];
     NSNumber *timesPerDay = @(3);
-    NSOperationQueue *someQueue = [NSOperationQueue new];
-    someQueue.name = @"Waiting for 'create' op to finish...";
+    NSOperationQueue *someQueue = [NSOperationQueue operationQueueWithName: @"Waiting for 'create' op to finish..."];
 
     [APCMedTrackerMedicationSchedule newScheduleWithMedication: nil
                                                         dosage: nil
@@ -132,7 +131,95 @@
     NSError *error = nil;
     NSArray *allSchedules = [localContext executeFetchRequest: request error: &error];
     NSLog (@"All schedules in the system are now: %@", allSchedules);
+}
 
+/**
+ This does not yet work.  (In progress.)
+ */
+- (void) testCreateOneScheduleWithRealLinks
+{
+    NSOperationQueue *someQueue = [NSOperationQueue operationQueueWithName: @"Loading data and creating a schedule..."];
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    NSArray *__block allMeds = nil;
+    NSArray *__block allPossibleDosages = nil;
+    NSArray *__block allColors = nil;
+
+    [APCMedTrackerMedication loadAllFromCoreDataUsingQueue: someQueue
+                                         andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                              NSManagedObjectContext *contextWhereOperationRan,
+                                                              NSTimeInterval operationDuration,
+                                                              NSError *error)
+     {
+         allMeds = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerPossibleDosage loadAllFromCoreDataUsingQueue: someQueue
+                                             andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                  NSManagedObjectContext *contextWhereOperationRan,
+                                                                  NSTimeInterval operationDuration,
+                                                                  NSError *error)
+     {
+         allPossibleDosages = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerScheduleColor loadAllFromCoreDataUsingQueue: someQueue
+                                            andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                 NSManagedObjectContext *contextWhereOperationRan,
+                                                                 NSTimeInterval operationDuration,
+                                                                 NSError *error)
+     {
+         allColors = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+
+    NSLog (@"Got all meds, dosages, and colors:\n%@\n%@\n%@", allMeds, allPossibleDosages, allColors);
+
+
+    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
+    NSNumber *timesPerDay = @(3);
+
+    NSUInteger medNumber = arc4random() % allMeds.count;
+    NSUInteger colorNumber = arc4random() % allColors.count;
+    NSUInteger dosageNumber = arc4random() % allPossibleDosages.count;
+
+    APCMedTrackerMedication *theMed = allMeds [medNumber];
+    APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
+    APCMedTrackerPossibleDosage *theDosage = allPossibleDosages [dosageNumber];
+
+    [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
+                                                        dosage: theDosage
+                                                         color: theColor
+                                                 daysOfTheWeek: daysOfTheWeek
+                                           numberOfTimesPerDay: timesPerDay
+                                               andUseThisQueue: someQueue
+                                              toDoThisWhenDone: ^(id createdObject,
+                                                                  NSTimeInterval operationDuration,
+                                                                  NSManagedObjectContext *context,
+                                                                  NSManagedObjectID *scheduleId)
+     {
+         APCMedTrackerMedicationSchedule *schedule = createdObject;
+         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
+
+         [self okLetsPlayWithTheSchedule: schedule
+                         fromThisContext: context
+                              withThisId: scheduleId];
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"That whole schedule-creation process has finally finished.  :-)");
 }
 
 - (void) testRetrieveAllEntitiesWithoutProvidingThem
@@ -196,8 +283,7 @@
      */
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
 
-    NSOperationQueue *someQueue = [NSOperationQueue new];
-    someQueue.name = @"Loading predefined items from disk...";
+    NSOperationQueue *someQueue = [NSOperationQueue operationQueueWithName: @"Loading predefined items from disk..."];
 
 
     NSLog (@"Loading predefined items from disk...");
@@ -331,51 +417,6 @@
     NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
     NSLog (@"Dose History retrieved:\n----------\n%@\n----------",      doseHistory);
 }
-
-//- (void) testAllFeatures
-//{
-//    NSArray *medications = [APCMedicationDataStorageEngine allMedications];
-//    NSArray *colors = [APCMedicationDataStorageEngine allColors];
-//    NSArray *dosages = [APCMedicationDataStorageEngine allDosages];
-//    NSArray *sampleSchedules = [APCMedicationDataStorageEngine allSampleSchedules];
-//    NSArray *sampleDosesTaken = [APCMedicationDataStorageEngine allSampleDosesTaken];
-//
-//
-//    NSLog (@"The medications on disk are: %@", medications);
-//    NSLog (@"The colors on disk are: %@", colors);
-//    NSLog (@"The dosages on disk are: %@", dosages);
-//    NSLog (@"The sample schedules on disk are: %@", sampleSchedules);
-//    NSLog (@"The sample doses on disk are: %@", sampleDosesTaken);
-//
-//    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
-//    NSNumber *timesPerDay = @(3);
-//
-//    APCMedicationWeeklySchedule *schedule = [APCMedicationWeeklySchedule weeklyScheduleWithMedication: medications [0]
-//                                                                                               dosage: dosages [0]
-//                                                                                                color: colors [1]
-//                                                                                        daysOfTheWeek: daysOfTheWeek
-//                                                                                  numberOfTimesPerDay: timesPerDay];
-//
-//    NSLog (@"For a new schedule:");
-//    NSLog (@"- Medication name: %@", schedule.medicationName);
-//    NSLog (@"- Schedule color: %@", schedule.color);
-//    NSLog (@"- Frequencies and Days: %@", schedule.frequenciesAndDays);
-//    NSLog (@"- Dosage value: %@", schedule.dosageValue);
-//    NSLog (@"- Dosage Text: %@", schedule.dosageText);
-//
-//    [schedule save];
-//
-//    NSArray *lozenges = schedule.blankLozenges;
-//    NSLog (@"The blank lozenges are:  %@", lozenges);
-//
-//    APCMedicationLozenge *lozenge = lozenges [0];
-//    [lozenge takeDoseNowAndSave];
-//    NSLog (@"After taking one dose, the first lozenge is:  %@", lozenge);
-//
-//    NSLog (@"Waiting 3 seconds so the 'save' has a chance to finish...");
-//    [NSThread sleepForTimeInterval: 3];
-//    NSLog (@"...done!");
-//}
 
 @end
 
