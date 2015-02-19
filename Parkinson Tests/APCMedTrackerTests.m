@@ -197,20 +197,23 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
 
     NSOperationQueue *someQueue = [NSOperationQueue new];
-    someQueue.name = @"Slurping in contents from disk...";
+    someQueue.name = @"Loading predefined items from disk...";
 
 
-    [APCMedTrackerScheduleColor generateFromPlistFileNamed: @"APCMedTrackerPredefinedScheduleColors.plist"
-                                                usingQueue: someQueue
-                                         andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                              NSManagedObjectContext *contextWhereOperationRan,
-                                                              NSTimeInterval operationDuration)
+    NSLog (@"Loading predefined items from disk...");
+    NSDate *startTime = [NSDate date];
+    
+    [APCMedTrackerDataStorageManager reloadPredefinedItemsFromPlistFilesUsingQueue: someQueue
+                                                                 andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                                      NSManagedObjectContext *contextWhereOperationRan,
+                                                                                      NSTimeInterval operationDuration)
      {
-         NSLog (@"Woo!  Generated all colors.  Operation duration = %f seconds.  Those colors are: %@", operationDuration, arrayOfGeneratedObjects);
+         NSLog (@"Done!  Total time = %f seconds.  The last of those operations generated these objects: %@",
+                [[NSDate date] timeIntervalSinceDate: startTime],
+                arrayOfGeneratedObjects);
 
-         dispatch_semaphore_signal(semaphore);
+         dispatch_semaphore_signal (semaphore);
      }];
-
 
     // And wait for the op to finish.
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
