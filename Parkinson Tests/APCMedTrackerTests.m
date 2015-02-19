@@ -181,6 +181,34 @@
     NSLog (@"Dose History retrieved:\n----------\n%@\n----------",      doseHistory);
 }
 
+- (void) testGenerateAllStaticData
+{
+    /*
+     Using this code:
+        http://stackoverflow.com/questions/4326350/how-do-i-wait-for-an-asynchronously-dispatched-block-to-finish
+     */
+
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    NSOperationQueue *someQueue = [NSOperationQueue new];
+    someQueue.name = @"Slurping in contents from disk...";
+
+    [APCMedTrackerScheduleColor generateFromPlistFileNamed: @"APCMedTrackerPredefinedScheduleColors.plist"
+                                                usingQueue: someQueue
+                                         andDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                              NSManagedObjectContext *contextWhereOperationRan,
+                                                              NSTimeInterval operationDuration)
+     {
+         NSLog (@"Woo!  Generated all colors.  Operation duration = %f seconds.  Those colors are: %@", operationDuration, arrayOfGeneratedObjects);
+
+         dispatch_semaphore_signal(semaphore);
+     }];
+
+
+    // And wait for the op to finish.
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+}
+
 //- (void) testAllFeatures
 //{
 //    NSArray *medications = [APCMedicationDataStorageEngine allMedications];
