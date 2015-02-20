@@ -60,6 +60,12 @@
     }];
 }
 
+
+
+// ---------------------------------------------------------
+#pragma mark - Create a Schedule based on existing entites
+// ---------------------------------------------------------
+
 - (void) testCreateOneSchedule
 {
     NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
@@ -165,12 +171,11 @@
 
     NSLog (@"Got all meds, dosages, and colors:\n%@\n%@\n%@", allMeds, allPossibleDosages, allColors);
 
-    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
-    NSNumber *timesPerDay = @(3);
-
-    NSUInteger medNumber = arc4random() % allMeds.count;
-    NSUInteger colorNumber = arc4random() % allColors.count;
-    NSUInteger dosageNumber = arc4random() % allPossibleDosages.count;
+    NSUInteger medNumber        = arc4random() % allMeds.count;
+    NSUInteger colorNumber      = arc4random() % allColors.count;
+    NSUInteger dosageNumber     = arc4random() % allPossibleDosages.count;
+    NSArray    *daysOfTheWeek   = @[ @(1), @(5) ];
+    NSNumber   *timesPerDay     = @(3);
 
     APCMedTrackerMedication *theMed = allMeds [medNumber];
     APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
@@ -188,13 +193,30 @@
          APCMedTrackerMedicationSchedule *schedule = createdObject;
          NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
 
-         NSLog (@"The schedule is: timesPerDay: %@", schedule.numberOfTimesPerDay);
-         NSLog (@"The schedule is: zeroBasedDaysOfTheWeek: %@", schedule.zeroBasedDaysOfTheWeek);
-         NSLog (@"The schedule is: color: %@", schedule.color.name);
-         NSLog (@"The schedule is: dosage: %@", schedule.dosage.name);
-         NSLog (@"The schedule is: meds: %@", schedule.medicine.name);
-         NSLog (@"The schedule is: Created on: %@", schedule.dateStartedUsing);
-         NSLog (@"The schedule is: object ID is temporary: %@", schedule.objectID.isTemporaryID ? @"YES" : @"NO");
+
+         //
+         // The following calls represent the data the MedTracker
+         // view needs to extract from a Schedule.  (I think.
+         // Evolving.)
+         //
+
+         NSLog (@"The schedule's own .description: %@", schedule);
+
+         NSLog (@"Specific schedule data:");
+         NSLog (@"  -  meds: %@", schedule.medicine.name);
+         NSLog (@"  -  dosage: %@", schedule.dosage.name);
+         NSLog (@"  -  timesPerDay: %@", schedule.numberOfTimesPerDay);
+         NSLog (@"  -  days of the week: %@", schedule.zeroBasedDaysOfTheWeek);
+         NSLog (@"  -  color: (%@)    rgba: (%@,%@,%@,%@)    UIColor: (%@)",
+                schedule.color.name,
+                schedule.color.redAsInteger,
+                schedule.color.greenAsInteger,
+                schedule.color.blueAsInteger,
+                schedule.color.alphaAsFloat,
+                schedule.color.UIColor);
+
+         NSLog (@"  -  created on: %@", schedule.dateStartedUsing);
+         NSLog (@"  -  has been saved to disk: %@", schedule.objectID.isTemporaryID ? @"NO" : @"YES");
 
          dispatch_semaphore_signal (semaphore);
      }];
