@@ -185,6 +185,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
     consent.signaturePageTitle   = NSLocalizedString(@"Consent", nil);
     consent.signaturePageContent = NSLocalizedString(@"I agree  to participate in this research Study.", nil);
     consent.sections             = sections;
+    consent.htmlReviewContent    = docHtml;
     
     [consent addSignature:signature];
     
