@@ -51,6 +51,7 @@
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
 		CFC2D2DD19A5417D00170E69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
 		CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
+		CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDA47A71A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m */; };
 		CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1A50F1A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m */; };
 		F536B93E19F5747B005A2D1C /* sample.task in Resources */ = {isa = PBXBuildFile; fileRef = F536B93D19F5747B005A2D1C /* sample.task */; };
 		F571C8FB1A2F8C580011C270 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */; };
@@ -167,6 +168,8 @@
 		CFC2D2DB19A5417D00170E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFC2D2DC19A5417D00170E69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFC2D2E719A5417D00170E69 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Parkinson/Images.xcassets; sourceTree = "<group>"; };
+		CFDA47A61A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHMedicationTrackerTaskViewController.h; path = MedicationTracking/APHMedicationTrackerTaskViewController.h; sourceTree = "<group>"; };
+		CFDA47A71A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHMedicationTrackerTaskViewController.m; path = MedicationTracking/APHMedicationTrackerTaskViewController.m; sourceTree = "<group>"; };
 		CFF1A50E1A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APHSpatialSpanMemoryGameViewController.h; path = SpatialSpanMemoryControllers/APHSpatialSpanMemoryGameViewController.h; sourceTree = "<group>"; };
 		CFF1A50F1A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APHSpatialSpanMemoryGameViewController.m; path = SpatialSpanMemoryControllers/APHSpatialSpanMemoryGameViewController.m; sourceTree = "<group>"; };
 		F5241CA819AEA5110098A4DF /* Parkinson.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Parkinson.entitlements; sourceTree = "<group>"; };
@@ -372,6 +375,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CFDA47A41A97BF7400B32C34 /* MedicationTracking */ = {
+			isa = PBXGroup;
+			children = (
+				CFDA47A61A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.h */,
+				CFDA47A71A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m */,
+			);
+			name = MedicationTracking;
+			sourceTree = "<group>";
+		};
 		CFF1A50C1A81969300EAEE0E /* SpatialSpanMemoryGameControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +472,7 @@
 		F5D14EE019CC9BC900650FBB /* TasksAndSteps */ = {
 			isa = PBXGroup;
 			children = (
+				CFDA47A41A97BF7400B32C34 /* MedicationTracking */,
 				F5D14EE519CC9BC900650FBB /* IntervalTappingControllers */,
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
 				CFF1A50C1A81969300EAEE0E /* SpatialSpanMemoryGameControllers */,
@@ -712,6 +725,7 @@
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
+				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,
