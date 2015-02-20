@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "0.0Onboarding-HowStudyWorks-Icon.pdf"
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "@2x_0001_icon_how-itworks.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "@3x_0001_icon_how-itworks.png"
     }
   ],
   "info" : {

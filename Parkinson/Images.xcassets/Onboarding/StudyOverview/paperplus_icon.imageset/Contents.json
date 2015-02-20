@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "0.0Onboarding-AboutStudy-Icon.pdf"
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "@2x_0000_icon_aboutthisstudy.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "@3x_0000_icon_aboutthisstudy.png"
     }
   ],
   "info" : {
