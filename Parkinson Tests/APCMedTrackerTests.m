@@ -60,105 +60,17 @@
     }];
 }
 
-- (void) testCreateOneScheduleAsynchronously
+- (void) testCreateOneSchedule
 {
-    /*
-     Wait for my asynch operation to finish.
-     Learned how from here:
-     http://stackoverflow.com/questions/4326350/how-do-i-wait-for-an-asynchronously-dispatched-block-to-finish
-     */
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
-
-
-    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
-    NSNumber *timesPerDay = @(3);
     NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
 
-    [APCMedTrackerMedicationSchedule newScheduleWithMedication: nil
-                                                        dosage: nil
-                                                         color: nil
-                                                 daysOfTheWeek: daysOfTheWeek
-                                           numberOfTimesPerDay: timesPerDay
-                                               andUseThisQueue: someQueue
-                                              toDoThisWhenDone: ^(id createdObject,
-                                                                  NSTimeInterval operationDuration,
-                                                                  NSManagedObjectContext *context,
-                                                                  NSManagedObjectID *scheduleId)
-     {
-         APCMedTrackerMedicationSchedule *schedule = createdObject;
-         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
 
-         [self okLetsPlayWithTheSchedule: schedule
-                         fromThisContext: context
-                              withThisId: scheduleId];
-
-         dispatch_semaphore_signal (semaphore);
-     }];
-
-
-    // And wait for the op to finish.
-    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-}
-
-- (void) okLetsPlayWithTheSchedule: (APCMedTrackerMedicationSchedule *) schedule
-                   fromThisContext: (NSManagedObjectContext *) context
-                        withThisId: (NSManagedObjectID *) scheduleId
-{
-    NSLog (@"The schedule is: timesPerDay: %@", schedule.numberOfTimesPerDay);
-    NSLog (@"The schedule is: zeroBasedDaysOfTheWeek: %@", schedule.zeroBasedDaysOfTheWeek);
-    NSLog (@"The schedule is: color: %@", schedule.color.name);
-    NSLog (@"The schedule is: dosage: %@", schedule.dosage.name);
-    NSLog (@"The schedule is: meds: %@", schedule.medicine.name);
-    NSLog (@"The schedule is: Created on: %@", schedule.dateStartedUsing);
-    NSLog (@"The schedule is: object ID is temporary: %@", scheduleId.isTemporaryID ? @"YES" : @"NO");
-//    schedule.t
-
-
-    APCAppDelegate *appDelegate = (APCAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *masterContextIThink = appDelegate.dataSubstrate.persistentContext;
-    NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType: NSPrivateQueueConcurrencyType];
-    localContext.parentContext = masterContextIThink;
-    id thingy = [localContext objectWithID: scheduleId];
-
-    if ([thingy isKindOfClass: [APCMedTrackerMedicationSchedule class]])
-    {
-        NSLog (@"And after retrieving a new one, we got: %@", thingy);
-        
-        APCMedTrackerMedicationSchedule *retrievedSchedule = thingy;
-        NSLog (@"Is it active? [%@]", retrievedSchedule.isActive ? @"YES" : @"NO");
-        NSLog (@"timesPerDay:  [%@]", retrievedSchedule.numberOfTimesPerDay);
-        NSLog (@"date created:  [%@]", retrievedSchedule.dateStartedUsing);
-        NSLog (@"temp ID:  [%d]", retrievedSchedule.objectID.isTemporaryID);
-    }
-    else
-    {
-        NSLog (@"Hey!  We couldn't retrieve that ID from the database as a Schedule!");
-    }
-
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
-//    request.predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"objectId", "*"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector (dateStartedUsing))
-                                                              ascending: YES]];
-
-//    [localContext objectWithID: ]
-
-    NSError *error = nil;
-    NSArray *allSchedules = [localContext executeFetchRequest: request error: &error];
-    NSLog (@"All schedules in the system are now: %@", allSchedules);
-}
-
-/**
- This does not yet work.  (In progress.)
- */
-- (void) testCreateOneScheduleWithRealLinks
-{
     // Pick one:
     // BOOL shouldReloadPlistFiles = YES;
     BOOL shouldReloadPlistFiles = NO;
 
 
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
-    NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
 
     [APCMedTrackerDataStorageManager startupReloadingDefaults: shouldReloadPlistFiles
                                           andThenUseThisQueue: someQueue
@@ -169,84 +81,132 @@
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
 
 
-//    NSArray *__block allMeds = nil;
-//    NSArray *__block allPossibleDosages = nil;
-//    NSArray *__block allColors = nil;
-//
-//    [APCMedTrackerMedication fetchAllFromCoreDataAndUseThisQueue: someQueue
-//                                                toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-//                                                                    NSTimeInterval operationDuration,
-//                                                                    NSError *error)
-//     {
-//         allMeds = arrayOfGeneratedObjects;
-//         dispatch_semaphore_signal (semaphore);
-//     }];
-//
-//    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-//    semaphore = dispatch_semaphore_create (0);
-//
-//    [APCMedTrackerPossibleDosage fetchAllFromCoreDataAndUseThisQueue: someQueue
-//                                                    toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-//                                                                        NSTimeInterval operationDuration,
-//                                                                        NSError *error)
-//     {
-//         allPossibleDosages = arrayOfGeneratedObjects;
-//         dispatch_semaphore_signal (semaphore);
-//     }];
-//
-//    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-//    semaphore = dispatch_semaphore_create (0);
-//
-//    [APCMedTrackerScheduleColor fetchAllFromCoreDataAndUseThisQueue: someQueue
-//                                                   toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-//                                                                       NSTimeInterval operationDuration,
-//                                                                       NSError *error)
-//     {
-//         allColors = arrayOfGeneratedObjects;
-//         dispatch_semaphore_signal (semaphore);
-//     }];
-//
-//    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-//
-//    NSLog (@"Got all meds, dosages, and colors:\n%@\n%@\n%@", allMeds, allPossibleDosages, allColors);
-//
-//
-//    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
-//    NSNumber *timesPerDay = @(3);
-//
-//    NSUInteger medNumber = arc4random() % allMeds.count;
-//    NSUInteger colorNumber = arc4random() % allColors.count;
-//    NSUInteger dosageNumber = arc4random() % allPossibleDosages.count;
-//
-//    APCMedTrackerMedication *theMed = allMeds [medNumber];
-//    APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
-//    APCMedTrackerPossibleDosage *theDosage = allPossibleDosages [dosageNumber];
-//
-//    [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
-//                                                        dosage: theDosage
-//                                                         color: theColor
-//                                                 daysOfTheWeek: daysOfTheWeek
-//                                           numberOfTimesPerDay: timesPerDay
-//                                               andUseThisQueue: someQueue
-//                                              toDoThisWhenDone: ^(id createdObject,
-//                                                                  NSTimeInterval operationDuration,
-//                                                                  NSManagedObjectContext *context,
-//                                                                  NSManagedObjectID *scheduleId)
-//     {
-//         APCMedTrackerMedicationSchedule *schedule = createdObject;
-//         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
-//
-//         [self okLetsPlayWithTheSchedule: schedule
-//                         fromThisContext: context
-//                              withThisId: scheduleId];
-//
-//         dispatch_semaphore_signal (semaphore);
-//     }];
-//
-//    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-//    NSLog (@"That whole schedule-creation process has finally finished.  :-)");
+    NSArray *__block allMeds = nil;
+    NSArray *__block allPossibleDosages = nil;
+    NSArray *__block allColors = nil;
+
+
+    /*
+     NOTE:  in real life, for each of the calls below,
+     we have to handle the possible errors.  There are
+     three types of error situations:
+     
+     if (returnedResults == nil)
+     {
+        // by definition:  an error occurred.  What type?
+
+        if (error == nil)
+        {
+            // Error, but no error message.
+        }
+        else
+        {
+            // Error + error message.
+        }
+     }
+     else if (returnedResults.count == 0)
+     {
+        // no results, but no known error.  This could
+        // be good or bad, depending on the situation.
+     }
+     else
+     {
+        // got real stuff
+     }
+
+     */
+
+
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerMedication fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                    NSTimeInterval operationDuration,
+                                                                    NSError *error)
+     {
+         allMeds = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerPossibleDosage fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                    toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                        NSTimeInterval operationDuration,
+                                                                        NSError *error)
+     {
+         allPossibleDosages = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerScheduleColor fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                   toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                       NSTimeInterval operationDuration,
+                                                                       NSError *error)
+     {
+         allColors = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    /*
+     We still have access to the data because they come from
+     a Context object that the DefaultManager keeps around.
+     This also means that if we wanna connect these objects
+     together, we have to do so on the defaultManager's queue.
+     */
+
+    NSLog (@"Got all meds, dosages, and colors:\n%@\n%@\n%@", allMeds, allPossibleDosages, allColors);
+
+    NSArray *daysOfTheWeek = @[ @(1), @(5) ];
+    NSNumber *timesPerDay = @(3);
+
+    NSUInteger medNumber = arc4random() % allMeds.count;
+    NSUInteger colorNumber = arc4random() % allColors.count;
+    NSUInteger dosageNumber = arc4random() % allPossibleDosages.count;
+
+    APCMedTrackerMedication *theMed = allMeds [medNumber];
+    APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
+    APCMedTrackerPossibleDosage *theDosage = allPossibleDosages [dosageNumber];
+
+    [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
+                                                        dosage: theDosage
+                                                         color: theColor
+                                                 daysOfTheWeek: daysOfTheWeek
+                                           numberOfTimesPerDay: timesPerDay
+                                               andUseThisQueue: someQueue
+                                              toDoThisWhenDone: ^(id createdObject,
+                                                                  NSTimeInterval operationDuration)
+     {
+         APCMedTrackerMedicationSchedule *schedule = createdObject;
+         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
+
+         NSLog (@"The schedule is: timesPerDay: %@", schedule.numberOfTimesPerDay);
+         NSLog (@"The schedule is: zeroBasedDaysOfTheWeek: %@", schedule.zeroBasedDaysOfTheWeek);
+         NSLog (@"The schedule is: color: %@", schedule.color.name);
+         NSLog (@"The schedule is: dosage: %@", schedule.dosage.name);
+         NSLog (@"The schedule is: meds: %@", schedule.medicine.name);
+         NSLog (@"The schedule is: Created on: %@", schedule.dateStartedUsing);
+         NSLog (@"The schedule is: object ID is temporary: %@", schedule.objectID.isTemporaryID ? @"YES" : @"NO");
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"That whole schedule-creation process has finally finished.  :-)  And this should be the last print statement.  Did it work?");
 }
 
+
+/*
+ Please don't delete this.  This method is in progress.
+ */
 //    - (void) testSampleFetchedResultsController
 //    {
 //        NSFetchedResultsController * controller = [[NSFetchedResultsController alloc] initWithFetchRequest: someRequest
@@ -345,7 +305,7 @@
       }];
 
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-    NSLog (@"Safely finished with test method.");
+    NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
 }
 
 
