@@ -137,11 +137,17 @@
  */
 - (void) testCreateOneScheduleWithRealLinks
 {
+    // Pick one:
+    // BOOL shouldReloadPlistFiles = YES;
+    BOOL shouldReloadPlistFiles = NO;
+
+
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
     NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
 
-    [APCMedTrackerDataStorageManager startupAndThenUseThisQueue: someQueue toDoThis:
-     ^{
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: shouldReloadPlistFiles
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
          dispatch_semaphore_signal (semaphore);
      }];
 
@@ -256,8 +262,15 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
     NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
 
-    [APCMedTrackerDataStorageManager startupAndThenUseThisQueue: someQueue toDoThis:
-     ^{
+
+    // Pick one:
+    BOOL shouldReloadPlistFiles = YES;
+//    BOOL shouldReloadPlistFiles = NO;
+
+
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: shouldReloadPlistFiles
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
          dispatch_semaphore_signal (semaphore);
      }];
 
