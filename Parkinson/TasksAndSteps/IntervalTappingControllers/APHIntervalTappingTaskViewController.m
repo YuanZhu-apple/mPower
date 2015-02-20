@@ -7,7 +7,8 @@
  
 #import "APHIntervalTappingTaskViewController.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
-
+#import "PDScores.h"
+#import "ConverterForPDScores.h"
 #import <AVFoundation/AVFoundation.h>
 
 typedef  enum  _TappingStepOrdinals
@@ -53,6 +54,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     return  task;
 }
 
+
 #pragma  mark  -  Results For Dashboard
 
 - (NSString *)createResultSummary
@@ -74,13 +76,18 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
             }
         }
     }
+    
+    NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
+    double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
+    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+    
     NSUInteger  numberOfSamples = 0;
     NSDictionary  *summary = nil;
     if (tapsterResults == nil) {
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
     } else {
         numberOfSamples = [tapsterResults.samples count];
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
     }
     NSError  *error = nil;
     NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];

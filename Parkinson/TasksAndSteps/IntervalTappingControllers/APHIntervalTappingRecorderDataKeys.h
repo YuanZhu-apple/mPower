@@ -8,3 +8,4 @@
 #import <Foundation/Foundation.h>
 
 extern  NSString  *kSummaryNumberOfRecordsKey;
+extern  NSString  *kScoreSummaryOfRecordsKey;

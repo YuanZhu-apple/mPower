@@ -8,6 +8,8 @@
 #import "APHPhonationTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <APCAppCore/APCAppCore.h>
+#import "PDScores.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
 
 typedef  enum  _PhonationStepOrdinals
 {
@@ -87,7 +89,38 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 - (NSString *)createResultSummary
 {
-    return @"";
+    ORKTaskResult  *taskResults = self.result;
+    ORKFileResult  *fileResult = nil;
+    BOOL  found = NO;
+    for (ORKStepResult  *stepResult  in  taskResults.results) {
+        if (stepResult.results.count > 0) {
+            for (id  object  in  stepResult.results) {
+                if ([object isKindOfClass:[ORKFileResult class]] == YES) {
+                    found = YES;
+                    fileResult = object;
+                    break;
+                }
+            }
+            if (found == YES) {
+                break;
+            }
+        }
+    }
+    
+    double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
+    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+    
+    NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
+    
+    NSError  *error = nil;
+    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+    NSString  *contentString = nil;
+    if (data == nil) {
+        APCLogError2 (error);
+    } else {
+        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    return  contentString;
 }
 
 #pragma  mark  - View Controller methods
