@@ -174,7 +174,8 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 - (ORKTaskViewController*)consentViewController
 {
-    NSArray*                sections  = [super consentSections];
+    NSString*               docHtml   = nil;
+    NSArray*                sections  = [super consentSectionsAndHtmlContent:&docHtml];
     ORKConsentDocument*     consent   = [[ORKConsentDocument alloc] init];
     ORKConsentSignature*    signature = [ORKConsentSignature signatureForPersonWithTitle:NSLocalizedString(@"Participant", nil)
                                                                         dateFormatString:nil
@@ -184,6 +185,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
     consent.signaturePageTitle   = NSLocalizedString(@"Consent", nil);
     consent.signaturePageContent = NSLocalizedString(@"I agree  to participate in this research Study.", nil);
     consent.sections             = sections;
+    consent.htmlReviewContent    = docHtml;
     
     [consent addSignature:signature];
     
