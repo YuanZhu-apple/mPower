@@ -359,6 +359,34 @@
     NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
 }
 
+- (void) testFetchAllExistingSchedulesUsingFetchAllMethod
+{
+    NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: YES
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
+                                                         dispatch_semaphore_signal (semaphore);
+                                                     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerMedicationSchedule fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                        toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                            NSTimeInterval operationDuration,
+                                                                            NSError *error)
+     {
+         NSLog (@"Fetched all schedules.  Result: %@", arrayOfGeneratedObjects);
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
+}
+
 
 
 // ---------------------------------------------------------
