@@ -258,10 +258,10 @@
 			isa = PBXGroup;
 			children = (
 				5B1D9D401A1BCC6B000F4AD6 /* APHDashboard.storyboard */,
-				5B1D9D411A1BCC6B000F4AD6 /* APHDashboardEditViewController.h */,
-				5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */,
 				5B1D9D431A1BCC6B000F4AD6 /* APHDashboardViewController.h */,
 				5B1D9D441A1BCC6B000F4AD6 /* APHDashboardViewController.m */,
+				5B1D9D411A1BCC6B000F4AD6 /* APHDashboardEditViewController.h */,
+				5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
