@@ -75,7 +75,6 @@
     // BOOL shouldReloadPlistFiles = YES;
     BOOL shouldReloadPlistFiles = NO;
 
-
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
 
     [APCMedTrackerDataStorageManager startupReloadingDefaults: shouldReloadPlistFiles
@@ -174,18 +173,48 @@
     NSUInteger medNumber        = arc4random() % allMeds.count;
     NSUInteger colorNumber      = arc4random() % allColors.count;
     NSUInteger dosageNumber     = arc4random() % allPossibleDosages.count;
-    NSArray    *daysOfTheWeek   = @[ @(1), @(5) ];
-    NSNumber   *timesPerDay     = @(3);
 
-    APCMedTrackerMedication *theMed = allMeds [medNumber];
-    APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
-    APCMedTrackerPossibleDosage *theDosage = allPossibleDosages [dosageNumber];
+    APCMedTrackerMedication *theMed             = allMeds [medNumber];
+    APCMedTrackerScheduleColor *theColor        = allColors [colorNumber];
+    APCMedTrackerPossibleDosage *theDosage      = allPossibleDosages [dosageNumber];
+    NSArray *effectivelyRandomListOfDaysToUse   = @[ @1, @4 ];
+    NSNumber *timesPerDay                       = @3;
+    NSArray *dayNamesInWeek                     = @[ @"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday"];
+
+    /*
+     Conceptually, we're doing this:
+     NSArray    *daysOfTheWeek   = @[ @"Monday", @"Thursday" ];
+     NSNumber   *timesPerDay     = @(3);
+
+     ...but the GUI currently expects to send and receive this:
+        @{ @"Sunday"  : @(0),
+           @"Monday"  : @(3),
+           @"Tuesday" : @(0),
+           
+            ...etc.
+        }
+     
+     So let's create that dictionary.
+     */
+    NSMutableDictionary *requiredInputArrayForFrequenciesAndDays = [NSMutableDictionary new];
+
+    for (NSInteger dayIndex = 0; dayIndex < dayNamesInWeek.count; dayIndex ++)
+    {
+        NSNumber *valueToUse = @0;
+
+        if ([effectivelyRandomListOfDaysToUse containsObject: @(dayIndex)])
+        {
+            valueToUse = timesPerDay;
+        }
+
+        NSString *dayName = dayNamesInWeek [dayIndex];
+            requiredInputArrayForFrequenciesAndDays [dayName] = valueToUse;
+    }
 
     [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
                                                         dosage: theDosage
                                                          color: theColor
-                                                 daysOfTheWeek: daysOfTheWeek
-                                           numberOfTimesPerDay: timesPerDay
+                                            frequenciesAndDays: requiredInputArrayForFrequenciesAndDays
                                                andUseThisQueue: someQueue
                                               toDoThisWhenDone: ^(id createdObject,
                                                                   NSTimeInterval operationDuration)
