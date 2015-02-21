@@ -62,7 +62,6 @@ NSString  *kScorePostureRecordsKey = @"ScorePostureRecords";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    ORKFileResult  *fileResult = nil;
     BOOL  found = NO;
     NSURL * urlGaitForward = nil;
     NSURL * urlGaitBackward = nil;
