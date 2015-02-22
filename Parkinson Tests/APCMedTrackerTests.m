@@ -196,7 +196,7 @@
      
      So let's create that dictionary.
      */
-    NSMutableDictionary *requiredInputArrayForFrequenciesAndDays = [NSMutableDictionary new];
+    NSMutableDictionary *requiredInputArrayForFrequencyAndDays = [NSMutableDictionary new];
 
     for (NSInteger dayIndex = 0; dayIndex < dayNamesInWeek.count; dayIndex ++)
     {
@@ -208,13 +208,13 @@
         }
 
         NSString *dayName = dayNamesInWeek [dayIndex];
-            requiredInputArrayForFrequenciesAndDays [dayName] = valueToUse;
+            requiredInputArrayForFrequencyAndDays [dayName] = valueToUse;
     }
 
     [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
                                                         dosage: theDosage
                                                          color: theColor
-                                            frequenciesAndDays: requiredInputArrayForFrequenciesAndDays
+                                              frequencyAndDays: requiredInputArrayForFrequencyAndDays
                                                andUseThisQueue: someQueue
                                               toDoThisWhenDone: ^(id createdObject,
                                                                   NSTimeInterval operationDuration)
@@ -379,6 +379,13 @@
                                                                             NSError *error)
      {
          NSLog (@"Fetched all schedules.  Result: %@", arrayOfGeneratedObjects);
+
+         NSLog (@"The 'frequencyAndDays' dictionary for each schedule is:");
+
+         for (APCMedTrackerMedicationSchedule *schedule in arrayOfGeneratedObjects)
+         {
+             NSLog (@"    %@", schedule.frequencyAndDays);
+         }
 
          dispatch_semaphore_signal (semaphore);
      }];
