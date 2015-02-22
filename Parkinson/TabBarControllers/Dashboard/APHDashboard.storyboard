@@ -363,7 +363,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dashboard" id="oQf-cg-HNo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="mhE-wX-EUF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="mhE-wX-EUF">
+                            <connections>
+                                <segue destination="Q8i-ID-zaY" kind="presentation" id="Hl4-Cq-gTF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
