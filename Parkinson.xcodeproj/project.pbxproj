@@ -27,6 +27,8 @@
 		74FA82951A9157A200F93769 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FA82941A9157A200F93769 /* ResearchKit.framework */; };
 		74FA82981A9157AB00F93769 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74FA82971A9157AB00F93769 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9898C91A926F36003B4181 /* APHProfileExtender.m */; };
+		A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = A74615B21A98077D00323AD1 /* ConverterForPDScores.m */; };
+		A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74615AD1A98071200323AD1 /* libPDScores.a */; };
 		A781166F1A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */; };
 		A78116701A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116611A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v */; };
 		A78116711A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116621A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v */; };
@@ -77,6 +79,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = CFC2D2D619A5417D00170E69;
 			remoteInfo = Parkinson;
+		};
+		A74615AC1A98071200323AD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801712D41A897DC200CB13EB;
+			remoteInfo = PDScores;
+		};
+		A74615AE1A98071200323AD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801712DF1A897DC200CB13EB;
+			remoteInfo = PDScoresTests;
 		};
 		F571C8F71A2F8C4C0011C270 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -142,6 +158,9 @@
 		74FA82971A9157AB00F93769 /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = ../AppCore/APCAppCore/ResearchKit/ResearchKit.framework; sourceTree = "<group>"; };
 		7B9898C81A926F36003B4181 /* APHProfileExtender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHProfileExtender.h; sourceTree = "<group>"; };
 		7B9898C91A926F36003B4181 /* APHProfileExtender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHProfileExtender.m; sourceTree = "<group>"; };
+		A74615A61A98071200323AD1 /* PDScores.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDScores.xcodeproj; path = PDScores/PDScores.xcodeproj; sourceTree = "<group>"; };
+		A74615B11A98077D00323AD1 /* ConverterForPDScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterForPDScores.h; sourceTree = "<group>"; };
+		A74615B21A98077D00323AD1 /* ConverterForPDScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterForPDScores.m; sourceTree = "<group>"; };
 		A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "00_Blank_to_Activities@2x.m4v"; sourceTree = "<group>"; };
 		A78116611A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01_Activities_to_SensorData@2x.m4v"; sourceTree = "<group>"; };
 		A78116621A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "02_SensorData_to_DataGathering@2x.m4v"; sourceTree = "<group>"; };
@@ -210,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */,
 				5B18CEF71A2D3A57001A905E /* MapKit.framework in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
 				F571C9001A2F8C660011C270 /* BridgeSDK.framework in Frameworks */,
@@ -264,6 +284,15 @@
 				5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		A74615A71A98071200323AD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A74615AD1A98071200323AD1 /* libPDScores.a */,
+				A74615AF1A98071200323AD1 /* PDScoresTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A781165E1A96BC9400CEC822 /* Consent */ = {
@@ -455,6 +484,7 @@
 		F5D14ED119CC9BA700650FBB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A74615A61A98071200323AD1 /* PDScores.xcodeproj */,
 				F5D14ED219CC9BA700650FBB /* Categories */,
 			);
 			path = Library;
@@ -472,6 +502,8 @@
 		F5D14EE019CC9BC900650FBB /* TasksAndSteps */ = {
 			isa = PBXGroup;
 			children = (
+				A74615B11A98077D00323AD1 /* ConverterForPDScores.h */,
+				A74615B21A98077D00323AD1 /* ConverterForPDScores.m */,
 				CFDA47A41A97BF7400B32C34 /* MedicationTracking */,
 				F5D14EE519CC9BC900650FBB /* IntervalTappingControllers */,
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
@@ -611,6 +643,10 @@
 					ProductGroup = F571C8F31A2F8C4C0011C270 /* Products */;
 					ProjectRef = F571C8F21A2F8C4C0011C270 /* APCAppCore.xcodeproj */;
 				},
+				{
+					ProductGroup = A74615A71A98071200323AD1 /* Products */;
+					ProjectRef = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -621,6 +657,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		A74615AD1A98071200323AD1 /* libPDScores.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPDScores.a;
+			remoteRef = A74615AC1A98071200323AD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A74615AF1A98071200323AD1 /* PDScoresTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PDScoresTests.xctest;
+			remoteRef = A74615AE1A98071200323AD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -721,6 +771,7 @@
 				5B1D9D461A1BCC6B000F4AD6 /* APHDashboardEditViewController.m in Sources */,
 				5B1D9D471A1BCC6B000F4AD6 /* APHDashboardViewController.m in Sources */,
 				F5D14F3919CC9C0000650FBB /* APHAppDelegate.m in Sources */,
+				A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */,
 				5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
@@ -809,9 +860,15 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
+				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1003,9 +1060,15 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
+				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1027,9 +1090,15 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
+				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1096,9 +1165,15 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
+				);
 				INFOPLIST_FILE = Parkinson/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
