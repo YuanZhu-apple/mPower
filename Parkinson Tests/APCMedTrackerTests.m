@@ -8,11 +8,6 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <APCAppCore/APCAppCore.h>
-//#import "APCMedicationDataStorageEngine.h"
-//#import "APCMedicationWeeklySchedule.h"
-//#import "APCMedicationLozenge.h"
-//#import "APCMedTrackerMedicationSchedule+Helper.h"
-//#import "APCAppDelegate.h"
 
 
 /*
@@ -63,10 +58,10 @@
 
 
 // ---------------------------------------------------------
-#pragma mark - Create a Schedule based on existing entites
+#pragma mark - Create a Prescription based on existing entites
 // ---------------------------------------------------------
 
-- (void) testCreateOneSchedule
+- (void) testCreateOnePrescription
 {
     NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
 
@@ -74,7 +69,6 @@
     // Pick one:
     // BOOL shouldReloadPlistFiles = YES;
     BOOL shouldReloadPlistFiles = NO;
-
 
     dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
 
@@ -149,10 +143,10 @@
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
     semaphore = dispatch_semaphore_create (0);
 
-    [APCMedTrackerScheduleColor fetchAllFromCoreDataAndUseThisQueue: someQueue
-                                                   toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                       NSTimeInterval operationDuration,
-                                                                       NSError *error)
+    [APCMedTrackerPrescriptionColor fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                       toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                           NSTimeInterval operationDuration,
+                                                                           NSError *error)
      {
          allColors = arrayOfGeneratedObjects;
          dispatch_semaphore_signal (semaphore);
@@ -174,55 +168,85 @@
     NSUInteger medNumber        = arc4random() % allMeds.count;
     NSUInteger colorNumber      = arc4random() % allColors.count;
     NSUInteger dosageNumber     = arc4random() % allPossibleDosages.count;
-    NSArray    *daysOfTheWeek   = @[ @(1), @(5) ];
-    NSNumber   *timesPerDay     = @(3);
 
-    APCMedTrackerMedication *theMed = allMeds [medNumber];
-    APCMedTrackerScheduleColor *theColor = allColors [colorNumber];
-    APCMedTrackerPossibleDosage *theDosage = allPossibleDosages [dosageNumber];
+    APCMedTrackerMedication *theMed             = allMeds [medNumber];
+    APCMedTrackerPrescriptionColor *theColor    = allColors [colorNumber];
+    APCMedTrackerPossibleDosage *theDosage      = allPossibleDosages [dosageNumber];
+    NSArray *effectivelyRandomListOfDaysToUse   = @[ @1, @4 ];
+    NSNumber *timesPerDay                       = @3;
+    NSArray *dayNamesInWeek                     = @[ @"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday"];
 
-    [APCMedTrackerMedicationSchedule newScheduleWithMedication: theMed
-                                                        dosage: theDosage
-                                                         color: theColor
-                                                 daysOfTheWeek: daysOfTheWeek
-                                           numberOfTimesPerDay: timesPerDay
-                                               andUseThisQueue: someQueue
-                                              toDoThisWhenDone: ^(id createdObject,
-                                                                  NSTimeInterval operationDuration)
+    /*
+     Conceptually, we're doing this:
+     NSArray    *daysOfTheWeek   = @[ @"Monday", @"Thursday" ];
+     NSNumber   *timesPerDay     = @(3);
+
+     ...but the GUI currently expects to send and receive this:
+        @{ @"Sunday"  : @(0),
+           @"Monday"  : @(3),
+           @"Tuesday" : @(0),
+           
+            ...etc.
+        }
+     
+     So let's create that dictionary.
+     */
+    NSMutableDictionary *requiredInputArrayForFrequencyAndDays = [NSMutableDictionary new];
+
+    for (NSInteger dayIndex = 0; dayIndex < dayNamesInWeek.count; dayIndex ++)
+    {
+        NSNumber *valueToUse = @0;
+
+        if ([effectivelyRandomListOfDaysToUse containsObject: @(dayIndex)])
+        {
+            valueToUse = timesPerDay;
+        }
+
+        NSString *dayName = dayNamesInWeek [dayIndex];
+            requiredInputArrayForFrequencyAndDays [dayName] = valueToUse;
+    }
+
+    [APCMedTrackerPrescription newPrescriptionWithMedication: theMed
+                                                      dosage: theDosage
+                                                       color: theColor
+                                            frequencyAndDays: requiredInputArrayForFrequencyAndDays
+                                             andUseThisQueue: someQueue
+                                            toDoThisWhenDone: ^(id createdObject,
+                                                                NSTimeInterval operationDuration)
      {
-         APCMedTrackerMedicationSchedule *schedule = createdObject;
-         NSLog (@"Created a schedule!  Creation time = %f seconds.  Schedule = %@" , operationDuration, schedule);
+         APCMedTrackerPrescription *prescription = createdObject;
+         NSLog (@"Created a prescription!  Creation time = %f seconds.  Prescription = %@" , operationDuration, prescription);
 
 
          //
          // The following calls represent the data the MedTracker
-         // view needs to extract from a Schedule.  (I think.
+         // view needs to extract from a Prescription.  (I think.
          // Evolving.)
          //
 
-         NSLog (@"The schedule's own .description: %@", schedule);
+         NSLog (@"The prescription's own .description: %@", prescription);
 
-         NSLog (@"Specific schedule data:");
-         NSLog (@"  -  meds: %@", schedule.medicine.name);
-         NSLog (@"  -  dosage: %@", schedule.dosage.name);
-         NSLog (@"  -  timesPerDay: %@", schedule.numberOfTimesPerDay);
-         NSLog (@"  -  days of the week: %@", schedule.zeroBasedDaysOfTheWeek);
+         NSLog (@"Specific prescription data:");
+         NSLog (@"  -  meds: %@", prescription.medication.name);
+         NSLog (@"  -  dosage: %@", prescription.dosage.name);
+         NSLog (@"  -  timesPerDay: %@", prescription.numberOfTimesPerDay);
+         NSLog (@"  -  days of the week: %@", prescription.zeroBasedDaysOfTheWeek);
          NSLog (@"  -  color: (%@)    rgba: (%@,%@,%@,%@)    UIColor: (%@)",
-                schedule.color.name,
-                schedule.color.redAsInteger,
-                schedule.color.greenAsInteger,
-                schedule.color.blueAsInteger,
-                schedule.color.alphaAsFloat,
-                schedule.color.UIColor);
+                prescription.color.name,
+                prescription.color.redAsInteger,
+                prescription.color.greenAsInteger,
+                prescription.color.blueAsInteger,
+                prescription.color.alphaAsFloat,
+                prescription.color.UIColor);
 
-         NSLog (@"  -  created on: %@", schedule.dateStartedUsing);
-         NSLog (@"  -  has been saved to disk: %@", schedule.objectID.isTemporaryID ? @"NO" : @"YES");
+         NSLog (@"  -  created on: %@", prescription.dateStartedUsing);
+         NSLog (@"  -  has been saved to disk: %@", prescription.objectID.isTemporaryID ? @"NO" : @"YES");
 
          dispatch_semaphore_signal (semaphore);
      }];
 
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
-    NSLog (@"That whole schedule-creation process has finally finished.  :-)  And this should be the last print statement.  Did it work?");
+    NSLog (@"That whole prescription-creation process has finally finished.  :-)  And this should be the last print statement.  Did it work?");
 }
 
 
@@ -293,31 +317,31 @@
           NSManagedObjectContext *localContext = APCMedTrackerDataStorageManager.defaultManager.context;
 
           // Simplest-possible requests
-          NSError *scheduleRequestError       = nil;
+          NSError *prescriptionRequestError       = nil;
           NSError *medRequestError            = nil;
           NSError *possibleDosageRequestError = nil;
           NSError *colorsRequestError         = nil;
           NSError *doseHistoryRequestError    = nil;
 
-          NSFetchRequest *scheduleRequest       = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
+          NSFetchRequest *prescriptionRequest   = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescription class])];
           NSFetchRequest *medRequest            = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
           NSFetchRequest *possibleDosageRequest = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
-          NSFetchRequest *colorsRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerScheduleColor class])];
-          NSFetchRequest *doseHistoryRequest    = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+          NSFetchRequest *colorsRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescriptionColor class])];
+          NSFetchRequest *doseHistoryRequest    = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerDailyDosageRecord class])];
 
-          NSArray *schedules       = [localContext executeFetchRequest: scheduleRequest        error: &scheduleRequestError];
+          NSArray *prescriptions       = [localContext executeFetchRequest: prescriptionRequest        error: &prescriptionRequestError];
           NSArray *meds            = [localContext executeFetchRequest: medRequest             error: &medRequestError];
           NSArray *possibleDosages = [localContext executeFetchRequest: possibleDosageRequest  error: &possibleDosageRequestError];
           NSArray *colors          = [localContext executeFetchRequest: colorsRequest          error: &colorsRequestError];
           NSArray *doseHistory     = [localContext executeFetchRequest: doseHistoryRequest     error: &doseHistoryRequestError];
 
-          NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+          NSLog (@"prescriptionRequestError:  %@",    prescriptionRequestError);
           NSLog (@"medRequestError:  %@",             medRequestError);
           NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
           NSLog (@"colorsRequestError:  %@",          colorsRequestError);
           NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
 
-          NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+          NSLog (@"Prescriptions retrieved:\n----------\n%@\n----------",     prescriptions);
           NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
           NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
           NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
@@ -328,6 +352,126 @@
 
     dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
     NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
+}
+
+- (void) testFetchAllExistingPrescriptionsUsingFetchAllMethod
+{
+    NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'create' op to finish..."];
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: YES
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
+                                                         dispatch_semaphore_signal (semaphore);
+                                                     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerPrescription fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                        toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                            NSTimeInterval operationDuration,
+                                                                            NSError *error)
+     {
+         NSLog (@"Fetched all prescriptions.  Result: %@", arrayOfGeneratedObjects);
+
+         NSLog (@"The 'frequencyAndDays' dictionary for each prescription is:");
+
+         for (APCMedTrackerPrescription *prescription in arrayOfGeneratedObjects)
+         {
+             NSLog (@"    %@", prescription.frequencyAndDays);
+         }
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
+}
+
+- (void) testTakeOnePillForOnePrescription
+{
+    NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'take one pill' op to finish..."];
+    __block NSArray *allPrescriptions = nil;
+
+
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: NO
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
+                                                         dispatch_semaphore_signal (semaphore);
+                                                     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    [APCMedTrackerPrescription fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                  toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                      NSTimeInterval operationDuration,
+                                                                      NSError *error)
+     {
+         NSLog (@"Fetched all prescriptions.  Result: %@", arrayOfGeneratedObjects);
+         allPrescriptions = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    NSUInteger whichPrescription = arc4random() % allPrescriptions.count;
+    APCMedTrackerPrescription *somePrescription = allPrescriptions [whichPrescription];
+    NSUInteger someNumberOfDoses = 4;
+//    NSDate *someDate = [NSDate date];
+    NSDate *someDate = [[NSDate date] dateByAddingDays: 1];
+
+    [somePrescription recordThisManyDoses: someNumberOfDoses
+                              takenOnDate: someDate
+                          andUseThisQueue: someQueue
+                         toDoThisWhenDone: ^(NSTimeInterval operationDuration,
+                                             NSError *error)
+     {
+         NSLog (@"Took %d doses on %@.  Error: %@", (int) someNumberOfDoses, someDate, error);
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    NSDate *startDate = [[NSDate date] dateByAddingDays: -3];
+    NSDate *endDate   = [[NSDate date] dateByAddingDays: 3];
+
+    [somePrescription fetchDosesTakenFromDate: startDate
+                                       toDate: endDate
+                              andUseThisQueue: someQueue
+                             toDoThisWhenDone: ^(NSArray *dailyDosageRecords,
+                                                 NSTimeInterval operationDuration,
+                                                 NSError *error)
+     {
+         NSLog (@"Results:");
+
+         for (APCMedTrackerDailyDosageRecord *record in dailyDosageRecords)
+         {
+             NSLog (@"- On date [%@], the user took [%@] doses, out of a total of [%@].",
+                    record.dateThisRecordRepresents,
+                    record.numberOfDosesTakenForThisDate,
+                    somePrescription.numberOfTimesPerDay);
+         }
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"Done!  and this should be the last printout from the test case.  Did it work?");
 }
 
 
@@ -379,19 +523,19 @@
 
         NSManagedObjectContext *context = APCMedTrackerDataStorageManager.defaultManager.context;
 
-        NSError *scheduleRequestError       = nil;
+        NSError *prescriptionRequestError       = nil;
         NSError *medRequestError            = nil;
         NSError *possibleDosageRequestError = nil;
         NSError *colorsRequestError         = nil;
         NSError *doseHistoryRequestError    = nil;
 
-        NSFetchRequest *scheduleRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedicationSchedule class])];
+        NSFetchRequest *prescriptionRequest     = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescription class])];
         NSFetchRequest *medRequest              = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
         NSFetchRequest *possibleDosageRequest   = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
-        NSFetchRequest *colorsRequest           = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerScheduleColor class])];
-        NSFetchRequest *doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+        NSFetchRequest *colorsRequest           = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescriptionColor class])];
+        NSFetchRequest *doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerDailyDosageRecord class])];
 
-        NSArray *schedules       = [context executeFetchRequest: scheduleRequest error: &scheduleRequestError];
+        NSArray *prescriptions   = [context executeFetchRequest: prescriptionRequest error: &prescriptionRequestError];
         NSArray *meds            = [context executeFetchRequest: medRequest error: &medRequestError];
         NSArray *possibleDosages = [context executeFetchRequest: possibleDosageRequest error: &possibleDosageRequestError];
         NSArray *colors          = [context executeFetchRequest: colorsRequest error: &colorsRequestError];
@@ -400,13 +544,13 @@
 
         NSLog (@"======== About to delete all objects.  Here's what we're going to delete: =======");
 
-        NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+        NSLog (@"prescriptionRequestError:  %@",    prescriptionRequestError);
         NSLog (@"medRequestError:  %@",             medRequestError);
         NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
         NSLog (@"colorsRequestError:  %@",          colorsRequestError);
         NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
 
-        NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+        NSLog (@"Prescriptions retrieved:\n----------\n%@\n----------",         prescriptions);
         NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
         NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
         NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);
@@ -414,7 +558,7 @@
 
 
         NSMutableArray *stuffToDelete = [NSMutableArray new];
-        [stuffToDelete addObjectsFromArray: schedules];
+        [stuffToDelete addObjectsFromArray: prescriptions];
         [stuffToDelete addObjectsFromArray: meds];
         [stuffToDelete addObjectsFromArray: possibleDosages];
         [stuffToDelete addObjectsFromArray: colors];
@@ -445,19 +589,19 @@
 
         NSLog (@"======== Re-running all queries to see what we missed: =======");
 
-        schedules       = [context executeFetchRequest: scheduleRequest error: &scheduleRequestError];
+        prescriptions   = [context executeFetchRequest: prescriptionRequest error: &prescriptionRequestError];
         meds            = [context executeFetchRequest: medRequest error: &medRequestError];
         possibleDosages = [context executeFetchRequest: possibleDosageRequest error: &possibleDosageRequestError];
         colors          = [context executeFetchRequest: colorsRequest error: &colorsRequestError];
         doseHistory     = [context executeFetchRequest: doseHistoryRequest error: &doseHistoryRequestError];
 
-        NSLog (@"scheduleRequestError:  %@",        scheduleRequestError);
+        NSLog (@"prescriptionRequestError:  %@",        prescriptionRequestError);
         NSLog (@"medRequestError:  %@",             medRequestError);
         NSLog (@"possibleDosageRequestError:  %@",  possibleDosageRequestError);
         NSLog (@"colorsRequestError:  %@",          colorsRequestError);
         NSLog (@"doseHistoryRequestError:  %@",     doseHistoryRequestError);
 
-        NSLog (@"Schedules retrieved:\n----------\n%@\n----------",         schedules);
+        NSLog (@"Prescriptions retrieved:\n----------\n%@\n----------",         prescriptions);
         NSLog (@"Meds retrieved:\n----------\n%@\n----------",              meds);
         NSLog (@"PossibleDosages retrieved:\n----------\n%@\n----------",   possibleDosages);
         NSLog (@"Colors retrieved:\n----------\n%@\n----------",            colors);

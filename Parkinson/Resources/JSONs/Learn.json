@@ -42,18 +42,13 @@
                             "details": "symptoms",
                             "icon_image": "diagnostics_icon",
                             "tint_color": "green"
+                        },
+                        {
+                            "title": "Online Resources",
+                            "details": "online_resources",
+                            "icon_image": "globe_icon",
+                            "tint_color": "gray"
                         }
-            ]
-        },
-        {
-            "section_title": "Resources",
-            "row_items": [
-                {
-                    "title": "Online Resources",
-                    "details": "online_resources",
-                    "icon_image": "globe_icon",
-                    "tint_color": "gray"
-                }
             ]
         }
     ]

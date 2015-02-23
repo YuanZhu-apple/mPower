@@ -21,8 +21,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 @property (nonatomic, strong) APCScoring *gaitScoring;
 @property (nonatomic, strong) APCScoring *stepScoring;
 
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
-
 @end
 
 @implementation APHDashboardViewController
@@ -49,7 +47,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         }
         
         self.title = NSLocalizedString(@"Dashboard", @"Dashboard");
-        _dateFormatter = [NSDateFormatter new];
     }
     
     return self;
@@ -93,14 +90,14 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 - (void)prepareScoringObjects
 {
     self.tapScoring = [[APCScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
-                                          numberOfDays:-5
+                                          numberOfDays:-kNumberOfDaysToDisplay
                                               valueKey:kSummaryNumberOfRecordsKey
                                                dataKey:nil
                                                sortKey:nil
                                                groupBy:APHTimelineGroupDay];
     
     self.gaitScoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
-                                           numberOfDays:-5
+                                           numberOfDays:-kNumberOfDaysToDisplay
                                                valueKey:@"value"
                                                 dataKey:nil
                                                 sortKey:nil
@@ -109,7 +106,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     HKQuantityType *hkQuantity = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     self.stepScoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkQuantity
                                                                     unit:[HKUnit countUnit]
-                                                            numberOfDays:-5];
+                                                            numberOfDays:-kNumberOfDaysToDisplay];
 }
 
 - (void)prepareData
@@ -127,26 +124,16 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             item.identifier = kAPCDashboardProgressTableViewCellIdentifier;
             item.editable = NO;
             item.progress = (CGFloat)completedScheduledTasks/allScheduledTasks;
+            item.caption = NSLocalizedString(@"Activity Completion", @"Activity Completion");
+            
+#warning Replace Placeholder Values - APPLE-1576
+            item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
             
             APCTableViewRow *row = [APCTableViewRow new];
             row.item = item;
             row.itemType = kAPCTableViewDashboardItemTypeProgress;
             [rowItems addObject:row];
         }
-        
-        
-        APCTableViewSection *section = [APCTableViewSection new];
-        NSDate *dateToday = [NSDate date];
-        
-        self.dateFormatter.dateFormat = @"MMMM d";
-        
-        section.sectionTitle = [NSString stringWithFormat:@"%@, %@", NSLocalizedString(@"Today", @""), [self.dateFormatter stringFromDate:dateToday]];
-        section.rows = [NSArray arrayWithArray:rowItems];
-        [self.items addObject:section];
-    }
-
-    {
-        NSMutableArray *rowItems = [NSMutableArray new];
         
         for (NSNumber *typeNumber in self.rowItemsOrder) {
             
