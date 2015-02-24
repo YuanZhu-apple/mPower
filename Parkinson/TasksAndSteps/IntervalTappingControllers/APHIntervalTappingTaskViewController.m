@@ -7,8 +7,19 @@
  
 #import "APHIntervalTappingTaskViewController.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
-
+#import "PDScores.h"
+#import "ConverterForPDScores.h"
 #import <AVFoundation/AVFoundation.h>
+#import "APHAppDelegate.h"
+
+static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
+static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
+static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
+static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
+
+static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
 typedef  enum  _TappingStepOrdinals
 {
@@ -44,6 +55,48 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
                                                                 intendedUseDescription:nil
                                                                               duration:kTappingStepCountdownInterval
                                                                                 options:0];
+    
+    APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+    NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
+    NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
+    
+    if (numberOfSecondsSinceTaskCompletion > kMinimumAmountOfTimeToShowSurvey || lastCompletionDate == nil) {
+        
+        
+        NSMutableArray *stepQuestions = [NSMutableArray array];
+        
+        
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(nil, nil)];
+        
+        step.optional = NO;
+        
+        
+        {
+            NSArray *choices = @[
+                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,      kMomentInDayFormatChoiceJustWokeUp),
+                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,  kMomentInDayFormatChoiceTookMyMedicine),
+                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,         kMomentInDayFormatChoiceEvening)
+                                 ];
+            
+            ORKAnswerFormat *format = [ORKTextChoiceAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleSingleChoice
+                                                                                 textChoices:choices];
+            
+            ORKFormItem *item = [[ORKFormItem alloc] initWithIdentifier:kMomentInDayFormat
+                                                                   text:NSLocalizedString(kMomentInDayFormatItemText, kMomentInDayFormatItemText)
+                                                           answerFormat:format];
+            [stepQuestions addObject:item];
+        }
+        
+        [step setFormItems:stepQuestions];
+        
+        NSMutableArray *twoFingerSteps = [task.steps mutableCopy];
+        
+        [twoFingerSteps insertObject:step
+                             atIndex:1];
+        
+        task = [[ORKOrderedTask alloc] initWithIdentifier:kIntervalTappingTitle
+                                                                       steps:twoFingerSteps];
+    }
 
 #warning TODO: Replace this next line with a proper search for the Info step with the correct identifier.
     [task.steps[0] setText: @"This test evaluates your tapping speed and coordination."];
@@ -52,6 +105,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     
     return  task;
 }
+
 
 #pragma  mark  -  Results For Dashboard
 
@@ -74,13 +128,18 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
             }
         }
     }
+    
+    NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
+    double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
+    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+    
     NSUInteger  numberOfSamples = 0;
     NSDictionary  *summary = nil;
     if (tapsterResults == nil) {
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
     } else {
         numberOfSamples = [tapsterResults.samples count];
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples) };
+        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
     }
     NSError  *error = nil;
     NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
@@ -106,6 +165,16 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         [[UIApplication sharedApplication] setStatusBarHidden: NO];
     }
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
+}
+
+- (void)taskViewController:(ORKTaskViewController *)taskViewController didFinishWithResult:(ORKTaskViewControllerResult)result error:(NSError *)error {
+    
+    if (result == ORKTaskViewControllerResultCompleted) {
+        APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+        appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
+    }
+    
+    [super taskViewController:taskViewController didFinishWithResult:result error:error];
 }
 
 #pragma  mark  -  View Controller Methods

@@ -12,14 +12,14 @@
                           },
                           
                           {
-                          "title":"How this Study works",
+                          "title":"How this Study Works",
                           "details":"howstudyworks",
                           "icon_image":"rulerpencil_icon",
                           "tint_color" : "purple"
                           },
                           
                           {
-                          "title":"Who is Eligible to Participate",
+                          "title":"Who Can Participate",
                           "details":"EligibleToParticipate",
                           "icon_image":"clipboard_icon",
                           "tint_color" : "green"
@@ -42,18 +42,13 @@
                             "details": "symptoms",
                             "icon_image": "diagnostics_icon",
                             "tint_color": "green"
+                        },
+                        {
+                            "title": "Online Resources",
+                            "details": "online_resources",
+                            "icon_image": "globe_icon",
+                            "tint_color": "gray"
                         }
-            ]
-        },
-        {
-            "section_title": "Resources",
-            "row_items": [
-                {
-                    "title": "Online Resources",
-                    "details": "online_resources",
-                    "icon_image": "globe_icon",
-                    "tint_color": "gray"
-                }
             ]
         }
     ]

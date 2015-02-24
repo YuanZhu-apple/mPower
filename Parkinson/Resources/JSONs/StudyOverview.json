@@ -6,6 +6,11 @@
     "questions":
     [
      {
+     "title":"Welcome to mPower",
+     "details":"A Parkinson Disease Research Study",
+     },
+     
+     {
      "title":"About this Study",
      "details":"AboutStudy_intro",
     

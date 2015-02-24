@@ -8,6 +8,19 @@
 #import "APHPhonationTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <APCAppCore/APCAppCore.h>
+#import "PDScores.h"
+#import "APHIntervalTappingRecorderDataKeys.h"
+#import "APHAppDelegate.h"
+
+static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
+static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
+static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
+static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
+
+static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
+
 
 typedef  enum  _PhonationStepOrdinals
 {
@@ -51,6 +64,49 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
+    APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+    NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
+    NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
+    
+    if (numberOfSecondsSinceTaskCompletion > kMinimumAmountOfTimeToShowSurvey || lastCompletionDate == nil) {
+        
+        
+        NSMutableArray *stepQuestions = [NSMutableArray array];
+        
+        
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(nil, nil)];
+        
+        step.optional = NO;
+        
+        
+        {
+            NSArray *choices = @[
+                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,      kMomentInDayFormatChoiceJustWokeUp),
+                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,  kMomentInDayFormatChoiceTookMyMedicine),
+                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,         kMomentInDayFormatChoiceEvening)
+                                 ];
+            
+            ORKAnswerFormat *format = [ORKTextChoiceAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleSingleChoice
+                                                                                 textChoices:choices];
+            
+            ORKFormItem *item = [[ORKFormItem alloc] initWithIdentifier:kMomentInDayFormat
+                                                                   text:NSLocalizedString(kMomentInDayFormatItemText, kMomentInDayFormatItemText)
+                                                           answerFormat:format];
+            [stepQuestions addObject:item];
+        }
+        
+        [step setFormItems:stepQuestions];
+        
+        NSMutableArray *twoFingerSteps = [task.steps mutableCopy];
+        
+        [twoFingerSteps insertObject:step
+                             atIndex:1];
+        
+        task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
+                                                    steps:twoFingerSteps];
+    }
+
+    
     return  task;
 }
 
@@ -76,6 +132,9 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
+    } else if (result == ORKTaskViewControllerResultCompleted) {
+        APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+        appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
     }
 
     [super taskViewController: taskViewController
@@ -87,7 +146,38 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 - (NSString *)createResultSummary
 {
-    return @"";
+    ORKTaskResult  *taskResults = self.result;
+    ORKFileResult  *fileResult = nil;
+    BOOL  found = NO;
+    for (ORKStepResult  *stepResult  in  taskResults.results) {
+        if (stepResult.results.count > 0) {
+            for (id  object  in  stepResult.results) {
+                if ([object isKindOfClass:[ORKFileResult class]] == YES) {
+                    found = YES;
+                    fileResult = object;
+                    break;
+                }
+            }
+            if (found == YES) {
+                break;
+            }
+        }
+    }
+    
+    double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
+    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+    
+    NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
+    
+    NSError  *error = nil;
+    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+    NSString  *contentString = nil;
+    if (data == nil) {
+        APCLogError2 (error);
+    } else {
+        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    return  contentString;
 }
 
 #pragma  mark  - View Controller methods
