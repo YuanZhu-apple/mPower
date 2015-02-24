@@ -327,7 +327,7 @@
           NSFetchRequest *medRequest            = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
           NSFetchRequest *possibleDosageRequest = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
           NSFetchRequest *colorsRequest         = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescriptionColor class])];
-          NSFetchRequest *doseHistoryRequest    = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+          NSFetchRequest *doseHistoryRequest    = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerDailyDosageRecord class])];
 
           NSArray *prescriptions       = [localContext executeFetchRequest: prescriptionRequest        error: &prescriptionRequestError];
           NSArray *meds            = [localContext executeFetchRequest: medRequest             error: &medRequestError];
@@ -389,6 +389,91 @@
     NSLog (@"'Fetch All' complete...  and this should be the last printout from the test case.  Did it work?");
 }
 
+- (void) testTakeOnePillForOnePrescription
+{
+    NSOperationQueue *someQueue = [NSOperationQueue sequentialOperationQueueWithName: @"Waiting for 'take one pill' op to finish..."];
+    __block NSArray *allPrescriptions = nil;
+
+
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
+
+    [APCMedTrackerDataStorageManager startupReloadingDefaults: NO
+                                          andThenUseThisQueue: someQueue
+                                                     toDoThis: ^{
+                                                         dispatch_semaphore_signal (semaphore);
+                                                     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    [APCMedTrackerPrescription fetchAllFromCoreDataAndUseThisQueue: someQueue
+                                                  toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
+                                                                      NSTimeInterval operationDuration,
+                                                                      NSError *error)
+     {
+         NSLog (@"Fetched all prescriptions.  Result: %@", arrayOfGeneratedObjects);
+         allPrescriptions = arrayOfGeneratedObjects;
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    NSUInteger whichPrescription = arc4random() % allPrescriptions.count;
+    APCMedTrackerPrescription *somePrescription = allPrescriptions [whichPrescription];
+    NSUInteger someNumberOfDoses = 4;
+//    NSDate *someDate = [NSDate date];
+    NSDate *someDate = [[NSDate date] dateByAddingDays: 1];
+
+    [somePrescription recordThisManyDoses: someNumberOfDoses
+                              takenOnDate: someDate
+                          andUseThisQueue: someQueue
+                         toDoThisWhenDone: ^(NSTimeInterval operationDuration,
+                                             NSError *error)
+     {
+         NSLog (@"Took %d doses on %@.  Error: %@", (int) someNumberOfDoses, someDate, error);
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    semaphore = dispatch_semaphore_create (0);
+
+
+    NSDate *startDate = [[NSDate date] dateByAddingDays: -3];
+    NSDate *endDate   = [[NSDate date] dateByAddingDays: 3];
+
+    [somePrescription fetchDosesTakenFromDate: startDate
+                                       toDate: endDate
+                              andUseThisQueue: someQueue
+                             toDoThisWhenDone: ^(NSArray *dailyDosageRecords,
+                                                 NSTimeInterval operationDuration,
+                                                 NSError *error)
+     {
+         NSLog (@"Results:");
+
+         for (APCMedTrackerDailyDosageRecord *record in dailyDosageRecords)
+         {
+             NSLog (@"- On date [%@], the user took [%@] doses, out of a total of [%@].",
+                    record.dateThisRecordRepresents,
+                    record.numberOfDosesTakenForThisDate,
+                    somePrescription.numberOfTimesPerDay);
+         }
+
+         dispatch_semaphore_signal (semaphore);
+     }];
+
+
+
+    dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
+    NSLog (@"Done!  and this should be the last printout from the test case.  Did it work?");
+}
+
 
 
 // ---------------------------------------------------------
@@ -448,7 +533,7 @@
         NSFetchRequest *medRequest              = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerMedication class])];
         NSFetchRequest *possibleDosageRequest   = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPossibleDosage class])];
         NSFetchRequest *colorsRequest           = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerPrescriptionColor class])];
-        NSFetchRequest *doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerActualDosageTaken class])];
+        NSFetchRequest *doseHistoryRequest      = [NSFetchRequest fetchRequestWithEntityName: NSStringFromClass ([APCMedTrackerDailyDosageRecord class])];
 
         NSArray *prescriptions   = [context executeFetchRequest: prescriptionRequest error: &prescriptionRequestError];
         NSArray *meds            = [context executeFetchRequest: medRequest error: &medRequestError];
