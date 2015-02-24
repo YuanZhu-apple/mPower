@@ -8,3 +8,4 @@
 #import "APHIntervalTappingRecorderDataKeys.h"
 
 NSString  *kSummaryNumberOfRecordsKey = @"SummaryNumberOfRecords";
+NSString  *kScoreSummaryOfRecordsKey = @"ScoreSummaryOfRecords";
