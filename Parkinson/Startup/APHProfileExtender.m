@@ -93,6 +93,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     APCMedicationTrackerSetupViewController  *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     
     controller.navigationController.navigationBar.topItem.title = NSLocalizedString(@"Medication Tracker Setup", @"");
+    controller.hidesBottomBarWhenPushed = YES;
     
     [navigationController pushViewController:controller animated:YES];
 }
