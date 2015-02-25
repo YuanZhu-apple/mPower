@@ -25,9 +25,9 @@
                       "taskCompletionTimeString" : "30 Seconds"
                   },
                   {
-                      "taskTitle" : "Medication Tracking",
-                      "taskID": "APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3",
-                      "taskClassName" : "APHMedicationTrackerTaskViewController"
+                       "taskTitle" : "Medication Tracking",
+                       "taskID": "APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3",
+                       "taskClassName" : "APHMedicationTrackerTaskViewController"
                   }
               ],
 "schedules": [
