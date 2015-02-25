@@ -25,6 +25,7 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 typedef  enum  _TappingStepOrdinals
 {
     TappingStepOrdinalsIntroductionStep = 0,
+    TappingStepOrdinalsTookMedicationsStep,
     TappingStepOrdinalsInstructionStep,
     TappingStepOrdinalsTappingStep,
     TappingStepOrdinalsConclusionStep,
@@ -169,6 +170,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     if (self.tappingStepOrdinal == TappingStepOrdinalsConclusionStep) {
         self.preferStatusBarShouldBeHidden = NO;
         [[UIApplication sharedApplication] setStatusBarHidden: NO];
+        [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }
