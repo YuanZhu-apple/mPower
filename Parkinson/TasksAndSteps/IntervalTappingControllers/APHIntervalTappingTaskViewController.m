@@ -160,25 +160,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         
         if (contentString.length > 0)
         {
-            APCResult * result = [APCResult findAPCResultFromTaskResult:taskResults inContext:context];
-            if (result) {
-                result.resultSummary = contentString;
-                NSError * saveError;
-                [result saveToPersistentStore:&saveError];
-                APCLogError2(saveError);
-                if (saveError == nil) {
-                    APCLogDebug(@"Saved Delayed Results for task: %@  Result: %@", taskResults.identifier, contentString);
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[NSNotificationCenter defaultCenter] postNotificationName:APCTaskResultsProcessedNotification object:result];
-                    });
-                    
-                }
-            }
-            else
-            {
-                APCLogDebug(@"Result is blank");
-            }
+            [APCResult updateResultSummary:contentString forTaskResult:taskResults inContext:context];
         }
     };
     return nil;

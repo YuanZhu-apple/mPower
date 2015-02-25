@@ -1,10 +1,10 @@
-// 
-//  APHPhonationTaskViewController.m 
-//  mPower 
-// 
-//  Copyright (c) 2014 Apple, Inc. All rights reserved. 
-// 
- 
+//
+//  APHPhonationTaskViewController.m
+//  mPower
+//
+//  Copyright (c) 2014 Apple, Inc. All rights reserved.
+//
+
 #import "APHPhonationTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <APCAppCore/APCAppCore.h>
@@ -53,15 +53,15 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
                                       AVSampleRateKey       : @(44100.0)
-                                    };
+                                      };
     
-      ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
-                                               intendedUseDescription:nil
-                                                    speechInstruction:nil
-                                               shortSpeechInstruction:nil
-                                                             duration:kGetSoundingAaahhhInterval
-                                                    recordingSettings:audioSettings
-                                                              options:0];
+    ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
+                                             intendedUseDescription:nil
+                                                  speechInstruction:nil
+                                             shortSpeechInstruction:nil
+                                                           duration:kGetSoundingAaahhhInterval
+                                                  recordingSettings:audioSettings
+                                                            options:0];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -111,7 +111,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
                                                     steps:twoFingerSteps];
     }
-
+    
     
     return  task;
 }
@@ -134,7 +134,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
                       error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
-
+    
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
@@ -142,7 +142,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
     }
-
+    
     [super taskViewController: taskViewController
           didFinishWithResult: result
                         error: error];
@@ -153,37 +153,45 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    ORKFileResult  *fileResult = nil;
-    BOOL  found = NO;
-    for (ORKStepResult  *stepResult  in  taskResults.results) {
-        if (stepResult.results.count > 0) {
-            for (id  object  in  stepResult.results) {
-                if ([object isKindOfClass:[ORKFileResult class]] == YES) {
-                    found = YES;
-                    fileResult = object;
+    self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
+        
+        ORKFileResult  *fileResult = nil;
+        BOOL  found = NO;
+        for (ORKStepResult  *stepResult  in  taskResults.results) {
+            if (stepResult.results.count > 0) {
+                for (id  object  in  stepResult.results) {
+                    if ([object isKindOfClass:[ORKFileResult class]] == YES) {
+                        found = YES;
+                        fileResult = object;
+                        break;
+                    }
+                }
+                if (found == YES) {
                     break;
                 }
             }
-            if (found == YES) {
-                break;
-            }
         }
-    }
-    
-    double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
-    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
-    
-    NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
-    
-    NSError  *error = nil;
-    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
-    NSString  *contentString = nil;
-    if (data == nil) {
-        APCLogError2 (error);
-    } else {
-        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    return  contentString;
+        
+        double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
+        scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+        
+        NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
+        
+        NSError  *error = nil;
+        NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+        NSString  *contentString = nil;
+        if (data == nil) {
+            APCLogError2 (error);
+        } else {
+            contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        
+        if (contentString.length > 0)
+        {
+            [APCResult updateResultSummary:contentString forTaskResult:taskResults inContext:context];
+        }
+    };
+    return nil;
 }
 
 #pragma  mark  - View Controller methods
