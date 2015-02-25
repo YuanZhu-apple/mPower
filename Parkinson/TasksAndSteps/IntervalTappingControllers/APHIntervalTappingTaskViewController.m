@@ -119,44 +119,51 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    ORKTappingIntervalResult  *tapsterResults = nil;
-    BOOL  found = NO;
-    for (ORKStepResult  *stepResult  in  taskResults.results) {
-        if (stepResult.results.count > 0) {
-            for (id  object  in  stepResult.results) {
-                if ([object isKindOfClass:[ORKTappingIntervalResult class]] == YES) {
-                    found = YES;
-                    tapsterResults = object;
+    self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
+        ORKTappingIntervalResult  *tapsterResults = nil;
+        BOOL  found = NO;
+        for (ORKStepResult  *stepResult  in  taskResults.results) {
+            if (stepResult.results.count > 0) {
+                for (id  object  in  stepResult.results) {
+                    if ([object isKindOfClass:[ORKTappingIntervalResult class]] == YES) {
+                        found = YES;
+                        tapsterResults = object;
+                        break;
+                    }
+                }
+                if (found == YES) {
                     break;
                 }
             }
-            if (found == YES) {
-                break;
-            }
         }
-    }
-    
-    NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
-    double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
-    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
-    
-    NSUInteger  numberOfSamples = 0;
-    NSDictionary  *summary = nil;
-    if (tapsterResults == nil) {
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
-    } else {
-        numberOfSamples = [tapsterResults.samples count];
-        summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
-    }
-    NSError  *error = nil;
-    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
-    NSString  *contentString = nil;
-    if (data == nil) {
-        APCLogError2 (error);
-    } else {
-        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    return  contentString;
+        
+        NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
+        double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
+        scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+        
+        NSUInteger  numberOfSamples = 0;
+        NSDictionary  *summary = nil;
+        if (tapsterResults == nil) {
+            summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
+        } else {
+            numberOfSamples = [tapsterResults.samples count];
+            summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
+        }
+        NSError  *error = nil;
+        NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+        NSString  *contentString = nil;
+        if (data == nil) {
+            APCLogError2 (error);
+        } else {
+            contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        
+        if (contentString.length > 0)
+        {
+            [APCResult updateResultSummary:contentString forTaskResult:taskResults inContext:context];
+        }
+    };
+    return nil;
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
