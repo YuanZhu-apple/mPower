@@ -451,7 +451,8 @@
     [somePrescription fetchDosesTakenFromDate: startDate
                                        toDate: endDate
                               andUseThisQueue: someQueue
-                             toDoThisWhenDone: ^(NSArray *dailyDosageRecords,
+                             toDoThisWhenDone: ^(APCMedTrackerPrescription *prescription,
+                                                 NSArray *dailyDosageRecords,
                                                  NSTimeInterval operationDuration,
                                                  NSError *error)
      {
