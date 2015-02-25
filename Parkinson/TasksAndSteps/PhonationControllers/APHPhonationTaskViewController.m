@@ -18,6 +18,7 @@ static NSString *const kMomentInDayFormatItemText               = @"When are you
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
 static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
+static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
 
 static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
@@ -81,9 +82,14 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         
         {
             NSArray *choices = @[
-                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,      kMomentInDayFormatChoiceJustWokeUp),
-                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,  kMomentInDayFormatChoiceTookMyMedicine),
-                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,         kMomentInDayFormatChoiceEvening)
+                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,
+                                                   kMomentInDayFormatChoiceJustWokeUp),
+                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,
+                                                   kMomentInDayFormatChoiceTookMyMedicine),
+                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,
+                                                   kMomentInDayFormatChoiceEvening),
+                                 NSLocalizedString(kMomentInDayFormatChoiceNone,
+                                                   kMomentInDayFormatChoiceNone)
                                  ];
             
             ORKAnswerFormat *format = [ORKTextChoiceAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleSingleChoice
