@@ -26,6 +26,14 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 - (void) setUpInitializationOptions
 {
+    NSDictionary *permissionsDescriptions = @{
+                                              @(kSignUpPermissionsTypeLocation) : NSLocalizedString(@"Using your GPS enables the app to accurately determine distances travelled. Your actual location will never be shared.", @""),
+                                              @(kSignUpPermissionsTypeCoremotion) : NSLocalizedString(@"Using the motion co-processor allows the app to determine your activity, helping the study better understand how activity level may influence disease.", @""),
+                                              @(kSignUpPermissionsTypeMicrophone) : NSLocalizedString(@"Access to microphone is required for your Voice Recording Activity.", @""),
+                                              @(kSignUpPermissionsTypeLocalNotifications) : NSLocalizedString(@"Allowing notifications enables the app to show you reminders.", @""),
+                                              @(kSignUpPermissionsTypeHealthKit) : NSLocalizedString(@"On the next screen, you will be prompted to grant mPower access to read and write some of your general and health information, such as height, weight and steps taken so you don't have to enter it again.", @""),
+                                                  };
+    
     NSMutableDictionary * dictionary = [super defaultInitializationOptions];
     [dictionary addEntriesFromDictionary:@{
                                            kStudyIdentifierKey                  : kStudyIdentifier,
@@ -44,6 +52,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                    @(kSignUpPermissionsTypeMicrophone),
                                                    @(kSignUpPermissionsTypeLocalNotifications)
                                                    ],
+                                           kAppServicesDescriptionsKey : permissionsDescriptions,
                                            kAppProfileElementsListKey            : @[
                                                    @(kAPCUserInfoItemTypeEmail),
                                                    @(kAPCUserInfoItemTypeDateOfBirth),
@@ -56,6 +65,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                            kAnalyticsOnOffKey  : @(YES),
                                            kAnalyticsFlurryAPIKeyKey : @"4T6KKBMDSYFVX95PNNWT"
                                            }];
+    
     self.initializationOptions = dictionary;
     
     self.profileExtender = [[APHProfileExtender alloc] init];
