@@ -23,7 +23,12 @@
                       "taskID": "APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66",
                       "taskClassName" : "APHSpatialSpanMemoryGameViewController",
                       "taskCompletionTimeString" : "30 Seconds"
-                  }
+               },
+               {
+               "taskTitle" : "Medication Tracking",
+               "taskID": "APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3",
+               "taskClassName" : "APHMedicationTrackerTaskViewController"
+               }
               ],
 "schedules": [
                   {
@@ -45,6 +50,11 @@
                       "scheduleType": "recurring",
                       "scheduleString": "0 5,11,17 * * *",
                       "taskID": "APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
+                  },
+                  {
+                      "scheduleType": "recurring",
+                      "scheduleString": "0 5,11,17 * * *",
+                      "taskID": "APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3"
                   }
               ]
 }
