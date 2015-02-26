@@ -53,6 +53,16 @@
                     
                     [self.items addObject:item];
                 }
+                    break;
+                case kAPHDashboardItemTypePhonation:{
+                    
+                    APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
+                    item.caption = NSLocalizedString(@"Memory", @"");
+                    item.tintColor = [UIColor appTertiaryBlueColor];
+                    
+                    [self.items addObject:item];
+                }
+                    break;
                 case kAPHDashboardItemTypeSteps:{
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];

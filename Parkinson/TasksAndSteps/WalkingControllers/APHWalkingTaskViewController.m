@@ -42,6 +42,7 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
 NSString  *kScoreForwardGainRecordsKey = @"ScoreForwardGainRecords";
 NSString  *kScoreBackwardGainRecordsKey = @"ScoreBackwardGainRecords";
 NSString  *kScorePostureRecordsKey = @"ScorePostureRecords";
+NSString * const kGaitScoreKey = @"GaitScoreKey";
 
 @interface APHWalkingTaskViewController  ( )
 
@@ -157,7 +158,14 @@ NSString  *kScorePostureRecordsKey = @"ScorePostureRecords";
         backwardScores = isnan(backwardScores) ? 0 : backwardScores;
         postureScores = isnan(postureScores) ? 0 : postureScores;
         
-        NSDictionary  *summary = @{  @"value" : @(collectedNumberOfSteps), kScoreForwardGainRecordsKey: @(forwardScores), kScoreBackwardGainRecordsKey: @(backwardScores), kScorePostureRecordsKey: @(postureScores) };
+        double avgScores = (forwardScores + backwardScores + postureScores) / 3;
+        
+        NSDictionary  *summary = @{
+                                   kGaitScoreKey: @(avgScores),
+                                   kScoreForwardGainRecordsKey: @(forwardScores),
+                                   kScoreBackwardGainRecordsKey: @(backwardScores),
+                                   kScorePostureRecordsKey: @(postureScores)
+                                  };
         
         NSError  *error = nil;
         NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
