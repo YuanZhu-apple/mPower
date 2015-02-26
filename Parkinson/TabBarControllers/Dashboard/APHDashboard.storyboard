@@ -231,7 +231,7 @@
                                     <outlet property="titleLabelWidthConstraint" destination="c2M-ys-nt5" id="PZv-XE-LVf"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="APCDashboardLineGraphTableViewCell" rowHeight="225" id="OUW-5s-xaN" customClass="APCDashboardLineGraphTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="APCDashboardLineGraphTableViewCell" rowHeight="225" id="OUW-5s-xaN" userLabel="APCDashboardGraphTableViewCell" customClass="APCDashboardGraphTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OUW-5s-xaN" id="eWR-yG-kck">
@@ -246,6 +246,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1Y-YK-KgF" customClass="APCLineGraphView">
+                                            <rect key="frame" x="4" y="63" width="371" height="154"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-De-1bo" customClass="APCDiscreteGraphView">
                                             <rect key="frame" x="4" y="63" width="371" height="154"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
@@ -327,6 +331,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="coc-6R-uBN" secondAttribute="bottom" constant="-1" id="AzF-Zv-VRd"/>
                                         <constraint firstItem="LId-bA-iho" firstAttribute="top" secondItem="eWR-yG-kck" secondAttribute="topMargin" id="B9R-Eb-6jb"/>
                                         <constraint firstItem="IG5-hN-Jl5" firstAttribute="top" secondItem="eWR-yG-kck" secondAttribute="topMargin" constant="6" id="Llg-dd-KyB"/>
+                                        <constraint firstItem="xYh-De-1bo" firstAttribute="top" secondItem="eWR-yG-kck" secondAttribute="topMargin" constant="55" id="Np5-C9-fEa"/>
                                         <constraint firstItem="UL8-Fp-vIw" firstAttribute="top" secondItem="eWR-yG-kck" secondAttribute="topMargin" constant="-7" id="RcG-ea-wuj"/>
                                         <constraint firstItem="coc-6R-uBN" firstAttribute="leading" secondItem="eWR-yG-kck" secondAttribute="leading" id="SXs-oY-jSd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="UL8-Fp-vIw" secondAttribute="bottom" constant="-1" id="TUh-Zp-VpL"/>
@@ -335,9 +340,12 @@
                                         <constraint firstItem="LId-bA-iho" firstAttribute="leading" secondItem="w4R-X7-ZrR" secondAttribute="trailing" id="a1V-uO-BPg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="KPG-zg-X34" secondAttribute="bottom" constant="-8" id="c2c-Z7-cvR"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="eb9-Pe-RMI" secondAttribute="trailing" constant="48" id="cx9-V2-Fdz"/>
+                                        <constraint firstItem="xYh-De-1bo" firstAttribute="bottom" secondItem="eWR-yG-kck" secondAttribute="bottomMargin" id="drb-fT-EFC"/>
                                         <constraint firstItem="E1Y-YK-KgF" firstAttribute="leading" secondItem="eWR-yG-kck" secondAttribute="leading" constant="4" id="ebY-8d-s7o"/>
                                         <constraint firstItem="eb9-Pe-RMI" firstAttribute="top" secondItem="w4R-X7-ZrR" secondAttribute="bottom" constant="4" id="h09-3J-du6"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="IG5-hN-Jl5" secondAttribute="trailing" constant="2" id="hdU-h7-f0D"/>
+                                        <constraint firstAttribute="trailing" secondItem="xYh-De-1bo" secondAttribute="trailing" id="he0-aP-hha"/>
+                                        <constraint firstItem="xYh-De-1bo" firstAttribute="leading" secondItem="eWR-yG-kck" secondAttribute="leading" constant="4" id="jgG-Tl-cu1"/>
                                         <constraint firstAttribute="trailing" secondItem="coc-6R-uBN" secondAttribute="trailing" id="oe2-Au-nDW"/>
                                         <constraint firstItem="GHq-65-A53" firstAttribute="top" secondItem="eWR-yG-kck" secondAttribute="topMargin" constant="-8" id="rb5-ns-a2d"/>
                                         <constraint firstItem="KPG-zg-X34" firstAttribute="leading" secondItem="eWR-yG-kck" secondAttribute="leading" id="twI-71-fqe"/>
@@ -347,8 +355,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="graphView" destination="E1Y-YK-KgF" id="AsA-fc-EBy"/>
+                                    <outlet property="discreteGraphView" destination="xYh-De-1bo" id="fOT-pr-CKG"/>
                                     <outlet property="infoButton" destination="LId-bA-iho" id="sR6-PO-W1j"/>
+                                    <outlet property="lineGraphView" destination="E1Y-YK-KgF" id="brs-Re-87X"/>
                                     <outlet property="resizeButton" destination="IG5-hN-Jl5" id="ATp-zY-AIq"/>
                                     <outlet property="subTitleLabel" destination="eb9-Pe-RMI" id="mtT-21-brm"/>
                                     <outlet property="tintView" destination="UL8-Fp-vIw" id="UqG-wD-ggC"/>

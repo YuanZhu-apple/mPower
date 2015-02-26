@@ -9,6 +9,8 @@
 
 #import <ResearchKit/ResearchKit.h>
 
+extern NSString * const kSpatialMemoryScoreSummaryKey;
+
 @interface APHSpatialSpanMemoryGameViewController : APCBaseTaskViewController
 
 @end
