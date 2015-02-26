@@ -20,6 +20,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 @property (nonatomic, strong) APCScoring *tapScoring;
 @property (nonatomic, strong) APCScoring *gaitScoring;
 @property (nonatomic, strong) APCScoring *stepScoring;
+@property (nonatomic, strong) APCScoring *memoryScoring;
 
 @end
 
@@ -38,7 +39,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
                                                                      @(kAPHDashboardItemTypeSteps),
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
-                                                                     @(kAPHDashboardItemTypeGait)
+                                                                     @(kAPHDashboardItemTypeSpatialMemory),@(kAPHDashboardItemTypeGait)
                                                                      ]];
             
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
@@ -103,6 +104,13 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                                                 sortKey:nil
                                                 groupBy:APHTimelineGroupDay];
     
+    self.memoryScoring = [[APCScoring alloc] initWithTask:@"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
+                                           numberOfDays:-kNumberOfDaysToDisplay
+                                               valueKey:@"value"
+                                                dataKey:nil
+                                                sortKey:nil
+                                                groupBy:APHTimelineGroupDay];
+    
     HKQuantityType *hkQuantity = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     self.stepScoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkQuantity
                                                                     unit:[HKUnit countUnit]
@@ -145,9 +153,11 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
                     item.graphData = self.tapScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
                     NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.tapScoring averageDataPoint] integerValue]];
                     item.detailText = NSLocalizedString(detail, @"Average: {value} taps");
-                    item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
+                    item.identifier =  kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryPurpleColor];
                     
@@ -166,6 +176,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
                     item.graphData = self.gaitScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
                     NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.gaitScoring averageDataPoint] integerValue]];
                     item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
@@ -173,6 +185,28 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.tintColor = [UIColor appTertiaryYellowColor];
                     
                     #warning Replace Placeholder Values - APPLE-1576
+                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+                    
+                    APCTableViewRow *row = [APCTableViewRow new];
+                    row.item = item;
+                    row.itemType = rowType;
+                    [rowItems addObject:row];
+                }
+                    break;
+                case kAPHDashboardItemTypeSpatialMemory:
+                {
+                    APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
+                    item.caption = NSLocalizedString(@"Memory", @"");
+                    item.graphData = self.memoryScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
+                    NSString  *detail = [NSString stringWithFormat:@"Average :- %lu", (long)[[self.gaitScoring averageDataPoint] integerValue]];
+                    item.detailText = NSLocalizedString(detail, @"");
+                    item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
+                    item.editable = YES;
+                    item.tintColor = [UIColor appTertiaryRedColor];
+                    
+#warning Replace Placeholder Values - APPLE-1576
                     item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
