@@ -35,6 +35,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                   };
     
     NSMutableDictionary * dictionary = [super defaultInitializationOptions];
+    dictionary = [self updateOptionsFor5OrOlder:dictionary];
     [dictionary addEntriesFromDictionary:@{
                                            kStudyIdentifierKey                  : kStudyIdentifier,
                                            kAppPrefixKey                        : kAppPrefix,
@@ -105,6 +106,13 @@ static NSString *const kVideoShownKey = @"VideoShown";
 - (BOOL) isVideoShown
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
+}
+
+- (NSMutableDictionary *) updateOptionsFor5OrOlder:(NSMutableDictionary *)initializationOptions {
+    if (![APCDeviceHardware isiPhone5SOrNewer]) {
+        [initializationOptions setValue:@"APHTasksAndSchedules_NoM7" forKey:kTasksAndSchedulesJSONFileNameKey];
+    }
+    return initializationOptions;
 }
 
 /*********************************************************************************/
