@@ -145,9 +145,11 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
                     item.graphData = self.tapScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
                     NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.tapScoring averageDataPoint] integerValue]];
                     item.detailText = NSLocalizedString(detail, @"Average: {value} taps");
-                    item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
+                    item.identifier =  kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryPurpleColor];
                     
@@ -166,6 +168,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
                     item.graphData = self.gaitScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
                     NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.gaitScoring averageDataPoint] integerValue]];
                     item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
