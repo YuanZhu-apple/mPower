@@ -10,6 +10,7 @@
 #import "APHDashboardEditViewController.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHSpatialSpanMemoryGameViewController.h"
+#import "APHWalkingTaskViewController.h"
 
 static NSString * const kAPCBasicTableViewCellIdentifier       = @"APCBasicTableViewCell";
 static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetailTableViewCell";
@@ -101,7 +102,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     
     self.gaitScoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                                            numberOfDays:-kNumberOfDaysToDisplay
-                                               valueKey:@"value"
+                                               valueKey:kGaitScoreKey
                                                 dataKey:nil
                                                 sortKey:nil
                                                 groupBy:APHTimelineGroupDay];
