@@ -9,6 +9,7 @@
 #import "APHDashboardViewController.h"
 #import "APHDashboardEditViewController.h"
 #import "APHIntervalTappingRecorderDataKeys.h"
+#import "APHSpatialSpanMemoryGameViewController.h"
 
 static NSString * const kAPCBasicTableViewCellIdentifier       = @"APCBasicTableViewCell";
 static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetailTableViewCell";
@@ -107,7 +108,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     
     self.memoryScoring = [[APCScoring alloc] initWithTask:@"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
                                            numberOfDays:-kNumberOfDaysToDisplay
-                                               valueKey:@"value"
+                                               valueKey:kSpatialMemoryScoreSummaryKey
                                                 dataKey:nil
                                                 sortKey:nil
                                                 groupBy:APHTimelineGroupDay];
@@ -208,7 +209,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.memoryScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.memoryScoring averageDataPoint] integerValue]];
+                    NSString  *detail = [NSString stringWithFormat:@"Min: %0.0f  Max: %0.0f",
+                                         [[self.memoryScoring minimumDataPoint] doubleValue], [[self.memoryScoring maximumDataPoint] doubleValue]];
                     item.detailText = NSLocalizedString(detail, @"");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
