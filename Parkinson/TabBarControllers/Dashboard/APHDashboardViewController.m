@@ -21,6 +21,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 @property (nonatomic, strong) APCScoring *gaitScoring;
 @property (nonatomic, strong) APCScoring *stepScoring;
 @property (nonatomic, strong) APCScoring *memoryScoring;
+@property (nonatomic, strong) APCScoring *phonationScoring;
 
 @end
 
@@ -39,7 +40,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             _rowItemsOrder = [[NSMutableArray alloc] initWithArray:@[
                                                                      @(kAPHDashboardItemTypeSteps),
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
-                                                                     @(kAPHDashboardItemTypeSpatialMemory),@(kAPHDashboardItemTypeGait)
+                                                                     @(kAPHDashboardItemTypeSpatialMemory),@(kAPHDashboardItemTypePhonation),@(kAPHDashboardItemTypeGait)
                                                                      ]];
             
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
@@ -110,6 +111,13 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                                                 dataKey:nil
                                                 sortKey:nil
                                                 groupBy:APHTimelineGroupDay];
+    
+    self.phonationScoring = [[APCScoring alloc] initWithTask:@"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
+                                             numberOfDays:-kNumberOfDaysToDisplay
+                                                 valueKey:kScoreSummaryOfRecordsKey
+                                                  dataKey:nil
+                                                  sortKey:nil
+                                                  groupBy:APHTimelineGroupDay];
     
     HKQuantityType *hkQuantity = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     self.stepScoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkQuantity
@@ -200,11 +208,33 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.memoryScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    NSString  *detail = [NSString stringWithFormat:@"Average :- %lu", (long)[[self.gaitScoring averageDataPoint] integerValue]];
+                    NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.memoryScoring averageDataPoint] integerValue]];
                     item.detailText = NSLocalizedString(detail, @"");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryRedColor];
+                    
+#warning Replace Placeholder Values - APPLE-1576
+                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+                    
+                    APCTableViewRow *row = [APCTableViewRow new];
+                    row.item = item;
+                    row.itemType = rowType;
+                    [rowItems addObject:row];
+                }
+                    break;
+                case kAPHDashboardItemTypePhonation:
+                {
+                    APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
+                    item.caption = NSLocalizedString(@"Voice", @"");
+                    item.graphData = self.phonationScoring;
+                    item.graphType = kAPCDashboardGraphTypeDiscrete;
+                    
+                    NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.phonationScoring averageDataPoint] integerValue]];
+                    item.detailText = NSLocalizedString(detail, @"");
+                    item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
+                    item.editable = YES;
+                    item.tintColor = [UIColor appTertiaryBlueColor];
                     
 #warning Replace Placeholder Values - APPLE-1576
                     item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
