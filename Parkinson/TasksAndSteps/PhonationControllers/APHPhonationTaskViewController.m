@@ -38,7 +38,6 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 static  NSString       *kAudioStepIdentifier  = @"audio";
-static  NSString       *kCountdownStepIdentifier  = @"countdown";
 
 @interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
 
@@ -120,9 +119,9 @@ static  NSString       *kCountdownStepIdentifier  = @"countdown";
 
 - (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    if ([stepViewController.step.identifier isEqualToString: kCountdownStepIdentifier]) {
+    if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
-    } else if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier] || [stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
+    } else if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     } else {
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
