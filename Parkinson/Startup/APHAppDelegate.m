@@ -161,6 +161,10 @@ static NSString *const kVideoShownKey = @"VideoShown";
 
 - (NSArray*)quizSteps
 {
+    ORKInstructionStep* instruction = [[ORKInstructionStep alloc] initWithIdentifier:@"instruction"];
+    instruction.title = @"Let's Test YOur Understanding";
+    instruction.text = @"We'll now ask you 5 simple questions about the study information you just read.\nPress Next when you're ready to start.";
+
     ORKTextChoiceAnswerFormat*  purposeChoice   = [[ORKTextChoiceAnswerFormat alloc] initWithStyle:ORKChoiceAnswerStyleSingleChoice
                                                                                        textChoices:@[NSLocalizedString(@"Understand the fluctuations of Parkinson’s disease symptoms", nil),
                                                                                                      NSLocalizedString(@"Treating Parkinson’s disease", nil)]];
@@ -187,7 +191,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
     question4.optional = NO;
     question5.optional = NO;
     
-    return @[question1, question2, question3, question4, question5];
+    return @[instruction, question1, question2, question3, question4, question5];
 }
 
 - (ORKTaskViewController*)consentViewController
