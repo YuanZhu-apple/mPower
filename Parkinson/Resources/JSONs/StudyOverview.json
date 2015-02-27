@@ -15,10 +15,11 @@
      "details":"AboutStudy_intro",
     
      },
-     {
-     "title":"Study & App info",
-     "details":"consentvideo_intro",
      
+     {
+     "title":"About the App",
+     "details":"Please tap on the image below to watch a short video introduction to mPower.",
+     "video_name" : "Intro",
      },
      
      {
@@ -37,6 +38,7 @@
      "title":"Who is Running this Study",
      "details":"whoisrunning_intro",
    
-     }
+     },
+     
      ]
 }
