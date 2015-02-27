@@ -144,8 +144,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             item.progress = (CGFloat)completedScheduledTasks/allScheduledTasks;
             item.caption = NSLocalizedString(@"Activity Completion", @"Activity Completion");
             
-#warning Replace Placeholder Values - APPLE-1576
-            item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+            item.info = NSLocalizedString(@"The activity completion indicates the percentage of activities for today you have completed. You can complete more by going to the Activities tab and tapping on any activity.", @"Dashboard tooltip item info text for Activity Completion in Parkinson");
             
             APCTableViewRow *row = [APCTableViewRow new];
             row.item = item;
@@ -256,8 +255,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryGreenColor];
                     
-                    #warning Replace Placeholder Values - APPLE-1576
-                    item.info = NSLocalizedString(@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", @"");
+                    item.info = NSLocalizedString(@"This graph shows how many steps you took each day, according to you phone's motion sensors. Remember that for this number to be accurate, you should have the phone on you as frequently as possible.", @"Dashboard tooltip item info text for Steps in Parkinson");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
