@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *question2Option1;
 @property (weak, nonatomic) IBOutlet UIButton *question2Option2;
 
+@property (weak, nonatomic) IBOutlet UILabel *question3Label;
+@property (weak, nonatomic) IBOutlet UIButton *question3Option1;
+@property (weak, nonatomic) IBOutlet UIButton *question3Option2;
+
 //Properties
 @property (nonatomic, strong) NSArray * questions; //Of APCSegmentedButtons
 
@@ -34,6 +38,7 @@
     self.questions = @[
                        [[APCSegmentedButton alloc] initWithButtons:@[self.question1Option1, self.question1Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
                        [[APCSegmentedButton alloc] initWithButtons:@[self.question2Option1, self.question2Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
+                       [[APCSegmentedButton alloc] initWithButtons:@[self.question3Option1, self.question3Option2] normalColor:[UIColor appSecondaryColor3] highlightColor:[UIColor appPrimaryColor]],
                        ];
     [self.questions enumerateObjectsUsingBlock:^(APCSegmentedButton * obj, NSUInteger idx, BOOL *stop) {
         obj.delegate = self;
@@ -47,7 +52,7 @@
 {
     {
         self.question1Label.textColor = [UIColor appSecondaryColor1];
-        self.question1Label.font = [UIFont appRegularFontWithSize:15.0f];
+        self.question1Label.font = [UIFont appRegularFontWithSize:17.0f];
         
         [self.question1Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
         [self.question1Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
@@ -55,10 +60,18 @@
     
     {
         self.question2Label.textColor = [UIColor appSecondaryColor1];
-        self.question2Label.font = [UIFont appRegularFontWithSize:15.0f];
+        self.question2Label.font = [UIFont appRegularFontWithSize:17.0f];
         
         [self.question2Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
         [self.question2Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+    }
+    
+    {
+        self.question3Label.textColor = [UIColor appSecondaryColor1];
+        self.question3Label.font = [UIFont appRegularFontWithSize:17.0f];
+        
+        [self.question3Option1.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
+        [self.question3Option2.titleLabel setFont:[UIFont appRegularFontWithSize:44.0]];
     }
     
 }
@@ -110,9 +123,11 @@
     
     APCSegmentedButton * question1 = self.questions[0];
     APCSegmentedButton * question2 = self.questions[1];
+    APCSegmentedButton * question3 = self.questions[2];
     
     if ((question1.selectedIndex == 1) ||
-        (question2.selectedIndex == 1)) {
+        (question2.selectedIndex == 1) ||
+        (question3.selectedIndex == 1)) {
         retValue = NO;
     }
     return retValue;
