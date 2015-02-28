@@ -161,6 +161,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
+                    item.taskId = @"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
                     item.graphData = self.tapScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -168,7 +169,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.detailText = NSLocalizedString(detail, @"Average: {value} taps");
                     item.identifier =  kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
-                    item.tintColor = [UIColor appTertiaryPurpleColor];
+                    item.tintColor = [UIColor colorForTaskId:item.taskId];
                 
                     item.info = NSLocalizedString(@"This plot shows your finger-tapping speed each day as measured by the Tapping Activity. The length and position of each vertical bar represents the range in the number of taps you made in 20 seconds for a given day. Any differences in length or position over time reflect variations and trends in your tapping speed, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Tapping in Parkinson");
                     
@@ -183,6 +184,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
+                    item.taskId = @"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
                     item.graphData = self.gaitScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -190,7 +192,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
-                    item.tintColor = [UIColor appTertiaryYellowColor];
+                    item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     item.info = NSLocalizedString(@"This plot combines several accelerometer-based measures for the Walking Activity. The length and position of each vertical bar represents the range of measures for a given day. Any differences in length or position over time reflect variations and trends in your Walking measure, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Gait in Parkinson");
                     
@@ -204,6 +206,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Memory", @"");
+                    item.taskId = @"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
                     item.graphData = self.memoryScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -212,7 +215,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.detailText = NSLocalizedString(detail, @"");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
-                    item.tintColor = [UIColor appTertiaryRedColor];
+                    item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     item.info = NSLocalizedString(@"This plot shows the score you received each day for the Memory Game. Your score is computed from the longest sequence of items you successfully remembered. The length and position of each vertical bar represents the range of scores for a given day. Any differences in length or position over time reflect variations and trends in your score, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Memory in Parkinson");
                     
@@ -226,6 +229,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Voice", @"");
+                    item.taskId = @"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
                     item.graphData = self.phonationScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -233,7 +237,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.detailText = NSLocalizedString(detail, @"");
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
                     item.editable = YES;
-                    item.tintColor = [UIColor appTertiaryBlueColor];
+                    item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     item.info = NSLocalizedString(@"This plot combines several microphone-based measures as a single score for the Voice Activity. The length and position of each vertical bar represents the range of measures for a given day. Any differences in length or position over time reflect variations and trends in your Voice measure, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Voice in Parkinson");
                     
