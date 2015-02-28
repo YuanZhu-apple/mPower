@@ -37,10 +37,9 @@ static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
+static  NSString       *kAudioStepIdentifier  = @"audio";
 
 @interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
-
-@property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
 @end
 
@@ -120,13 +119,13 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 - (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
+    if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
-    }
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsConclusionStep) {
+    } else if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    } else {
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
-    self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
@@ -201,8 +200,6 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    
-    self.voiceRecordingStepOrdinal = PhonationStepOrdinalsIntroductionStep;
 }
 
 - (void)viewWillAppear:(BOOL)animated
