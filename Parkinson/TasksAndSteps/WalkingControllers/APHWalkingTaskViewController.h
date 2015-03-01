@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
 
+extern NSString * const kGaitScoreKey;
+
 @interface APHWalkingTaskViewController : APCBaseTaskViewController
 
 @end

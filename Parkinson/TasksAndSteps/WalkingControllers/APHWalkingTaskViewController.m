@@ -42,6 +42,7 @@ static  NSString       *kConclusionStepIdentifier = @"conclusion";
 NSString  *kScoreForwardGainRecordsKey = @"ScoreForwardGainRecords";
 NSString  *kScoreBackwardGainRecordsKey = @"ScoreBackwardGainRecords";
 NSString  *kScorePostureRecordsKey = @"ScorePostureRecords";
+NSString * const kGaitScoreKey = @"GaitScoreKey";
 
 @interface APHWalkingTaskViewController  ( )
 
@@ -120,52 +121,67 @@ NSString  *kScorePostureRecordsKey = @"ScorePostureRecords";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    BOOL  found = NO;
-    NSURL * urlGaitForward = nil;
-    NSURL * urlGaitBackward = nil;
-    NSURL * urlPosture = nil;
-    for (ORKStepResult  *stepResult  in  taskResults.results) {
-        if (stepResult.results.count > 0) {
-            for (id  object  in  stepResult.results) {
-                if ([object isKindOfClass:[ORKFileResult class]] == YES) {
-                    ORKFileResult * fileResult = object;
-                    if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.outbound"]) {
-                        urlGaitForward = fileResult.fileURL;
-                    } else if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.return"]) {
-                        urlGaitBackward = fileResult.fileURL;
-                    } else if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.rest"]) {
-                        urlPosture = fileResult.fileURL;
+    NSInteger collectedNumberOfSteps = self.collectedNumberOfSteps;
+    self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
+        BOOL  found = NO;
+        NSURL * urlGaitForward = nil;
+        NSURL * urlGaitBackward = nil;
+        NSURL * urlPosture = nil;
+        for (ORKStepResult  *stepResult  in  taskResults.results) {
+            if (stepResult.results.count > 0) {
+                for (id  object  in  stepResult.results) {
+                    if ([object isKindOfClass:[ORKFileResult class]] == YES) {
+                        ORKFileResult * fileResult = object;
+                        if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.outbound"]) {
+                            urlGaitForward = fileResult.fileURL;
+                        } else if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.return"]) {
+                            urlGaitBackward = fileResult.fileURL;
+                        } else if ([fileResult.fileURL.absoluteString.lastPathComponent hasPrefix: @"accel_walking.rest"]) {
+                            urlPosture = fileResult.fileURL;
+                        }
+                        found = YES;
+                        fileResult = object;
                     }
-                    found = YES;
-                    fileResult = object;
                 }
             }
         }
-    }
-    
-    NSArray * forwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitForward];
-    NSArray * backwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitBackward];
-    NSArray * posture = [ConverterForPDScores convertPostureOrGain:urlPosture];
-    
-    double forwardScores = [PDScores scoreFromGaitTest: forwardSteps];
-    double backwardScores = [PDScores scoreFromGaitTest: backwardSteps];
-    double postureScores = [PDScores scoreFromPostureTest: posture];
-    
-    forwardScores = isnan(forwardScores) ? 0 : forwardScores;
-    backwardScores = isnan(backwardScores) ? 0 : backwardScores;
-    postureScores = isnan(postureScores) ? 0 : postureScores;
-    
-    NSDictionary  *summary = @{  @"value" : @(self.collectedNumberOfSteps), kScoreForwardGainRecordsKey: @(forwardScores), kScoreBackwardGainRecordsKey: @(backwardScores), kScorePostureRecordsKey: @(postureScores) };
-    
-    NSError  *error = nil;
-    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
-    NSString  *contentString = nil;
-    if (data == nil) {
-        APCLogError2 (error);
-    } else {
-        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    return  contentString;
+        
+        NSArray * forwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitForward];
+        NSArray * backwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitBackward];
+        NSArray * posture = [ConverterForPDScores convertPostureOrGain:urlPosture];
+        
+        double forwardScores = [PDScores scoreFromGaitTest: forwardSteps];
+        double backwardScores = [PDScores scoreFromGaitTest: backwardSteps];
+        double postureScores = [PDScores scoreFromPostureTest: posture];
+        
+        forwardScores = isnan(forwardScores) ? 0 : forwardScores;
+        backwardScores = isnan(backwardScores) ? 0 : backwardScores;
+        postureScores = isnan(postureScores) ? 0 : postureScores;
+        
+        double avgScores = (forwardScores + backwardScores + postureScores) / 3;
+        
+        NSDictionary  *summary = @{
+                                   kGaitScoreKey: @(avgScores),
+                                   kScoreForwardGainRecordsKey: @(forwardScores),
+                                   kScoreBackwardGainRecordsKey: @(backwardScores),
+                                   kScorePostureRecordsKey: @(postureScores)
+                                  };
+        
+        NSError  *error = nil;
+        NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+        NSString  *contentString = nil;
+        if (data == nil) {
+            APCLogError2 (error);
+        } else {
+            contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        
+        if (contentString.length > 0)
+        {
+            [APCResult updateResultSummary:contentString forTaskResult:taskResults inContext:context];
+        }
+    };
+    return  nil;
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods

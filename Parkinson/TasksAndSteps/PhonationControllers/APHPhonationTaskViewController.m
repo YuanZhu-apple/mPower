@@ -1,10 +1,10 @@
-// 
-//  APHPhonationTaskViewController.m 
-//  mPower 
-// 
-//  Copyright (c) 2014 Apple, Inc. All rights reserved. 
-// 
- 
+//
+//  APHPhonationTaskViewController.m
+//  mPower
+//
+//  Copyright (c) 2014 Apple, Inc. All rights reserved.
+//
+
 #import "APHPhonationTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <APCAppCore/APCAppCore.h>
@@ -37,10 +37,9 @@ static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
+static  NSString       *kAudioStepIdentifier  = @"audio";
 
 @interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
-
-@property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
 @end
 
@@ -53,15 +52,15 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
                                       AVSampleRateKey       : @(44100.0)
-                                    };
+                                      };
     
-      ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
-                                               intendedUseDescription:nil
-                                                    speechInstruction:nil
-                                               shortSpeechInstruction:nil
-                                                             duration:kGetSoundingAaahhhInterval
-                                                    recordingSettings:audioSettings
-                                                              options:0];
+    ORKOrderedTask  *task = [ORKOrderedTask audioTaskWithIdentifier:kTaskViewControllerTitle
+                                             intendedUseDescription:nil
+                                                  speechInstruction:nil
+                                             shortSpeechInstruction:nil
+                                                           duration:kGetSoundingAaahhhInterval
+                                                  recordingSettings:audioSettings
+                                                            options:0];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -111,7 +110,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
                                                     steps:twoFingerSteps];
     }
-
+    
     
     return  task;
 }
@@ -120,13 +119,13 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 - (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
+    if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
-    }
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsConclusionStep) {
+    } else if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    } else {
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
-    self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
@@ -134,7 +133,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
                       error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
-
+    
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
@@ -142,7 +141,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
     }
-
+    
     [super taskViewController: taskViewController
           didFinishWithResult: result
                         error: error];
@@ -153,37 +152,45 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    ORKFileResult  *fileResult = nil;
-    BOOL  found = NO;
-    for (ORKStepResult  *stepResult  in  taskResults.results) {
-        if (stepResult.results.count > 0) {
-            for (id  object  in  stepResult.results) {
-                if ([object isKindOfClass:[ORKFileResult class]] == YES) {
-                    found = YES;
-                    fileResult = object;
+    self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
+        
+        ORKFileResult  *fileResult = nil;
+        BOOL  found = NO;
+        for (ORKStepResult  *stepResult  in  taskResults.results) {
+            if (stepResult.results.count > 0) {
+                for (id  object  in  stepResult.results) {
+                    if ([object isKindOfClass:[ORKFileResult class]] == YES) {
+                        found = YES;
+                        fileResult = object;
+                        break;
+                    }
+                }
+                if (found == YES) {
                     break;
                 }
             }
-            if (found == YES) {
-                break;
-            }
         }
-    }
-    
-    double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
-    scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
-    
-    NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
-    
-    NSError  *error = nil;
-    NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
-    NSString  *contentString = nil;
-    if (data == nil) {
-        APCLogError2 (error);
-    } else {
-        contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    return  contentString;
+        
+        double scoreSummary = [PDScores scoreFromPhonationTest: fileResult.fileURL];
+        scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+        
+        NSDictionary  *summary = @{kScoreSummaryOfRecordsKey : @(scoreSummary)};
+        
+        NSError  *error = nil;
+        NSData  *data = [NSJSONSerialization dataWithJSONObject:summary options:0 error:&error];
+        NSString  *contentString = nil;
+        if (data == nil) {
+            APCLogError2 (error);
+        } else {
+            contentString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        
+        if (contentString.length > 0)
+        {
+            [APCResult updateResultSummary:contentString forTaskResult:taskResults inContext:context];
+        }
+    };
+    return nil;
 }
 
 #pragma  mark  - View Controller methods
@@ -193,8 +200,6 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    
-    self.voiceRecordingStepOrdinal = PhonationStepOrdinalsIntroductionStep;
 }
 
 - (void)viewWillAppear:(BOOL)animated

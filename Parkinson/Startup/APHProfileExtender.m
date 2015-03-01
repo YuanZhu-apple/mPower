@@ -9,6 +9,10 @@
 
 static  NSInteger  kDefaultNumberOfExtraSections = 2;
 
+@interface APHProfileExtender ()
+@property BOOL isEditing;
+@end
+
 @implementation APHProfileExtender
 
 - (instancetype) init {
@@ -65,7 +69,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"Medication Tracker Setup"];
         cell.textLabel.text = @"Medication Tracker Setup";
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell.selectionStyle = self.isEditing ? UITableViewCellSelectionStyleGray : UITableViewCellSelectionStyleNone;
     }
 
     return cell;
@@ -93,8 +97,17 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     APCMedicationTrackerSetupViewController  *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     
     controller.navigationController.navigationBar.topItem.title = NSLocalizedString(@"Medication Tracker Setup", @"");
+    controller.hidesBottomBarWhenPushed = YES;
     
     [navigationController pushViewController:controller animated:YES];
+}
+
+- (void)hasStartedEditing {
+    self.isEditing = YES;
+}
+
+- (void)hasFinishedEditing {
+    self.isEditing = NO;
 }
 
 @end
