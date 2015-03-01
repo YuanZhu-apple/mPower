@@ -556,12 +556,12 @@
 		F5D14F3619CC9C0000650FBB /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				7B9898C81A926F36003B4181 /* APHProfileExtender.h */,
-				7B9898C91A926F36003B4181 /* APHProfileExtender.m */,
 				F5C1DC1F19D22E6F006527EA /* Main.storyboard */,
 				F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */,
 				F5D14F3719CC9C0000650FBB /* APHAppDelegate.h */,
 				F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */,
+				7B9898C81A926F36003B4181 /* APHProfileExtender.h */,
+				7B9898C91A926F36003B4181 /* APHProfileExtender.m */,
 			);
 			path = Startup;
 			sourceTree = "<group>";
