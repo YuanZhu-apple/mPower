@@ -9,9 +9,7 @@
 #import "APHMedicationTrackerTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString       *kTaskViewControllerTitle      = @"Medications Calendar";
-
-static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
+static  NSString  *kTaskViewControllerTitle = @"Medications Tracker";
 
 @interface APHMedicationTrackerTaskViewController  ( ) <NSObject>
 
@@ -23,9 +21,9 @@ static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
 
 + (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
 {
-    ORKStep  *step = [[ORKStep alloc] initWithIdentifier:kMedicationsTrackerTitle];
+    ORKStep  *step = [[ORKStep alloc] initWithIdentifier:kTaskViewControllerTitle];
     NSArray  *steps = @[ step ];
-    ORKOrderedTask  *task = [[ORKOrderedTask alloc ]initWithIdentifier:kTaskViewControllerTitle steps:steps];
+    ORKOrderedTask  *task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle steps:steps];
 
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
