@@ -144,7 +144,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
             item.progress = (CGFloat)completedScheduledTasks/allScheduledTasks;
             item.caption = NSLocalizedString(@"Activity Completion", @"Activity Completion");
             
-            item.info = NSLocalizedString(@"The activity completion indicates the percentage of activities for today you have completed. You can complete more by going to the Activities tab and tapping on any activity.", @"Dashboard tooltip item info text for Activity Completion in Parkinson");
+            item.info = NSLocalizedString(@"This graph shows the percent of Today's activities that you completed. You can complete more of your tasks in the Activities tab.", @"Dashboard tooltip item info text for Activity Completion in Parkinson");
             
             APCTableViewRow *row = [APCTableViewRow new];
             row.item = item;
@@ -171,7 +171,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                 
-                    item.info = NSLocalizedString(@"This plot shows your finger-tapping speed each day as measured by the Tapping Activity. The length and position of each vertical bar represents the range in the number of taps you made in 20 seconds for a given day. Any differences in length or position over time reflect variations and trends in your tapping speed, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Tapping in Parkinson");
+                    item.info = NSLocalizedString(@"This plot shows your finger tapping speed each day as measured by the Tapping Interval Activity. The length and position of each vertical bar represents the range in the number of taps you made in 20 seconds for a given day. Any differences in length or position over time reflect variations and trends in your tapping speed, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Tapping in Parkinson");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
@@ -217,7 +217,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
-                    item.info = NSLocalizedString(@"This plot shows the score you received each day for the Memory Game. Your score is computed from the longest sequence of items you successfully remembered. The length and position of each vertical bar represents the range of scores for a given day. Any differences in length or position over time reflect variations and trends in your score, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Memory in Parkinson");
+                    item.info = NSLocalizedString(@"This plot shows the score you received each day for the Memory Game. The length and position of each vertical bar represents the range of scores for a given day. Any differences in length or position over time reflect variations and trends in your score, which may reflect variations and trends in your symptoms.", @"Dashboard tooltip item info text for Memory in Parkinson");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
