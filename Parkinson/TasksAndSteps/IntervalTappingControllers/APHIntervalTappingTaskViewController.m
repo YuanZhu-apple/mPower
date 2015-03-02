@@ -23,6 +23,8 @@ static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after P
 static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
 static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
 
+static NSString *const kConclusionStep                          = @"conclusion";
+
 static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
 typedef  enum  _TappingStepOrdinals
@@ -177,7 +179,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         self.preferStatusBarShouldBeHidden = YES;
         [[UIApplication sharedApplication] setStatusBarHidden: YES];
     }
-    if (self.tappingStepOrdinal == TappingStepOrdinalsConclusionStep) {
+    if ([stepViewController.step.identifier isEqualToString:kConclusionStep]) {
         self.preferStatusBarShouldBeHidden = NO;
         [[UIApplication sharedApplication] setStatusBarHidden: NO];
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
