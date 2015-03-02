@@ -388,7 +388,7 @@
             "identifier": "MDS-UPDRS2.4",
             "type": "SurveyQuestion",
             "prompt": "",
-            "retail": "Over the past week, have you usually had troubles handling your food and using eating utensils? For example, do you have trouble handling finger foods or using forks, knifes, spoons, chopsticks?",
+            "detail": "Over the past week, have you usually had troubles handling your food and using eating utensils? For example, do you have trouble handling finger foods or using forks, knifes, spoons, chopsticks?",
             "constraints": {
                 "dataType": "string",
                 "rules": [],
