@@ -13,6 +13,7 @@
 #import "APHAppDelegate.h"
 
 static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kInstruction1                            = @"instruction1";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
@@ -125,6 +126,11 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     } else {
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    }
+    
+    if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
+        UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
+        label.text = NSLocalizedString(@"Say “Aaaaah” into the microphone for as long as you can. Keep a steady vocal volume so the audio bars remain blue.\n\nTap Next to begin the test.", @"Instruction text for voice activity in Parkinson");
     }
 }
 
