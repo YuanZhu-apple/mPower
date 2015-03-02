@@ -13,6 +13,7 @@
 #import "APHAppDelegate.h"
 
 static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kInstruction1                            = @"instruction1";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
@@ -51,7 +52,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     ORKOrderedTask  *task = [ORKOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
                                                                 intendedUseDescription:nil
@@ -168,7 +169,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if (self.tappingStepOrdinal == TappingStepOrdinalsTappingStep) {
         self.preferStatusBarShouldBeHidden = YES;
@@ -178,6 +179,11 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         self.preferStatusBarShouldBeHidden = NO;
         [[UIApplication sharedApplication] setStatusBarHidden: NO];
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+    
+    if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
+        UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
+        label.text = NSLocalizedString(@"Rest your phone on a flat surface. Then use two fingers on the same hand to alternately tap the buttons that appear. Keep tapping for 20 seconds and time your taps to be as consistent as possible.\n\nTap Next to begin the test.", @"Instruction text for tapping activity in Parkinson");
     }
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }

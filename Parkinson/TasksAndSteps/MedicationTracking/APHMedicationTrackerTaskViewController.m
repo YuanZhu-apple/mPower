@@ -19,7 +19,7 @@ static  NSString  *kTaskViewControllerTitle = @"Medications Tracker";
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     ORKStep  *step = [[ORKStep alloc] initWithIdentifier:kTaskViewControllerTitle];
     NSArray  *steps = @[ step ];
@@ -32,14 +32,14 @@ static  NSString  *kTaskViewControllerTitle = @"Medications Tracker";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (ORKStepViewController *)taskViewController:(ORKTaskViewController *)taskViewController viewControllerForStep:(ORKStep *)step
+- (ORKStepViewController *)taskViewController:(ORKTaskViewController *) __unused taskViewController viewControllerForStep:(ORKStep *)step
 {
     APCMedicationTrackerCalendarViewController  *controller = [[APCMedicationTrackerCalendarViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     controller.step = step;
     return  controller;
 }
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *) __unused stepViewController
 {
 }
 

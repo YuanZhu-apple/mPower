@@ -9,6 +9,10 @@
 
 static  NSInteger  kDefaultNumberOfExtraSections = 2;
 
+@interface APHProfileExtender ()
+@property BOOL isEditing;
+@end
+
 @implementation APHProfileExtender
 
 - (instancetype) init {
@@ -21,7 +25,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     return self;
 }
 
-- (BOOL)willDisplayCell:(NSIndexPath *)indexPath {
+- (BOOL)willDisplayCell:(NSIndexPath *) __unused indexPath {
     return YES;
 }
 
@@ -37,7 +41,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //    return  0  to turn off the feature in the profile View Controller
     //
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *) __unused tableView
 {
     return  kDefaultNumberOfExtraSections;
 }
@@ -45,7 +49,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //    Add to the number of rows
     //
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInAdjustedSection:(NSInteger)section
+- (NSInteger) tableView:(UITableView *) __unused tableView numberOfRowsInAdjustedSection:(NSInteger)section
 {
     NSInteger count = 0;
     
@@ -65,7 +69,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"Medication Tracker Setup"];
         cell.textLabel.text = @"Medication Tracker Setup";
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell.selectionStyle = self.isEditing ? UITableViewCellSelectionStyleGray : UITableViewCellSelectionStyleNone;
     }
 
     return cell;
@@ -88,7 +92,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //        you can either push the controller or present it depending on your preferences
     //
-- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *) __unused indexPath
 {
     APCMedicationTrackerSetupViewController  *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     
@@ -96,6 +100,14 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     controller.hidesBottomBarWhenPushed = YES;
     
     [navigationController pushViewController:controller animated:YES];
+}
+
+- (void)hasStartedEditing {
+    self.isEditing = YES;
+}
+
+- (void)hasFinishedEditing {
+    self.isEditing = NO;
 }
 
 @end
