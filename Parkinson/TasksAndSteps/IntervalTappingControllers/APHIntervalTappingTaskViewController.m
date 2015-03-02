@@ -52,7 +52,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     ORKOrderedTask  *task = [ORKOrderedTask twoFingerTappingIntervalTaskWithIdentifier:kIntervalTappingTitle
                                                                 intendedUseDescription:nil
@@ -169,7 +169,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if (self.tappingStepOrdinal == TappingStepOrdinalsTappingStep) {
         self.preferStatusBarShouldBeHidden = YES;

@@ -48,7 +48,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 #pragma  mark  -  Initialisation
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
@@ -118,7 +118,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];

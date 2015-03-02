@@ -25,7 +25,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     return self;
 }
 
-- (BOOL)willDisplayCell:(NSIndexPath *)indexPath {
+- (BOOL)willDisplayCell:(NSIndexPath *) __unused indexPath {
     return YES;
 }
 
@@ -41,7 +41,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //    return  0  to turn off the feature in the profile View Controller
     //
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *) __unused tableView
 {
     return  kDefaultNumberOfExtraSections;
 }
@@ -49,7 +49,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //    Add to the number of rows
     //
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInAdjustedSection:(NSInteger)section
+- (NSInteger) tableView:(UITableView *) __unused tableView numberOfRowsInAdjustedSection:(NSInteger)section
 {
     NSInteger count = 0;
     
@@ -92,7 +92,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     //
     //        you can either push the controller or present it depending on your preferences
     //
-- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)navigationController:(UINavigationController *)navigationController didSelectRowAtIndexPath:(NSIndexPath *) __unused indexPath
 {
     APCMedicationTrackerSetupViewController  *controller = [[APCMedicationTrackerSetupViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     
