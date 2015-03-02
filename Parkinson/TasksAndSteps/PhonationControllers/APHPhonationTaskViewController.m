@@ -13,7 +13,10 @@
 #import "APHAppDelegate.h"
 
 static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kInstruction1                            = @"instruction1";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
+                                                                " this activity could be affected by the timing of your medication.";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
@@ -37,10 +40,9 @@ static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
 
 static  NSString       *kConclusionStepIdentifier  = @"conclusion";
+static  NSString       *kAudioStepIdentifier  = @"audio";
 
 @interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
-
-@property  (nonatomic, assign)  PhonationStepOrdinals  voiceRecordingStepOrdinal;
 
 @end
 
@@ -48,7 +50,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 #pragma  mark  -  Initialisation
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     NSDictionary  *audioSettings = @{ AVFormatIDKey         : @(kAudioFormatAppleLossless),
                                       AVNumberOfChannelsKey : @(1),
@@ -75,7 +77,7 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
         NSMutableArray *stepQuestions = [NSMutableArray array];
         
         
-        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(nil, nil)];
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
         
         step.optional = NO;
         
@@ -118,15 +120,20 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsVoiceRecordingStep) {
+    if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
-    }
-    if (self.voiceRecordingStepOrdinal == PhonationStepOrdinalsConclusionStep) {
+    } else if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    } else {
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
-    self.voiceRecordingStepOrdinal = self.voiceRecordingStepOrdinal + 1;
+    
+    if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
+        UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
+        label.text = NSLocalizedString(@"Say “Aaaaah” into the microphone for as long as you can. Keep a steady vocal volume so the audio bars remain blue.\n\nTap Next to begin the test.", @"Instruction text for voice activity in Parkinson");
+    }
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
@@ -201,8 +208,6 @@ static  NSString       *kConclusionStepIdentifier  = @"conclusion";
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    
-    self.voiceRecordingStepOrdinal = PhonationStepOrdinalsIntroductionStep;
 }
 
 - (void)viewWillAppear:(BOOL)animated

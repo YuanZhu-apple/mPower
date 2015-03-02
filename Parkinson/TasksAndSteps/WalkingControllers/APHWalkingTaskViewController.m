@@ -24,6 +24,8 @@ typedef  enum  _WalkingStepOrdinals
 
 static NSString *const kMomentInDay                             = @"momentInDay";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
+                                                                " this activity could be affected by the timing of your medication.";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
@@ -59,7 +61,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 
 #pragma  mark  -  Initialisation
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
     ORKOrderedTask  *task = [ORKOrderedTask shortWalkTaskWithIdentifier:kWalkingActivityTitle
                                                  intendedUseDescription:nil
@@ -76,7 +78,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         NSMutableArray *stepQuestions = [NSMutableArray array];
         
         
-        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(nil, nil)];
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
         
         step.optional = NO;
         
@@ -121,7 +123,6 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
-    NSInteger collectedNumberOfSteps = self.collectedNumberOfSteps;
     self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
         BOOL  found = NO;
         NSURL * urlGaitForward = nil;
@@ -186,7 +187,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
@@ -209,7 +210,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
                                                             quantitySamplePredicate:predicate
                                                                             options:HKStatisticsOptionCumulativeSum
-                                                                  completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+                                                                  completionHandler:^(HKStatisticsQuery * __unused query, HKStatistics *result, NSError *error) {
                                                                       if (result != nil) {
                                                                           self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
                                                                       } else {

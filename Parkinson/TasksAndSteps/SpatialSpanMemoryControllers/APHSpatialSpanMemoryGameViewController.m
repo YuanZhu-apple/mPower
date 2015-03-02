@@ -6,6 +6,7 @@
 //
 
 #import "APHSpatialSpanMemoryGameViewController.h"
+#import "APHAppDelegate.h"
 
 static  NSString       *kTaskViewControllerTitle      = @"Memory Activity";
 
@@ -24,6 +25,19 @@ static  NSInteger       kMaxConsecutiveFailures       =  3;
 static  NSString       *kCustomTargetPluralName       = nil;
 static  BOOL            kRequiresReversal             = NO;
 
+static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
+                                                                " this activity could be affected by the timing of your medication.";
+
+static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
+static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
+static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
+static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
+static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
+
+static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
+
 @interface APHSpatialSpanMemoryGameViewController ()
 
 @end
@@ -32,7 +46,7 @@ static  BOOL            kRequiresReversal             = NO;
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
         ORKOrderedTask  *task = [ORKOrderedTask spatialSpanMemoryTaskWithIdentifier:kMemorySpanTitle
             intendedUseDescription:nil
@@ -49,12 +63,57 @@ static  BOOL            kRequiresReversal             = NO;
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
+    APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+    NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
+    NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
+    
+    if (numberOfSecondsSinceTaskCompletion > kMinimumAmountOfTimeToShowSurvey || lastCompletionDate == nil) {
+        
+        NSMutableArray *stepQuestions = [NSMutableArray array];
+        
+        
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
+        
+        step.optional = NO;
+        
+        
+        {
+            NSArray *choices = @[
+                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,
+                                                   kMomentInDayFormatChoiceJustWokeUp),
+                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,
+                                                   kMomentInDayFormatChoiceTookMyMedicine),
+                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,
+                                                   kMomentInDayFormatChoiceEvening),
+                                 NSLocalizedString(kMomentInDayFormatChoiceNone,
+                                                   kMomentInDayFormatChoiceNone)
+                                 ];
+            
+            ORKAnswerFormat *format = [ORKTextChoiceAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleSingleChoice
+                                                                                 textChoices:choices];
+            
+            ORKFormItem *item = [[ORKFormItem alloc] initWithIdentifier:kMomentInDayFormat
+                                                                   text:NSLocalizedString(kMomentInDayFormatItemText, kMomentInDayFormatItemText)
+                                                           answerFormat:format];
+            [stepQuestions addObject:item];
+        }
+        
+        [step setFormItems:stepQuestions];
+
+        NSMutableArray *spatialSteps = [task.steps mutableCopy];
+        
+        [spatialSteps insertObject:step
+                             atIndex:1];
+        task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
+                                                    steps:spatialSteps];
+    }
+    
     return  task;
 }
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
@@ -71,8 +130,11 @@ static  BOOL            kRequiresReversal             = NO;
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
+    } else if (result == ORKTaskViewControllerResultCompleted) {
+        APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+        appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
     }
-
+    
     [super taskViewController: taskViewController
           didFinishWithResult: result
                         error: error];

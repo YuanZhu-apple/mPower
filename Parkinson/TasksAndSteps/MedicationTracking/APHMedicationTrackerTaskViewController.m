@@ -9,9 +9,7 @@
 #import "APHMedicationTrackerTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString       *kTaskViewControllerTitle      = @"Medications Calendar";
-
-static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
+static  NSString  *kTaskViewControllerTitle = @"Medications Tracker";
 
 @interface APHMedicationTrackerTaskViewController  ( ) <NSObject>
 
@@ -21,11 +19,11 @@ static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
-    ORKStep  *step = [[ORKStep alloc] initWithIdentifier:kMedicationsTrackerTitle];
+    ORKStep  *step = [[ORKStep alloc] initWithIdentifier:kTaskViewControllerTitle];
     NSArray  *steps = @[ step ];
-    ORKOrderedTask  *task = [[ORKOrderedTask alloc ]initWithIdentifier:kTaskViewControllerTitle steps:steps];
+    ORKOrderedTask  *task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle steps:steps];
 
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -34,14 +32,14 @@ static  NSString       *kMedicationsTrackerTitle      = @"Weekly Medications";
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (ORKStepViewController *)taskViewController:(ORKTaskViewController *)taskViewController viewControllerForStep:(ORKStep *)step
+- (ORKStepViewController *)taskViewController:(ORKTaskViewController *) __unused taskViewController viewControllerForStep:(ORKStep *)step
 {
     APCMedicationTrackerCalendarViewController  *controller = [[APCMedicationTrackerCalendarViewController alloc] initWithNibName:nil bundle:[NSBundle appleCoreBundle]];
     controller.step = step;
     return  controller;
 }
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *) __unused stepViewController
 {
 }
 

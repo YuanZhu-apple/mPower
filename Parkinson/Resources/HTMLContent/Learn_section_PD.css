@@ -13,32 +13,32 @@ a:active {
 }
 
 body {
-	font-family: "Helvetica Neue", 'HelveticaNeue', 'HelveticaNeue';
-	font-size:22px; 
-	color:#000000; 
-	line-height:normal; 
-	font-weight:normal;
-	padding-top:0px;
-	padding-bottom:20px;
+    font-family: "Helvetica Neue", 'HelveticaNeue', 'HelveticaNeue';
+    font-size:16pt;
+    color:#000000;
+    line-height:normal;
+    font-weight:normal;
+    padding-top:0px;
+    padding-bottom:20px;
 }
 
 p,  h2 {
-	margin-top: 0;	 
-	padding-right: 0px;
-	padding-left: 0px; 
-	
+    margin-top: 0;
+    padding-right: 0px;
+    padding-left: 0px;
+    
 }
 
 h1 {
-	font-family: 'HelveticaNeue-Light', 'HelveticaNeue light', 'Helvetica Neue';
-	font-size:26px; 
-	color:#000000; 
-	line-height:normal; 
-	font-weight:normal;
-	padding-top:0px;
-	padding-bottom:0px;
-	text-align:center;	
-	
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue light', 'Helvetica Neue';
+    font-size:19pt;
+    color:#000000;
+    line-height:normal;
+    font-weight:normal;
+    padding-top:0px;
+    padding-bottom:0px;
+    text-align:center;
+    
 }
 
 
@@ -46,22 +46,22 @@ h1 {
 
 
 .footer {
-	background-color: #FFFFFF;
-	width: 20%;
-	margin: 0 auto;
-	
-	
-	
+    background-color: #FFFFFF;
+    width: 20%;
+    margin: 0 auto;
+    
+    
+    
 }
 
 
 .content {
-	padding: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 15px;
 }
 
 
-.content ul, .content ol { 
-	padding: 0 15px 15px 40px; 
+.content ul, .content ol {
+    padding: 0 15px 15px 15px;
 }
 
 
@@ -73,26 +73,25 @@ IMG.displayed {
 
 
 boldie
-	{
-		font-family:'HelveticaNeue-Medium', 'Helvetica Neue Medium', Helvetica;
-		font-size:22px; 
-		color:#000000; 
-		line-height:normal; 
-		font-weight:normal;
-		padding-top:0px;
-		padding-bottom:0px;
-	
-	}
-
-ul, ol {
-	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', 'Helvetica Neue';
-	font-size:22px; 
-	color:#000000; 
-	list-style-type: square;
-	list-style-position: outside;
-	padding-left:23px;
-	line-height:115%;
-	
+{
+    font-family:'HelveticaNeue-Medium', 'Helvetica Neue Medium', Helvetica;
+    font-size:16pt;
+    color:#000000;
+    line-height:normal;
+    font-weight:normal;
+    padding-top:0px;
+    padding-bottom:0px;
+    
 }
 
- .ExternalClass * {line-height: 100%} 
+ul, ol {
+    font-family: "Helvetica Neue", 'HelveticaNeue', 'HelveticaNeue';
+    font-size:16pt;
+    color:#000000;
+    list-style-type: round;
+    list-style-position: outside;
+    line-height:115%;
+    
+}
+
+.ExternalClass * {line-height: 100%}
