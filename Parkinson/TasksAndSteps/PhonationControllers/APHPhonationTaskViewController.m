@@ -130,7 +130,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
     
     if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
         UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
-        label.text = NSLocalizedString(@"Rest your phone on a flat surface. Then use two fingers on the same hand to alternately tap the buttons that appear. Keep tapping for 20 seconds and time your taps to be as consistent as possible.\n\nTap Next to begin the test.", @"Instruction text for voice activity in Parkinson");
+        label.text = NSLocalizedString(@"Say “Aaaaah” into the microphone for as long as you can. Keep a steady vocal volume so the audio bars remain blue.\n\nTap Next to begin the test.", @"Instruction text for voice activity in Parkinson");
     }
 }
 
