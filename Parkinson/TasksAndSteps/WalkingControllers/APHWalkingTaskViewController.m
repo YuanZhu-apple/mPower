@@ -190,6 +190,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
+
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
     
