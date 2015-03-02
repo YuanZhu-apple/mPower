@@ -127,8 +127,11 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
+    } else if (result == ORKTaskViewControllerResultCompleted) {
+        APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+        appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
     }
-
+    
     [super taskViewController: taskViewController
           didFinishWithResult: result
                         error: error];
