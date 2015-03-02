@@ -220,6 +220,7 @@
                                         <constraint firstItem="7MP-UI-cD8" firstAttribute="leading" secondItem="jto-ML-3VF" secondAttribute="leadingMargin" constant="8" id="lOE-CU-Ycy"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="UD5-0N-8Rs" secondAttribute="bottom" constant="-8" id="mDh-5q-cn6"/>
                                         <constraint firstItem="TxJ-GP-bVd" firstAttribute="top" secondItem="jto-ML-3VF" secondAttribute="topMargin" constant="66" id="oTu-rF-ye7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="TxJ-GP-bVd" secondAttribute="bottom" constant="19" id="vnl-Vy-oJT"/>
                                         <constraint firstItem="xZI-EN-6n1" firstAttribute="top" secondItem="jto-ML-3VF" secondAttribute="topMargin" id="wvJ-hH-3ar"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -252,6 +253,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-De-1bo" customClass="APCDiscreteGraphView">
                                             <rect key="frame" x="4" y="63" width="371" height="154"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="154" id="3cV-QH-4Sg"/>
+                                            </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UL8-Fp-vIw" userLabel="Tint View">
                                             <rect key="frame" x="0.0" y="1" width="4" height="217"/>
