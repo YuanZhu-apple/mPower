@@ -40,7 +40,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
     [dictionary addEntriesFromDictionary:@{
                                            kStudyIdentifierKey                  : kStudyIdentifier,
                                            kAppPrefixKey                        : kAppPrefix,
-                                           kBridgeEnvironmentKey                : @(SBBEnvironmentStaging),
+                                           kBridgeEnvironmentKey                : @(SBBEnvironmentProd),
                                            kHKReadPermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
                                                    HKQuantityTypeIdentifierHeight,
@@ -138,7 +138,7 @@ static NSString *const kVideoShownKey = @"VideoShown";
 #pragma mark - APCOnboardingDelegate Methods
 /*********************************************************************************/
 
-- (APCScene *)inclusionCriteriaSceneForOnboarding:(APCOnboarding *)onboarding
+- (APCScene *)inclusionCriteriaSceneForOnboarding:(APCOnboarding *) __unused onboarding
 {
     APCScene *scene = [APCScene new];
     scene.name = @"APHInclusionCriteriaViewController";

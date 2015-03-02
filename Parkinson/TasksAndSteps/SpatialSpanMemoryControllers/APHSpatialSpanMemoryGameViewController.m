@@ -43,7 +43,7 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
 #pragma  mark  -  Task Creation Methods
 
-+ (ORKOrderedTask *)createTask:(APCScheduledTask *)scheduledTask
++ (ORKOrderedTask *)createTask:(APCScheduledTask *) __unused scheduledTask
 {
         ORKOrderedTask  *task = [ORKOrderedTask spatialSpanMemoryTaskWithIdentifier:kMemorySpanTitle
             intendedUseDescription:nil
@@ -110,7 +110,7 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
 #pragma  mark  -  Task View Controller Delegate Methods
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
+- (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
