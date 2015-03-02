@@ -1,0 +1,705 @@
+{
+    "identifier": "EnrollmentSurvey",
+    "type": "Survey",
+    "name": "Enrollment Survey",
+    "questions": [
+         {  
+         "guid":"538d9b7e-6548-4bf8-8a4d-fb111411e684",
+         "identifier":"age",
+         "type":"SurveyQuestion",
+         "detail":"How old are you?",
+         "constraints":{  
+            "dataType":"integer",
+            "rules":[  
+
+            ],
+            "dataType":"integer",
+            "minValue":18.0,
+            "type":"IntegerConstraints"
+         },
+         "uiHint":"numberfield"
+      },
+      {  
+         "guid":"06f5bce0-0380-4f3d-a044-853950292ac9",
+         "identifier":"gender",
+         "type":"SurveyQuestion",
+         "detail":"What is your sex?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Male",
+                  "value":"Male",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Female",
+                  "value":"Female",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Prefer not to answer",
+                  "value":"Prefer not to answer",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      },
+      {  
+         "guid":"e3e89592-2ef0-44e4-8433-186c872f161b",
+         "identifier":"race",
+         "type":"SurveyQuestion",
+         "detail":"Which race do you identify with?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Black or African",
+                  "value":"Black or African",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Latino/Hispanic",
+                  "value":"Latino/Hispanic",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Native American",
+                  "value":"Native American",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Pacific Islander",
+                  "value":"Pacific Islander",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Middle Eastern",
+                  "value":"Middle Eastern",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Caribbean",
+                  "value":"Caribbean",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"South Asian",
+                  "value":"South Asian",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"East Asian",
+                  "value":"East Asian",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"White or Caucasian",
+                  "value":"White or Caucasian",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Mixed",
+                  "value":"Mixed",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":true,
+            "allowMultiple":true,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"checkbox"
+      },
+      {  
+         "guid":"d7570eae-2b8e-4de8-bcb0-08a0ea063701",
+         "identifier":"state",
+         "type":"SurveyQuestion",
+         "detail":"In which state do you reside?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Alabama",
+                  "value":"AL",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Alaska",
+                  "value":"AK",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Arizona",
+                  "value":"AZ",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Arkansas",
+                  "value":"AR",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"California",
+                  "value":"CA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Colorado",
+                  "value":"CO",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Connecticut",
+                  "value":"CT",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Delaware",
+                  "value":"DE",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Florida",
+                  "value":"FL",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Georgia",
+                  "value":"GA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Hawaii",
+                  "value":"HI",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Idaho",
+                  "value":"ID",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Illinois",
+                  "value":"IL",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Indiana",
+                  "value":"IN",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Iowa",
+                  "value":"IA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Kansas",
+                  "value":"KS",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Kentucky[C]",
+                  "value":"KY",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Louisiana",
+                  "value":"LA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Maine",
+                  "value":"ME",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Maryland",
+                  "value":"MD",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Massachusetts[D]",
+                  "value":"MA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Michigan",
+                  "value":"MI",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Minnesota",
+                  "value":"MN",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Mississippi",
+                  "value":"MS",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Missouri",
+                  "value":"MO",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Montana",
+                  "value":"MT",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Nebraska",
+                  "value":"NE",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Nevada",
+                  "value":"NV",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"New Hampshire",
+                  "value":"NH",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"New Jersey",
+                  "value":"NJ",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"New Mexico",
+                  "value":"NM",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"New York",
+                  "value":"NY",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"North Carolina",
+                  "value":"NC",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"North Dakota",
+                  "value":"ND",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Ohio",
+                  "value":"OH",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Oklahoma",
+                  "value":"OK",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Oregon",
+                  "value":"OR",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Pennsylvania[E]",
+                  "value":"PA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Rhode Island[F]",
+                  "value":"RI",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"South Carolina",
+                  "value":"SC",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"South Dakota",
+                  "value":"SD",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Tennessee",
+                  "value":"TN",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Texas",
+                  "value":"TX",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Utah",
+                  "value":"UT",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Vermont",
+                  "value":"VT",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Virginia[G]",
+                  "value":"VA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Washington",
+                  "value":"WA",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Washington, D.C.",
+                  "value":"DC",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"West Virginia",
+                  "value":"WV",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Wisconsin",
+                  "value":"WI",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Wyoming",
+                  "value":"WY",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"select"
+      },
+      {  
+         "guid":"84dbf77d-dfa4-4c52-ae4b-bdae40007926",
+         "identifier":"education",
+         "type":"SurveyQuestion",
+         "detail":"What is the highest level of education that you have completed?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Doctoral Degree",
+                  "value":"Doctoral Degree",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Master's Degree",
+                  "value":"Master's Degree",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Some graduate school",
+                  "value":"Some graduate school",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"4-year college degree",
+                  "value":"4-year college degree",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"2-year college degree",
+                  "value":"2-year college degree",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Some college",
+                  "value":"Some college",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"High School Diploma/GED",
+                  "value":"High School Diploma/GED",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Some high school",
+                  "value":"Some high school",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"select"
+      },
+      {  
+         "guid":"3cb3483c-682d-4289-b001-2b3e8a84fc1f",
+         "identifier":"employment",
+         "type":"SurveyQuestion",
+         "detail":"What is your current employment status?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Employment for wages",
+                  "value":"Employment for wages",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Self-employed",
+                  "value":"Self-employed",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Out of work and looking for work",
+                  "value":"Out of work and looking for work",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Out of work but not currently looking for work",
+                  "value":"Out of work but not currently looking for work",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"A homemaker",
+                  "value":"A homemaker",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"A student",
+                  "value":"A student",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Military",
+                  "value":"Military",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Retired",
+                  "value":"Retired",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Unable to work",
+                  "value":"Unable to work",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"select"
+      },
+      {  
+         "guid":"bdca343f-6931-4268-9307-02297689aa37",
+         "identifier":"maritalStatus",
+         "type":"SurveyQuestion",
+         "detail":"What is your current marital status?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Single, never married",
+                  "value":"Single, never married",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Married or domestic partnership",
+                  "value":"Married or domestic partnership",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Widowed",
+                  "value":"Widowed",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Divorced",
+                  "value":"Divorced",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Separated",
+                  "value":"Separated",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":true,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      },
+      {  
+         "guid":"0bd41ad0-ffd5-4875-ad15-ffc21680b812",
+         "identifier":"are-caretaker",
+         "type":"SurveyQuestion",
+         "detail":"Are you a spouse, partner or care-partner of someone who has Parkinson disease?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"boolean",
+            "enumeration":[  
+               {  
+                  "label":"Yes",
+                  "value":"true",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"No",
+                  "value":"false",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      },
+      {  
+         "guid":"c7a5a13d-a8ba-4b0a-9acd-7abbb12fbd9e",
+         "identifier":"past-participation",
+         "type":"SurveyQuestion",
+         "detail":"Have you ever participated in a research study or clinical trial on Parkinson disease before?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"boolean",
+            "enumeration":[  
+               {  
+                  "label":"Yes",
+                  "value":"true",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"No",
+                  "value":"false",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      },
+      {  
+         "guid":"d24a61ea-e41a-4c3d-8874-791e55aac2e4",
+         "identifier":"smartphone",
+         "type":"SurveyQuestion",
+         "detail":"How easy is it for you to use your smartphone?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Very easy",
+                  "value":"Very easy",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Easy",
+                  "value":"Easy",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Neither easy nor difficult",
+                  "value":"Neither easy nor difficult",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Difficult",
+                  "value":"Difficult",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Very Difficult",
+                  "value":"Very Difficult",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      },
+      {  
+         "guid":"1f5a3faa-25fe-44c1-819b-c94cb2afca0d",
+         "identifier":"phone-usage",
+         "type":"SurveyQuestion",
+         "detail":"Do you ever use your smartphone to look for health or medical information online?",
+         "constraints":{  
+            "dataType":"multivalue",
+            "rules":[  
+
+            ],
+            "dataType":"string",
+            "enumeration":[  
+               {  
+                  "label":"Yes",
+                  "value":"Yes",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"No",
+                  "value":"No",
+                  "type":"SurveyQuestionOption"
+               },
+               {  
+                  "label":"Not sure",
+                  "value":"Not sure",
+                  "type":"SurveyQuestionOption"
+               }
+            ],
+            "allowOther":false,
+            "allowMultiple":false,
+            "type":"MultiValueConstraints"
+         },
+         "uiHint":"radiobutton"
+      }
+
+ 	]
+     
+}
