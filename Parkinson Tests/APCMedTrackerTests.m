@@ -121,8 +121,8 @@
 
     [APCMedTrackerMedication fetchAllFromCoreDataAndUseThisQueue: someQueue
                                                 toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                    NSTimeInterval operationDuration,
-                                                                    NSError *error)
+                                                                    NSTimeInterval __unused operationDuration,
+                                                                    NSError * __unused error)
      {
          allMeds = arrayOfGeneratedObjects;
          dispatch_semaphore_signal (semaphore);
@@ -133,8 +133,8 @@
 
     [APCMedTrackerPossibleDosage fetchAllFromCoreDataAndUseThisQueue: someQueue
                                                     toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                        NSTimeInterval operationDuration,
-                                                                        NSError *error)
+                                                                        NSTimeInterval __unused operationDuration,
+                                                                        NSError * __unused error)
      {
          allPossibleDosages = arrayOfGeneratedObjects;
          dispatch_semaphore_signal (semaphore);
@@ -145,8 +145,8 @@
 
     [APCMedTrackerPrescriptionColor fetchAllFromCoreDataAndUseThisQueue: someQueue
                                                        toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                           NSTimeInterval operationDuration,
-                                                                           NSError *error)
+                                                                           NSTimeInterval __unused operationDuration,
+                                                                           NSError * __unused error)
      {
          allColors = arrayOfGeneratedObjects;
          dispatch_semaphore_signal (semaphore);
@@ -193,7 +193,7 @@
      */
     NSMutableDictionary *requiredInputArrayForFrequencyAndDays = [NSMutableDictionary new];
 
-    for (NSInteger dayIndex = 0; dayIndex < dayNamesInWeek.count; dayIndex ++)
+    for (NSInteger dayIndex = 0; dayIndex < (NSInteger) dayNamesInWeek.count; dayIndex ++)
     {
         NSNumber *valueToUse = @0;
 
@@ -370,8 +370,8 @@
 
     [APCMedTrackerPrescription fetchAllFromCoreDataAndUseThisQueue: someQueue
                                                         toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                            NSTimeInterval operationDuration,
-                                                                            NSError *error)
+                                                                            NSTimeInterval __unused operationDuration,
+                                                                            NSError * __unused error)
      {
          NSLog (@"Fetched all prescriptions.  Result: %@", arrayOfGeneratedObjects);
 
@@ -410,8 +410,8 @@
 
     [APCMedTrackerPrescription fetchAllFromCoreDataAndUseThisQueue: someQueue
                                                   toDoThisWhenDone: ^(NSArray *arrayOfGeneratedObjects,
-                                                                      NSTimeInterval operationDuration,
-                                                                      NSError *error)
+                                                                      NSTimeInterval __unused operationDuration,
+                                                                      NSError * __unused error)
      {
          NSLog (@"Fetched all prescriptions.  Result: %@", arrayOfGeneratedObjects);
          allPrescriptions = arrayOfGeneratedObjects;
@@ -432,7 +432,7 @@
     [somePrescription recordThisManyDoses: someNumberOfDoses
                               takenOnDate: someDate
                           andUseThisQueue: someQueue
-                         toDoThisWhenDone: ^(NSTimeInterval operationDuration,
+                         toDoThisWhenDone: ^(NSTimeInterval __unused operationDuration,
                                              NSError *error)
      {
          NSLog (@"Took %d doses on %@.  Error: %@", (int) someNumberOfDoses, someDate, error);
@@ -451,10 +451,10 @@
     [somePrescription fetchDosesTakenFromDate: startDate
                                        toDate: endDate
                               andUseThisQueue: someQueue
-                             toDoThisWhenDone: ^(APCMedTrackerPrescription *prescription,
+                             toDoThisWhenDone: ^(APCMedTrackerPrescription * __unused prescription,
                                                  NSArray *dailyDosageRecords,
-                                                 NSTimeInterval operationDuration,
-                                                 NSError *error)
+                                                 NSTimeInterval __unused operationDuration,
+                                                 NSError * __unused error)
      {
          NSLog (@"Results:");
 

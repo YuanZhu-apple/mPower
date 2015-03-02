@@ -79,7 +79,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
     [self prepareData];
 }
 
-- (void)updateVisibleRowsInTableView:(NSNotification *)notification
+- (void)updateVisibleRowsInTableView:(NSNotification *) __unused notification
 {
     [self prepareData];
 }
