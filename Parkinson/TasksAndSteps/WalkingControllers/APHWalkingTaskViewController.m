@@ -24,6 +24,8 @@ typedef  enum  _WalkingStepOrdinals
 
 static NSString *const kMomentInDay                             = @"momentInDay";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
+                                                                " this activity could be affected by the timing of your medication.";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
@@ -76,7 +78,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         NSMutableArray *stepQuestions = [NSMutableArray array];
         
         
-        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(nil, nil)];
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
         
         step.optional = NO;
         
