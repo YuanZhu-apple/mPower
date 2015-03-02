@@ -29,25 +29,25 @@
             },
             {
                 "identifier": "deidentified",
-                "prompt": "My name will be stored with my study data",
+                "prompt": "My name will be stored with my study data.",
                 "type": "boolean",
                 "expectedAnswer": "false"
             },
             {
                 "identifier": "access",
-                "prompt": "Many researchers will be able to access my study data",
+                "prompt": "I can choose to share my coded study data sparsely or more broadly.",
                 "type": "boolean",
                 "expectedAnswer": "true"
             },
             {
                 "identifier": "skipSurvey",
-                "prompt": "I will be able to skip any survey question",
+                "prompt": "I will be able to skip any survey question.",
                 "type": "boolean",
                 "expectedAnswer": "true"
             },
             {
                 "identifier": "stopParticipating",
-                "prompt": "I will be able to stop participating at any time",
+                "prompt": "I will be able to stop participating at any time.",
                 "type": "boolean",
                 "expectedAnswer": "true"
             }
