@@ -13,6 +13,16 @@
 		365F58D71A9514C300DDBDAA /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365F58D61A9514C300DDBDAA /* ResearchKit.framework */; };
 		36EF84D51A951327008C255F /* Parkinson_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84D41A951327008C255F /* Parkinson_Tests.m */; };
 		36EF84DF1A951364008C255F /* APCMedTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84DE1A951364008C255F /* APCMedTrackerTests.m */; };
+		5A0F98FF1AA409FC00A2A7EB /* PDenrollment_survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */; };
+		5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99011AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m */; };
+		5A0F99051AA41AB500A2A7EB /* PD_MDRUPDRS.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99031AA41AB500A2A7EB /* PD_MDRUPDRS.json */; };
+		5A0F99061AA41AB500A2A7EB /* PDQ8.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99041AA41AB500A2A7EB /* PDQ8.json */; };
+		5A0F99091AA41B1C00A2A7EB /* APHPDQ8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99081AA41B1C00A2A7EB /* APHPDQ8ViewController.m */; };
+		5A0F990C1AA41EA500A2A7EB /* APHMDRUPDRS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F990B1AA41EA500A2A7EB /* APHMDRUPDRS.m */; };
+		5A0F99131AA4269C00A2A7EB /* PD_feedback.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99111AA4269C00A2A7EB /* PD_feedback.json */; };
+		5A0F99141AA4269C00A2A7EB /* PD_mythoughts.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99121AA4269C00A2A7EB /* PD_mythoughts.json */; };
+		5A0F99171AA426D900A2A7EB /* APHmythougths.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99161AA426D900A2A7EB /* APHmythougths.m */; };
+		5A0F991A1AA426F300A2A7EB /* APHfeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99191AA426F300A2A7EB /* APHfeedback.m */; };
 		5B1095B91A9F9BD5006631F5 /* consent.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5B1095B81A9F9BD5006631F5 /* consent.pdf */; };
 		5B18CED01A2CF2E5001A905E /* TermsAndConditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */; };
 		5B18CEF71A2D3A57001A905E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B18CEF61A2D3A56001A905E /* MapKit.framework */; };
@@ -142,6 +152,21 @@
 		36EF84D31A951327008C255F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36EF84D41A951327008C255F /* Parkinson_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parkinson_Tests.m; sourceTree = "<group>"; };
 		36EF84DE1A951364008C255F /* APCMedTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = APCMedTrackerTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PDenrollment_survey.json; sourceTree = "<group>"; };
+		5A0F99001AA40E9100A2A7EB /* APHenrollmentsurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHenrollmentsurveyViewController.h; sourceTree = "<group>"; };
+		5A0F99011AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHenrollmentsurveyViewController.m; sourceTree = "<group>"; };
+		5A0F99031AA41AB500A2A7EB /* PD_MDRUPDRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PD_MDRUPDRS.json; sourceTree = "<group>"; };
+		5A0F99041AA41AB500A2A7EB /* PDQ8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PDQ8.json; sourceTree = "<group>"; };
+		5A0F99071AA41B1C00A2A7EB /* APHPDQ8ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHPDQ8ViewController.h; sourceTree = "<group>"; };
+		5A0F99081AA41B1C00A2A7EB /* APHPDQ8ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHPDQ8ViewController.m; sourceTree = "<group>"; };
+		5A0F990A1AA41EA500A2A7EB /* APHMDRUPDRS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHMDRUPDRS.h; sourceTree = "<group>"; };
+		5A0F990B1AA41EA500A2A7EB /* APHMDRUPDRS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHMDRUPDRS.m; sourceTree = "<group>"; };
+		5A0F99111AA4269C00A2A7EB /* PD_feedback.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PD_feedback.json; sourceTree = "<group>"; };
+		5A0F99121AA4269C00A2A7EB /* PD_mythoughts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PD_mythoughts.json; sourceTree = "<group>"; };
+		5A0F99151AA426D900A2A7EB /* APHmythougths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHmythougths.h; sourceTree = "<group>"; };
+		5A0F99161AA426D900A2A7EB /* APHmythougths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHmythougths.m; sourceTree = "<group>"; };
+		5A0F99181AA426F300A2A7EB /* APHfeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHfeedback.h; sourceTree = "<group>"; };
+		5A0F99191AA426F300A2A7EB /* APHfeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHfeedback.m; sourceTree = "<group>"; };
 		5B1095B81A9F9BD5006631F5 /* consent.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = consent.pdf; sourceTree = "<group>"; };
 		5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TermsAndConditions.json; sourceTree = "<group>"; };
 		5B18CEF61A2D3A56001A905E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -277,6 +302,35 @@
 				36EF84D31A951327008C255F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A0F98FA1AA409EF00A2A7EB /* surveys */ = {
+			isa = PBXGroup;
+			children = (
+				5A0F99111AA4269C00A2A7EB /* PD_feedback.json */,
+				5A0F99121AA4269C00A2A7EB /* PD_mythoughts.json */,
+				5A0F99031AA41AB500A2A7EB /* PD_MDRUPDRS.json */,
+				5A0F99041AA41AB500A2A7EB /* PDQ8.json */,
+				5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */,
+			);
+			path = surveys;
+			sourceTree = "<group>";
+		};
+		5A0F99101AA4267A00A2A7EB /* Surveys_files */ = {
+			isa = PBXGroup;
+			children = (
+				5A0F99001AA40E9100A2A7EB /* APHenrollmentsurveyViewController.h */,
+				5A0F99071AA41B1C00A2A7EB /* APHPDQ8ViewController.h */,
+				5A0F990A1AA41EA500A2A7EB /* APHMDRUPDRS.h */,
+				5A0F990B1AA41EA500A2A7EB /* APHMDRUPDRS.m */,
+				5A0F99081AA41B1C00A2A7EB /* APHPDQ8ViewController.m */,
+				5A0F99011AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m */,
+				5A0F99151AA426D900A2A7EB /* APHmythougths.h */,
+				5A0F99161AA426D900A2A7EB /* APHmythougths.m */,
+				5A0F99181AA426F300A2A7EB /* APHfeedback.h */,
+				5A0F99191AA426F300A2A7EB /* APHfeedback.m */,
+			);
+			name = Surveys_files;
 			sourceTree = "<group>";
 		};
 		5B1095B71A9F9BD5006631F5 /* PDF */ = {
@@ -464,6 +518,7 @@
 		F5D14E3F19CC991500650FBB /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				5A0F98FA1AA409EF00A2A7EB /* surveys */,
 				743BFFFE1A90E12800438241 /* APHConsentSection.json */,
 				5BBDAEF11A350FB40047DF87 /* LocationInfo.json */,
 				5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */,
@@ -523,6 +578,7 @@
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
 				CFF1A50C1A81969300EAEE0E /* SpatialSpanMemoryGameControllers */,
 				F5D14F0D19CC9BC900650FBB /* WalkingControllers */,
+				5A0F99101AA4267A00A2A7EB /* Surveys_files */,
 			);
 			path = TasksAndSteps;
 			sourceTree = "<group>";
@@ -715,15 +771,18 @@
 			files = (
 				F5D14E4319CC991500650FBB /* APHTasksAndSchedules.json in Resources */,
 				5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */,
+				5A0F99061AA41AB500A2A7EB /* PDQ8.json in Resources */,
 				A78116791A96BC9400CEC822 /* 10_PotentialBenifits@3x.m4v in Resources */,
 				F5C1DC2019D22E6F006527EA /* Main.storyboard in Resources */,
 				A781167C1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v in Resources */,
 				743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
+				5A0F99141AA4269C00A2A7EB /* PD_mythoughts.json in Resources */,
 				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
 				BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */,
 				A78116701A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v in Resources */,
 				A78116721A96BC9400CEC822 /* 10_PotentialBenifits@2x.m4v in Resources */,
+				5A0F99131AA4269C00A2A7EB /* PD_feedback.json in Resources */,
 				A78116741A96BC9400CEC822 /* 12_IssuesToConside2@2x.m4v in Resources */,
 				A78116711A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v in Resources */,
 				F584909A19E892700091A640 /* Intro.mp4 in Resources */,
@@ -737,6 +796,7 @@
 				F536B93E19F5747B005A2D1C /* sample.task in Resources */,
 				5B975A161A112E2C00A34E42 /* Learn.json in Resources */,
 				F5C11A2F19DCBE95003278FF /* APCParameters.json in Resources */,
+				5A0F99051AA41AB500A2A7EB /* PD_MDRUPDRS.json in Resources */,
 				F5DCAD3E19D088330096DEC0 /* LaunchScreen.xib in Resources */,
 				5B1D9D451A1BCC6B000F4AD6 /* APHDashboard.storyboard in Resources */,
 				A78116761A96BC9400CEC822 /* 00_Blank_to_Activities@3x.m4v in Resources */,
@@ -746,6 +806,7 @@
 				5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */,
 				A781167A1A96BC9400CEC822 /* 11_IssuesToConsider1@3x.m4v in Resources */,
 				A78116731A96BC9400CEC822 /* 11_IssuesToConsider1@2x.m4v in Resources */,
+				5A0F98FF1AA409FC00A2A7EB /* PDenrollment_survey.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,14 +846,19 @@
 				CF2BF9931A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
 				5B1D9D461A1BCC6B000F4AD6 /* APHDashboardEditViewController.m in Sources */,
+				5A0F990C1AA41EA500A2A7EB /* APHMDRUPDRS.m in Sources */,
 				5B1D9D471A1BCC6B000F4AD6 /* APHDashboardViewController.m in Sources */,
 				F5D14F3919CC9C0000650FBB /* APHAppDelegate.m in Sources */,
 				A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */,
 				5B29CE5419D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m in Sources */,
+				5A0F99091AA41B1C00A2A7EB /* APHPDQ8ViewController.m in Sources */,
+				5A0F991A1AA426F300A2A7EB /* APHfeedback.m in Sources */,
+				5A0F99171AA426D900A2A7EB /* APHmythougths.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
 				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
+				5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
 				CFC2D2DD19A5417D00170E69 /* main.m in Sources */,

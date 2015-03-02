@@ -53,10 +53,11 @@
             }
         ],
         "failureTitle": "Try again",
-        "failureMessage": "You failed",
-        "successTitle": "Congradulations",
-        "successMessage": "Yay!",
+        "failureMessage": "Unfortunately you answered one or more questions incorrectly. You can return at the beginning of the walkthrough to get more information about the study.",
+        "successTitle": "Great Job!",
+        "successMessage": "You answered all of the questions correctly. \nTap Next to continue.",
         "allowedFailures": "1"
+
     },
     "sections":
     [
@@ -71,7 +72,7 @@
      },
      {
          "sectionType" : "custom",
-         "sectionTitle": "We'll Test your Understanding",
+         "sectionTitle": "We'll Test Your Understanding",
          "sectionSummary": "At the end of this walkthrough, we will ask you a few questions about the details of the study.",
          "sectionHtmlContent" : "2quiz_headsup"
      },
