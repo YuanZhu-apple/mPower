@@ -8,8 +8,9 @@
          "guid":"72e92b35-ae88-4ad5-9203-f8eb70d36f43",
          "identifier":"PDQ8-1",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you had difficulty getting around in public?",
-         "constraints":{  
+         "detail":"Due to Parkinson’s disease, how often during the last month have you had difficulty getting around in public?",
+         "prompt":"",
+         "constraints":{
             "dataType":"multivalue",
             "rules":[  
 
@@ -52,7 +53,7 @@
          "guid":"1a19257f-3e0e-4b65-a05e-8c14b61a4c21",
          "identifier":"PDQ8-2",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you had difficulty dressing yourself?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you had difficulty dressing yourself?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -96,7 +97,7 @@
          "guid":"eb4f7246-22d1-40de-8a9b-31ff76be8acb",
          "identifier":"PDQ8-3",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you felt depressed?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you felt depressed?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -140,7 +141,7 @@
          "guid":"ebe28e7d-50bc-44a0-9d8b-4b1e29c7d18f",
          "identifier":"PQD8-4",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you had problems with your close personal relationships?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you had problems with your close personal relationships?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -184,7 +185,7 @@
          "guid":"007b765a-5110-4698-9a81-fc4defcf8e5a",
          "identifier":"PDQ8-5",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you had problems with your concentration, e.g. when reading or watching TV?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you had problems with your concentration, e.g. when reading or watching TV?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -228,7 +229,7 @@
          "guid":"bfee9daa-6108-4898-b151-98136d22131a",
          "identifier":"PDQ8-6",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you felt unable to communicate with people properly?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you felt unable to communicate with people properly?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -272,7 +273,7 @@
          "guid":"64a89362-2d00-4739-b58a-81bb4543771e",
          "identifier":"PDQ8-7",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you had painful muscle cramps or spasms?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you had painful muscle cramps or spasms?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -316,7 +317,7 @@
          "guid":"f12d4cb0-7499-4321-8c75-695c8e8379b8",
          "identifier":"PDQ8-8",
          "type":"SurveyQuestion",
-         "prompt":"Due to Parkinson’s disease, how often during the last month have you felt embarrassed in public due to having Parkinson's disease?",
+         "detail":"Due to Parkinson’s disease, how often during the last month have you felt embarrassed in public due to having Parkinson's disease?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  

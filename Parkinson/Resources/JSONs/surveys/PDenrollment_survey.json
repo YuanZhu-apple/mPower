@@ -7,7 +7,7 @@
          "guid":"538d9b7e-6548-4bf8-8a4d-fb111411e684",
          "identifier":"age",
          "type":"SurveyQuestion",
-         "prompt":"How old are you?",
+         "detail":"How old are you?",
          "constraints":{  
             "dataType":"integer",
             "rules":[  
@@ -23,7 +23,7 @@
          "guid":"06f5bce0-0380-4f3d-a044-853950292ac9",
          "identifier":"gender",
          "type":"SurveyQuestion",
-         "prompt":"What is your sex?",
+         "detail":"What is your sex?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -57,7 +57,7 @@
          "guid":"e3e89592-2ef0-44e4-8433-186c872f161b",
          "identifier":"race",
          "type":"SurveyQuestion",
-         "prompt":"Which race do you identify with?",
+         "detail":"Which race do you identify with?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -126,7 +126,7 @@
          "guid":"d7570eae-2b8e-4de8-bcb0-08a0ea063701",
          "identifier":"state",
          "type":"SurveyQuestion",
-         "prompt":"In which state do you reside?",
+         "detail":"In which state do you reside?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -400,7 +400,7 @@
          "guid":"84dbf77d-dfa4-4c52-ae4b-bdae40007926",
          "identifier":"education",
          "type":"SurveyQuestion",
-         "prompt":"What is the highest level of education that you have completed?",
+         "detail":"What is the highest level of education that you have completed?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -459,7 +459,7 @@
          "guid":"3cb3483c-682d-4289-b001-2b3e8a84fc1f",
          "identifier":"employment",
          "type":"SurveyQuestion",
-         "prompt":"What is your current employment status?",
+         "detail":"What is your current employment status?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -523,7 +523,7 @@
          "guid":"bdca343f-6931-4268-9307-02297689aa37",
          "identifier":"maritalStatus",
          "type":"SurveyQuestion",
-         "prompt":"What is your current marital status?",
+         "detail":"What is your current marital status?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -567,7 +567,7 @@
          "guid":"0bd41ad0-ffd5-4875-ad15-ffc21680b812",
          "identifier":"are-caretaker",
          "type":"SurveyQuestion",
-         "prompt":"Are you a spouse, partner or care-partner of someone who has Parkinson disease?",
+         "detail":"Are you a spouse, partner or care-partner of someone who has Parkinson disease?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -596,7 +596,7 @@
          "guid":"c7a5a13d-a8ba-4b0a-9acd-7abbb12fbd9e",
          "identifier":"past-participation",
          "type":"SurveyQuestion",
-         "prompt":"Have you ever participated in a research study or clinical trial on Parkinson disease before?",
+         "detail":"Have you ever participated in a research study or clinical trial on Parkinson disease before?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -625,7 +625,7 @@
          "guid":"d24a61ea-e41a-4c3d-8874-791e55aac2e4",
          "identifier":"smartphone",
          "type":"SurveyQuestion",
-         "prompt":"How easy is it for you to use your smartphone?",
+         "detail":"How easy is it for you to use your smartphone?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
@@ -669,7 +669,7 @@
          "guid":"1f5a3faa-25fe-44c1-819b-c94cb2afca0d",
          "identifier":"phone-usage",
          "type":"SurveyQuestion",
-         "prompt":"Do you ever use your smartphone to look for health or medical information online?",
+         "detail":"Do you ever use your smartphone to look for health or medical information online?",
          "constraints":{  
             "dataType":"multivalue",
             "rules":[  
