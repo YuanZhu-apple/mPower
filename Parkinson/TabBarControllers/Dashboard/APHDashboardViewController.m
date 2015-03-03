@@ -165,8 +165,10 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.tapScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    if ([[self.tapScoring averageDataPoint] integerValue] > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.tapScoring averageDataPoint] integerValue]];
+                    double avgValue = [[self.tapScoring averageDataPoint] doubleValue];
+                    
+                    if (avgValue > 0) {
+                        NSString  *detail = [NSString stringWithFormat:@"Average: %0.0f", avgValue];
                         item.detailText = NSLocalizedString(detail, @"Average: {value} taps");
                     }
                     
@@ -191,9 +193,11 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.gaitScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    if ([[self.gaitScoring averageDataPoint] integerValue] > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.gaitScoring averageDataPoint] integerValue]];
-                        item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
+                    double avgValue = [[self.gaitScoring averageDataPoint] doubleValue];
+                    
+                    if (avgValue > 0) {
+                        NSString  *detail = [NSString stringWithFormat:@"Average : %0.0f", avgValue];
+                        item.detailText = NSLocalizedString(detail, @"Average: {value}");
                     }
                     
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
@@ -242,8 +246,10 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.phonationScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    if ([[self.phonationScoring averageDataPoint] integerValue] > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.phonationScoring averageDataPoint] integerValue]];
+                    double avgValue = [[self.phonationScoring averageDataPoint] doubleValue];
+                    
+                    if (avgValue > 0) {
+                        NSString  *detail = [NSString stringWithFormat:@"Average: %0.0f", avgValue];
                         item.detailText = NSLocalizedString(detail, @"");
                     }
                     
@@ -266,8 +272,10 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.caption = NSLocalizedString(@"Steps", @"Steps");
                     item.graphData = self.stepScoring;
                     
-                    if ([[self.stepScoring averageDataPoint] integerValue] > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.stepScoring averageDataPoint] integerValue]];
+                    double avgValue = [[self.stepScoring averageDataPoint] doubleValue];
+                    
+                    if (avgValue > 0) {
+                        NSString  *detail = [NSString stringWithFormat:@"Average: %0.0f", avgValue];
                         item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     }
                     
