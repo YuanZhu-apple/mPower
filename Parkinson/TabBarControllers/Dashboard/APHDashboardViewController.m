@@ -266,8 +266,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.caption = NSLocalizedString(@"Steps", @"Steps");
                     item.graphData = self.stepScoring;
                     
-                    if ([[self.stepScoring averageDataPoint] integerValue] > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %lu", (long)[[self.stepScoring averageDataPoint] integerValue]];
+                    if ([[self.stepScoring averageDataPoint] doubleValue] > 0) {
+                        NSString  *detail = [NSString stringWithFormat:@"Average : %0.0f", [[self.stepScoring averageDataPoint] doubleValue]];
                         item.detailText = NSLocalizedString(detail, @"Average: {value} steps");
                     }
                     
