@@ -29,7 +29,7 @@ static NSString *const kMomentInDay                             = @"momentInDay"
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
 static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
                                                                 " this activity could be affected by the timing of your medication.";
-
+static NSString *const kInstruction1                            = @"instruction1";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
@@ -118,6 +118,11 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
     
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
+    }
+    
+    if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
+        UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
+        label.text = NSLocalizedString(@"Some of the flowers will light up one at a time. Tap those flowers in the same order they lit up.\n\nTo begin, tap Next, then watch closely.", @"Instruction text for memory activity in Parkinson");
     }
 }
 
