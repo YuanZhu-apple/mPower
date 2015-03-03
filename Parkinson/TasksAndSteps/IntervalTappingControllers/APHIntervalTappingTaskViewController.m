@@ -109,9 +109,6 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         task = [[ORKOrderedTask alloc] initWithIdentifier:kIntervalTappingTitle
                                                                        steps:twoFingerSteps];
     }
-
-#warning TODO: Replace this next line with a proper search for the Info step with the correct identifier.
-    [task.steps[0] setText: @"This test evaluates your tapping speed and coordination."];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
