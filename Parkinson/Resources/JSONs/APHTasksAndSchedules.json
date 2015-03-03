@@ -57,19 +57,22 @@
                        "taskTitle" : "My Thoughts",
                        "taskID": "MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61",
                        "taskFileName" : "PD_mythoughts",
-                       "taskClassName" : "APHmythougths"
+                       "taskClassName" : "APHmythougths",
+                       "taskCompletionTimeString" : "2 Questions"
                    },
                    {
                        "taskTitle" : "Study Feedback",
                        "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e",
                        "taskFileName" : "PD_feedback",
                        "taskClassName" : "APHfeedback"
+                   },
+                   {
+                       "taskTitle" : "Physical Activity Readiness",
+                       "taskID": "parqquiz-1E174061-5B02-11E4-8ED6-0800200C9A77",
+                       "taskClassName" : "APHParQQuizTaskViewController",
+                       "taskCompletionTimeString" : "10 Questions"
                    }
-
- 
-               
-               
-              ],
+               ],
     
 "schedules": [
                   {
@@ -123,9 +126,11 @@
                       "scheduleType": "recurring",
                       "scheduleString": "0 5 * * *",
                       "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e"
+                  },
+                  {
+                      "scheduleType": "recurring",
+                      "scheduleString": "0 5 * * *",
+                      "taskID": "parqquiz-1E174061-5B02-11E4-8ED6-0800200C9A77"
                   }
-
-              
-              
               ]
 }

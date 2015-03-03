@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		086E7CC51AA6658600BABABB /* APHDynamicParQQuizTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E7CC21AA6658600BABABB /* APHDynamicParQQuizTask.m */; };
+		086E7CC61AA6658600BABABB /* APHParQQuizTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E7CC41AA6658600BABABB /* APHParQQuizTaskViewController.m */; };
 		21CBD9E51A9FE59900031635 /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */; };
 		365F58D41A95145800DDBDAA /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F571C8F81A2F8C4C0011C270 /* APCAppCore.framework */; };
 		36EF84D51A951327008C255F /* Parkinson_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84D41A951327008C255F /* Parkinson_Tests.m */; };
@@ -146,6 +148,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		086E7CC11AA6658600BABABB /* APHDynamicParQQuizTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHDynamicParQQuizTask.h; sourceTree = "<group>"; };
+		086E7CC21AA6658600BABABB /* APHDynamicParQQuizTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHDynamicParQQuizTask.m; sourceTree = "<group>"; };
+		086E7CC31AA6658600BABABB /* APHParQQuizTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHParQQuizTaskViewController.h; sourceTree = "<group>"; };
+		086E7CC41AA6658600BABABB /* APHParQQuizTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHParQQuizTaskViewController.m; sourceTree = "<group>"; };
 		21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		36EF84D01A951327008C255F /* Parkinson Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parkinson Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EF84D31A951327008C255F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -270,6 +276,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		086E7CC01AA6658600BABABB /* PARQ Survey */ = {
+			isa = PBXGroup;
+			children = (
+				086E7CC11AA6658600BABABB /* APHDynamicParQQuizTask.h */,
+				086E7CC21AA6658600BABABB /* APHDynamicParQQuizTask.m */,
+				086E7CC31AA6658600BABABB /* APHParQQuizTaskViewController.h */,
+				086E7CC41AA6658600BABABB /* APHParQQuizTaskViewController.m */,
+			);
+			path = "PARQ Survey";
+			sourceTree = "<group>";
+		};
 		255D2F4619C40F25002137F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +582,7 @@
 		F5D14EE019CC9BC900650FBB /* TasksAndSteps */ = {
 			isa = PBXGroup;
 			children = (
+				086E7CC01AA6658600BABABB /* PARQ Survey */,
 				A74615B11A98077D00323AD1 /* ConverterForPDScores.h */,
 				A74615B21A98077D00323AD1 /* ConverterForPDScores.m */,
 				CFDA47A41A97BF7400B32C34 /* MedicationTracking */,
@@ -837,6 +855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086E7CC61AA6658600BABABB /* APHParQQuizTaskViewController.m in Sources */,
 				CF2BF9931A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m in Sources */,
 				F5D14F2719CC9BC900650FBB /* APHPhonationTaskViewController.m in Sources */,
 				5B1D9D461A1BCC6B000F4AD6 /* APHDashboardEditViewController.m in Sources */,
@@ -850,6 +869,7 @@
 				5A0F99171AA426D900A2A7EB /* APHmythougths.m in Sources */,
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
+				086E7CC51AA6658600BABABB /* APHDynamicParQQuizTask.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
 				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
 				5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */,
