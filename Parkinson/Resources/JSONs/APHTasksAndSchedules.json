@@ -65,10 +65,6 @@
                        "taskFileName" : "PD_feedback",
                        "taskClassName" : "APHfeedback"
                    }
-
- 
-               
-               
               ],
     
 "schedules": [
