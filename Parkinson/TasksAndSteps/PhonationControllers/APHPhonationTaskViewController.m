@@ -73,6 +73,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
     [task.steps[1] setTitle:NSLocalizedString(kTaskName, nil)];
     [task.steps[1] setText:NSLocalizedString(@"Take a deep breath and say “Aaaaah” into the microphone for as long as you can. Keep a steady volume so the audio bars remain blue.", nil)];
+    [task.steps[1] setDetailText:NSLocalizedString(@"Tap Next to begin the test.", nil)];
 
     [task.steps[4] setTitle:NSLocalizedString(@"Thank You!", nil)];
     [task.steps[4] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
