@@ -12,8 +12,10 @@
 #import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHAppDelegate.h"
 
-static NSString *const kMomentInDay                             = @"momentInDay";
+static NSString *const kTaskName                                = @"Voice";
+static NSString *const kInstruction                             = @"instruction";
 static NSString *const kInstruction1                            = @"instruction1";
+static NSString *const kMomentInDay                             = @"momentInDay";
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
 static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
                                                                 " this activity could be affected by the timing of your medication.";
@@ -65,8 +67,16 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
                                                   recordingSettings:audioSettings
                                                             options:0];
     
+    //  Adjust apperance and text for the task
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    
+    [task.steps[0] setTitle:NSLocalizedString(kTaskName, nil)];
+
+    [task.steps[1] setTitle:NSLocalizedString(kTaskName, nil)];
+    [task.steps[1] setText:NSLocalizedString(@"Take a deep breath and say “Aaaaah” into the microphone for as long as you can. Keep a steady volume so the audio bars remain blue.", nil)];
+
+    [task.steps[4] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[4] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
+
     APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
     NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
     NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
@@ -122,17 +132,16 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 - (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    if ([stepViewController.step.identifier isEqualToString: kAudioStepIdentifier]) {
+    ORKStep*    step = stepViewController.step;
+    
+    if ([step.identifier isEqualToString: kAudioStepIdentifier])
+    {
         [[UIView appearance] setTintColor:[UIColor appTertiaryBlueColor]];
-    } else if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
+    }
+    else if ([step.identifier isEqualToString: kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     } else {
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
-    }
-    
-    if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
-        UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
-        label.text = NSLocalizedString(@"Say “Aaaaah” into the microphone for as long as you can. Keep a steady vocal volume so the audio bars remain blue.\n\nTap Next to begin the test.", @"Instruction text for voice activity in Parkinson");
     }
 }
 

@@ -61,6 +61,9 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
             requireReversal:kRequiresReversal
             options:ORKPredefinedTaskOptionNone];
     
+    [task.steps[3] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[3] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
+
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
     APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
@@ -119,7 +122,8 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
-    
+    [stepViewController.step setTitle:@"Good Job!"];
+  
     if ([stepViewController.step.identifier isEqualToString:kInstruction1]) {
         UILabel *label = ((UILabel *)((UIView *)((UIView *)((UIView *) ((UIScrollView *)stepViewController.view.subviews[0]).subviews[0]).subviews[0]).subviews[0]).subviews[2]);
         label.text = NSLocalizedString(@"Some of the flowers will light up one at a time. Tap those flowers in the same order they lit up.\n\nTo begin, tap Next, then watch closely.", @"Instruction text for memory activity in Parkinson");
