@@ -63,7 +63,7 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
                                                                               duration:kTappingStepCountdownInterval
                                                                                 options:0];
     
-    [task.steps[0] setText:NSLocalizedString(@"Speed of finger tapping can reflect the severity of motor symptoms in Parkinson disease. Your medical provider may measure this differently.", nil)];
+    [task.steps[0] setText:NSLocalizedString(@"Speed of finger tapping can reflect severity of motor symptoms in Parkinson disease. This activity measures your tapping speed. Your medical provider may measure this differently.", nil)];
     [task.steps[0] setDetailText:@""];
     
     [task.steps[3] setTitle:NSLocalizedString(@"Thank You!", nil)];
