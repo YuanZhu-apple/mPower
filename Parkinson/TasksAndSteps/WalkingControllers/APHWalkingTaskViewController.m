@@ -40,6 +40,10 @@ static  NSUInteger      kNumberOfStepsPerLeg      = 20;
 static  NSTimeInterval  kStandStillDuration       = 30.0;
 
 static  NSString       *kConclusionStepIdentifier = @"conclusion";
+static  NSString       *kCountdownStepIdentifier = @"countdown";
+static  NSString       *kWalkingOutboundStepIdentifier = @"walking.outbound";
+static  NSString       *kWalkingReturnStepIdentifier = @"walking.return";
+static  NSString       *kWalkingRestStepIdentifier = @"walking.rest";
 
 NSString  *kScoreForwardGainRecordsKey = @"ScoreForwardGainRecords";
 NSString  *kScoreBackwardGainRecordsKey = @"ScoreBackwardGainRecords";
@@ -190,24 +194,24 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
-
+        
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
     
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsWalkOutStep) {
+    if ([stepViewController.step.identifier isEqualToString: kCountdownStepIdentifier]) {
         self.startCollectionDate = [NSDate date];
     }
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsStandStillStep) {
+    if ([stepViewController.step.identifier isEqualToString: kWalkingReturnStepIdentifier]) {
         self.endCollectionDate = [NSDate date];
         
         NSTimeZone  *timezone = [NSTimeZone localTimeZone];
         
         NSDate  *adjustedStartDate = [self.startCollectionDate dateByAddingTimeInterval:timezone.secondsFromGMT];
         NSDate  *adjustedEndDate   = [self.endCollectionDate   dateByAddingTimeInterval:timezone.secondsFromGMT];
-
+        
         HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:adjustedStartDate endDate:adjustedEndDate options:HKQueryOptionNone];
-
+        
         HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
                                                             quantitySamplePredicate:predicate
                                                                             options:HKStatisticsOptionCumulativeSum
@@ -221,7 +225,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         HKHealthStore  *healthStore = [HKHealthStore new];
         [healthStore executeQuery:query];
     }
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsConclusionStep) {
+    if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         AVSpeechUtterance  *talk = [AVSpeechUtterance
                                     speechUtteranceWithString:NSLocalizedString(@"You have completed the activity.", @"You have completed the activity.")];
