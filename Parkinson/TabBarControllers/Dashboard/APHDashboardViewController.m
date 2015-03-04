@@ -95,31 +95,20 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 {
     self.tapScoring = [[APCScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                                           numberOfDays:-kNumberOfDaysToDisplay
-                                              valueKey:kSummaryNumberOfRecordsKey
-                                               dataKey:nil
-                                               sortKey:nil
-                                               groupBy:APHTimelineGroupDay];
+                                              valueKey:kSummaryNumberOfRecordsKey];
     
     self.gaitScoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                                            numberOfDays:-kNumberOfDaysToDisplay
-                                               valueKey:kGaitScoreKey
-                                                dataKey:nil
-                                                sortKey:nil
-                                                groupBy:APHTimelineGroupDay];
+                                               valueKey:kGaitScoreKey];
     
     self.memoryScoring = [[APCScoring alloc] initWithTask:@"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
                                            numberOfDays:-kNumberOfDaysToDisplay
                                                valueKey:kSpatialMemoryScoreSummaryKey
-                                                dataKey:nil
-                                                sortKey:nil
-                                                groupBy:APHTimelineGroupDay];
+                                               latestOnly:NO];
     
     self.phonationScoring = [[APCScoring alloc] initWithTask:@"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
                                              numberOfDays:-kNumberOfDaysToDisplay
-                                                 valueKey:kScoreSummaryOfRecordsKey
-                                                  dataKey:nil
-                                                  sortKey:nil
-                                                  groupBy:APHTimelineGroupDay];
+                                                 valueKey:kScoreSummaryOfRecordsKey];
     
     HKQuantityType *hkQuantity = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     self.stepScoring = [[APCScoring alloc] initWithHealthKitQuantityType:hkQuantity
@@ -168,8 +157,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     double avgValue = [[self.tapScoring averageDataPoint] doubleValue];
                     
                     if (avgValue > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average: %0.0f", avgValue];
-                        item.detailText = NSLocalizedString(detail, @"Average: {value} taps");
+                        NSString  *detail = [NSString stringWithFormat:@"Min: %0.0f  Max: %0.0f",
+                                             [[self.tapScoring minimumDataPoint] doubleValue], [[self.tapScoring maximumDataPoint] doubleValue]];
+                        item.detailText = NSLocalizedString(detail, @"");
                     }
                     
                     item.identifier =  kAPCDashboardGraphTableViewCellIdentifier;
@@ -220,7 +210,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.graphData = self.memoryScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
-                    if ([[self.memoryScoring averageDataPoint] doubleValue] > 0) {
+                    double avgValue = [[self.memoryScoring averageDataPoint] doubleValue];
+                    
+                    if (avgValue > 0) {
                         NSString  *detail = [NSString stringWithFormat:@"Min: %0.0f  Max: %0.0f",
                                              [[self.memoryScoring minimumDataPoint] doubleValue], [[self.memoryScoring maximumDataPoint] doubleValue]];
                         item.detailText = NSLocalizedString(detail, @"");

@@ -139,16 +139,22 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
             }
         }
         
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF = 0"];
+        NSArray *allSamples = [tapsterResults.samples valueForKey:@"buttonIdentifier"];
+        NSArray *tapSamples = [allSamples filteredArrayUsingPredicate:predicate];
+        
         NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
         double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
+        
         scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+        
         
         NSUInteger  numberOfSamples = 0;
         NSDictionary  *summary = nil;
         if (tapsterResults == nil) {
             summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
         } else {
-            numberOfSamples = [tapsterResults.samples count];
+            numberOfSamples = allSamples.count - tapSamples.count;
             summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
         }
         NSError  *error = nil;
