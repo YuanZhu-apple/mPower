@@ -63,6 +63,12 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
                                                                               duration:kTappingStepCountdownInterval
                                                                                 options:0];
     
+    [task.steps[0] setText:NSLocalizedString(@"Speed of finger tapping can reflect the severity of motor symptoms in Parkinson disease. Your medical provider may measure this differently.", nil)];
+    [task.steps[0] setDetailText:@""];
+    
+    [task.steps[3] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[3] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
+    
     APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
     NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
     NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
