@@ -60,10 +60,6 @@
                "taskFileName" : "PD_feedback",
                "taskClassName" : "APHfeedback"
                }
-               
-               
-               
-               
                ],
     
     "schedules": [
@@ -102,7 +98,7 @@
                   {
                   "scheduleType": "once",
                   "scheduleString": "0 5 * * *",
-                  "taskID": "MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8",
+                  "taskID": "MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8"
                   },
                   {
                   "scheduleType": "recurring",
@@ -114,8 +110,5 @@
                   "scheduleString": "0 5 * * *",
                   "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e"
                   }
-                  
-                  
-                  
                   ]
 }
