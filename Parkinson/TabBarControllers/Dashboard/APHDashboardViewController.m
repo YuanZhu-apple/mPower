@@ -186,8 +186,9 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     double avgValue = [[self.gaitScoring averageDataPoint] doubleValue];
                     
                     if (avgValue > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average : %0.0f", avgValue];
-                        item.detailText = NSLocalizedString(detail, @"Average: {value}");
+                        NSString  *detail = [NSString stringWithFormat:@"Min: %0.0f  Max: %0.0f",
+                                             [[self.gaitScoring minimumDataPoint] doubleValue], [[self.gaitScoring maximumDataPoint] doubleValue]];
+                        item.detailText = NSLocalizedString(detail, @"");
                     }
                     
                     item.identifier = kAPCDashboardGraphTableViewCellIdentifier;
@@ -241,7 +242,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     double avgValue = [[self.phonationScoring averageDataPoint] doubleValue];
                     
                     if (avgValue > 0) {
-                        NSString  *detail = [NSString stringWithFormat:@"Average: %0.0f", avgValue];
+                        NSString  *detail = [NSString stringWithFormat:@"Min: %0.0f  Max: %0.0f",
+                                             [[self.phonationScoring minimumDataPoint] doubleValue], [[self.phonationScoring maximumDataPoint] doubleValue]];
                         item.detailText = NSLocalizedString(detail, @"");
                     }
                     
