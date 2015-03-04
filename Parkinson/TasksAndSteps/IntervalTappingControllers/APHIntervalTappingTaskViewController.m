@@ -63,6 +63,12 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
                                                                               duration:kTappingStepCountdownInterval
                                                                                 options:0];
     
+    [task.steps[0] setText:NSLocalizedString(@"Speed of finger tapping can reflect the severity of motor symptoms in Parkinson disease. Your medical provider may measure this differently.", nil)];
+    [task.steps[0] setDetailText:@""];
+    
+    [task.steps[3] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[3] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
+    
     APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
     NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
     NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
@@ -109,9 +115,6 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
         task = [[ORKOrderedTask alloc] initWithIdentifier:kIntervalTappingTitle
                                                                        steps:twoFingerSteps];
     }
-
-#warning TODO: Replace this next line with a proper search for the Info step with the correct identifier.
-    [task.steps[0] setText: @"This test evaluates your tapping speed and coordination."];
     
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     
@@ -142,16 +145,22 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
             }
         }
         
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF = 0"];
+        NSArray *allSamples = [tapsterResults.samples valueForKey:@"buttonIdentifier"];
+        NSArray *tapSamples = [allSamples filteredArrayUsingPredicate:predicate];
+        
         NSArray * totalScore = [ConverterForPDScores convertTappings:tapsterResults];
         double scoreSummary = [PDScores scoreFromTappingTest:totalScore];
+        
         scoreSummary = isnan(scoreSummary) ? 0 : scoreSummary;
+        
         
         NSUInteger  numberOfSamples = 0;
         NSDictionary  *summary = nil;
         if (tapsterResults == nil) {
             summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
         } else {
-            numberOfSamples = [tapsterResults.samples count];
+            numberOfSamples = allSamples.count - tapSamples.count;
             summary = @{ kSummaryNumberOfRecordsKey : @(numberOfSamples), kScoreSummaryOfRecordsKey : @(scoreSummary)};
         }
         NSError  *error = nil;

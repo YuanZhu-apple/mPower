@@ -57,7 +57,8 @@
                        "taskTitle" : "My Thoughts",
                        "taskID": "MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61",
                        "taskFileName" : "PD_mythoughts",
-                       "taskClassName" : "APHmythougths"
+                       "taskClassName" : "APHmythougths",
+                       "taskCompletionTimeString" : "2 Questions"
                    },
                    {
                        "taskTitle" : "Study Feedback",
@@ -65,11 +66,7 @@
                        "taskFileName" : "PD_feedback",
                        "taskClassName" : "APHfeedback"
                    }
-
- 
-               
-               
-              ],
+               ],
     
 "schedules": [
                   {
@@ -124,8 +121,5 @@
                       "scheduleString": "0 5 * * *",
                       "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e"
                   }
-
-              
-              
               ]
 }
