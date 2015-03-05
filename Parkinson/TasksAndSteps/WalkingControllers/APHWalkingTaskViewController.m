@@ -253,6 +253,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
     } else if (result == ORKTaskViewControllerResultCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
 
     [super taskViewController: taskViewController
