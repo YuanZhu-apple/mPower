@@ -68,6 +68,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     UITableViewCell *cell = nil;
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"Medication Tracker Setup"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Medication Tracker Setup";
         cell.selectionStyle = self.isEditing ? UITableViewCellSelectionStyleGray : UITableViewCellSelectionStyleNone;
     }

@@ -22,7 +22,7 @@
                       "taskTitle" : "Memory Activity",
                       "taskID": "APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66",
                       "taskClassName" : "APHSpatialSpanMemoryGameViewController",
-                      "taskCompletionTimeString" : "30 Seconds"
+                      "taskCompletionTimeString" : "2 Minutes"
                   },
                   {
                        "taskTitle" : "Medication Tracking",
@@ -30,11 +30,11 @@
                        "taskClassName" : "APHMedicationTrackerTaskViewController"
                   },
                    {
-                       "taskTitle" : "Enrollment Survey",
+                       "taskTitle" : "Background Survey",
                        "taskID": "EnrollmentSurvey-20EF83D2-E461-4C20-9024-F43FCAAAF4C3",
                        "taskFileName" : "PDenrollment_survey",
                        "taskClassName" : "APHenrollmentsurveyViewController",
-                       "taskCompletionTimeString" : "11 Questions"
+                       "taskCompletionTimeString" : "(One Time) 28 Questions"
               
                    },
                    {
@@ -57,19 +57,17 @@
                        "taskTitle" : "My Thoughts",
                        "taskID": "MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61",
                        "taskFileName" : "PD_mythoughts",
-                       "taskClassName" : "APHmythougths"
+                       "taskClassName" : "APHmythougths",
+                       "taskCompletionTimeString" : "(Optional) 2 Questions"
                    },
                    {
                        "taskTitle" : "Study Feedback",
                        "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e",
                        "taskFileName" : "PD_feedback",
-                       "taskClassName" : "APHfeedback"
+                       "taskClassName" : "APHfeedback",
+                        "taskCompletionTimeString" : "(Optional) 1 Question"
                    }
-
- 
-               
-               
-              ],
+               ],
     
 "schedules": [
                   {
@@ -124,8 +122,5 @@
                       "scheduleString": "0 5 * * *",
                       "taskID": "Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e"
                   }
-
-              
-              
               ]
 }

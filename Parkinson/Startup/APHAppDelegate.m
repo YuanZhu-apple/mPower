@@ -18,6 +18,21 @@ static NSString* const  kConsentPropertiesFileName  = @"APHConsentSection";
 
 static NSString *const kVideoShownKey = @"VideoShown";
 
+
+static NSString *const kJsonScheduleStringKey           = @"scheduleString";
+static NSString *const kJsonTasksKey                    = @"tasks";
+static NSString *const kJsonScheduleTaskIDKey           = @"taskID";
+static NSString *const kJsonSchedulesKey                = @"schedules";
+
+
+static NSString *const kPDQ8TaskIdentifier              = @"PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8";
+static NSString *const kMDSUPDRS                        = @"MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8";
+
+static NSInteger const kMonthOfDayObject                = 2;
+
+
+
+
 @interface APHAppDelegate ()
 @property (nonatomic, strong) APHProfileExtender* profileExtender;
 
@@ -81,6 +96,16 @@ static NSString *const kVideoShownKey = @"VideoShown";
                                                  @"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66" : [UIColor appTertiaryRedColor],
                                                  @"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292" : [UIColor appTertiaryBlueColor],
                                                  @"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9" : [UIColor appTertiaryYellowColor],
+                                                 @"EnrollmentSurvey-20EF83D2-E461-4C20-9024-F43FCAAAF4C3": [UIColor lightGrayColor],
+                                                 @"PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8": [UIColor lightGrayColor],
+                                                 @"MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8": [UIColor lightGrayColor],
+                                                 @"MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61": [UIColor lightGrayColor],
+                                                 @"Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e": [UIColor lightGrayColor],
+                                                 @"parqquiz-1E174061-5B02-11E4-8ED6-0800200C9A77": [UIColor lightGrayColor],
+                                                 @"APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3": [UIColor colorWithRed:0.933
+                                                                                                                               green:0.267
+                                                                                                                                blue:0.380
+                                                                                                                               alpha:1.000]
                                                  }];
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
@@ -162,5 +187,71 @@ static NSString *const kVideoShownKey = @"VideoShown";
     
     return consentVC;
 }
+
+- (NSDictionary *) tasksAndSchedulesWillBeLoaded {
+    
+    NSString                    *resource = [[NSBundle mainBundle] pathForResource:self.initializationOptions[kTasksAndSchedulesJSONFileNameKey]
+                                                                            ofType:@"json"];
+    
+    NSData                      *jsonData = [NSData dataWithContentsOfFile:resource];
+    NSError                     *error;
+    NSDictionary                *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                              options:NSJSONReadingMutableContainers
+                                                                                error:&error];
+    if (dictionary == nil) {
+        APCLogError2 (error);
+    }
+    
+    NSArray                     *schedules = [dictionary objectForKey:kJsonSchedulesKey];
+    NSMutableDictionary         *newDictionary = [dictionary mutableCopy];
+    NSMutableArray              *newSchedulesArray = [NSMutableArray new];
+    
+    for (NSDictionary *schedule in schedules) {
+        
+        NSString *taskIdentifier = [schedule objectForKey:kJsonScheduleTaskIDKey];
+        
+        if ( [taskIdentifier isEqualToString: kPDQ8TaskIdentifier] || [taskIdentifier isEqualToString: kMDSUPDRS])
+        {
+            NSDate              *date = [NSDate date];
+            NSDateComponents    *dateComponent = [[NSDateComponents alloc] init];
+            
+
+            
+            NSDate              *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponent
+                                                                                         toDate:date
+                                                                                        options:0];
+            
+            NSCalendar          *cal = [NSCalendar currentCalendar];
+            
+            NSDateComponents    *components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
+                                                     fromDate:newDate];
+            NSString            *scheduleString = [schedule objectForKey:kJsonScheduleStringKey];
+            NSMutableArray      *scheduleObjects = [[scheduleString componentsSeparatedByString:@" "] mutableCopy];
+            
+            
+            [scheduleObjects replaceObjectAtIndex:kMonthOfDayObject withObject:@([components day])];
+
+            
+            NSString            *newScheduleString = [scheduleObjects componentsJoinedByString:@" "];
+            
+            [schedule setValue:newScheduleString
+                        forKey:kJsonScheduleStringKey];
+            
+            [newSchedulesArray addObject:schedule];
+        }
+        else {
+            [newSchedulesArray addObject:schedule];
+        }
+    }
+    
+    [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey]
+                     forKey:kJsonTasksKey];
+    
+    [newDictionary setValue:newSchedulesArray
+                     forKey:kJsonSchedulesKey];
+    
+    return newDictionary;
+}
+
 
 @end

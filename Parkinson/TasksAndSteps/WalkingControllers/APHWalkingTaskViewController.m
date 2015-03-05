@@ -40,6 +40,10 @@ static  NSUInteger      kNumberOfStepsPerLeg      = 20;
 static  NSTimeInterval  kStandStillDuration       = 30.0;
 
 static  NSString       *kConclusionStepIdentifier = @"conclusion";
+static  NSString       *kCountdownStepIdentifier = @"countdown";
+static  NSString       *kWalkingOutboundStepIdentifier = @"walking.outbound";
+static  NSString       *kWalkingReturnStepIdentifier = @"walking.return";
+static  NSString       *kWalkingRestStepIdentifier = @"walking.rest";
 
 NSString  *kScoreForwardGainRecordsKey = @"ScoreForwardGainRecords";
 NSString  *kScoreBackwardGainRecordsKey = @"ScoreBackwardGainRecords";
@@ -68,7 +72,12 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
                                                     numberOfStepsPerLeg:kNumberOfStepsPerLeg
                                                            restDuration:kStandStillDuration
                                                                 options:ORKPredefinedTaskOptionNone];
-    
+    [task.steps[0] setText:@"This activity measures your gait and balance, which can be affected by Parkinson disease."];
+    [task.steps[0] setDetailText:@"Please do not continue if you cannot safely walk unassited."];
+
+    [task.steps[6] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[6] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
+
     APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
     NSDate *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
     NSTimeInterval numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
@@ -190,24 +199,24 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
     if ([stepViewController.step.identifier isEqualToString:kConclusionStepIdentifier]) {
-
+        
         [[UIView appearance] setTintColor:[UIColor appTertiaryColor1]];
     }
     
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsWalkOutStep) {
+    if ([stepViewController.step.identifier isEqualToString: kCountdownStepIdentifier]) {
         self.startCollectionDate = [NSDate date];
     }
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsStandStillStep) {
+    if ([stepViewController.step.identifier isEqualToString: kWalkingReturnStepIdentifier]) {
         self.endCollectionDate = [NSDate date];
         
         NSTimeZone  *timezone = [NSTimeZone localTimeZone];
         
         NSDate  *adjustedStartDate = [self.startCollectionDate dateByAddingTimeInterval:timezone.secondsFromGMT];
         NSDate  *adjustedEndDate   = [self.endCollectionDate   dateByAddingTimeInterval:timezone.secondsFromGMT];
-
+        
         HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:adjustedStartDate endDate:adjustedEndDate options:HKQueryOptionNone];
-
+        
         HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
                                                             quantitySamplePredicate:predicate
                                                                             options:HKStatisticsOptionCumulativeSum
@@ -221,7 +230,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         HKHealthStore  *healthStore = [HKHealthStore new];
         [healthStore executeQuery:query];
     }
-    if (self.walkingStepOrdinal == WalkingStepOrdinalsConclusionStep) {
+    if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         AVSpeechUtterance  *talk = [AVSpeechUtterance
                                     speechUtteranceWithString:NSLocalizedString(@"You have completed the activity.", @"You have completed the activity.")];
@@ -244,6 +253,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
     } else if (result == ORKTaskViewControllerResultCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
 
     [super taskViewController: taskViewController

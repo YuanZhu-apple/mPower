@@ -9,13 +9,9 @@
          "identifier":"PDQ8-1",
          "type":"SurveyQuestion",
          "detail":"Due to Parkinson’s disease, how often during the last month have you had difficulty getting around in public?",
-         "prompt":"",
          "constraints":{
-            "dataType":"multivalue",
-            "rules":[  
-
-            ],
-            "dataType":"string",
+            "rules":[],
+            "dataType":"integer",
             "enumeration":[  
                {  
                   "label":"Never",

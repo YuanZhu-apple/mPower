@@ -3,7 +3,7 @@
     {
         "htmlDocument" : "PD_fullconsent",
         "investigatorShortDescription": "Sage Bionetworks",
-        "investigatorLongDescription": "Sage Bionetworks",
+        "investigatorLongDescription": "Sage Bionetworks and its partners",
         "htmlContent": "15sharing_rsch"
     },
     "quiz":
@@ -13,7 +13,7 @@
             {
                 "identifier": "instruction",
                 "prompt": "Comprehension",
-                "text": "Let's do a quick and simple test on your understanding of this study.",
+                "text": "Let's do a quick and simple test of your understanding of this study.",
                 "type": "instruction"
             },
             {
@@ -22,8 +22,8 @@
                 "type": "singleChoiceText",
                 "textChoices":
                 [
-                 "Understand the fluctuations of Parkinson’s disease symptoms",
-                 "Treating Parkinson’s disease"
+                 "Understand the fluctuations of Parkinson disease symptoms",
+                 "Treating Parkinson disease"
                 ],
                 "expectedAnswer": "0"
             },
@@ -53,7 +53,7 @@
             }
         ],
         "failureTitle": "Try again",
-        "failureMessage": "Unfortunately you answered one or more questions incorrectly. You can return at the beginning of the walkthrough to get more information about the study.",
+        "failureMessage": "Unfortunately you answered one or more questions incorrectly. You can return to the beginning of the walkthrough to get more information about the study.",
         "successTitle": "Great Job!",
         "successMessage": "You answered all of the questions correctly. \nTap Next to continue.",
         "allowedFailures": "1"
@@ -74,7 +74,8 @@
          "sectionType" : "custom",
          "sectionTitle": "We'll Test Your Understanding",
          "sectionSummary": "At the end of this walkthrough, we will ask you a few questions about the details of the study.",
-         "sectionHtmlContent" : "2quiz_headsup"
+        "sectionImage": "quiz_image",
+        "sectionHtmlContent" : "2quiz_headsup"
      },
      {
          "sectionType" : "custom",
@@ -114,7 +115,7 @@
      {
          "sectionType" : "timeCommitment",
          "sectionTitle" : "Issues to Consider",
-         "sectionSummary": "This study will take about 20 minutes per week.",
+         "sectionSummary": "This study will take about 20 minutes per day.",
          "sectionHtmlContent" : "8time"
      },
      {
