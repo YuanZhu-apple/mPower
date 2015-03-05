@@ -182,7 +182,7 @@ static NSInteger const kMonthOfDayObject                = 2;
 {
     APCConsentTask*         task = [[APCConsentTask alloc] initWithIdentifier:@"Consent"
                                                            propertiesFileName:kConsentPropertiesFileName];
-    ORKTaskViewController*  consentVC = [[APCConsentTaskViewController alloc] initWithTask:task
+    ORKTaskViewController*  consentVC = [[ORKTaskViewController alloc] initWithTask:task
                                                                         taskRunUUID:[NSUUID UUID]];
     
     return consentVC;
