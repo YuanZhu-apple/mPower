@@ -58,14 +58,14 @@
                        "taskID": "8-MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61",
                        "taskFileName" : "PD_mythoughts",
                        "taskClassName" : "APHmythougths",
-                       "taskCompletionTimeString" : "(Optional) 2 Questions"
+                       "taskCompletionTimeString" : "(Anytime) 2 Questions"
                    },
                    {
                        "taskTitle" : "Study Feedback",
                        "taskID": "9-Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e",
                        "taskFileName" : "PD_feedback",
                        "taskClassName" : "APHfeedback",
-                        "taskCompletionTimeString" : "(Optional) 1 Question"
+                        "taskCompletionTimeString" : "(Anytime) 1 Question"
                    }
                ],
     
