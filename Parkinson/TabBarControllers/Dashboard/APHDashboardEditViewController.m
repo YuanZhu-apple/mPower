@@ -30,7 +30,7 @@
                 {
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
-                    item.taskId = @"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
+                    item.taskId = @"2-APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     [self.items addObject:item];
@@ -41,7 +41,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Gait", @"");
-                    item.taskId = @"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
+                    item.taskId = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     [self.items addObject:item];
@@ -51,7 +51,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Memory", @"");
-                    item.taskId = @"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
+                    item.taskId = @"7-APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     [self.items addObject:item];
@@ -61,7 +61,7 @@
                     
                     APCTableViewDashboardItem *item = [APCTableViewDashboardItem new];
                     item.caption = NSLocalizedString(@"Voice", @"");
-                    item.taskId = @"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
+                    item.taskId = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
                     item.tintColor = [UIColor colorForTaskId:item.taskId];
                     
                     [self.items addObject:item];

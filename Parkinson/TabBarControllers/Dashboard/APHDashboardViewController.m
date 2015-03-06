@@ -93,20 +93,20 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 
 - (void)prepareScoringObjects
 {
-    self.tapScoring = [[APCScoring alloc] initWithTask:@"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
+    self.tapScoring = [[APCScoring alloc] initWithTask:@"2-APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF"
                                           numberOfDays:-kNumberOfDaysToDisplay
                                               valueKey:kSummaryNumberOfRecordsKey];
     
-    self.gaitScoring = [[APCScoring alloc] initWithTask:@"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
+    self.gaitScoring = [[APCScoring alloc] initWithTask:@"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9"
                                            numberOfDays:-kNumberOfDaysToDisplay
                                                valueKey:kGaitScoreKey];
     
-    self.memoryScoring = [[APCScoring alloc] initWithTask:@"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
+    self.memoryScoring = [[APCScoring alloc] initWithTask:@"7-APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66"
                                            numberOfDays:-kNumberOfDaysToDisplay
                                                valueKey:kSpatialMemoryScoreSummaryKey
                                                latestOnly:NO];
     
-    self.phonationScoring = [[APCScoring alloc] initWithTask:@"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
+    self.phonationScoring = [[APCScoring alloc] initWithTask:@"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292"
                                              numberOfDays:-kNumberOfDaysToDisplay
                                                  valueKey:kScoreSummaryOfRecordsKey];
     
@@ -150,7 +150,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Tapping", @"");
-                    item.taskId = @"APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
+                    item.taskId = @"2-APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
                     item.graphData = self.tapScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -178,8 +178,8 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 case kAPHDashboardItemTypeGait:
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
-                    item.caption = NSLocalizedString(@"Walking", @"");
-                    item.taskId = @"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
+                    item.caption = NSLocalizedString(@"Gait", @"");
+                    item.taskId = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
                     item.graphData = self.gaitScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -207,7 +207,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Memory", @"");
-                    item.taskId = @"APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
+                    item.taskId = @"7-APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
                     item.graphData = self.memoryScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
@@ -235,7 +235,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
                     item.caption = NSLocalizedString(@"Voice", @"");
-                    item.taskId = @"APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
+                    item.taskId = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
                     item.graphData = self.phonationScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
                     
