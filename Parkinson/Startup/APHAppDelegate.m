@@ -145,6 +145,17 @@ static NSInteger const kMonthOfDayObject                = 2;
     return initializationOptions;
 }
 
+- (NSArray *)allSetTextBlocks
+{
+    NSArray *allSetBlockOfText = nil;
+    
+    NSString *activitiesAdditionalText = NSLocalizedString(@"Please perform the activites each day when you are at your lowest before you take your Parkinson medications, after your medications take effect, and then a third time during the day.",
+                                                 @"Please perform the activites each day when you are at your lowest before you take your Parkinson medications, after your medications take effect, and then a third time during the day.");
+    allSetBlockOfText = @[@{kAllSetActivitiesTextAdditional: activitiesAdditionalText}];
+    
+    return allSetBlockOfText;
+}
+
 /*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
