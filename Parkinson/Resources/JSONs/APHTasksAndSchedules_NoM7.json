@@ -99,7 +99,7 @@
               {
               "scheduleType": "once",
               "scheduleString": "0 5 * * *",
-              "taskID": "5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8",
+              "taskID": "5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8"
               },
               {
               "scheduleType": "recurring",
