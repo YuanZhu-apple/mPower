@@ -38,7 +38,7 @@
               
                    },
                    {
-                       "taskTitle" : "PDQ8 Survey",
+                       "taskTitle" : "PD Questionnaire",
                        "taskID": "PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8",
                        "taskFileName" : "PDQ8",
                        "taskClassName" : "APHPDQ8ViewController",
@@ -46,7 +46,7 @@
                    
                    },
                    {
-                       "taskTitle" : "MDS UPDRS",
+                       "taskTitle" : "PD Rating Scale",
                        "taskID": "MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8",
                        "taskFileName" : "PD_MDRUPDRS",
                        "taskClassName" : "APHMDRUPDRS",

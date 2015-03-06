@@ -7,7 +7,6 @@
             "guid": "a2ed38e2-0e96-4b44-8ce2-52e9108bf9c4",
             "identifier": "EQ-5D1",
             "type": "SurveyQuestion",
-            "detail":"",
             "detail": "How good or bad is your health TODAY (0 means the worst health you can imagine, 100 means the best health you can imagine) ?",
             "constraints": {
                 "dataType": "integer",
@@ -22,7 +21,7 @@
             "guid": "6ff36ff2-e599-4183-a7e7-8396b48ceb55",
             "identifier": "GELTQ-1a",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, how many times did you do the following kinds of exercise for more than 15 minutes? Strenuous exercise (heart beats rapidly):",
             "constraints": {
                 "dataType": "integer",
@@ -35,7 +34,7 @@
             "guid": "adff7bf9-cc12-4358-a6d8-4c013ca0f721",
             "identifier": "GELTQ-1b",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, how many times did you do the following kinds of exercise for more than 15 minutes? Moderate exercise (not exhausting):",
             "constraints": {
                 "dataType": "integer",
@@ -48,7 +47,7 @@
             "guid": "a4189166-8892-4533-8a29-ff457b0a45b2",
             "identifier": "GELTQ-1c",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, how many times did you do the following kinds of exercise for more than 15 minutes? Minimal effort:",
             "constraints": {
                 "dataType": "integer",
@@ -61,7 +60,7 @@
             "guid": "8d79d6a6-a016-4732-8f30-08bcc89bba35",
             "identifier": "GELTQ-2",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "During your leisure time in the past week, how often do you engage in any regular activity long enough to work up a sweat (heart beats rapidly)?",
             "constraints": {
                 "dataType": "string",
@@ -94,7 +93,6 @@
             "identifier": "MDS-UPRDRS1.1",
             "type": "SurveyQuestion",
             "detail": "Over the past week have you had problems remembering things, following conversations, paying attention, thinking clearly, or finding your way around the house or in town?",
-            "detail": "",
             "constraints": {
                 "dataType": "string",
                 "rules": [],
@@ -135,8 +133,7 @@
             "guid": "ba4f8cf5-248a-4994-849e-b2d8f559dcb5",
             "identifier": "MDS-UPDRS1.3",
             "type": "SurveyQuestion",
-            "detail": "",
-            "detail": "Over the past week have you felt low, sad, hopeless or unable to enjoy things?",
+           	"detail": "Over the past week have you felt low, sad, hopeless or unable to enjoy things?",
             "constraints": {
                 "dataType": "string",
                 "rules": [],
@@ -177,7 +174,7 @@
             "guid": "342f7317-fc36-4577-90c2-b99f1c937f1f",
             "identifier": "MDS-UPDRS1.4",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week have you felt nervous, worried or tense?",
             "constraints": {
                 "dataType": "string",
@@ -219,7 +216,6 @@
             "guid": "23000c7f-2a6e-47d0-ad78-d75672e562f7",
             "identifier": "MDS-UPDRS1.5",
             "type": "SurveyQuestion",
-            "detail": "",
             "detail": "Over the past week, have you felt indifferent to doing activities or being with people?",
             "constraints": {
                 "dataType": "string",
@@ -261,7 +257,6 @@
             "guid": "cf350048-f3c5-4d4e-a455-e4aea6643c80",
             "identifier": "MDS-UPDRS1.7",
             "type": "SurveyQuestion",
-            "detail": "",
             "detail": "Over the past week, have you had trouble going to sleep at night or staying asleep through the night? Consider how rested you felt after waking up in the morning?",
             "constraints": {
                 "dataType": "string",
@@ -303,7 +298,6 @@
             "guid": "936e4925-ae9a-4094-a571-4a9014020c52",
             "identifier": "MDS-UPDRS1.8",
             "type": "SurveyQuestion",
-            "detail": "",
             "detail": "Over the past week, have you had trouble staying awake during the daytime?",
             "constraints": {
                 "dataType": "string",
@@ -345,7 +339,6 @@
             "guid": "b60e0efc-23fe-4b28-afb5-da7db0ade3da",
             "identifier": "MDS-UPDRS2.1",
             "type": "SurveyQuestion",
-            "detail": "",
             "detail": "Over the past week, have you had problems with your speech?",
             "constraints": {
                 "dataType": "string",
@@ -387,7 +380,6 @@
             "guid": "0a36952a-9d39-450d-a595-7e8d5a9bebf5",
             "identifier": "MDS-UPDRS2.4",
             "type": "SurveyQuestion",
-            "detail": "",
             "detail": "Over the past week, have you usually had troubles handling your food and using eating utensils? For example, do you have trouble handling finger foods or using forks, knifes, spoons, chopsticks?",
             "constraints": {
                 "dataType": "string",
@@ -429,7 +421,7 @@
             "guid": "8493373b-5272-4db3-b58c-cd0e45ac6fc9",
             "identifier": "MDS-UPDRS2.5",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have you usually had problems dressing? For example, are you slow or do you need help with buttoning, using zippers, putting on or taking off your clothes or jewelry?",
             "constraints": {
                 "dataType": "string",
@@ -471,7 +463,7 @@
             "guid": "4dc7b834-f2c1-4c68-adc6-9453a98edbff",
             "identifier": "MDS-UPDRS2.6",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have you usually been slow or do you need help with washing, bathing, shaving, brushing teeth, combing your hair or with other personal hygiene?",
             "constraints": {
                 "dataType": "string",
@@ -513,7 +505,7 @@
             "guid": "b6cce7eb-c1e9-4334-8bd5-d774f4824a34",
             "identifier": "MDS-UPDRS2.7",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have people usually had trouble reading your handwriting?",
             "constraints": {
                 "dataType": "string",
@@ -555,7 +547,7 @@
             "guid": "07747375-252b-447e-b96e-122a145e70c9",
             "identifier": "MDS-UPDRS2.8",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have you usually had trouble doing your hobbies or other things that you like to do?",
             "constraints": {
                 "dataType": "string",
@@ -597,7 +589,7 @@
             "guid": "6d74d3a5-f672-4394-8a39-c3c9eca2d97c",
             "identifier": "MDS-UPDRS2.9",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, do you usually have trouble turning over in bed?",
             "constraints": {
                 "dataType": "string",
@@ -639,7 +631,7 @@
             "guid": "31a86334-a2c0-4986-9330-2e3260d93a56",
             "identifier": "MDS-UPDRS2.10",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have you usually had shaking or tremor?",
             "constraints": {
                 "dataType": "string",
@@ -681,7 +673,7 @@
             "guid": "5c2778f6-a8b7-4fb2-8172-e41799a874c4",
             "identifier": "MDS-UPDRS2.12",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, have you usually had problems with balance and walking?",
             "constraints": {
                 "dataType": "string",
@@ -723,7 +715,7 @@
             "guid": "c674f132-008c-4bbe-bc55-e6d4f7c29efa",
             "identifier": "MDS-UPDRS2.13",
             "type": "SurveyQuestion",
-            "detail": "",
+            
             "detail": "Over the past week, on your usual day when walking, do you suddenly stop or freeze as if your feet are stuck to the floor.",
             "constraints": {
                 "dataType": "string",

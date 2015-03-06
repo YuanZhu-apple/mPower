@@ -127,7 +127,7 @@
       {
       "guid":"12fee175-6213-4c0b-89b5-5cac34f7783f",
       "identifier":"Enter_State",
-      "prompt":"In which state do you reside? (Enter your state's 2 letter code).",
+      "detail":"In which state do you reside? (Enter your state's 2 letter code).",
       "constraints":{
       "rules":[
       
