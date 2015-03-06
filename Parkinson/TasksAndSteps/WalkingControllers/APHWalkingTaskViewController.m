@@ -72,7 +72,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
                                                     numberOfStepsPerLeg:kNumberOfStepsPerLeg
                                                            restDuration:kStandStillDuration
                                                                 options:ORKPredefinedTaskOptionNone];
-    [task.steps[0] setText:@"This activity measures your gait and balance, which can be affected by Parkinson disease."];
+    [task.steps[0] setText:@"This activity measures your gait (walk) and balance, which can be affected by Parkinson disease."];
     [task.steps[0] setDetailText:@"Please do not continue if you cannot safely walk unassited."];
 
     [task.steps[6] setTitle:NSLocalizedString(@"Thank You!", nil)];
