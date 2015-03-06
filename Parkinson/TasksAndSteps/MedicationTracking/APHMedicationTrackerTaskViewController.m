@@ -9,7 +9,7 @@
 #import "APHMedicationTrackerTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-static  NSString  *kTaskViewControllerTitle = @"Medications Tracker";
+static  NSString  *kTaskViewControllerTitle = @"Medication Tracker";
 
 @interface APHMedicationTrackerTaskViewController  ( ) <NSObject>
 
