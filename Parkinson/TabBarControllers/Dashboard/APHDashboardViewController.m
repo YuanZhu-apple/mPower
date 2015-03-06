@@ -178,7 +178,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                 case kAPHDashboardItemTypeGait:
                 {
                     APCTableViewDashboardGraphItem *item = [APCTableViewDashboardGraphItem new];
-                    item.caption = NSLocalizedString(@"Gait", @"");
+                    item.caption = NSLocalizedString(@"Walking", @"");
                     item.taskId = @"APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
                     item.graphData = self.gaitScoring;
                     item.graphType = kAPCDashboardGraphTypeDiscrete;
