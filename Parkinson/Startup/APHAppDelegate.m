@@ -26,9 +26,13 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
 
 
 static NSString *const kPDQ8TaskIdentifier              = @"6-PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8";
+static NSInteger const kPDQ8TaskOffset                  = 2;
 static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8";
+static NSInteger const kMDSUPDRSOffset                  = 1;
 
 static NSInteger const kMonthOfDayObject                = 2;
+
+
 
 
 
@@ -235,6 +239,28 @@ static NSInteger const kMonthOfDayObject                = 2;
             
             NSDateComponents    *components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
                                                      fromDate:newDate];
+            
+            if ( [taskIdentifier isEqualToString: kPDQ8TaskIdentifier])
+            {
+                [components setDay:kPDQ8TaskOffset];
+                
+                newDate = [[NSCalendar currentCalendar] dateByAddingComponents:components
+                                                                        toDate:[NSDate date]
+                                                                       options:0];
+                
+                components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
+                                    fromDate:newDate];
+            } else if ([taskIdentifier isEqualToString: kMDSUPDRS]) {
+                [components setDay:kMDSUPDRSOffset];
+                
+                newDate = [[NSCalendar currentCalendar] dateByAddingComponents:components
+                                                                        toDate:[NSDate date]
+                                                                       options:0];
+                
+                components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
+                                    fromDate:newDate];
+            }
+            
             NSString            *scheduleString = [schedule objectForKey:kJsonScheduleStringKey];
             NSMutableArray      *scheduleObjects = [[scheduleString componentsSeparatedByString:@" "] mutableCopy];
             
