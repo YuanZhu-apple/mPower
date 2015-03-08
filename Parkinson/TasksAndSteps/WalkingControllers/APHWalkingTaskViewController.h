@@ -13,5 +13,5 @@
 extern NSString * const kGaitScoreKey;
 
 @interface APHWalkingTaskViewController : APCBaseTaskViewController
-
+- (NSDictionary *) computeTotalDistanceForDashboardItem:(NSURL *)fileURL;
 @end
