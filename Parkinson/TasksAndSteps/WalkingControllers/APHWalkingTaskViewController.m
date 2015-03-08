@@ -34,6 +34,11 @@ static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take
 
 static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
+static NSString* const  kFileResultsKey             = @"items";
+static NSString* const  kNumberOfStepsTotalOnReturn = @"numberOfSteps";
+static NSString* const  kNumberOfStepsTotalOnReturnKey = @"numberOfSteps";
+static NSString* const  kPedometerPrefixFileIdentifier = @"pedometer";
+
 static  NSString       *kWalkingActivityTitle     = @"Walking Activity";
 
 static  NSUInteger      kNumberOfStepsPerLeg      = 20;
@@ -132,6 +137,9 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (NSString *)createResultSummary
 {
     ORKTaskResult  *taskResults = self.result;
+    
+    APHWalkingTaskViewController* weakSelf = self;
+    
     self.createResultSummaryBlock = ^(NSManagedObjectContext * context) {
         BOOL  found = NO;
         NSURL * urlGaitForward = nil;
@@ -156,6 +164,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
             }
         }
         
+        
         NSArray * forwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitForward];
         NSArray * backwardSteps = [ConverterForPDScores convertPostureOrGain:urlGaitBackward];
         NSArray * posture = [ConverterForPDScores convertPostureOrGain:urlPosture];
@@ -170,11 +179,31 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
         
         double avgScores = (forwardScores + backwardScores + postureScores) / 3;
         
+        /************/
+        
+        NSDictionary* walkingResults = nil;
+        
+        ORKStepResult* stepResult = (ORKStepResult *)[weakSelf.result resultForIdentifier:kWalkingReturnStepIdentifier];
+        
+        for (ORKFileResult* fileResult in stepResult.results) {
+            NSString* fileString = [fileResult.fileURL lastPathComponent];
+            NSArray* nameComponents = [fileString componentsSeparatedByString:@"_"];
+            
+            if ([[nameComponents objectAtIndex:0] isEqualToString:kPedometerPrefixFileIdentifier])
+            {
+                walkingResults = [weakSelf computeTotalDistanceForDashboardItem:fileResult.fileURL];
+                
+            }
+        }
+
+        /***********/
+        
         NSDictionary  *summary = @{
                                    kGaitScoreKey: @(avgScores),
                                    kScoreForwardGainRecordsKey: @(forwardScores),
                                    kScoreBackwardGainRecordsKey: @(backwardScores),
-                                   kScorePostureRecordsKey: @(postureScores)
+                                   kScorePostureRecordsKey: @(postureScores),
+                                   kNumberOfStepsTotalOnReturnKey : [walkingResults objectForKey:kNumberOfStepsTotalOnReturn]
                                   };
         
         NSError  *error = nil;
@@ -205,30 +234,6 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
     
     if ([stepViewController.step.identifier isEqualToString: kCountdownStepIdentifier]) {
         self.startCollectionDate = [NSDate date];
-    }
-    if ([stepViewController.step.identifier isEqualToString: kWalkingReturnStepIdentifier]) {
-        self.endCollectionDate = [NSDate date];
-        
-        NSTimeZone  *timezone = [NSTimeZone localTimeZone];
-        
-        NSDate  *adjustedStartDate = [self.startCollectionDate dateByAddingTimeInterval:timezone.secondsFromGMT];
-        NSDate  *adjustedEndDate   = [self.endCollectionDate   dateByAddingTimeInterval:timezone.secondsFromGMT];
-        
-        HKQuantityType  *stepCountType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-        NSPredicate  *predicate = [HKQuery predicateForSamplesWithStartDate:adjustedStartDate endDate:adjustedEndDate options:HKQueryOptionNone];
-        
-        HKStatisticsQuery  *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepCountType
-                                                            quantitySamplePredicate:predicate
-                                                                            options:HKStatisticsOptionCumulativeSum
-                                                                  completionHandler:^(HKStatisticsQuery * __unused query, HKStatistics *result, NSError *error) {
-                                                                      if (result != nil) {
-                                                                          self.collectedNumberOfSteps = [result.sumQuantity doubleValueForUnit:[HKUnit countUnit]];
-                                                                      } else {
-                                                                          APCLogError2 (error);
-                                                                      }
-                                                                  }];
-        HKHealthStore  *healthStore = [HKHealthStore new];
-        [healthStore executeQuery:query];
     }
     if ([stepViewController.step.identifier isEqualToString: kConclusionStepIdentifier]) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -275,6 +280,40 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+
+#pragma mark - Helper methods
+
+- (NSDictionary *) computeTotalDistanceForDashboardItem:(NSURL *)fileURL{
+    
+    NSDictionary*   distanceResults     = [self readFileResultsFor:fileURL];
+    NSArray*        locations           = [distanceResults objectForKey:kFileResultsKey];
+    
+    int lastTotalNumberOfSteps = (int) [[[locations lastObject] objectForKey:kNumberOfStepsTotalOnReturn] integerValue];
+    
+    return @{@"numberOfSteps" : @(lastTotalNumberOfSteps)};
+}
+
+
+- (NSDictionary *) readFileResultsFor:(NSURL *)fileURL {
+    
+    NSError*        error       = nil;
+    NSString*       contents    = [NSString stringWithContentsOfURL:fileURL encoding:NSUTF8StringEncoding error:&error];
+    NSDictionary*   results     = nil;
+    
+    APCLogError2(error);
+    
+    if (!error) {
+        NSError*    error = nil;
+        NSData*     data  = [contents dataUsingEncoding:NSUTF8StringEncoding];
+        
+        results = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        APCLogError2(error);
+    }
+    
+    return results;
 }
 
 @end
