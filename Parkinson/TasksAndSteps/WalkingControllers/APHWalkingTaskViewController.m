@@ -203,7 +203,7 @@ NSString * const kGaitScoreKey = @"GaitScoreKey";
                                    kScoreForwardGainRecordsKey: @(forwardScores),
                                    kScoreBackwardGainRecordsKey: @(backwardScores),
                                    kScorePostureRecordsKey: @(postureScores),
-                                   kNumberOfStepsTotalOnReturnKey : [walkingResults objectForKey:kNumberOfStepsTotalOnReturn]
+                                   kNumberOfStepsTotalOnReturnKey : walkingResults == nil ? @0 : [walkingResults objectForKey:kNumberOfStepsTotalOnReturn]
                                   };
         
         NSError  *error = nil;
