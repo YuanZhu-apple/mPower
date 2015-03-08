@@ -102,13 +102,13 @@
                       "taskID": "1-EnrollmentSurvey-20EF83D2-E461-4C20-9024-F43FCAAAF4C3"
                   },
                   {
-                      "scheduleType": "once",
+                      "scheduleType": "recurring",
                       "scheduleString": "0 5 * * *",
                       "taskID": "6-PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8"
                   },
               
                   {
-                      "scheduleType": "once",
+                      "scheduleType": "recurring",
                       "scheduleString": "0 5 * * *",
                       "taskID": "5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8"
                   },
