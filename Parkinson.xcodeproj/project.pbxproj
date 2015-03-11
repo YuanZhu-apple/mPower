@@ -236,8 +236,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		085F3E3F1AAF68DD003A910A /* Parkinson copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parkinson copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		085F3E401AAF68DD003A910A /* Parkinson copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Parkinson copy-Info.plist"; path = "/Users/farhan.ahmed/Projects/iOS/Apple/appleparkinson/Parkinson copy-Info.plist"; sourceTree = "<absolute>"; };
+		085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson_YML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		085F3E401AAF68DD003A910A /* Parkinson-YML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Parkinson-YML-Info.plist"; path = "/Users/farhan.ahmed/Projects/iOS/Apple/appleparkinson/Parkinson-YML-Info.plist"; sourceTree = "<absolute>"; };
 		21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		36EF84D01A951327008C255F /* Parkinson Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parkinson Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EF84D31A951327008C255F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -545,7 +545,7 @@
 			children = (
 				CFC2D2D719A5417D00170E69 /* Parkinson.app */,
 				36EF84D01A951327008C255F /* Parkinson Tests.xctest */,
-				085F3E3F1AAF68DD003A910A /* Parkinson copy.app */,
+				085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -570,7 +570,7 @@
 				F5241CA819AEA5110098A4DF /* Parkinson.entitlements */,
 				CFC2D2DB19A5417D00170E69 /* Info.plist */,
 				CFC2D2DC19A5417D00170E69 /* main.m */,
-				085F3E401AAF68DD003A910A /* Parkinson copy-Info.plist */,
+				085F3E401AAF68DD003A910A /* Parkinson-YML-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -749,7 +749,7 @@
 			);
 			name = "Parkinson - YML";
 			productName = Parkinson;
-			productReference = 085F3E3F1AAF68DD003A910A /* Parkinson copy.app */;
+			productReference = 085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */;
 			productType = "com.apple.product-type.application";
 		};
 		36EF84CF1A951327008C255F /* Parkinson Tests */ = {
@@ -1122,11 +1122,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
 				);
-				INFOPLIST_FILE = "Parkinson copy-Info.plist";
+				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "Parkinson copy";
+				PRODUCT_NAME = Parkinson_YML;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1152,11 +1152,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
 				);
-				INFOPLIST_FILE = "Parkinson copy-Info.plist";
+				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "Parkinson copy";
+				PRODUCT_NAME = Parkinson_YML;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1182,11 +1182,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
 				);
-				INFOPLIST_FILE = "Parkinson copy-Info.plist";
+				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "Parkinson copy";
+				PRODUCT_NAME = Parkinson_YML;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1212,11 +1212,11 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/Parkinson/Library/PDScores/PDScores/**",
 				);
-				INFOPLIST_FILE = "Parkinson copy-Info.plist";
+				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "Parkinson copy";
+				PRODUCT_NAME = Parkinson_YML;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
