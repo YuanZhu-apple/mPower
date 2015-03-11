@@ -44,7 +44,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                                                                      @(kAPHDashboardItemTypeIntervalTapping),
                                                                      @(kAPHDashboardItemTypeSpatialMemory),@(kAPHDashboardItemTypePhonation),]];
                               
-            if (![APCDeviceHardware isiPhone5SOrNewer]) {
+            if ([APCDeviceHardware isiPhone5SOrNewer]) {
                 [_rowItemsOrder addObject:@(kAPHDashboardItemTypeGait)];
             }
             [defaults setObject:[NSArray arrayWithArray:_rowItemsOrder] forKey:kAPCDashboardRowItemsOrder];
