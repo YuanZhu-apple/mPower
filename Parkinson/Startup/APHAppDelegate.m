@@ -113,7 +113,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     [[UINavigationBar appearance] setTintColor:[UIColor appPrimaryColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSForegroundColorAttributeName : [UIColor appSecondaryColor2],
-                                                            NSFontAttributeName : [UIFont appMediumFontWithSize:17.0f]
+                                                            NSFontAttributeName : [UIFont appNavBarTitleFont]
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
 }
