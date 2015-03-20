@@ -279,7 +279,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
                     item.editable = YES;
                     item.tintColor = [UIColor appTertiaryGreenColor];
                     
-                    item.info = NSLocalizedString(@"This graph shows how many steps you took each day, according to you phone's motion sensors. Remember that for this number to be accurate, you should have the phone on you as frequently as possible.", @"Dashboard tooltip item info text for Steps in Parkinson");
+                    item.info = NSLocalizedString(@"This graph shows how many steps you took each day, according to your phone's motion sensors. Remember that for this number to be accurate, you should have the phone on you as frequently as possible.", @"Dashboard tooltip item info text for Steps in Parkinson");
                     
                     APCTableViewRow *row = [APCTableViewRow new];
                     row.item = item;
