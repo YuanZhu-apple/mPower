@@ -1,8 +1,7 @@
 //
 //  ConverterForPDScores.m
-//  Parkinson
+//  mPower
 //
-//  Created by Dzianis Asanovich on 2/20/15.
 //  Copyright (c) 2015 Apple, Inc. All rights reserved.
 //
 
