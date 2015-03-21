@@ -24,6 +24,7 @@ static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately 
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
 static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
 static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
+static NSString *      kEnableMicrophoneMessage                 = @"You need to enable access to microphone.";
 
 static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
@@ -37,7 +38,6 @@ typedef  enum  _PhonationStepOrdinals
     PhonationStepOrdinalsConclusionStep,
 }  PhonationStepOrdinals;
 
-typedef void (^PermissionBlock)(BOOL granted);
 
 
 static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
@@ -218,21 +218,6 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 #pragma  mark  - View Controller methods
 
 
-PermissionBlock permissionBlock = ^(BOOL granted) {
-    if (granted)
-    {
-        //ok we have access to the Microphone
-    }
-    else
-    {
-        // Warn no access to microphone
-  
-        
-    }
-};
- 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -242,23 +227,17 @@ PermissionBlock permissionBlock = ^(BOOL granted) {
    // Once you give Audio permission to the application. Your app will not show permission prompt again.
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         if (granted) {
-            // Microphone enabled code
+            // Microphone enabled
         }
         else {
-            // Microphone disabled code
+            // Microphone disabled
             //Ask one more time, if they still say no then they need to do it from settings
-            [[AVAudioSession sharedInstance] performSelector:@selector(requestRecordPermission:)
-                                                  withObject:permissionBlock];
-            UIAlertController * alert = [UIAlertController simpleAlertWithTitle:@"You need to enable access to microphone " message:nil];
+            UIAlertController * alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(kEnableMicrophoneMessage, nil) message:nil];
             [self presentViewController:alert animated:YES completion:nil];
         }
     }];
-    
-    
    
 }
-
-
 
 
 - (void)viewWillAppear:(BOOL)animated
