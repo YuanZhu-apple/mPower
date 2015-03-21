@@ -231,7 +231,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
         }
         else {
             // Microphone disabled
-            //Ask one more time, if they still say no then they need to do it from settings
+            //Inform the user that they will to enable the Microphone
             UIAlertController * alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(kEnableMicrophoneMessage, nil) message:nil];
             [self presentViewController:alert animated:YES completion:nil];
         }
