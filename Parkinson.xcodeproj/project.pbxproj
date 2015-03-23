@@ -97,6 +97,18 @@
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
 		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
 		743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
+		74B713EB1AC0722D00FE2553 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; };
+		74B713EC1AC0722D00FE2553 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		74B713F21AC0722E00FE2553 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; };
+		74B713F31AC0722E00FE2553 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		74B713F71AC0722E00FE2553 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; };
+		74B713F81AC0722E00FE2553 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		74B713FC1AC0723800FE2553 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; };
+		74B713FD1AC0723800FE2553 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		74B714001AC0723800FE2553 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; };
+		74B714011AC0723800FE2553 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		74B714041AC0723800FE2553 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; };
+		74B714051AC0723800FE2553 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9898C91A926F36003B4181 /* APHProfileExtender.m */; };
 		A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = A74615B21A98077D00323AD1 /* ConverterForPDScores.m */; };
 		A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74615AD1A98071200323AD1 /* libPDScores.a */; };
@@ -252,6 +264,48 @@
 			remoteGlobalIDString = 80855F4F19BE258C006601C7;
 			remoteInfo = BridgeSDK;
 		};
+		74B713ED1AC0722E00FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 80855F4F19BE258C006601C7;
+			remoteInfo = BridgeSDK;
+		};
+		74B713F41AC0722E00FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = OpenResearchKit;
+		};
+		74B713F91AC0722E00FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppCore;
+		};
+		74B713FE1AC0723800FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 80855F4F19BE258C006601C7;
+			remoteInfo = BridgeSDK;
+		};
+		74B714021AC0723800FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = OpenResearchKit;
+		};
+		74B714061AC0723800FE2553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5179B2819D09128001DCCB7;
+			remoteInfo = APCAppCore;
+		};
 		A74615AC1A98071200323AD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
@@ -275,6 +329,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				74B714011AC0723800FE2553 /* ResearchKit.framework in Embed Frameworks */,
+				74B713FD1AC0723800FE2553 /* BridgeSDK.framework in Embed Frameworks */,
+				74B714051AC0723800FE2553 /* APCAppCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +342,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				74B713F31AC0722E00FE2553 /* ResearchKit.framework in Embed Frameworks */,
+				74B713EC1AC0722D00FE2553 /* BridgeSDK.framework in Embed Frameworks */,
+				74B713F81AC0722E00FE2553 /* APCAppCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,9 +455,12 @@
 			files = (
 				085F3E041AAF68DD003A910A /* libPDScores.a in Frameworks */,
 				085F3E051AAF68DD003A910A /* MapKit.framework in Frameworks */,
+				74B714041AC0723800FE2553 /* APCAppCore.framework in Frameworks */,
+				74B713FC1AC0723800FE2553 /* BridgeSDK.framework in Frameworks */,
 				085F3E061AAF68DD003A910A /* HealthKit.framework in Frameworks */,
 				085F3E091AAF68DD003A910A /* AVFoundation.framework in Frameworks */,
 				085F3E0A1AAF68DD003A910A /* Security.framework in Frameworks */,
+				74B714001AC0723800FE2553 /* ResearchKit.framework in Frameworks */,
 				085F3E0B1AAF68DD003A910A /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,9 +478,12 @@
 			files = (
 				A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */,
 				5B18CEF71A2D3A57001A905E /* MapKit.framework in Frameworks */,
+				74B713F71AC0722E00FE2553 /* APCAppCore.framework in Frameworks */,
+				74B713EB1AC0722D00FE2553 /* BridgeSDK.framework in Frameworks */,
 				F5F32C7C19D0D4C1007F9015 /* HealthKit.framework in Frameworks */,
 				CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */,
 				CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */,
+				74B713F21AC0722E00FE2553 /* ResearchKit.framework in Frameworks */,
 				CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,6 +881,9 @@
 				743AD0E81ABE2FF50071C218 /* PBXTargetDependency */,
 				743AD0E61ABE2FEE0071C218 /* PBXTargetDependency */,
 				743AD0E41ABE2FE90071C218 /* PBXTargetDependency */,
+				74B713FF1AC0723800FE2553 /* PBXTargetDependency */,
+				74B714031AC0723800FE2553 /* PBXTargetDependency */,
+				74B714071AC0723800FE2553 /* PBXTargetDependency */,
 			);
 			name = "Parkinson - YML";
 			productName = Parkinson;
@@ -856,6 +925,9 @@
 				743AD0E21ABE2E8E0071C218 /* PBXTargetDependency */,
 				743AD0E01ABE2E880071C218 /* PBXTargetDependency */,
 				743AD0DE1ABE2E830071C218 /* PBXTargetDependency */,
+				74B713EE1AC0722E00FE2553 /* PBXTargetDependency */,
+				74B713F51AC0722E00FE2553 /* PBXTargetDependency */,
+				74B713FA1AC0722E00FE2553 /* PBXTargetDependency */,
 			);
 			name = Parkinson;
 			productName = Parkinson;
@@ -1243,6 +1315,36 @@
 			isa = PBXTargetDependency;
 			name = BridgeSDK;
 			targetProxy = 74B713AD1ABF04DB00FE2553 /* PBXContainerItemProxy */;
+		};
+		74B713EE1AC0722E00FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BridgeSDK;
+			targetProxy = 74B713ED1AC0722E00FE2553 /* PBXContainerItemProxy */;
+		};
+		74B713F51AC0722E00FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenResearchKit;
+			targetProxy = 74B713F41AC0722E00FE2553 /* PBXContainerItemProxy */;
+		};
+		74B713FA1AC0722E00FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppCore;
+			targetProxy = 74B713F91AC0722E00FE2553 /* PBXContainerItemProxy */;
+		};
+		74B713FF1AC0723800FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BridgeSDK;
+			targetProxy = 74B713FE1AC0723800FE2553 /* PBXContainerItemProxy */;
+		};
+		74B714031AC0723800FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenResearchKit;
+			targetProxy = 74B714021AC0723800FE2553 /* PBXContainerItemProxy */;
+		};
+		74B714071AC0723800FE2553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APCAppCore;
+			targetProxy = 74B714061AC0723800FE2553 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
