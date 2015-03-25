@@ -1525,9 +1525,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1549,9 +1546,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1573,9 +1567,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1597,9 +1588,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				INFOPLIST_FILE = "Parkinson Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
