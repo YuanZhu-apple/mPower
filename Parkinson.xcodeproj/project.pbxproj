@@ -7,69 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		085F3DF01AAF68DD003A910A /* APHIntervalTappingRecorderDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2BF9921A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m */; };
-		085F3DF11AAF68DD003A910A /* APHPhonationTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EFD19CC9BC900650FBB /* APHPhonationTaskViewController.m */; };
-		085F3DF21AAF68DD003A910A /* APHDashboardEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */; };
-		085F3DF31AAF68DD003A910A /* APHMDRUPDRS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F990B1AA41EA500A2A7EB /* APHMDRUPDRS.m */; };
-		085F3DF41AAF68DD003A910A /* APHDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D9D441A1BCC6B000F4AD6 /* APHDashboardViewController.m */; };
-		085F3DF51AAF68DD003A910A /* APHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */; };
-		085F3DF61AAF68DD003A910A /* ConverterForPDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = A74615B21A98077D00323AD1 /* ConverterForPDScores.m */; };
-		085F3DF71AAF68DD003A910A /* APHInclusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29CE5319D4C8FD00E2FD62 /* APHInclusionCriteriaViewController.m */; };
-		085F3DF81AAF68DD003A910A /* APHPDQ8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99081AA41B1C00A2A7EB /* APHPDQ8ViewController.m */; };
-		085F3DF91AAF68DD003A910A /* APHfeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99191AA426F300A2A7EB /* APHfeedback.m */; };
-		085F3DFA1AAF68DD003A910A /* APHmythougths.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99161AA426D900A2A7EB /* APHmythougths.m */; };
-		085F3DFB1AAF68DD003A910A /* APHIntervalTappingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14EF419CC9BC900650FBB /* APHIntervalTappingTaskViewController.m */; };
-		085F3DFC1AAF68DD003A910A /* APHSpatialSpanMemoryGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1A50F1A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m */; };
-		085F3DFD1AAF68DD003A910A /* APHProfileExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9898C91A926F36003B4181 /* APHProfileExtender.m */; };
-		085F3DFE1AAF68DD003A910A /* APHMedicationTrackerTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDA47A71A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m */; };
-		085F3DFF1AAF68DD003A910A /* APHenrollmentsurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0F99011AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m */; };
-		085F3E001AAF68DD003A910A /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */; };
-		085F3E011AAF68DD003A910A /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
-		085F3E021AAF68DD003A910A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
-		085F3E051AAF68DD003A910A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B18CEF61A2D3A56001A905E /* MapKit.framework */; };
-		085F3E061AAF68DD003A910A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
-		085F3E091AAF68DD003A910A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
-		085F3E0A1AAF68DD003A910A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
-		085F3E0B1AAF68DD003A910A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
-		085F3E0E1AAF68DD003A910A /* APHTasksAndSchedules.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */; };
-		085F3E0F1AAF68DD003A910A /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
-		085F3E101AAF68DD003A910A /* PDQ8.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99041AA41AB500A2A7EB /* PDQ8.json */; };
-		085F3E111AAF68DD003A910A /* 10_PotentialBenifits@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166B1A96BC9400CEC822 /* 10_PotentialBenifits@3x.m4v */; };
-		085F3E121AAF68DD003A910A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C1DC1F19D22E6F006527EA /* Main.storyboard */; };
-		085F3E131AAF68DD003A910A /* 13_RiskToPrivacy@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166E1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v */; };
-		085F3E141AAF68DD003A910A /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
-		085F3E151AAF68DD003A910A /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
-		085F3E161AAF68DD003A910A /* PD_mythoughts.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99121AA4269C00A2A7EB /* PD_mythoughts.json */; };
-		085F3E171AAF68DD003A910A /* APHOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5EFE09F19EC39B1008BAD56 /* APHOnboarding.storyboard */; };
-		085F3E181AAF68DD003A910A /* parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3D1A37B30D0049B835 /* parkinson.pem */; };
-		085F3E191AAF68DD003A910A /* 01_Activities_to_SensorData@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116611A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v */; };
-		085F3E1A1AAF68DD003A910A /* 10_PotentialBenifits@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116631A96BC9400CEC822 /* 10_PotentialBenifits@2x.m4v */; };
-		085F3E1B1AAF68DD003A910A /* PD_feedback.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99111AA4269C00A2A7EB /* PD_feedback.json */; };
-		085F3E1C1AAF68DD003A910A /* 12_IssuesToConside2@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116651A96BC9400CEC822 /* 12_IssuesToConside2@2x.m4v */; };
-		085F3E1D1AAF68DD003A910A /* 02_SensorData_to_DataGathering@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116621A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v */; };
-		085F3E1E1AAF68DD003A910A /* Intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F584909919E892700091A640 /* Intro.mp4 */; };
-		085F3E1F1AAF68DD003A910A /* TermsAndConditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B18CECF1A2CF2E5001A905E /* TermsAndConditions.json */; };
-		085F3E201AAF68DD003A910A /* parkinson-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */; };
-		085F3E211AAF68DD003A910A /* 12_IssuesToConside2@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166D1A96BC9400CEC822 /* 12_IssuesToConside2@3x.m4v */; };
-		085F3E221AAF68DD003A910A /* 02_SensorData_to_DataGathering@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166A1A96BC9400CEC822 /* 02_SensorData_to_DataGathering@3x.m4v */; };
-		085F3E231AAF68DD003A910A /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */; };
-		085F3E241AAF68DD003A910A /* consent.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5B1095B81A9F9BD5006631F5 /* consent.pdf */; };
-		085F3E251AAF68DD003A910A /* 13_RiskToPrivacy@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116661A96BC9400CEC822 /* 13_RiskToPrivacy@2x.m4v */; };
-		085F3E261AAF68DD003A910A /* sample.task in Resources */ = {isa = PBXBuildFile; fileRef = F536B93D19F5747B005A2D1C /* sample.task */; };
-		085F3E271AAF68DD003A910A /* Learn.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B975A141A112E2C00A34E42 /* Learn.json */; };
-		085F3E281AAF68DD003A910A /* APCParameters.json in Resources */ = {isa = PBXBuildFile; fileRef = F5C11A2E19DCBE95003278FF /* APCParameters.json */; };
-		085F3E291AAF68DD003A910A /* PD_MDRUPDRS.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F99031AA41AB500A2A7EB /* PD_MDRUPDRS.json */; };
-		085F3E2A1AAF68DD003A910A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */; };
-		085F3E2B1AAF68DD003A910A /* APHDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1D9D401A1BCC6B000F4AD6 /* APHDashboard.storyboard */; };
-		085F3E2C1AAF68DD003A910A /* 00_Blank_to_Activities@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116681A96BC9400CEC822 /* 00_Blank_to_Activities@3x.m4v */; };
-		085F3E2D1AAF68DD003A910A /* WithdrawStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B975A151A112E2C00A34E42 /* WithdrawStudy.json */; };
-		085F3E2E1AAF68DD003A910A /* 00_Blank_to_Activities@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */; };
-		085F3E2F1AAF68DD003A910A /* 01_Activities_to_SensorData@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116691A96BC9400CEC822 /* 01_Activities_to_SensorData@3x.m4v */; };
-		085F3E301AAF68DD003A910A /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
-		085F3E311AAF68DD003A910A /* 11_IssuesToConsider1@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166C1A96BC9400CEC822 /* 11_IssuesToConsider1@3x.m4v */; };
-		085F3E321AAF68DD003A910A /* 11_IssuesToConsider1@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116641A96BC9400CEC822 /* 11_IssuesToConsider1@2x.m4v */; };
-		085F3E331AAF68DD003A910A /* PDenrollment_survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */; };
-		085F3E341AAF68DD003A910A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
 		21CBD9E51A9FE59900031635 /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */; };
 		36EF84D51A951327008C255F /* Parkinson_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84D41A951327008C255F /* Parkinson_Tests.m */; };
 		36EF84DF1A951364008C255F /* APCMedTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84DE1A951364008C255F /* APCMedTrackerTests.m */; };
@@ -102,12 +39,6 @@
 		74B713F31AC0722E00FE2553 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74B713F71AC0722E00FE2553 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; };
 		74B713F81AC0722E00FE2553 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		74B713FC1AC0723800FE2553 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; };
-		74B713FD1AC0723800FE2553 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		74B714001AC0723800FE2553 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; };
-		74B714011AC0723800FE2553 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		74B714041AC0723800FE2553 /* APCAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; };
-		74B714051AC0723800FE2553 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9898C91A926F36003B4181 /* APHProfileExtender.m */; };
 		A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = A74615B21A98077D00323AD1 /* ConverterForPDScores.m */; };
 		A781166F1A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */; };
@@ -193,20 +124,6 @@
 			remoteGlobalIDString = F5179B2819D09128001DCCB7;
 			remoteInfo = APCAppCore;
 		};
-		743AD0E51ABE2FEE0071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = OpenResearchKit;
-		};
-		743AD0E71ABE2FF50071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F5179B2819D09128001DCCB7;
-			remoteInfo = APCAppCore;
-		};
 		74B713A31ABF04B900FE2553 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
@@ -228,13 +145,6 @@
 			remoteGlobalIDString = 80855F4F19BE258C006601C7;
 			remoteInfo = BridgeSDK;
 		};
-		74B713AD1ABF04DB00FE2553 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 80855F4F19BE258C006601C7;
-			remoteInfo = BridgeSDK;
-		};
 		74B713ED1AC0722E00FE2553 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
@@ -250,27 +160,6 @@
 			remoteInfo = OpenResearchKit;
 		};
 		74B713F91AC0722E00FE2553 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F5179B2819D09128001DCCB7;
-			remoteInfo = APCAppCore;
-		};
-		74B713FE1AC0723800FE2553 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 80855F4F19BE258C006601C7;
-			remoteInfo = BridgeSDK;
-		};
-		74B714021AC0723800FE2553 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = OpenResearchKit;
-		};
-		74B714061AC0723800FE2553 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */;
 			proxyType = 1;
@@ -308,19 +197,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		085F3E351AAF68DD003A910A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				74B714011AC0723800FE2553 /* ResearchKit.framework in Embed Frameworks */,
-				74B713FD1AC0723800FE2553 /* BridgeSDK.framework in Embed Frameworks */,
-				74B714051AC0723800FE2553 /* APCAppCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F5D1A91419D4C6FC00A03465 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,7 +213,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson_YML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		085F3E401AAF68DD003A910A /* Parkinson-YML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Parkinson-YML-Info.plist"; path = "/Users/farhan.ahmed/Projects/iOS/Apple/appleparkinson/Parkinson-YML-Info.plist"; sourceTree = "<absolute>"; };
 		21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		36EF84D01A951327008C255F /* Parkinson Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parkinson Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -434,21 +309,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		085F3E031AAF68DD003A910A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				085F3E051AAF68DD003A910A /* MapKit.framework in Frameworks */,
-				74B714041AC0723800FE2553 /* APCAppCore.framework in Frameworks */,
-				74B713FC1AC0723800FE2553 /* BridgeSDK.framework in Frameworks */,
-				085F3E061AAF68DD003A910A /* HealthKit.framework in Frameworks */,
-				085F3E091AAF68DD003A910A /* AVFoundation.framework in Frameworks */,
-				085F3E0A1AAF68DD003A910A /* Security.framework in Frameworks */,
-				74B714001AC0723800FE2553 /* ResearchKit.framework in Frameworks */,
-				085F3E0B1AAF68DD003A910A /* CoreData.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		36EF84CD1A951327008C255F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,7 +530,6 @@
 			children = (
 				CFC2D2D719A5417D00170E69 /* Parkinson.app */,
 				36EF84D01A951327008C255F /* Parkinson Tests.xctest */,
-				085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -847,31 +706,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		085F3DEC1AAF68DD003A910A /* Parkinson - YML */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 085F3E3A1AAF68DD003A910A /* Build configuration list for PBXNativeTarget "Parkinson - YML" */;
-			buildPhases = (
-				085F3DEF1AAF68DD003A910A /* Sources */,
-				085F3E031AAF68DD003A910A /* Frameworks */,
-				085F3E0D1AAF68DD003A910A /* Resources */,
-				085F3E351AAF68DD003A910A /* Embed Frameworks */,
-				085F3E391AAF68DD003A910A /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				74B713AE1ABF04DB00FE2553 /* PBXTargetDependency */,
-				743AD0E81ABE2FF50071C218 /* PBXTargetDependency */,
-				743AD0E61ABE2FEE0071C218 /* PBXTargetDependency */,
-				74B713FF1AC0723800FE2553 /* PBXTargetDependency */,
-				74B714031AC0723800FE2553 /* PBXTargetDependency */,
-				74B714071AC0723800FE2553 /* PBXTargetDependency */,
-			);
-			name = "Parkinson - YML";
-			productName = Parkinson;
-			productReference = 085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */;
-			productType = "com.apple.product-type.application";
-		};
 		36EF84CF1A951327008C255F /* Parkinson Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36EF84DD1A951327008C255F /* Build configuration list for PBXNativeTarget "Parkinson Tests" */;
@@ -926,9 +760,6 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Apple, Inc.";
 				TargetAttributes = {
-					085F3DEC1AAF68DD003A910A = {
-						DevelopmentTeam = NL3PRC58UN;
-					};
 					36EF84CF1A951327008C255F = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = CFC2D2D619A5417D00170E69;
@@ -986,7 +817,6 @@
 			targets = (
 				CFC2D2D619A5417D00170E69 /* Parkinson */,
 				36EF84CF1A951327008C255F /* Parkinson Tests */,
-				085F3DEC1AAF68DD003A910A /* Parkinson - YML */,
 			);
 		};
 /* End PBXProject section */
@@ -1051,52 +881,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		085F3E0D1AAF68DD003A910A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				085F3E0E1AAF68DD003A910A /* APHTasksAndSchedules.json in Resources */,
-				085F3E0F1AAF68DD003A910A /* HTMLContent in Resources */,
-				085F3E101AAF68DD003A910A /* PDQ8.json in Resources */,
-				085F3E111AAF68DD003A910A /* 10_PotentialBenifits@3x.m4v in Resources */,
-				085F3E121AAF68DD003A910A /* Main.storyboard in Resources */,
-				085F3E131AAF68DD003A910A /* 13_RiskToPrivacy@3x.m4v in Resources */,
-				085F3E141AAF68DD003A910A /* APHConsentSection.json in Resources */,
-				085F3E151AAF68DD003A910A /* StudyOverview.json in Resources */,
-				085F3E161AAF68DD003A910A /* PD_mythoughts.json in Resources */,
-				085F3E171AAF68DD003A910A /* APHOnboarding.storyboard in Resources */,
-				085F3E181AAF68DD003A910A /* parkinson.pem in Resources */,
-				085F3E191AAF68DD003A910A /* 01_Activities_to_SensorData@2x.m4v in Resources */,
-				085F3E1A1AAF68DD003A910A /* 10_PotentialBenifits@2x.m4v in Resources */,
-				085F3E1B1AAF68DD003A910A /* PD_feedback.json in Resources */,
-				085F3E1C1AAF68DD003A910A /* 12_IssuesToConside2@2x.m4v in Resources */,
-				085F3E1D1AAF68DD003A910A /* 02_SensorData_to_DataGathering@2x.m4v in Resources */,
-				085F3E1E1AAF68DD003A910A /* Intro.mp4 in Resources */,
-				085F3E1F1AAF68DD003A910A /* TermsAndConditions.json in Resources */,
-				085F3E201AAF68DD003A910A /* parkinson-staging.pem in Resources */,
-				085F3E211AAF68DD003A910A /* 12_IssuesToConside2@3x.m4v in Resources */,
-				085F3E221AAF68DD003A910A /* 02_SensorData_to_DataGathering@3x.m4v in Resources */,
-				085F3E231AAF68DD003A910A /* APHTasksAndSchedules_NoM7.json in Resources */,
-				085F3E241AAF68DD003A910A /* consent.pdf in Resources */,
-				085F3E251AAF68DD003A910A /* 13_RiskToPrivacy@2x.m4v in Resources */,
-				085F3E261AAF68DD003A910A /* sample.task in Resources */,
-				085F3E271AAF68DD003A910A /* Learn.json in Resources */,
-				085F3E281AAF68DD003A910A /* APCParameters.json in Resources */,
-				085F3E291AAF68DD003A910A /* PD_MDRUPDRS.json in Resources */,
-				085F3E2A1AAF68DD003A910A /* LaunchScreen.xib in Resources */,
-				085F3E2B1AAF68DD003A910A /* APHDashboard.storyboard in Resources */,
-				085F3E2C1AAF68DD003A910A /* 00_Blank_to_Activities@3x.m4v in Resources */,
-				085F3E2D1AAF68DD003A910A /* WithdrawStudy.json in Resources */,
-				085F3E2E1AAF68DD003A910A /* 00_Blank_to_Activities@2x.m4v in Resources */,
-				085F3E2F1AAF68DD003A910A /* 01_Activities_to_SensorData@3x.m4v in Resources */,
-				085F3E301AAF68DD003A910A /* LocationInfo.json in Resources */,
-				085F3E311AAF68DD003A910A /* 11_IssuesToConsider1@3x.m4v in Resources */,
-				085F3E321AAF68DD003A910A /* 11_IssuesToConsider1@2x.m4v in Resources */,
-				085F3E331AAF68DD003A910A /* PDenrollment_survey.json in Resources */,
-				085F3E341AAF68DD003A910A /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		36EF84CE1A951327008C255F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1153,19 +937,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		085F3E391AAF68DD003A910A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/AppCore/APCAppCore/APCAppCore/Resources/get_debug_ip_address.sh";
-		};
 		F53F27B91A2D383E00A1D725 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1182,32 +953,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		085F3DEF1AAF68DD003A910A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				085F3DF01AAF68DD003A910A /* APHIntervalTappingRecorderDataKeys.m in Sources */,
-				085F3DF11AAF68DD003A910A /* APHPhonationTaskViewController.m in Sources */,
-				085F3DF21AAF68DD003A910A /* APHDashboardEditViewController.m in Sources */,
-				085F3DF31AAF68DD003A910A /* APHMDRUPDRS.m in Sources */,
-				085F3DF41AAF68DD003A910A /* APHDashboardViewController.m in Sources */,
-				085F3DF51AAF68DD003A910A /* APHAppDelegate.m in Sources */,
-				085F3DF61AAF68DD003A910A /* ConverterForPDScores.m in Sources */,
-				085F3DF71AAF68DD003A910A /* APHInclusionCriteriaViewController.m in Sources */,
-				085F3DF81AAF68DD003A910A /* APHPDQ8ViewController.m in Sources */,
-				085F3DF91AAF68DD003A910A /* APHfeedback.m in Sources */,
-				085F3DFA1AAF68DD003A910A /* APHmythougths.m in Sources */,
-				085F3DFB1AAF68DD003A910A /* APHIntervalTappingTaskViewController.m in Sources */,
-				085F3DFC1AAF68DD003A910A /* APHSpatialSpanMemoryGameViewController.m in Sources */,
-				085F3DFD1AAF68DD003A910A /* APHProfileExtender.m in Sources */,
-				085F3DFE1AAF68DD003A910A /* APHMedicationTrackerTaskViewController.m in Sources */,
-				085F3DFF1AAF68DD003A910A /* APHenrollmentsurveyViewController.m in Sources */,
-				085F3E001AAF68DD003A910A /* APHWalkingTaskViewController.m in Sources */,
-				085F3E011AAF68DD003A910A /* NSString+CustomMethods.m in Sources */,
-				085F3E021AAF68DD003A910A /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		36EF84CC1A951327008C255F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1261,25 +1006,10 @@
 			name = APCAppCore;
 			targetProxy = 743AD0E11ABE2E8E0071C218 /* PBXContainerItemProxy */;
 		};
-		743AD0E61ABE2FEE0071C218 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OpenResearchKit;
-			targetProxy = 743AD0E51ABE2FEE0071C218 /* PBXContainerItemProxy */;
-		};
-		743AD0E81ABE2FF50071C218 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = APCAppCore;
-			targetProxy = 743AD0E71ABE2FF50071C218 /* PBXContainerItemProxy */;
-		};
 		74B713AC1ABF04D400FE2553 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BridgeSDK;
 			targetProxy = 74B713AB1ABF04D400FE2553 /* PBXContainerItemProxy */;
-		};
-		74B713AE1ABF04DB00FE2553 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BridgeSDK;
-			targetProxy = 74B713AD1ABF04DB00FE2553 /* PBXContainerItemProxy */;
 		};
 		74B713EE1AC0722E00FE2553 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1296,21 +1026,6 @@
 			name = APCAppCore;
 			targetProxy = 74B713F91AC0722E00FE2553 /* PBXContainerItemProxy */;
 		};
-		74B713FF1AC0723800FE2553 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BridgeSDK;
-			targetProxy = 74B713FE1AC0723800FE2553 /* PBXContainerItemProxy */;
-		};
-		74B714031AC0723800FE2553 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OpenResearchKit;
-			targetProxy = 74B714021AC0723800FE2553 /* PBXContainerItemProxy */;
-		};
-		74B714071AC0723800FE2553 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = APCAppCore;
-			targetProxy = 74B714061AC0723800FE2553 /* PBXContainerItemProxy */;
-		};
 		B1509AE01AC3615D0090F0B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PDScores;
@@ -1319,114 +1034,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		085F3E3B1AAF68DD003A910A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Parkinson/Parkinson.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/PDScores/PDScores/**",
-				);
-				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Parkinson_YML;
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Debug;
-		};
-		085F3E3C1AAF68DD003A910A /* DebugAndSendToDataVerificationServer */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Parkinson/Parkinson.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/PDScores/PDScores/**",
-				);
-				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Parkinson_YML;
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = DebugAndSendToDataVerificationServer;
-		};
-		085F3E3D1AAF68DD003A910A /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Parkinson/Parkinson.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/PDScores/PDScores/**",
-				);
-				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Parkinson_YML;
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Development;
-		};
-		085F3E3E1AAF68DD003A910A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Parkinson/Parkinson.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/PDScores/PDScores/**",
-				);
-				INFOPLIST_FILE = "Parkinson-YML-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Parkinson_YML;
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Release;
-		};
 		362454EE1A7FE267007BA94B /* DebugAndSendToDataVerificationServer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1802,17 +1409,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		085F3E3A1AAF68DD003A910A /* Build configuration list for PBXNativeTarget "Parkinson - YML" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				085F3E3B1AAF68DD003A910A /* Debug */,
-				085F3E3C1AAF68DD003A910A /* DebugAndSendToDataVerificationServer */,
-				085F3E3D1AAF68DD003A910A /* Development */,
-				085F3E3E1AAF68DD003A910A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		36EF84DD1A951327008C255F /* Build configuration list for PBXNativeTarget "Parkinson Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
