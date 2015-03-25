@@ -24,6 +24,7 @@ static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately 
 static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
 static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
 static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
+static NSString *      kEnableMicrophoneMessage                 = @"You need to enable access to microphone.";
 
 static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 
@@ -36,6 +37,8 @@ typedef  enum  _PhonationStepOrdinals
     PhonationStepOrdinalsVoiceRecordingStep,
     PhonationStepOrdinalsConclusionStep,
 }  PhonationStepOrdinals;
+
+
 
 static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
 
@@ -214,12 +217,28 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 #pragma  mark  - View Controller methods
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
+   
+   // Once you give Audio permission to the application. Your app will not show permission prompt again.
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            // Microphone enabled
+        }
+        else {
+            // Microphone disabled
+            //Inform the user that they will to enable the Microphone
+            UIAlertController * alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(kEnableMicrophoneMessage, nil) message:nil];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
+   
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
