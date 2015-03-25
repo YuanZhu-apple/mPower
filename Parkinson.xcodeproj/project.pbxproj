@@ -180,20 +180,6 @@
 			remoteGlobalIDString = B183A5951A8535D100C76870;
 			remoteInfo = OpenResearchKit;
 		};
-		743AD0D91ABE2DE40071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B16E339E1A858AFF00A1019B;
-			remoteInfo = ORKDemo;
-		};
-		743AD0DB1ABE2DE40071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B16E33B61A858AFF00A1019B;
-			remoteInfo = ORKDemoTests;
-		};
 		743AD0DD1ABE2E830071C218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
@@ -319,6 +305,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 801712DF1A897DC200CB13EB;
 			remoteInfo = PDScoresTests;
+		};
+		B1509AC71AC35F070090F0B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = OpenResearchKitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -584,8 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				743AD0D81ABE2DE40071C218 /* ResearchKit.framework */,
-				743AD0DA1ABE2DE40071C218 /* ORKDemo.app */,
-				743AD0DC1ABE2DE40071C218 /* ORKDemoTests.xctest */,
+				B1509AC81AC35F070090F0B0 /* OpenResearchKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1031,20 +1023,6 @@
 			remoteRef = 743AD0D71ABE2DE40071C218 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		743AD0DA1ABE2DE40071C218 /* ORKDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = ORKDemo.app;
-			remoteRef = 743AD0D91ABE2DE40071C218 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		743AD0DC1ABE2DE40071C218 /* ORKDemoTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ORKDemoTests.xctest;
-			remoteRef = 743AD0DB1ABE2DE40071C218 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		74B713A41ABF04B900FE2553 /* BridgeSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1071,6 +1049,13 @@
 			fileType = wrapper.cfbundle;
 			path = PDScoresTests.xctest;
 			remoteRef = A74615AE1A98071200323AD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1509AC81AC35F070090F0B0 /* OpenResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OpenResearchKitTests.xctest;
+			remoteRef = B1509AC71AC35F070090F0B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

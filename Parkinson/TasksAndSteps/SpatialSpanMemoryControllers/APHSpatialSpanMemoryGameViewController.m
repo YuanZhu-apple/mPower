@@ -157,22 +157,22 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
-        didFinishWithResult: (ORKTaskViewControllerResult) result
+        didFinishWithReason: (ORKTaskViewControllerFinishReason) result
                       error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
 
-    if (result == ORKTaskViewControllerResultFailed && error != nil)
+    if (result == ORKTaskViewControllerFinishReasonFailed && error != nil)
     {
         APCLogError2 (error);
-    } else if (result == ORKTaskViewControllerResultCompleted) {
+    } else if (result == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     
     [super taskViewController: taskViewController
-          didFinishWithResult: result
+          didFinishWithReason: result
                         error: error];
 }
 
