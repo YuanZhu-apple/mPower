@@ -40,4 +40,4 @@ Other components
 
 The shipping app also uses OpenSSL to add extra data protection, which
 has not been included in the published version of the AppCore
-project. See the AppCore repository for more details.
+project. See the [AppCore repository](https://github.com/researchkit/AppCore) for more details.
