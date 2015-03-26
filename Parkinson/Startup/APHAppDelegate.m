@@ -83,8 +83,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                    @(kAPCUserInfoItemTypeWakeUpTime),
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
-                                           kAnalyticsOnOffKey  : @(YES),
-                                           kAnalyticsFlurryAPIKeyKey : @"4T6KKBMDSYFVX95PNNWT"
                                            }];
     
     self.initializationOptions = dictionary;
