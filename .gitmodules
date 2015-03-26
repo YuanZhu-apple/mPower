@@ -7,3 +7,6 @@
 [submodule "PDScores"]
 	path = PDScores
 	url = https://github.com/Sage-Bionetworks/PDScores.git
+[submodule "ResearchKit"]
+	path = ResearchKit
+	url = git@github.com:ResearchKit/ResearchKit.git
