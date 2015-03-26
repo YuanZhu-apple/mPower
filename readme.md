@@ -1,7 +1,7 @@
 mPower App
 ==========
 
-The Parkinson app is one of the first five apps built using ResearchKit.
+The Parkinson app is one of the first five apps built using [ResearchKit](https://github.com/researchkit/ResearchKit).
 
 mPower is a unique iPhone application that uses a mix of surveys and
 tasks that activate phone sensors to collect and track health and
