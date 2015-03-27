@@ -8,10 +8,10 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFC2D2D619A5417D00170E69"
@@ -22,10 +22,10 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "36EF84CF1A951327008C255F"
@@ -40,7 +40,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      buildConfiguration = "DebugAndSendToDataVerificationServer">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFC2D2D619A5417D00170E69"
-            BuildableName = "Parkinson.app"
-            BlueprintName = "Parkinson"
+            BlueprintIdentifier = "085F3DEC1AAF68DD003A910A"
+            BuildableName = "Parkinson_YML.app"
+            BlueprintName = "Parkinson - YML"
             ReferencedContainer = "container:Parkinson.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,12 +72,13 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFC2D2D619A5417D00170E69"
-            BuildableName = "Parkinson.app"
-            BlueprintName = "Parkinson"
+            BlueprintIdentifier = "085F3DEC1AAF68DD003A910A"
+            BuildableName = "Parkinson_YML.app"
+            BlueprintName = "Parkinson - YML"
             ReferencedContainer = "container:Parkinson.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -93,20 +94,21 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "DebugAndSendToDataVerificationServer"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFC2D2D619A5417D00170E69"
-            BuildableName = "Parkinson.app"
-            BlueprintName = "Parkinson"
+            BlueprintIdentifier = "085F3DEC1AAF68DD003A910A"
+            BuildableName = "Parkinson_YML.app"
+            BlueprintName = "Parkinson - YML"
             ReferencedContainer = "container:Parkinson.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "DebugAndSendToDataVerificationServer">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
