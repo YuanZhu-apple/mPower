@@ -83,6 +83,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                    @(kAPCUserInfoItemTypeWakeUpTime),
                                                    @(kAPCUserInfoItemTypeSleepTime),
                                                    ],
+                                           kShareMessageKey : NSLocalizedString(@"Please take a look at Parkinson mPower, a research study app about Parkinson Disease.  Download it for iPhone at http://apple.co/1FO7Bsi", nil)
                                            }];
     
     self.initializationOptions = dictionary;
