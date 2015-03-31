@@ -35,6 +35,15 @@
 #import "APHAppDelegate.h"
 #import "APHProfileExtender.h"
 
+
+static NSString *const kWalkingActivitySurveyIdentifier             = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
+static NSString *const kVoiceActivitySurveyIdentifier               = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
+static NSString *const kTappingActivitySurveyIdentifier             = @"2-APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
+static NSString *const kMemoryActivitySurveyIdentifier              = @"7-APHSpatialSpanMemory-4A04F3D0-AC05-11E4-AB27-0800200C9A66";
+static NSString *const kPDSurveyIdentifier                          = @"6-PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8";
+static NSString *const kWeeklySurveyIdentifier                      = @"5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8";
+static NSString *const kMyThoughtsSurveyIdentifier                  = @"8-MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61";
+
 /*********************************************************************************/
 #pragma mark - Initializations Options
 /*********************************************************************************/
@@ -115,6 +124,26 @@ static NSInteger const kMonthOfDayObject                = 2;
     self.initializationOptions = dictionary;
     
     self.profileExtender = [[APHProfileExtender alloc] init];
+}
+
+-(void)setUpTasksReminder{
+    
+    APCTaskReminder *walkingActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kWalkingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Walking Activity", nil)];
+    APCTaskReminder *voiceActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kVoiceActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Voice Activity", nil)];
+    APCTaskReminder *tappingActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kTappingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Tapping Activity", nil)];
+    APCTaskReminder *memoryActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kMemoryActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Memory Activity", nil)];
+    APCTaskReminder *pdSurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kPDSurveyIdentifier reminderBody:NSLocalizedString(@"PD Survey", nil)];
+    APCTaskReminder *weeklySurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kWeeklySurveyIdentifier reminderBody:NSLocalizedString(@"Weekly Survey", nil)];
+    APCTaskReminder *myThoughtsSurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kMyThoughtsSurveyIdentifier reminderBody:NSLocalizedString(@"My Thoughts", nil)];
+
+    [self.tasksReminder manageTaskReminder:walkingActivityReminder];
+    [self.tasksReminder manageTaskReminder:voiceActivityReminder];
+    [self.tasksReminder manageTaskReminder:tappingActivityReminder];
+    [self.tasksReminder manageTaskReminder:memoryActivityReminder];
+    [self.tasksReminder manageTaskReminder:pdSurveyReminder];
+    [self.tasksReminder manageTaskReminder:weeklySurveyReminder];
+    [self.tasksReminder manageTaskReminder:myThoughtsSurveyReminder];
+    
 }
 
 - (void) setUpAppAppearance
