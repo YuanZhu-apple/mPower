@@ -115,7 +115,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
         }
         [step setFormItems:stepQuestions];
         
-        NSMutableArray *phonationSteps = [task.steps mutableCopy];
+        NSMutableArray  *phonationSteps = [task.steps mutableCopy];
         [phonationSteps insertObject:step atIndex:1];
         
         task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle steps:phonationSteps];
@@ -149,6 +149,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
+    } else if (result == ORKTaskViewControllerResultDiscarded) {
     } else if (result == ORKTaskViewControllerResultCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
@@ -208,7 +209,7 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 
 #pragma  mark  - View Controller methods
 
-- (void)enteredBackgroundNotificationWasReceived:(NSNotification *) __unused notification
+- (void)willResignActiveNotificationWasReceived:(NSNotification *) __unused notification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if ([self.delegate respondsToSelector:@selector(taskViewController:didFinishWithResult:error:)] == YES) {
@@ -223,9 +224,6 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
     [super viewDidLoad];
     
     self.navigationBar.topItem.title = NSLocalizedString(kTaskViewControllerTitle, nil);
-    
-    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
-    [centre addObserver:self selector:@selector(enteredBackgroundNotificationWasReceived:) name:UIApplicationDidEnterBackgroundNotification object:nil];
    
    // Once you give Audio permission to the application. Your app will not show permission prompt again.
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
@@ -245,6 +243,8 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
+    [centre addObserver:self selector:@selector(willResignActiveNotificationWasReceived:) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 @end
