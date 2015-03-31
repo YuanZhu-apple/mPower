@@ -38,8 +38,8 @@
 /*********************************************************************************/
 #pragma mark - Initializations Options
 /*********************************************************************************/
-static NSString *const kStudyIdentifier             = @"Parkinson's";
-static NSString *const kAppPrefix                   = @"parkinson";
+static NSString *const kStudyIdentifier             = @"studyname";
+static NSString *const kAppPrefix                   = @"studyname";
 static NSString* const  kConsentPropertiesFileName  = @"APHConsentSection";
 
 static NSString *const kVideoShownKey = @"VideoShown";
@@ -49,15 +49,6 @@ static NSString *const kJsonScheduleStringKey           = @"scheduleString";
 static NSString *const kJsonTasksKey                    = @"tasks";
 static NSString *const kJsonScheduleTaskIDKey           = @"taskID";
 static NSString *const kJsonSchedulesKey                = @"schedules";
-
-
-static NSString *const kPDQ8TaskIdentifier              = @"6-PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8";
-static NSInteger const kPDQ8TaskOffset                  = 2;
-static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8";
-static NSInteger const kMDSUPDRSOffset                  = 1;
-
-static NSInteger const kMonthOfDayObject                = 2;
-
 
 
 
@@ -114,6 +105,9 @@ static NSInteger const kMonthOfDayObject                = 2;
     self.initializationOptions = dictionary;
     
     self.profileExtender = [[APHProfileExtender alloc] init];
+    
+    //  Enable server bypass
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"bypassServer"];
 }
 
 - (void) setUpAppAppearance
@@ -125,8 +119,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                  @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292" : [UIColor appTertiaryBlueColor],
                                                  @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9" : [UIColor appTertiaryYellowColor],
                                                  @"1-EnrollmentSurvey-20EF83D2-E461-4C20-9024-F43FCAAAF4C3": [UIColor lightGrayColor],
-                                                 @"6-PDQ8-20EF83D2-E461-4C20-9024-F43FCAAAF4C8": [UIColor lightGrayColor],
-                                                 @"5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8": [UIColor lightGrayColor],
                                                  @"8-MyThoughts-12ffde40-1551-4b48-aae2-8fef38d61b61": [UIColor lightGrayColor],
                                                  @"9-Feedback-394348ce-ca4f-4abe-b97e-fedbfd7ffb8e": [UIColor lightGrayColor],
                                                  @"a-APHMedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3": [UIColor colorWithRed:0.933
@@ -140,6 +132,9 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                             NSFontAttributeName : [UIFont appNavBarTitleFont]
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    
+    //  Enable server bypass
+    self.dataSubstrate.parameters.bypassServer = YES;
 }
 
 - (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
@@ -249,63 +244,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     NSMutableArray              *newSchedulesArray = [NSMutableArray new];
     
     for (NSDictionary *schedule in schedules) {
-        
-        NSString *taskIdentifier = [schedule objectForKey:kJsonScheduleTaskIDKey];
-        
-        if ( [taskIdentifier isEqualToString: kPDQ8TaskIdentifier] || [taskIdentifier isEqualToString: kMDSUPDRS])
-        {
-            NSDate              *date = [NSDate date];
-            NSDateComponents    *dateComponent = [[NSDateComponents alloc] init];
-            
-
-            
-            NSDate              *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponent
-                                                                                         toDate:date
-                                                                                        options:0];
-            
-            NSCalendar          *cal = [NSCalendar currentCalendar];
-            
-            NSDateComponents    *components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
-                                                     fromDate:newDate];
-            
-            if ( [taskIdentifier isEqualToString: kPDQ8TaskIdentifier])
-            {
-                [components setDay:kPDQ8TaskOffset];
-                
-                newDate = [[NSCalendar currentCalendar] dateByAddingComponents:components
-                                                                        toDate:[NSDate date]
-                                                                       options:0];
-                
-                components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
-                                    fromDate:newDate];
-            } else if ([taskIdentifier isEqualToString: kMDSUPDRS]) {
-                [components setDay:kMDSUPDRSOffset];
-                
-                newDate = [[NSCalendar currentCalendar] dateByAddingComponents:components
-                                                                        toDate:[NSDate date]
-                                                                       options:0];
-                
-                components = [cal components:(NSCalendarUnitDay | NSCalendarUnitMonth)
-                                    fromDate:newDate];
-            }
-            
-            NSString            *scheduleString = [schedule objectForKey:kJsonScheduleStringKey];
-            NSMutableArray      *scheduleObjects = [[scheduleString componentsSeparatedByString:@" "] mutableCopy];
-            
-            
-            [scheduleObjects replaceObjectAtIndex:kMonthOfDayObject withObject:@([components day])];
-
-            
-            NSString            *newScheduleString = [scheduleObjects componentsJoinedByString:@" "];
-            
-            [schedule setValue:newScheduleString
-                        forKey:kJsonScheduleStringKey];
-            
             [newSchedulesArray addObject:schedule];
-        }
-        else {
-            [newSchedulesArray addObject:schedule];
-        }
     }
     
     [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey]
