@@ -38,6 +38,13 @@ Open the project, `Parkinson.xcodeproj`, and build and run.
 Other components
 ================
 
+Several survey instruments used in the shipping app have been
+removed from the open source version because they are not free
+to use:
+
+* [PDQ8](http://isis-innovation.com/outcome-measures/parkinsons-disease-questionnaire-pdq-39-pdq-8/) (Parkinson disease questionnaire)
+* [MDS-UPDRS](http://www.movementdisorders.org/MDS/Education/Rating-Scales.htm) (Parkinson disease rating scale)
+
 The shipping app also uses OpenSSL to add extra data protection, which
 has not been included in the published version of the AppCore
 project. See the [AppCore repository](https://github.com/researchkit/AppCore) for more details.
