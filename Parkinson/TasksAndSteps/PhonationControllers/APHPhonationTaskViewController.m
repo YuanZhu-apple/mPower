@@ -4,7 +4,7 @@
 //
 //  Copyright (c) 2014 Apple, Inc. All rights reserved.
 //
-
+ 
 #import "APHPhonationTaskViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <APCAppCore/APCAppCore.h>
@@ -12,40 +12,37 @@
 #import "APHIntervalTappingRecorderDataKeys.h"
 #import "APHAppDelegate.h"
 
-static NSString *const kTaskName                                = @"Voice";
-static NSString *const kInstruction                             = @"instruction";
-static NSString *const kInstruction1                            = @"instruction1";
-static NSString *const kMomentInDay                             = @"momentInDay";
-static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
-static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
-                                                                " this activity could be affected by the timing of your medication.";
-static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
-static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
-static NSString *const kMomentInDayFormatChoiceTookMyMedicine   = @"Just after Parkinson medication (at your best)";
-static NSString *const kMomentInDayFormatChoiceEvening          = @"Another time";
-static NSString *const kMomentInDayFormatChoiceNone             = @"I don't take Parkinson medications";
-static NSString *      kEnableMicrophoneMessage                 = @"You need to enable access to microphone.";
+static NSString *const kTaskName                              = @"Voice";
 
-static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
+    //
+    //        Step Identifiers
+    //
+static  NSString *const kInstructionStepIdentifier            = @"instruction";
+static  NSString *const kInstruction1StepIdentifier           = @"instruction1";
+static  NSString *const kCountdownStepIdentifier              = @"countdown";
+static  NSString *const kAudioStepIdentifier                  = @"audio";
+static  NSString *const kConclusionStepIdentifier             = @"conclusion";
 
+static NSString *const kMomentInDayStepIdentifier             = @"momentInDay";
 
-typedef  enum  _PhonationStepOrdinals
-{
-    PhonationStepOrdinalsIntroductionStep = 0,
-    PhonationStepOrdinalsInstructionStep,
-    PhonationStepOrdinalsCountdownStep,
-    PhonationStepOrdinalsVoiceRecordingStep,
-    PhonationStepOrdinalsConclusionStep,
-}  PhonationStepOrdinals;
+static NSString *const kMomentInDayFormat                     = @"momentInDayFormat";
 
+static NSString *const kMomentInDayFormatTitle                = @"We would like to understand how your performance on"
+                                                                 " this activity could be affected by the timing of your medication.";
 
+static NSString *const kMomentInDayFormatItemText             = @"When are you performing this Activity?";
+static NSString *const kMomentInDayFormatChoiceJustWokeUp     = @"Immediately before Parkinson medication";
+static NSString *const kMomentInDayFormatChoiceTookMyMedicine = @"Just after Parkinson medication (at your best)";
+static NSString *const kMomentInDayFormatChoiceEvening        = @"Another time";
+static NSString *const kMomentInDayFormatChoiceNone           = @"I don't take Parkinson medications";
 
-static  NSString       *kTaskViewControllerTitle   = @"Voice Activity";
+static NSString *      kEnableMicrophoneMessage               = @"You need to enable access to microphone.";
 
-static  NSTimeInterval  kGetSoundingAaahhhInterval = 10.0;
+static double kMinimumAmountOfTimeToShowSurvey                = 20.0 * 60.0;
 
-static  NSString       *kConclusionStepIdentifier  = @"conclusion";
-static  NSString       *kAudioStepIdentifier  = @"audio";
+static  NSString       *kTaskViewControllerTitle              = @"Voice Activity";
+
+static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 
 @interface APHPhonationTaskViewController ( )  <ORKTaskViewControllerDelegate>
 
@@ -72,6 +69,11 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
     
     //  Adjust apperance and text for the task
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+        //
+        //    set up initial steps, which may have an extra step injected
+        //    after the first if the user needs to say where they are in
+        //    their medication schedule
+        //
     [task.steps[0] setTitle:NSLocalizedString(kTaskName, nil)];
 
     [task.steps[1] setTitle:NSLocalizedString(kTaskName, nil)];
@@ -87,15 +89,10 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
     
     if (numberOfSecondsSinceTaskCompletion > kMinimumAmountOfTimeToShowSurvey || lastCompletionDate == nil) {
         
-        
         NSMutableArray *stepQuestions = [NSMutableArray array];
         
-        
-        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
-        
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDayStepIdentifier title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
         step.optional = NO;
-        
-        
         {
             NSArray *choices = @[
                                  NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,
@@ -116,19 +113,15 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
                                                            answerFormat:format];
             [stepQuestions addObject:item];
         }
-        
         [step setFormItems:stepQuestions];
         
-        NSMutableArray *twoFingerSteps = [task.steps mutableCopy];
+        NSMutableArray  *phonationSteps = [task.steps mutableCopy];
+        if ([phonationSteps count] >= 1) {
+            [phonationSteps insertObject:step atIndex:1];
+        }
         
-        [twoFingerSteps insertObject:step
-                             atIndex:1];
-        
-        task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
-                                                    steps:twoFingerSteps];
+        task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle steps:phonationSteps];
     }
-    
-    
     return  task;
 }
 
@@ -136,7 +129,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 - (void)taskViewController:(ORKTaskViewController *) __unused taskViewController stepViewControllerWillAppear:(ORKStepViewController *)stepViewController
 {
-    ORKStep*    step = stepViewController.step;
+    ORKStep  *step = stepViewController.step;
     
     if ([step.identifier isEqualToString: kAudioStepIdentifier])
     {
@@ -158,6 +151,7 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
     if (result == ORKTaskViewControllerResultFailed && error != nil)
     {
         APCLogError2 (error);
+    } else if (result == ORKTaskViewControllerResultDiscarded) {
     } else if (result == ORKTaskViewControllerResultCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
@@ -217,6 +211,15 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
 
 #pragma  mark  - View Controller methods
 
+- (void)willResignActiveNotificationWasReceived:(NSNotification *) __unused notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if ([self.delegate respondsToSelector:@selector(taskViewController:didFinishWithResult:error:)] == YES) {
+        [self.delegate taskViewController:self didFinishWithResult:ORKTaskViewControllerResultDiscarded error:NULL];
+    }
+}
+
+#pragma  mark  - View Controller methods
 
 - (void)viewDidLoad
 {
@@ -239,10 +242,17 @@ static  NSString       *kAudioStepIdentifier  = @"audio";
    
 }
 
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
+    [centre addObserver:self selector:@selector(willResignActiveNotificationWasReceived:) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
