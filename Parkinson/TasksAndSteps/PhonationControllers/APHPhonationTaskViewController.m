@@ -116,7 +116,9 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
         [step setFormItems:stepQuestions];
         
         NSMutableArray  *phonationSteps = [task.steps mutableCopy];
-        [phonationSteps insertObject:step atIndex:1];
+        if ([phonationSteps count] >= 1) {
+            [phonationSteps insertObject:step atIndex:1];
+        }
         
         task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle steps:phonationSteps];
     }
@@ -245,6 +247,12 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
     [super viewWillAppear:animated];
     NSNotificationCenter  *centre = [NSNotificationCenter defaultCenter];
     [centre addObserver:self selector:@selector(willResignActiveNotificationWasReceived:) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
