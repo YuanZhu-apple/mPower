@@ -744,7 +744,6 @@
 					};
 					CFC2D2D619A5417D00170E69 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = KA9Z8R6M6K;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
