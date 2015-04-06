@@ -129,6 +129,7 @@
 		BA50EA3E1A37B30D0049B835 /* parkinson-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */; };
 		BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3D1A37B30D0049B835 /* parkinson.pem */; };
 		CF2BF9931A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2BF9921A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m */; };
+		CF77D1001AD2E70900353E0B /* Parkinson-YML-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF77D0FF1AD2E70900353E0B /* Parkinson-YML-Info.plist */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
 		CFA2ABBE19A7C3C2000DB961 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBD19A7C3C2000DB961 /* Security.framework */; };
 		CFA2ABC019A7C3EB000DB961 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -353,7 +354,6 @@
 
 /* Begin PBXFileReference section */
 		085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson_YML.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		085F3E401AAF68DD003A910A /* Parkinson-YML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Parkinson-YML-Info.plist"; path = "/Users/farhan.ahmed/Projects/iOS/Apple/appleparkinson/Parkinson-YML-Info.plist"; sourceTree = "<absolute>"; };
 		21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		36EF84D01A951327008C255F /* Parkinson Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parkinson Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EF84D31A951327008C255F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -416,6 +416,7 @@
 		BA50EA3D1A37B30D0049B835 /* parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = parkinson.pem; path = Certificates/parkinson.pem; sourceTree = "<group>"; };
 		CF2BF9911A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderDataKeys.h; sourceTree = "<group>"; };
 		CF2BF9921A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingRecorderDataKeys.m; sourceTree = "<group>"; };
+		CF77D0FF1AD2E70900353E0B /* Parkinson-YML-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Parkinson-YML-Info.plist"; sourceTree = "<group>"; };
 		CFA2ABB519A7C229000DB961 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CFA2ABBD19A7C3C2000DB961 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -711,7 +712,7 @@
 				F5241CA819AEA5110098A4DF /* Parkinson.entitlements */,
 				CFC2D2DB19A5417D00170E69 /* Info.plist */,
 				CFC2D2DC19A5417D00170E69 /* main.m */,
-				085F3E401AAF68DD003A910A /* Parkinson-YML-Info.plist */,
+				CF77D0FF1AD2E70900353E0B /* Parkinson-YML-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1172,6 +1173,7 @@
 				A78116731A96BC9400CEC822 /* 11_IssuesToConsider1@2x.m4v in Resources */,
 				5A0F98FF1AA409FC00A2A7EB /* PDenrollment_survey.json in Resources */,
 				CFC2D2E819A5417D00170E69 /* Images.xcassets in Resources */,
+				CF77D1001AD2E70900353E0B /* Parkinson-YML-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
