@@ -8,7 +8,7 @@ tasks that activate phone sensors to collect and track health and
 symptoms of Parkinson Disease (PD) progression - like dexterity,
 balance or gait.
 
-Our goals are to learn about the variations of PD, to improve the way
+The goal of this app is to learn more about the variations of PD, and to improve the way
 we describe these variations and to learn how mobile devices and
 sensors can help us to measure PD and its progression to ultimately
 improve the quality of life for people with PD.
