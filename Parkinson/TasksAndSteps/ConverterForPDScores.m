@@ -33,12 +33,12 @@
  
 #import "ConverterForPDScores.h"
 
-NSString *const kTappingViewSizeKey       = @"TappingViewSize";
-NSString *const kStartDateKey           = @"startDate";
-NSString *const kEndDateKey             = @"endDate";
+NSString *const kTappingViewSizeKey   = @"TappingViewSize";
+NSString *const kStartDateKey         = @"startDate";
+NSString *const kEndDateKey           = @"endDate";
 
-NSString *const kButtonRectLeftKey        = @"ButtonRectLeft";
-NSString *const kButtonRectRightKey       = @"ButtonRectRight";
+NSString *const kButtonRectLeftKey    = @"ButtonRectLeft";
+NSString *const kButtonRectRightKey   = @"ButtonRectRight";
 NSString *const kTapTimeStampKey      = @"TapTimeStamp";
 NSString *const kTapCoordinateKey     = @"TapCoordinate";
 
@@ -46,17 +46,17 @@ NSString *const kTappedButtonNoneKey  = @"TappedButtonNone";
 NSString *const kTappedButtonLeftKey  = @"TappedButtonLeft";
 NSString *const kTappedButtonRightKey = @"TappedButtonRight";
 
-NSString *const  kTappedButtonIdKey    = @"TappedButtonId";
+NSString *const  kTappedButtonIdKey   = @"TappedButtonId";
 
-NSString *const kQuestionTypeKey        = @"questionType";
-NSString *const kQuestionTypeNameKey    = @"questionTypeName";
-NSString *const kUserInfoKey            = @"userInfo";
-NSString *const kIdentifierKey          = @"identifier";
+NSString *const kQuestionTypeKey      = @"questionType";
+NSString *const kQuestionTypeNameKey  = @"questionTypeName";
+NSString *const kUserInfoKey          = @"userInfo";
+NSString *const kIdentifierKey        = @"identifier";
 
-NSString *const kTaskRunKey             = @"taskRun";
-NSString *const kItemKey                = @"item";
+NSString *const kTaskRunKey           = @"taskRun";
+NSString *const kItemKey              = @"item";
 
-static  NSString  *kTappingSamplesKey        = @"TappingSamples";
+static  NSString  *kTappingSamplesKey = @"TappingSamples";
 
 @implementation ConverterForPDScores
 
@@ -97,11 +97,15 @@ static  NSString  *kTappingSamplesKey        = @"TappingSamples";
     return sampleResults;
 }
 
-+ (NSArray*)convertPostureOrGain:(NSURL *)url {
-    NSData *jsonData = [NSData dataWithContentsOfURL:url];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:NULL];
-    NSArray *gaitItems = [json objectForKey:@"items"];
-    return gaitItems;
++ (NSArray*)convertPostureOrGain:(NSURL *)url
+{
+    NSArray  *gaitItems = nil;
+    if (url != nil) {
+        NSData  *jsonData = [NSData dataWithContentsOfURL:url];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:NULL];
+        gaitItems = [json objectForKey:@"items"];
+    }
+    return  gaitItems;
 }
 
 @end
