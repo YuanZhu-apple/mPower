@@ -157,23 +157,21 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
-        didFinishWithResult: (ORKTaskViewControllerResult) result
-                      error: (NSError *) error
+        didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
+                      error:(nullable NSError *)error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
 
-    if (result == ORKTaskViewControllerResultFailed && error != nil)
+    if (reason == ORKTaskViewControllerFinishReasonFailed && error != nil)
     {
         APCLogError2 (error);
-    } else if (result == ORKTaskViewControllerResultCompleted) {
+    } else if (reason == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     
-    [super taskViewController: taskViewController
-          didFinishWithResult: result
-                        error: error];
+    [super taskViewController: taskViewController didFinishWithReason:reason error:error];
 }
 
 #pragma mark - Results for Dashboard
