@@ -227,15 +227,17 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController didFinishWithReason:(ORKTaskViewControllerFinishReason)result error:(NSError *)error {
+- (void)taskViewController:(ORKTaskViewController *)taskViewController
+       didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
+                     error:(nullable NSError *) __unused error {
     
-    if (result == ORKTaskViewControllerFinishReasonCompleted) {
+    if (reason == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     
-    [super taskViewController:taskViewController didFinishWithReason:result error:error];
+    [super taskViewController:taskViewController didFinishWithReason:reason error:error];
 }
 
 #pragma  mark  -  View Controller Methods
