@@ -181,20 +181,6 @@
 			remoteGlobalIDString = B183A5951A8535D100C76870;
 			remoteInfo = OpenResearchKit;
 		};
-		743AD0D91ABE2DE40071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B16E339E1A858AFF00A1019B;
-			remoteInfo = ORKDemo;
-		};
-		743AD0DB1ABE2DE40071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B16E33B61A858AFF00A1019B;
-			remoteInfo = ORKDemoTests;
-		};
 		743AD0DD1ABE2E830071C218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
@@ -236,6 +222,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F5179B2819D09128001DCCB7;
 			remoteInfo = APCAppCore;
+		};
+		7496F79E1ADD333300D428FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
 		};
 		74B713A31ABF04B900FE2553 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -585,8 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				743AD0D81ABE2DE40071C218 /* ResearchKit.framework */,
-				743AD0DA1ABE2DE40071C218 /* ORKDemo.app */,
-				743AD0DC1ABE2DE40071C218 /* ORKDemoTests.xctest */,
+				7496F79F1ADD333300D428FC /* ResearchKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1032,18 +1024,11 @@
 			remoteRef = 743AD0D71ABE2DE40071C218 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		743AD0DA1ABE2DE40071C218 /* ORKDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = ORKDemo.app;
-			remoteRef = 743AD0D91ABE2DE40071C218 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		743AD0DC1ABE2DE40071C218 /* ORKDemoTests.xctest */ = {
+		7496F79F1ADD333300D428FC /* ResearchKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ORKDemoTests.xctest;
-			remoteRef = 743AD0DB1ABE2DE40071C218 /* PBXContainerItemProxy */;
+			path = ResearchKitTests.xctest;
+			remoteRef = 7496F79E1ADD333300D428FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		74B713A41ABF04B900FE2553 /* BridgeSDK.framework */ = {
@@ -1542,9 +1527,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1566,9 +1548,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1590,9 +1569,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1614,9 +1590,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(PROJECT_DIR)/AppCore/APCAppCore",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/ResearchKit",
-					"$(PROJECT_DIR)/AppCore/APCAppCore/BridgeSDK",
 				);
 				INFOPLIST_FILE = "Parkinson Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
