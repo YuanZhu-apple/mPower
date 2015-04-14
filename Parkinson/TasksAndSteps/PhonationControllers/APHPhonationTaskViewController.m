@@ -169,23 +169,23 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
-        didFinishWithResult: (ORKTaskViewControllerResult) result
+        didFinishWithReason: (ORKTaskViewControllerFinishReason)reason
                       error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
     
-    if (result == ORKTaskViewControllerResultFailed && error != nil)
+    if (reason  == ORKTaskViewControllerFinishReasonFailed && error != nil)
     {
         APCLogError2 (error);
-    } else if (result == ORKTaskViewControllerResultDiscarded) {
-    } else if (result == ORKTaskViewControllerResultCompleted) {
+    } else if (reason  == ORKTaskViewControllerFinishReasonDiscarded) {
+    } else if (reason  == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     
     [super taskViewController: taskViewController
-          didFinishWithResult: result
+          didFinishWithReason: reason
                         error: error];
 }
 
@@ -240,8 +240,8 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 - (void)willResignActiveNotificationWasReceived:(NSNotification *) __unused notification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if ([self.delegate respondsToSelector:@selector(taskViewController:didFinishWithResult:error:)] == YES) {
-        [self.delegate taskViewController:self didFinishWithResult:ORKTaskViewControllerResultDiscarded error:NULL];
+    if ([self.delegate respondsToSelector:@selector(taskViewController:didFinishWithReason:error:)] == YES) {
+        [self.delegate taskViewController:self didFinishWithReason:ORKTaskViewControllerFinishReasonDiscarded error:NULL];
     }
 }
 

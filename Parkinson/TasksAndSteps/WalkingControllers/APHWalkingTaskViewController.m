@@ -270,20 +270,20 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
-        didFinishWithResult: (ORKTaskViewControllerResult) result
+        didFinishWithReason: (ORKTaskViewControllerFinishReason)reason
                       error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
 
-    if (result == ORKTaskViewControllerResultFailed && error != nil) {
+    if (reason == ORKTaskViewControllerFinishReasonFailed && error != nil) {
         APCLogError2 (error);
-    } else if (result == ORKTaskViewControllerResultCompleted) {
+    } else if (reason == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     [super taskViewController: taskViewController
-          didFinishWithResult: result
+          didFinishWithReason: reason
                         error: error];
 }
 
