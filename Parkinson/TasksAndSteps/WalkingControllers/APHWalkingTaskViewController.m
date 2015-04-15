@@ -70,11 +70,13 @@ static  NSTimeInterval  kStandStillDuration                   = 30.0;
     //    Walking Activity Step Identifier Keys
     //        depending on Research Kit not to change the Identifier Keys
     //
-static  NSString       *kCountdownStepIdentifier              = @"countdown";
-static  NSString       *kWalkingOutboundStepIdentifier        = @"walking.outbound";
-static  NSString       *kWalkingReturnStepIdentifier          = @"walking.return";
-static  NSString       *kWalkingRestStepIdentifier            = @"walking.rest";
-static  NSString       *kConclusionStepIdentifier             = @"conclusion";
+static  NSString * const kInformationalStepIdentifier         = @"instruction";
+static  NSString * const kInstructionalStepIdentifier         = @"instruction1";
+static  NSString * const kCountdownStepIdentifier             = @"countdown";
+static  NSString * const kWalkingOutboundStepIdentifier       = @"walking.outbound";
+static  NSString * const kWalkingReturnStepIdentifier         = @"walking.return";
+static  NSString * const kWalkingRestStepIdentifier           = @"walking.rest";
+static  NSString * const kConclusionStepIdentifier            = @"conclusion";
 
 static  NSString       *kScoreForwardGainRecordsKey           = @"ScoreForwardGainRecords";
 static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRecords";
@@ -102,7 +104,13 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
         //
     [task.steps[0] setText:@"This activity measures your gait (walk) and balance, which can be affected by Parkinson disease."];
     [task.steps[0] setDetailText:@"Please do not continue if you cannot safely walk unassisted."];
-
+    
+    NSString  *titleString = [NSString stringWithFormat:@"Turn around and stand still for %.0f seconds", kStandStillDuration];
+    NSString  *spokenInstructionString = [NSString stringWithFormat:@"Turn around and stand still for %.0f seconds", kStandStillDuration];
+    
+    [task.steps[5] setTitle:NSLocalizedString(titleString, nil)];
+    [task.steps[5] setSpokenInstruction:NSLocalizedString(spokenInstructionString, nil)];
+    
     [task.steps[6] setTitle:NSLocalizedString(@"Thank You!", nil)];
     [task.steps[6] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
     
