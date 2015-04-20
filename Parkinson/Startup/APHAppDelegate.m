@@ -232,18 +232,29 @@ static NSInteger const kMonthOfDayObject                = 2;
         self.passiveHealthKitCollector = [[APCNewPassiveDataCollector alloc] init];
     }
     
-    APCDisplacementTrackingCollector* locationCollector = [[APCDisplacementTrackingCollector alloc] initWithIdentifier:@"locationCollector" deferredUpdatesTimeout:60.0 * 60.0];
-    NSArray* locationColumns = @[@"timestamp",@"distanceFromPreviousLocation",@"distanceUnit",@"horizontalAccuracy",@"verticalAccuracy"];
-    APCPassiveDisplacementTrackingDataUploader* displacementSinker = [[APCPassiveDisplacementTrackingDataUploader alloc] initWithIdentifier:@"locationTracker"
-                                                                                                                                columnNames:locationColumns
-                                                                                                                         operationQueueName:@"APCDisplacement Tracker Sink" andDataProcessor:nil];
-
-    
+    APCDisplacementTrackingCollector*           locationCollector   = [[APCDisplacementTrackingCollector alloc]
+                                                                       initWithIdentifier:@"locationCollector"
+                                                                       deferredUpdatesTimeout:60.0 * 60.0];
+    NSArray*                                    locationColumns     = @[@"timestamp",
+                                                                        @"distanceFromPreviousLocation",
+                                                                        @"distanceUnit",
+                                                                        
+                                                                        @"bearing",
+                                                                        @"bearingUnit",
+                                                                        @"magnitude",
+                                                                        @"direction",
+                                                                        @"speed",
+                                                                        
+                                                                        @"horizontalAccuracy",
+                                                                        @"verticalAccuracy"];
+    APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
+                                                                       initWithIdentifier:@"locationTracker"
+                                                                       columnNames:locationColumns
+                                                                       operationQueueName:@"APCDisplacement Tracker Sink"
+                                                                       andDataProcessor:nil];
     [locationCollector setReceiver:displacementSinker];
     [locationCollector setDelegate:displacementSinker];
-    
     [locationCollector start];
-    
     [self.passiveHealthKitCollector addDataSink:locationCollector];
 }
 
