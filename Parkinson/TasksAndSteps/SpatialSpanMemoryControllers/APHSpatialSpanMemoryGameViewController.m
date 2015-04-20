@@ -47,14 +47,17 @@ static  NSInteger       kMinimumSpan                  =  2;
 static  NSInteger       kMaximumSpan                  =  15;
 static  NSTimeInterval  kPlaySpeed                    = 1.0;
 static  NSInteger       kMaximumTests                 = 5;
-static  NSInteger       kMaxConsecutiveFailures       =  3;
+static  NSInteger       kMaxConsecutiveFailures       = 3;
 static  NSString       *kCustomTargetPluralName       = nil;
 static  BOOL            kRequiresReversal             = NO;
 
 static NSString *const kMomentInDay                             = @"momentInDay";
+
 static NSString *const kMomentInDayFormat                       = @"momentInDayFormat";
+
 static NSString *const kMomentInDayFormatTitle                  = @"We would like to understand how your performance on"
                                                                 " this activity could be affected by the timing of your medication.";
+
 static NSString *const kInstruction1                            = @"instruction1";
 static NSString *const kMomentInDayFormatItemText               = @"When are you performing this Activity?";
 static NSString *const kMomentInDayFormatChoiceJustWokeUp       = @"Immediately before Parkinson medication";
@@ -136,7 +139,6 @@ static double kMinimumAmountOfTimeToShowSurvey = 20.0 * 60.0;
         task = [[ORKOrderedTask alloc] initWithIdentifier:kTaskViewControllerTitle
                                                     steps:spatialSteps];
     }
-    
     return  task;
 }
 
