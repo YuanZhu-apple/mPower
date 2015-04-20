@@ -221,14 +221,24 @@ static NSInteger const kMonthOfDayObject                = 2;
     //
     // Set up location tracker
     //
-    APCCoreLocationTracker * locationTracker = [[APCCoreLocationTracker alloc] initWithIdentifier: @"locationTracker"
-                                                                           deferredUpdatesTimeout: 60.0 * 60.0
-                                                                            andHomeLocationStatus: APCPassiveLocationTrackingHomeLocationUnavailable];
-    
-    if (locationTracker != nil)
+    if (!self.passiveHealthKitCollector)
     {
-        [self.passiveDataCollector addTracker: locationTracker];
+        self.passiveHealthKitCollector = [[APCNewPassiveDataCollector alloc] init];
     }
+    
+    APCDisplacementTrackingCollector* locationCollector = [[APCDisplacementTrackingCollector alloc] initWithIdentifier:@"locationCollector" deferredUpdatesTimeout:60.0 * 60.0];
+    NSArray* locationColumns = @[@"timestamp",@"distanceFromPreviousLocation",@"distanceUnit",@"horizontalAccuracy",@"verticalAccuracy"];
+    APCPassiveDisplacementTrackingDataUploader* displacementSinker = [[APCPassiveDisplacementTrackingDataUploader alloc] initWithIdentifier:@"locationTracker"
+                                                                                                                                columnNames:locationColumns
+                                                                                                                         operationQueueName:@"APCDisplacement Tracker Sink" andDataProcessor:nil];
+
+    
+    [locationCollector setReceiver:displacementSinker];
+    [locationCollector setDelegate:displacementSinker];
+    
+    [locationCollector start];
+    
+    [self.passiveHealthKitCollector addDataSink:locationCollector];
 }
 
 /*********************************************************************************/
