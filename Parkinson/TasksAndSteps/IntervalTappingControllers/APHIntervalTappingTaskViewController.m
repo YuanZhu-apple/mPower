@@ -227,10 +227,8 @@ static NSString        *kConclusionStepIdentifier     = @"conclusion";
     self.tappingStepOrdinal = self.tappingStepOrdinal + 1;
 }
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController
-       didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
-                     error:(nullable NSError *) __unused error {
-    
+- (void)taskViewController:(ORKTaskViewController *)taskViewController didFinishWithReason:(ORKTaskViewControllerFinishReason)reason error:(nullable NSError *)error
+{
     if (reason == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];

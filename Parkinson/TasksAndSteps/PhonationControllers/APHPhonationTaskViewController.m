@@ -169,24 +169,24 @@ static  NSTimeInterval  kGetSoundingAaahhhInterval            = 10.0;
 }
 
 - (void) taskViewController: (ORKTaskViewController *) taskViewController
-        didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
-                      error:(nullable NSError *)error
+        didFinishWithReason: (ORKTaskViewControllerFinishReason)reason
+                      error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
     
-    if (reason == ORKTaskViewControllerFinishReasonFailed && error != nil)
+    if (reason  == ORKTaskViewControllerFinishReasonFailed && error != nil)
     {
         APCLogError2 (error);
-    } else if (reason == ORKTaskViewControllerFinishReasonDiscarded) {
-    } else if (reason == ORKTaskViewControllerFinishReasonCompleted) {
+    } else if (reason  == ORKTaskViewControllerFinishReasonDiscarded) {
+    } else if (reason  == ORKTaskViewControllerFinishReasonCompleted) {
         APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
         appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
         [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
     
     [super taskViewController: taskViewController
-          didFinishWithReason:reason
-                        error:error];
+          didFinishWithReason: reason
+                        error: error];
 }
 
 #pragma  mark  -  Results For Dashboard
