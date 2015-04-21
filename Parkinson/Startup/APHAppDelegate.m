@@ -64,13 +64,7 @@ static NSString *const kPDQ8TaskIdentifier              = @"6-PDQ8-20EF83D2-E461
 static NSInteger const kPDQ8TaskOffset                  = 2;
 static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-E461-4C20-9024-F43FCAAAF4C8";
 static NSInteger const kMDSUPDRSOffset                  = 1;
-
 static NSInteger const kMonthOfDayObject                = 2;
-
-
-
-
-
 
 @interface APHAppDelegate ()
 @property (nonatomic, strong) APHProfileExtender* profileExtender;
@@ -212,8 +206,7 @@ static NSInteger const kMonthOfDayObject                = 2;
 {
     NSArray *allSetBlockOfText = nil;
     
-    NSString *activitiesAdditionalText = NSLocalizedString(@"Please perform the activites each day when you are at your lowest before you take your Parkinson medications, after your medications take effect, and then a third time during the day.",
-                                                 @"Please perform the activites each day when you are at your lowest before you take your Parkinson medications, after your medications take effect, and then a third time during the day.");
+    NSString *activitiesAdditionalText = NSLocalizedString(@"Please perform the activites each day when you are at your lowest before you take your Parkinson medications, after your medications take effect, and then a third time during the day.", nil);
     allSetBlockOfText = @[@{kAllSetActivitiesTextAdditional: activitiesAdditionalText}];
     
     return allSetBlockOfText;
@@ -238,13 +231,12 @@ static NSInteger const kMonthOfDayObject                = 2;
     NSArray*                                    locationColumns     = @[@"timestamp",
                                                                         @"distanceFromPreviousLocation",
                                                                         @"distanceUnit",
-                                                                        
-                                                                        @"bearing",
-                                                                        @"bearingUnit",
                                                                         @"magnitude",
                                                                         @"direction",
+                                                                        @"directionUnit",
                                                                         @"speed",
-                                                                        
+                                                                        @"speedUnit",
+                                                                        @"floor",
                                                                         @"horizontalAccuracy",
                                                                         @"verticalAccuracy"];
     APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
