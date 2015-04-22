@@ -231,15 +231,17 @@ static NSInteger const kMonthOfDayObject                = 2;
     NSArray*                                    locationColumns     = @[@"timestamp",
                                                                         @"distanceFromPreviousLocation",
                                                                         @"distanceUnit",
-                                                                        @"magnitude",
                                                                         @"direction",
                                                                         @"directionUnit",
                                                                         @"speed",
                                                                         @"speedUnit",
                                                                         @"floor",
                                                                         @"altitude",
+                                                                        @"altitudeUnit",
                                                                         @"horizontalAccuracy",
-                                                                        @"verticalAccuracy"];
+                                                                        @"horizontalAccuracyUnit",
+                                                                        @"verticalAccuracy",
+                                                                        @"verticalAccuracyUnit"];
     APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
                                                                        initWithIdentifier:@"locationTracker"
                                                                        columnNames:locationColumns
