@@ -237,6 +237,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                                         @"speed",
                                                                         @"speedUnit",
                                                                         @"floor",
+                                                                        @"altitude",
                                                                         @"horizontalAccuracy",
                                                                         @"verticalAccuracy"];
     APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
