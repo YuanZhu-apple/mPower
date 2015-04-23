@@ -176,6 +176,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                             NSFontAttributeName : [UIFont appNavBarTitleFont]
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    self.dataSubstrate.parameters.hideExampleConsent = YES;
 }
 
 - (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
