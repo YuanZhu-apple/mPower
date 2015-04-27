@@ -90,6 +90,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
 {
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = NSLocalizedString(@"Medication Tracker Setup", nil);
+    cell.detailTextLabel.text = @"";
     cell.selectionStyle = self.isEditing ? UITableViewCellSelectionStyleGray : UITableViewCellSelectionStyleNone;
     
     return cell;
