@@ -101,6 +101,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                            kStudyIdentifierKey                  : kStudyIdentifier,
                                            kAppPrefixKey                        : kAppPrefix,
                                            kBridgeEnvironmentKey                : @(self.environment),
+                                           kNewsFeedTabKey                      : @(YES),
                                            kHKReadPermissionsKey                : @[
                                                    HKQuantityTypeIdentifierBodyMass,
                                                    HKQuantityTypeIdentifierHeight,
