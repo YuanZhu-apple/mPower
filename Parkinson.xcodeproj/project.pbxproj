@@ -26,7 +26,6 @@
 		085F3E001AAF68DD003A910A /* APHWalkingTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14F1819CC9BC900650FBB /* APHWalkingTaskViewController.m */; };
 		085F3E011AAF68DD003A910A /* NSString+CustomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D14ED419CC9BA700650FBB /* NSString+CustomMethods.m */; };
 		085F3E021AAF68DD003A910A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2D2DC19A5417D00170E69 /* main.m */; };
-		085F3E041AAF68DD003A910A /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74615AD1A98071200323AD1 /* libPDScores.a */; };
 		085F3E051AAF68DD003A910A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B18CEF61A2D3A56001A905E /* MapKit.framework */; };
 		085F3E061AAF68DD003A910A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABB519A7C229000DB961 /* HealthKit.framework */; };
 		085F3E091AAF68DD003A910A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBF19A7C3EB000DB961 /* AVFoundation.framework */; };
@@ -96,7 +95,11 @@
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
 		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
+		6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
+		6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
 		743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
+		744996AC1AF000D000E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
+		744996AD1AF000D800E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
 		74B713EB1AC0722D00FE2553 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; };
 		74B713EC1AC0722D00FE2553 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 74B713A41ABF04B900FE2553 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74B713F21AC0722E00FE2553 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0D81ABE2DE40071C218 /* ResearchKit.framework */; };
@@ -111,7 +114,6 @@
 		74B714051AC0723800FE2553 /* APCAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 743AD0CC1ABE2DE40071C218 /* APCAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9898C91A926F36003B4181 /* APHProfileExtender.m */; };
 		A74615B31A98077D00323AD1 /* ConverterForPDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = A74615B21A98077D00323AD1 /* ConverterForPDScores.m */; };
-		A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74615AD1A98071200323AD1 /* libPDScores.a */; };
 		A781166F1A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */; };
 		A78116701A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116611A96BC9400CEC822 /* 01_Activities_to_SensorData@2x.m4v */; };
 		A78116711A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116621A96BC9400CEC822 /* 02_SensorData_to_DataGathering@2x.m4v */; };
@@ -181,13 +183,6 @@
 			remoteGlobalIDString = B183A5951A8535D100C76870;
 			remoteInfo = OpenResearchKit;
 		};
-		743AD0DD1ABE2E830071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 801712D31A897DC200CB13EB;
-			remoteInfo = PDScores;
-		};
 		743AD0DF1ABE2E880071C218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
@@ -202,13 +197,6 @@
 			remoteGlobalIDString = F5179B2819D09128001DCCB7;
 			remoteInfo = APCAppCore;
 		};
-		743AD0E31ABE2FE90071C218 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 801712D31A897DC200CB13EB;
-			remoteInfo = PDScores;
-		};
 		743AD0E51ABE2FEE0071C218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */;
@@ -222,6 +210,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = F5179B2819D09128001DCCB7;
 			remoteInfo = APCAppCore;
+		};
+		744996A81AF0009000E0D7E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801712D41A897DC200CB13EB;
+			remoteInfo = PDScores;
+		};
+		744996AA1AF0009000E0D7E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801712DF1A897DC200CB13EB;
+			remoteInfo = PDScoresTests;
+		};
+		744996AE1AF000EF00E0D7E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 801712D31A897DC200CB13EB;
+			remoteInfo = PDScores;
+		};
+		744996B01AF0012700E0D7E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 801712D31A897DC200CB13EB;
+			remoteInfo = PDScores;
 		};
 		7496F79E1ADD333300D428FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -300,20 +316,6 @@
 			remoteGlobalIDString = F5179B2819D09128001DCCB7;
 			remoteInfo = APCAppCore;
 		};
-		A74615AC1A98071200323AD1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 801712D41A897DC200CB13EB;
-			remoteInfo = PDScores;
-		};
-		A74615AE1A98071200323AD1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 801712DF1A897DC200CB13EB;
-			remoteInfo = PDScoresTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -382,13 +384,15 @@
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
 		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
+		6C86453A1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APHAppDelegate+APHMigration.h"; sourceTree = "<group>"; };
+		6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APHAppDelegate+APHMigration.m"; sourceTree = "<group>"; };
 		743BFFFE1A90E12800438241 /* APHConsentSection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHConsentSection.json; sourceTree = "<group>"; };
+		744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDScores.xcodeproj; path = PDScores/PDScores/PDScores.xcodeproj; sourceTree = SOURCE_ROOT; };
 		747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppCore.xcodeproj; path = ../AppCore/APCAppCore/APCAppCore.xcodeproj; sourceTree = "<group>"; };
 		747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../researchkit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeSDK.xcodeproj; path = BridgeSDK/BridgeSDK.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7B9898C81A926F36003B4181 /* APHProfileExtender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHProfileExtender.h; sourceTree = "<group>"; };
 		7B9898C91A926F36003B4181 /* APHProfileExtender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHProfileExtender.m; sourceTree = "<group>"; };
-		A74615A61A98071200323AD1 /* PDScores.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDScores.xcodeproj; path = PDScores/PDScores.xcodeproj; sourceTree = "<group>"; };
 		A74615B11A98077D00323AD1 /* ConverterForPDScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterForPDScores.h; sourceTree = "<group>"; };
 		A74615B21A98077D00323AD1 /* ConverterForPDScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterForPDScores.m; sourceTree = "<group>"; };
 		A78116601A96BC9400CEC822 /* 00_Blank_to_Activities@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "00_Blank_to_Activities@2x.m4v"; sourceTree = "<group>"; };
@@ -447,7 +451,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				085F3E041AAF68DD003A910A /* libPDScores.a in Frameworks */,
+				744996AC1AF000D000E0D7E7 /* libPDScores.a in Frameworks */,
 				085F3E051AAF68DD003A910A /* MapKit.framework in Frameworks */,
 				74B714041AC0723800FE2553 /* APCAppCore.framework in Frameworks */,
 				74B713FC1AC0723800FE2553 /* BridgeSDK.framework in Frameworks */,
@@ -470,7 +474,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A74615B51A9807E300323AD1 /* libPDScores.a in Frameworks */,
+				744996AD1AF000D800E0D7E7 /* libPDScores.a in Frameworks */,
 				5B18CEF71A2D3A57001A905E /* MapKit.framework in Frameworks */,
 				74B713F71AC0722E00FE2553 /* APCAppCore.framework in Frameworks */,
 				74B713EB1AC0722D00FE2553 /* BridgeSDK.framework in Frameworks */,
@@ -565,6 +569,15 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		6C8645471AF3FD9500B46C49 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				6C86453A1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.h */,
+				6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */,
+			);
+			name = Migration;
+			sourceTree = "<group>";
+		};
 		743AD0C71ABE2DE40071C218 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,20 +596,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		744996A41AF0009000E0D7E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				744996A91AF0009000E0D7E7 /* libPDScores.a */,
+				744996AB1AF0009000E0D7E7 /* PDScoresTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		74B713991ABF04B900FE2553 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				74B713A41ABF04B900FE2553 /* BridgeSDK.framework */,
 				74B713A61ABF04B900FE2553 /* BridgeSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A74615A71A98071200323AD1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A74615AD1A98071200323AD1 /* libPDScores.a */,
-				A74615AF1A98071200323AD1 /* PDScoresTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -650,6 +663,7 @@
 		CFA2ABB419A7C1C1000DB961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */,
 				74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */,
 				747F5B721ABE2D3E00197B68 /* ResearchKit.xcodeproj */,
 				747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */,
@@ -782,7 +796,6 @@
 		F5D14ED119CC9BA700650FBB /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				A74615A61A98071200323AD1 /* PDScores.xcodeproj */,
 				F5D14ED219CC9BA700650FBB /* Categories */,
 			);
 			path = Library;
@@ -848,6 +861,7 @@
 				F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */,
 				F5D14F3719CC9C0000650FBB /* APHAppDelegate.h */,
 				F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */,
+				6C8645471AF3FD9500B46C49 /* Migration */,
 				7B9898C81A926F36003B4181 /* APHProfileExtender.h */,
 				7B9898C91A926F36003B4181 /* APHProfileExtender.m */,
 			);
@@ -870,10 +884,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				744996B11AF0012700E0D7E7 /* PBXTargetDependency */,
 				74B713AE1ABF04DB00FE2553 /* PBXTargetDependency */,
 				743AD0E81ABE2FF50071C218 /* PBXTargetDependency */,
 				743AD0E61ABE2FEE0071C218 /* PBXTargetDependency */,
-				743AD0E41ABE2FE90071C218 /* PBXTargetDependency */,
 				74B713FF1AC0723800FE2553 /* PBXTargetDependency */,
 				74B714031AC0723800FE2553 /* PBXTargetDependency */,
 				74B714071AC0723800FE2553 /* PBXTargetDependency */,
@@ -914,10 +928,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				744996AF1AF000EF00E0D7E7 /* PBXTargetDependency */,
 				74B713AC1ABF04D400FE2553 /* PBXTargetDependency */,
 				743AD0E21ABE2E8E0071C218 /* PBXTargetDependency */,
 				743AD0E01ABE2E880071C218 /* PBXTargetDependency */,
-				743AD0DE1ABE2E830071C218 /* PBXTargetDependency */,
 				74B713EE1AC0722E00FE2553 /* PBXTargetDependency */,
 				74B713F51AC0722E00FE2553 /* PBXTargetDependency */,
 				74B713FA1AC0722E00FE2553 /* PBXTargetDependency */,
@@ -985,8 +999,8 @@
 					ProjectRef = 74B713981ABF04B900FE2553 /* BridgeSDK.xcodeproj */;
 				},
 				{
-					ProductGroup = A74615A71A98071200323AD1 /* Products */;
-					ProjectRef = A74615A61A98071200323AD1 /* PDScores.xcodeproj */;
+					ProductGroup = 744996A41AF0009000E0D7E7 /* Products */;
+					ProjectRef = 744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */;
 				},
 				{
 					ProductGroup = 743AD0D11ABE2DE40071C218 /* Products */;
@@ -1024,6 +1038,20 @@
 			remoteRef = 743AD0D71ABE2DE40071C218 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		744996A91AF0009000E0D7E7 /* libPDScores.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPDScores.a;
+			remoteRef = 744996A81AF0009000E0D7E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		744996AB1AF0009000E0D7E7 /* PDScoresTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PDScoresTests.xctest;
+			remoteRef = 744996AA1AF0009000E0D7E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7496F79F1ADD333300D428FC /* ResearchKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1043,20 +1071,6 @@
 			fileType = wrapper.cfbundle;
 			path = BridgeSDKTests.xctest;
 			remoteRef = 74B713A51ABF04B900FE2553 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A74615AD1A98071200323AD1 /* libPDScores.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPDScores.a;
-			remoteRef = A74615AC1A98071200323AD1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A74615AF1A98071200323AD1 /* PDScoresTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PDScoresTests.xctest;
-			remoteRef = A74615AE1A98071200323AD1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1213,6 +1227,7 @@
 				085F3DFC1AAF68DD003A910A /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				085F3DFD1AAF68DD003A910A /* APHProfileExtender.m in Sources */,
 				085F3DFE1AAF68DD003A910A /* APHMedicationTrackerTaskViewController.m in Sources */,
+				6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				085F3DFF1AAF68DD003A910A /* APHenrollmentsurveyViewController.m in Sources */,
 				085F3E001AAF68DD003A910A /* APHWalkingTaskViewController.m in Sources */,
 				085F3E011AAF68DD003A910A /* NSString+CustomMethods.m in Sources */,
@@ -1248,6 +1263,7 @@
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
 				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
+				6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
@@ -1263,11 +1279,6 @@
 			target = CFC2D2D619A5417D00170E69 /* Parkinson */;
 			targetProxy = 36EF84D61A951327008C255F /* PBXContainerItemProxy */;
 		};
-		743AD0DE1ABE2E830071C218 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PDScores;
-			targetProxy = 743AD0DD1ABE2E830071C218 /* PBXContainerItemProxy */;
-		};
 		743AD0E01ABE2E880071C218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OpenResearchKit;
@@ -1278,11 +1289,6 @@
 			name = APCAppCore;
 			targetProxy = 743AD0E11ABE2E8E0071C218 /* PBXContainerItemProxy */;
 		};
-		743AD0E41ABE2FE90071C218 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PDScores;
-			targetProxy = 743AD0E31ABE2FE90071C218 /* PBXContainerItemProxy */;
-		};
 		743AD0E61ABE2FEE0071C218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OpenResearchKit;
@@ -1292,6 +1298,16 @@
 			isa = PBXTargetDependency;
 			name = APCAppCore;
 			targetProxy = 743AD0E71ABE2FF50071C218 /* PBXContainerItemProxy */;
+		};
+		744996AF1AF000EF00E0D7E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDScores;
+			targetProxy = 744996AE1AF000EF00E0D7E7 /* PBXContainerItemProxy */;
+		};
+		744996B11AF0012700E0D7E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDScores;
+			targetProxy = 744996B01AF0012700E0D7E7 /* PBXContainerItemProxy */;
 		};
 		74B713AC1ABF04D400FE2553 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

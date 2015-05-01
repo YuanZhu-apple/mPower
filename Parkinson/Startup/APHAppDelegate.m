@@ -34,6 +34,7 @@
 @import APCAppCore;
 #import "APHAppDelegate.h"
 #import "APHProfileExtender.h"
+#import "APHAppDelegate+APHMigration.h"
 
 static NSString *const kWalkingActivitySurveyIdentifier             = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
 static NSString *const kVoiceActivitySurveyIdentifier               = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
@@ -135,6 +136,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     APCTaskReminder *weeklySurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kWeeklySurveyIdentifier reminderBody:NSLocalizedString(@"Weekly Survey", nil)];
     APCTaskReminder *myThoughtsSurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kMyThoughtsSurveyIdentifier reminderBody:NSLocalizedString(@"My Thoughts", nil)];
 
+    [self.tasksReminder.reminders removeAllObjects];
     [self.tasksReminder manageTaskReminder:walkingActivityReminder];
     [self.tasksReminder manageTaskReminder:voiceActivityReminder];
     [self.tasksReminder manageTaskReminder:tappingActivityReminder];
@@ -142,6 +144,48 @@ static NSInteger const kMonthOfDayObject                = 2;
     [self.tasksReminder manageTaskReminder:pdSurveyReminder];
     [self.tasksReminder manageTaskReminder:weeklySurveyReminder];
     [self.tasksReminder manageTaskReminder:myThoughtsSurveyReminder];
+    
+    if ([self doesPersisteStoreExist] == NO)
+    {
+        APCLogEvent(@"This app is being launched for the first time. Turn all reminders on");
+        for (APCTaskReminder *reminder in self.tasksReminder.reminders) {
+            [[NSUserDefaults standardUserDefaults]setObject:reminder.reminderBody forKey:reminder.reminderIdentifier];
+        }
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    
+}
+
+- (void)performMigrationAfterDataSubstrateFrom:(NSInteger) __unused previousVersion currentVersion:(NSInteger) __unused currentVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSError *migrationError = nil;
+    
+    if (self.doesPersisteStoreExist == NO)
+    {
+        APCLogEvent(@"This application is being launched for the first time. We know this because there is no persistent store.");
+    }
+    else if ([[defaults objectForKey:@"previousVersion"] isEqual: @3])
+    {
+        APCLogEvent(@"The entire data model version %d", kTheEntireDataModelOfTheApp);
+        if (![self performMigrationFromThreeToFourWithError:&migrationError])
+        {
+            APCLogEvent(@"Migration from version %@ to %@ has failed.", [defaults objectForKey:@"previousVersion"], @(kTheEntireDataModelOfTheApp));
+        }
+    }
+    
+    [defaults setObject:majorVersion forKey:@"shortVersionString"];
+    [defaults setObject:minorVersion forKey:@"version"];
+    
+    if (!migrationError)
+    {
+        [defaults setObject:@(currentVersion) forKey:@"previousVersion"];
+    }
     
 }
 
@@ -169,6 +213,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                             NSFontAttributeName : [UIFont appNavBarTitleFont]
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
+    self.dataSubstrate.parameters.hideExampleConsent = YES;
 }
 
 - (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
