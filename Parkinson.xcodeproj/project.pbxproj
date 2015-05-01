@@ -95,6 +95,8 @@
 		5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC200F19D5FEC600451AAE /* StudyOverview.json */; };
 		5BBDAEBF1A33DFDA0047DF87 /* HTMLContent in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */; };
 		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
+		6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
+		6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
 		743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
 		744996AC1AF000D000E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
 		744996AD1AF000D800E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
@@ -382,6 +384,8 @@
 		5BAC200F19D5FEC600451AAE /* StudyOverview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StudyOverview.json; sourceTree = "<group>"; };
 		5BBDAEBE1A33DFDA0047DF87 /* HTMLContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTMLContent; sourceTree = "<group>"; };
 		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
+		6C86453A1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APHAppDelegate+APHMigration.h"; sourceTree = "<group>"; };
+		6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APHAppDelegate+APHMigration.m"; sourceTree = "<group>"; };
 		743BFFFE1A90E12800438241 /* APHConsentSection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHConsentSection.json; sourceTree = "<group>"; };
 		744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDScores.xcodeproj; path = PDScores/PDScores/PDScores.xcodeproj; sourceTree = SOURCE_ROOT; };
 		747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppCore.xcodeproj; path = ../AppCore/APCAppCore/APCAppCore.xcodeproj; sourceTree = "<group>"; };
@@ -563,6 +567,15 @@
 				5B1D9D421A1BCC6B000F4AD6 /* APHDashboardEditViewController.m */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		6C8645471AF3FD9500B46C49 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				6C86453A1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.h */,
+				6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */,
+			);
+			name = Migration;
 			sourceTree = "<group>";
 		};
 		743AD0C71ABE2DE40071C218 /* Products */ = {
@@ -848,6 +861,7 @@
 				F5DCAD3D19D088330096DEC0 /* LaunchScreen.xib */,
 				F5D14F3719CC9C0000650FBB /* APHAppDelegate.h */,
 				F5D14F3819CC9C0000650FBB /* APHAppDelegate.m */,
+				6C8645471AF3FD9500B46C49 /* Migration */,
 				7B9898C81A926F36003B4181 /* APHProfileExtender.h */,
 				7B9898C91A926F36003B4181 /* APHProfileExtender.m */,
 			);
@@ -1213,6 +1227,7 @@
 				085F3DFC1AAF68DD003A910A /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				085F3DFD1AAF68DD003A910A /* APHProfileExtender.m in Sources */,
 				085F3DFE1AAF68DD003A910A /* APHMedicationTrackerTaskViewController.m in Sources */,
+				6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				085F3DFF1AAF68DD003A910A /* APHenrollmentsurveyViewController.m in Sources */,
 				085F3E001AAF68DD003A910A /* APHWalkingTaskViewController.m in Sources */,
 				085F3E011AAF68DD003A910A /* NSString+CustomMethods.m in Sources */,
@@ -1248,6 +1263,7 @@
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
 				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
+				6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */,
 				F5D14F3519CC9BC900650FBB /* APHWalkingTaskViewController.m in Sources */,
 				F5D14EDC19CC9BA700650FBB /* NSString+CustomMethods.m in Sources */,
