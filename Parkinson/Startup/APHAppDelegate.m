@@ -73,6 +73,68 @@ static NSInteger const kMonthOfDayObject                = 2;
 
 @implementation APHAppDelegate
 
+- (BOOL)application:(UIApplication*) __unused application willFinishLaunchingWithOptions:(NSDictionary*) __unused launchOptions
+{
+    [super application:application willFinishLaunchingWithOptions:launchOptions];
+    
+    [self enableBackgroundDeliveryForHealthKitTypes];
+    
+    return YES;
+}
+
+- (void)enableBackgroundDeliveryForHealthKitTypes
+{
+    NSArray* dataTypesWithReadPermission = self.initializationOptions[kHKReadPermissionsKey];
+    
+    if (dataTypesWithReadPermission)
+    {
+        for (id dataType in dataTypesWithReadPermission)
+        {
+            HKObjectType*   sampleType  = nil;
+            
+            if ([dataType isKindOfClass:[NSDictionary class]])
+            {
+                NSDictionary* categoryType = (NSDictionary*) dataType;
+                
+                //Distinguish
+                if (categoryType[kHKWorkoutTypeKey])
+                {
+                    sampleType = [HKObjectType workoutType];
+                }
+                else if (categoryType[kHKCategoryTypeKey])
+                {
+                    sampleType = [HKObjectType categoryTypeForIdentifier:categoryType[kHKCategoryTypeKey]];
+                }
+            }
+            else
+            {
+                sampleType = [HKObjectType quantityTypeForIdentifier:dataType];
+            }
+            
+            if (sampleType)
+            {
+                [self.dataSubstrate.healthStore enableBackgroundDeliveryForType:sampleType
+                                                                      frequency:HKUpdateFrequencyImmediate
+                                                                 withCompletion:^(BOOL success, NSError *error)
+                 {
+                     if (!success)
+                     {
+                         if (error)
+                         {
+                             APCLogError2(error);
+                         }
+                     }
+                     else
+                     {
+                         APCLogDebug(@"Enabling background delivery for healthkit");
+                     }
+                 }];
+            }
+        }
+    }
+
+}
+
 - (void) setUpInitializationOptions
 {
     NSDictionary *permissionsDescriptions = @{
