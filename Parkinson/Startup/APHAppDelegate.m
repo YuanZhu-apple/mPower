@@ -35,7 +35,6 @@
 #import "APHAppDelegate.h"
 #import "APHProfileExtender.h"
 
-
 static NSString *const kWalkingActivitySurveyIdentifier             = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
 static NSString *const kVoiceActivitySurveyIdentifier               = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
 static NSString *const kTappingActivitySurveyIdentifier             = @"2-APHIntervalTapping-7259AC18-D711-47A6-ADBD-6CFCECDED1DF";
