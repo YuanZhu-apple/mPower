@@ -322,17 +322,17 @@ static NSInteger const kMonthOfDayObject                = 2;
 /*********************************************************************************/
 - (void) setUpCollectors
 {
-    //
-    // Set up location tracker
-    //
-    if (!self.passiveHealthKitCollector)
+    if (self.dataSubstrate.currentUser.userConsented)
     {
-        self.passiveHealthKitCollector = [[APCPassiveDataCollector alloc] init];
+        if (!self.passiveDataCollector)
+        {
+            self.passiveDataCollector = [[APCPassiveDataCollector alloc] init];
+        }
+        
+        [self configureDisplacementTracker];
+        [self configureObserverQueries];
+        [self configureMotionActivityObserver];
     }
-    
-    [self configureDisplacementTracker];
-    [self configureObserverQueries];
-    [self configureMotionActivityObserver];
 }
 
 - (void)configureMotionActivityObserver
@@ -398,7 +398,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     [motionCollector setReceiver:receiver];
     [motionCollector setDelegate:receiver];
     [motionCollector start];
-    [self.passiveHealthKitCollector addDataSink:motionCollector];
+    [self.passiveDataCollector addDataSink:motionCollector];
 }
 
 - (void)configureDisplacementTracker
@@ -428,7 +428,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     [locationCollector setReceiver:displacementSinker];
     [locationCollector setDelegate:displacementSinker];
     [locationCollector start];
-    [self.passiveHealthKitCollector addDataSink:locationCollector];
+    [self.passiveDataCollector addDataSink:locationCollector];
 }
 
 - (void)configureObserverQueries
@@ -632,9 +632,9 @@ static NSInteger const kMonthOfDayObject                = 2;
     
     NSArray* dataTypesWithReadPermission = self.initializationOptions[kHKReadPermissionsKey];
     
-    if (!self.passiveHealthKitCollector)
+    if (!self.passiveDataCollector)
     {
-        self.passiveHealthKitCollector = [[APCPassiveDataCollector alloc] init];
+        self.passiveDataCollector = [[APCPassiveDataCollector alloc] init];
     }
     
     // Just a note here that we are using n collectors to 1 data sink for quantity sample type data.
@@ -706,7 +706,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                 }
                 
                 [collector start];
-                [self.passiveHealthKitCollector addDataSink:collector];
+                [self.passiveDataCollector addDataSink:collector];
             }
         }
     }
