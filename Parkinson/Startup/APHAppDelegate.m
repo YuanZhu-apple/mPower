@@ -236,7 +236,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     {
         APCLogEvent(@"This application is being launched for the first time. We know this because there is no persistent store.");
     }
-    else if ([[defaults objectForKey:@"previousVersion"] isEqual: @3])
+    else if ([[defaults objectForKey:@"previousVersion"] isEqual: @3] || ![defaults objectForKey:@"previousVersion"] )
     {
         APCLogEvent(@"The entire data model version %d", kTheEntireDataModelOfTheApp);
         if (![self performMigrationFromThreeToFourWithError:&migrationError])
