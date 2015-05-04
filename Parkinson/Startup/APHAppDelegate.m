@@ -484,25 +484,34 @@ static NSInteger const kMonthOfDayObject                = 2;
             quantityUnit = [quantityUnit stringByAppendingString:valueSplit[i]];
         }
         
+        NSString*           sourceIdentifier    = qtySample.source.bundleIdentifier;
         NSString*           quantitySource      = qtySample.source.name;
         
         if (quantitySource == nil)
         {
-            quantitySource = @"";
+            quantitySource = @"not available";
         }
         else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
         {
-            quantitySource = @"iPhone";
+            if ([APCDeviceHardware platformString])
+            {
+                quantitySource = [APCDeviceHardware platformString];
+            }
+            else
+            {
+                //  This shouldn't get called.
+                quantitySource = @"iPhone";
+            }
         }
         
-        
-        NSString *stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@\n",
+        NSString *stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
                                    startDateTimeStamp,
                                    endDateTimeStamp,
                                    healthKitType,
                                    quantityValue,
                                    quantityUnit,
-                                   quantitySource];
+                                   quantitySource,
+                                   sourceIdentifier];
         
         return stringToWrite;
     };
@@ -520,11 +529,30 @@ static NSInteger const kMonthOfDayObject                = 2;
         double      totalDistanceConsumedValue  = [sample.totalDistance doubleValueForUnit:[HKUnit meterUnit]];
         NSString*   totalDistance               = [NSString stringWithFormat:@"%f", totalDistanceConsumedValue];
         NSString*   distanceUnit                = [HKUnit meterUnit].description;
+        NSString*   sourceIdentifier            = sample.source.bundleIdentifier;
         NSString*   quantitySource              = sample.source.name;
+        
+        if (quantitySource == nil)
+        {
+            quantitySource = @"not available";
+        }
+        else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
+        {
+            if ([APCDeviceHardware platformString])
+            {
+                quantitySource = [APCDeviceHardware platformString];
+            }
+            else
+            {
+                //  This shouldn't get called.
+                quantitySource = @"iPhone";
+            }
+        }
+        
         NSError*    error                       = nil;
         NSString*   metaData                    = [NSDictionary convertDictionary:sample.metadata ToStringWithReturningError:&error];
         NSString*   metaDataStringified         = [NSString stringWithFormat:@"\"%@\"", metaData];
-        NSString*   stringToWrite               = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
+        NSString*   stringToWrite               = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
                                                    startDateTimeStamp,
                                                    endDateTimeStamp,
                                                    healthKitType,
@@ -534,6 +562,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                    energyConsumed,
                                                    energyUnit,
                                                    quantitySource,
+                                                   sourceIdentifier,
                                                    metaDataStringified];
         
         return stringToWrite;
@@ -559,8 +588,27 @@ static NSInteger const kMonthOfDayObject                = 2;
                 categoryValue = @"HKCategoryValueSleepAnalysisInBed";
             }
             
-            NSString*           quantityUnit    = [[HKUnit secondUnit] unitString];
-            NSString*           quantitySource  = catSample.source.name;
+            NSString*           quantityUnit        = [[HKUnit secondUnit] unitString];
+            NSString*           sourceIdentifier    = catSample.source.bundleIdentifier;
+            NSString*           quantitySource      = catSample.source.name;
+            
+            if (quantitySource == nil)
+            {
+                quantitySource = @"not available";
+            }
+            else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
+            {
+                if ([APCDeviceHardware platformString])
+                {
+                    quantitySource = [APCDeviceHardware platformString];
+                }
+                else
+                {
+                    //  This shouldn't get called.
+                    quantitySource = @"iPhone";
+                }
+                
+            }
             
             // Get the difference in seconds between the start and end date for the sample
             NSDateComponents* secondsSpentInBedOrAsleep = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond
@@ -569,13 +617,14 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                                                            options:NSCalendarWrapComponents];
             NSString*           quantityValue   = [NSString stringWithFormat:@"%ld", (long)secondsSpentInBedOrAsleep.second];
             
-            stringToWrite   = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@\n",
-                               startDateTime,
-                               healthKitType,
-                               categoryValue,
-                               quantityValue,
-                               quantityUnit,
-                               quantitySource];
+            stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
+                             startDateTime,
+                             healthKitType,
+                             categoryValue,
+                             quantityValue,
+                             quantityUnit,
+                             sourceIdentifier,
+                             quantitySource];
         }
         
         return stringToWrite;
@@ -589,18 +638,18 @@ static NSInteger const kMonthOfDayObject                = 2;
     }
     
     // Just a note here that we are using n collectors to 1 data sink for quantity sample type data.
-    NSArray*                    quantityColumnNames = @[@"startTime,endTime,type,value,unit,source"];
+    NSArray*                    quantityColumnNames = @[@"startTime,endTime,type,value,unit,source,sourceIdentifier"];
     APCPassiveDataSink*         quantityreceiver    = [[APCPassiveDataSink alloc] initWithIdentifier:@"HealthKitDataCollector"
                                                                                          columnNames:quantityColumnNames
                                                                                   operationQueueName:@"APCHealthKitQuantity Activity Collector"
                                                                                     andDataProcessor:QuantityDataSerializer];
     
-    NSArray*                    workoutColumnNames  = @[@"startTime,endTime,type,workoutType,total distance,unit,energy consumed,unit,source,metadata"];
+    NSArray*                    workoutColumnNames  = @[@"startTime,endTime,type,workoutType,total distance,unit,energy consumed,unit,source,sourceIdentifier,metadata"];
     APCPassiveDataSink*         workoutReceiver     = [[APCPassiveDataSink alloc] initWithIdentifier:@"HealthKitWorkoutCollector"
                                                                                          columnNames:workoutColumnNames
                                                                                   operationQueueName:@"APCHealthKitWorkout Activity Collector"
                                                                                     andDataProcessor:WorkoutDataSerializer];
-    NSArray*                    categoryColumnNames = @[@"startTime,type,category value,value,unit,source"];
+    NSArray*                    categoryColumnNames = @[@"startTime,type,category value,value,unit,source,sourceIdentifier"];
     APCPassiveDataSink*         sleepReceiver       = [[APCPassiveDataSink alloc] initWithIdentifier:@"HealthKitSleepCollector"
                                                                                          columnNames:categoryColumnNames
                                                                                   operationQueueName:@"APCHealthKitSleep Activity Collector"
