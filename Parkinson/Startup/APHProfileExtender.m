@@ -86,7 +86,7 @@ static  NSInteger  kDefaultNumberOfExtraSections = 2;
     return count;
 }
 
-- (UITableViewCell *)decorateCell:(UITableViewCell *)cell
+- (UITableViewCell *)decorateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)__unused indexPath
 {
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = NSLocalizedString(@"Medication Tracker Setup", nil);
