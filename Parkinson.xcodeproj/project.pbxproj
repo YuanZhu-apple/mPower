@@ -52,7 +52,6 @@
 		085F3E201AAF68DD003A910A /* parkinson-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */; };
 		085F3E211AAF68DD003A910A /* 12_IssuesToConside2@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166D1A96BC9400CEC822 /* 12_IssuesToConside2@3x.m4v */; };
 		085F3E221AAF68DD003A910A /* 02_SensorData_to_DataGathering@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166A1A96BC9400CEC822 /* 02_SensorData_to_DataGathering@3x.m4v */; };
-		085F3E231AAF68DD003A910A /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */; };
 		085F3E241AAF68DD003A910A /* consent.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5B1095B81A9F9BD5006631F5 /* consent.pdf */; };
 		085F3E251AAF68DD003A910A /* 13_RiskToPrivacy@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116661A96BC9400CEC822 /* 13_RiskToPrivacy@2x.m4v */; };
 		085F3E261AAF68DD003A910A /* sample.task in Resources */ = {isa = PBXBuildFile; fileRef = F536B93D19F5747B005A2D1C /* sample.task */; };
@@ -70,7 +69,6 @@
 		085F3E321AAF68DD003A910A /* 11_IssuesToConsider1@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A78116641A96BC9400CEC822 /* 11_IssuesToConsider1@2x.m4v */; };
 		085F3E331AAF68DD003A910A /* PDenrollment_survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */; };
 		085F3E341AAF68DD003A910A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D2E719A5417D00170E69 /* Images.xcassets */; };
-		21CBD9E51A9FE59900031635 /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */; };
 		36EF84D51A951327008C255F /* Parkinson_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84D41A951327008C255F /* Parkinson_Tests.m */; };
 		36EF84DF1A951364008C255F /* APCMedTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF84DE1A951364008C255F /* APCMedTrackerTests.m */; };
 		5A0F98FF1AA409FC00A2A7EB /* PDenrollment_survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0F98FE1AA409FC00A2A7EB /* PDenrollment_survey.json */; };
@@ -97,6 +95,7 @@
 		5BBDAEF21A350FB40047DF87 /* LocationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BBDAEF11A350FB40047DF87 /* LocationInfo.json */; };
 		6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
 		6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */; };
+		6CA576FD1B065DD90074FF16 /* APHTasksAndSchedules_NoM7.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CA576FC1B065DD90074FF16 /* APHTasksAndSchedules_NoM7.json */; };
 		743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */ = {isa = PBXBuildFile; fileRef = 743BFFFE1A90E12800438241 /* APHConsentSection.json */; };
 		744996AC1AF000D000E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
 		744996AD1AF000D800E0D7E7 /* libPDScores.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744996A91AF0009000E0D7E7 /* libPDScores.a */; };
@@ -349,7 +348,6 @@
 
 /* Begin PBXFileReference section */
 		085F3E3F1AAF68DD003A910A /* Parkinson_YML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parkinson_YML.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		36EF84D01A951327008C255F /* Parkinson Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parkinson Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EF84D31A951327008C255F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36EF84D41A951327008C255F /* Parkinson_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parkinson_Tests.m; sourceTree = "<group>"; };
@@ -386,6 +384,7 @@
 		5BBDAEF11A350FB40047DF87 /* LocationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationInfo.json; sourceTree = "<group>"; };
 		6C86453A1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APHAppDelegate+APHMigration.h"; sourceTree = "<group>"; };
 		6C86453B1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APHAppDelegate+APHMigration.m"; sourceTree = "<group>"; };
+		6CA576FC1B065DD90074FF16 /* APHTasksAndSchedules_NoM7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHTasksAndSchedules_NoM7.json; sourceTree = "<group>"; };
 		743BFFFE1A90E12800438241 /* APHConsentSection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = APHConsentSection.json; sourceTree = "<group>"; };
 		744996A31AF0009000E0D7E7 /* PDScores.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDScores.xcodeproj; path = PDScores/PDScores/PDScores.xcodeproj; sourceTree = SOURCE_ROOT; };
 		747F5B671ABE2D3200197B68 /* APCAppCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APCAppCore.xcodeproj; path = ../AppCore/APCAppCore/APCAppCore.xcodeproj; sourceTree = "<group>"; };
@@ -770,7 +769,7 @@
 				F5C11A2E19DCBE95003278FF /* APCParameters.json */,
 				5BAC200F19D5FEC600451AAE /* StudyOverview.json */,
 				F5D14E4019CC991500650FBB /* APHTasksAndSchedules.json */,
-				21CBD9E41A9FE59900031635 /* APHTasksAndSchedules_NoM7.json */,
+				6CA576FC1B065DD90074FF16 /* APHTasksAndSchedules_NoM7.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -1101,7 +1100,6 @@
 				085F3E201AAF68DD003A910A /* parkinson-staging.pem in Resources */,
 				085F3E211AAF68DD003A910A /* 12_IssuesToConside2@3x.m4v in Resources */,
 				085F3E221AAF68DD003A910A /* 02_SensorData_to_DataGathering@3x.m4v in Resources */,
-				085F3E231AAF68DD003A910A /* APHTasksAndSchedules_NoM7.json in Resources */,
 				085F3E241AAF68DD003A910A /* consent.pdf in Resources */,
 				085F3E251AAF68DD003A910A /* 13_RiskToPrivacy@2x.m4v in Resources */,
 				085F3E261AAF68DD003A910A /* sample.task in Resources */,
@@ -1141,6 +1139,7 @@
 				A781167C1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v in Resources */,
 				743BFFFF1A90E12800438241 /* APHConsentSection.json in Resources */,
 				5BAC201019D5FEC600451AAE /* StudyOverview.json in Resources */,
+				6CA576FD1B065DD90074FF16 /* APHTasksAndSchedules_NoM7.json in Resources */,
 				5A0F99141AA4269C00A2A7EB /* PD_mythoughts.json in Resources */,
 				F5EFE0A019EC39B1008BAD56 /* APHOnboarding.storyboard in Resources */,
 				BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */,
@@ -1154,7 +1153,6 @@
 				BA50EA3E1A37B30D0049B835 /* parkinson-staging.pem in Resources */,
 				A781167B1A96BC9400CEC822 /* 12_IssuesToConside2@3x.m4v in Resources */,
 				A78116781A96BC9400CEC822 /* 02_SensorData_to_DataGathering@3x.m4v in Resources */,
-				21CBD9E51A9FE59900031635 /* APHTasksAndSchedules_NoM7.json in Resources */,
 				5B1095B91A9F9BD5006631F5 /* consent.pdf in Resources */,
 				A78116751A96BC9400CEC822 /* 13_RiskToPrivacy@2x.m4v in Resources */,
 				F536B93E19F5747B005A2D1C /* sample.task in Resources */,
