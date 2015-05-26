@@ -154,9 +154,14 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
                                            kBridgeEnvironmentKey                : @(self.environment),
                                            kNewsFeedTabKey                      : @(YES),
                                            kHKReadPermissionsKey                : @[
-                                                   HKQuantityTypeIdentifierBodyMass,
-                                                   HKQuantityTypeIdentifierHeight,
-                                                   HKQuantityTypeIdentifierStepCount
+                                                    HKQuantityTypeIdentifierBodyMass,
+                                                    HKQuantityTypeIdentifierHeight,
+                                                    HKQuantityTypeIdentifierStepCount,
+                                                    HKQuantityTypeIdentifierDistanceCycling,
+                                                    HKQuantityTypeIdentifierDistanceWalkingRunning,
+                                                    HKQuantityTypeIdentifierFlightsClimbed,
+                                                    @{kHKWorkoutTypeKey  : HKWorkoutTypeIdentifier},
+                                                    @{kHKCategoryTypeKey : HKCategoryTypeIdentifierSleepAnalysis}
                                                    ],
                                            kHKWritePermissionsKey                : @[
                                                    ],
