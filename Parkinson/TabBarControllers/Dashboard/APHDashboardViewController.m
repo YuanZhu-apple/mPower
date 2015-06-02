@@ -91,7 +91,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareCorrelatedScoring) name:APCSchedulerUpdatedScheduledTasksNotification object:nil];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self prepareScoringObjects];
