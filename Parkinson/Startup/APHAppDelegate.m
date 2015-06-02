@@ -395,7 +395,7 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
                                                                         @"verticalAccuracy",
                                                                         @"verticalAccuracyUnit"];
     APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
-                                                                       initWithIdentifier:@"locationTracker"
+                                                                       initWithIdentifier:@"displacementCollector"
                                                                        columnNames:locationColumns
                                                                        operationQueueName:@"APCDisplacement Tracker Sink"
                                                                        andDataProcessor:nil];

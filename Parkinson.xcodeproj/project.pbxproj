@@ -129,6 +129,8 @@
 		A781167C1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A781166E1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v */; };
 		BA50EA3E1A37B30D0049B835 /* parkinson-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */; };
 		BA50EA3F1A37B30D0049B835 /* parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = BA50EA3D1A37B30D0049B835 /* parkinson.pem */; };
+		CF0A53B01B17B33100204F80 /* APHParkinsonActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A53AF1B17B33100204F80 /* APHParkinsonActivityViewController.m */; };
+		CF0A53B11B17B45800204F80 /* APHParkinsonActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A53AF1B17B33100204F80 /* APHParkinsonActivityViewController.m */; };
 		CF2BF9931A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2BF9921A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m */; };
 		CF77D1001AD2E70900353E0B /* Parkinson-YML-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF77D0FF1AD2E70900353E0B /* Parkinson-YML-Info.plist */; };
 		CFA2ABBC19A7C3A9000DB961 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2ABBB19A7C3A9000DB961 /* CoreData.framework */; };
@@ -410,6 +412,8 @@
 		A781166E1A96BC9400CEC822 /* 13_RiskToPrivacy@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "13_RiskToPrivacy@3x.m4v"; sourceTree = "<group>"; };
 		BA50EA3C1A37B30D0049B835 /* parkinson-staging.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "parkinson-staging.pem"; path = "Certificates/parkinson-staging.pem"; sourceTree = "<group>"; };
 		BA50EA3D1A37B30D0049B835 /* parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = parkinson.pem; path = Certificates/parkinson.pem; sourceTree = "<group>"; };
+		CF0A53AE1B17B33100204F80 /* APHParkinsonActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHParkinsonActivityViewController.h; sourceTree = "<group>"; };
+		CF0A53AF1B17B33100204F80 /* APHParkinsonActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHParkinsonActivityViewController.m; sourceTree = "<group>"; };
 		CF2BF9911A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHIntervalTappingRecorderDataKeys.h; sourceTree = "<group>"; };
 		CF2BF9921A76A3E300AC4ADD /* APHIntervalTappingRecorderDataKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHIntervalTappingRecorderDataKeys.m; sourceTree = "<group>"; };
 		CF77D0FF1AD2E70900353E0B /* Parkinson-YML-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Parkinson-YML-Info.plist"; sourceTree = "<group>"; };
@@ -814,11 +818,13 @@
 			children = (
 				A74615B11A98077D00323AD1 /* ConverterForPDScores.h */,
 				A74615B21A98077D00323AD1 /* ConverterForPDScores.m */,
-				CFDA47A41A97BF7400B32C34 /* MedicationTracking */,
+				CF0A53AE1B17B33100204F80 /* APHParkinsonActivityViewController.h */,
+				CF0A53AF1B17B33100204F80 /* APHParkinsonActivityViewController.m */,
 				F5D14EE519CC9BC900650FBB /* IntervalTappingControllers */,
 				F5D14EFB19CC9BC900650FBB /* PhonationControllers */,
 				CFF1A50C1A81969300EAEE0E /* SpatialSpanMemoryGameControllers */,
 				F5D14F0D19CC9BC900650FBB /* WalkingControllers */,
+				CFDA47A41A97BF7400B32C34 /* MedicationTracking */,
 				5A0F99101AA4267A00A2A7EB /* Surveys_files */,
 			);
 			path = TasksAndSteps;
@@ -1224,6 +1230,7 @@
 				085F3DFB1AAF68DD003A910A /* APHIntervalTappingTaskViewController.m in Sources */,
 				085F3DFC1AAF68DD003A910A /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				085F3DFD1AAF68DD003A910A /* APHProfileExtender.m in Sources */,
+				CF0A53B11B17B45800204F80 /* APHParkinsonActivityViewController.m in Sources */,
 				085F3DFE1AAF68DD003A910A /* APHMedicationTrackerTaskViewController.m in Sources */,
 				6C86453D1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				085F3DFF1AAF68DD003A910A /* APHenrollmentsurveyViewController.m in Sources */,
@@ -1260,6 +1267,7 @@
 				F5D14F2319CC9BC900650FBB /* APHIntervalTappingTaskViewController.m in Sources */,
 				CFF1A5101A81976500EAEE0E /* APHSpatialSpanMemoryGameViewController.m in Sources */,
 				7B9898CA1A926F36003B4181 /* APHProfileExtender.m in Sources */,
+				CF0A53B01B17B33100204F80 /* APHParkinsonActivityViewController.m in Sources */,
 				CFDA47A81A97BF8800B32C34 /* APHMedicationTrackerTaskViewController.m in Sources */,
 				6C86453C1AF3FD9000B46C49 /* APHAppDelegate+APHMigration.m in Sources */,
 				5A0F99021AA40E9100A2A7EB /* APHenrollmentsurveyViewController.m in Sources */,
