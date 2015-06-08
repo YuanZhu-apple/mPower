@@ -2,7 +2,7 @@
     "identifier": "PDQ8",
     "type": "Survey",
     "name": "PDQ8",
-    "questions": [  
+    "elements": [  
   
       {  
          "guid":"72e92b35-ae88-4ad5-9203-f8eb70d36f43",

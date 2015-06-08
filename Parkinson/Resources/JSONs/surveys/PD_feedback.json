@@ -1,7 +1,7 @@
 {
     "name":"Study Feedback",
     "identifier":"study_feedback",
-    "questions":
+    "elements":
     [
          {
          "guid": "454afd00-3d2b-41c2-9b16-17c72223819b",

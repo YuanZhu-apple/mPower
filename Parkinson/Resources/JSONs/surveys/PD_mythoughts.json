@@ -1,7 +1,7 @@
 {
     "name":"My Thoughts",
     "identifier":"mythoughts",
-    "questions":
+    "elements":
     [
          {
          "guid": "454afd00-3d2b-41c2-9b36-17c72287819b",

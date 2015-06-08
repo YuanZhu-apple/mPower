@@ -2,7 +2,7 @@
     "identifier": "MDSUPDRS",
     "type": "Survey",
     "name": "MDS-UPDRS",
-    "questions": [
+    "elements": [
         {
             "guid": "a2ed38e2-0e96-4b44-8ce2-52e9108bf9c4",
             "identifier": "EQ-5D1",
