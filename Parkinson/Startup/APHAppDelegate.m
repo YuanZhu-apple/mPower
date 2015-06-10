@@ -442,6 +442,21 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
         return consentDate;
     };
     
+    NSString *(^determineQuantitySource)(NSString *) = ^(NSString  *source)
+    {
+        NSString  *answer = nil;
+        if (source == nil) {
+            answer = @"not available";
+        } else if ([UIDevice.currentDevice.name isEqualToString:source] == YES) {
+            if ([APCDeviceHardware platformString] != nil) {
+                answer = [APCDeviceHardware platformString];
+            } else {
+                answer = @"iPhone";    //    theoretically should not happen
+            }
+        }
+        return answer;
+    };
+    
     NSString*(^QuantityDataSerializer)(id) = ^NSString*(id dataSample)
     {
         HKQuantitySample*   qtySample           = (HKQuantitySample *)dataSample;
@@ -461,22 +476,7 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
         NSString*           sourceIdentifier    = qtySample.source.bundleIdentifier;
         NSString*           quantitySource      = qtySample.source.name;
         
-        if (quantitySource == nil)
-        {
-            quantitySource = @"not available";
-        }
-        else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-        {
-            if ([APCDeviceHardware platformString])
-            {
-                quantitySource = [APCDeviceHardware platformString];
-            }
-            else
-            {
-                //  This shouldn't get called.
-                quantitySource = @"iPhone";
-            }
-        }
+        quantitySource = determineQuantitySource(quantitySource);
         
         NSString *stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
                                    startDateTimeStamp,
@@ -506,22 +506,7 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
         NSString*   sourceIdentifier            = sample.source.bundleIdentifier;
         NSString*   quantitySource              = sample.source.name;
         
-        if (quantitySource == nil)
-        {
-            quantitySource = @"not available";
-        }
-        else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-        {
-            if ([APCDeviceHardware platformString])
-            {
-                quantitySource = [APCDeviceHardware platformString];
-            }
-            else
-            {
-                //  This shouldn't get called.
-                quantitySource = @"iPhone";
-            }
-        }
+        quantitySource = determineQuantitySource(quantitySource);
         
         NSError*    error                       = nil;
         NSString*   metaData                    = [NSDictionary convertDictionary:sample.metadata ToStringWithReturningError:&error];
