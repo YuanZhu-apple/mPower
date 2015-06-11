@@ -551,23 +551,7 @@ static NSString *const kMDSUPDRS                        = @"5-MDSUPDRS-20EF82D1-
             NSString*           sourceIdentifier    = catSample.source.bundleIdentifier;
             NSString*           quantitySource      = catSample.source.name;
             
-            if (quantitySource == nil)
-            {
-                quantitySource = @"not available";
-            }
-            else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-            {
-                if ([APCDeviceHardware platformString])
-                {
-                    quantitySource = [APCDeviceHardware platformString];
-                }
-                else
-                {
-                    //  This shouldn't get called.
-                    quantitySource = @"iPhone";
-                }
-                
-            }
+            quantitySource = determineQuantitySource(quantitySource);
             
             // Get the difference in seconds between the start and end date for the sample
             NSDateComponents* secondsSpentInBedOrAsleep = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond
