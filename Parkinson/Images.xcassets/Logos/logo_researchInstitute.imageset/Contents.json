@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "logo_titlebar_rochester_parkinsons_apple_sow1_v13-2.pdf"
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "institution.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "institution-1.png"
     }
   ],
   "info" : {
