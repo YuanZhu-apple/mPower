@@ -81,7 +81,6 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         
         self.title = NSLocalizedString(@"Dashboard", @"Dashboard");
     }
-    
     return self;
 }
 
@@ -121,7 +120,7 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Data
@@ -381,25 +380,25 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
         section.sectionTitle = NSLocalizedString(@"Recent Activity", @"");
         [self.items addObject:section];
     }
-    
     [self.tableView reloadData];
 }
 
 #pragma mark - CorrelationsSelector Delegate
+
 - (void)dashboardTableViewCellDidTapLegendTitle:(APCDashboardTableViewCell *)__unused cell
 {
-    
-    APCCorrelationsSelectorViewController *correlationSelector = [[APCCorrelationsSelectorViewController alloc]initWithScoringObjects:[NSArray arrayWithObjects:self.tapScoring, self.gaitScoring, self.stepScoring, self.memoryScoring, self.phonationScoring, nil]];
+    APCCorrelationsSelectorViewController *correlationSelector = [[APCCorrelationsSelectorViewController alloc]
+                                                                  initWithScoringObjects:[NSArray arrayWithObjects:self.tapScoring,
+                                                                                          self.gaitScoring, self.stepScoring,
+                                                                                          self.memoryScoring, self.phonationScoring, nil]];
     correlationSelector.delegate = self;
     [self.navigationController pushViewController:correlationSelector animated:YES];
-    
 }
 
 - (void)viewController:(APCCorrelationsSelectorViewController *)__unused viewController didChangeCorrelatedScoringDataSource:(APCScoring *)scoring
 {
     self.correlatedScoring = scoring;
     [self prepareData];
-    
 }
 
 @end
