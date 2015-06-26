@@ -57,8 +57,10 @@ static NSString *const kJsonScheduleTaskIDKey           = @"taskID";
 static NSString *const kJsonSchedulesKey                = @"schedules";
 
 @interface APHAppDelegate ()
+
 @property (nonatomic, strong) APHProfileExtender* profileExtender;
 @property  (nonatomic, assign)  NSInteger environment;
+
 @end
 
 @implementation APHAppDelegate
@@ -124,7 +126,7 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
     }
 }
 
-- (void) setUpInitializationOptions
+- (void)setUpInitializationOptions
 {
     NSDictionary *permissionsDescriptions = @{
                                               @(kAPCSignUpPermissionsTypeLocation) : NSLocalizedString(@"Using your GPS enables the app to accurately determine distances travelled. Your actual location will never be shared.", @""),
@@ -194,11 +196,10 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
     HKQuantityTypeIdentifierDistanceWalkingRunning  : [HKUnit meterUnit],
     HKQuantityTypeIdentifierFlightsClimbed          : [HKUnit countUnit]
     };
-    
     return hkUnits;
 }
 
--(void)setUpTasksReminder
+- (void)setUpTasksReminder
 {
     APCTaskReminder *walkingActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kWalkingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Walking Activity", nil)];
     APCTaskReminder *voiceActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kVoiceActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Voice Activity", nil)];
@@ -228,39 +229,6 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
     }
 }
 
-- (void)performMigrationAfterDataSubstrateFrom:(NSInteger) __unused previousVersion currentVersion:(NSInteger) __unused currentVersion
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSError *migrationError = nil;
-    
-    if (self.doesPersisteStoreExist == NO)
-    {
-        APCLogEvent(@"This application is being launched for the first time. We know this because there is no persistent store.");
-    }
-    else if ([[defaults objectForKey:@"previousVersion"] isEqual: @3] || ![defaults objectForKey:@"previousVersion"] )
-    {
-        APCLogEvent(@"The entire data model version %d", kTheEntireDataModelOfTheApp);
-        if (![self performMigrationFromThreeToFourWithError:&migrationError])
-        {
-            APCLogEvent(@"Migration from version %@ to %@ has failed.", [defaults objectForKey:@"previousVersion"], @(kTheEntireDataModelOfTheApp));
-        }
-    }
-    
-    [defaults setObject:majorVersion forKey:@"shortVersionString"];
-    [defaults setObject:minorVersion forKey:@"version"];
-    
-    if (!migrationError)
-    {
-        [defaults setObject:@(currentVersion) forKey:@"previousVersion"];
-    }
-    
-}
-
 - (void)setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
@@ -288,30 +256,31 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
     self.dataSubstrate.parameters.hideExampleConsent = NO;
 }
 
-- (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
-    
+- (id <APCProfileViewControllerDelegate>)profileExtenderDelegate
+{
     return self.profileExtender;
 }
 
-- (void) showOnBoarding
+- (void)showOnBoarding
 {
     [super showOnBoarding];
     
     [self showStudyOverview];
 }
 
-- (void) showStudyOverview
+- (void)showStudyOverview
 {
     APCStudyOverviewViewController *studyController = [[UIStoryboard storyboardWithName:@"APCOnboarding" bundle:[NSBundle appleCoreBundle]] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
     [self setUpRootViewController:studyController];
 }
 
-- (BOOL) isVideoShown
+- (BOOL)isVideoShown
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
 }
 
-- (NSMutableDictionary *) updateOptionsFor5OrOlder:(NSMutableDictionary *)initializationOptions {
+- (NSMutableDictionary *)updateOptionsFor5OrOlder:(NSMutableDictionary *)initializationOptions
+{
     if (![APCDeviceHardware isiPhone5SOrNewer]) {
         [initializationOptions setValue:@"APHTasksAndSchedules_NoM7" forKey:kTasksAndSchedulesJSONFileNameKey];
     }
@@ -355,7 +324,8 @@ static NSDate *DetermineConsentDate(id object)
 /*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
-- (void) setUpCollectors
+
+- (void)setUpCollectors
 {
     if (self.dataSubstrate.currentUser.userConsented)
     {
@@ -381,7 +351,6 @@ static NSDate *DetermineConsentDate(id object)
                                                    motionActivitySample.startDate.toStringInISO8601Format,
                                                    motionActivity,
                                                    motionConfidence];
-        
         return stringToWrite;
     };
     
@@ -504,7 +473,6 @@ static NSDate *DetermineConsentDate(id object)
                                    quantityUnit,
                                    quantitySource,
                                    sourceIdentifier];
-        
         return stringToWrite;
     };
     
@@ -552,7 +520,6 @@ static NSDate *DetermineConsentDate(id object)
                                                    quantitySource,
                                                    sourceIdentifier,
                                                    metaDataStringified];
-        
         return stringToWrite;
     };
     
@@ -582,11 +549,8 @@ static NSDate *DetermineConsentDate(id object)
             
             quantitySource = determineQuantitySource(quantitySource);
             
-            // Get the difference in seconds between the start and end date for the sample
+            // Get difference in seconds between start and end date for sample
             NSTimeInterval secondsSpentInBedOrAsleep = [catSample.endDate timeIntervalSinceDate:catSample.startDate];
-                                                                                          fromDate:catSample.startDate
-                                                                                            toDate:catSample.endDate
-                                                                                           options:NSCalendarWrapComponents];
             NSString*           quantityValue   = [NSString stringWithFormat:@"%ld", (long)secondsSpentInBedOrAsleep];
             
             stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
@@ -598,7 +562,6 @@ static NSDate *DetermineConsentDate(id object)
                              sourceIdentifier,
                              quantitySource];
         }
-        
         return stringToWrite;
     };
     
@@ -706,7 +669,6 @@ static NSDate *DetermineConsentDate(id object)
     return scene;
 }
 
-
 /*********************************************************************************/
 #pragma mark - Consent
 /*********************************************************************************/
@@ -717,40 +679,36 @@ static NSDate *DetermineConsentDate(id object)
                                                            propertiesFileName:kConsentPropertiesFileName];
     ORKTaskViewController*  consentVC = [[ORKTaskViewController alloc] initWithTask:task
                                                                         taskRunUUID:[NSUUID UUID]];
-    
     return consentVC;
 }
 
-- (NSDictionary *) tasksAndSchedulesWillBeLoaded {
-    
-    NSString                    *resource = [[NSBundle mainBundle] pathForResource:self.initializationOptions[kTasksAndSchedulesJSONFileNameKey]
+- (NSDictionary *)tasksAndSchedulesWillBeLoaded
+{
+    NSString      *resource = [[NSBundle mainBundle] pathForResource:self.initializationOptions[kTasksAndSchedulesJSONFileNameKey]
                                                                             ofType:@"json"];
     
-    NSData                      *jsonData = [NSData dataWithContentsOfFile:resource];
-    NSError                     *error;
-    NSDictionary                *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
+    NSData        *jsonData = [NSData dataWithContentsOfFile:resource];
+    NSError       *error;
+    NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                               options:NSJSONReadingMutableContainers
                                                                                 error:&error];
     if (dictionary == nil) {
         APCLogError2 (error);
     }
     
-    NSArray                     *schedules = [dictionary objectForKey:kJsonSchedulesKey];
-    NSMutableDictionary         *newDictionary = [dictionary mutableCopy];
-    NSMutableArray              *newSchedulesArray = [NSMutableArray new];
+    NSArray              *schedules = [dictionary objectForKey:kJsonSchedulesKey];
+    NSMutableDictionary  *newDictionary = [dictionary mutableCopy];
+    NSMutableArray       *newSchedulesArray = [NSMutableArray new];
     
     for (NSDictionary *schedule in schedules) {
         [newSchedulesArray addObject:schedule];
     }
     
-    [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey]
-                     forKey:kJsonTasksKey];
+    [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey] forKey:kJsonTasksKey];
     
-    [newDictionary setValue:newSchedulesArray
-                     forKey:kJsonSchedulesKey];
+    [newDictionary setValue:newSchedulesArray forKey:kJsonSchedulesKey];
     
     return newDictionary;
 }
-
 
 @end
