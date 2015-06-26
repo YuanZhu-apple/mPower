@@ -220,7 +220,7 @@ static NSString *const kJsonSchedulesKey                = @"schedules";
     {
         APCLogEvent(@"This app is being launched for the first time. Turn all reminders on");
         for (APCTaskReminder *reminder in self.tasksReminder.reminders) {
-            [[NSUserDefaults standardUserDefaults]setObject:reminder.reminderBody forKey:reminder.reminderIdentifier];
+            [[NSUserDefaults standardUserDefaults] setObject:reminder.reminderBody forKey:reminder.reminderIdentifier];
         }
         
         if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone) {
