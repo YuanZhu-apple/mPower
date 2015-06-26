@@ -34,7 +34,6 @@
 @import APCAppCore;
 #import "APHAppDelegate.h"
 #import "APHProfileExtender.h"
-#import "APHAppDelegate+APHMigration.h"
 
 static NSString *const kWalkingActivitySurveyIdentifier             = @"4-APHTimedWalking-80F09109-265A-49C6-9C5D-765E49AAF5D9";
 static NSString *const kVoiceActivitySurveyIdentifier               = @"3-APHPhonation-C614A231-A7B7-4173-BDC8-098309354292";
@@ -56,8 +55,6 @@ static NSString *const kJsonScheduleStringKey           = @"scheduleString";
 static NSString *const kJsonTasksKey                    = @"tasks";
 static NSString *const kJsonScheduleTaskIDKey           = @"taskID";
 static NSString *const kJsonSchedulesKey                = @"schedules";
-
-static NSInteger const kMonthOfDayObject                = 2;
 
 @interface APHAppDelegate ()
 
@@ -129,7 +126,7 @@ static NSInteger const kMonthOfDayObject                = 2;
     }
 }
 
-- (void) setUpInitializationOptions
+- (void)setUpInitializationOptions
 {
     NSDictionary *permissionsDescriptions = @{
                                               @(kAPCSignUpPermissionsTypeLocation) : NSLocalizedString(@"Using your GPS enables the app to accurately determine distances travelled. Your actual location will never be shared.", @""),
@@ -198,18 +195,17 @@ static NSInteger const kMonthOfDayObject                = 2;
     HKQuantityTypeIdentifierDistanceWalkingRunning  : [HKUnit meterUnit],
     HKQuantityTypeIdentifierFlightsClimbed          : [HKUnit countUnit]
     };
-
     return hkUnits;
 }
 
--(void)setUpTasksReminder{
-
-    APCTaskReminder *walkingActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kWalkingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Walking Activity", nil)];
-    APCTaskReminder *voiceActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kVoiceActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Voice Activity", nil)];
-    APCTaskReminder *tappingActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kTappingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Tapping Activity", nil)];
-    APCTaskReminder *memoryActivityReminder = [[APCTaskReminder alloc]initWithTaskID:kMemoryActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Memory Activity", nil)];
-    APCTaskReminder *pdSurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kStudyIdentifier reminderBody:NSLocalizedString(@"PD Survey", nil)];
-    APCTaskReminder *myThoughtsSurveyReminder = [[APCTaskReminder alloc]initWithTaskID:kMyThoughtsSurveyIdentifier reminderBody:NSLocalizedString(@"My Thoughts", nil)];
+- (void)setUpTasksReminder
+{
+    APCTaskReminder *walkingActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kWalkingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Walking Activity", nil)];
+    APCTaskReminder *voiceActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kVoiceActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Voice Activity", nil)];
+    APCTaskReminder *tappingActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kTappingActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Tapping Activity", nil)];
+    APCTaskReminder *memoryActivityReminder = [[APCTaskReminder alloc] initWithTaskID:kMemoryActivitySurveyIdentifier reminderBody:NSLocalizedString(@"Memory Activity", nil)];
+    APCTaskReminder *pdSurveyReminder = [[APCTaskReminder alloc] initWithTaskID:kStudyIdentifier reminderBody:NSLocalizedString(@"PD Survey", nil)];
+    APCTaskReminder *myThoughtsSurveyReminder = [[APCTaskReminder alloc] initWithTaskID:kMyThoughtsSurveyIdentifier reminderBody:NSLocalizedString(@"My Thoughts", nil)];
 
     [self.tasksReminder.reminders removeAllObjects];
     [self.tasksReminder manageTaskReminder:walkingActivityReminder];
@@ -223,52 +219,16 @@ static NSInteger const kMonthOfDayObject                = 2;
     {
         APCLogEvent(@"This app is being launched for the first time. Turn all reminders on");
         for (APCTaskReminder *reminder in self.tasksReminder.reminders) {
-            [[NSUserDefaults standardUserDefaults]setObject:reminder.reminderBody forKey:reminder.reminderIdentifier];
+            [[NSUserDefaults standardUserDefaults] setObject:reminder.reminderBody forKey:reminder.reminderIdentifier];
         }
 
-        if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone){
+        if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone) {
             [self.tasksReminder setReminderOn:@YES];
         }
-
-        [[NSUserDefaults standardUserDefaults]synchronize];
     }
-
 }
 
-- (void)performMigrationAfterDataSubstrateFrom:(NSInteger) __unused previousVersion currentVersion:(NSInteger) __unused currentVersion
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    NSError *migrationError = nil;
-
-    if (self.doesPersisteStoreExist == NO)
-    {
-        APCLogEvent(@"This application is being launched for the first time. We know this because there is no persistent store.");
-    }
-    else if ([[defaults objectForKey:@"previousVersion"] isEqual: @3] || ![defaults objectForKey:@"previousVersion"] )
-    {
-        APCLogEvent(@"The entire data model version %d", kTheEntireDataModelOfTheApp);
-        if (![self performMigrationFromThreeToFourWithError:&migrationError])
-        {
-            APCLogEvent(@"Migration from version %@ to %@ has failed.", [defaults objectForKey:@"previousVersion"], @(kTheEntireDataModelOfTheApp));
-        }
-    }
-
-    [defaults setObject:majorVersion forKey:@"shortVersionString"];
-    [defaults setObject:minorVersion forKey:@"version"];
-
-    if (!migrationError)
-    {
-        [defaults setObject:@(currentVersion) forKey:@"previousVersion"];
-    }
-
-}
-
-- (void) setUpAppAppearance
+- (void)setUpAppAppearance
 {
     [APCAppearanceInfo setAppearanceDictionary:@{
                                                  kPrimaryAppColorKey : [UIColor colorWithRed:255 / 255.0f green:0.0 blue:56 / 255.0f alpha:1.000],
@@ -291,34 +251,35 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                             }];
     [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
 
-    self.dataSubstrate.parameters.bypassServer       = YES;
+    self.dataSubstrate.parameters.bypassServer = YES;
     self.dataSubstrate.parameters.hideExampleConsent = NO;
 }
 
-- (id <APCProfileViewControllerDelegate>) profileExtenderDelegate {
-
+- (id <APCProfileViewControllerDelegate>)profileExtenderDelegate
+{
     return self.profileExtender;
 }
 
-- (void) showOnBoarding
+- (void)showOnBoarding
 {
     [super showOnBoarding];
 
     [self showStudyOverview];
 }
 
-- (void) showStudyOverview
+- (void)showStudyOverview
 {
     APCStudyOverviewViewController *studyController = [[UIStoryboard storyboardWithName:@"APCOnboarding" bundle:[NSBundle appleCoreBundle]] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
     [self setUpRootViewController:studyController];
 }
 
-- (BOOL) isVideoShown
+- (BOOL)isVideoShown
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kVideoShownKey];
 }
 
-- (NSMutableDictionary *) updateOptionsFor5OrOlder:(NSMutableDictionary *)initializationOptions {
+- (NSMutableDictionary *)updateOptionsFor5OrOlder:(NSMutableDictionary *)initializationOptions
+{
     if (![APCDeviceHardware isiPhone5SOrNewer]) {
         [initializationOptions setValue:@"APHTasksAndSchedules_NoM7" forKey:kTasksAndSchedulesJSONFileNameKey];
     }
@@ -336,9 +297,34 @@ static NSInteger const kMonthOfDayObject                = 2;
 }
 
 /*********************************************************************************/
+#pragma mark - Helper Method for Datasubstrate Delegate Methods
+/*********************************************************************************/
+
+static NSDate *DetermineConsentDate(id object)
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString      *filePath    = [[object applicationDocumentsDirectory] stringByAppendingPathComponent:@"db.sqlite"];
+    NSDate        *consentDate = nil;
+
+    if ([fileManager fileExistsAtPath:filePath]) {
+        NSError      *error      = nil;
+        NSDictionary *attributes = [fileManager attributesOfItemAtPath:filePath error:&error];
+        
+        if (error != nil) {
+            APCLogError2(error);
+            consentDate = [[NSDate date] startOfDay];
+        } else {
+            consentDate = [attributes fileCreationDate];
+        }
+    }
+    return consentDate;
+}
+
+/*********************************************************************************/
 #pragma mark - Datasubstrate Delegate Methods
 /*********************************************************************************/
-- (void) setUpCollectors
+
+- (void)setUpCollectors
 {
     if (self.dataSubstrate.currentUser.userConsented)
     {
@@ -364,7 +350,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                    motionActivitySample.startDate.toStringInISO8601Format,
                                                    motionActivity,
                                                    motionConfidence];
-
         return stringToWrite;
     };
 
@@ -379,27 +364,8 @@ static NSInteger const kMonthOfDayObject                = 2;
         }
         else
         {
-            NSFileManager*  fileManager = [NSFileManager defaultManager];
-            NSString*       filePath    = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"db.sqlite"];
-
-            if ([fileManager fileExistsAtPath:filePath])
-            {
-                NSError*        error       = nil;
-                NSDictionary*   attributes  = [fileManager attributesOfItemAtPath:filePath error:&error];
-
-                if (error)
-                {
-                    APCLogError2(error);
-
-                    consentDate = [[NSDate date] startOfDay];
+            consentDate = DetermineConsentDate(self);
                 }
-                else
-                {
-                    consentDate = [attributes fileCreationDate];
-                }
-            }
-        }
-
         return consentDate;
     };
 
@@ -413,7 +379,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                                           operationQueueName:@"APCCoreMotion Activity Collector"
                                                                                dataProcessor:CoreMotionDataSerializer
                                                                            fileProtectionKey:NSFileProtectionCompleteUntilFirstUserAuthentication];
-
     [motionCollector setReceiver:receiver];
     [motionCollector setDelegate:receiver];
     [motionCollector start];
@@ -440,7 +405,7 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                                         @"verticalAccuracy",
                                                                         @"verticalAccuracyUnit"];
     APCPassiveDisplacementTrackingDataUploader* displacementSinker  = [[APCPassiveDisplacementTrackingDataUploader alloc]
-                                                                       initWithIdentifier:@"locationTracker"
+                                                                       initWithIdentifier:@"displacementCollector"
                                                                        columnNames:locationColumns
                                                                        operationQueueName:@"APCDisplacement Tracker Sink"
                                                                        dataProcessor:nil
@@ -464,28 +429,24 @@ static NSInteger const kMonthOfDayObject                = 2;
         }
         else
         {
-            NSFileManager*  fileManager = [NSFileManager defaultManager];
-            NSString*       filePath    = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"db.sqlite"];
-
-            if ([fileManager fileExistsAtPath:filePath])
-            {
-                NSError*        error       = nil;
-                NSDictionary*   attributes  = [fileManager attributesOfItemAtPath:filePath error:&error];
-
-                if (error)
-                {
-                    APCLogError2(error);
-
-                    consentDate = [[NSDate date] startOfDay];
-                }
-                else
-                {
-                    consentDate = [attributes fileCreationDate];
-                }
-            }
+            consentDate = DetermineConsentDate(self);
         }
-
         return consentDate;
+    };
+
+    NSString *(^determineQuantitySource)(NSString *) = ^(NSString  *source)
+            {
+        NSString  *answer = nil;
+        if (source == nil) {
+            answer = @"not available";
+        } else if ([UIDevice.currentDevice.name isEqualToString:source] == YES) {
+            if ([APCDeviceHardware platformString] != nil) {
+                answer = [APCDeviceHardware platformString];
+            } else {
+                answer = @"iPhone";    //    theoretically should not happen
+                }
+                }
+        return answer;
     };
 
     NSString*(^QuantityDataSerializer)(id, HKUnit*) = ^NSString*(id dataSample, HKUnit* unit)
@@ -494,27 +455,14 @@ static NSInteger const kMonthOfDayObject                = 2;
         NSString*           startDateTimeStamp  = [qtySample.startDate toStringInISO8601Format];
         NSString*           endDateTimeStamp    = [qtySample.endDate toStringInISO8601Format];
         NSString*           healthKitType       = qtySample.quantityType.identifier;
+        NSString*           quantityValueRep    = [NSString stringWithFormat:@"%@", qtySample.quantity];
+        NSArray*            valueSplit          = [quantityValueRep componentsSeparatedByString:@" "];
         NSNumber*           quantityValue       = @([qtySample.quantity doubleValueForUnit:unit]);
         NSString*           quantityUnit        = unit.unitString;
         NSString*           sourceIdentifier    = qtySample.source.bundleIdentifier;
         NSString*           quantitySource      = qtySample.source.name;
 
-        if (quantitySource == nil)
-        {
-            quantitySource = @"not available";
-        }
-        else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-        {
-            if ([APCDeviceHardware platformString])
-            {
-                quantitySource = [APCDeviceHardware platformString];
-            }
-            else
-            {
-                //  This shouldn't get called.
-                quantitySource = @"iPhone";
-            }
-        }
+        quantitySource = determineQuantitySource(quantitySource);
 
         NSString *stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
                                    startDateTimeStamp,
@@ -524,7 +472,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                    quantityUnit,
                                    quantitySource,
                                    sourceIdentifier];
-
         return stringToWrite;
     };
 
@@ -544,22 +491,7 @@ static NSInteger const kMonthOfDayObject                = 2;
         NSString*   sourceIdentifier            = sample.source.bundleIdentifier;
         NSString*   quantitySource              = sample.source.name;
 
-        if (quantitySource == nil)
-        {
-            quantitySource = @"not available";
-        }
-        else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-        {
-            if ([APCDeviceHardware platformString])
-            {
-                quantitySource = [APCDeviceHardware platformString];
-            }
-            else
-            {
-                //  This shouldn't get called.
-                quantitySource = @"iPhone";
-            }
-        }
+        quantitySource = determineQuantitySource(quantitySource);
 
         NSError*    error                       = nil;
         NSString*   metaData                    = [NSDictionary apc_stringFromDictionary:sample.metadata error:&error];
@@ -587,7 +519,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                    quantitySource,
                                                    sourceIdentifier,
                                                    metaDataStringified];
-
         return stringToWrite;
     };
 
@@ -615,30 +546,11 @@ static NSInteger const kMonthOfDayObject                = 2;
             NSString*           sourceIdentifier    = catSample.source.bundleIdentifier;
             NSString*           quantitySource      = catSample.source.name;
 
-            if (quantitySource == nil)
-            {
-                quantitySource = @"not available";
-            }
-            else if ([[[UIDevice currentDevice] name] isEqualToString:quantitySource])
-            {
-                if ([APCDeviceHardware platformString])
-                {
-                    quantitySource = [APCDeviceHardware platformString];
-                }
-                else
-                {
-                    //  This shouldn't get called.
-                    quantitySource = @"iPhone";
-                }
+            quantitySource = determineQuantitySource(quantitySource);
 
-            }
-
-            // Get the difference in seconds between the start and end date for the sample
-            NSDateComponents* secondsSpentInBedOrAsleep = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond
-                                                                                          fromDate:catSample.startDate
-                                                                                            toDate:catSample.endDate
-                                                                                           options:NSCalendarWrapComponents];
-            NSString*           quantityValue   = [NSString stringWithFormat:@"%ld", (long)secondsSpentInBedOrAsleep.second];
+            // Get difference in seconds between start and end date for sample
+            NSTimeInterval secondsSpentInBedOrAsleep = [catSample.endDate timeIntervalSinceDate:catSample.startDate];
+            NSString*           quantityValue   = [NSString stringWithFormat:@"%ld", (long)secondsSpentInBedOrAsleep];
 
             stringToWrite = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@\n",
                              startDateTime,
@@ -649,7 +561,6 @@ static NSInteger const kMonthOfDayObject                = 2;
                              sourceIdentifier,
                              quantitySource];
         }
-
         return stringToWrite;
     };
 
@@ -710,25 +621,17 @@ static NSInteger const kMonthOfDayObject                = 2;
                 // This is really important to remember that we are creating as many user defaults as there are healthkit permissions here.
                 NSString*                               uniqueAnchorDateName    = [NSString stringWithFormat:@"APCHealthKit%@AnchorDate", dataType];
                 APCHealthKitBackgroundDataCollector*    collector               = nil;
+                APCPassiveDataSink*                     receiver                = nil;
 
                 //If the HKObjectType is a HKWorkoutType then set a different receiver/data sink.
-                if ([sampleType isKindOfClass:[HKWorkoutType class]])
+                if (([sampleType isKindOfClass:[HKWorkoutType class]]) || ([sampleType isKindOfClass:[HKCategoryType class]]))
                 {
                     collector = [[APCHealthKitBackgroundDataCollector alloc] initWithIdentifier:sampleType.identifier
                                                                                      sampleType:sampleType anchorName:uniqueAnchorDateName
                                                                                launchDateAnchor:LaunchDate
                                                                                     healthStore:self.dataSubstrate.healthStore];
-                    [collector setReceiver:workoutReceiver];
-                    [collector setDelegate:workoutReceiver];
-                }
-                else if ([sampleType isKindOfClass:[HKCategoryType class]])
-                {
-                    collector = [[APCHealthKitBackgroundDataCollector alloc] initWithIdentifier:sampleType.identifier
-                                                                                     sampleType:sampleType anchorName:uniqueAnchorDateName
-                                                                               launchDateAnchor:LaunchDate
-                                                                                    healthStore:self.dataSubstrate.healthStore];
-                    [collector setReceiver:sleepReceiver];
-                    [collector setDelegate:sleepReceiver];
+                    
+                    receiver = [sampleType isKindOfClass:[HKWorkoutType class]] ? workoutReceiver : sleepReceiver;
                 }
                 else
                 {
@@ -739,9 +642,10 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                                                            launchDateAnchor:LaunchDate
                                                                                                 healthStore:self.dataSubstrate.healthStore
                                                                                                        unit:[hkUnitKeysAndValues objectForKey:sampleType.identifier]];
-                    [collector setReceiver:quantityreceiver];
-                    [collector setDelegate:quantityreceiver];
+                    receiver = quantityreceiver;
                 }
+                [collector setReceiver:receiver];
+                [collector setDelegate:receiver];
 
                 [collector start];
                 [self.passiveDataCollector addDataSink:collector];
@@ -764,7 +668,6 @@ static NSInteger const kMonthOfDayObject                = 2;
     return scene;
 }
 
-
 /*********************************************************************************/
 #pragma mark - Consent
 /*********************************************************************************/
@@ -775,40 +678,36 @@ static NSInteger const kMonthOfDayObject                = 2;
                                                            propertiesFileName:kConsentPropertiesFileName];
     ORKTaskViewController*  consentVC = [[ORKTaskViewController alloc] initWithTask:task
                                                                         taskRunUUID:[NSUUID UUID]];
-
     return consentVC;
 }
 
-- (NSDictionary *) tasksAndSchedulesWillBeLoaded {
-
-    NSString                    *resource = [[NSBundle mainBundle] pathForResource:self.initializationOptions[kTasksAndSchedulesJSONFileNameKey]
+- (NSDictionary *)tasksAndSchedulesWillBeLoaded
+{
+    NSString      *resource = [[NSBundle mainBundle] pathForResource:self.initializationOptions[kTasksAndSchedulesJSONFileNameKey]
                                                                             ofType:@"json"];
 
-    NSData                      *jsonData = [NSData dataWithContentsOfFile:resource];
-    NSError                     *error;
-    NSDictionary                *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
+    NSData        *jsonData = [NSData dataWithContentsOfFile:resource];
+    NSError       *error;
+    NSDictionary  *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                               options:NSJSONReadingMutableContainers
                                                                                 error:&error];
     if (dictionary == nil) {
         APCLogError2 (error);
     }
 
-    NSArray                     *schedules = [dictionary objectForKey:kJsonSchedulesKey];
-    NSMutableDictionary         *newDictionary = [dictionary mutableCopy];
-    NSMutableArray              *newSchedulesArray = [NSMutableArray new];
+    NSArray              *schedules = [dictionary objectForKey:kJsonSchedulesKey];
+    NSMutableDictionary  *newDictionary = [dictionary mutableCopy];
+    NSMutableArray       *newSchedulesArray = [NSMutableArray new];
 
     for (NSDictionary *schedule in schedules) {
         [newSchedulesArray addObject:schedule];
     }
 
-    [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey]
-                     forKey:kJsonTasksKey];
+    [newDictionary setValue:[dictionary objectForKey:kJsonTasksKey] forKey:kJsonTasksKey];
 
-    [newDictionary setValue:newSchedulesArray
-                     forKey:kJsonSchedulesKey];
+    [newDictionary setValue:newSchedulesArray forKey:kJsonSchedulesKey];
 
     return newDictionary;
 }
-
 
 @end
