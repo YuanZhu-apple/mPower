@@ -39,8 +39,23 @@
 #import "APHAppDelegate.h"
 
     //
-    //        Step Identifiers
+    //    keys for questions asking patient when they took their medicines
     //
+static NSString *const kMomentInDay                           = @"momentInDay";
+
+static NSString *const kMomentInDayFormat                     = @"momentInDayFormat";
+
+static NSString *const kMomentInDayFormatTitle                = @"We would like to understand how your performance on"
+                                                                " this activity could be affected by the timing of your medication.";
+
+static NSString *const kMomentInDayFormatItemText             = @"When are you performing this Activity?";
+static NSString *const kMomentInDayFormatChoiceJustWokeUp     = @"Immediately before Parkinson medication";
+static NSString *const kMomentInDayFormatChoiceTookMyMedicine = @"Just after Parkinson medication (at your best)";
+static NSString *const kMomentInDayFormatChoiceEvening        = @"Another time";
+static NSString *const kMomentInDayFormatChoiceNone           = @"I don't take Parkinson medications";
+
+static double          kMinimumAmountOfTimeToShowSurvey       = 20.0 * 60.0;
+
 static NSString* const  kFileResultsKey                       = @"items";
 static NSString* const  kNumberOfStepsTotalOnReturn           = @"numberOfSteps";
 static NSString* const  kNumberOfStepsTotalOnReturnKey        = @"numberOfSteps";
@@ -96,8 +111,8 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
     [task.steps[5] setTitle:NSLocalizedString(titleString, nil)];
     [task.steps[5] setSpokenInstruction:NSLocalizedString(spokenInstructionString, nil)];
     
-    [task.steps[6] setTitle:NSLocalizedString(kConclusionStepThankYouTitle, nil)];
-    [task.steps[6] setText:NSLocalizedString(kConclusionStepViewDashboard, nil)];
+    [task.steps[6] setTitle:NSLocalizedString(@"Thank You!", nil)];
+    [task.steps[6] setText:NSLocalizedString(@"The results of this activity can be viewed on the dashboard", nil)];
     
         //
         //    remove the return walking step
@@ -116,10 +131,50 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
     if (foundReturnStepIdentifier == YES) {
         [copyOfTaskSteps removeObjectAtIndex:indexOfReturnStep];
     }
+        //
+        //   if we have not pinged the user for whether they have
+        //    taken their medicines in the past while, we inject another step
+        //    into the steps array.
+        //
+    APHAppDelegate  *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+    NSDate  *lastCompletionDate = appDelegate.dataSubstrate.currentUser.taskCompletion;
+    NSTimeInterval  numberOfSecondsSinceTaskCompletion = [[NSDate date] timeIntervalSinceDate: lastCompletionDate];
+    
+    if (numberOfSecondsSinceTaskCompletion > kMinimumAmountOfTimeToShowSurvey || lastCompletionDate == nil) {
+        
+        NSMutableArray *stepQuestions = [NSMutableArray array];
+        
+        ORKFormStep *step = [[ORKFormStep alloc] initWithIdentifier:kMomentInDay title:nil text:NSLocalizedString(kMomentInDayFormatTitle, nil)];
+        
+        step.optional = NO;
+        {
+            NSArray *choices = @[
+                                 NSLocalizedString(kMomentInDayFormatChoiceJustWokeUp,
+                                                   kMomentInDayFormatChoiceJustWokeUp),
+                                 NSLocalizedString(kMomentInDayFormatChoiceTookMyMedicine,
+                                                   kMomentInDayFormatChoiceTookMyMedicine),
+                                 NSLocalizedString(kMomentInDayFormatChoiceEvening,
+                                                   kMomentInDayFormatChoiceEvening),
+                                 NSLocalizedString(kMomentInDayFormatChoiceNone,
+                                                   kMomentInDayFormatChoiceNone)
+                                 ];
+            
+            ORKAnswerFormat *format = [ORKTextChoiceAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleSingleChoice
+                                                                                 textChoices:choices];
+            
+            ORKFormItem *item = [[ORKFormItem alloc] initWithIdentifier:kMomentInDayFormat
+                                                                   text:NSLocalizedString(kMomentInDayFormatItemText, kMomentInDayFormatItemText)
+                                                           answerFormat:format];
+            [stepQuestions addObject:item];
+        }
+        [step setFormItems:stepQuestions];
+        
+        if ([copyOfTaskSteps count] >= 1) {
+            [copyOfTaskSteps insertObject:step atIndex:1];
+        }
+    }
     task = [[ORKOrderedTask alloc] initWithIdentifier:kWalkingActivityTitle steps:copyOfTaskSteps];
-
-    ORKOrderedTask  *replacementTask = [self modifyTaskWithPreSurveyStepIfRequired:task andTitle:(NSString *)kWalkingActivityTitle];
-    return  replacementTask;
+    return  task;
 }
 
 #pragma  mark  -  Create Dashboard Summary Results
@@ -183,9 +238,9 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
         /***********/
         
         NSDictionary  *summary = @{
-                                   kGaitScoreKey                  : @(avgScores),
-                                   kScoreForwardGainRecordsKey    : @(forwardScores),
-                                   kScorePostureRecordsKey        : @(postureScores),
+                                   kGaitScoreKey : @(avgScores),
+                                   kScoreForwardGainRecordsKey : @(forwardScores),
+                                   kScorePostureRecordsKey : @(postureScores),
                                    kNumberOfStepsTotalOnReturnKey : walkingResults == nil ? @0 : [walkingResults objectForKey:kNumberOfStepsTotalOnReturn]
                                   };
         
@@ -222,16 +277,22 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
     }
 }
 
-- (void)taskViewController:(ORKTaskViewController *)taskViewController didFinishWithReason:(ORKTaskViewControllerFinishReason)reason error:(NSError *)error
+- (void) taskViewController: (ORKTaskViewController *) taskViewController
+        didFinishWithReason: (ORKTaskViewControllerFinishReason)reason
+                      error: (NSError *) error
 {
     [[UIView appearance] setTintColor: [UIColor appPrimaryColor]];
 
-    if (reason == ORKTaskViewControllerFinishReasonFailed) {
-        if (error != nil) {
-            APCLogError2 (error);
-        }
+    if (reason == ORKTaskViewControllerFinishReasonFailed && error != nil) {
+        APCLogError2 (error);
+    } else if (reason == ORKTaskViewControllerFinishReasonCompleted) {
+        APHAppDelegate *appDelegate = (APHAppDelegate *) [UIApplication sharedApplication].delegate;
+        appDelegate.dataSubstrate.currentUser.taskCompletion = [NSDate date];
+        [[UIView appearance] setTintColor:[UIColor appPrimaryColor]];
     }
-    [super taskViewController: taskViewController didFinishWithReason: reason error: error];
+    [super taskViewController: taskViewController
+          didFinishWithReason: reason
+                        error: error];
 }
 
 #pragma  mark  -  View Controller Methods
@@ -250,7 +311,7 @@ static  NSString       *kScorePostureRecordsKey               = @"ScorePostureRe
 
 #pragma mark - Helper methods
 
-- (NSDictionary *)computeTotalDistanceForDashboardItem:(NSURL *)fileURL{
+- (NSDictionary *) computeTotalDistanceForDashboardItem:(NSURL *)fileURL{
     
     NSDictionary  *distanceResults = [self readFileResultsFor:fileURL];
     NSArray       *locations       = [distanceResults objectForKey:kFileResultsKey];

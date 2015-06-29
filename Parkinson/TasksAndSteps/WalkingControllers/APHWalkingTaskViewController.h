@@ -36,12 +36,8 @@
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHParkinsonActivityViewController.h"
-
 extern NSString * const kGaitScoreKey;
 
-@interface APHWalkingTaskViewController : APHParkinsonActivityViewController
-
+@interface APHWalkingTaskViewController : APCBaseTaskViewController
 - (NSDictionary *) computeTotalDistanceForDashboardItem:(NSURL *)fileURL;
-
 @end

@@ -35,10 +35,8 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHParkinsonActivityViewController.h"
-
 extern NSString * const kSpatialMemoryScoreSummaryKey;
 
-@interface APHSpatialSpanMemoryGameViewController : APHParkinsonActivityViewController
+@interface APHSpatialSpanMemoryGameViewController : APCBaseTaskViewController
 
 @end

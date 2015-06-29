@@ -37,8 +37,6 @@
 
 #import <ResearchKit/ResearchKit.h>
 
-#import "APHParkinsonActivityViewController.h"
-
-@interface APHIntervalTappingTaskViewController : APHParkinsonActivityViewController
+@interface APHIntervalTappingTaskViewController : APCBaseTaskViewController
 
 @end

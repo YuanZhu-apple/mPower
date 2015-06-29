@@ -35,6 +35,7 @@
 
 @implementation APHAppDelegate (APHMigration)
 
+
 - (BOOL)performMigrationFromThreeToFourWithError:(NSError * __autoreleasing *)__unused error
 {
         return [self turnOnAllTaskReminders];
@@ -55,7 +56,10 @@
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone){
         [self.tasksReminder setReminderOn:@YES];
     }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     return self.tasksReminder.reminders.count;
 }
-    
+
 @end
